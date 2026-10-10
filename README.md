@@ -5,6 +5,10 @@ digital que reciba encargos, conserve contexto y se ajuste a correcciones.
 Unidad usa Python y NumPy, funciona localmente y no requiere Hormiga-X,
 una API de IA ni pesos preentrenados.
 
+Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Definen
+el objetivo de Unidad y distinguen lo realizado de lo pendiente. Las instrucciones
+para quienes modifiquen el código están en [AGENTS.md](AGENTS.md).
+
 **Estado: base experimental, no trabajador autónomo ni chatbot competente.**
 Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encargos
 abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
