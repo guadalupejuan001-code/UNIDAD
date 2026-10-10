@@ -1,9 +1,9 @@
-# IA Propia
+# Unidad
 
-Proyecto independiente para construir una IA propia y avanzar hacia un trabajador
+IA privada de uso personal. Proyecto independiente para avanzar hacia un trabajador
 digital que reciba encargos, conserve contexto y se ajuste a correcciones.
-El nombre es provisional. La base usa Python y NumPy, funciona localmente y no
-requiere Hormiga-X, una API de IA ni pesos preentrenados.
+Unidad usa Python y NumPy, funciona localmente y no requiere Hormiga-X,
+una API de IA ni pesos preentrenados.
 
 **Estado: base experimental, no trabajador autónomo ni chatbot competente.**
 Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encargos
@@ -29,11 +29,14 @@ Python 3.11 o posterior:
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
-ia-propia --help
+unidad --help
 python -m unittest discover -s tests -v
 ```
 
 El paquete también se puede usar con `python -m ia_propia` después de instalarlo.
+`ia_propia` es el nombre interno del paquete; el comando público es `unidad`.
+El comando anterior `ia-propia` se conserva como alias. Cambiar el nombre del
+proyecto conserva los pesos y las identidades de los modelos ya entrenados.
 Los datos personales van en `private/`, excluido de Git. Los artefactos de `models/`
 y textos de `examples/` son demostraciones identificadas, no datos personales.
 Los modelos que entrenes con tus propios textos también deben guardarse en
@@ -44,17 +47,17 @@ no son cifrado.
 ## Primeros pasos
 
 ```bash
-ia-propia init --workspace private/default
-ia-propia task add --workspace private/default \
+unidad init --workspace private/default
+unidad task add --workspace private/default \
   --goal "Describe aquí un trabajo concreto" \
   --context "Qué importa hoy, fuentes disponibles y resultado deseado"
-ia-propia task list --workspace private/default
+unidad task list --workspace private/default
 ```
 
 El especialista ya guardado se puede reproducir sin entrenarlo de nuevo:
 
 ```bash
-ia-propia trend predict --model models/attention-v1.json \
+unidad trend predict --model models/attention-v1.json \
   --input examples/attention-observations.json \
   --as-of 2024-10-16T00:00:00Z --historical
 ```
@@ -66,14 +69,22 @@ También hay un modelo de lenguaje ya entrenado con los diez textos inventados
 de demostración, con 2.903 parámetros. Puedes probar su generación:
 
 ```bash
-ia-propia language generate --model models/language-demo.json \
+unidad language generate --model models/language-demo.json \
   --prompt "Una tarea " --length 160 --seed 42 --temperature 0.8
 ```
 
 Su texto todavía contiene palabras sin sentido. Los pesos y resultados
 comprueban un entrenamiento pequeño; no acreditan capacidad para resolver
 encargos. La verificación de esta versión está en
-[el registro de validación](docs/validation-v0.1.0.json).
+[el registro de validación de Unidad](docs/unidad-validation-v0.1.0.json).
+El [registro inicial](docs/validation-v0.1.0.json) conserva la primera verificación,
+realizada antes de elegir el nombre.
+
+La evaluación del lenguaje conserva sólo el estado recurrente necesario cuando
+no calcula gradientes, reduciendo memoria temporal. `unidad task list` devuelve
+resúmenes; `unidad task show` permite consultar un historial completo. Las
+[mediciones de memoria](docs/language-optimization.md) conservan el resultado
+y sus límites; los pesos entrenados no cambiaron.
 
 El registro guarda encargos; todavía no los ejecuta. Los intentos pueden ser
 trabajos tuyos o de un asistente que tú revisas. Una corrección actualiza el

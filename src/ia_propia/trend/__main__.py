@@ -22,8 +22,8 @@ def as_of_value(value):
         raise argparse.ArgumentTypeError("as-of must be epoch milliseconds or an ISO-8601 timestamp with timezone") from exc
 
 
-def parser():
-    root = argparse.ArgumentParser(description="Train IA Propia's optional experimental count-growth specialist from random weights")
+def parser(prog=None):
+    root = argparse.ArgumentParser(prog=prog, description="Train Unidad's optional experimental count-growth specialist from random weights")
     commands = root.add_subparsers(dest="command", required=True)
     training = commands.add_parser("train", help="Train, select checkpoint on validation, evaluate once on held-out test")
     training.add_argument("--input", required=True, help="Observation JSON list or schema-1 SystemState")
@@ -53,8 +53,8 @@ def parser():
     return root
 
 
-def main(argv=None):
-    args = parser().parse_args(argv)
+def main(argv=None, *, prog=None):
+    args = parser(prog).parse_args(argv)
     try:
         if args.command == "train":
             if Path(args.output).resolve() == Path(args.report).resolve():
@@ -93,7 +93,7 @@ def main(argv=None):
             print(json.dumps(payload, allow_nan=False))
         return 0
     except (DataError, ArtifactError, OSError) as exc:
-        print(f"ia-propia trend: {exc}", file=sys.stderr)
+        print(f"unidad trend: {exc}", file=sys.stderr)
         return 2
 
 

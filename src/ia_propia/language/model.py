@@ -136,18 +136,20 @@ def loss_and_gradients(parameters, inputs, targets, *, gradients=True):
     """Mean next-character NLL; gradient covers the complete current chunk."""
     if len(inputs) == 0 or len(inputs) != len(targets):
         raise LanguageError("Inputs and targets need the same nonzero length")
-    hidden = [np.zeros_like(parameters["bh"])]
-    output_gradients = []
+    current = np.zeros_like(parameters["bh"])
+    # Evaluation needs only the current state; retain history only for BPTT.
+    hidden = [current] if gradients else None
+    output_gradients = [] if gradients else None
     loss = 0.0
     for index, target in zip(inputs, targets):
-        activation = parameters["Wxh"][:, index] + parameters["Whh"] @ hidden[-1] + parameters["bh"]
+        activation = parameters["Wxh"][:, index] + parameters["Whh"] @ current + parameters["bh"]
         if not np.all(np.isfinite(activation)):
             raise LanguageError("Nonfinite language hidden activation")
         current = np.tanh(activation)
-        hidden.append(current)
         log_probabilities = _log_softmax(parameters["Why"] @ current + parameters["by"])
         loss -= float(log_probabilities[target])
         if gradients:
+            hidden.append(current)
             derivative = np.exp(log_probabilities)
             derivative[target] -= 1.0
             output_gradients.append(derivative / len(inputs))

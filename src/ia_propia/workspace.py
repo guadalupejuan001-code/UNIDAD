@@ -311,6 +311,19 @@ def show(path, task_id=None):
                 "tasks": deepcopy(list(state["tasks"].values()))}
 
 
+def list_tasks(path):
+    """Return task summaries without copying contexts, attempts or feedback."""
+    root = _root(path)
+    with _locked(root):
+        state = _load(root)
+        tasks = [{"id": task["id"], "goal": task["goal"], "createdAt": task["createdAt"],
+                  "attemptCount": len(task["attempts"]),
+                  "acceptedAttemptCount": sum(attempt["accepted"] is True for attempt in task["attempts"])}
+                 for task in state["tasks"].values()]
+        return {"workspaceId": state["workspaceId"], "privacy": "PRIVATE", "eventCount": len(state["eventIds"]),
+                "tasks": tasks}
+
+
 def status(path):
     root = _root(path)
     with _locked(root):

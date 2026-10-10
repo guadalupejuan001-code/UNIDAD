@@ -78,6 +78,35 @@ class WorkspaceTests(unittest.TestCase):
             ws.show(self.root, "invalid")
         self.assertEqual(before, self.log_bytes())
 
+    def test_list_summarizes_current_approval_without_returning_full_history(self):
+        context = "CONTEXT_MARKER " * 80
+        text = "ATTEMPT_MARKER " * 100
+        comment = "FEEDBACK_MARKER " * 90
+        task = ws.add_task(self.root, "Synthetic compact listing", context)
+        first = ws.record_attempt(self.root, task["id"], text, ["EVIDENCE_MARKER"])
+        ws.record_attempt(self.root, task["id"], "Unreviewed synthetic attempt")
+        self.approve(task, first, comment)
+        listed = ws.list_tasks(self.root)
+        self.assertEqual(listed["privacy"], "PRIVATE")
+        self.assertEqual(listed["eventCount"], ws.status(self.root)["eventCount"])
+        summary = listed["tasks"][0]
+        self.assertEqual(set(summary), {"id", "goal", "createdAt", "attemptCount", "acceptedAttemptCount"})
+        self.assertEqual((summary["attemptCount"], summary["acceptedAttemptCount"]), (2, 1))
+        self.assertEqual(summary["id"], task["id"])
+        self.assertEqual(summary["goal"], task["goal"])
+        serialized = json.dumps(listed)
+        for marker in ("CONTEXT_MARKER", "ATTEMPT_MARKER", "FEEDBACK_MARKER", "EVIDENCE_MARKER"):
+            self.assertNotIn(marker, serialized)
+        ws.feedback(self.root, task["id"], first["id"], "Latest explicit rejection", accepted=False)
+        before = self.log_bytes()
+        self.assertEqual(ws.list_tasks(self.root)["tasks"][0]["acceptedAttemptCount"], 0)
+        shown = ws.show(self.root, task["id"])
+        self.assertEqual(shown["context"], context)
+        self.assertEqual(shown["attempts"][0]["text"], text)
+        self.assertEqual(shown["attempts"][0]["feedback"][0]["text"], comment)
+        self.assertEqual(len(shown["attempts"][0]["feedback"]), 2)
+        self.assertEqual(self.log_bytes(), before)
+
     def test_approval_requires_actual_boolean_and_inputs_have_limits(self):
         task, attempt = self.task_attempt()
         before = self.log_bytes()
@@ -183,7 +212,7 @@ class WorkspaceTests(unittest.TestCase):
         with log.open("ab") as stream:
             stream.write(b'{"unfinished":')
         original = self.log_bytes()
-        operations = [lambda: ws.show(self.root), lambda: ws.init_workspace(self.root),
+        operations = [lambda: ws.show(self.root), lambda: ws.list_tasks(self.root), lambda: ws.init_workspace(self.root),
                       lambda: ws.record_attempt(self.root, task["id"], "Do not write")]
         for operation in operations:
             with self.assertRaises(ws.WorkspaceError):

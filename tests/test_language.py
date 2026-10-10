@@ -40,6 +40,18 @@ class LanguageTests(unittest.TestCase):
                 values[index] = original
                 self.assertAlmostEqual(gradients[name][index], (positive - negative) / (2 * epsilon), delta=2e-7)
 
+    def test_evaluation_matches_bptt_loss_without_requesting_gradients(self):
+        rng = np.random.default_rng(91)
+        for vocabulary_size, hidden_size, length in ((4, 3, 1), (11, 8, 47), (47, 128, 256)):
+            parameters = initialize(vocabulary_size, hidden_size, 3)
+            inputs = rng.integers(0, vocabulary_size, length)
+            targets = rng.integers(0, vocabulary_size, length)
+            gradient_loss, gradients = loss_and_gradients(parameters, inputs, targets)
+            evaluation_loss, evaluation_gradients = loss_and_gradients(parameters, inputs, targets, gradients=False)
+            self.assertEqual(evaluation_loss, gradient_loss)
+            self.assertIsNone(evaluation_gradients)
+            self.assertIsNotNone(gradients)
+
     def test_split_and_tokenizer_cannot_see_heldout_characters(self):
         documents = ["ab first", "ab second", "ab third", "ab fourth", "ab fifth", "ab sixth", "Ω val", "Ω next", "Ж test", "Ж last"]
         splits, indices = split_documents(documents)

@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ia-propia"
+name = "unidad"
 version = "0.1.0"
 description = "Base experimental de modelos propios y encargos con contexto revisable"
 readme = "README.md"
@@ -11,6 +11,7 @@ requires-python = ">=3.11"
 dependencies = ["numpy==2.3.5"]
 
 [project.scripts]
+unidad = "ia_propia.cli:main"
 ia-propia = "ia_propia.cli:main"
 
 [tool.setuptools.packages.find]

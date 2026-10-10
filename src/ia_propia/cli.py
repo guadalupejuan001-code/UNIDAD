@@ -14,7 +14,8 @@ def add_workspace(command):
 
 def parser():
     root = argparse.ArgumentParser(
-        description="Modelos pequeños desde cero y registro local de encargos en texto libre")
+        prog="unidad",
+        description="Unidad: modelos pequeños desde cero y registro local de encargos en texto libre")
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init", help="Crear un espacio local privado")
@@ -61,7 +62,7 @@ def main(argv=None):
             from .language.__main__ import main as model_main
         else:
             from .trend.__main__ import main as model_main
-        return model_main(argv[1:])
+        return model_main(argv[1:], prog=f"unidad {argv[0]}")
     args = parser().parse_args(argv)
     from . import workspace
     try:
@@ -70,7 +71,7 @@ def main(argv=None):
         elif args.action == "add":
             result = workspace.add_task(args.workspace, args.goal, args.context)
         elif args.action == "list":
-            result = workspace.show(args.workspace)
+            result = workspace.list_tasks(args.workspace)
         elif args.action == "show":
             result = workspace.show(args.workspace, args.id)
         elif args.action == "attempt":
@@ -85,7 +86,7 @@ def main(argv=None):
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
         return 0
     except (ValueError, OSError) as exc:
-        print(f"ia-propia: {exc}", file=sys.stderr)
+        print(f"unidad: {exc}", file=sys.stderr)
         return 2
 
 

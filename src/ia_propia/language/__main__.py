@@ -7,8 +7,8 @@ import sys
 from .model import LanguageError, generate, load_artifact, train, write_json
 
 
-def main(argv=None):
-    parser = argparse.ArgumentParser(description="Train a small character RNN from random weights; no pretrained models or APIs")
+def main(argv=None, *, prog=None):
+    parser = argparse.ArgumentParser(prog=prog, description="Train a small character RNN from random weights; no pretrained models or APIs")
     commands = parser.add_subparsers(dest="command", required=True)
     training = commands.add_parser("train")
     training.add_argument("--corpus", type=Path, required=True)
@@ -49,7 +49,7 @@ def main(argv=None):
                                       temperature=args.temperature, seed=args.seed), ensure_ascii=False, allow_nan=False))
         return 0
     except (LanguageError, OSError) as error:
-        print(f"ia-propia-language: {error}", file=sys.stderr)
+        print(f"unidad language: {error}", file=sys.stderr)
         return 2
 
 

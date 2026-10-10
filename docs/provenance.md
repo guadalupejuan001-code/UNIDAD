@@ -1,6 +1,6 @@
 # Procedencia de la primera extracción
 
-IA Propia es un proyecto independiente. El especialista de atención, sus pruebas,
+Unidad es un proyecto independiente. El especialista de atención, sus pruebas,
 las capturas públicas y el primer artefacto proceden del repositorio del usuario
 [Hormiga-X](https://github.com/guadalupejuan001-code/Hormiga-X), commit
 [`2e7c002117ff4a44d2676bc143f33145fbb79973`](https://github.com/guadalupejuan001-code/Hormiga-X/tree/2e7c002117ff4a44d2676bc143f33145fbb79973).
@@ -26,16 +26,17 @@ frente a 0.133980983).
 ## SHA-256 de los archivos
 
 El hash de origen se calculó sobre el contenido exacto de `git show` en el commit
-indicado y se contrastó contra el archivo de origen. El hash extraído se calculó
-sobre los bytes guardados en IA Propia. Los hashes distintos de CLI/pruebas
+indicado y se contrastó contra el archivo de origen. El hash de destino se calculó
+sobre los bytes actuales guardados en Unidad. El CLI ya incluye el nombre elegido
+y la ayuda con el prefijo completo de comando; los pesos se conservan intactos. Los hashes distintos de CLI/pruebas
 corresponden a las adaptaciones descritas arriba.
 
-| Archivo original en Hormiga-X | Archivo en IA Propia | SHA-256 original | SHA-256 extraído |
+| Archivo original en Hormiga-X | Archivo en Unidad | SHA-256 original | SHA-256 actual |
 | --- | --- | --- | --- |
 | `training/hormiga_trend/__init__.py` | `src/ia_propia/trend/__init__.py` | `3d3b3df22651bf904b8dbe38ad75509355be6fcd86fe099abff5fc4d4aa6e7e8` | `3d3b3df22651bf904b8dbe38ad75509355be6fcd86fe099abff5fc4d4aa6e7e8` |
 | `training/hormiga_trend/data.py` | `src/ia_propia/trend/data.py` | `609b3538d4276ec70171f79a3a9fc0ad3a6673f835d5f4f2aecef0686a699111` | `609b3538d4276ec70171f79a3a9fc0ad3a6673f835d5f4f2aecef0686a699111` |
 | `training/hormiga_trend/model.py` | `src/ia_propia/trend/model.py` | `b8aa67252e22286ee19a1bea9bb8bc4a15df686c6217a214e7c817fa66e79261` | `b8aa67252e22286ee19a1bea9bb8bc4a15df686c6217a214e7c817fa66e79261` |
-| `training/hormiga_trend/__main__.py` | `src/ia_propia/trend/__main__.py` | `d58808f64bf2ad9cfb562e353b30f58152ccba7a26698df3e3ed43d1f4227f30` | `e4161bf1e3fd709d7ed4bf44025b131671868e278393ff89b9bdac1ccaf6f4ae` |
+| `training/hormiga_trend/__main__.py` | `src/ia_propia/trend/__main__.py` | `d58808f64bf2ad9cfb562e353b30f58152ccba7a26698df3e3ed43d1f4227f30` | `95f63c9a4f025a69aa125e76835b8eab3fb1b6759ce230ef5911c70bf1b3d966` |
 | `training/tests/test_training.py` | `tests/test_trend.py` | `6959e139bc9b93db3c060bd1ff7035fdce69e9d2741a015beae17447ad9fe59b` | `6ed36f08ec504344d23e614c47dc233544bcc2e245b1d521583b8e2086af6992` |
 | `training/tests/fixtures/parity.json` | `tests/fixtures/parity.json` | `d848ac161ee22a8d80511f2aa74f89e279c2e2bce73e10872d28afa334a856a4` | `d848ac161ee22a8d80511f2aa74f89e279c2e2bce73e10872d28afa334a856a4` |
 | `docs/evidence/real-observations.json` | `examples/attention-observations.json` | `2e74338724a145130a6d82a9bba64e2ed8ef4651da35fc63208d80636679586c` | `2e74338724a145130a6d82a9bba64e2ed8ef4651da35fc63208d80636679586c` |

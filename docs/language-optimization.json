@@ -1,0 +1,141 @@
+{
+  "status": "passed",
+  "scope": "Only evaluation-state memory optimization; no retraining or predictive-quality claim.",
+  "pythonVersion": "3.12.14",
+  "numpyVersion": "2.3.5",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "beforeCodeSha256": "ab929e30def240c809a7489276b0f3cf411d1ef596926a501e2ec9980bf76ea0",
+  "afterCodeSha256": "7f9a4940209fed5e63bb3bdb8dc9f68475da2486b3ecd1a05c12db433167fb34",
+  "benchmark": {
+    "hiddenSize": 128,
+    "vocabularySize": 47,
+    "sequenceLength": 256,
+    "weightSeed": 314159,
+    "inputSeed": 271828,
+    "warmupsPerVersion": 3,
+    "memoryRepeats": 7,
+    "timingRepeats": 21,
+    "memoryMethod": "tracemalloc per isolated evaluation call after gc; parameters allocated before tracing; traced allocation peak, not process RSS",
+    "beforePeakBytes": [
+      298976,
+      298976,
+      298976,
+      298976,
+      298976,
+      298976,
+      298976
+    ],
+    "afterPeakBytes": [
+      6040,
+      6040,
+      6040,
+      6040,
+      6040,
+      6040,
+      6040
+    ],
+    "beforeMedianPeakBytes": 298976,
+    "afterMedianPeakBytes": 6040,
+    "medianPeakReductionFraction": 0.979797709515145,
+    "timingMethod": "perf_counter_ns; untraced single-call measurements; alternating before/after order",
+    "beforeMilliseconds": [
+      3.885259,
+      4.203815,
+      4.188471,
+      3.910647,
+      4.606716,
+      3.963956,
+      3.864568,
+      4.275181,
+      4.277855,
+      3.795064,
+      5.622852,
+      4.015172,
+      4.531764,
+      5.970371,
+      3.686282,
+      6.84041,
+      3.601665,
+      3.794133,
+      3.710989,
+      4.817531,
+      4.004266
+    ],
+    "afterMilliseconds": [
+      3.927382,
+      3.929826,
+      3.976265,
+      3.740113,
+      5.621109,
+      3.862264,
+      3.634394,
+      3.682236,
+      4.685664,
+      4.068433,
+      3.961333,
+      4.110425,
+      4.395311,
+      3.777768,
+      6.692869,
+      3.55092,
+      5.767929,
+      3.567965,
+      5.591165,
+      4.379927,
+      3.622747
+    ],
+    "beforeMedianMilliseconds": 4.015172,
+    "afterMedianMilliseconds": 3.961333,
+    "limitations": "A single runtime and one synthetic shape. Timing differences may be noise; no general speedup established."
+  },
+  "preservation": {
+    "syntheticEvaluationNllBefore": 3.873428087120864,
+    "syntheticEvaluationNllAfter": 3.873428087120864,
+    "syntheticNllExactlyEqual": true,
+    "allBpttGradientsExactlyEqual": true,
+    "savedModelId": "language-858bad78a84d74bb9f22622f4ec7ca1dd077665157550f94c5ff9462185c79b3",
+    "savedArtifactSha256": "fec9a46063185f2d707bbe168b315cb5b10e8bf06d0afd7bbacb689a407fdab7",
+    "savedModelFileSha256Before": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6",
+    "savedModelFileSha256After": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6",
+    "savedSplitScoresExactlyEqual": true,
+    "savedScores": {
+      "train": {
+        "targetCount": 1719,
+        "unknownTargetCount": 0,
+        "rnnNllNats": 1.695110797200722,
+        "unigramNllNats": 2.909347099497613,
+        "rnnPerplexity": 5.447249471771869,
+        "unigramPerplexity": 18.34481731571941
+      },
+      "validation": {
+        "targetCount": 617,
+        "unknownTargetCount": 1,
+        "rnnNllNats": 2.143413152191318,
+        "unigramNllNats": 2.907927931433409,
+        "rnnPerplexity": 8.528497066985624,
+        "unigramPerplexity": 18.318801401684883
+      },
+      "test": {
+        "targetCount": 630,
+        "unknownTargetCount": 0,
+        "rnnNllNats": 2.201882049772991,
+        "unigramNllNats": 2.8714451422169054,
+        "rnnPerplexity": 9.042015017875494,
+        "unigramPerplexity": 17.662524625185227
+      }
+    },
+    "generationExactlyEqual": true,
+    "generationArguments": {
+      "prompt": "La red ",
+      "length": 160,
+      "temperature": 0.8,
+      "seed": 42
+    }
+  },
+  "languageTests": {
+    "passed": 10,
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -p test_language.py -v",
+    "runtimeSeconds": 1.207
+  },
+  "baselineGitCommit": "3ca496579b40449ba3b850bfd364d6673f87ac56"
+}

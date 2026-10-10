@@ -1,6 +1,6 @@
 # Especialista opcional de atención
 
-Este componente es una capacidad inicial reutilizable de IA Propia. No define
+Este componente es una capacidad inicial reutilizable de Unidad. No define
 las categorías de trabajo del futuro asistente ni determina qué puede pedirle
 el usuario. Entrena una red pequeña desde pesos aleatorios para anticipar el
 cambio de una métrica no negativa de una señal. El primer ejemplo usa visitas

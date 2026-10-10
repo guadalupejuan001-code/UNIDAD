@@ -22,6 +22,15 @@ class CliTests(unittest.TestCase):
         self.assertEqual(result, 0, error)
         return json.loads(output)
 
+    def test_help_shows_the_complete_public_command(self):
+        for prefix in ([], ["language"], ["trend"]):
+            output = io.StringIO()
+            with redirect_stdout(output), self.assertRaises(SystemExit) as stopped:
+                main([*prefix, "--help"])
+            self.assertEqual(stopped.exception.code, 0)
+            command = " ".join(["unidad", *prefix])
+            self.assertIn(f"usage: {command} ", output.getvalue())
+
     def test_goal_attempt_correction_export_workflow(self):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)
@@ -36,6 +45,11 @@ class CliTests(unittest.TestCase):
             self.json_call(["task", "feedback", *flags, "--id", task["id"],
                             "--attempt", attempt["id"], "--text", "Aprobado como ejemplo",
                             "--accepted"])
+            listing = self.json_call(["task", "list", *flags])
+            self.assertEqual(listing["tasks"][0]["id"], task["id"])
+            self.assertEqual(listing["tasks"][0]["attemptCount"], 1)
+            self.assertNotIn("attempts", listing["tasks"][0])
+            self.assertNotIn("context", listing["tasks"][0])
             shown = self.json_call(["task", "show", *flags, "--id", task["id"]])
             self.assertEqual(shown["id"], task["id"])
             destination = directory / "corpus.txt"
