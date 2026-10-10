@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "modelId": "language-858bad78a84d74bb9f22622f4ec7ca1dd077665157550f94c5ff9462185c79b3",
+  "artifactSha256": "fec9a46063185f2d707bbe168b315cb5b10e8bf06d0afd7bbacb689a407fdab7",
+  "training": {
+    "datasetSha256": "8f91ffc65a8497c1ba126529c63a9be817e912e775f9f0925e3a3dfa1f81653a",
+    "initializedFrom": "random weights; zero biases; no pretrained parameters",
+    "initialWeightsSha256": "db3552df885e3b9a05471a5406389e40755c11f1f71c420ad96141ebc03c0291",
+    "selectedWeightsSha256": "302e2436c84174d1464d928ee563e7bd65bbd82fccd29ef8f08657c025f7271b",
+    "seed": 42,
+    "optimizer": "manual BPTT and Adam with global gradient-norm clipping",
+    "learningRate": 0.015,
+    "clipNorm": 1.0,
+    "clippedUpdates": 242,
+    "updates": 507,
+    "epochsRequested": 20,
+    "epochsCompleted": 13,
+    "patience": 6,
+    "bestEpoch": 7,
+    "initialTrainNllNats": 3.8663239030708,
+    "initialValidationNllNats": 3.8684640199856637,
+    "trainedAt": 1791648569433,
+    "trainingSeconds": 1.0620784800048568,
+    "pythonVersion": "3.12.14",
+    "numpyVersion": "2.3.5",
+    "checkpointSelection": "minimum validation NLL; test never used",
+    "splitPolicy": "contiguous disjoint document indices; no transitions between documents",
+    "contextPolicy": "zero hidden state for each chunk; full BPTT within sequenceLength",
+    "splitDocumentIndices": {
+      "train": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "validation": [
+        6,
+        7
+      ],
+      "test": [
+        8,
+        9
+      ]
+    },
+    "documents": [
+      {
+        "index": 0,
+        "characterCount": 273,
+        "textSha256": "c29dd83a4e4f3720501787a42bcf41fbf818b316f9eca2e50faf9d16b7d2b70c"
+      },
+      {
+        "index": 1,
+        "characterCount": 266,
+        "textSha256": "69af146c26626e1572d7b1a47f317b7cb4ca84d0788bcf06e715e1777162b392"
+      },
+      {
+        "index": 2,
+        "characterCount": 292,
+        "textSha256": "95225571921537c92ed91fd848af03a04c563f718a04c88ed99d4d41c149a78b"
+      },
+      {
+        "index": 3,
+        "characterCount": 312,
+        "textSha256": "6ed95dc216c6fdc3da1bcfd70f01993470f1f69d6d53de767263fa7a2c778931"
+      },
+      {
+        "index": 4,
+        "characterCount": 288,
+        "textSha256": "a3c798807f98569a62943a4fdc7c4ca887364b9c2701d94e512701c8881e4766"
+      },
+      {
+        "index": 5,
+        "characterCount": 294,
+        "textSha256": "12650e5723e4b10f56cb0d1775fa9cb10a1ada6fc61799bc251efa478d1cf6f9"
+      },
+      {
+        "index": 6,
+        "characterCount": 312,
+        "textSha256": "4272d25aaed7eb48737cf8952e2d9629ebda56006b3af26a507d12850791e1f2"
+      },
+      {
+        "index": 7,
+        "characterCount": 307,
+        "textSha256": "e4f5c56858f5fe0c143ac063b820c5c72ec57ce1e3cbebf0ba44a2d68a3fe5c9"
+      },
+      {
+        "index": 8,
+        "characterCount": 309,
+        "textSha256": "015cbf588d6a38b75a19ab94f325c3b6c2d53c8ca35901287460a581756c3787"
+      },
+      {
+        "index": 9,
+        "characterCount": 323,
+        "textSha256": "907d0d86b3c57cda72eec56bc6a8eee8faae66c0069b3d6ea64c4afd53b1de0a"
+      }
+    ],
+    "unigram": {
+      "fit": "train next-character targets only",
+      "additiveSmoothing": 1.0,
+      "probabilities": [
+        0.0005662514156285391,
+        0.1625141562853907,
+        0.004530011325028313,
+        0.01698754246885617,
+        0.0011325028312570782,
+        0.0011325028312570782,
+        0.0011325028312570782,
+        0.0011325028312570782,
+        0.0016987542468856172,
+        0.0033975084937712344,
+        0.005096262740656852,
+        0.0011325028312570782,
+        0.0016987542468856172,
+        0.0011325028312570782,
+        0.0011325028312570782,
+        0.0022650056625141564,
+        0.11211778029445074,
+        0.01189127972819932,
+        0.028312570781426953,
+        0.03397508493771234,
+        0.12004530011325028,
+        0.007927519818799546,
+        0.007361268403171008,
+        0.0016987542468856172,
+        0.04246885617214043,
+        0.004530011325028313,
+        0.03454133635334088,
+        0.0232163080407701,
+        0.05719139297848245,
+        0.037938844847112116,
+        0.031710079275198186,
+        0.0056625141562853904,
+        0.07701019252548132,
+        0.041336353340883356,
+        0.033408833522083806,
+        0.03737259343148358,
+        0.009626274065685165,
+        0.0028312570781426952,
+        0.010192525481313703,
+        0.0028312570781426952,
+        0.0011325028312570782,
+        0.0011325028312570782,
+        0.004530011325028313,
+        0.0011325028312570782,
+        0.0033975084937712344,
+        0.0056625141562853904,
+        0.0011325028312570782
+      ]
+    }
+  },
+  "evaluation": {
+    "experimental": true,
+    "productionAccepted": false,
+    "unit": "nats per next character",
+    "splits": {
+      "train": {
+        "targetCount": 1719,
+        "unknownTargetCount": 0,
+        "rnnNllNats": 1.695110797200722,
+        "unigramNllNats": 2.909347099497613,
+        "rnnPerplexity": 5.447249471771869,
+        "unigramPerplexity": 18.34481731571941
+      },
+      "validation": {
+        "targetCount": 617,
+        "unknownTargetCount": 1,
+        "rnnNllNats": 2.143413152191318,
+        "unigramNllNats": 2.907927931433409,
+        "rnnPerplexity": 8.528497066985624,
+        "unigramPerplexity": 18.318801401684883
+      },
+      "test": {
+        "targetCount": 630,
+        "unknownTargetCount": 0,
+        "rnnNllNats": 2.201882049772991,
+        "unigramNllNats": 2.8714451422169054,
+        "rnnPerplexity": 9.042015017875494,
+        "unigramPerplexity": 17.662524625185227
+      }
+    },
+    "testNllBelowUnigram": true,
+    "limitations": [
+      "Small character predictor; no comprehension, reasoning, instruction following, or worker acceptance.",
+      "Vocabulary comes from training only; unseen holdout characters are evaluated as UNK.",
+      "Loss uses chunks with reset state, not unlimited context or a chatbot benchmark.",
+      "A narrow authored demonstration corpus does not show performance on real user tasks."
+    ]
+  },
+  "learningHistory": [
+    {
+      "epoch": 1,
+      "trainNllNats": 2.8956383323347734,
+      "validationNllNats": 2.908374664499043
+    },
+    {
+      "epoch": 2,
+      "trainNllNats": 2.590798012910035,
+      "validationNllNats": 2.6625806656691933
+    },
+    {
+      "epoch": 3,
+      "trainNllNats": 2.248969377017035,
+      "validationNllNats": 2.4120647097260157
+    },
+    {
+      "epoch": 4,
+      "trainNllNats": 2.036114391709165,
+      "validationNllNats": 2.2836485209751953
+    },
+    {
+      "epoch": 5,
+      "trainNllNats": 1.922042258478678,
+      "validationNllNats": 2.2614842370618398
+    },
+    {
+      "epoch": 6,
+      "trainNllNats": 1.827744020308108,
+      "validationNllNats": 2.2205617588573774
+    },
+    {
+      "epoch": 7,
+      "trainNllNats": 1.695110797200722,
+      "validationNllNats": 2.143413152191318
+    },
+    {
+      "epoch": 8,
+      "trainNllNats": 1.6552021342999077,
+      "validationNllNats": 2.17085258574258
+    },
+    {
+      "epoch": 9,
+      "trainNllNats": 1.5573478068924407,
+      "validationNllNats": 2.207537103597604
+    },
+    {
+      "epoch": 10,
+      "trainNllNats": 1.5470661338820124,
+      "validationNllNats": 2.2035211178992533
+    },
+    {
+      "epoch": 11,
+      "trainNllNats": 1.4755119705700217,
+      "validationNllNats": 2.241001209184471
+    },
+    {
+      "epoch": 12,
+      "trainNllNats": 1.4207759786833756,
+      "validationNllNats": 2.2309998339340327
+    },
+    {
+      "epoch": 13,
+      "trainNllNats": 1.3707852852173499,
+      "validationNllNats": 2.2127482453126075
+    }
+  ]
+}

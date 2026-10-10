@@ -1,0 +1,190 @@
+{
+  "artifact": {
+    "schemaVersion": 1,
+    "modelType": "hormiga-trend-mlp",
+    "modelId": "hormiga-trend-1eb7e8dedf6ff0072c36646ba985229cdf0df14497315398046774135e2d8fc8",
+    "metric": "views",
+    "source": "fixture:views",
+    "privacy": "PUBLIC",
+    "window": 4,
+    "horizonSteps": 1,
+    "cadenceMs": 86400000,
+    "featureVersion": "log-deltas-level-v1",
+    "hiddenSize": 8,
+    "featureMean": [
+      0.01,
+      -0.02,
+      0.03,
+      4.5
+    ],
+    "featureScale": [
+      0.2,
+      0.3,
+      0.4,
+      1.2
+    ],
+    "weightsInput": [
+      [
+        0.1,
+        -0.03,
+        0.05,
+        -0.04
+      ],
+      [
+        0.2,
+        -0.06,
+        0.05,
+        -0.02
+      ],
+      [
+        0.30000000000000004,
+        -0.09,
+        0.05,
+        0.0
+      ],
+      [
+        0.4,
+        -0.12,
+        0.05,
+        0.02
+      ],
+      [
+        0.5,
+        -0.15,
+        0.05,
+        0.04
+      ],
+      [
+        0.6000000000000001,
+        -0.18,
+        0.05,
+        0.06
+      ],
+      [
+        0.7000000000000001,
+        -0.21,
+        0.05,
+        0.08
+      ],
+      [
+        0.8,
+        -0.24,
+        0.05,
+        0.1
+      ]
+    ],
+    "biasHidden": [
+      -0.03,
+      -0.02,
+      -0.01,
+      0.0,
+      0.01,
+      0.02,
+      0.03,
+      0.04
+    ],
+    "weightsOutput": [
+      0.04,
+      -0.03,
+      0.02,
+      -0.01,
+      0.05,
+      -0.02,
+      0.03,
+      0.01
+    ],
+    "biasOutput": 0.015,
+    "training": {
+      "fixtureOnly": true,
+      "initializedFrom": "fixed numerical parity fixture; not trained or production evidence",
+      "fitCutoffAt": 0,
+      "trainedAt": 0
+    },
+    "evaluation": {
+      "experimental": true,
+      "productionAccepted": false,
+      "fixtureOnly": true,
+      "liveForecastValidated": false
+    }
+  },
+  "observations": [
+    {
+      "id": "parity-0",
+      "signalId": "parity-signal",
+      "observedAt": 86400000,
+      "text": "fixture measured views 100",
+      "metrics": {
+        "views": 100
+      },
+      "provenance": {
+        "source": "fixture:views",
+        "uri": "https://example.org/parity",
+        "fetchedAt": 86400000,
+        "contentHash": "ad57366865126e55649ecb23ae1d48887544976efea46a48eb5d85a6eeb4d306"
+      },
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "parity-1",
+      "signalId": "parity-signal",
+      "observedAt": 172800000,
+      "text": "fixture measured views 120",
+      "metrics": {
+        "views": 120
+      },
+      "provenance": {
+        "source": "fixture:views",
+        "uri": "https://example.org/parity",
+        "fetchedAt": 172800000,
+        "contentHash": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477"
+      },
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "parity-2",
+      "signalId": "parity-signal",
+      "observedAt": 259200000,
+      "text": "fixture measured views 90",
+      "metrics": {
+        "views": 90
+      },
+      "provenance": {
+        "source": "fixture:views",
+        "uri": "https://example.org/parity",
+        "fetchedAt": 259200000,
+        "contentHash": "69f59c273b6e669ac32a6dd5e1b2cb63333d8b004f9696447aee2d422ce63763"
+      },
+      "privacy": "PUBLIC"
+    },
+    {
+      "id": "parity-3",
+      "signalId": "parity-signal",
+      "observedAt": 345600000,
+      "text": "fixture measured views 130",
+      "metrics": {
+        "views": 130
+      },
+      "provenance": {
+        "source": "fixture:views",
+        "uri": "https://example.org/parity",
+        "fetchedAt": 345600000,
+        "contentHash": "38d66d9692ac590000a91b03a88da1c88d51fab2b78f63171f553ecc551a0c6f"
+      },
+      "privacy": "PUBLIC"
+    }
+  ],
+  "signalId": "parity-signal",
+  "asOf": 345600000,
+  "expected": {
+    "predictedValue": 137.90893764662206,
+    "predictedLogGrowth": 0.05862127039704431,
+    "evidenceIds": [
+      "parity-0",
+      "parity-1",
+      "parity-2",
+      "parity-3"
+    ],
+    "lastObservedAt": 345600000,
+    "targetAt": 432000000
+  }
+}

@@ -1,0 +1,922 @@
+{
+  "schemaVersion": 1,
+  "modelType": "hormiga-trend-mlp",
+  "modelId": "hormiga-trend-d3c54fb589a41b774b8e015e972d69403e14665c648dcaeae3ce03affa874da0",
+  "metric": "views",
+  "source": "wikimedia:en.wikipedia.org",
+  "privacy": "PUBLIC",
+  "window": 4,
+  "horizonSteps": 1,
+  "cadenceMs": 86400000,
+  "featureVersion": "log-deltas-level-v1",
+  "hiddenSize": 8,
+  "featureMean": [
+    -0.04797365560703263,
+    -0.05567547995839236,
+    -0.06983738916846138,
+    7.876796430000563
+  ],
+  "featureScale": [
+    0.2706823200752105,
+    0.24109654405068195,
+    0.2057301557644066,
+    2.3399165343692427
+  ],
+  "weightsInput": [
+    [
+      0.33652262386454457,
+      -0.22820193415212364,
+      0.6124001748647497,
+      0.3012076555979309
+    ],
+    [
+      -0.6990018373336356,
+      -0.3348304177514217,
+      -0.03852055293373896,
+      -0.07745576048228309
+    ],
+    [
+      -0.22544902353308283,
+      -0.5883031163334406,
+      0.0059302896760596024,
+      0.24878145819361405
+    ],
+    [
+      -0.18228596648327403,
+      0.23865973556741926,
+      0.293684529186036,
+      -0.375872734359465
+    ],
+    [
+      0.12806048175024665,
+      -0.31495131874127125,
+      0.08724838462994892,
+      -0.20244861911659645
+    ],
+    [
+      0.15379871195919245,
+      -0.09173265110517292,
+      0.7131151624437898,
+      -0.09441945410821223
+    ],
+    [
+      0.08358999268235509,
+      0.04906802543509734,
+      0.16193705629010088,
+      0.10850960871678758
+    ],
+    [
+      -0.05668448938455753,
+      -0.027308846391464303,
+      0.9664092216034978,
+      -0.24570573157918058
+    ]
+  ],
+  "biasHidden": [
+    -0.21454190442740423,
+    0.23068522430207422,
+    0.1267124293238509,
+    -0.04936636026656359,
+    -0.05150152477561017,
+    -0.2547892290346597,
+    0.07448893223658884,
+    0.19675321344546118
+  ],
+  "weightsOutput": [
+    -0.15865747405135988,
+    -0.1520592806449543,
+    0.46239842922604996,
+    0.3479839629636385,
+    0.06261709062597572,
+    -0.267676246100492,
+    -0.2461087497503922,
+    0.12109399032249207
+  ],
+  "biasOutput": -0.06915676874320296,
+  "training": {
+    "inputRows": 30,
+    "selectedObservations": 30,
+    "excludedSourceOrMetric": 0,
+    "deduplicatedIdenticalRows": 0,
+    "datasetSha256": "bbcee978440c71aebbb5233c9d5d283bfeb90af13dcadad8d82d461158de3c9b",
+    "validatedAt": 1791620233808,
+    "initializedFrom": "random weights; no pretrained parameters",
+    "initialization": "NumPy default_rng(seed); scaled normal input/output weights; zero biases",
+    "seed": 42,
+    "optimizer": "manual backpropagation and full-batch Adam",
+    "numpyVersion": "2.3.5",
+    "pythonVersion": "3.12.14",
+    "learningRate": 0.01,
+    "epochsRequested": 2000,
+    "patience": 150,
+    "trainedAt": 1791620233871,
+    "fitCutoffAt": 1728777600000,
+    "sampleCount": 22,
+    "signalCount": 2,
+    "skippedNoncontiguousWindows": 0,
+    "target": "log1p(future value) - log1p(last input value)",
+    "splitPolicy": "GLOBAL chronological indivisible target observedAt dates, purged targets after next split origin",
+    "purgedForHorizonEmbargo": 0,
+    "featureScalerFit": "train samples only",
+    "split": {
+      "train": {
+        "sampleCount": 12,
+        "firstTargetAt": 1728172800000,
+        "lastTargetAt": 1728604800000,
+        "samples": [
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-01:a19cbe82ecc4a3fcf164298fba6c87c826ea294104f16a0aa588eb6b7bda4687",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-02:afb15b7967b3cbee8adc9b108e054999bc53953463ad517fc4a4f99162d5cdf7",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-03:91205e2b64ec77093f6daa4a6ebbc55fffea375043a3b75fef1d475bd4083ec3",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-04:28fe66fbbffba1d01d6bdd325a0c7b3a78a95514c97111ea7b8a36748a88814c"
+            ],
+            "originAt": 1728086400000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a",
+            "targetAt": 1728172800000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-01:9a9bc730e57b8e0dae7c0ba342cec19f66b2a31e8492997a6320bdf0e37fdd3a",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-02:a99c972cb26106da0c09c62359d95c51b9975e9ead4297c4f0709eb121aeef28",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-03:56f9aaf6dec3c0804494d26d88d15f81138aaff2c5c482f5b81db143e423adc5",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-04:b4f536bad00ff1618a92ee988a412860c7f1f3b037c657aafc2421b0bfc9e795"
+            ],
+            "originAt": 1728086400000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661",
+            "targetAt": 1728172800000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-02:afb15b7967b3cbee8adc9b108e054999bc53953463ad517fc4a4f99162d5cdf7",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-03:91205e2b64ec77093f6daa4a6ebbc55fffea375043a3b75fef1d475bd4083ec3",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-04:28fe66fbbffba1d01d6bdd325a0c7b3a78a95514c97111ea7b8a36748a88814c",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a"
+            ],
+            "originAt": 1728172800000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf",
+            "targetAt": 1728259200000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-02:a99c972cb26106da0c09c62359d95c51b9975e9ead4297c4f0709eb121aeef28",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-03:56f9aaf6dec3c0804494d26d88d15f81138aaff2c5c482f5b81db143e423adc5",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-04:b4f536bad00ff1618a92ee988a412860c7f1f3b037c657aafc2421b0bfc9e795",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661"
+            ],
+            "originAt": 1728172800000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282",
+            "targetAt": 1728259200000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-03:91205e2b64ec77093f6daa4a6ebbc55fffea375043a3b75fef1d475bd4083ec3",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-04:28fe66fbbffba1d01d6bdd325a0c7b3a78a95514c97111ea7b8a36748a88814c",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf"
+            ],
+            "originAt": 1728259200000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5",
+            "targetAt": 1728345600000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-03:56f9aaf6dec3c0804494d26d88d15f81138aaff2c5c482f5b81db143e423adc5",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-04:b4f536bad00ff1618a92ee988a412860c7f1f3b037c657aafc2421b0bfc9e795",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282"
+            ],
+            "originAt": 1728259200000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13",
+            "targetAt": 1728345600000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-04:28fe66fbbffba1d01d6bdd325a0c7b3a78a95514c97111ea7b8a36748a88814c",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5"
+            ],
+            "originAt": 1728345600000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728",
+            "targetAt": 1728432000000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-04:b4f536bad00ff1618a92ee988a412860c7f1f3b037c657aafc2421b0bfc9e795",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13"
+            ],
+            "originAt": 1728345600000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709",
+            "targetAt": 1728432000000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728"
+            ],
+            "originAt": 1728432000000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949",
+            "targetAt": 1728518400000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709"
+            ],
+            "originAt": 1728432000000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca",
+            "targetAt": 1728518400000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949"
+            ],
+            "originAt": 1728518400000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913",
+            "targetAt": 1728604800000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca"
+            ],
+            "originAt": 1728518400000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1",
+            "targetAt": 1728604800000,
+            "intermediateIds": []
+          }
+        ]
+      },
+      "validation": {
+        "sampleCount": 4,
+        "firstTargetAt": 1728691200000,
+        "lastTargetAt": 1728777600000,
+        "samples": [
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913"
+            ],
+            "originAt": 1728604800000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b",
+            "targetAt": 1728691200000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1"
+            ],
+            "originAt": 1728604800000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e",
+            "targetAt": 1728691200000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b"
+            ],
+            "originAt": 1728691200000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-12:d8f844643e58f503f78f3179573eb4e1c87d78a370039950d1cd61410a8566cf",
+            "targetAt": 1728777600000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e"
+            ],
+            "originAt": 1728691200000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-12:cebd1fef0e723fe0eb5fe8fc3b999042e4093147d9e8cc647ca3538ca289c5bc",
+            "targetAt": 1728777600000,
+            "intermediateIds": []
+          }
+        ]
+      },
+      "test": {
+        "sampleCount": 6,
+        "firstTargetAt": 1728864000000,
+        "lastTargetAt": 1729036800000,
+        "samples": [
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-12:d8f844643e58f503f78f3179573eb4e1c87d78a370039950d1cd61410a8566cf"
+            ],
+            "originAt": 1728777600000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-13:396e8addf9de07ac03783ce2f51fa1c8000817d32b682a5c942eb6cfa7713827",
+            "targetAt": 1728864000000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-12:cebd1fef0e723fe0eb5fe8fc3b999042e4093147d9e8cc647ca3538ca289c5bc"
+            ],
+            "originAt": 1728777600000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-13:485db15f3fe2579c99416d63558c4c25503d09db8572574117a8ea08dc3ebaff",
+            "targetAt": 1728864000000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-12:d8f844643e58f503f78f3179573eb4e1c87d78a370039950d1cd61410a8566cf",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-13:396e8addf9de07ac03783ce2f51fa1c8000817d32b682a5c942eb6cfa7713827"
+            ],
+            "originAt": 1728864000000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-14:9213b44a36a52e621eecf9acd5361ac55d67f693f9b0dc847b1b1bc75e787a82",
+            "targetAt": 1728950400000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-12:cebd1fef0e723fe0eb5fe8fc3b999042e4093147d9e8cc647ca3538ca289c5bc",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-13:485db15f3fe2579c99416d63558c4c25503d09db8572574117a8ea08dc3ebaff"
+            ],
+            "originAt": 1728864000000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-14:dd9e41b7bd951fecb8537f094cf3dfe1e9b83a81e7da8d7709e8e834667da81e",
+            "targetAt": 1728950400000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-12:d8f844643e58f503f78f3179573eb4e1c87d78a370039950d1cd61410a8566cf",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-13:396e8addf9de07ac03783ce2f51fa1c8000817d32b682a5c942eb6cfa7713827",
+              "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-14:9213b44a36a52e621eecf9acd5361ac55d67f693f9b0dc847b1b1bc75e787a82"
+            ],
+            "originAt": 1728950400000,
+            "targetId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-15:b92ccaf5b994d0107b5ed1e0cd3157f594879e5ed32c9515309e2ecda28d6815",
+            "targetAt": 1729036800000,
+            "intermediateIds": []
+          },
+          {
+            "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+            "source": "wikimedia:en.wikipedia.org",
+            "inputIds": [
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-12:cebd1fef0e723fe0eb5fe8fc3b999042e4093147d9e8cc647ca3538ca289c5bc",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-13:485db15f3fe2579c99416d63558c4c25503d09db8572574117a8ea08dc3ebaff",
+              "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-14:dd9e41b7bd951fecb8537f094cf3dfe1e9b83a81e7da8d7709e8e834667da81e"
+            ],
+            "originAt": 1728950400000,
+            "targetId": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-15:5c5a17a6b2ef74f61eee4a01998d324caca3b2c5130ae13283694ee1483a02ce",
+            "targetAt": 1729036800000,
+            "intermediateIds": []
+          }
+        ]
+      }
+    },
+    "provenance": [
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-01:a19cbe82ecc4a3fcf164298fba6c87c826ea294104f16a0aa588eb6b7bda4687",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1727827200000,
+        "value": 240.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-01:9a9bc730e57b8e0dae7c0ba342cec19f66b2a31e8492997a6320bdf0e37fdd3a",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1727827200000,
+        "value": 47926.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-02:afb15b7967b3cbee8adc9b108e054999bc53953463ad517fc4a4f99162d5cdf7",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1727913600000,
+        "value": 327.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-02:a99c972cb26106da0c09c62359d95c51b9975e9ead4297c4f0709eb121aeef28",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1727913600000,
+        "value": 36130.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-03:91205e2b64ec77093f6daa4a6ebbc55fffea375043a3b75fef1d475bd4083ec3",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728000000000,
+        "value": 278.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-03:56f9aaf6dec3c0804494d26d88d15f81138aaff2c5c482f5b81db143e423adc5",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728000000000,
+        "value": 54575.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-04:28fe66fbbffba1d01d6bdd325a0c7b3a78a95514c97111ea7b8a36748a88814c",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728086400000,
+        "value": 265.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-04:b4f536bad00ff1618a92ee988a412860c7f1f3b037c657aafc2421b0bfc9e795",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728086400000,
+        "value": 33729.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-05:15111640da4fbd9ed365a204d760ed14b054803a4076c747bdae505cb359679a",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728172800000,
+        "value": 246.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-05:6b5eae8499f44b028929394c1ec58fb69b008fc3cfccc9cf13cbdadb95044661",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728172800000,
+        "value": 26953.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-06:b9aa85f01c4a8181212a4ab504557c9c4170a04da70f076da4171f2544cf0ccf",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728259200000,
+        "value": 318.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-06:e9d3256163508c7de5d905c1f33da3699d4a7dbf5631a6cf60b36b82d9a10282",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728259200000,
+        "value": 22664.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-07:fc9dd49dbe3196cfebd358262d5152bd8d6bfeb61fb04b3703337ea535b000e5",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728345600000,
+        "value": 230.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-07:18e32445430c36610950cd9203798b04c0811f6bca274d3b9132b3ac63cd6f13",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728345600000,
+        "value": 28116.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-08:1b151f469f1a2379acbbfc5b87ad3e077ba171145d138bdb7714b1800c02b728",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728432000000,
+        "value": 219.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-08:dddd48ce9675095f00fede200fe7ebcc98416e203dc28ec379e59b46d2d6b709",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728432000000,
+        "value": 27616.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-09:09e268c0145d928c8bdaaf59fa3ea0b18017434da51e8955638a05ddbfd5e949",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728518400000,
+        "value": 255.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-09:bd6d14361fbfcd14fb4bea91dca9003aebcc34affa88154d47b578e536db67ca",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728518400000,
+        "value": 25727.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-10:ae6f6f2266cccc75634767fdc0fd7614e975b26eb23c8568627a84e7ba18f913",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728604800000,
+        "value": 282.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-10:a78b4623b1aadb43ff7f835824f19a6b553475d7bf693d57dfd70a46d9e579a1",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728604800000,
+        "value": 26244.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-11:e614568adfe8f97bacb9b109e0f5a2b26602b97242d34b44387071907e322e0b",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728691200000,
+        "value": 237.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-11:94783182730cc6b3ba6d5bc05a03dac0a90d2ef792fa6a98382ea6a82395cc2e",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728691200000,
+        "value": 28709.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-12:d8f844643e58f503f78f3179573eb4e1c87d78a370039950d1cd61410a8566cf",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728777600000,
+        "value": 233.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-12:cebd1fef0e723fe0eb5fe8fc3b999042e4093147d9e8cc647ca3538ca289c5bc",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728777600000,
+        "value": 18854.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-13:396e8addf9de07ac03783ce2f51fa1c8000817d32b682a5c942eb6cfa7713827",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728864000000,
+        "value": 272.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-13:485db15f3fe2579c99416d63558c4c25503d09db8572574117a8ea08dc3ebaff",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728864000000,
+        "value": 21228.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-14:9213b44a36a52e621eecf9acd5361ac55d67f693f9b0dc847b1b1bc75e787a82",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1728950400000,
+        "value": 239.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-14:dd9e41b7bd951fecb8537f094cf3dfe1e9b83a81e7da8d7709e8e834667da81e",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1728950400000,
+        "value": 20912.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift:2024-10-15:b92ccaf5b994d0107b5ed1e0cd3157f594879e5ed32c9515309e2ecda28d6815",
+        "signalId": "wikimedia:en.wikipedia.org:League_of_Legends:_Wild_Rift",
+        "observedAt": 1729036800000,
+        "value": 242.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/League_of_Legends%3A_Wild_Rift/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "49a7e6e24cb62be59b1f603fad4accf37c8675709c7273ae79150fdad1c158d4"
+        },
+        "privacy": "PUBLIC"
+      },
+      {
+        "id": "wikimedia:en.wikipedia.org:Moo_Deng:2024-10-15:5c5a17a6b2ef74f61eee4a01998d324caca3b2c5130ae13283694ee1483a02ce",
+        "signalId": "wikimedia:en.wikipedia.org:Moo_Deng",
+        "observedAt": 1729036800000,
+        "value": 16615.0,
+        "provenance": {
+          "source": "wikimedia:en.wikipedia.org",
+          "uri": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/user/Moo_Deng/daily/2024100100/2024101500",
+          "fetchedAt": 1791525360000,
+          "contentHash": "18b5baa4f2afa1606637a859253f815aa319f014496e844bd585fc420ae2d960"
+        },
+        "privacy": "PUBLIC"
+      }
+    ],
+    "initialWeightsSha256": "871397fb0820b8a4cdbc3e30e8f2b9c7aaaeaf882a681e50d9e8086cff8e98bc",
+    "initialValidationMseLogGrowth": 0.43354486319794466,
+    "bestEpoch": 38,
+    "epochsCompleted": 188,
+    "checkpointSelection": "minimum validation MSE of log growth; test never used",
+    "bestValidationMseLogGrowth": 0.02914518929629728
+  },
+  "evaluation": {
+    "experimental": true,
+    "productionAccepted": false,
+    "retrospectiveEvaluation": true,
+    "liveForecastValidated": false,
+    "baseline": "persistence: predicted log growth = 0 (last observed value)",
+    "splits": {
+      "train": {
+        "model": {
+          "sampleCount": 12,
+          "maeLogGrowth": 0.08937280239832579,
+          "mseLogGrowth": 0.013598235253936419,
+          "rmseLogGrowth": 0.11661147136511235,
+          "maeValue": 1229.4282178144128,
+          "directionAccuracy": 0.8333333333333334
+        },
+        "persistence": {
+          "sampleCount": 12,
+          "maeLogGrowth": 0.1395918321891103,
+          "mseLogGrowth": 0.028586596456042123,
+          "rmseLogGrowth": 0.1690757122003102,
+          "maeValue": 1639.6666666666677,
+          "directionAccuracy": 0.0
+        }
+      },
+      "validation": {
+        "model": {
+          "sampleCount": 4,
+          "maeLogGrowth": 0.1394004937587594,
+          "mseLogGrowth": 0.02914518929629728,
+          "rmseLogGrowth": 0.17071962188423825,
+          "maeValue": 2731.621456452982,
+          "directionAccuracy": 0.75
+        },
+        "persistence": {
+          "sampleCount": 4,
+          "maeLogGrowth": 0.1750907862842248,
+          "mseLogGrowth": 0.05378218714429442,
+          "rmseLogGrowth": 0.23190986857892534,
+          "maeValue": 3092.25000000001,
+          "directionAccuracy": 0.0
+        }
+      },
+      "test": {
+        "model": {
+          "sampleCount": 6,
+          "maeLogGrowth": 0.15008301706948252,
+          "mseLogGrowth": 0.031777081525181654,
+          "rmseLogGrowth": 0.17826127320644172,
+          "maeValue": 2127.5658669013,
+          "directionAccuracy": 0.6666666666666666
+        },
+        "persistence": {
+          "sampleCount": 6,
+          "maeLogGrowth": 0.10983303288073036,
+          "mseLogGrowth": 0.01795090373327601,
+          "rmseLogGrowth": 0.13398098272992331,
+          "maeValue": 1177.0000000000036,
+          "directionAccuracy": 0.0
+        }
+      }
+    },
+    "limitations": [
+      "Experimental count-growth regressor; no production acceptance.",
+      "Historical observations were recovered later; this is retrospective evaluation, not live forecasting evidence.",
+      "One declared source and metric only; pageviews describe attention, not cultural replication or creativity.",
+      "Small or narrow datasets cannot demonstrate generalization to unseen cultural signals.",
+      "No calibrated confidence, probabilities, or language-generation capability."
+    ],
+    "testRmseBelowPersistence": false
+  }
+}

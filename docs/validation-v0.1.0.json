@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "project": "ia-propia",
+  "version": "0.1.0",
+  "validatedAt": "2026-10-10T16:11:42.273866+00:00",
+  "pythonVersion": "3.12.14",
+  "tests": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "passed": 44,
+    "failed": 0,
+    "groups": {
+      "trend": 20,
+      "language": 9,
+      "workspace": 13,
+      "cli": 2
+    }
+  },
+  "wheel": {
+    "file": "ia_propia-0.1.0-py3-none-any.whl",
+    "sha256": "c9701cbeace322d0395454d657df80d74dcc070519b05d44e3ffa5971e932c7f",
+    "importedOutsideSourceTree": true,
+    "helpCommandsPassed": [
+      "root",
+      "trend",
+      "language"
+    ],
+    "languageGenerationMatchesSavedResult": true,
+    "independentTrendForecastCount": 2,
+    "privateWorkspaceInitializationPassed": true
+  },
+  "privacy": {
+    "personalCorpusUsed": false,
+    "personalChatImported": false,
+    "defaultWorkspaceExcludedFromGit": true,
+    "privateModelDirectoriesExcludedFromGit": true,
+    "networkCallsByModels": false
+  },
+  "language": {
+    "modelId": "language-858bad78a84d74bb9f22622f4ec7ca1dd077665157550f94c5ff9462185c79b3",
+    "parameterCount": 2903,
+    "documentCounts": {
+      "train": 6,
+      "validation": 2,
+      "test": 2
+    },
+    "bestEpoch": 7,
+    "weightsChangedFromRandomInitialization": true,
+    "test": {
+      "targetCount": 630,
+      "unknownTargetCount": 0,
+      "rnnNllNats": 2.201882049772991,
+      "unigramNllNats": 2.8714451422169054,
+      "rnnPerplexity": 9.042015017875494,
+      "unigramPerplexity": 17.662524625185227
+    },
+    "corpusKind": "authored demonstration; not real user tasks"
+  },
+  "attention": {
+    "modelId": "hormiga-trend-d3c54fb589a41b774b8e015e972d69403e14665c648dcaeae3ce03affa874da0",
+    "test": {
+      "model": {
+        "sampleCount": 6,
+        "maeLogGrowth": 0.15008301706948252,
+        "mseLogGrowth": 0.031777081525181654,
+        "rmseLogGrowth": 0.17826127320644172,
+        "maeValue": 2127.5658669013,
+        "directionAccuracy": 0.6666666666666666
+      },
+      "persistence": {
+        "sampleCount": 6,
+        "maeLogGrowth": 0.10983303288073036,
+        "mseLogGrowth": 0.01795090373327601,
+        "rmseLogGrowth": 0.13398098272992331,
+        "maeValue": 1177.0000000000036,
+        "directionAccuracy": 0.0
+      }
+    },
+    "originalArtifactPreserved": true
+  },
+  "artifactFileSha256": {
+    "models/attention-v1.json": "3703c3c89f8a2a791819772b973abeecb7951a4e28730273a5dbc1832a7baa2e",
+    "models/language-demo.json": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6",
+    "models/language-demo-report.json": "7a8c49254d2fcecd300156b1a807211d9c7d2e0ee7a8aa80b72d0bf3b0b1be56",
+    "docs/language-demo-generation.json": "2634f649b16ac2d2af31da5ac4aee78175a31e57a0fd66981619f8de3b598a08",
+    "examples/attention-observations.json": "2e74338724a145130a6d82a9bba64e2ed8ef4651da35fc63208d80636679586c",
+    "examples/language-demo.txt": "8f91ffc65a8497c1ba126529c63a9be817e912e775f9f0925e3a3dfa1f81653a"
+  },
+  "limitations": [
+    "No accepted real work task or autonomous execution.",
+    "Language generation remains poorly formed; statistical demo only.",
+    "Attention model test error exceeds persistence baseline.",
+    "Human corrections change stored records, not parameters automatically.",
+    "Local file permissions are not encryption."
+  ],
+  "workerCapabilityValidated": false,
+  "productionAccepted": false
+}
