@@ -29,12 +29,15 @@ El hash de origen se calculó sobre el contenido exacto de `git show` en el comm
 indicado y se contrastó contra el archivo de origen. El hash de destino se calculó
 sobre los bytes actuales guardados en Unidad. El CLI ya incluye el nombre elegido
 y la ayuda con el prefijo completo de comando; los pesos se conservan intactos. Los hashes distintos de CLI/pruebas
-corresponden a las adaptaciones descritas arriba.
+corresponden a las adaptaciones descritas arriba. En Unidad 0.2.0, `data.py`
+expone también `observations_from_payload`: el loader de archivos delega en ese
+helper para que el núcleo acepte JSON sin abrir rutas suministradas en una
+petición. El cuerpo de validación y los resultados numéricos se conservan.
 
 | Archivo original en Hormiga-X | Archivo en Unidad | SHA-256 original | SHA-256 actual |
 | --- | --- | --- | --- |
 | `training/hormiga_trend/__init__.py` | `src/ia_propia/trend/__init__.py` | `3d3b3df22651bf904b8dbe38ad75509355be6fcd86fe099abff5fc4d4aa6e7e8` | `3d3b3df22651bf904b8dbe38ad75509355be6fcd86fe099abff5fc4d4aa6e7e8` |
-| `training/hormiga_trend/data.py` | `src/ia_propia/trend/data.py` | `609b3538d4276ec70171f79a3a9fc0ad3a6673f835d5f4f2aecef0686a699111` | `609b3538d4276ec70171f79a3a9fc0ad3a6673f835d5f4f2aecef0686a699111` |
+| `training/hormiga_trend/data.py` | `src/ia_propia/trend/data.py` | `609b3538d4276ec70171f79a3a9fc0ad3a6673f835d5f4f2aecef0686a699111` | `cc277ca50bc25b0da3767c0187ea05aa5e14af5694b9f13e3e6e78246d1ce198` |
 | `training/hormiga_trend/model.py` | `src/ia_propia/trend/model.py` | `b8aa67252e22286ee19a1bea9bb8bc4a15df686c6217a214e7c817fa66e79261` | `b8aa67252e22286ee19a1bea9bb8bc4a15df686c6217a214e7c817fa66e79261` |
 | `training/hormiga_trend/__main__.py` | `src/ia_propia/trend/__main__.py` | `d58808f64bf2ad9cfb562e353b30f58152ccba7a26698df3e3ed43d1f4227f30` | `95f63c9a4f025a69aa125e76835b8eab3fb1b6759ce230ef5911c70bf1b3d966` |
 | `training/tests/test_training.py` | `tests/test_trend.py` | `6959e139bc9b93db3c060bd1ff7035fdce69e9d2741a015beae17447ad9fe59b` | `6ed36f08ec504344d23e614c47dc233544bcc2e245b1d521583b8e2086af6992` |

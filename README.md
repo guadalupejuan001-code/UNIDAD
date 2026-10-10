@@ -1,7 +1,7 @@
 # Unidad
 
-IA privada de uso personal. Proyecto independiente para avanzar hacia un trabajador
-digital que reciba encargos, conserve contexto y se ajuste a correcciones.
+IA privada de uso personal. Núcleo independiente para conectarlo a productos e
+interfaces distintos, conservar contexto y avanzar hacia un trabajador digital.
 Unidad usa Python y NumPy, funciona localmente y no requiere Hormiga-X,
 una API de IA ni pesos preentrenados.
 
@@ -9,7 +9,10 @@ Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Defi
 el objetivo de Unidad y distinguen lo realizado de lo pendiente. Las instrucciones
 para quienes modifiquen el código están en [AGENTS.md](AGENTS.md).
 
-**Estado: base experimental, no trabajador autónomo ni chatbot competente.**
+**Estado: núcleo conectable con modelos experimentales.**
+Ya puede ejecutar operaciones y flujos definidos por el producto, usando las
+herramientas que ese producto le proporciona. Los modelos actuales todavía no
+comprenden encargos abiertos ni planifican el trabajo de forma competente.
 Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encargos
 abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
 persona ni su forma completa de pensar.
@@ -24,6 +27,12 @@ persona ni su forma completa de pensar.
 - Un registro local de encargos, intentos y correcciones en texto libre. No impone
   categorías de personalidad. Permite preparar ejemplos aprobados para entrenar,
   sin confundir memoria con aprendizaje de parámetros.
+- Un núcleo Python común para CLI y HTTP, con los pesos incluidos en el paquete.
+  Cada «cuerpo» conecta sus herramientas y su memoria; varios cuerpos pueden
+  compartir memoria si su configuración lo solicita expresamente.
+- Ejecución de flujos explícitos: por ejemplo, generar con un modelo y pasar el
+  resultado a una herramienta del producto. Esto comprueba la conexión y la
+  ejecución; la calidad del texto sigue siendo la del modelo experimental.
 
 ## Instalar
 
@@ -49,6 +58,24 @@ otra ruta, la exclusión de Git puede dejar de aplicar. Los permisos locales
 no son cifrado.
 
 ## Primeros pasos
+
+El núcleo funciona también desde una instalación del paquete fuera del repositorio:
+
+```bash
+unidad brain capabilities --body mi-producto --state-dir private/brain
+```
+
+Para integrarlo en Python, servir su API HTTP o conectar herramientas, sigue
+[la guía del cerebro y sus cuerpos](docs/brain.md). El ejemplo
+[dos productos](examples/brain_in_two_products.py) usa el mismo núcleo con dos
+conjuntos de herramientas. Ninguno llama a otra IA.
+
+Unidad 0.2.0 pasó 86 pruebas, incluida la ejecución de un modelo hacia una
+herramienta y el aislamiento entre productos. También se comprobó el paquete
+instalado fuera del repositorio. La evidencia está en
+[el registro de validación del núcleo](docs/unidad-brain-validation-v0.2.0.json).
+
+El registro de encargos también conserva su interfaz anterior:
 
 ```bash
 unidad init --workspace private/default
@@ -79,8 +106,8 @@ unidad language generate --model models/language-demo.json \
 
 Su texto todavía contiene palabras sin sentido. Los pesos y resultados
 comprueban un entrenamiento pequeño; no acreditan capacidad para resolver
-encargos. La verificación de esta versión está en
-[el registro de validación de Unidad](docs/unidad-validation-v0.1.0.json).
+encargos. La verificación inicial está en
+[el registro de Unidad 0.1.0](docs/unidad-validation-v0.1.0.json).
 El [registro inicial](docs/validation-v0.1.0.json) conserva la primera verificación,
 realizada antes de elegir el nombre.
 
@@ -90,7 +117,7 @@ resúmenes; `unidad task show` permite consultar un historial completo. Las
 [mediciones de memoria](docs/language-optimization.md) conservan el resultado
 y sus límites; los pesos entrenados no cambiaron.
 
-El registro guarda encargos; todavía no los ejecuta. Los intentos pueden ser
+El registro guarda encargos; guardarlos no inicia un flujo. Los intentos pueden ser
 trabajos tuyos o de un asistente que tú revisas. Una corrección actualiza el
 contexto registrado; para cambiar pesos hay que exportar ejemplos aprobados y
 entrenar expresamente. No usamos este chat como corpus automáticamente.
@@ -109,17 +136,18 @@ flowchart LR
     F --> G[Pesos de un modelo propio]
 ```
 
-Hoy el registro recibe los intentos que tú introduces. La ejecución automática
-del trabajo es una capacidad pendiente, que se evaluará sobre encargos reales.
+El núcleo puede ejecutar una secuencia de operaciones suministrada por el
+producto. Convertir un encargo libre en un plan útil y comprobar su calidad
+sigue pendiente; se evaluará sobre encargos reales.
 
 ## Hacia un trabajador digital
 
-El siguiente avance se comprobará sobre un encargo real elegido por el usuario:
+La mejora del modelo se comprobará sobre encargos reales del usuario:
 qué resultado necesita, qué información puede usar y cómo sabremos que terminó.
-A partir de ahí se pueden incorporar herramientas y evaluar tareas completas.
+A partir de ahí se podrán evaluar las herramientas conectadas y tareas completas.
 La capacidad de ejecutar acciones y la calidad del modelo deben demostrarse por
 separado; generar texto no basta para acreditar que hizo el trabajo.
 
-No hay aprendizaje continuo oculto, navegación, ejecución de órdenes ni acceso
-a cuentas desde este proyecto. El entrenamiento y las exportaciones se solicitan
-con comandos explícitos.
+Las conexiones ejecutan únicamente herramientas registradas por quien integra
+el producto. No se obtiene acceso a cuentas al guardar un contexto. El
+entrenamiento y las exportaciones se solicitan con comandos explícitos.

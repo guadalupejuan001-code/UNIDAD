@@ -6,6 +6,12 @@ las nuevas instrucciones del usuario en la sesión tienen prioridad.
 
 - Construye Unidad como un proyecto propio orientado a realizar trabajo útil por
   su creador. Los modelos pequeños actuales son componentes experimentales.
+- Mantén el núcleo independiente de las interfaces: varios productos pueden
+  conectarse a los mismos modelos con herramientas y memoria configuradas por
+  producto. El contexto no debe permitir elegir rutas ni herramientas nuevas.
+- Los flujos explícitos de operaciones no son planificación aprendida. Informa
+  los pasos completados cuando falle una ejecución; no prometas revertir efectos
+  de herramientas externas.
 - Conserva el enfoque de entrenamiento desde pesos aleatorios. No sustituyas
   silenciosamente los modelos propios por llamadas a otra IA.
 - Mantén objetivos y correcciones en texto libre. No inventes categorías de

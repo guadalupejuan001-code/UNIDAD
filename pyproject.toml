@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unidad"
-version = "0.1.0"
-description = "Base experimental de modelos propios y encargos con contexto revisable"
+version = "0.2.0"
+description = "Cerebro reutilizable con modelos propios, memoria y herramientas por producto"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy==2.3.5"]
@@ -16,3 +16,6 @@ ia-propia = "ia_propia.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"ia_propia.assets" = ["*.json"]

@@ -118,6 +118,18 @@ def load_observations(path, *, source, metric, now_ms=None):
         raw = parse_json(Path(path).read_text(encoding="utf-8"))
     except (OSError, ValueError) as exc:
         raise DataError(f"Cannot read observations: {exc}") from exc
+    return observations_from_payload(raw, source=source, metric=metric, now_ms=now_ms)
+
+
+def observations_from_payload(raw, *, source, metric, now_ms=None):
+    """Validate in-memory Observation JSON with the same file-import guarantees.
+
+    This performs no file reads. Callers must validate the complete payload before
+    selecting an individual signal, retaining scope privacy and ID checks.
+    """
+    nonempty(source, "source")
+    nonempty(metric, "metric")
+    now_ms = timestamp(int(time.time() * 1000) if now_ms is None else now_ms, "now")
     signals = None
     if isinstance(raw, dict):
         if type(raw.get("schemaVersion")) is not int or raw["schemaVersion"] != 1:

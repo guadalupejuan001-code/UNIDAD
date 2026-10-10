@@ -1,3 +1,3 @@
-"""Unidad: modelos pequeños desde cero y un espacio local de encargos."""
+"""Unidad: núcleo reutilizable con modelos propios y memoria local."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
