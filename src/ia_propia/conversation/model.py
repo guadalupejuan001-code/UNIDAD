@@ -135,7 +135,14 @@ class ConversationModel(nn.Module):
         return F.linear(self.final_norm(value), self.token_embedding.weight)
 
 
-def assistant_token_loss(logits, labels):
+def assistant_token_loss(logits, labels, loss_reduction="token_mean"):
+    """Mean target CE, optionally giving each supervised window equal weight.
+
+    A sequence is one encoded window, which may cover only part of a long reply.
+    Rows without targets do not contribute; an entirely unsupervised batch fails.
+    """
+    if loss_reduction not in ("token_mean", "sequence_mean"):
+        raise ConversationError("Unknown assistant loss reduction")
     if not isinstance(logits, torch.Tensor) or logits.ndim != 3:
         raise ConversationError("logits must be a batch/sequence/vocabulary tensor")
     if not isinstance(labels, torch.Tensor) or labels.dtype != torch.long or labels.shape != logits.shape[:2]:
@@ -147,7 +154,14 @@ def assistant_token_loss(logits, labels):
         raise ConversationError("Supervised labels contain out-of-vocabulary targets")
     if not torch.all(torch.isfinite(logits[selected])):
         raise ConversationError("Supervised logits must be finite")
-    return F.cross_entropy(logits[selected], labels[selected])
+    if loss_reduction == "token_mean":
+        return F.cross_entropy(logits[selected], labels[selected])
+    token_losses = F.cross_entropy(logits[selected], labels[selected], reduction="none")
+    rows = selected.nonzero(as_tuple=False)[:, 0]
+    sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
+    counts = selected.sum(dim=1)
+    valid = counts > 0
+    return (sums[valid] / counts[valid]).mean()
 
 
 def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,

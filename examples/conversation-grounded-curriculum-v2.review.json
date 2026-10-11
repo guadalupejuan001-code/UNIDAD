@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "purpose": "training-data-authoring-review",
+  "reviewer": "development-assistant-manual-review",
+  "blinded": false,
+  "dataset": "conversation-grounded-curriculum-v2.jsonl",
+  "datasetSha256": "c1e9c68335d06ae4f695d327e944332a0923581b827742b2317c2413d39f1336",
+  "modelScored": false,
+  "modelOutputsReviewed": false,
+  "privateConversationRead": false,
+  "developmentEvaluationRead": false,
+  "finalEvaluationRead": false,
+  "scope": {
+    "authoredTemplatesManuallyReviewed": 44,
+    "renderedCompleteDialoguesManuallyReviewed": 44,
+    "renderedSampling": "First full three-exchange branch-zero dialogue for each template; not a claim of reading all 12960 records.",
+    "allRecordsCanonicalValidation": true,
+    "allRecordsTokenizerLengthChecked": true,
+    "testCases": 12,
+    "testsPassed": 12,
+    "testCommand": "PYTHONPATH=src /workspace/unidad-training-env/bin/python -B -m unittest discover -s examples -p test_grounded_conversations.py -v"
+  },
+  "manualFindings": [
+    {
+      "status": "corrected-before-training",
+      "templateId": "fact-inventory",
+      "reason": "The initial draft could say N envelopes and one envelope when the object slot was sobre, while answering N. The reviewed version uses N notes, and no object slot is nota."
+    },
+    {
+      "status": "corrected-before-training",
+      "templateId": "identity-own-name",
+      "reason": "The initial draft called every fictional recipient mi amigo, including feminine names. The reviewed greeting request names its recipient without that gendered noun."
+    },
+    {
+      "status": "reviewed",
+      "reason": "Corrections explicitly replace the earlier value; subsequent answers retain the replacement. Selectors answer about the requested entity, and the two assignments are swapped within the same family."
+    },
+    {
+      "status": "reviewed",
+      "reason": "Unknown destinations, dates and quantities remain unknown until supplied. A known current city does not establish a package destination. No external action, owner's biography or off-chat memory is asserted."
+    },
+    {
+      "status": "reviewed",
+      "reason": "Model identity examples distinguish Unidad from the fictional user and recipient. Identity is authored training text, not an inference-time response override."
+    },
+    {
+      "status": "reviewed",
+      "reason": "Listening and intent-change examples follow the current user request rather than continuing an abandoned plan. Feeling/reason combinations are selected from reviewed plausible pairs."
+    }
+  ],
+  "verifiedCorpusProperties": {
+    "records": 12960,
+    "worlds": 540,
+    "splits": {"train": 10368, "validation": 1296, "test": 1296},
+    "allTemplatesInAllFolds": true,
+    "completeLexicalPoolsInAllFolds": true,
+    "newCorpusNameValueAssociationsReservedByFold": true,
+    "fullDialogueTokensMaximum": 187,
+    "fullDialogueTokenLimit": 257,
+    "truncatedDialogues": 0,
+    "exactFullDialogueDuplicates": 0,
+    "modelBasedSelectionUsed": false
+  },
+  "remainingLimitations": [
+    "This is procedural fiction with 44 repeated template patterns. More records do not make the conversations independent samples or prove general conversation.",
+    "Vocabulary is shared across folds while authored associations are reserved. Templates are deliberately shared across folds to measure basic composition; unseen-skill generalization requires separate evaluation.",
+    "The short name/city framing and slot combinations introduce regularities. In some scenes the current city and later destination coincide; an independent evaluation should vary these roles.",
+    "Training history contains authored assistant replies. Assessment must also feed back the model's actual replies during multi-turn generation.",
+    "Collision checks against previous corpora and the development suite belong to the separate merge audit. This authoring step did not read them or change their folds.",
+    "The previous untrained draft is not the reviewed corpus and must not be merged as an additional dataset.",
+    "No model was evaluated by this review, and no conversational competence is claimed."
+  ]
+}

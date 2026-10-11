@@ -111,7 +111,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -131,6 +131,8 @@ def _configs(model_config, training_config):
             raise ValueError(f"Invalid {key}")
     if training.get("window_policy", "contiguous_nonoverlapping") not in ("contiguous_nonoverlapping", "sliding_context"):
         raise ValueError("Invalid window_policy")
+    if training.get("loss_reduction", "token_mean") not in ("token_mean", "sequence_mean"):
+        raise ValueError("Invalid loss_reduction")
     # Constructor validates architecture; the requested vocabulary is bounded before fitting.
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
@@ -184,10 +186,13 @@ def _batch(examples, indices, torch):
     return inputs, labels
 
 
-def _evaluate(model, examples, batch_size):
+def _evaluate(model, examples, batch_size, loss_reduction="token_mean"):
+    if loss_reduction not in ("token_mean", "sequence_mean"):
+        raise ValueError("Invalid loss_reduction")
     torch = _torch()
     import torch.nn.functional as functional
     total_loss, targets = 0.0, 0
+    sequence_loss, sequences = 0.0, 0
     previous = model.training
     model.eval()
     try:
@@ -203,10 +208,25 @@ def _evaluate(model, examples, batch_size):
                     raise ValueError("Nonfinite evaluation loss")
                 total_loss += float(loss)
                 targets += count
+                if loss_reduction == "sequence_mean":
+                    selected = labels != -100
+                    token_losses = functional.cross_entropy(logits[selected], labels[selected], reduction="none")
+                    rows = selected.nonzero(as_tuple=False)[:, 0]
+                    sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
+                    counts = selected.sum(dim=1)
+                    valid = counts > 0
+                    sequence_loss += float((sums[valid] / counts[valid]).sum())
+                    sequences += int(valid.sum())
     finally:
         model.train(previous)
-    return {"nll": total_loss / targets, "targetTokens": targets,
-            "perplexity": math.exp(min(total_loss / targets, 700)), "examples": len(examples)}
+    token_nll = total_loss / targets
+    nll = sequence_loss / sequences if loss_reduction == "sequence_mean" else token_nll
+    result = {"nll": nll, "targetTokens": targets,
+              "perplexity": math.exp(min(nll, 700)), "examples": len(examples)}
+    if loss_reduction == "sequence_mean":
+        result.update(tokenWeightedNll=token_nll, sequenceMeanNll=nll,
+                      lossReduction="sequence_mean", sequenceUnit="encoded_window")
+    return result
 
 
 def _baseline(examples, vocab_size):
@@ -219,9 +239,35 @@ def _baseline(examples, vocab_size):
     return [math.log(total / count) for count in counts]
 
 
-def _baseline_score(examples, losses):
+def _baseline_score(examples, losses, loss_reduction="token_mean"):
+    if loss_reduction not in ("token_mean", "sequence_mean"):
+        raise ValueError("Invalid loss_reduction")
     values = [losses[token] for _, labels in examples for token in labels if token != -100]
-    return {"nll": sum(values) / len(values), "targetTokens": len(values)}
+    token_nll = sum(values) / len(values)
+    if loss_reduction == "token_mean":
+        return {"nll": token_nll, "targetTokens": len(values)}
+    per_sequence = [[losses[token] for token in labels if token != -100] for _, labels in examples]
+    per_sequence = [sum(values) / len(values) for values in per_sequence if values]
+    sequence_nll = sum(per_sequence) / len(per_sequence)
+    return {"nll": sequence_nll, "targetTokens": len(values),
+            "tokenWeightedNll": token_nll, "sequenceMeanNll": sequence_nll,
+            "lossReduction": "sequence_mean", "sequenceUnit": "encoded_window"}
+
+
+def _loss_metadata(config):
+    # Missing fields remain missing for legacy checkpoints and artifact schemas.
+    if "loss_reduction" not in config:
+        return {}
+    result = {"lossReduction": config["loss_reduction"]}
+    if config["loss_reduction"] == "sequence_mean":
+        result["sequenceUnit"] = "encoded_window"
+    return result
+
+
+def _evaluate_configured(model, examples, config):
+    if config.get("loss_reduction", "token_mean") == "token_mean":
+        return _evaluate(model, examples, config["batch_size"])
+    return _evaluate(model, examples, config["batch_size"], loss_reduction="sequence_mean")
 
 
 def _checkpoint(run_dir, model, tokenizer, optimizer, scheduler, state, *, selected=False):
@@ -451,7 +497,8 @@ def _status_write(run_dir, state, status, reason=None, **extra):
              "lastCheckpoint": state.get("last_checkpoint"), "bestCheckpoint": state.get("best_checkpoint"),
              "bestValidationNll": state.get("best_validation_nll"),
              "corpusSha256": state.get("corpus_sha256"), "experimental": True,
-             "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False, **_origin_metadata(state), **extra}
+             "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False,
+             **_origin_metadata(state), **_loss_metadata(state.get("training_config", {})), **extra}
     _atomic_json(Path(run_dir) / "status.json", value)
     return value
 
@@ -586,7 +633,7 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     shutil.rmtree(directory)
 
         def validate():
-            score = _evaluate(model, examples["validation"], config["batch_size"])
+            score = _evaluate_configured(model, examples["validation"], config)
             state["last_validation_step"] = state["step"]
             improved = (state["best_validation_nll"] is None or
                         score["nll"] < state["best_validation_nll"] - config["min_delta"])
@@ -631,7 +678,11 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 end = min(state["cursor"] + config["batch_size"], len(state["order"]))
                 inputs, labels = _batch(examples["train"], state["order"][state["cursor"]:end], torch)
                 optimizer.zero_grad(set_to_none=True)
-                loss = assistant_token_loss(model(inputs), labels)
+                logits = model(inputs)
+                if config.get("loss_reduction", "token_mean") == "token_mean":
+                    loss = assistant_token_loss(logits, labels)
+                else:
+                    loss = assistant_token_loss(logits, labels, loss_reduction="sequence_mean")
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite training loss")
                 loss.backward()
@@ -693,7 +744,7 @@ def export_best(run_dir, export_dir):
             if attempt == 2:
                 raise RuntimeError("Selected checkpoint changed during export; retry")
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                **_origin_metadata(state), "selectionSplit": "validation",
+                **_origin_metadata(state), **_loss_metadata(state["training_config"]), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
                 "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
@@ -719,20 +770,23 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
         _torch().set_num_threads(state["training_config"]["torch_threads"])
         losses = _baseline(examples["train"], tokenizer.get_vocab_size())
+        loss_reduction = state["training_config"].get("loss_reduction", "token_mean")
         evaluation = {"schemaVersion": 1, "corpusSha256": state["corpus_sha256"],
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
+                      **_loss_metadata(state["training_config"]),
                       "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
-                      "train": _evaluate(model, examples["train"], state["training_config"]["batch_size"]),
-                      "validation": _evaluate(model, examples["validation"], state["training_config"]["batch_size"]),
-                      "test": _evaluate(model, examples["test"], state["training_config"]["batch_size"]),
-                      "unigramBaseline": {split: _baseline_score(examples[split], losses) for split in examples},
+                      "train": _evaluate_configured(model, examples["train"], state["training_config"]),
+                      "validation": _evaluate_configured(model, examples["validation"], state["training_config"]),
+                      "test": _evaluate_configured(model, examples["test"], state["training_config"]),
+                      "unigramBaseline": {split: _baseline_score(examples[split], losses, loss_reduction) for split in examples},
                       "experimental": True, "instructionFollowingValidated": False}
         _atomic_json(run_dir / "evaluation.json", evaluation)
         if export_dir is not None:
             save_artifact(export_dir, model, tokenizer,
                           training={"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                                    **_origin_metadata(state), "selectionSplit": "validation",
+                                    **_origin_metadata(state), **_loss_metadata(state["training_config"]),
+                                    "selectionSplit": "validation",
                                     "config": state["training_config"]}, evaluation=evaluation)
         _log(run_dir, {"event": "explicit_finalization", "selectedStep": state["step"],
                        "testNll": evaluation["test"]["nll"]})

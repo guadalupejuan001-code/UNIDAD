@@ -6,6 +6,8 @@ from pathlib import Path
 import sys
 
 from ..brain.protocol import MAX_REQUEST_BYTES, decode_json
+from .contract import (DEFAULT_SYSTEM_PROMPT, MAX_DIALOGUE_BYTES,
+                       MAX_MESSAGE_BYTES, MAX_MESSAGES)
 from .runtime import DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED, DEFAULT_TEMPERATURE
 
 
@@ -57,6 +59,11 @@ def parser(prog=None):
     chatting.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
     chatting.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
     chatting.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    converse = commands.add_parser("converse", help="Conversar en terminal; historial temporal, /salir y /reiniciar")
+    converse.add_argument("--model", type=Path, required=True)
+    converse.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
+    converse.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
+    converse.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return root
 
 
@@ -77,6 +84,85 @@ def _config(path):
     if type(value) is not dict:
         raise ValueError("A configuration file must contain a strict JSON object")
     return value
+
+
+def _trim_history(messages):
+    """Remove whole completed turns, preserving room for the default system."""
+    messages = list(messages)
+    removed = 0
+    while (len(messages) + 1 > MAX_MESSAGES or
+           sum(len(turn["content"].encode("utf-8")) for turn in messages) +
+           len(DEFAULT_SYSTEM_PROMPT.encode("utf-8")) > MAX_DIALOGUE_BYTES):
+        messages = messages[2:]
+        removed += 1
+    if removed:
+        print(f"[Aviso: se retiraron {removed} turnos completos del historial por sus límites.]", file=sys.stderr)
+    return messages
+
+
+def _converse(args):
+    """Keep only actual successful turns in RAM, using the common engine."""
+    from .runtime import ConversationEngine, validate_reply_request
+    from .tokenizer import validate_messages
+    settings = validate_reply_request({"max_new_tokens": args.max_new_tokens,
+        "temperature": args.temperature, "seed": args.seed}, partial=True)
+    engine = ConversationEngine(args.model)
+    print(f"[Modelo local: {engine.model_id}; contexto: {engine.manifest['config']['context_length']} tokens.]\n"
+          "[Conversación experimental. Historial sólo en esta sesión; no se guarda ni entrena.]\n"
+          "[Un mensaje por línea. /salir termina; /reiniciar borra el historial.]", flush=True)
+    history = []
+    context_warning_shown = False
+    try:
+        while True:
+            print("Tú: ", end="", flush=True)
+            line = sys.stdin.readline(MAX_MESSAGE_BYTES + 2)
+            if not line:
+                print("\n[Sesión terminada.]", flush=True)
+                return 0
+            if len(line) > MAX_MESSAGE_BYTES and not line.endswith("\n"):
+                while line and not line.endswith("\n"):
+                    line = sys.stdin.readline(MAX_MESSAGE_BYTES + 2)
+                print("unidad conversation: el mensaje excede el límite de texto", file=sys.stderr)
+                continue
+            text = line.rstrip("\r\n")
+            if text.strip() == "/salir":
+                print("[Sesión terminada.]", flush=True)
+                return 0
+            if text.strip() == "/reiniciar":
+                history = []
+                context_warning_shown = False
+                print("[Historial reiniciado.]", flush=True)
+                continue
+            if not text.strip():
+                continue
+            user = {"role": "user", "content": text}
+            try:
+                # Validate this input before discarding any previous turn.
+                validate_reply_request({"messages": [user], **settings})
+                messages = _trim_history([*history, user])
+                values = validate_reply_request({"messages": messages, **settings})
+                result = engine.reply(**values)
+            except (ValueError, OSError, RuntimeError) as error:
+                print(f"unidad conversation: {error}", file=sys.stderr)
+                continue
+            print(f"Unidad: {result['text']}", flush=True)
+            discarded = result.get("discardedPromptTokens", 0)
+            if discarded and not context_warning_shown:
+                print(f"[Aviso: el modelo recortó {discarded} tokens del contexto anterior.]", file=sys.stderr)
+                context_warning_shown = True
+            assistant = {"role": "assistant", "content": result["text"]}
+            try:
+                validate_messages([user, assistant])
+            except ValueError:
+                # Empty or oversized generations are shown intact, never invented
+                # or silently shortened to manufacture a valid remembered reply.
+                history = messages[:-1]
+                print("[Aviso: esta respuesta no se conserva en el historial porque no cumple sus límites de texto.]", file=sys.stderr)
+                continue
+            history = _trim_history([*messages, assistant])
+    except KeyboardInterrupt:
+        print("\n[Sesión terminada.]", flush=True)
+        return 0
 
 
 def main(argv=None, *, prog=None):
@@ -114,6 +200,8 @@ def main(argv=None, *, prog=None):
             result = assess(args.model, args.cases, output=args.output,
                 max_new_tokens=args.max_new_tokens, temperature=args.temperature,
                 seed=args.seed, torch_threads=args.torch_threads)
+        elif args.command == "converse":
+            return _converse(args)
         else:
             messages = [{"role": "user", "content": args.message}] if args.message is not None else _read_json(args.messages)
             from .runtime import ConversationEngine, validate_reply_request

@@ -33,16 +33,82 @@ class JobStateTests(unittest.TestCase):
                 send.assert_not_called()
 
     def test_configuration_and_single_writer(self):
-        for field, value in (("batch_size", True), ("learning_rate", float("nan")), ("max_seconds", 86401)):
+        for field, value in (("batch_size", True), ("learning_rate", float("nan")), ("max_seconds", 86401),
+                             ("loss_reduction", "example_sum"), ("loss_reduction", None)):
             with self.assertRaises(ValueError):
                 training._configs(None, {field: value})
         with self.assertRaises(ValueError):
             training._configs({"vocab_size": 261}, None)
+        self.assertNotIn("loss_reduction", training._configs(None, None)[1])
+        self.assertEqual(training._configs(None, {"loss_reduction": "sequence_mean"})[1]["loss_reduction"],
+                         "sequence_mean")
         with tempfile.TemporaryDirectory() as temporary:
             with training._run_lock(temporary):
                 with self.assertRaises(RuntimeError):
                     with training._run_lock(temporary):
                         pass
+
+
+@unittest.skipUnless(HAS_EXTRAS, "conversation optional dependencies unavailable")
+class ConversationLossTests(unittest.TestCase):
+    def test_sequence_mean_equal_response_weight_and_masked_gradients(self):
+        import torch
+        from torch.nn import functional as functional
+        from ia_propia.conversation.model import assistant_token_loss
+        logits = torch.zeros((3, 4, 2), dtype=torch.float32, requires_grad=True)
+        labels = torch.tensor([[0, -100, -100, -100], [0, 0, 0, 0], [-100, -100, -100, -100]])
+        sequence_loss = assistant_token_loss(logits, labels, "sequence_mean")
+        self.assertTrue(torch.equal(sequence_loss, functional.cross_entropy(logits[labels != -100], labels[labels != -100])))
+        sequence_loss.backward()
+        gradients = logits.grad.detach().clone()
+        # The short and long response each contribute half the objective.
+        self.assertAlmostEqual(float(gradients[0].abs().sum()), float(gradients[1].abs().sum()), places=7)
+        self.assertEqual(float(gradients[0, 1:].abs().sum()), 0)
+        self.assertEqual(float(gradients[2].abs().sum()), 0)
+        logits.grad = None
+        assistant_token_loss(logits, labels).backward()
+        self.assertAlmostEqual(float(logits.grad[1].abs().sum()), 4 * float(logits.grad[0].abs().sum()), places=6)
+        with self.assertRaisesRegex(ValueError, "reduction"):
+            assistant_token_loss(logits, labels, "unknown")
+        with self.assertRaisesRegex(ValueError, "targets"):
+            assistant_token_loss(logits, torch.full_like(labels, -100), "sequence_mean")
+        invalid = logits.detach().clone()
+        invalid[1, 0, 0] = float("nan")
+        with self.assertRaisesRegex(ValueError, "finite"):
+            assistant_token_loss(invalid, labels, "sequence_mean")
+
+    def test_evaluation_and_baseline_same_aggregation_independent_of_batches(self):
+        import math
+        import torch
+        from torch.nn import functional as functional
+
+        class FixedModel(torch.nn.Module):
+            def forward(self, inputs):
+                return torch.tensor([[0.0, 2.0], [2.0, 0.0]])[inputs]
+
+        model = FixedModel()
+        examples = [([0], [0]), ([1, 1, 1, 1], [0, 0, 0, 0])]
+        small = float(functional.cross_entropy(torch.tensor([[2.0, 0.0]]), torch.tensor([0])))
+        large = float(functional.cross_entropy(torch.tensor([[0.0, 2.0]]), torch.tensor([0])))
+        expected_macro, expected_tokens = (large + small) / 2, (large + 4 * small) / 5
+        for batch in (1, 2):
+            score = training._evaluate(model, examples, batch, "sequence_mean")
+            self.assertAlmostEqual(score["nll"], expected_macro, places=6)
+            self.assertAlmostEqual(score["sequenceMeanNll"], expected_macro, places=6)
+            self.assertAlmostEqual(score["tokenWeightedNll"], expected_tokens, places=6)
+            self.assertAlmostEqual(score["perplexity"], math.exp(expected_macro), places=6)
+            self.assertEqual(score["targetTokens"], 5)
+            self.assertEqual(score["lossReduction"], "sequence_mean")
+            self.assertEqual(score["sequenceUnit"], "encoded_window")
+            self.assertTrue(model.training)
+        legacy = training._evaluate(model, examples, 2)
+        self.assertAlmostEqual(legacy["nll"], expected_tokens, places=6)
+        self.assertEqual(set(legacy), {"nll", "targetTokens", "perplexity", "examples"})
+        baseline_examples = [([0], [0]), ([1, 1, 1, 1], [1, 1, 1, 1])]
+        baseline = training._baseline_score(baseline_examples, [large, small], "sequence_mean")
+        self.assertAlmostEqual(baseline["nll"], expected_macro, places=6)
+        self.assertAlmostEqual(baseline["tokenWeightedNll"], expected_tokens, places=6)
+        self.assertEqual(set(training._baseline_score(baseline_examples, [large, small])), {"nll", "targetTokens"})
 
 
 @unittest.skipUnless(HAS_EXTRAS, "conversation optional dependencies unavailable")
@@ -160,6 +226,59 @@ class ConversationTrainingTests(unittest.TestCase):
         checkpoint.write_bytes(checkpoint.read_bytes() + b"damage")
         with self.assertRaisesRegex(ValueError, "integrity mismatch"):
             training.train(self.corpus, run_dir, resume=True)
+
+    def test_sequence_mean_resume_exact_selection_and_export_metadata(self):
+        import torch
+        from ia_propia.conversation.artifacts import load_artifact
+        config = {**self.config, "window_policy": "sliding_context", "loss_reduction": "sequence_mean"}
+        continuous = training.train(self.corpus, self.root / "macro-continuous",
+                                    model_config=self.model_config, training_config=config)
+        original = training._checkpoint
+        stopped = []
+
+        def checkpoint(*args, **kwargs):
+            name = original(*args, **kwargs)
+            if args[5]["step"] == 2 and not stopped:
+                stopped.append(True)
+                os.kill(os.getpid(), signal.SIGTERM)
+            return name
+
+        with patch.object(training, "_checkpoint", side_effect=checkpoint):
+            paused = training.train(self.corpus, self.root / "macro-paused",
+                                    model_config=self.model_config, training_config=config)
+        self.assertEqual(paused["step"], 2)
+        with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+            training.train(self.corpus, self.root / "macro-paused", resume=True,
+                           training_config={**config, "loss_reduction": "token_mean"})
+        resumed = training.train(self.corpus, self.root / "macro-paused", resume=True)
+        a, _, sa, pa = training._load_checkpoint(self.root / "macro-continuous", continuous["lastCheckpoint"])
+        b, _, sb, pb = training._load_checkpoint(self.root / "macro-paused", resumed["lastCheckpoint"])
+        self.assertEqual(sa["training_config"], sb["training_config"])
+        for key, value in a.state_dict().items():
+            self.assertTrue(torch.equal(value, b.state_dict()[key]), key)
+        for index, moments in pa["optimizer"]["state"].items():
+            for key, value in moments.items():
+                self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]))
+        self.assertEqual(pa["scheduler"], pb["scheduler"])
+        self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+        self.assertEqual(sa["python_rng"], sb["python_rng"])
+        events = [json.loads(line) for line in (self.root / "macro-paused" / "events.jsonl").read_text().splitlines()]
+        scores = [event["score"] for event in events if event["event"] == "validation"]
+        self.assertTrue(all(score["nll"] == score["sequenceMeanNll"] for score in scores))
+        self.assertEqual(sb["best_validation_nll"], min(score["nll"] for score in scores))
+        self.assertEqual(resumed["lossReduction"], "sequence_mean")
+        exported = training.export_best(self.root / "macro-paused", self.root / "macro-export")
+        self.assertEqual(exported["training"]["lossReduction"], "sequence_mean")
+        self.assertEqual(exported["training"]["sequenceUnit"], "encoded_window")
+        self.assertEqual(exported["training"]["validationNll"], sb["best_validation_nll"])
+        evaluation = training.finalize(self.root / "macro-paused", export_dir=self.root / "macro-final")
+        _, _, manifest = load_artifact(self.root / "macro-final")
+        self.assertEqual(manifest["training"]["lossReduction"], "sequence_mean")
+        self.assertEqual(evaluation["lossReduction"], "sequence_mean")
+        for split in ("train", "validation", "test"):
+            self.assertEqual(evaluation[split]["nll"], evaluation[split]["sequenceMeanNll"])
+            self.assertEqual(evaluation["unigramBaseline"][split]["nll"],
+                             evaluation["unigramBaseline"][split]["sequenceMeanNll"])
 
     def test_export_best_is_inference_only_and_does_not_seal(self):
         result = self.run_train("snapshot", budget_seconds=0.001)

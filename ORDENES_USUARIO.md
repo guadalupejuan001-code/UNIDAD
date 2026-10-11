@@ -39,6 +39,9 @@ que el trabajador digital solicitado ya esté terminado.
     pregunta actual, conservar los hechos y seguir las correcciones explícitas.
 15. Conectar internamente modelo, entrenamiento y código mediante contratos
     compartidos, reduciendo duplicación y fricción entre componentes.
+16. Continuar trabajando hasta comprobar conversación básica con respuestas
+    realmente generadas, hechos del diálogo y correcciones; disponer de una
+    consola o bajar la pérdida del entrenamiento no basta para cumplirlo.
 
 ## Palabras del creador
 
@@ -75,6 +78,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 > implementa algo que no se si es posible, que todo conecte con todo, menos friccion
 
 > no, me refiero que la ia el modelo toda todo su codigo se conecte entre si todos y asi tenga menos friccion es posible hacer algo asi?
+
+> no te detengas hasta hacerlo conversar
 
 ## Qué está hecho y qué falta
 

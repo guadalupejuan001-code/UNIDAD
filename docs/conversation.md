@@ -73,6 +73,52 @@ trabajos actual usa mecanismos de Linux para bloqueo y seguimiento de procesos.
 El núcleo anterior funciona sin estas dependencias si no se configura el nuevo
 modelo conversacional.
 
+## Conversar en terminal
+
+La consola interactiva carga el mismo `ConversationEngine` que los productos:
+
+```bash
+unidad conversation converse --model models/conversation-context-v3 \
+  --temperature 0 --max-new-tokens 64
+```
+
+Escribe un mensaje por línea. `/reiniciar` borra el historial de esa sesión y
+`/salir` termina. El historial contiene tus mensajes y las respuestas realmente
+generadas; permanece en RAM y no entrena el modelo. La consola muestra el texto
+íntegro y avisa cuando el contexto finito obliga a recortar mensajes anteriores.
+Una respuesta vacía o inválida no se reemplaza por una frase inventada.
+La calidad depende de los pesos que elijas; esta interfaz no añade comprensión.
+
+## Dar peso a las conversaciones breves
+
+La reducción anterior, `token_mean`, promedia la pérdida de todos los tokens
+objetivo. Una respuesta de doscientas palabras pesa más que una corrección breve.
+Una nueva etapa puede elegir `"loss_reduction": "sequence_mean"`: calcula la
+pérdida media de cada ventana supervisada y después promedia esas ventanas.
+Si el diálogo completo cabe en una ventana, cada respuesta final pesa igual.
+En diálogos largos la unidad sigue siendo la ventana, no la conversación.
+
+La validación y la elección del mejor checkpoint usan esa misma reducción.
+Los informes conservan también `tokenWeightedNll` para distinguir ambas medidas.
+No compares directamente el NLL de corpus o reducciones diferentes como prueba
+de una mejora conversacional. Los checkpoints anteriores conservan su cálculo
+original y una reanudación mantiene la reducción guardada.
+
+El [currículo revisado](../examples/conversation-grounded-curriculum-v2.jsonl)
+contiene 12.960 registros ficticios y sus
+[límites de autoría](../examples/conversation-grounded-curriculum-v2.review.json).
+Las situaciones, correcciones y paráfrasis de un episodio comparten partición;
+las habilidades aparecen en todas las particiones con asociaciones diferentes.
+El tokenizador se usa para medir longitud, sin cargar pesos ni elegir ejemplos
+según las respuestas del modelo. Los generadores escriben datos de entrenamiento;
+no participan en la inferencia.
+
+El [preparador de la mezcla](../examples/prepare_grounded_curriculum.py) conserva
+los registros y particiones anteriores, limita las familias públicas por un hash
+estable y rechaza coincidencias de prompts sintéticos entre particiones. Las
+familias públicas históricas con prompts ambiguos se excluyen completas de la
+nueva mezcla. Tanto corpus como manifiesto se crean sin sobrescribir evidencia.
+
 ## Datos de la primera etapa
 
 [examples/conversation-demo.jsonl](../examples/conversation-demo.jsonl) contiene
