@@ -200,7 +200,356 @@
     "remainingConfiguredSeconds": 77654,
     "environmentLifetimeGuaranteed": false,
     "finalTestUsed": false,
-    "conversationAccepted": false
+    "conversationAccepted": false,
+    "firstGeneratedConversationCheck": {
+      "selectedStep": 500,
+      "modelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+      "summary": {
+        "responses": {
+          "total": 22,
+          "complete": 13,
+          "partial": 2,
+          "failed": 7
+        },
+        "nonemptyGeneratedResponses": {
+          "total": 22,
+          "complete": 13,
+          "partial": 2,
+          "failed": 7
+        },
+        "modelCallsWithRecordedReply": 22,
+        "operationalFailures": {
+          "emptyReply": 0,
+          "blockedTurn": 0
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 2,
+          "partial": 0,
+          "failed": 3
+        },
+        "completeSessionIds": [
+          "cold-identity-and-current-name",
+          "color-and-new-value"
+        ],
+        "perTurn": {
+          "1": {
+            "total": 5,
+            "complete": 3,
+            "partial": 2,
+            "failed": 0
+          },
+          "2": {
+            "total": 5,
+            "complete": 3,
+            "partial": 0,
+            "failed": 2
+          },
+          "3": {
+            "total": 5,
+            "complete": 2,
+            "partial": 0,
+            "failed": 3
+          },
+          "4": {
+            "total": 4,
+            "complete": 3,
+            "partial": 0,
+            "failed": 1
+          },
+          "5": {
+            "total": 2,
+            "complete": 1,
+            "partial": 0,
+            "failed": 1
+          },
+          "6": {
+            "total": 1,
+            "complete": 1,
+            "partial": 0,
+            "failed": 0
+          }
+        },
+        "dimensions": {
+          "relevance": {
+            "complete": 19,
+            "partial": 1,
+            "failed": 2,
+            "not_assessable": 0
+          },
+          "contextGrounding": {
+            "complete": 14,
+            "partial": 2,
+            "failed": 6,
+            "not_assessable": 0
+          },
+          "spanish": {
+            "complete": 15,
+            "partial": 3,
+            "failed": 4,
+            "not_assessable": 0
+          }
+        },
+        "errorTagCounts": {
+          "correction_failure": 1,
+          "current_query": 2,
+          "fact_retention": 4,
+          "field_confusion": 1,
+          "fluency": 7,
+          "literal_copy": 3,
+          "missing_knowledge": 4,
+          "propagated_prior_error": 2,
+          "referent_malformed": 1,
+          "repetition": 3,
+          "token_budget_stop": 2
+        },
+        "minorLanguageIssueCounts": {
+          "noun_gender_agreement": 4
+        }
+      },
+      "rawSha256": "7897bd76791983144ab90aae9ba4fb57bc9f2174172889c11c0268ae388bde42",
+      "reviewSha256": "415aa5f7414a042bf67593ff3c545c6d6126c846451e46d39ef918e89e8a3fd6",
+      "comparison": "Same22frozen development turns, actual histories, greedy0/max32/seed42/torch1;13complete vs6before;2wholeepisodes vs0. All four color answers have a minor agreement error, noted in the review.",
+      "conversationAccepted": false,
+      "scope": "Unblinded iterative development, not final acceptance or independent external review"
+    },
+    "stopped": {
+      "step": 4000,
+      "elapsedSeconds": 861.0313750630012,
+      "selectedValidationStep": 2250,
+      "validationSequenceMean": 0.4250382203109244,
+      "reason": "Paused for a controlled learning-mechanism ablation after generated critical facts were unstable. Best validation weights remain preserved."
+    },
+    "publicSnapshot": {
+      "directory": "models/conversation-basics-v5",
+      "developmentSelectedStep": 500,
+      "modelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+      "weightsSha256": "c564039ba0d6d3bf681cc8a7c76555de91b8fbd6c8fc59fa5120889f13323e05",
+      "fourArtifactFilesCopiedByteExact": true,
+      "selectionScope": "Snapshot was validation-best at export500; retained following unblinded development comparison; no final test or competent-conversation claim."
+    },
+    "laterGeneratedConversationChecks": [
+      {
+        "selectedStep": 1250,
+        "modelId": "unidad-conversation-8991038b51fe7283433063ff901118a775b8ab66eaa37d6aaa9cbdfad387eb03",
+        "summary": {
+          "responses": {
+            "total": 22,
+            "complete": 12,
+            "partial": 1,
+            "failed": 9
+          },
+          "nonemptyGeneratedResponses": {
+            "total": 22,
+            "complete": 12,
+            "partial": 1,
+            "failed": 9
+          },
+          "modelCallsWithRecordedReply": 22,
+          "operationalFailures": {
+            "emptyReply": 0,
+            "blockedTurn": 0
+          },
+          "sessions": {
+            "total": 5,
+            "complete": 1,
+            "partial": 0,
+            "failed": 4
+          },
+          "completeSessionIds": [
+            "talk-and-change-project"
+          ],
+          "perTurn": {
+            "1": {
+              "total": 5,
+              "complete": 3,
+              "partial": 0,
+              "failed": 2
+            },
+            "2": {
+              "total": 5,
+              "complete": 4,
+              "partial": 0,
+              "failed": 1
+            },
+            "3": {
+              "total": 5,
+              "complete": 3,
+              "partial": 1,
+              "failed": 1
+            },
+            "4": {
+              "total": 4,
+              "complete": 2,
+              "partial": 0,
+              "failed": 2
+            },
+            "5": {
+              "total": 2,
+              "complete": 0,
+              "partial": 0,
+              "failed": 2
+            },
+            "6": {
+              "total": 1,
+              "complete": 0,
+              "partial": 0,
+              "failed": 1
+            }
+          },
+          "dimensions": {
+            "relevance": {
+              "complete": 19,
+              "partial": 1,
+              "failed": 2,
+              "not_assessable": 0
+            },
+            "contextGrounding": {
+              "complete": 13,
+              "partial": 0,
+              "failed": 9,
+              "not_assessable": 0
+            },
+            "spanish": {
+              "complete": 17,
+              "partial": 4,
+              "failed": 1,
+              "not_assessable": 0
+            }
+          },
+          "errorTagCounts": {
+            "contradiction": 1,
+            "correction_failure": 5,
+            "current_query": 2,
+            "fact_retention": 4,
+            "field_confusion": 2,
+            "fluency": 5,
+            "incomplete_response": 1,
+            "literal_copy": 5,
+            "missing_knowledge": 2,
+            "propagated_prior_error": 4,
+            "referent_malformed": 1,
+            "repetition": 3,
+            "unsupported_fact": 2
+          },
+          "minorLanguageIssueCounts": {}
+        },
+        "rawSha256": "3c510d036fc3ec1420c923ceda8b3c6e6a16aee74c038a99b19f06a66cda56b8",
+        "reviewSha256": "6308991809b4414e2850cae53af69fea70fedb4c33c0495ebafa47c762854c1e",
+        "scope": "Same frozen development cases, actual histories, unblinded same-project review; no final test"
+      },
+      {
+        "selectedStep": 2250,
+        "modelId": "unidad-conversation-558918c7d80ff5709516141cab5ad15511070a5c654df67dd7a03d6fedfc570b",
+        "summary": {
+          "responses": {
+            "total": 22,
+            "complete": 11,
+            "partial": 2,
+            "failed": 9
+          },
+          "nonemptyGeneratedResponses": {
+            "total": 22,
+            "complete": 11,
+            "partial": 2,
+            "failed": 9
+          },
+          "modelCallsWithRecordedReply": 22,
+          "operationalFailures": {
+            "emptyReply": 0,
+            "blockedTurn": 0
+          },
+          "sessions": {
+            "total": 5,
+            "complete": 0,
+            "partial": 1,
+            "failed": 4
+          },
+          "completeSessionIds": [],
+          "partialSessionIds": [
+            "unknown-and-listening"
+          ],
+          "perTurn": {
+            "1": {
+              "total": 5,
+              "complete": 2,
+              "partial": 1,
+              "failed": 2
+            },
+            "2": {
+              "total": 5,
+              "complete": 4,
+              "partial": 0,
+              "failed": 1
+            },
+            "3": {
+              "total": 5,
+              "complete": 3,
+              "partial": 1,
+              "failed": 1
+            },
+            "4": {
+              "total": 4,
+              "complete": 2,
+              "partial": 0,
+              "failed": 2
+            },
+            "5": {
+              "total": 2,
+              "complete": 0,
+              "partial": 0,
+              "failed": 2
+            },
+            "6": {
+              "total": 1,
+              "complete": 0,
+              "partial": 0,
+              "failed": 1
+            }
+          },
+          "dimensions": {
+            "relevance": {
+              "complete": 19,
+              "partial": 0,
+              "failed": 3,
+              "not_assessable": 0
+            },
+            "contextGrounding": {
+              "complete": 12,
+              "partial": 2,
+              "failed": 8,
+              "not_assessable": 0
+            },
+            "spanish": {
+              "complete": 20,
+              "partial": 2,
+              "failed": 0,
+              "not_assessable": 0
+            }
+          },
+          "errorTagCounts": {
+            "correction_failure": 4,
+            "current_query": 3,
+            "fact_retention": 4,
+            "field_confusion": 3,
+            "fluency": 2,
+            "literal_copy": 4,
+            "propagated_prior_error": 2,
+            "referent_malformed": 1,
+            "repetition": 2,
+            "role_confusion": 2,
+            "unsupported_fact": 2
+          },
+          "minorLanguageIssueCounts": {
+            "noun_gender_agreement": 1
+          }
+        },
+        "rawSha256": "2a103b8871b180e579026b2b61af86b7fe585783ed0e453d7216f125836c6df1",
+        "reviewSha256": "8fff685340508530cefeeb0cfa294acd2c2a006d5286a6c11de01788e716278e",
+        "scope": "Same frozen development cases, actual histories, unblinded same-project review; no final test"
+      }
+    ],
+    "developmentConclusion": "500had13complete/2wholeepisodes;1250had12complete/1whole;2250had11complete/0whole. Critical aliases and cities regressed despite lower validation loss; retained500 and paused rather than repeating the unchanged stage."
   },
   "projectTests": {
     "fullSuiteWithExtras": {
@@ -235,5 +584,20 @@
     "The prospective final acceptance and reserved test remain unscored.",
     "Autonomous programming is not implemented."
   ],
-  "packageVersion": "0.5.1"
+  "packageVersion": "0.5.1",
+  "softwareCI": {
+    "commit": "afac79b936d66a18e2b0d764a9a953008495a0b4",
+    "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38130826711",
+    "conclusion": "success"
+  },
+  "outsideRepositoryIntegration": {
+    "packageVersion": "0.5.1",
+    "wheelSha256": "9f6d89c99152e9c6ee316dbc3d475cbced9342b43ae800224dde09387b6e3a13",
+    "reportSha256": "95acf9dc8a1f5969936f51adf0df59f0ef10d3788ca2ba59a4f9b7bd78179566",
+    "model": "conversation-basics-v4",
+    "installedPackagePathsVerified": true,
+    "CLI_Python_HTTP_EngineExactParity": true,
+    "bodiesMemoryAndToolsIsolated": true,
+    "qualityAccepted": false
+  }
 }

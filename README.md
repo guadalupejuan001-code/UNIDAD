@@ -179,6 +179,15 @@ hechos de conversación libre siguen fallando. Pasaron 260 pruebas técnicas;
 mejorar su conversación debe comprobarse por separado. La
 [guía](docs/conversation.md) explica cómo activar el nuevo modo de entrenamiento.
 
+La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
+experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6
+del padre. Aún falla al recuperar ciudades y puede repetir sílabas. Para probarla:
+
+```bash
+unidad conversation converse --model models/conversation-basics-v5 \
+  --temperature 0 --max-new-tokens 32
+```
+
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
 
 ```bash
