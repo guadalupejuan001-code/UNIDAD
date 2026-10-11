@@ -42,6 +42,9 @@ que el trabajador digital solicitado ya esté terminado.
 16. Continuar trabajando hasta comprobar conversación básica con respuestas
     realmente generadas, hechos del diálogo y correcciones; disponer de una
     consola o bajar la pérdida del entrenamiento no basta para cumplirlo.
+17. Antes de continuar, adaptar el aprendizaje para acortar el proceso. Medir
+    cuánto cálculo se ahorra, reducir repeticiones de ejemplos ya aprendidos y
+    comprobar que se conserva lo aprendido con conversaciones reales.
 
 ## Palabras del creador
 
@@ -80,6 +83,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 > no, me refiero que la ia el modelo toda todo su codigo se conecte entre si todos y asi tenga menos friccion es posible hacer algo asi?
 
 > no te detengas hasta hacerlo conversar
+
+> antes de seguir, mejora o adapta el modelo de aprendizaje para acortar mas todo
 
 ## Qué está hecho y qué falta
 

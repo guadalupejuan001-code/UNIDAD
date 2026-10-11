@@ -42,6 +42,12 @@ class JobStateTests(unittest.TestCase):
         self.assertNotIn("loss_reduction", training._configs(None, None)[1])
         self.assertEqual(training._configs(None, {"loss_reduction": "sequence_mean"})[1]["loss_reduction"],
                          "sequence_mean")
+        self.assertNotIn("projection_mode", training._configs(None, None)[1])
+        for value in (None, True, "selected", 1, [], {}):
+            with self.subTest(projection_mode=value), self.assertRaises(ValueError):
+                training._configs(None, {"projection_mode": value})
+        self.assertEqual(training._configs(None, {"projection_mode": "supervised"})[1]["projection_mode"],
+                         "supervised")
         with tempfile.TemporaryDirectory() as temporary:
             with training._run_lock(temporary):
                 with self.assertRaises(RuntimeError):
@@ -73,6 +79,97 @@ class JobStateTests(unittest.TestCase):
 
 @unittest.skipUnless(HAS_EXTRAS, "conversation optional dependencies unavailable")
 class ConversationLossTests(unittest.TestCase):
+    def test_selected_projection_preserves_context_logits_losses_and_gradients(self):
+        import torch
+        from ia_propia.conversation.model import ConversationModel, assistant_token_loss
+        model = ConversationModel({"vocab_size": 300, "d_model": 16, "n_layers": 2,
+                                   "n_heads": 2, "context_length": 16, "dropout": 0.2})
+        inputs = torch.tensor([[7, 8, 9, 10, 11, 12], [13, 14, 15, 16, 17, 18], [19, 20, 21, 22, 23, 24]])
+        labels = torch.tensor([[-100, -100, -100, -100, 25, -100],
+                               [-100, -100, 26, -100, 27, 28], [-100] * 6])
+        selected = labels != -100
+        names = list(model.state_dict())
+        for reduction in ("token_mean", "sequence_mean"):
+            torch.manual_seed(11)
+            model.zero_grad(set_to_none=True)
+            dense = model(inputs)
+            expected = assistant_token_loss(dense, labels, reduction)
+            expected.backward()
+            gradients = {key: parameter.grad.clone() for key, parameter in model.named_parameters()}
+            # Unsupervised context tokens still receive gradients through attention.
+            self.assertGreater(float(gradients["position_embedding.weight"][0].abs().sum()), 0)
+            torch.manual_seed(11)
+            model.zero_grad(set_to_none=True)
+            actual_logits = model.selected_logits(inputs, selected)
+            torch.testing.assert_close(actual_logits, dense.detach()[selected], atol=1e-6, rtol=1e-6)
+            actual = assistant_token_loss(actual_logits, labels, reduction, projection_mode="supervised")
+            torch.testing.assert_close(actual, expected.detach(), atol=1e-6, rtol=1e-6)
+            actual.backward()
+            for key, parameter in model.named_parameters():
+                torch.testing.assert_close(parameter.grad, gradients[key], atol=1e-6, rtol=1e-6, msg=key)
+        self.assertEqual(names, list(model.state_dict()))
+        model.eval()
+        mask = torch.zeros_like(inputs, dtype=torch.bool)
+        mask[0, 2] = True
+        before = model.selected_logits(inputs, mask)
+        changed = inputs.clone()
+        changed[0, 3:] = torch.tensor([31, 32, 33])
+        self.assertTrue(torch.equal(before, model.selected_logits(changed, mask)))
+
+    def test_selected_projection_mask_and_loss_contract(self):
+        import torch
+        from ia_propia.conversation.model import ConversationModel, assistant_token_loss
+        model = ConversationModel({"vocab_size": 300, "d_model": 8, "n_layers": 1,
+                                   "n_heads": 2, "context_length": 8, "ffn_multiplier": 1})
+        inputs = torch.tensor([[7, 8, 9], [10, 11, 12]])
+        labels = torch.tensor([[-100, 13, -100], [-100, -100, 14]])
+        mask = labels != -100
+        for invalid in (None, mask.long(), mask[:, :2], torch.zeros_like(mask),
+                        torch.empty(mask.shape, dtype=torch.bool, device="meta")):
+            with self.subTest(mask=invalid), self.assertRaises(ValueError):
+                model.selected_logits(inputs, invalid)
+        logits = model.selected_logits(inputs, mask)
+        self.assertEqual(logits.shape, (2, 300))
+        with self.assertRaisesRegex(ValueError, "number"):
+            assistant_token_loss(logits[:1], labels, projection_mode="supervised")
+        with self.assertRaisesRegex(ValueError, "targets"):
+            assistant_token_loss(logits, torch.full_like(labels, -100), projection_mode="supervised")
+        with self.assertRaisesRegex(ValueError, "vocabulary"):
+            invalid = labels.clone(); invalid[0, 1] = 300
+            assistant_token_loss(logits, invalid, projection_mode="supervised")
+        with self.assertRaisesRegex(ValueError, "finite"):
+            invalid = logits.detach().clone(); invalid[0, 0] = float("nan")
+            assistant_token_loss(invalid, labels, projection_mode="supervised")
+        with self.assertRaisesRegex(ValueError, "projection"):
+            assistant_token_loss(logits, labels)
+
+    def test_supervised_evaluation_one_ce_per_batch_same_aggregations(self):
+        import torch
+        from torch.nn import functional as functional
+
+        class FixedModel(torch.nn.Module):
+            def forward(self, inputs):
+                return torch.tensor([[0.0, 2.0], [2.0, 0.0]])[inputs]
+
+            def selected_logits(self, inputs, mask):
+                return self(inputs)[mask]
+
+        examples = [([0, 1], [-100, 0]), ([1, 1, 1, 1], [0, 0, 0, 0]), ([0], [1])]
+        model = FixedModel()
+        original_ce = functional.cross_entropy
+        for reduction in ("token_mean", "sequence_mean"):
+            for batch_size in (1, 2, 3):
+                full = training._evaluate(model, examples, batch_size, reduction)
+                with patch.object(functional, "cross_entropy", wraps=original_ce) as ce:
+                    selected = training._evaluate(model, examples, batch_size, reduction, "supervised")
+                self.assertEqual(ce.call_count, (len(examples) + batch_size - 1) // batch_size)
+                self.assertEqual(set(selected), set(full))
+                for key in ("nll", "perplexity", "tokenWeightedNll", "sequenceMeanNll"):
+                    if key in selected:
+                        self.assertAlmostEqual(selected[key], full[key], places=6)
+                self.assertEqual(selected["targetTokens"], full["targetTokens"])
+                self.assertTrue(model.training)
+
     def test_sequence_mean_equal_response_weight_and_masked_gradients(self):
         import torch
         from torch.nn import functional as functional
@@ -166,6 +263,50 @@ class ConversationTrainingTests(unittest.TestCase):
             rows[index]["source"]["prefixPairs"] = index + 1
         self.corpus.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
         return rows
+
+    def test_supervised_projection_resume_exact_with_sampling_and_both_losses(self):
+        import torch
+        self._sampling_corpus()
+        original_checkpoint = training._checkpoint
+        for reduction in ("token_mean", "sequence_mean"):
+            config = {**self.config, "projection_mode": "supervised", "loss_reduction": reduction,
+                      "window_policy": "sliding_context",
+                      "sampling_weights": [{"dataset": "sampler-natural", "factor": 2},
+                                           {"dataset": "sampler-natural", "prefixPairs": 1, "factor": 64}]}
+            name = "selected-" + reduction
+            continuous = training.train(self.corpus, self.root / (name + "-continuous"),
+                                        model_config=self.model_config, training_config=config)
+            stopped = []
+
+            def checkpoint(*args, **kwargs):
+                pointer = original_checkpoint(*args, **kwargs)
+                if args[5]["step"] == 2 and not stopped:
+                    stopped.append(True)
+                    os.kill(os.getpid(), signal.SIGTERM)
+                return pointer
+
+            run = self.root / (name + "-paused")
+            with patch.object(training, "_checkpoint", side_effect=checkpoint):
+                paused = training.train(self.corpus, run, model_config=self.model_config, training_config=config)
+            self.assertEqual(paused["step"], 2)
+            self.assertEqual(paused["projectionMode"], "supervised")
+            with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+                training.train(self.corpus, run, resume=True, training_config={**config, "projection_mode": "full"})
+            resumed = training.train(self.corpus, run, resume=True)
+            a, _, sa, pa = training._load_checkpoint(self.root / (name + "-continuous"), continuous["lastCheckpoint"])
+            b, _, sb, pb = training._load_checkpoint(run, resumed["lastCheckpoint"])
+            for key, value in a.state_dict().items():
+                self.assertTrue(torch.equal(value, b.state_dict()[key]), key)
+            for index, moments in pa["optimizer"]["state"].items():
+                for key, value in moments.items():
+                    self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]))
+            self.assertEqual(pa["scheduler"], pb["scheduler"])
+            self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+            for key in ("order", "cursor", "epoch", "python_rng", "sampling", "best_validation_nll"):
+                self.assertEqual(sa[key], sb[key])
+            manifest = training.export_best(run, self.root / (name + "-export"))
+            self.assertEqual(manifest["training"]["projectionMode"], "supervised")
+            self.assertEqual(manifest["training"]["config"]["projection_mode"], "supervised")
 
     def test_sampling_plan_preserves_targets_and_unsampled_holdouts(self):
         from ia_propia.conversation.tokenizer import fit_tokenizer

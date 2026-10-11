@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "purpose": "measured-training-optimization-not-conversation-acceptance",
+  "baselineCommit": "0dbb3e136ce9464b496f12966e87907edfc80642",
+  "optimization": {
+    "schemaVersion": 1,
+    "optimization": "Vocabulary projection after causal hidden pass on supervised positions only",
+    "default": "Absence of projection_mode preserves full projection and old configuration schema",
+    "optionalConfiguration": {
+      "projection_mode": "supervised"
+    },
+    "parentModelId": "unidad-conversation-7b8b1c967c945cbfbc8c58fe3205aaf37ded94aed66ec63f88b2cd166feb2b81",
+    "measurements": {
+      "baselineRuns": [
+        "old-b.json",
+        "old-c.json"
+      ],
+      "optimizedRuns": [
+        "supervised-a.json",
+        "supervised-b.json"
+      ],
+      "order": "old-b, supervised-a, supervised-b, old-c; then full-control",
+      "stepsPerMode": 96,
+      "batchesPerRun": 48,
+      "batchSize": 16,
+      "torchThreads": 4,
+      "warmupsPerRun": 6,
+      "oldTotalStepSeconds": 15.573509040998033,
+      "supervisedTotalStepSeconds": 13.467936098990322,
+      "stepTimeReductionFraction": 0.13520221656305498,
+      "throughputIncreaseFraction": 0.15633968906086237,
+      "oldMedianStepSeconds": 0.1567956460003188,
+      "supervisedMedianStepSeconds": 0.13699409999935597,
+      "oldMeanPeakRssKiB": 512758,
+      "supervisedMeanPeakRssKiB": 488848,
+      "peakRssReductionFraction": 0.046630184219456305,
+      "supervisedFractionOfPaddedPositions": 0.06979504748166847,
+      "supervisedFractionOfRealPositions": 0.1131574459791956
+    },
+    "correctness": {
+      "fixedOwnWeightsLogitLossGradientParity": "parity.json",
+      "tensorsUnchanged": 52,
+      "defaultFullMatchesOldLossesExactlyFor48Updates": true,
+      "optimizedRepeatedLossesExactlyEqual": true,
+      "greedyGenerationOldVsNewExactlyEqual": true,
+      "trainingTests": {
+        "passed": 30
+      },
+      "modelTests": {
+        "passed": 18
+      },
+      "sourceSha256": {
+        "src/ia_propia/conversation/model.py": "6986a8d26492dd8f73115889198c585eb059854518cb2d27b9d7709e48f08304",
+        "src/ia_propia/conversation/training.py": "8d2015e9ced7e7c218d0b1f1865e5157f6303a16952fcb3ce4ce487aa090e2d1",
+        "tests/test_conversation_training.py": "88e5375088d45e55bedb9396c0bb43dc1a45bc3a649fd1641df24caa2109425f"
+      },
+      "parentArtifactAndCorpusUnchanged": true
+    },
+    "scope": {
+      "validationOrTestScored": false,
+      "liveRunModified": false,
+      "newArchitecture": false,
+      "inferenceChanged": false
+    },
+    "limitations": [
+      "Timing excludes tokenizer/data preparation/checkpointing and assesses CPU4 own1Mparameter model only.",
+      "RSS is whole-process peak including Torch overhead, averaged over two separate processes per mode.",
+      "Sampling selects causal windows, but the entire context is still encoded. Speedup is not proportional to the avoided vocabulary projections.",
+      "Float32 gradients differ slightly between modes, so optimized training is not claimed to reproduce the full-mode update trajectory bit for bit. Each mode resumes exactly within its own configuration.",
+      "This optimization does not establish conversation competence or shorten required learning exposure.",
+      "old-a.json was excluded because tests overlapped it; all included benchmark measurements ran sequentially without simultaneous tests."
+    ],
+    "additionalThreadComparison": "threads-comparison.json",
+    "benchmarkScriptSha256": "95a4010452a1d61d795c20e9c81cc9226b7c8e378a6f762d0b858d2a30387095"
+  },
+  "fixedWeightsParity": {
+    "parentModelId": "unidad-conversation-7b8b1c967c945cbfbc8c58fe3205aaf37ded94aed66ec63f88b2cd166feb2b81",
+    "tensors": 52,
+    "parameterCount": 1088256,
+    "maxAbsoluteSelectedLogitDifference": 0.0,
+    "maxAbsoluteLossDifference": 0.0,
+    "maxAbsoluteGradientDifference": 2.9802322387695312e-08,
+    "tolerance": {
+      "atol": 1e-06,
+      "rtol": 1e-06
+    },
+    "validationOrTestScored": false
+  },
+  "threadComparison": {
+    "schemaVersion": 1,
+    "configuration": "Identical own model and frozen TRAIN batches, 48 complete AdamW steps/process, six warmups, two independent processes per thread count",
+    "fourThreads": {
+      "totalStepSeconds": 13.467936098990322,
+      "medianStepSeconds": 0.13699409999935597
+    },
+    "twoThreads": {
+      "totalStepSeconds": 16.252505009018932,
+      "medianStepSeconds": 0.1640343919989391
+    },
+    "twoThreadTimeIncreaseFraction": 0.20675542930719493,
+    "selectedThreads": 4,
+    "reason": "Four threads remain faster on this CPU and model; two-thread configuration was not adopted.",
+    "validationOrTestScored": false,
+    "measurementsSequentialWithoutConcurrentInferenceOrTests": true
+  },
+  "trainingExposureAudit": {
+    "scope": "TRAIN only; stable hash sample, at most64 windows per stratum; all20 cold prototypes included",
+    "selectedWindows": 3973,
+    "elapsedSeconds": 25.52920859399819,
+    "cold20": {
+      "all20Scored": true,
+      "count": 20,
+      "expectedCurrentShare": 0.09552595246091272,
+      "expectedDrawsPerEpoch": 2496.9528713757977,
+      "expectedDrawsPerPrototype": 124.84764356878989,
+      "fractionNllBelow0_05": 1.0,
+      "lowLossRepeatedExposure": "Existing replacement sampling repeatedly revisits these same20 prototypes. Counts above are expected, not actual sampled orders.",
+      "nllMax": 0.037339068949222565,
+      "nllMean": 0.006770145636983216,
+      "nllMedian": 0.004851173376664519
+    },
+    "auditSha256": "8d62e55e738d9d5664bc8d59c4842603194912963a40f347f2a7b4f23bdac6f9",
+    "interpretation": "Low teacher-forced loss on these20 TRAIN examples does not prove retention or generalization. Reduce their repeated sampling in a new stage and verify actual conversations."
+  },
+  "nextStageProposal": {
+    "projection_mode": "supervised",
+    "torch_threads": 4,
+    "naturalDatasetFactor": 2.0,
+    "naturalColdPrefixMultiplier": 8.0,
+    "literalCopyDatasetFactor": 2.0,
+    "optimizerAndScheduler": "New stage initialized from the saved own artifact; changed configuration is not an exact resume.",
+    "conversationAccepted": false,
+    "finalTestScored": false
+  },
+  "privateEvidence": {
+    "benchmarkReportSha256": "bd6dfbc88d63c3a49a47ca31ee8330f10d86a5d15889206c8925ec37a3195dfd",
+    "frozenBatchDesignSha256": "e7617c9d12a4708c49e813572acde329983be570abdf52e4702f0d4da5158163",
+    "paritySha256": "17f8237b1af554af0e56f2ea06fff868792ee7bc13ca3029aaca7dacc910f5a9",
+    "threadComparisonSha256": "848bc836d2ef47b4273ef5cc23b2e969ff02aa53ed7e15172a0b417042f442b9"
+  },
+  "limitations": [
+    "Measurements compare training steps on this four-core CPU, not total time needed to acquire language.",
+    "Training remains from own random-root weights; no external model or inference templates were added.",
+    "No claim of competent free conversation or autonomous programming."
+  ],
+  "independentCodeReview": {
+    "reviewer": "Another project assistant; source and evidence review, not human conversation acceptance",
+    "findingsBlocking": 0,
+    "sha256": "7f72123cdb05a2b843a05f9333cea3d7ed15b929a0d455ab03ef2385d4a81c91"
+  },
+  "projectTests": {
+    "withConversationDependencies": {
+      "discovered": 235,
+      "passed": 235,
+      "skipped": 0,
+      "elapsedSeconds": 22.872,
+      "logSha256": "9910efd3522ce2ee05d4827cdc9624fa80bb1a0e9ba49f86e48db6a71cf77362"
+    },
+    "withoutConversationDependencies": {
+      "discovered": 169,
+      "passed": 117,
+      "skipped": 52,
+      "elapsedSeconds": 3.481,
+      "logSha256": "18fb1abf98b6a01ff5b4a54ddfaf03cd9ac3359d1aa28ab79464ea2f325f9814"
+    },
+    "scope": "Software correctness and integration; these tests do not establish conversation competence."
+  },
+  "newStageStarted": {
+    "runName": "optimized-copy-flow-v1",
+    "projectionMode": "supervised",
+    "originalWallDeadline": 1791790679.9280663,
+    "remainingConfiguredSeconds": 79201,
+    "originalDayBudgetReset": false,
+    "corpusSha256": "e715092b808f0e1ed2ee4b3f80c788047d87ed7996a718013bccd4db165378e0",
+    "corpusSplits": {
+      "train": 31389,
+      "validation": 4490,
+      "test": 4511
+    },
+    "coldExpectedSamplingShare": 0.009127470834878347,
+    "copyExactBaseline": {
+      "turns": 89,
+      "exact": 0,
+      "wholeEpisodes": 0,
+      "episodes": 25,
+      "errors": 0,
+      "truncated": 0,
+      "scope": "Frozen validation development probe; actual prior assistant outputs; exact UTF8, no stripping or normalization"
+    },
+    "initializationProof": {
+      "schemaVersion": 1,
+      "parentModelId": "unidad-conversation-7b8b1c967c945cbfbc8c58fe3205aaf37ded94aed66ec63f88b2cd166feb2b81",
+      "initialCheckpoint": "step-000000000-79e2bfdbe671484b8936e866d7512e83",
+      "initialStep": 0,
+      "identicalOwnTensors": 52,
+      "allWeightsBitIdentical": true,
+      "tokenizerBytesIdentical": true,
+      "initialOptimizerStateEntries": 0,
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "initialWeightsSha256": "771ce784a66114bbbf0b83a97edcfc99bc3734223490c8f5827e41e3bd608dde",
+      "projectionMode": "supervised",
+      "finalTestUsed": false
+    },
+    "initializationProofSha256": "4cef34e688d535b0e84104b1fb6176cfd2b6c04888dccaebf421d7cae3198455",
+    "conversationAccepted": false,
+    "finalTestScored": false,
+    "environmentLifetimeGuaranteed": false
+  }
+}

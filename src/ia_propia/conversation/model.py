@@ -116,7 +116,7 @@ class ConversationModel(nn.Module):
             nn.init.ones_(module.weight)
             nn.init.zeros_(module.bias)
 
-    def forward(self, input_ids):
+    def _hidden(self, input_ids):
         if not isinstance(input_ids, torch.Tensor) or input_ids.dtype != torch.long or input_ids.ndim != 2:
             raise ConversationError("input_ids must be a two-dimensional long tensor")
         batch, length = input_ids.shape
@@ -130,33 +130,77 @@ class ConversationModel(nn.Module):
         value = self.embedding_dropout(self.token_embedding(input_ids) + self.position_embedding(positions)[None, :, :])
         for block in self.blocks:
             value = block(value)
+        return self.final_norm(value)
+
+    def forward(self, input_ids):
         # Tied output projection is functional: only one embedding tensor is
         # serialized, so safetensors never has an ambiguous shared-weight copy.
-        return F.linear(self.final_norm(value), self.token_embedding.weight)
+        return F.linear(self._hidden(input_ids), self.token_embedding.weight)
+
+    def selected_logits(self, input_ids, mask):
+        """Project selected causal positions in row-major order, retaining all context.
+
+        Selection occurs after every Transformer block; unselected input tokens
+        still condition later targets and receive their normal context gradients.
+        """
+        if not isinstance(input_ids, torch.Tensor):
+            raise ConversationError("input_ids must be a two-dimensional long tensor")
+        if not isinstance(mask, torch.Tensor) or mask.dtype != torch.bool or mask.shape != input_ids.shape:
+            raise ConversationError("Projection mask must be a matching boolean tensor")
+        if mask.device != input_ids.device:
+            raise ConversationError("Projection mask and inputs must use the same device")
+        if not torch.any(mask):
+            raise ConversationError("Projection mask must select at least one position")
+        return F.linear(self._hidden(input_ids)[mask], self.token_embedding.weight)
 
 
-def assistant_token_loss(logits, labels, loss_reduction="token_mean"):
+def _assistant_targets(logits, labels, projection_mode):
+    if projection_mode not in ("full", "supervised"):
+        raise ConversationError("Unknown vocabulary projection mode")
+    dimensions = 3 if projection_mode == "full" else 2
+    if not isinstance(logits, torch.Tensor) or logits.ndim != dimensions:
+        raise ConversationError("logits must match the vocabulary projection mode")
+    if not isinstance(labels, torch.Tensor) or labels.dtype != torch.long or labels.ndim != 2:
+        raise ConversationError("labels must be a two-dimensional long tensor")
+    if labels.device != logits.device:
+        raise ConversationError("Labels and logits must use the same device")
+    if projection_mode == "full" and labels.shape != logits.shape[:2]:
+        raise ConversationError("labels must match batch/sequence logits")
+    selected = labels != IGNORE_INDEX
+    count = int(selected.sum())
+    if count == 0:
+        raise ConversationError("A supervised batch must contain assistant targets")
+    if projection_mode == "supervised" and logits.shape[0] != count:
+        raise ConversationError("Projected logits must match the number of assistant targets")
+    targets = labels[selected]
+    if torch.any(targets < 0) or torch.any(targets >= logits.shape[-1]):
+        raise ConversationError("Supervised labels contain out-of-vocabulary targets")
+    projected = logits[selected] if projection_mode == "full" else logits
+    if not torch.all(torch.isfinite(projected)):
+        raise ConversationError("Supervised logits must be finite")
+    return projected, targets, selected
+
+
+def assistant_token_losses(logits, labels, *, projection_mode="full"):
+    """One CE per supervised position, in row-major order, without repetition."""
+    projected, targets, _ = _assistant_targets(logits, labels, projection_mode)
+    return F.cross_entropy(projected, targets, reduction="none")
+
+
+def assistant_token_loss(logits, labels, loss_reduction="token_mean", *, projection_mode="full"):
     """Mean target CE, optionally giving each supervised window equal weight.
 
     A sequence is one encoded window, which may cover only part of a long reply.
     Rows without targets do not contribute; an entirely unsupervised batch fails.
+    Supervised projection accepts only the selected [targets, vocabulary] logits;
+    labels retain their window positions so both reductions have the same meaning.
     """
     if loss_reduction not in ("token_mean", "sequence_mean"):
         raise ConversationError("Unknown assistant loss reduction")
-    if not isinstance(logits, torch.Tensor) or logits.ndim != 3:
-        raise ConversationError("logits must be a batch/sequence/vocabulary tensor")
-    if not isinstance(labels, torch.Tensor) or labels.dtype != torch.long or labels.shape != logits.shape[:2]:
-        raise ConversationError("labels must be a matching two-dimensional long tensor")
-    selected = labels != IGNORE_INDEX
-    if not torch.any(selected):
-        raise ConversationError("A supervised batch must contain assistant targets")
-    if torch.any(labels[selected] < 0) or torch.any(labels[selected] >= logits.shape[-1]):
-        raise ConversationError("Supervised labels contain out-of-vocabulary targets")
-    if not torch.all(torch.isfinite(logits[selected])):
-        raise ConversationError("Supervised logits must be finite")
+    projected, targets, selected = _assistant_targets(logits, labels, projection_mode)
     if loss_reduction == "token_mean":
-        return F.cross_entropy(logits[selected], labels[selected])
-    token_losses = F.cross_entropy(logits[selected], labels[selected], reduction="none")
+        return F.cross_entropy(projected, targets)
+    token_losses = F.cross_entropy(projected, targets, reduction="none")
     rows = selected.nonzero(as_tuple=False)[:, 0]
     sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
     counts = selected.sum(dim=1)

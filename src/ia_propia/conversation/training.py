@@ -111,7 +111,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -133,6 +133,8 @@ def _configs(model_config, training_config):
         raise ValueError("Invalid window_policy")
     if training.get("loss_reduction", "token_mean") not in ("token_mean", "sequence_mean"):
         raise ValueError("Invalid loss_reduction")
+    if training.get("projection_mode", "full") not in ("full", "supervised"):
+        raise ValueError("Invalid projection_mode")
     if "sampling_weights" in training:
         _validate_sampling_rules(training["sampling_weights"])
         training["sampling_weights"] = copy.deepcopy(training["sampling_weights"])
@@ -267,11 +269,15 @@ def _batch(examples, indices, torch):
     return inputs, labels
 
 
-def _evaluate(model, examples, batch_size, loss_reduction="token_mean"):
+def _evaluate(model, examples, batch_size, loss_reduction="token_mean", projection_mode="full"):
     if loss_reduction not in ("token_mean", "sequence_mean"):
         raise ValueError("Invalid loss_reduction")
+    if projection_mode not in ("full", "supervised"):
+        raise ValueError("Invalid projection_mode")
     torch = _torch()
     import torch.nn.functional as functional
+    if projection_mode == "supervised":
+        from .model import assistant_token_losses
     total_loss, targets = 0.0, 0
     sequence_loss, sequences = 0.0, 0
     previous = model.training
@@ -280,18 +286,24 @@ def _evaluate(model, examples, batch_size, loss_reduction="token_mean"):
         with torch.no_grad():
             for start in range(0, len(examples), batch_size):
                 inputs, labels = _batch(examples, range(start, min(start + batch_size, len(examples))), torch)
-                logits = model(inputs)
-                count = int((labels != -100).sum())
-                loss = functional.cross_entropy(logits.reshape(-1, logits.shape[-1]),
-                                                labels.reshape(-1), ignore_index=-100,
-                                                reduction="sum")
+                selected = labels != -100
+                count = int(selected.sum())
+                if projection_mode == "supervised":
+                    logits = model.selected_logits(inputs, selected)
+                    token_losses = assistant_token_losses(logits, labels, projection_mode="supervised")
+                    loss = token_losses.sum()
+                else:
+                    logits = model(inputs)
+                    loss = functional.cross_entropy(logits.reshape(-1, logits.shape[-1]),
+                                                    labels.reshape(-1), ignore_index=-100,
+                                                    reduction="sum")
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite evaluation loss")
                 total_loss += float(loss)
                 targets += count
                 if loss_reduction == "sequence_mean":
-                    selected = labels != -100
-                    token_losses = functional.cross_entropy(logits[selected], labels[selected], reduction="none")
+                    if projection_mode == "full":
+                        token_losses = functional.cross_entropy(logits[selected], labels[selected], reduction="none")
                     rows = selected.nonzero(as_tuple=False)[:, 0]
                     sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
                     counts = selected.sum(dim=1)
@@ -337,15 +349,21 @@ def _baseline_score(examples, losses, loss_reduction="token_mean"):
 
 def _loss_metadata(config):
     # Missing fields remain missing for legacy checkpoints and artifact schemas.
-    if "loss_reduction" not in config:
-        return {}
-    result = {"lossReduction": config["loss_reduction"]}
-    if config["loss_reduction"] == "sequence_mean":
+    result = {}
+    if "projection_mode" in config:
+        result["projectionMode"] = config["projection_mode"]
+    if "loss_reduction" in config:
+        result["lossReduction"] = config["loss_reduction"]
+    if config.get("loss_reduction") == "sequence_mean":
         result["sequenceUnit"] = "encoded_window"
     return result
 
 
 def _evaluate_configured(model, examples, config):
+    if config.get("projection_mode", "full") == "supervised":
+        return _evaluate(model, examples, config["batch_size"],
+                         loss_reduction=config.get("loss_reduction", "token_mean"),
+                         projection_mode="supervised")
     if config.get("loss_reduction", "token_mean") == "token_mean":
         return _evaluate(model, examples, config["batch_size"])
     return _evaluate(model, examples, config["batch_size"], loss_reduction="sequence_mean")
@@ -788,10 +806,16 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 end = min(state["cursor"] + config["batch_size"], len(state["order"]))
                 inputs, labels = _batch(examples["train"], state["order"][state["cursor"]:end], torch)
                 optimizer.zero_grad(set_to_none=True)
-                logits = model(inputs)
-                if config.get("loss_reduction", "token_mean") == "token_mean":
+                if config.get("projection_mode", "full") == "supervised":
+                    logits = model.selected_logits(inputs, labels != -100)
+                    loss = assistant_token_loss(logits, labels,
+                                                loss_reduction=config.get("loss_reduction", "token_mean"),
+                                                projection_mode="supervised")
+                elif config.get("loss_reduction", "token_mean") == "token_mean":
+                    logits = model(inputs)
                     loss = assistant_token_loss(logits, labels)
                 else:
+                    logits = model(inputs)
                     loss = assistant_token_loss(logits, labels, loss_reduction="sequence_mean")
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite training loss")

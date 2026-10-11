@@ -159,6 +159,23 @@ unidad conversation chat --model models/conversation-context-v3 \
 unidad conversation status --run-dir private/conversation/runs/balanced-short-v1
 ```
 
+También se conserva una [instantánea de bases conversacionales](models/conversation-basics-v4/README.md)
+con respuestas y errores documentados. Sigue siendo experimental: los saludos
+han mejorado, pero la conversación libre todavía confunde identidades y datos.
+Puedes probarla en una sesión de terminal con historial temporal:
+
+```bash
+unidad conversation converse --model models/conversation-basics-v4 \
+  --temperature 0 --max-new-tokens 32
+```
+
+Se adaptó el aprendizaje para evitar calcular salidas sin supervisión. En la
+CPU disponible, la [comparación medida](docs/unidad-learning-optimization-v1.json)
+redujo un 13,5 % el tiempo por paso y conservó la inferencia. La siguiente etapa
+reduce repeticiones de ejemplos fáciles y añade diversidad de textos y
+correcciones; mejorar su conversación debe comprobarse por separado. La
+[guía](docs/conversation.md) explica cómo activar el nuevo modo de entrenamiento.
+
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
 
 ```bash

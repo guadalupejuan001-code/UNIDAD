@@ -89,6 +89,33 @@ generadas; permanece en RAM y no entrena el modelo. La consola muestra el texto
 Una respuesta vacía o inválida no se reemplaza por una frase inventada.
 La calidad depende de los pesos que elijas; esta interfaz no añade comprensión.
 
+## Ahorrar cálculo durante el aprendizaje
+
+Una nueva etapa puede usar `"projection_mode": "supervised"` en el JSON de
+entrenamiento. El Transformer sigue leyendo todo el contexto; la salida sobre el
+vocabulario se calcula sólo en las posiciones que enseñan la respuesta final.
+Los tokens anteriores siguen aportando contexto y recibiendo gradientes.
+
+La [medición de esta optimización](unidad-learning-optimization-v1.json) comparó
+96 pasos completos de AdamW por camino sobre los mismos lotes de entrenamiento:
+en esta CPU de cuatro núcleos, el tiempo bajó un 13,5 % y el máximo de memoria del
+proceso un 4,7 %. No es una estimación de cuánto falta para aprender a conversar.
+Las respuestas de los pesos fijos se conservaron; las diferencias numéricas de
+gradientes son pequeñas, por lo que las trayectorias de entrenamiento entre
+ambos modos no se declaran idénticas.
+
+```json
+{
+  "projection_mode": "supervised",
+  "loss_reduction": "sequence_mean",
+  "torch_threads": 4
+}
+```
+
+Si se omite `projection_mode`, permanece el cálculo anterior. Una reanudación
+conserva el modo guardado; para cambiarlo, empieza otra etapa con
+`--initial-model`. La inferencia y el formato de los pesos se conservan.
+
 ## Dar peso a las conversaciones breves
 
 La reducción anterior, `token_mean`, promedia la pérdida de todos los tokens
@@ -296,6 +323,16 @@ conserva prototipos de aperturas sin datos previos; enseña la identidad de Unid
 nombres desconocidos, presentaciones, correcciones y cambios de intención. Ambos
 guardan manifiestos, hashes y particiones. Sus plantillas sólo crean datos de
 entrenamiento; el motor conversacional genera cada respuesta desde los pesos.
+
+La frecuencia también debe revisarse cuando un ejemplo deja de aportar
+aprendizaje. En una auditoría exclusiva de TRAIN, veinte aperturas tenían un
+error muy bajo y aun así recibían el 9,55 % de las muestras esperadas. La siguiente
+etapa reduce su multiplicador de 64 a 8 y conserva el repaso. Esto libera muestras
+para ejemplos nuevos; su efecto en retención y conversación se comprueba aparte.
+El [generador de copia literal](../examples/build_literal_copy_conversations.py)
+añade nombres, frases, códigos y correcciones ficticias con valores separados
+por familia. Enseña a conservar incluso espacios y composición Unicode, sin
+añadir reglas de copia al generador de respuestas.
 
 ## Detener y reanudar
 
