@@ -7,12 +7,12 @@ import re
 from typing import Callable
 
 from .. import workspace
-from .models import ModelRuntime
+from .models import ModelRuntime, ModelUnavailableError
 from .protocol import (BrainError, MAX_REQUEST_BYTES, MAX_RESPONSE_BYTES, MAX_WORKFLOW_STEPS,
                        envelope, identifier, request_identity, validate_json, validate_request)
 from .workflow import has_references, is_reference, run_plan, validate_plan
 
-MODEL_OPERATIONS = {"language.generate", "attention.forecast"}
+MODEL_OPERATIONS = {"language.generate", "attention.forecast", "conversation.reply"}
 MEMORY_OPERATIONS = {"memory.task.add", "memory.task.list", "memory.task.show", "memory.task.attempt",
                      "memory.task.feedback", "memory.task.status"}
 OPERATIONS = MODEL_OPERATIONS | MEMORY_OPERATIONS | {"tool.call", "workflow.run"}
@@ -46,12 +46,13 @@ class Tool:
 
 
 class Brain:
-    def __init__(self, state_dir, language_model=None, attention_model=None):
+    def __init__(self, state_dir, language_model=None, attention_model=None, conversation_model=None):
         if not isinstance(state_dir, (str, Path)):
             raise BrainError("invalid_input", "Brain state directory must be configured by the host")
         self._state_dir = Path(state_dir).expanduser().absolute()
         # One model runtime for all sessions. No per-body weight loading or chat cache.
-        self.models = ModelRuntime(language_model=language_model, attention_model=attention_model)
+        self.models = ModelRuntime(language_model=language_model, attention_model=attention_model,
+                                   conversation_model=conversation_model)
 
     def connect(self, body_id, tools=(), memory_scope=None):
         _label(body_id, "body id")
@@ -69,7 +70,9 @@ class Brain:
         return BodySession(self, body_id, {tool.name: tool for tool in bound}, directory, memory_scope is not None)
 
     def capabilities(self):
-        result = {"schemaVersion": 1, "operations": sorted(OPERATIONS), "models": self.models.capabilities(),
+        model_capabilities = self.models.capabilities()
+        available = (OPERATIONS - MODEL_OPERATIONS) | set(model_capabilities["operations"])
+        result = {"schemaVersion": 1, "operations": sorted(available), "models": model_capabilities,
                   "workerCapabilityValidated": False, "instructionFollowingValidated": False,
                   "naturalLanguagePlanner": False, "automaticLearning": False,
                   "memory": {"privacy": "PRIVATE", "isolatedByBody": True, "sharingRequiresHostConfiguration": True},
@@ -149,6 +152,8 @@ class BodySession:
         if operation in MODEL_OPERATIONS:
             try:
                 self.models.validate_input(operation, input_data, allow_refs=allow_refs)
+            except ModelUnavailableError as error:
+                raise BrainError("capability_unavailable", "A local conversation model was not configured by the host") from error
             except BrainError:
                 raise
             except (ValueError, TypeError) as error:

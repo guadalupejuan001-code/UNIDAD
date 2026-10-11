@@ -1,7 +1,7 @@
 """Local adapters shared by every Unidad body, with explicitly selected weights.
 
 Only trusted host construction may choose model files. Requests contain values,
-never paths. Both operations use the existing validated inference implementations.
+never paths. Optional conversation dependencies are loaded only by host selection.
 """
 from copy import deepcopy
 import hashlib
@@ -20,8 +20,20 @@ class ModelRuntimeError(ValueError):
     """Invalid model configuration or model-operation request."""
 
 
+class ModelUnavailableError(ModelRuntimeError):
+    """A known optional model was not configured by the trusted host."""
+
+
 LANGUAGE_KEYS = {"prompt", "length", "temperature", "seed"}
 ATTENTION_KEYS = {"observations", "signal_id", "as_of", "historical", "source", "metric"}
+CONVERSATION_KEYS = {"messages", "max_new_tokens", "temperature", "seed"}
+CONVERSATION_SCHEMA = {"type": "object", "additionalProperties": False, "required": ["messages"], "properties": {
+    "messages": {"type": "array", "minItems": 1, "maxItems": 64, "items": {
+        "type": "object", "additionalProperties": False, "required": ["role", "content"], "properties": {
+            "role": {"enum": ["system", "user", "assistant"]}, "content": {"type": "string"}}}},
+    "max_new_tokens": {"type": "integer", "minimum": 1, "maximum": 1024, "default": 96},
+    "temperature": {"type": "number", "minimum": 0, "maximum": 2, "default": 0.7},
+    "seed": {"type": "integer", "minimum": 0, "maximum": 2**63 - 1, "default": 42}}}
 INPUT_SCHEMAS = {
     "language.generate": {"type": "object", "additionalProperties": False, "properties": {
         "prompt": {"type": "string", "maxLength": 4096, "default": ""},
@@ -88,13 +100,14 @@ def _is_reference(value, allow_refs):
 
 
 class ModelRuntime:
-    """Loads a host-selected pair once; operations cannot replace its weights."""
+    """Loads host-selected models once; operations cannot replace their weights."""
 
-    def __init__(self, language_model=None, attention_model=None):
+    def __init__(self, language_model=None, attention_model=None, conversation_model=None):
         defaults = [name for name, selected in (("language", language_model), ("attention", attention_model)) if selected is None]
         packaged = _packaged_models(defaults) if defaults else {}
         self._language = packaged["language"] if language_model is None else language.load_artifact(Path(language_model))
         self._attention = packaged["attention"] if attention_model is None else attention.load_artifact(Path(attention_model))
+        self._conversation = None
         self._capabilities = {
             "schemaVersion": 1, "execution": "local_cpu", "networkRequired": False,
             "experimental": True, "productionAccepted": False, "workerCapabilityValidated": False,
@@ -107,6 +120,22 @@ class ModelRuntime:
                     "parameterCount": _parameter_count(self._attention, "attention"), "task": "scoped_metric_point_forecast",
                     "source": self._attention["source"], "metric": self._attention["metric"],
                     "privacy": "PUBLIC", "liveForecastValidated": False}}}
+        if conversation_model is not None:
+            if not isinstance(conversation_model, (str, Path)):
+                raise ModelRuntimeError("The conversation artifact must be a host-configured local path")
+            # Optional dependencies and scratch-trained weights are loaded only
+            # when explicitly selected. Legacy bodies never import torch here.
+            from ..conversation.artifacts import load_artifact
+            self._conversation = load_artifact(Path(conversation_model))
+            model, _, manifest = self._conversation
+            self._capabilities["operations"].append("conversation.reply")
+            self._capabilities["inputSchemas"] = deepcopy(INPUT_SCHEMAS)
+            self._capabilities["inputSchemas"]["conversation.reply"] = CONVERSATION_SCHEMA
+            self._capabilities["models"]["conversation"] = {
+                "available": True, "modelId": manifest["modelId"],
+                "parameterCount": sum(parameter.numel() for parameter in model.parameters()),
+                "task": "conversation_token_generation", "instructionFollowingValidated": False,
+                "generalLanguageUnderstandingValidated": False, "workerCapabilityValidated": False}
 
     def capabilities(self):
         """A detached JSON description, never mutable model parameters."""
@@ -121,6 +150,8 @@ class ModelRuntime:
         self._validate_input(operation, inputdict, allow_refs=allow_refs)
 
     def _validate_input(self, operation, inputdict, *, allow_refs=False):
+        if operation == "conversation.reply":
+            return self._validate_conversation(inputdict, allow_refs=allow_refs)
         if not isinstance(operation, str) or operation not in INPUT_SCHEMAS:
             raise ModelRuntimeError(f"Unsupported model operation: {operation}")
         if not isinstance(inputdict, dict) or any(not isinstance(key, str) for key in inputdict):
@@ -164,12 +195,37 @@ class ModelRuntime:
                 return observations
         return None
 
+    def _validate_conversation(self, values, *, allow_refs=False):
+        if self._conversation is None:
+            raise ModelUnavailableError("Configure a local conversation model to enable conversation.reply")
+        if type(values) is not dict or set(values) - CONVERSATION_KEYS or "messages" not in values:
+            raise ModelRuntimeError("conversation.reply requires messages and only known input fields")
+        for key, value in values.items():
+            if _is_reference(value, allow_refs):
+                continue
+            if key == "messages":
+                from ..conversation.tokenizer import validate_messages
+                messages = validate_messages(value)
+                if messages[-1]["role"] != "user":
+                    raise ModelRuntimeError("Conversation messages must end with an explicit user turn")
+            elif key == "max_new_tokens":
+                language.integer(value, key, 1, 1024)
+            elif key == "seed":
+                language.integer(value, key)
+            elif not 0 <= language.number(value, key) <= 2:
+                raise ModelRuntimeError("temperature must be in [0, 2]")
+
     def execute(self, operation, inputdict):
         """Dispatch pure local inference using fixed, previously loaded artifacts."""
         if not isinstance(inputdict, dict):
             raise ModelRuntimeError("Model input must be an object")
         request = deepcopy(inputdict)
         observations = self._validate_input(operation, request)
+        if operation == "conversation.reply":
+            from ..conversation.model import chat
+            model, tokenizer, manifest = self._conversation
+            result = chat(model, tokenizer, **request)
+            return {**result, "modelId": manifest["modelId"], "workerCapabilityValidated": False}
         if operation == "language.generate":
             return language.generate(self._language, **request)
         signal_id = request.get("signal_id")

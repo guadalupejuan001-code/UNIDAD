@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "project": "Unidad",
+  "version": "0.3.0",
+  "capturedAt": "2026-10-11T07:42:03.148018+00:00",
+  "model": {
+    "artifactDirectory": "models/conversation-basic-v1",
+    "modelId": "unidad-conversation-67feadc3818a1739ee3f506c4e0f9a7b0436c695815c64f4c46b06c22f2640bf",
+    "config": {
+      "d_model": 128,
+      "n_layers": 4,
+      "n_heads": 4,
+      "context_length": 256,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "seed": 42,
+      "vocab_size": 2048
+    },
+    "parameterCount": 1088256,
+    "files": {
+      "config.json": {
+        "sha256": "6aedff0180516525a365f1c854747459c018a2e3d03a6841f4c794c6b33050d4",
+        "bytes": 122
+      },
+      "tokenizer.json": {
+        "sha256": "ee3b0f263ce97919f0a6b6ea8bd1329d1a008883116ee3a2decc9eb15f6fbb59",
+        "bytes": 50122
+      },
+      "weights.safetensors": {
+        "sha256": "92289bc6b2a3c46fa7130409cadfabce68cf49d2e1599b1385c26480350fe655",
+        "bytes": 4358008
+      }
+    },
+    "trainedFrom": "random_weights",
+    "externalPretrainedWeightsUsed": false,
+    "changedParameterTensors": 52,
+    "totalParameterTensors": 52,
+    "parameterL2DeltaFromSeededInitialization": 23.448095465087917
+  },
+  "corpus": {
+    "records": 1207,
+    "groups": 560,
+    "splits": {
+      "train": 965,
+      "validation": 115,
+      "test": 127
+    },
+    "groupSplits": {
+      "train": 446,
+      "validation": 58,
+      "test": 56
+    },
+    "sources": {
+      "authored-synthetic": 120,
+      "public-human-reviewed": 1087
+    },
+    "sha256": "1f643464e7ace1ffece72ebf4c9b61cd9292de9fea0970883aa0d3c1b9aacdea",
+    "exactDuplicatesRemoved": 4,
+    "selection": {
+      "humanGroups": 500,
+      "maxPublicTurns": 4,
+      "maxPublicFinalReplyBytes": 500,
+      "maxPublicDialogueBytes": 1400,
+      "codeFencesExcluded": true,
+      "scoreBasedSelection": false
+    },
+    "demoSha256": "1d3e4b51682ff7a5aea9bfc794cc0c609f3aa690c0298465496d37db4afd37c3",
+    "personalChatUsedAsCorpus": false,
+    "ownerOrdersUsedAsCorpus": false,
+    "wholeFamilySplitsDisjoint": true,
+    "publicSource": {
+      "records": 14097,
+      "groups": 3756,
+      "splits": {
+        "train": 11200,
+        "validation": 1348,
+        "test": 1549
+      },
+      "groupSplits": {
+        "train": 2969,
+        "validation": 371,
+        "test": 416
+      },
+      "sha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+      "sourceSha256": "2a9a8fd343e9b28e04a895a669d3253f82d93e9c174d440199ae19d5fafbdff7",
+      "filters": {
+        "source_trees": 10364,
+        "source_messages": 88838,
+        "other_language": 64863,
+        "accepted_messages": 21135,
+        "low_quality": 660,
+        "ancestor_filtered": 1395,
+        "deleted_or_unspecified": 265,
+        "label_not_appropriate": 341,
+        "not_positively_reviewed": 123,
+        "label_spam": 23,
+        "label_pii": 11,
+        "label_lang_mismatch": 22
+      },
+      "source": {
+        "dataset": "OpenAssistant/oasst1",
+        "license": "Apache-2.0",
+        "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+        "language": "es",
+        "externalSyntheticExcluded": true
+      },
+      "splitMethod": "sha256(unidad-conversation-v1 + groupId), 80/10/10 by family",
+      "maxRecordsIsSoftFamilyLimit": false
+    },
+    "rawSource": {
+      "url": "https://huggingface.co/datasets/OpenAssistant/oasst1/resolve/fdf72ae0827c1cda404aff25b6603abec9e3399b/2023-04-12_oasst_ready.trees.jsonl.gz",
+      "bytes": 34145252,
+      "sha256": "2a9a8fd343e9b28e04a895a669d3253f82d93e9c174d440199ae19d5fafbdff7",
+      "licenseCopy": "docs/licenses/OASST1-Apache-2.0.txt"
+    }
+  },
+  "training": {
+    "corpusSha256": "1f643464e7ace1ffece72ebf4c9b61cd9292de9fea0970883aa0d3c1b9aacdea",
+    "selectedStep": 1600,
+    "trainedFrom": "random_weights",
+    "selectionSplit": "validation",
+    "selectedCheckpoint": "step-000001600-19df2deeaa4c48788f4b3ca0b6988c9f",
+    "validationNll": 5.034663433029594,
+    "assistantTargets": "last_reply_only",
+    "windowPolicy": "contiguous_nonoverlapping",
+    "testEvaluated": false,
+    "config": {
+      "batch_size": 8,
+      "checkpoint_every": 100,
+      "grad_clip": 1.0,
+      "learning_rate": 0.0003,
+      "max_epochs": 5000,
+      "max_seconds": 86400,
+      "max_steps": 400000,
+      "min_delta": 0.0001,
+      "patience": 20,
+      "seed": 42,
+      "torch_threads": 4,
+      "validation_every": 100,
+      "warmup_steps": 100,
+      "weight_decay": 0.01
+    },
+    "parameterCount": 1088256
+  },
+  "validation": {
+    "randomInitialization": {
+      "at": 1791704282.6672397,
+      "event": "validation",
+      "score": {
+        "examples": 123,
+        "nll": 7.647060242575082,
+        "perplexity": 2094.4792691353464,
+        "targetTokens": 9756
+      },
+      "selected": true,
+      "step": 0
+    },
+    "selectedSnapshot": {
+      "at": 1791704519.4735682,
+      "event": "validation",
+      "score": {
+        "examples": 123,
+        "nll": 5.034663433029594,
+        "perplexity": 153.6478711099673,
+        "targetTokens": 9756
+      },
+      "selected": true,
+      "step": 1600
+    },
+    "testEvaluated": false,
+    "testUsedForSelection": false,
+    "qualityAcceptanceCannotBeInferredFromTokenLoss": true,
+    "independentSnapshotRecheck": {
+      "nll": 5.034663433029594,
+      "targetTokens": 9756,
+      "perplexity": 153.6478711099673,
+      "examples": 123
+    },
+    "trainFittedUnigramBaselineOnValidation": {
+      "nll": 6.428900318262741,
+      "targetTokens": 9756
+    }
+  },
+  "trainingJobAtCapture": {
+    "bestCheckpoint": "step-000001600-19df2deeaa4c48788f4b3ca0b6988c9f",
+    "bestValidationNll": 5.034663433029594,
+    "cooperativeSignalInstalled": true,
+    "corpusSha256": "1f643464e7ace1ffece72ebf4c9b61cd9292de9fea0970883aa0d3c1b9aacdea",
+    "elapsedSeconds": 240.318310001001,
+    "environmentLifetimeGuaranteed": false,
+    "epoch": 12,
+    "experimental": true,
+    "heartbeatAt": 1791704520.839904,
+    "lastCheckpoint": "step-000001600-19df2deeaa4c48788f4b3ca0b6988c9f",
+    "pid": 2832,
+    "processBirth": "1623098",
+    "reason": null,
+    "schemaVersion": 1,
+    "status": "running",
+    "step": 1612,
+    "processAlive": true,
+    "heartbeatAgeSeconds": 2.3094770908355713
+  },
+  "trainingRunPath": "private/conversation/runs/basic-v1",
+  "jobLifetimeDependsOnWorkspace": true,
+  "maxBudgetSeconds": 86400,
+  "entireBudgetAlreadyCompleted": false,
+  "checkpointRestart": {
+    "reason": "Load periodic checkpoint durability correction",
+    "stopped": {
+      "bestCheckpoint": "step-000000800-a5d828d8ea384bfeb684a06dea33d3a8",
+      "bestValidationNll": 5.325836400606438,
+      "cooperativeSignalInstalled": false,
+      "corpusSha256": "1f643464e7ace1ffece72ebf4c9b61cd9292de9fea0970883aa0d3c1b9aacdea",
+      "elapsedSeconds": 137.57220446300016,
+      "environmentLifetimeGuaranteed": false,
+      "epoch": 6,
+      "experimental": true,
+      "heartbeatAt": 1791704417.56277,
+      "lastCheckpoint": "step-000000864-e5546b0bb8b44189be2cccfd08784b44",
+      "pid": 1978,
+      "processBirth": "1609288",
+      "reason": "signal",
+      "schemaVersion": 1,
+      "status": "stopped",
+      "step": 864,
+      "processAlive": false,
+      "heartbeatAgeSeconds": 0.4638967514038086
+    },
+    "restarted": {
+      "bestCheckpoint": "step-000000800-a5d828d8ea384bfeb684a06dea33d3a8",
+      "bestValidationNll": 5.325836400606438,
+      "cooperativeSignalInstalled": false,
+      "corpusSha256": "1f643464e7ace1ffece72ebf4c9b61cd9292de9fea0970883aa0d3c1b9aacdea",
+      "elapsedSeconds": 137.57220446300016,
+      "environmentLifetimeGuaranteed": false,
+      "epoch": 6,
+      "experimental": true,
+      "heartbeatAt": 1791704418.0292583,
+      "lastCheckpoint": "step-000000864-e5546b0bb8b44189be2cccfd08784b44",
+      "pid": 2832,
+      "processBirth": "1623098",
+      "reason": "worker_starting",
+      "schemaVersion": 1,
+      "status": "planned",
+      "step": 864,
+      "processAlive": true,
+      "heartbeatAgeSeconds": 0.0015895366668701172
+    }
+  },
+  "throughputBenchmark": {
+    "parameters": 1088256,
+    "batchSize": 8,
+    "contextTokens": 256,
+    "cpuQuota": 4,
+    "rows": [
+      {
+        "torchThreads": 1,
+        "medianStepSeconds": 0.2382943169995997,
+        "stepsPerSecond": 4.1964911819599955,
+        "samples": 7
+      },
+      {
+        "torchThreads": 2,
+        "medianStepSeconds": 0.16006589999960852,
+        "stepsPerSecond": 6.247426841085114,
+        "samples": 7
+      },
+      {
+        "torchThreads": 4,
+        "medianStepSeconds": 0.1285505310006556,
+        "stepsPerSecond": 7.779042157320221,
+        "samples": 7
+      }
+    ],
+    "scope": "Synthetic forward/backward throughput, not model quality or full trainer throughput."
+  },
+  "tests": {
+    "withConversationDependencies": {
+      "discovered": 139,
+      "passed": 139,
+      "skipped": 0,
+      "log": "docs/unidad-conversation-tests-v0.3.0.txt"
+    },
+    "withoutConversationDependencies": {
+      "discovered": 122,
+      "passed": 105,
+      "skipped": 17,
+      "log": "docs/unidad-base-tests-v0.3.0.txt"
+    }
+  },
+  "wheelIntegration": {
+    "packageVersion": "0.3.0",
+    "moduleLoadedOutsideRepository": true,
+    "wheelSha256": "e8a191685b5cad255f4b709dad676414bfaf62f8facd404d24a310c40a5de0bc",
+    "modelId": "unidad-conversation-67feadc3818a1739ee3f506c4e0f9a7b0436c695815c64f4c46b06c22f2640bf",
+    "selectedStep": 1600,
+    "twoBodiesUseSameModel": true,
+    "pythonAndHttpMatch": true,
+    "qualityAccepted": false,
+    "actualResponse": "La respuesta, la información."
+  },
+  "unchangedLegacyModelFileSha256": {
+    "models/attention-v1.json": "3703c3c89f8a2a791819772b973abeecb7951a4e28730273a5dbc1832a7baa2e",
+    "models/language-demo.json": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6",
+    "src/ia_propia/assets/attention-v1.json": "3703c3c89f8a2a791819772b973abeecb7951a4e28730273a5dbc1832a7baa2e",
+    "src/ia_propia/assets/language-demo.json": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6"
+  },
+  "developmentProbes": {
+    "formalQualityTest": false,
+    "usedForCheckpointSelection": false,
+    "realModelOutputWithoutSubstitution": true,
+    "responses": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Hola, ¿cómo empezamos?"
+          }
+        ],
+        "generation": {
+          "text": "Claro, por lo que te puedo ayudar a lo que quieres que te al través de..., la sol.",
+          "generatedTokenIds": [
+            1046,
+            17,
+            411,
+            328,
+            293,
+            436,
+            574,
+            1641,
+            287,
+            328,
+            293,
+            968,
+            293,
+            436,
+            403,
+            1436,
+            267,
+            1765,
+            17,
+            290,
+            650,
+            19,
+            2
+          ],
+          "generatedTokens": 23,
+          "stopReason": "eos",
+          "promptTokens": 49,
+          "discardedPromptTokens": 0,
+          "seed": 42,
+          "temperature": 0.7,
+          "modelType": "unidad-conversation-transformer",
+          "experimental": true,
+          "instructionFollowingValidated": false,
+          "generalConversationValidated": false
+        }
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Quiero ordenar mi día, pero me distraigo cuando abro el teléfono."
+          }
+        ],
+        "generation": {
+          "text": "Claro, una ruon en un pazantes.",
+          "generatedTokenIds": [
+            1046,
+            17,
+            396,
+            483,
+            90,
+            270,
+            291,
+            304,
+            555,
+            95,
+            603,
+            19,
+            2
+          ],
+          "generatedTokens": 13,
+          "stopReason": "eos",
+          "promptTokens": 61,
+          "discardedPromptTokens": 0,
+          "seed": 42,
+          "temperature": 0.7,
+          "modelType": "unidad-conversation-transformer",
+          "experimental": true,
+          "instructionFollowingValidated": false,
+          "generalConversationValidated": false
+        }
+      },
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "Tengo dos proyectos y poco tiempo."
+          },
+          {
+            "role": "assistant",
+            "content": "Podemos elegir una tarea pequeña de uno de ellos."
+          },
+          {
+            "role": "user",
+            "content": "Hoy prefiero terminar uno antes de abrir el otro. ¿Cómo conectas eso con lo que te dije?"
+          }
+        ],
+        "generation": {
+          "text": "Claro, por lo que te puedo ayudar a lo que quieres que te al través de...",
+          "generatedTokenIds": [
+            1046,
+            17,
+            411,
+            328,
+            293,
+            436,
+            574,
+            1641,
+            287,
+            328,
+            293,
+            968,
+            293,
+            436,
+            403,
+            1436,
+            267,
+            1765,
+            2
+          ],
+          "generatedTokens": 19,
+          "stopReason": "eos",
+          "promptTokens": 92,
+          "discardedPromptTokens": 0,
+          "seed": 42,
+          "temperature": 0.7,
+          "modelType": "unidad-conversation-transformer",
+          "experimental": true,
+          "instructionFollowingValidated": false,
+          "generalConversationValidated": false
+        }
+      }
+    ]
+  },
+  "acceptance": {
+    "experimental": true,
+    "productionAccepted": false,
+    "generalConversationValidated": false,
+    "instructionFollowingValidated": false,
+    "selfProgrammingImplemented": false,
+    "automaticNewCurriculumStagesImplemented": false
+  }
+}

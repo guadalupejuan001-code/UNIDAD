@@ -2,7 +2,8 @@
 
 IA privada de uso personal. Núcleo independiente para conectarlo a productos e
 interfaces distintos, conservar contexto y avanzar hacia un trabajador digital.
-Unidad usa Python y NumPy, funciona localmente y no requiere Hormiga-X,
+Unidad funciona localmente con Python. El núcleo usa NumPy; el nuevo modelo
+conversacional usa PyTorch y un tokenizador propio. No requiere Hormiga-X,
 una API de IA ni pesos preentrenados.
 
 Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Definen
@@ -24,6 +25,11 @@ persona ni su forma completa de pensar.
 - Un modelo de lenguaje pequeño con entrenamiento propio. Su demostración sirve
   para comprobar que cambian los pesos y se puede generar texto; no demuestra
   comprensión ni calidad conversacional.
+- Un Transformer conversacional nuevo, de 1.088.256 parámetros, inicializado
+  desde pesos aleatorios. Su primera etapa aprende respuestas breves en español
+  con ejemplos públicos y sintéticos identificados. Permite entrenamiento en
+  segundo plano, checkpoints y reanudación; su calidad debe comprobarse por
+  separado de las pruebas del código.
 - Un registro local de encargos, intentos y correcciones en texto libre. No impone
   categorías de personalidad. Permite preparar ejemplos aprobados para entrenar,
   sin confundir memoria con aprendizaje de parámetros.
@@ -58,6 +64,43 @@ otra ruta, la exclusión de Git puede dejar de aplicar. Los permisos locales
 no son cifrado.
 
 ## Primeros pasos
+
+Para el nuevo modelo de conversación, instala las dependencias CPU:
+
+```bash
+python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e '.[conversation]'
+```
+
+La [guía de entrenamiento conversacional](docs/conversation.md) explica cómo
+preparar datos, empezar, comprobar el progreso, guardar un modelo y reanudar.
+Hay una [instantánea experimental guardada](models/conversation-basic-v1/README.md)
+con pesos, configuración y tokenizador:
+
+```bash
+unidad conversation chat --model models/conversation-basic-v1 \
+  --message "Hola, ¿cómo empezamos?" --max-new-tokens 64 --seed 42
+unidad conversation status --run-dir private/conversation/runs/basic-v1
+```
+
+La consulta de estado corresponde al entorno donde se inició el trabajo; una
+clonación nueva tiene los pesos guardados, pero no un entrenador en ejecución.
+El primer corpus básico combina 120 ejemplos inventados con 1.087 respuestas
+públicas revisadas de OASST1: 965 registros de entrenamiento, 115 de validación
+y 127 reservados para prueba, separados por familia de conversación. Los textos
+de este chat y las órdenes del creador no se utilizaron como corpus personal.
+
+El estilo solicitado —confidente, cercano y que conecte puntos— orienta los
+ejemplos y el contexto del modelo; eso todavía no demuestra que lo haya aprendido.
+La [evidencia de esta etapa](docs/unidad-conversation-validation-v0.3.0.json)
+registra pesos, métricas y respuestas reales, sin reemplazar su texto por respuestas
+de otra IA. El presupuesto de entrenamiento de 24 horas es un máximo; el proceso
+puede parar antes si deja de mejorar o si el entorno se detiene.
+Unidad 0.3.0 pasó 139 pruebas con las dependencias conversacionales. También
+se comprobó una instalación del paquete fuera del repositorio, con Python y HTTP
+usando el mismo modelo entre dos cuerpos. Las respuestas de la instantánea
+todavía contienen errores y repeticiones: estas pruebas acreditan el código
+y la integración, no un habla competente.
 
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
 

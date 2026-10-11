@@ -14,6 +14,12 @@ las nuevas instrucciones del usuario en la sesión tienen prioridad.
   de herramientas externas.
 - Conserva el enfoque de entrenamiento desde pesos aleatorios. No sustituyas
   silenciosamente los modelos propios por llamadas a otra IA.
+- Prioriza la conversación en español y el estilo cercano solicitado. Entrenar
+  debe producir pesos y métricas verificables; no inventes respuestas para aparentar
+  mejoras del modelo. Un entrenamiento largo debe ser reanudable y mostrar su
+  estado real, incluido cuando el entorno deje de estar activo.
+- Conserva conjuntos de evaluación separados por conversación y familia de
+  ejemplos; no ajustes el modelo usando los resultados de test.
 - Mantén objetivos y correcciones en texto libre. No inventes categorías de
   personalidad para representar al creador.
 - Distingue registrar memoria, entrenar parámetros y ejecutar un trabajo. No

@@ -24,6 +24,7 @@ def parser(prog=None):
         command.add_argument("--memory-scope", help="Memoria compartida explícitamente por configuración, no por petición")
         command.add_argument("--language-model", type=Path, help="Ruta del modelo de lenguaje fijada al iniciar")
         command.add_argument("--attention-model", type=Path, help="Ruta del modelo de atención fijada al iniciar")
+        command.add_argument("--conversation-model", type=Path, help="Directorio local del modelo conversacional fijado al iniciar")
         if name == "call":
             command.add_argument("--input", required=True, help="Archivo JSON de petición, o - para la entrada estándar")
         if name == "serve":
@@ -56,7 +57,8 @@ def main(argv=None, *, prog=None):
                 raise ValueError("Configure a valid API token environment variable name")
             token = os.environ.get(args.token_env)
             validate_token(token)  # Fail before creating any private state/listener.
-        brain = Brain(args.state_dir, language_model=args.language_model, attention_model=args.attention_model)
+        brain = Brain(args.state_dir, language_model=args.language_model, attention_model=args.attention_model,
+                      conversation_model=args.conversation_model)
         session = brain.connect(args.body, memory_scope=args.memory_scope)
         if args.command == "capabilities":
             _emit(session.capabilities())
@@ -80,11 +82,12 @@ def main(argv=None, *, prog=None):
             except KeyboardInterrupt:
                 pass
         return 0
-    except (BrainError, ValueError, OSError) as error:
+    except (BrainError, ValueError, OSError, ImportError, RuntimeError) as error:
         if args.command == "call":
             _emit(error_envelope(args.body, "operation_failed", "Configured request could not be completed"))
         else:
-            print(f"unidad brain: {error}", file=sys.stderr)
+            message = "faltan dependencias opcionales; instala unidad[conversation] explícitamente" if isinstance(error, ImportError) else str(error)
+            print(f"unidad brain: {message}", file=sys.stderr)
         return 2
 
 

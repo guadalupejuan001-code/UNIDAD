@@ -22,6 +22,16 @@ que el trabajador digital solicitado ya esté terminado.
 7. Adjuntar estas órdenes al proyecto y mantenerlas visibles para su desarrollo.
 8. Construir Unidad como un cerebro independiente que pueda incorporarse a sus
    productos y trabajar a través de distintas interfaces o «cuerpos».
+9. Priorizar ahora el habla y la conversación en español. Entrenar durante el
+   día con seguimiento, usando programación y evaluación para acortar el avance
+   hacia una IA útil. Después incorporar capacidades nuevas de forma progresiva.
+10. Usar una voz confidente, personalmente cercana, que conecte puntos del
+    contexto compartido. Es una orientación en texto libre, no una categoría
+    fija de personalidad.
+11. Conservar como objetivo futuro que pueda proponer mejoras a su propio código.
+    El entrenamiento actual de conversación no acredita esa capacidad.
+12. Empezar por lo más básico y avanzar mediante etapas de dificultad creciente.
+    Las mejoras se aceptan por resultados medidos, no por acumular horas.
 
 ## Palabras del creador
 
@@ -45,13 +55,22 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > pz empieza ya tomate total libertad para pensar y que sea pars que yo la meta en mis productos osea la ia sera pero de vez en cuando ua usare para que trabaje en otras interfaces la ia es solo el cerebro pz que puede entrar en varios cuerpos
 
+> entrenala todo el dia, que necesitas que te diga? mi ia ahorita enfocala en tener un buen habla ya que tenga una conversación usa las maximas capacidades y entendimiento sobre programación y entrenamiento que acorte cada vez mas el "exito" crear a mi ia ya que hable y luego programar nuevas cosas y hacerla evolucionar hasta que ella misma se programe
+
+> quiero que hable con una personalidad confidente, personalmente intima, que siempre este conectando puntos.
+
+> entrena lo mas basico y que desate una evolucion progressive agresiva
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
 | --- | --- |
 | Proyecto propio llamado Unidad | Guardado en el repositorio privado UNIDAD. |
-| Modelos desde cero | Dos redes pequeñas con pesos entrenados desde inicialización aleatoria, sin llamadas a otra IA. |
-| Lenguaje | Predictor de caracteres experimental; todavía genera texto con errores y no sigue encargos de forma competente. |
+| Modelos desde cero | Se conservan las dos redes iniciales y se añade un Transformer conversacional de 1.088.256 parámetros, entrenado desde pesos aleatorios, sin llamadas a otra IA. |
+| Lenguaje | Primera etapa de conversación breve en español; el proceso produce checkpoints, pérdidas de validación y respuestas reales. La evidencia actual está en `docs/unidad-conversation-validation-v0.3.0.json`; no se acredita conversación general competente. |
+| Voz cercana que conecte puntos | Ejemplos sintéticos identificados y contexto por defecto orientan el entrenamiento. No se usó el historial personal como corpus ni se afirma haber replicado al creador. |
+| Entrenar durante el día | Trabajador en segundo plano con presupuesto máximo de 24 horas, parada por validación y reanudación exacta del mismo corpus. Sólo continúa mientras el entorno esté activo. |
+| Evolución progresiva | Primera etapa básica preparada y en entrenamiento. Ampliar datos, aprender programación y mejorar su propio código siguen pendientes de etapas y evaluaciones específicas. |
 | Cambios de criterio | Registro local de encargos y correcciones; la última valoración decide qué ejemplos se exportan. |
 | Trabajar por el creador | El núcleo ejecuta flujos explícitos y herramientas del producto; comprender un encargo abierto y planificarlo sigue pendiente. |
 | Un cerebro para varios cuerpos | Mismo núcleo y pesos usados desde Python y HTTP; herramientas y registros separados por producto, con memoria compartida sólo por configuración explícita. |

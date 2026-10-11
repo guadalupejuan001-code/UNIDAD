@@ -23,7 +23,7 @@ class CliTests(unittest.TestCase):
         return json.loads(output)
 
     def test_help_shows_the_complete_public_command(self):
-        for prefix in ([], ["language"], ["trend"], ["brain"]):
+        for prefix in ([], ["language"], ["trend"], ["brain"], ["conversation"]):
             output = io.StringIO()
             with redirect_stdout(output), self.assertRaises(SystemExit) as stopped:
                 main([*prefix, "--help"])

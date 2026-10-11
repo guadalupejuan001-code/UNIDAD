@@ -1,3 +1,3 @@
 """Unidad: núcleo reutilizable con modelos propios y memoria local."""
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"

@@ -1,7 +1,7 @@
 # Un cerebro, varios cuerpos
 
-Unidad 0.2.0 separa el núcleo de los productos que lo usan. Una instancia de
-`Brain` carga una vez los dos modelos propios; sus conexiones usan esos mismos
+Unidad separa el núcleo de los productos que lo usan. Una instancia de
+`Brain` carga una vez los modelos configurados; sus conexiones usan esos mismos
 pesos. Python, CLI y HTTP envían el mismo contrato de operaciones. El paquete
 incluye los artefactos entrenados: no depende del directorio `models/` ni llama a
 una API de IA.
@@ -84,6 +84,7 @@ o un error con `code` y `message`. `workerCapabilityValidated` permanece en
 | Operación | Entrada |
 | --- | --- |
 | `language.generate` | `prompt`, `length`, `seed`, `temperature`; admite valores por defecto. |
+| `conversation.reply` | `messages` con roles y texto, termina en `user`; opcionales `max_new_tokens`, `temperature`, `seed`. Requiere un modelo conversacional configurado por el anfitrión. |
 | `attention.forecast` | `observations` como JSON; opcionales `signal_id`, `as_of` en milisegundos, `historical`, `source`, `metric`. |
 | `memory.task.add` | `goal` y `context` como texto. |
 | `memory.task.list` | Objeto vacío. |
@@ -196,5 +197,38 @@ printf '%s' '{"schemaVersion":1,"operation":"memory.task.list","input":{}}' \
 ```
 
 CLI y HTTP también admiten configuración de rutas de modelos propios mediante
-`--language-model` y `--attention-model`; esa configuración pertenece al anfitrión,
+`--language-model`, `--attention-model` y `--conversation-model`; esa configuración pertenece al anfitrión,
 no a la petición. No hay descarga ni sustitución automática por otro modelo.
+
+## Conectar el modelo conversacional
+
+Después de instalar las dependencias de conversación y exportar un checkpoint:
+
+```python
+brain = Brain(state_dir=Path("private/brain"),
+              conversation_model=Path("local-models/basic-v1"))
+session = brain.connect("mi-producto")
+response = session.request({
+    "schemaVersion": 1,
+    "operation": "conversation.reply",
+    "input": {
+        "messages": [{"role": "user", "content": "Hola, ¿por dónde empezamos?"}],
+        "max_new_tokens": 64,
+        "temperature": 0.7,
+        "seed": 42,
+    },
+})
+```
+
+El producto envía los turnos que quiera usar como contexto. Cada llamada tiene
+su propio historial explícito; el modelo no recupera recuerdos automáticamente.
+El contexto actual tiene un máximo de 256 tokens con la configuración básica;
+la respuesta informa cuántos tokens anteriores se descartaron. Se conservan los
+registros de memoria separados por cuerpo, aunque los pesos sean compartidos.
+Sin `conversation_model`, la operación devuelve `capability_unavailable` y el
+núcleo anterior funciona sin instalar PyTorch.
+
+La [guía de conversación](conversation.md) distingue guardar un checkpoint
+durante el entrenamiento de cerrar una etapa con evaluación de prueba. Las
+respuestas de este modelo son experimentales; la integración con herramientas
+no acredita que pueda decidir qué acciones ejecutar.

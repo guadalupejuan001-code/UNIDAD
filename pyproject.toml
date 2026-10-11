@@ -4,11 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unidad"
-version = "0.2.0"
+version = "0.3.0"
 description = "Cerebro reutilizable con modelos propios, memoria y herramientas por producto"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["numpy==2.3.5"]
+
+[project.optional-dependencies]
+conversation = ["torch==2.8.0", "tokenizers==0.22.2", "safetensors==0.7.0"]
 
 [project.scripts]
 unidad = "ia_propia.cli:main"
