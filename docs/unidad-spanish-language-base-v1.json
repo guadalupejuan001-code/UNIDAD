@@ -1,0 +1,576 @@
+{
+  "evidenceType": "corpus-ingestion-and-provenance",
+  "externalGenerationApisUsedForPreparation": false,
+  "finalAcceptancePerformed": false,
+  "limitations": [
+    "Data preparation does not show that the model can converse or keep facts and corrections.",
+    "Sixteen TRAIN snippets are a sanity inspection, not complete corpus quality or factual certification.",
+    "Wikipedia contains extraction gaps, empty parentheses, bibliographies, mixed-script terms and dated statements.",
+    "OASST positive original review does not remove all grammar errors, opinions, context-dependent fragments or references to other assistants.",
+    "Exact duplicate and prompt guards do not detect semantic paraphrases.",
+    "Whole-family character caps may favor shorter heldout families and alter length distribution.",
+    "Public authorship flags cannot certify every contributor origin; this project did not generate the public-source text.",
+    "No private owner messages, final acceptance cases, model outputs or final TEST scores are included in this evidence."
+  ],
+  "modelEvaluationPerformed": false,
+  "ownerChatIncluded": false,
+  "preparationHelpers": [
+    {
+      "path": "private/conversation/public-general-es-v1/prepare_public_general_es.py",
+      "role": "Stdlib public-source download, canonical human extraction, exact-byte chunking, global dedup, initial frozen receipts.",
+      "sha256": "997b2d24c8294c4bbb168ffe11db7d394410bb0e3d08521b3051d1aca0387ddd"
+    },
+    {
+      "path": "private/conversation/public-general-es-v1/finalize_ingestion_guards.py",
+      "role": "Whole-family crossfold clone/ambiguity exclusions, final canonical loaders, deterministic holdout budget and final receipts.",
+      "sha256": "aa6a61bb14e389d3073d8a787283fecd8ed7f78617750656996eb6339dc98cb4"
+    },
+    {
+      "path": "examples/prepare_public_spanish_language.py",
+      "role": "Public reproducible CLI using explicit canonical input paths/SHA and bounded pinned public-source download. Standard library plus pure schema validation modules only. Frozen private helpers are preserved.",
+      "sha256": "5f7d2cae709b6e68770eb80827dc0c1be67d390d635ed56e98a22225c65b3ce4"
+    }
+  ],
+  "pretrainedWeightsUsedForPreparation": false,
+  "publicHelperCodeReview": {
+    "findingsResolved": 3,
+    "frozenDataOrPrivateHelperChanges": false,
+    "helperSha256": "5f7d2cae709b6e68770eb80827dc0c1be67d390d635ed56e98a22225c65b3ce4",
+    "remainingBlockingFindings": 0,
+    "reviewReceiptSha256": "98e8ce9c3990a050bd4191c608e84ce9f3ac254d0c3cfea7f267cd1d38255b7d",
+    "reviewers": "Two other assistants of the same project; unblinded read-only code inspection, no human or external panel.",
+    "reviewersRanModelsOrDownloads": false,
+    "testsSha256": "ff81855d0c42917c6817638e4d6a7bd2790132fe21c7eb0a109a839b1e9877df"
+  },
+  "purpose": "Reproducible public-source Spanish language data preparation for own random-root model training; this is ingestion evidence, not demonstrated conversation competence.",
+  "schemaVersion": 1,
+  "sftCorpus": {
+    "byDatasetAndSplit": {
+      "OpenAssistant/oasst1": {
+        "test": 1538,
+        "train": 11179,
+        "validation": 1342
+      },
+      "Unidad project-authored Spanish basics and style": {
+        "test": 4,
+        "train": 110,
+        "validation": 6
+      },
+      "literal-copy-v1": {
+        "test": 875,
+        "train": 5250,
+        "validation": 875
+      },
+      "unidad-conversation-focus-v1": {
+        "test": 66,
+        "train": 432,
+        "validation": 42
+      },
+      "unidad-conversation-recovery-v1": {
+        "test": 221,
+        "train": 1630,
+        "validation": 221
+      },
+      "unidad-grounded-conversations-v1": {
+        "test": 1296,
+        "train": 10368,
+        "validation": 1296
+      },
+      "unidad-natural-basics-v2": {
+        "test": 420,
+        "train": 2708,
+        "validation": 420
+      },
+      "unidad-natural-diversity-v2": {
+        "test": 696,
+        "train": 5568,
+        "validation": 696
+      },
+      "unidad-open-facts-v2": {
+        "test": 760,
+        "train": 4560,
+        "validation": 760
+      },
+      "unidad-rich-spanish-dialogues-v1": {
+        "test": 16,
+        "train": 96,
+        "validation": 8
+      },
+      "unidad-variable-flow-v1": {
+        "test": 965,
+        "train": 6961,
+        "validation": 966
+      }
+    },
+    "bytes": 68194225,
+    "families": 6533,
+    "fullCanonicalOasstRecordsBeforeGuard": 14097,
+    "historicalAuthoredSyntheticRecordsRetained": 48172,
+    "ingestionGuards": {
+      "allAuthoredSyntheticAndReviewedRichRecordsRetained": true,
+      "canonicalLoaderPassed": true,
+      "criterion": "exclude ALL OASST families participating in exact normalized full-dialogue or full-prompt crosssplit collisions; no fold moves; no model outputs or scores used",
+      "excludedRecordsByHistoricalSplit": {
+        "test": 11,
+        "train": 21,
+        "validation": 6
+      },
+      "fullNormalizedDialogueCrossSplitCollisionsRemaining": 0,
+      "fullNormalizedPromptCrossSplitCollisionsRemaining": 0,
+      "recordsExcluded": 38,
+      "remainingRawCanonicalLinesIdsGroupsFoldsMessagesSourcesPreserved": true,
+      "wholeOasstFamiliesExcluded": 9
+    },
+    "manifestPath": "private/conversation/public-general-es-v1/general-spanish-sft-mix-v2.manifest.json",
+    "manifestSha256": "3b1597eb912cd9590fe76f4f26d1731dddad529d0f1686c06958dbf7c4520fd9",
+    "path": "private/conversation/public-general-es-v1/general-spanish-sft-mix-v2.jsonl",
+    "priorFullCandidatePreserved": {
+      "path": "private/conversation/public-general-es-v1/general-spanish-sft-mix-v1.jsonl",
+      "records": 62389,
+      "sha256": "bebf0c5c308294af238503ad1ec74683be6552cdb269f22f86fa1b76673fbb4a"
+    },
+    "records": 62351,
+    "reviewedHumanOasstRecordsAfterGuard": 14059,
+    "reviewedRichAuthoredSyntheticRecordsAdded": 120,
+    "samplingWeights": "Chosen separately by training driver; not encoded as duplicated records in corpus.",
+    "schemaKeys": [
+      "id",
+      "groupId",
+      "split",
+      "source",
+      "messages"
+    ],
+    "sha256": "e123b93c45521ad8d344304bf7eed29602aed9d7c1e3441e3de84e7e45f32116",
+    "splits": {
+      "test": 6857,
+      "train": 48862,
+      "validation": 6632
+    }
+  },
+  "sourceReviews": {
+    "licenseReceiptSha256": "1107b11ad32c9ef39ad59fe6e96a154039d04b9931b234b1893b9255c1b00e63",
+    "primary": "Project assistant; unblinded deterministic TRAIN-only source sanity inspection of eight OASST plus eight Wikipedia snippets.",
+    "primaryReviewSha256": "8088df19e429145e706296e1fe8529de419ef3a8c4202a2460a3649275be934b",
+    "secondReviewer": "Another assistant of the same project; unblinded read-only code/provenance/hash/holdout/license review. No human or external independent panel.",
+    "secondReviewerResult": "No blocking ingestion issues; manifest and source hashes verified; no model or tokenizer run.",
+    "sourceInspectionSha256": "9c351bd69f92dbbf0346d9993a8b4c3f904a57b0d0e7edccc3cf851792267110"
+  },
+  "sources": {
+    "historicalAuthoredSynthetic": {
+      "inputSha256": "9cc6a59e35b53f8f004f51dd360344b62458fcbe2a17d5f600cd2df404e4f71e",
+      "provenance": "Existing authored curricula retained with original source kind, ids, family partitions and targets; historical development exposure unchanged.",
+      "records": 48172
+    },
+    "oasst": {
+      "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+      "dataset": "OpenAssistant/oasst1",
+      "datasetUrl": "https://huggingface.co/datasets/OpenAssistant/oasst1",
+      "declaredLicense": "Apache-2.0",
+      "historicalWholeTreeSplitsPreserved": true,
+      "importReceiptSha256": "1ce35d80dfa3c82990a625dd3f1911a655a120c8b283323e5e0999b4df538d4c",
+      "kind": "public-human-reviewed",
+      "language": "es",
+      "licenseUrl": "https://huggingface.co/datasets/OpenAssistant/oasst1/blob/fdf72ae0827c1cda404aff25b6603abec9e3399b/LICENSE",
+      "rawSourceSha256": "2a9a8fd343e9b28e04a895a669d3253f82d93e9c174d440199ae19d5fafbdff7",
+      "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+      "sourceFilters": {
+        "accepted_messages": 21135,
+        "ancestor_filtered": 1395,
+        "deleted_or_unspecified": 265,
+        "label_lang_mismatch": 22,
+        "label_not_appropriate": 341,
+        "label_pii": 11,
+        "label_spam": 23,
+        "low_quality": 660,
+        "not_positively_reviewed": 123,
+        "other_language": 64863,
+        "source_messages": 88838,
+        "source_trees": 10364
+      },
+      "textExtraction": "Unique messageIds from canonical prefixes; raw content alone, source role retained only in metadata.",
+      "upstreamReviewFilters": "Spanish, positively reviewed, not deleted, no flagged synthetic/model_name source; filter low-quality/spam/PII/inappropriate/language-mismatch labels; reject descendants of filtered ancestors."
+    },
+    "richSpanishDialogs": {
+      "builderPath": "examples/build_rich_spanish_dialogues.py",
+      "builderSha256": "a8fefd872b5a12f325eeda69fc46329ca36a83ab3d01451d566377dac5398e71",
+      "corpusSha256": "f6faaaea7ee314bc16affe2395a6b0149a3a29b2537d955d40e92001aa5389ee",
+      "dataset": "unidad-rich-spanish-dialogues-v1",
+      "families": 30,
+      "kind": "authored-synthetic",
+      "provenance": "Fictional examples authored by the project assistant; no owner chat or external generation API. Reviewed corpus replaces preserved draft, not combined with draft.",
+      "records": 120,
+      "splits": {
+        "test": 16,
+        "train": 96,
+        "validation": 8
+      }
+    },
+    "wikipedia": {
+      "articleAttributionMetadataRetained": [
+        "pageId",
+        "title",
+        "url",
+        "attributionHistoryUrl",
+        "snapshotDate",
+        "revision",
+        "articleTextSha256"
+      ],
+      "articleRevisionIdsSupplied": false,
+      "ccBySa3LegalUrl": "https://creativecommons.org/licenses/by-sa/3.0/legalcode",
+      "ccBySa4LegalUrl": "https://creativecommons.org/licenses/by-sa/4.0/legalcode",
+      "configuration": "20231101.es",
+      "dataset": "wikimedia/wikipedia",
+      "datasetUrl": "https://huggingface.co/datasets/wikimedia/wikipedia",
+      "filterReasonCounts": {
+        "short_article_below_150_words": 1328,
+        "weak_spanish_function_word_signal": 4
+      },
+      "hfDeclaredLicenses": [
+        "CC-BY-SA-3.0",
+        "GFDL"
+      ],
+      "kind": "public-encyclopedic",
+      "licenseVersionNote": "The pinned HF card declares 3.0 while the present official Wikimedia legal page says 4.0. Record license=3.0 is the HF declaration, not independent article-by-article rights certification. Some text may be CC-only; do not claim all text is dual-licensed. Preserve original article attribution and source legal receipts for redistribution.",
+      "modelBasedSourceSelection": false,
+      "officialWikimediaCurrentDeclaredLicenses": [
+        "CC-BY-SA-4.0",
+        "GFDL"
+      ],
+      "officialWikimediaCurrentLegalUrl": "https://dumps.wikimedia.org/legal.html",
+      "pinnedCardUrl": "https://huggingface.co/datasets/wikimedia/wikipedia/raw/b04c8d1ceb2f5cd4588862100d08de323dccfbaa/README.md",
+      "qualityFilters": {
+        "minimumDistinctSpanishFunctionWords": 8,
+        "minimumLetterFractionOfNonWhitespace": 0.45,
+        "minimumSpanishFunctionWordOccurrences": 20,
+        "minimumUnicodeWords": 150,
+        "nonArticleNamespacesExcluded": [
+          "anexo:",
+          "wikipedia:",
+          "portal:",
+          "categoría:",
+          "archivo:",
+          "plantilla:",
+          "ayuda:",
+          "discusión:",
+          "usuario:"
+        ],
+        "nonTextControlsExcluded": true,
+        "reservedControlTokensExcluded": [
+          "<pad>",
+          "<bos>",
+          "<eos>",
+          "<system>",
+          "<user>",
+          "<assistant>"
+        ],
+        "serverTruncatedCellsRejected": true
+      },
+      "retainedArticleFamilies": 3068,
+      "retainedTextChunks": 3082,
+      "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+      "rowApiRevisionHeadersVerified": true,
+      "sampledApiPages": 44,
+      "sampledArticles": 4400,
+      "sampling": "page=(order*7919+37) mod ceil(1841155/100); 100 rows/page, four-page batches; stop after TRAIN Wikipedia Unicode words>=2000000",
+      "snapshotDate": "2023-11-01",
+      "sourceTotalArticles": 1841155
+    }
+  },
+  "stdlibIngestionTests": {
+    "capabilityEvaluation": false,
+    "downloadsModelsOrTorchUsed": false,
+    "path": "tests/test_prepare_public_spanish_language.py",
+    "scope": "Whole-family clone exclusions, original folds, preserving all full canonical human records when replacing prior subset, mismatch rejection, whole-family heldout budget, exact UTF8 chunks and refusing file/directory overwrite. Also reject mixed authored/public ambiguous families and input hash mutation instead of blessing a new identity. Treat missing and explicit shared default system as the same effective runtime prompt.",
+    "sha256": "ff81855d0c42917c6817638e4d6a7bd2790132fe21c7eb0a109a839b1e9877df",
+    "testsPassed": 12
+  },
+  "testScoringPerformed": false,
+  "textCorpus": {
+    "bytes": 36194268,
+    "content": "Wikipedia raw article text chunks and unique reviewed OASST message text; no role wrappers or invented dialogue turns. Metadata is not training target.",
+    "families": 5657,
+    "holdoutSelection": {
+      "foldsMoved": 0,
+      "frozenBeforeAnyFitOrModelScore": true,
+      "maximumOasstFamiliesPerHeldout": 128,
+      "maximumWikipediaFamiliesPerHeldout": 64,
+      "method": "ascending sha256(unidad-public-general-holdout-v1 + NUL + groupId), whole retained family only; include if entire family fits per-source budget",
+      "perHeldoutSourceCharacterCap": 250000,
+      "sourceReceiptsRetainedInPrivateManifest": true,
+      "trainPolicy": "all guarded TRAIN records"
+    },
+    "ingestionGuards": {
+      "criterion": "Exclude entire OASST families implicated in raw exact-text crossfold clones or SFT crossfold prompt/dialogue ambiguity; preserve all remaining historical folds. Global exact-text dedup before selection. No model scores or evaluation answers used.",
+      "exactDuplicateMessagesRemovedBeforeGuard": 49,
+      "excludedTextRecordsByHistoricalSplit": {
+        "test": 50,
+        "train": 125,
+        "validation": 33
+      },
+      "globalExactTextDuplicatesRemaining": 0,
+      "rawCrossfoldCloneMessageIds": 32,
+      "rawCrossfoldExactTextClasses": 11,
+      "retainedPoolTextRecordsExcluded": 208,
+      "sourceUniqueMessageIdsBeforeDedup": 19628,
+      "strictCanonicalLoaderPassed": true,
+      "wholeHumanFamiliesExcluded": 30
+    },
+    "manifestPath": "private/conversation/public-general-es-v1/general-es-text-v2.manifest.json",
+    "manifestSha256": "edaa4e8228eb83c443d4c61213ab85dddcd8346e916cebba17cac356705da193",
+    "maximumRecordTextUtf8Bytes": 65536,
+    "ownBpeTokenCounts": {
+      "corpusSha256": "dda15f4bda91e960e4b80247104017bf060c6e34890099dae4ace782a9302c40",
+      "countingThreads": 1,
+      "countsBySplitAndSource": {
+        "test": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "contentTokens": 66245,
+              "eosTargets": 403,
+              "families": 80,
+              "maxContentTokensPerRecord": 1698,
+              "records": 403,
+              "targetTokens": 66648,
+              "windowsContext512": 422
+            },
+            "wikimedia/wikipedia": {
+              "contentTokens": 73856,
+              "eosTargets": 48,
+              "families": 48,
+              "maxContentTokensPerRecord": 10974,
+              "records": 48,
+              "targetTokens": 73904,
+              "windowsContext512": 169
+            }
+          },
+          "contentTokens": 140101,
+          "eosTargets": 451,
+          "families": 128,
+          "maxContentTokensPerRecord": 10974,
+          "records": 451,
+          "targetTokens": 140552,
+          "windowsContext512": 591
+        },
+        "train": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "contentTokens": 2571428,
+              "eosTargets": 15433,
+              "families": 2951,
+              "maxContentTokensPerRecord": 5452,
+              "records": 15433,
+              "targetTokens": 2586861,
+              "windowsContext512": 16412
+            },
+            "wikimedia/wikipedia": {
+              "contentTokens": 3704264,
+              "eosTargets": 2473,
+              "families": 2463,
+              "maxContentTokensPerRecord": 17483,
+              "records": 2473,
+              "targetTokens": 3706737,
+              "windowsContext512": 8377
+            }
+          },
+          "contentTokens": 6275692,
+          "eosTargets": 17906,
+          "families": 5414,
+          "maxContentTokensPerRecord": 17483,
+          "records": 17906,
+          "targetTokens": 6293598,
+          "windowsContext512": 24789
+        },
+        "validation": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "contentTokens": 63058,
+              "eosTargets": 440,
+              "families": 91,
+              "maxContentTokensPerRecord": 1430,
+              "records": 440,
+              "targetTokens": 63498,
+              "windowsContext512": 451
+            },
+            "wikimedia/wikipedia": {
+              "contentTokens": 68397,
+              "eosTargets": 25,
+              "families": 24,
+              "maxContentTokensPerRecord": 16642,
+              "records": 25,
+              "targetTokens": 68422,
+              "windowsContext512": 146
+            }
+          },
+          "contentTokens": 131455,
+          "eosTargets": 465,
+          "families": 115,
+          "maxContentTokensPerRecord": 16642,
+          "records": 465,
+          "targetTokens": 131920,
+          "windowsContext512": 597
+        }
+      },
+      "encoding": "Tokenizer.encode(raw text, add_special_tokens=False); metadata/roles/system/BOS are not content or targets. One EOS target per text record.",
+      "fitOrRefitForCounting": false,
+      "inferenceOrLossComputed": false,
+      "modelLoaded": false,
+      "receiptPath": "private/conversation/public-general-es-v1/general-es-text-v2-own-bpe-token-counts-v1.json",
+      "receiptSha256": "415e32cfa50f972cae1f6029badcd56f3bc27e398aea45452817bda81608e8fa",
+      "testScoringPerformed": false,
+      "tokenizerPreviouslyFitByTrainingWorker": true,
+      "tokenizerSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+      "tokenizerVocabularySize": 8192,
+      "torchImported": false,
+      "windowDefinition": "sum ceil((len(content ids)+1)/512) over records; matches causal-LM target window count, not a training timing benchmark"
+    },
+    "path": "private/conversation/public-general-es-v1/general-es-text-v2.jsonl",
+    "poolBeforeHoldoutBudget": {
+      "bytes": 43471030,
+      "path": "private/conversation/public-general-es-v1/general-es-text-pool-v2.jsonl",
+      "sha256": "48cd1beae90ca7c17b7e8be16ea215a9db87a4cc68b906d4f95e39ce8c3ffa35",
+      "splits": {
+        "test": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "characters": 1327207,
+              "families": 409,
+              "records": 2106,
+              "unicodeWordCount": 210872,
+              "utf8Bytes": 1350753
+            },
+            "wikimedia/wikipedia": {
+              "characters": 1845580,
+              "families": 320,
+              "records": 322,
+              "unicodeWordCount": 288700,
+              "utf8Bytes": 1887282
+            }
+          },
+          "families": 729,
+          "records": 2428
+        },
+        "train": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "characters": 9831544,
+              "families": 2951,
+              "records": 15433,
+              "unicodeWordCount": 1556009,
+              "utf8Bytes": 10015514
+            },
+            "wikimedia/wikipedia": {
+              "characters": 12999985,
+              "families": 2463,
+              "records": 2473,
+              "unicodeWordCount": 2028450,
+              "utf8Bytes": 13260387
+            }
+          },
+          "families": 5414,
+          "records": 17906
+        },
+        "validation": {
+          "bySource": {
+            "OpenAssistant/oasst1": {
+              "characters": 1158988,
+              "families": 366,
+              "records": 1832,
+              "unicodeWordCount": 185709,
+              "utf8Bytes": 1180102
+            },
+            "wikimedia/wikipedia": {
+              "characters": 1525989,
+              "families": 285,
+              "records": 287,
+              "unicodeWordCount": 239402,
+              "utf8Bytes": 1557801
+            }
+          },
+          "families": 651,
+          "records": 2119
+        }
+      }
+    },
+    "records": 18822,
+    "schemaKeys": [
+      "id",
+      "groupId",
+      "split",
+      "source",
+      "text"
+    ],
+    "sha256": "dda15f4bda91e960e4b80247104017bf060c6e34890099dae4ace782a9302c40",
+    "splits": {
+      "test": {
+        "bySource": {
+          "OpenAssistant/oasst1": {
+            "characters": 249937,
+            "families": 80,
+            "records": 403,
+            "unicodeWordCount": 39816,
+            "utf8Bytes": 254254
+          },
+          "wikimedia/wikipedia": {
+            "characters": 249686,
+            "families": 48,
+            "records": 48,
+            "unicodeWordCount": 39111,
+            "utf8Bytes": 255825
+          }
+        },
+        "families": 128,
+        "records": 451
+      },
+      "train": {
+        "bySource": {
+          "OpenAssistant/oasst1": {
+            "characters": 9831544,
+            "families": 2951,
+            "records": 15433,
+            "unicodeWordCount": 1556009,
+            "utf8Bytes": 10015514
+          },
+          "wikimedia/wikipedia": {
+            "characters": 12999985,
+            "families": 2463,
+            "records": 2473,
+            "unicodeWordCount": 2028450,
+            "utf8Bytes": 13260387
+          }
+        },
+        "families": 5414,
+        "records": 17906
+      },
+      "validation": {
+        "bySource": {
+          "OpenAssistant/oasst1": {
+            "characters": 249949,
+            "families": 91,
+            "records": 440,
+            "unicodeWordCount": 40028,
+            "utf8Bytes": 254503
+          },
+          "wikimedia/wikipedia": {
+            "characters": 249633,
+            "families": 24,
+            "records": 25,
+            "unicodeWordCount": 39241,
+            "utf8Bytes": 254969
+          }
+        },
+        "families": 115,
+        "records": 465
+      }
+    },
+    "textNormalization": "none; raw Unicode and line breaks preserved",
+    "tokenCount": 6293598,
+    "tokenCountDefinition": "TRAIN causal-LM targets: exact own-BPE content tokens plus one EOS per text record. Word counts and token counts are different measurements.",
+    "trainCharacters": 22831529,
+    "trainContentTokens": 6275692,
+    "trainEosTargets": 17906,
+    "trainUnicodeWordCount": 3584459,
+    "trainUtf8TextBytes": 23275901,
+    "trainWindowsContext512": 24789
+  },
+  "tokenizerFitPerformedForThisReceipt": false
+}

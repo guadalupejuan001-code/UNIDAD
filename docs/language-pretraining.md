@@ -113,3 +113,31 @@ Los ejemplos ficticios del proyecto se identifican como `authored-synthetic`.
 El historial personal del creador no se usa como entrenamiento. Una prueba de
 desarrollo repetida sirve para comparar cambios; no sustituye una evaluación
 final ni demuestra conversación general o programación autónoma.
+
+## Preparar textos públicos y diálogos
+
+El [preparador de corpus públicos](../examples/prepare_public_spanish_language.py)
+recibe el corpus español canónico de OASST y su manifiesto de importación, la
+mezcla conversacional anterior y los diálogos ficticios nuevos. Exige los hashes
+SHA-256 de estos dos últimos inputs. Sustituye el subconjunto humano anterior
+por su fuente completa y conserva los ejemplos propios y sus particiones.
+Descarga textos de la revisión fija `20231101.es` de Wikipedia, conserva la
+atribución y no carga modelos ni ajusta un tokenizador.
+
+```bash
+python examples/prepare_public_spanish_language.py --help
+```
+
+El directorio de salida debe ser nuevo. Produce `text.jsonl`, `sft.jsonl` y un
+manifiesto con las fuentes y hashes. Elimina familias OASST implicadas en
+duplicados de texto o diálogos entre particiones; limita validación y test de
+texto por familias completas antes de entrenar. No selecciona datos usando
+respuestas o pérdidas de un modelo. Los duplicados semánticos y los errores
+factuales de las fuentes requieren evaluaciones distintas.
+
+El [registro de preparación](unidad-spanish-language-base-v1.json) documenta
+los corpus utilizados: 17.906 textos y 48.862 diálogos de entrenamiento. El
+recuento del BPE propio distingue palabras, tokens y objetivos EOS; contar
+los textos de test no equivale a puntuarlos con el modelo. Las declaraciones
+de licencia de la ficha fija de Wikipedia y de su documentación legal actual
+se conservan por separado con sus enlaces.

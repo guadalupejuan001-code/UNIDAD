@@ -198,6 +198,15 @@ explica los formatos, la reanudación y una configuración nativa de 6.967.296
 parámetros con contexto de 512 tokens. Pasaron 287 pruebas técnicas; disponer de
 esta ruta de aprendizaje no demuestra que el nuevo modelo converse bien.
 
+La [base pública de español](docs/unidad-spanish-language-base-v1.json) conserva
+la procedencia y las particiones de 3,58 millones de palabras de entrenamiento,
+equivalentes a 6,29 millones de objetivos con el BPE propio de 8.192 tokens.
+Combina textos de Wikipedia con mensajes humanos revisados de OASST; el ajuste
+posterior usa diálogos humanos y ejemplos ficticios identificados del proyecto.
+El [preparador reproducible](examples/prepare_public_spanish_language.py) recibe
+las rutas y hashes de los corpus revisados y conserva familias completas. No
+lee el historial personal ni descarga pesos de otros modelos.
+
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6
 del padre. Aún falla al recuperar ciudades y puede repetir sílabas. Para probarla:
