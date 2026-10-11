@@ -26,14 +26,6 @@ class ModelUnavailableError(ModelRuntimeError):
 
 LANGUAGE_KEYS = {"prompt", "length", "temperature", "seed"}
 ATTENTION_KEYS = {"observations", "signal_id", "as_of", "historical", "source", "metric"}
-CONVERSATION_KEYS = {"messages", "max_new_tokens", "temperature", "seed"}
-CONVERSATION_SCHEMA = {"type": "object", "additionalProperties": False, "required": ["messages"], "properties": {
-    "messages": {"type": "array", "minItems": 1, "maxItems": 64, "items": {
-        "type": "object", "additionalProperties": False, "required": ["role", "content"], "properties": {
-            "role": {"enum": ["system", "user", "assistant"]}, "content": {"type": "string"}}}},
-    "max_new_tokens": {"type": "integer", "minimum": 1, "maximum": 1024, "default": 96},
-    "temperature": {"type": "number", "minimum": 0, "maximum": 2, "default": 0.7},
-    "seed": {"type": "integer", "minimum": 0, "maximum": 2**63 - 1, "default": 42}}}
 INPUT_SCHEMAS = {
     "language.generate": {"type": "object", "additionalProperties": False, "properties": {
         "prompt": {"type": "string", "maxLength": 4096, "default": ""},
@@ -125,15 +117,14 @@ class ModelRuntime:
                 raise ModelRuntimeError("The conversation artifact must be a host-configured local path")
             # Optional dependencies and scratch-trained weights are loaded only
             # when explicitly selected. Legacy bodies never import torch here.
-            from ..conversation.artifacts import load_artifact
-            self._conversation = load_artifact(Path(conversation_model))
-            model, _, manifest = self._conversation
+            from ..conversation.runtime import ConversationEngine, REPLY_INPUT_SCHEMA
+            self._conversation = ConversationEngine(conversation_model)
             self._capabilities["operations"].append("conversation.reply")
             self._capabilities["inputSchemas"] = deepcopy(INPUT_SCHEMAS)
-            self._capabilities["inputSchemas"]["conversation.reply"] = CONVERSATION_SCHEMA
+            self._capabilities["inputSchemas"]["conversation.reply"] = deepcopy(REPLY_INPUT_SCHEMA)
             self._capabilities["models"]["conversation"] = {
-                "available": True, "modelId": manifest["modelId"],
-                "parameterCount": sum(parameter.numel() for parameter in model.parameters()),
+                "available": True, "modelId": self._conversation.model_id,
+                "parameterCount": self._conversation.parameter_count,
                 "task": "conversation_token_generation", "instructionFollowingValidated": False,
                 "generalLanguageUnderstandingValidated": False, "workerCapabilityValidated": False}
 
@@ -198,22 +189,11 @@ class ModelRuntime:
     def _validate_conversation(self, values, *, allow_refs=False):
         if self._conversation is None:
             raise ModelUnavailableError("Configure a local conversation model to enable conversation.reply")
-        if type(values) is not dict or set(values) - CONVERSATION_KEYS or "messages" not in values:
+        from ..conversation.runtime import REPLY_KEYS, validate_reply_request
+        if type(values) is not dict or set(values) - REPLY_KEYS or "messages" not in values:
             raise ModelRuntimeError("conversation.reply requires messages and only known input fields")
-        for key, value in values.items():
-            if _is_reference(value, allow_refs):
-                continue
-            if key == "messages":
-                from ..conversation.tokenizer import validate_messages
-                messages = validate_messages(value)
-                if messages[-1]["role"] != "user":
-                    raise ModelRuntimeError("Conversation messages must end with an explicit user turn")
-            elif key == "max_new_tokens":
-                language.integer(value, key, 1, 1024)
-            elif key == "seed":
-                language.integer(value, key)
-            elif not 0 <= language.number(value, key) <= 2:
-                raise ModelRuntimeError("temperature must be in [0, 2]")
+        literals = {key: value for key, value in values.items() if not _is_reference(value, allow_refs)}
+        validate_reply_request(literals, partial=allow_refs)
 
     def execute(self, operation, inputdict):
         """Dispatch pure local inference using fixed, previously loaded artifacts."""
@@ -222,10 +202,7 @@ class ModelRuntime:
         request = deepcopy(inputdict)
         observations = self._validate_input(operation, request)
         if operation == "conversation.reply":
-            from ..conversation.model import chat
-            model, tokenizer, manifest = self._conversation
-            result = chat(model, tokenizer, **request)
-            return {**result, "modelId": manifest["modelId"], "workerCapabilityValidated": False}
+            return self._conversation.reply(**request)
         if operation == "language.generate":
             return language.generate(self._language, **request)
         signal_id = request.get("signal_id")

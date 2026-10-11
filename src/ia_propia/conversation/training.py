@@ -111,7 +111,8 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            if not isinstance(supplied, dict) or set(supplied) - set(defaults):
+            allowed = set(defaults) | ({"window_policy"} if result is training else set())
+            if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
     ints = {"batch_size": (1, 256), "max_epochs": (1, 100000),
@@ -128,13 +129,30 @@ def _configs(model_config, training_config):
         value = training[key]
         if type(value) not in (int, float) or not math.isfinite(value) or not low < value <= high:
             raise ValueError(f"Invalid {key}")
+    if training.get("window_policy", "contiguous_nonoverlapping") not in ("contiguous_nonoverlapping", "sliding_context"):
+        raise ValueError("Invalid window_policy")
     # Constructor validates architecture; the requested vocabulary is bounded before fitting.
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
     return model, training
 
 
-def _encoded(records, tokenizer, context_length):
+def _window_ranges(input_length, context_length, window_policy):
+    if window_policy not in ("contiguous_nonoverlapping", "sliding_context"):
+        raise ValueError("Invalid window_policy")
+    stride = context_length if window_policy == "contiguous_nonoverlapping" else max(1, context_length // 2)
+    previous_end = 0
+    for nominal_start in range(0, input_length, stride):
+        end = min(nominal_start + context_length, input_length)
+        start = nominal_start if window_policy == "contiguous_nonoverlapping" else max(0, end - context_length)
+        yield start, end, previous_end
+        previous_end = end
+        if end == input_length:
+            break
+
+
+def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping"):
+    """Retain causal input overlap; supervise each final-reply token exactly once."""
     from .tokenizer import ASSISTANT_ID, dialogue_tokens
     result = {"train": [], "validation": [], "test": []}
     for record in records:
@@ -143,9 +161,11 @@ def _encoded(records, tokenizer, context_length):
         labels = [token if teach else -100 for token, teach in zip(tokens[1:], supervised[1:])]
         last_assistant = max(index for index, token in enumerate(inputs) if token == ASSISTANT_ID)
         labels[:last_assistant] = [-100] * last_assistant
-        for start in range(0, len(inputs), context_length):
-            chunk_inputs = inputs[start:start + context_length]
-            chunk_labels = labels[start:start + context_length]
+        for start, end, previous_end in _window_ranges(len(inputs), context_length, window_policy):
+            chunk_inputs = inputs[start:end]
+            chunk_labels = labels[start:end]
+            overlap = max(0, previous_end - start)
+            chunk_labels[:overlap] = [-100] * overlap
             if any(label != -100 for label in chunk_labels):
                 result[record["split"]].append((chunk_inputs, chunk_labels))
     if any(not result[split] for split in result):
@@ -347,7 +367,7 @@ def _validate_resume_state(state, examples):
     actual = state["model_config"]
     if type(actual) is not dict or set(actual) != set(requested) or any(actual[key] != requested[key] for key in requested if key != "vocab_size") or type(actual["vocab_size"]) is not int or not 262 <= actual["vocab_size"] <= requested["vocab_size"]:
         raise ValueError("Checkpoint actual/requested model configuration disagree")
-    if state["assistant_targets"] != "last_reply_only" or state["window_policy"] != "contiguous_nonoverlapping":
+    if state["assistant_targets"] != "last_reply_only" or state["window_policy"] != config.get("window_policy", "contiguous_nonoverlapping"):
         raise ValueError("Unsupported checkpoint supervision policy")
     for key in ("step", "epoch", "cursor", "bad_validations"):
         if type(state[key]) is not int or state[key] < 0:
@@ -513,12 +533,12 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                      "bad_validations": 0, "last_validation_step": -1,
                      "last_checkpoint": None, "best_checkpoint": None,
                      "created_at": time.time(), "assistant_targets": "last_reply_only",
-                     "window_policy": "contiguous_nonoverlapping"}
+                     "window_policy": config.get("window_policy", "contiguous_nonoverlapping")}
             if lineage is not None:
                 state["lineage"] = lineage
             payload = None
         torch.set_num_threads(config["torch_threads"])
-        examples = _encoded(records, tokenizer, state["model_config"]["context_length"])
+        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
         optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"],
                                       weight_decay=config["weight_decay"])
         warmup = config["warmup_steps"]
@@ -675,7 +695,7 @@ def export_best(run_dir, export_dir):
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                 **_origin_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
-                "assistantTargets": "last_reply_only", "windowPolicy": "contiguous_nonoverlapping",
+                "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
     return save_artifact(export_dir, model, tokenizer, training=metadata, evaluation=None)
 
@@ -696,13 +716,13 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         records = load_corpus(path)
         if _sha(path) != state["corpus_sha256"]:
             raise ValueError("Corpus changed while loading")
-        examples = _encoded(records, tokenizer, state["model_config"]["context_length"])
+        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
         _torch().set_num_threads(state["training_config"]["torch_threads"])
         losses = _baseline(examples["train"], tokenizer.get_vocab_size())
         evaluation = {"schemaVersion": 1, "corpusSha256": state["corpus_sha256"],
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
-                      "assistantTargets": "last_reply_only", "windowPolicy": "contiguous_nonoverlapping",
+                      "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
                       "train": _evaluate(model, examples["train"], state["training_config"]["batch_size"]),
                       "validation": _evaluate(model, examples["validation"], state["training_config"]["batch_size"]),
                       "test": _evaluate(model, examples["test"], state["training_config"]["batch_size"]),

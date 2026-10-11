@@ -6,6 +6,47 @@ consulta otra IA para generar las respuestas. Es una primera etapa experimental:
 tener un checkpoint o reducir la pérdida no demuestra conversación competente,
 comprensión general ni capacidad para trabajar o programarse por sí misma.
 
+## Un recorrido compartido para el código
+
+`conversation/contract.py` define roles, tokens de control, límites, contexto
+predeterminado y parámetros de generación. La importación de datos, el tokenizador
+y la inferencia usan esas mismas constantes. `ConversationEngine` carga un
+artefacto local una vez y ofrece generación y puntuación sobre los mismos pesos.
+CLI, `Brain` y evaluación llaman a ese motor; sus adaptadores no implementan
+generadores alternativos ni cambian el modelo a partir de una petición.
+
+```mermaid
+flowchart LR
+    D[Conversaciones con procedencia y particiones] --> T[Entrenador propio]
+    T --> A[Pesos, configuración, tokenizador y manifiesto]
+    A --> E[ConversationEngine]
+    C[Contrato de mensajes y límites] --> D
+    C --> T
+    C --> E
+    E --> CLI[Consola]
+    E --> B[Brain: Python y HTTP]
+    E --> V[Evaluación de desarrollo]
+    B --> W[Flujos explícitos y herramientas del producto]
+```
+
+La conexión se hace a través de contratos pequeños y operaciones explícitas.
+Las redes de lenguaje anteriores y el especialista conservan sus parámetros y
+adaptadores. No se mezclan sus pesos ni se establece comunicación entre cada
+par de módulos. El cerebro coordina las operaciones suministradas por el producto.
+
+```python
+from ia_propia.conversation.runtime import ConversationEngine
+
+engine = ConversationEngine("models/conversation-spanish-v2")
+reply = engine.reply([{"role": "user", "content": "Hola."}])
+score = engine.score_reply([{"role": "user", "content": "Hola."}], "Hola, ¿cómo estás?")
+```
+
+`score_reply` recibe un candidato de desarrollo; no lo usa como respuesta ni
+entrena con él. La identidad y el manifiesto se pueden consultar con
+`engine.model_id` y `engine.manifest`. Una instancia comparte carga y pesos,
+y cada llamada aporta su contexto explícito.
+
 La configuración básica tiene **1.088.256 parámetros** cuando el vocabulario BPE
 alcanza 2.048 tokens: dimensión 128, cuatro capas, cuatro cabezas y contexto de
 256 tokens. Usa atención causal, normalización previa, GELU y una salida que
@@ -369,6 +410,117 @@ por HTTP autenticado; los detalles de cuerpos, herramientas y memoria están en
 pesos. El historial se envía explícitamente: registrar memoria no lo añade
 automáticamente al contexto, ni cambia los parámetros. Sin configurar un modelo
 conversacional, `conversation.reply` devuelve `capability_unavailable`.
+
+## Revisar si responde al contexto
+
+La batería [conversation-evaluation.json](../examples/conversation-evaluation.json)
+es de desarrollo, escrita con situaciones ficticias y separada del corpus de
+entrenamiento. Contiene 28 casos agrupados en 14 pares y siete familias. Cada
+par conserva el historial previo, cambia el último turno del usuario e
+intercambia literalmente dos candidatos. Incluye correcciones, destinatarios,
+preguntas actuales, aclaraciones y conexiones basadas en hechos disponibles.
+
+```bash
+unidad conversation assess \
+  --model models/conversation-spanish-v2 \
+  --cases examples/conversation-evaluation.json \
+  --output private/conversation/assessment-01.json \
+  --max-new-tokens 64 --temperature 0 --seed 42 --torch-threads 2
+```
+
+El informe guarda la respuesta realmente generada y la probabilidad condicional
+de cada candidato, incluyendo EOS. Cuando cabe, la puntuación usa una sola
+pasada causal; cuando excede el contexto, desliza la ventana igual que la
+generación. La distribución puntuada es la del entrenamiento, sin la máscara
+de tokens de control que aplica el muestreo. El orden de presentación no decide
+cuál candidato se puntúa primero ni cuál gana.
+
+Un par sólo cuenta como preferencia contextual correcta si el modelo prefiere
+la referencia en ambos casos. La suma de los márgenes cancela una preferencia
+incondicional por una respuesta, pues los textos están intercambiados.
+El informe agrega por familia y mantiene aparte la rúbrica de revisión humana.
+Preferir un candidato no demuestra poder generar una respuesta correcta.
+No hay puntuación humana automática ni aceptación de producción.
+
+`assess` no lee el corpus reservado ni ejecuta `finalize`. Rechaza archivos de
+salida existentes y destinos dentro de una corrida de entrenamiento, evitando
+crear accidentalmente su marcador `evaluation.json`. Conviene conservar cada
+informe con un nombre nuevo. Esta batería pequeña se usa para desarrollar el
+sistema; no debe presentarse como un test final independiente ni incorporarse
+a los ejemplos de enseñanza.
+
+## Etapa centrada en diálogo breve
+
+La [auditoría de ventanas](conversation-window-audit.json) encontró que el
+56,34 % de los tokens objetivo del corpus ampliado no recibía ninguna parte de
+la última pregunta en su ventana de entrenamiento. La pérdida podía mejorar
+aprendiendo continuaciones de texto sin aprender a responder a la persona.
+La auditoría sólo tokenizó `train`; no ejecutó el modelo ni evaluó conjuntos
+reservados.
+
+La política opcional `"window_policy": "sliding_context"` solapa hasta la mitad
+del contexto entre ventanas y enmascara los objetivos ya enseñados. Cada token
+de la última respuesta, incluido EOS, se aprende una sola vez. Las corridas
+antiguas conservan `contiguous_nonoverlapping`; se reanudan con sus reglas,
+pesos, cursor y estados originales. Cambiar la política requiere una etapa
+nueva, no modificar una corrida existente.
+
+Sobre el mismo corpus ampliado, la ausencia de pregunta baja al 50,31 %;
+las ventanas aumentan de 22.300 a 30.251. El solapamiento ayuda en los límites
+y conserva el contexto de los primeros tokens, pero una respuesta muy larga
+sigue perdiendo la pregunta en un contexto finito. Por eso el nuevo
+[preparador enfocado](../examples/prepare_focused_conversations.py) selecciona
+diálogos humanos de varios turnos que caben completos, además de los ejemplos
+sintéticos identificados del proyecto:
+
+```bash
+python examples/prepare_focused_conversations.py \
+  --input private/conversation/expanded-es-v1.jsonl \
+  --curriculum examples/conversation-focus-curriculum.jsonl \
+  --tokenizer models/conversation-spanish-v2/tokenizer.json \
+  --output private/conversation/focused-es-v1.jsonl
+```
+
+La selección depende de longitud, turnos y procedencia, sin consultar respuestas
+del modelo ni métricas. Mantiene los grupos y particiones originales, rechaza
+diálogos idénticos entre particiones antes de filtrar, y conserva todos los
+mensajes seleccionados. Los ejemplos sintéticos demasiado largos, si existen,
+se registran explícitamente. Los casos de evaluación anteriores no se usan
+como currículo.
+
+La preparación realizada produjo 1.075 registros en 450 familias: 885 para
+entrenamiento, 88 para validación y 102 reservados para test. Son 660 diálogos
+sintéticos identificados y 415 públicos revisados. Los 1.075 caben completos
+con el sistema predeterminado y el BPE propio; 666 de los registros de
+entrenamiento tienen varios turnos de usuario. El currículo nuevo contiene
+540 registros ficticios de 180 familias. No se entrenó con este chat.
+
+Se inicia la nueva etapa con `--initial-model` y un archivo de configuración
+que indique la política nueva; conserva el tokenizador y los pesos propios,
+y reinicia optimizador y calendario. El presupuesto se calcula con el tiempo
+restante del día solicitado, sin abrir otras 24 horas por etapa. Las pérdidas
+de corpus o políticas diferentes no constituyen una comparación directa de
+competencia; hay que conservar las respuestas y evaluar las mismas preguntas.
+
+En esta etapa concentrada, la validación bajó de 3,9018 a 3,7806 en el paso
+200 y después empeoró hasta 4,7830 en el paso 1.400, mientras mejoraba el
+entrenamiento. Se pausó por esa evidencia de sobreajuste y se conservó el paso
+200 en [conversation-context-v3](../models/conversation-context-v3/README.md).
+Sus respuestas de desarrollo siguen sin cumplir las tareas; no se acepta como
+conversación competente.
+
+La etapa posterior amplía sólo los diálogos breves, incluyendo un turno de
+usuario además de los de varios turnos. Se prepara con el mismo helper y
+`--min-human-turns 2`, en un destino nuevo `balanced-short-es-v1.jsonl`.
+Contiene 5.608 registros: 4.466 train, 530 validation y 612 test, todos completos
+en el contexto. Conserva los 660 sintéticos y añade variedad con 4.948 diálogos
+públicos revisados. Su tasa de aprendizaje es 0,0001, frente a 0,0003 en la
+etapa concentrada; se inicializa desde el mejor modelo anterior.
+`private/conversation/runs/balanced-short-v1` es la corrida que continúa.
+
+Estas decisiones de datos y parámetros se prepararon con código y comandos
+explícitos. El entrenador guarda checkpoints y detiene una corrida cuando
+deja de mejorar; Unidad no elige por sí misma el currículo ni modifica su código.
 
 ## Portabilidad y siguientes etapas
 

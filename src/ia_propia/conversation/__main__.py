@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 
 from ..brain.protocol import MAX_REQUEST_BYTES, decode_json
+from .runtime import DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED, DEFAULT_TEMPERATURE
 
 
 def parser(prog=None):
@@ -40,14 +41,22 @@ def parser(prog=None):
     snapshot = commands.add_parser("snapshot", help="Exportar el mejor checkpoint disponible sin evaluar test ni detener el entrenamiento")
     snapshot.add_argument("--run-dir", type=Path, required=True)
     snapshot.add_argument("--output", type=Path, required=True)
+    assessment = commands.add_parser("assess", help="Revisar conversación y contexto sin entrenar ni evaluar el test final")
+    assessment.add_argument("--model", type=Path, required=True)
+    assessment.add_argument("--cases", type=Path, required=True)
+    assessment.add_argument("--output", type=Path, help="Archivo JSON nuevo para conservar respuestas y puntuaciones")
+    assessment.add_argument("--max-new-tokens", type=int, default=64)
+    assessment.add_argument("--temperature", type=float, default=0)
+    assessment.add_argument("--seed", type=int, default=42)
+    assessment.add_argument("--torch-threads", type=int, default=2)
     chatting = commands.add_parser("chat", help="Generar una respuesta real con un modelo local configurado")
     chatting.add_argument("--model", type=Path, required=True)
     inputs = chatting.add_mutually_exclusive_group(required=True)
     inputs.add_argument("--message", help="Texto de un turno del usuario")
     inputs.add_argument("--messages", help="Archivo JSON de mensajes de varios turnos, o - para la entrada estándar")
-    chatting.add_argument("--max-new-tokens", type=int, default=96)
-    chatting.add_argument("--temperature", type=float, default=0.7)
-    chatting.add_argument("--seed", type=int, default=42)
+    chatting.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
+    chatting.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
+    chatting.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return root
 
 
@@ -100,21 +109,18 @@ def main(argv=None, *, prog=None):
         elif args.command == "snapshot":
             from .training import export_best
             result = export_best(args.run_dir, args.output)
+        elif args.command == "assess":
+            from .assessment import assess
+            result = assess(args.model, args.cases, output=args.output,
+                max_new_tokens=args.max_new_tokens, temperature=args.temperature,
+                seed=args.seed, torch_threads=args.torch_threads)
         else:
             messages = [{"role": "user", "content": args.message}] if args.message is not None else _read_json(args.messages)
-            from .tokenizer import integer, number, validate_messages
-            messages = validate_messages(messages)
-            if messages[-1]["role"] != "user":
-                raise ValueError("Conversation messages must end with an explicit user turn")
-            integer(args.max_new_tokens, "max_new_tokens", 1, 1024)
-            number(args.temperature, "temperature", 0, 2)
-            integer(args.seed, "seed")
-            from .artifacts import load_artifact
-            from .model import chat
-            model, tokenizer, manifest = load_artifact(args.model)
-            result = {**chat(model, tokenizer, messages, max_new_tokens=args.max_new_tokens,
-                temperature=args.temperature, seed=args.seed), "modelId": manifest["modelId"],
-                "workerCapabilityValidated": False}
+            from .runtime import ConversationEngine, validate_reply_request
+            values = {"messages": messages, "max_new_tokens": args.max_new_tokens,
+                      "temperature": args.temperature, "seed": args.seed}
+            validate_reply_request(values)
+            result = ConversationEngine(args.model).reply(**values)
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
         return 0
     except ImportError:

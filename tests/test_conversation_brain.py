@@ -87,7 +87,7 @@ class ConversationBrainTests(unittest.TestCase):
             brain = Brain(Path(self.state.name) / "other", conversation_model=self.artifact)
             first, second = brain.connect("first"), brain.connect("second")
             self.assertIs(first.models, second.models)
-            self.assertIs(first.models._conversation[0], second.models._conversation[0])
+            self.assertIs(first.models._conversation, second.models._conversation)
             values = {"messages": [{"role": "user", "content": "Hola"}], "max_new_tokens": 5,
                       "temperature": 0.8, "seed": 19}
             original = copy.deepcopy(values)

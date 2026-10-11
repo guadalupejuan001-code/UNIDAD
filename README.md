@@ -111,11 +111,52 @@ conserva la comparación y el estado observado. Esta etapa sigue siendo experime
 Su [instantánea exportada](models/conversation-spanish-v2/README.md) se puede
 usar desde los productos sin instalar el corpus. Unidad 0.4 pasó 152 pruebas
 conversacionales y técnicas; sus respuestas todavía requieren mejoras.
+La segunda etapa fue preparada y arrancada mediante comandos explícitos.
+Unidad todavía no decide sola qué aprender ni modifica su código.
 
 ```bash
 unidad conversation chat --model models/conversation-spanish-v2 \
   --message "Hola, ¿cómo empezamos?" --max-new-tokens 64 --seed 42
 unidad conversation status --run-dir private/conversation/runs/expanded-v1
+```
+
+La versión 0.5 conecta el interior del proyecto mediante un contrato común de
+mensajes, límites y parámetros, y un `ConversationEngine` compartido por la consola,
+el cerebro y la evaluación. El entrenamiento exporta los mismos pesos, configuración
+y tokenizador que consume ese motor. Se conserva un único comportamiento de
+inferencia en todos esos caminos.
+
+La siguiente etapa prioriza diálogos cortos con contexto completo. Las ventanas
+deslizantes de entrenamiento conservan texto anterior y enseñan cada token de
+la respuesta final una sola vez. La batería de desarrollo contiene 28 casos
+en 14 pares que cambian la petición actual, con candidatos intercambiados;
+también conserva las respuestas reales para revisión humana:
+
+```bash
+unidad conversation assess --model models/conversation-spanish-v2 \
+  --cases examples/conversation-evaluation.json \
+  --output private/conversation/development-report.json
+```
+
+Este comando no entrena, no evalúa el test reservado y no finaliza una corrida.
+Las probabilidades de candidatos son un diagnóstico: deben revisarse junto con
+lo que el modelo realmente dice. Las respuestas actuales siguen siendo
+experimentales; conectar el código no acredita comprensión ni programación
+autónoma. Pasaron 174 pruebas y se verificó el mismo resultado desde consola,
+Python y HTTP en una instalación externa. El
+[registro de esta integración](docs/unidad-conversation-cohesion-v0.5.0.json)
+conserva pruebas, datos, procedencia y las respuestas defectuosas observadas.
+
+La etapa concentrada se pausó cuando empezó a sobreajustarse. Se conserva su
+[mejor instantánea experimental](models/conversation-context-v3/README.md),
+y la siguiente etapa combina 5.608 diálogos breves con un ritmo de aprendizaje
+menor. Usa el tiempo restante del mismo presupuesto original. La
+[guía de conversación](docs/conversation.md) explica ambos recorridos.
+
+```bash
+unidad conversation chat --model models/conversation-context-v3 \
+  --message "Hola." --max-new-tokens 64 --seed 42
+unidad conversation status --run-dir private/conversation/runs/balanced-short-v1
 ```
 
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:

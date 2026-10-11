@@ -1,0 +1,1131 @@
+{
+  "schemaVersion": 1,
+  "evaluationId": "unidad-conversation-development-es-v1",
+  "purpose": "development",
+  "source": {
+    "dataset": "Unidad project-authored conversation development probes",
+    "kind": "project-authored-synthetic-development",
+    "synthetic": true,
+    "language": "es",
+    "privateConversationUsed": false,
+    "trainingCorpus": false,
+    "finalTest": false,
+    "note": "Todos los relatos y nombres de persona son ficticios; no representan al creador ni se obtuvieron de su chat."
+  },
+  "counts": {
+    "cases": 28,
+    "pairs": 14,
+    "families": 7
+  },
+  "intendedUse": "Desarrollo: medir preferencias condicionadas al contexto y revisar manualmente respuestas realmente generadas. No incorporar estos casos al corpus de enseñanza.",
+  "contrastiveProtocol": {
+    "candidateFields": [
+      "referenceGoodReply",
+      "plausibleDecoyResponse"
+    ],
+    "compare": "Log-probabilidad condicional de cada respuesta completa, con el mismo contrato de tokenización y final de respuesta.",
+    "margin": "logP(referenceGoodReply | messages) - logP(plausibleDecoyResponse | messages)",
+    "pairSuccess": "Ambos casos del par tienen margen estrictamente positivo; un empate no cuenta como acierto.",
+    "contextSensitivity": "Informar los dos márgenes y su suma por par. Los candidatos literales se intercambian para cancelar una preferencia incondicional por una de las respuestas.",
+    "ordering": "candidateOrder sólo controla la presentación; el scorer no debe depender de su posición.",
+    "aggregate": "Informar pares completos y cada familia; promediar familias con el mismo peso. No presentar los 28 casos como observaciones independientes.",
+    "qualityClaim": "Una preferencia contrastiva correcta no demuestra que el modelo genere una respuesta correcta ni conversación general competente."
+  },
+  "generationProtocol": {
+    "messages": "Usar exactamente los mensajes del caso. Si no hay system explícito, conservar el sistema predeterminado documentado del modelo.",
+    "suggestedSettings": {
+      "max_new_tokens": 64,
+      "temperature": 0,
+      "seed": 42
+    },
+    "record": "Guardar modelId, configuración, respuesta real y parámetros. No editar la respuesta para mejorar su apariencia.",
+    "evaluation": "Calificar la salida libre con humanRubric; no comparar por igualdad textual con la referencia."
+  },
+  "humanRubric": {
+    "method": "human_review_only",
+    "maximumPoints": 100,
+    "scale": {
+      "full": 1,
+      "partial": 0.5,
+      "failed": 0
+    },
+    "dimensions": [
+      {
+        "id": "current_request",
+        "weight": 30,
+        "full": "Responde al objetivo del último turno y a su alcance.",
+        "partial": "Responde parte del objetivo, con omisiones menores.",
+        "failed": "Responde otra pregunta o ignora el objetivo actual."
+      },
+      {
+        "id": "explicit_context",
+        "weight": 25,
+        "full": "Respeta los hechos, correcciones, nombres y destinatario explícitos.",
+        "partial": "Es imprecisa sin contradecir un dato decisivo.",
+        "failed": "Contradice un dato decisivo o aplica una versión anterior corregida."
+      },
+      {
+        "id": "grounding_clarification",
+        "weight": 20,
+        "full": "Relaciona sólo datos disponibles; aclara lo decisivo que falta y distingue hipótesis de hechos.",
+        "partial": "Es innecesariamente vaga o pide una aclaración secundaria.",
+        "failed": "Inventa un recuerdo o un dato decisivo, afirma certeza sin apoyo o elige un referente ambiguo."
+      },
+      {
+        "id": "language_tone",
+        "weight": 15,
+        "full": "Usa el idioma y tratamiento pedidos con una voz respetuosa.",
+        "partial": "Tiene una inconsistencia menor de registro sin cambiar el sentido.",
+        "failed": "Usa otro idioma, confunde tú/usted de forma decisiva o emplea un tono inapropiado."
+      },
+      {
+        "id": "clarity_brevity",
+        "weight": 10,
+        "full": "Es comprensible y respeta la brevedad o formato explícito.",
+        "partial": "Es comprensible pero contiene repetición o contenido adicional leve.",
+        "failed": "Es incomprensible, repetitiva en exceso o incumple el formato decisivo."
+      }
+    ],
+    "calculate": "Por caso, sumar weight * valoración humana (1, 0.5 o 0). Máximo 100. Registrar también fallos críticos; una media alta no los oculta.",
+    "criticalFailures": [
+      "Inventar memoria personal o hechos decisivos ausentes.",
+      "Contradecir una corrección, identidad o destinatario explícitos.",
+      "No responder a la petición actual o tomar una elección ambigua como decidida."
+    ],
+    "acceptableAlternatives": "La referencia es un ejemplo válido, no una única cadena obligatoria. Aceptar paráfrasis, otra pregunta ligera apropiada y otras respuestas equivalentes que cumplan expectedBehaviors.",
+    "reviewerProcedure": "Leer el contexto y la salida real; justificar cada fallo con una cita concreta. Si se comparan candidatos, ocultar sus etiquetas reference/decoy y respetar candidateOrder.",
+    "aggregate": "Promediar casos dentro de cada par, pares dentro de cada familia y después familias con igual peso. Informar puntos, fallos críticos y ejemplos, no sólo una media global.",
+    "automationBoundary": "No asignar competencia humana mediante regex, palabras clave, coincidencia de nombres o igualdad con referenceGoodReply.",
+    "acceptance": "Esta batería no establece un umbral de conversación general competente ni sustituye una prueba final independiente."
+  },
+  "limitations": [
+    "Batería pequeña de desarrollo escrita por el proyecto; no es muestra representativa de conversación abierta.",
+    "Los casos de cada par y familia están conectados y no cuentan como observaciones independientes.",
+    "La respuesta de referencia no es la única respuesta aceptable.",
+    "El intercambio literal reduce preferencias por una respuesta genérica; no elimina todos los sesgos de autoría o longitud.",
+    "Los resultados contrastivos y la revisión humana deben mantenerse separados.",
+    "Estos casos son de desarrollo: usarlos repetidamente puede adaptar decisiones al conjunto. No entrenar con ellos ni presentarlos como test final."
+  ],
+  "families": [
+    {
+      "id": "brief_conversation",
+      "description": "Conversación breve que respeta si se pide escuchar, preguntar o actuar.",
+      "pairIds": [
+        "brief-music",
+        "brief-listen-act"
+      ]
+    },
+    {
+      "id": "explicit_facts_corrections",
+      "description": "Usar el dato explícito actualizado, conservando el contexto anterior como contexto.",
+      "pairIds": [
+        "facts-parcel",
+        "facts-time"
+      ]
+    },
+    {
+      "id": "grounded_connections",
+      "description": "Relacionar hechos disponibles con incertidumbre y sin inventar detalles.",
+      "pairIds": [
+        "connections-battery",
+        "connections-preference"
+      ]
+    },
+    {
+      "id": "necessary_clarification",
+      "description": "Preguntar cuando falta un dato decisivo y responder cuando ya está disponible.",
+      "pairIds": [
+        "clarification-folder",
+        "clarification-key"
+      ]
+    },
+    {
+      "id": "identity_recipient",
+      "description": "Distinguir el nombre propio de Unidad, el interlocutor y el destinatario actual.",
+      "pairIds": [
+        "identity-own-name",
+        "identity-recipient-change"
+      ]
+    },
+    {
+      "id": "language_tone",
+      "description": "Seguir idioma y tratamiento pedidos de forma explícita.",
+      "pairIds": [
+        "tone-formal-informal",
+        "language-requested"
+      ]
+    },
+    {
+      "id": "current_question",
+      "description": "Responder la pregunta actual aunque antes se mencionara otro dato.",
+      "pairIds": [
+        "current-location-time",
+        "current-box"
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "id": "brief-music",
+      "familyId": "brief_conversation",
+      "caseIds": [
+        "dev-es-01",
+        "dev-es-02"
+      ],
+      "changedCondition": "La petición cambia de una pregunta a una actividad; se mantienen autobús y música.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "brief-listen-act",
+      "familyId": "brief_conversation",
+      "caseIds": [
+        "dev-es-03",
+        "dev-es-04"
+      ],
+      "changedCondition": "La persona pide espacio para hablar o un primer paso para actuar.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "facts-parcel",
+      "familyId": "explicit_facts_corrections",
+      "caseIds": [
+        "dev-es-05",
+        "dev-es-06"
+      ],
+      "changedCondition": "Cambia el destinatario corregido del mismo paquete: Leo o Mara.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "facts-time",
+      "familyId": "explicit_facts_corrections",
+      "caseIds": [
+        "dev-es-07",
+        "dev-es-08"
+      ],
+      "changedCondition": "Cambia únicamente la hora corregida de la reunión: diez u once.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "connections-battery",
+      "familyId": "grounded_connections",
+      "caseIds": [
+        "dev-es-09",
+        "dev-es-10"
+      ],
+      "changedCondition": "Cambia el estado actual de las pilas: agotadas o recién cambiadas.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "connections-preference",
+      "familyId": "grounded_connections",
+      "caseIds": [
+        "dev-es-11",
+        "dev-es-12"
+      ],
+      "changedCondition": "Cambia el entorno del dibujo: tranquilo o ruidoso.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "clarification-folder",
+      "familyId": "necessary_clarification",
+      "caseIds": [
+        "dev-es-13",
+        "dev-es-14"
+      ],
+      "changedCondition": "Cambia si el usuario ya eligió una carpeta concreta.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "clarification-key",
+      "familyId": "necessary_clarification",
+      "caseIds": [
+        "dev-es-15",
+        "dev-es-16"
+      ],
+      "changedCondition": "Cambia si el objeto que debe abrirse está sin especificar o es la caja.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "identity-own-name",
+      "familyId": "identity_recipient",
+      "caseIds": [
+        "dev-es-17",
+        "dev-es-18"
+      ],
+      "changedCondition": "Cambia a quién se refiere la pregunta: asistente o interlocutor.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "identity-recipient-change",
+      "familyId": "identity_recipient",
+      "caseIds": [
+        "dev-es-19",
+        "dev-es-20"
+      ],
+      "changedCondition": "Cambia el destinatario actual: Omar o Vera.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "tone-formal-informal",
+      "familyId": "language_tone",
+      "caseIds": [
+        "dev-es-21",
+        "dev-es-22"
+      ],
+      "changedCondition": "Cambia sólo el tratamiento pedido: usted o tú.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "language-requested",
+      "familyId": "language_tone",
+      "caseIds": [
+        "dev-es-23",
+        "dev-es-24"
+      ],
+      "changedCondition": "Cambia sólo el idioma explícitamente solicitado: español o inglés.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "current-location-time",
+      "familyId": "current_question",
+      "caseIds": [
+        "dev-es-25",
+        "dev-es-26"
+      ],
+      "changedCondition": "Cambia el dato solicitado actualmente: ubicación u hora.",
+      "literalCandidateSwap": true
+    },
+    {
+      "id": "current-box",
+      "familyId": "current_question",
+      "caseIds": [
+        "dev-es-27",
+        "dev-es-28"
+      ],
+      "changedCondition": "Cambia la caja sobre la que se pregunta ahora; la pregunta anterior sobre el color permanece igual.",
+      "literalCandidateSwap": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "dev-es-01",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El autobús tarda en llegar y quiero ocupar unos minutos."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos aprovechar la espera como prefieras."
+        },
+        {
+          "role": "user",
+          "content": "Hazme una sola pregunta ligera sobre música, sin proponer tareas."
+        }
+      ],
+      "referenceGoodReply": "¿Qué canción te gustaría escuchar ahora?",
+      "plausibleDecoyResponse": "Escucha una canción que te guste mientras esperas.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Hacer una sola pregunta sobre música.",
+        "No convertir la petición en una tarea."
+      ]
+    },
+    {
+      "id": "dev-es-02",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El autobús tarda en llegar y quiero ocupar unos minutos."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos aprovechar la espera como prefieras."
+        },
+        {
+          "role": "user",
+          "content": "Propón una única actividad ligera con música, sin hacer preguntas."
+        }
+      ],
+      "referenceGoodReply": "Escucha una canción que te guste mientras esperas.",
+      "plausibleDecoyResponse": "¿Qué canción te gustaría escuchar ahora?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Proponer una sola actividad musical.",
+        "No hacer una pregunta."
+      ]
+    },
+    {
+      "id": "dev-es-03",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este diálogo ficticio, alguien acaba de terminar una tarde difícil."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo responder de acuerdo con lo que pida esa persona."
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiere espacio para contarlo. Responde en una frase breve que respete su ritmo."
+        }
+      ],
+      "referenceGoodReply": "Puedes contarlo a tu ritmo; te leo.",
+      "plausibleDecoyResponse": "Anota lo más urgente y empieza por eso.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Dar espacio para expresarse sin imponer una solución.",
+        "Mantener una frase breve."
+      ]
+    },
+    {
+      "id": "dev-es-04",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este diálogo ficticio, alguien acaba de terminar una tarde difícil."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo responder de acuerdo con lo que pida esa persona."
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiere empezar a actuar. Responde en una frase breve con un primer paso."
+        }
+      ],
+      "referenceGoodReply": "Anota lo más urgente y empieza por eso.",
+      "plausibleDecoyResponse": "Puedes contarlo a tu ritmo; te leo.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Ofrecer un primer paso concreto.",
+        "Mantener una frase breve."
+      ]
+    },
+    {
+      "id": "dev-es-05",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este ejercicio ficticio, el paquete verde figuraba a nombre de Nico."
+        },
+        {
+          "role": "assistant",
+          "content": "El registro inicial dice que era de Nico."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el paquete verde es de Leo. ¿De quién es ahora el verde?"
+        }
+      ],
+      "referenceGoodReply": "Ahora el paquete verde es de Leo.",
+      "plausibleDecoyResponse": "Ahora el paquete verde es de Mara.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Usar la corrección Leo.",
+        "No conservar Nico ni inventar otro destinatario."
+      ]
+    },
+    {
+      "id": "dev-es-06",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este ejercicio ficticio, el paquete verde figuraba a nombre de Nico."
+        },
+        {
+          "role": "assistant",
+          "content": "El registro inicial dice que era de Nico."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el paquete verde es de Mara. ¿De quién es ahora el verde?"
+        }
+      ],
+      "referenceGoodReply": "Ahora el paquete verde es de Mara.",
+      "plausibleDecoyResponse": "Ahora el paquete verde es de Leo.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar la corrección Mara.",
+        "No conservar Nico ni inventar otro destinatario."
+      ]
+    },
+    {
+      "id": "dev-es-07",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, la reunión estaba anunciada para las nueve."
+        },
+        {
+          "role": "assistant",
+          "content": "La hora inicialmente anunciada era las nueve."
+        },
+        {
+          "role": "user",
+          "content": "La hora se corrigió a las diez. ¿A qué hora empieza ahora?"
+        }
+      ],
+      "referenceGoodReply": "Empieza a las diez.",
+      "plausibleDecoyResponse": "Empieza a las once.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder con la hora actual, las diez.",
+        "No responder con la hora anterior."
+      ]
+    },
+    {
+      "id": "dev-es-08",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, la reunión estaba anunciada para las nueve."
+        },
+        {
+          "role": "assistant",
+          "content": "La hora inicialmente anunciada era las nueve."
+        },
+        {
+          "role": "user",
+          "content": "La hora se corrigió a las once. ¿A qué hora empieza ahora?"
+        }
+      ],
+      "referenceGoodReply": "Empieza a las once.",
+      "plausibleDecoyResponse": "Empieza a las diez.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder con la hora actual, las once.",
+        "No responder con la hora anterior."
+      ]
+    },
+    {
+      "id": "dev-es-09",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el taller ficticio, el sensor funciona con pilas. Cuando se quedó sin pilas, dejó de medir."
+        },
+        {
+          "role": "assistant",
+          "content": "En el relato hay una relación entre las pilas y las mediciones."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no mide y sus pilas están agotadas. ¿Qué dirías sobre la explicación de las pilas, sin afirmar certeza?"
+        }
+      ],
+      "referenceGoodReply": "Las pilas agotadas podrían explicar que no mida.",
+      "plausibleDecoyResponse": "Con pilas recién cambiadas, esa explicación parece menos probable.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Conectar la falta de medición con pilas agotadas como hipótesis.",
+        "No afirmar un diagnóstico definitivo."
+      ]
+    },
+    {
+      "id": "dev-es-10",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el taller ficticio, el sensor funciona con pilas. Cuando se quedó sin pilas, dejó de medir."
+        },
+        {
+          "role": "assistant",
+          "content": "En el relato hay una relación entre las pilas y las mediciones."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no mide y sus pilas están recién cambiadas. ¿Qué dirías sobre la explicación de las pilas, sin afirmar certeza?"
+        }
+      ],
+      "referenceGoodReply": "Con pilas recién cambiadas, esa explicación parece menos probable.",
+      "plausibleDecoyResponse": "Las pilas agotadas podrían explicar que no mida.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Reconocer que el estado actual debilita esa explicación.",
+        "No asegurar que las pilas nuevas descartan todo fallo."
+      ]
+    },
+    {
+      "id": "dev-es-11",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, Ada disfruta dibujar y evita las actividades con ruido."
+        },
+        {
+          "role": "assistant",
+          "content": "Esos son los dos datos disponibles sobre Ada."
+        },
+        {
+          "role": "user",
+          "content": "La propuesta es dibujar en una biblioteca tranquila. ¿Cómo encaja con esos datos, sin inventar nada?"
+        }
+      ],
+      "referenceGoodReply": "Encaja con dibujar y con evitar el ruido.",
+      "plausibleDecoyResponse": "Permite dibujar, pero el ruido contradice lo que prefiere.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Relacionar dibujo y entorno tranquilo con los dos datos.",
+        "No atribuir más gustos ni experiencias a Ada."
+      ]
+    },
+    {
+      "id": "dev-es-12",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, Ada disfruta dibujar y evita las actividades con ruido."
+        },
+        {
+          "role": "assistant",
+          "content": "Esos son los dos datos disponibles sobre Ada."
+        },
+        {
+          "role": "user",
+          "content": "La propuesta es dibujar junto a un escenario con música muy alta. ¿Cómo encaja con esos datos, sin inventar nada?"
+        }
+      ],
+      "referenceGoodReply": "Permite dibujar, pero el ruido contradice lo que prefiere.",
+      "plausibleDecoyResponse": "Encaja con dibujar y con evitar el ruido.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Reconocer que dibujar encaja pero el ruido no.",
+        "No inventar que Ada disfruta la música alta."
+      ]
+    },
+    {
+      "id": "dev-es-13",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En la mesa hay una carpeta roja y otra verde."
+        },
+        {
+          "role": "assistant",
+          "content": "Hay dos carpetas con colores distintos."
+        },
+        {
+          "role": "user",
+          "content": "No he elegido cuál carpeta archivar. ¿Qué me dirías antes de seguir?"
+        }
+      ],
+      "referenceGoodReply": "¿Quieres archivar la carpeta roja o la verde?",
+      "plausibleDecoyResponse": "La carpeta elegida para archivar es la roja.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Pedir la elección que falta.",
+        "No seleccionar una carpeta por cuenta propia."
+      ]
+    },
+    {
+      "id": "dev-es-14",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En la mesa hay una carpeta roja y otra verde."
+        },
+        {
+          "role": "assistant",
+          "content": "Hay dos carpetas con colores distintos."
+        },
+        {
+          "role": "user",
+          "content": "He elegido la carpeta roja para archivar. ¿Qué me dirías antes de seguir?"
+        }
+      ],
+      "referenceGoodReply": "La carpeta elegida para archivar es la roja.",
+      "plausibleDecoyResponse": "¿Quieres archivar la carpeta roja o la verde?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar la elección roja ya comunicada.",
+        "No preguntar de nuevo qué carpeta eligió."
+      ]
+    },
+    {
+      "id": "dev-es-15",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hay dos llaves: una abre el armario y la otra abre la caja."
+        },
+        {
+          "role": "assistant",
+          "content": "Cada llave abre un objeto distinto."
+        },
+        {
+          "role": "user",
+          "content": "Necesito abrir algo, pero no he dicho cuál objeto. ¿Qué llave necesito?"
+        }
+      ],
+      "referenceGoodReply": "¿Quieres abrir el armario o la caja?",
+      "plausibleDecoyResponse": "Necesitas la llave que abre la caja.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Preguntar qué objeto quiere abrir.",
+        "No suponer que se trata de la caja."
+      ]
+    },
+    {
+      "id": "dev-es-16",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hay dos llaves: una abre el armario y la otra abre la caja."
+        },
+        {
+          "role": "assistant",
+          "content": "Cada llave abre un objeto distinto."
+        },
+        {
+          "role": "user",
+          "content": "Necesito abrir la caja y ya lo he especificado. ¿Qué llave necesito?"
+        }
+      ],
+      "referenceGoodReply": "Necesitas la llave que abre la caja.",
+      "plausibleDecoyResponse": "¿Quieres abrir el armario o la caja?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Identificar la llave para la caja.",
+        "No pedir una aclaración ya resuelta."
+      ]
+    },
+    {
+      "id": "dev-es-17",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En esta escena ficticia, te llamas Unidad. La persona que habla se llama Mara."
+        },
+        {
+          "role": "assistant",
+          "content": "En la escena soy Unidad y quien habla es Mara."
+        },
+        {
+          "role": "user",
+          "content": "¿Cómo te llamas tú en esta escena?"
+        }
+      ],
+      "referenceGoodReply": "En esta escena me llamo Unidad.",
+      "plausibleDecoyResponse": "En esta escena tú te llamas Mara.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Distinguir el yo del asistente del nombre de quien habla.",
+        "Responder Unidad a la pregunta sobre el asistente."
+      ]
+    },
+    {
+      "id": "dev-es-18",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En esta escena ficticia, te llamas Unidad. La persona que habla se llama Mara."
+        },
+        {
+          "role": "assistant",
+          "content": "En la escena soy Unidad y quien habla es Mara."
+        },
+        {
+          "role": "user",
+          "content": "¿Cómo me llamo yo en esta escena?"
+        }
+      ],
+      "referenceGoodReply": "En esta escena tú te llamas Mara.",
+      "plausibleDecoyResponse": "En esta escena me llamo Unidad.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Distinguir al interlocutor del asistente.",
+        "Responder Mara a la pregunta sobre quien habla."
+      ]
+    },
+    {
+      "id": "dev-es-19",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estamos redactando mensajes para Omar y Vera; yo los enviaré."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedes indicar a quién va cada mensaje."
+        },
+        {
+          "role": "user",
+          "content": "Ahora el destinatario es Omar, no Vera. Escribe sólo un saludo con su nombre."
+        }
+      ],
+      "referenceGoodReply": "Hola, Omar.",
+      "plausibleDecoyResponse": "Hola, Vera.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Saludar sólo a Omar.",
+        "No confundir destinatario actual con la otra persona."
+      ]
+    },
+    {
+      "id": "dev-es-20",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estamos redactando mensajes para Omar y Vera; yo los enviaré."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedes indicar a quién va cada mensaje."
+        },
+        {
+          "role": "user",
+          "content": "Ahora el destinatario es Vera, no Omar. Escribe sólo un saludo con su nombre."
+        }
+      ],
+      "referenceGoodReply": "Hola, Vera.",
+      "plausibleDecoyResponse": "Hola, Omar.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Saludar sólo a Vera.",
+        "No confundir destinatario actual con la otra persona."
+      ]
+    },
+    {
+      "id": "dev-es-21",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El mensaje pide confirmar la recepción de un documento."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo redactar una pregunta breve."
+        },
+        {
+          "role": "user",
+          "content": "Trata al destinatario de usted y pregunta si recibió el documento."
+        }
+      ],
+      "referenceGoodReply": "¿Podría confirmar que recibió el documento?",
+      "plausibleDecoyResponse": "¿Puedes confirmar que recibiste el documento?",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Usar usted de forma consistente.",
+        "Preguntar por la recepción del documento."
+      ]
+    },
+    {
+      "id": "dev-es-22",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El mensaje pide confirmar la recepción de un documento."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo redactar una pregunta breve."
+        },
+        {
+          "role": "user",
+          "content": "Trata al destinatario de tú y pregunta si recibió el documento."
+        }
+      ],
+      "referenceGoodReply": "¿Puedes confirmar que recibiste el documento?",
+      "plausibleDecoyResponse": "¿Podría confirmar que recibió el documento?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar tú de forma consistente.",
+        "Preguntar por la recepción del documento."
+      ]
+    },
+    {
+      "id": "dev-es-23",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "messages": [
+        {
+          "role": "system",
+          "content": "En esta prueba ficticia, responde en el idioma que el usuario pida explícitamente."
+        },
+        {
+          "role": "user",
+          "content": "El mensaje debe agradecer una respuesta y nada más."
+        },
+        {
+          "role": "assistant",
+          "content": "Indica el idioma para escribirlo."
+        },
+        {
+          "role": "user",
+          "content": "Escríbelo en español, en una sola frase."
+        }
+      ],
+      "referenceGoodReply": "Gracias por tu respuesta.",
+      "plausibleDecoyResponse": "Thank you for your reply.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder en español.",
+        "Dar sólo el agradecimiento solicitado."
+      ]
+    },
+    {
+      "id": "dev-es-24",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "messages": [
+        {
+          "role": "system",
+          "content": "En esta prueba ficticia, responde en el idioma que el usuario pida explícitamente."
+        },
+        {
+          "role": "user",
+          "content": "El mensaje debe agradecer una respuesta y nada más."
+        },
+        {
+          "role": "assistant",
+          "content": "Indica el idioma para escribirlo."
+        },
+        {
+          "role": "user",
+          "content": "Escríbelo en inglés, en una sola frase."
+        }
+      ],
+      "referenceGoodReply": "Thank you for your reply.",
+      "plausibleDecoyResponse": "Gracias por tu respuesta.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder en inglés porque así se pidió y el sistema lo permite.",
+        "Dar sólo el agradecimiento solicitado."
+      ]
+    },
+    {
+      "id": "dev-es-25",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, el museo está en la plaza Norte y abre a las diez."
+        },
+        {
+          "role": "assistant",
+          "content": "La ubicación es la plaza Norte y la apertura es a las diez."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto dónde está el museo; no te pregunto la hora."
+        }
+      ],
+      "referenceGoodReply": "Está en la plaza Norte.",
+      "plausibleDecoyResponse": "Abre a las diez.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder la ubicación actual solicitada.",
+        "No sustituirla por la hora ni añadirla sin necesidad."
+      ]
+    },
+    {
+      "id": "dev-es-26",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, el museo está en la plaza Norte y abre a las diez."
+        },
+        {
+          "role": "assistant",
+          "content": "La ubicación es la plaza Norte y la apertura es a las diez."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto a qué hora abre; no te pregunto dónde está."
+        }
+      ],
+      "referenceGoodReply": "Abre a las diez.",
+      "plausibleDecoyResponse": "Está en la plaza Norte.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder la hora actual solicitada.",
+        "No sustituirla por la ubicación ni añadirla sin necesidad."
+      ]
+    },
+    {
+      "id": "dev-es-27",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el cuento, la primera caja tiene tres fichas y la segunda tiene cinco. ¿De qué color es la primera?"
+        },
+        {
+          "role": "assistant",
+          "content": "No se ha indicado el color de la primera caja."
+        },
+        {
+          "role": "user",
+          "content": "Antes preguntaba por el color, pero ahora pregunto cuántas fichas tiene la segunda."
+        }
+      ],
+      "referenceGoodReply": "La segunda caja tiene cinco fichas.",
+      "plausibleDecoyResponse": "La primera caja tiene tres fichas.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Seguir el cambio de pregunta a la segunda caja.",
+        "Responder cinco fichas sin volver al objetivo anterior."
+      ]
+    },
+    {
+      "id": "dev-es-28",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el cuento, la primera caja tiene tres fichas y la segunda tiene cinco. ¿De qué color es la primera?"
+        },
+        {
+          "role": "assistant",
+          "content": "No se ha indicado el color de la primera caja."
+        },
+        {
+          "role": "user",
+          "content": "Antes preguntaba por el color, pero ahora pregunto cuántas fichas tiene la primera."
+        }
+      ],
+      "referenceGoodReply": "La primera caja tiene tres fichas.",
+      "plausibleDecoyResponse": "La segunda caja tiene cinco fichas.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Seguir el cambio de pregunta a la primera caja.",
+        "Responder tres fichas sin volver al objetivo anterior."
+      ]
+    }
+  ]
+}

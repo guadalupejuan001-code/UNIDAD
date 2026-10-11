@@ -8,8 +8,10 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from .tokenizer import (ASSISTANT_ID, BOS_ID, ConversationError, EOS_ID, IGNORE_INDEX,
-                        MAX_CONTEXT_LENGTH, MAX_VOCAB_SIZE, PAD_ID, SYSTEM_ID, USER_ID,
+from .contract import (ASSISTANT_ID, BOS_ID, DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED,
+                       DEFAULT_TEMPERATURE, EOS_ID, IGNORE_INDEX, MAX_NEW_TOKENS, PAD_ID,
+                       SYSTEM_ID, USER_ID)
+from .tokenizer import (ConversationError, MAX_CONTEXT_LENGTH, MAX_VOCAB_SIZE,
                         encode_prompt, integer, number, validate_tokenizer)
 
 
@@ -17,7 +19,6 @@ MODEL_TYPE = "unidad-conversation-transformer"
 DEFAULT_CONFIG = {"d_model": 128, "n_layers": 4, "n_heads": 4, "context_length": 256,
                   "dropout": 0.0, "ffn_multiplier": 4, "seed": 42}
 MAX_MODEL_PARAMETERS = 20_000_000
-MAX_NEW_TOKENS = 1024
 
 
 def validate_config(config):
@@ -149,7 +150,8 @@ def assistant_token_loss(logits, labels):
     return F.cross_entropy(logits[selected], labels[selected])
 
 
-def chat(model, tokenizer, messages, max_new_tokens=96, temperature=0.7, seed=42):
+def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
+         temperature=DEFAULT_TEMPERATURE, seed=DEFAULT_SEED):
     """Generate an assistant continuation with local RNG and an explicit budget.
 
     This first implementation recomputes a sliding causal context. It makes no

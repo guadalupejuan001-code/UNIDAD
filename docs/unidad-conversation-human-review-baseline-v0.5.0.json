@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "reviewer": "development-assistant-manual-review",
+  "reviewerKind": "assistant_manual_semantic_review",
+  "blinded": false,
+  "referencesAndExpectedBehaviorsVisible": true,
+  "sourceReport": "private/conversation/assessment-baseline-step3000.json",
+  "sourceReportSha256": "5323de2aca3c9a09e754427a4000d8bc22066fd275b123e20eb9fd7d139ffef3",
+  "evaluationId": "unidad-conversation-development-es-v1",
+  "suiteSha256": "a8956191fbbf4f064ef16f2c6d5cbed377f6abaf53b049ceac65f695f1ee0eab",
+  "modelId": "unidad-conversation-2f98358a86410c7c2b5e2786a9584a618f3aad859dd7c0683f4bbeaecf4becb6",
+  "historicalSelectedStep": 3000,
+  "currentModelReviewed": false,
+  "generationSettings": {
+    "max_new_tokens": 64,
+    "temperature": 0,
+    "seed": 42
+  },
+  "method": "Lectura cualitativa de cada salida real con sus mensajes y comportamientos esperados. Los juicios se basan en significado, comprensión y pertinencia; no en regex, palabras clave, igualdad literal con la referencia ni márgenes contrastivos.",
+  "statusDefinitions": {
+    "met": "La salida comprensible cumple la petición actual y los datos decisivos del contexto.",
+    "partial": "Cumple una parte sustantiva o reconocible de la petición, pero deja incompleta la adaptación o respuesta requerida.",
+    "failed": "No cumple la tarea sustantiva, no responde al contexto o no ofrece una salida comprensible y utilizable."
+  },
+  "counts": {
+    "cases": 28,
+    "met": 0,
+    "partial": 1,
+    "failed": 27
+  },
+  "familyCounts": {
+    "brief_conversation": {
+      "met": 0,
+      "partial": 1,
+      "failed": 3
+    },
+    "explicit_facts_corrections": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "grounded_connections": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "necessary_clarification": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "identity_recipient": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "language_tone": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "current_question": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    }
+  },
+  "conclusion": "En este snapshot histórico del paso 3000, ninguna de las 28 salidas revisadas cumple íntegramente su tarea conversacional. Una ofrece un reconocimiento breve parcialmente adecuado; las demás fallan por falta de respuesta pertinente, texto incoherente o repetición. Esta batería no muestra conversación contextual útil en el snapshot revisado.",
+  "representativeExamples": [
+    {
+      "caseId": "dev-es-03",
+      "request": "Sólo quiere espacio para contarlo. Responde en una frase breve que respete su ritmo.",
+      "rawOutput": "¡Claro!",
+      "status": "partial",
+      "explanation": "Reconocimiento breve y amable, pero sin expresar el respeto por el ritmo pedido."
+    },
+    {
+      "caseId": "dev-es-11",
+      "request": "La propuesta es dibujar en una biblioteca tranquila. ¿Cómo encaja con esos datos, sin inventar nada?",
+      "rawOutput": "La inteligencia artificial es un sistema de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos y datos y datos y datos.",
+      "status": "failed",
+      "explanation": "Respuesta fuera de tema y repetitiva cuando se pide relacionar preferencias explícitas."
+    },
+    {
+      "caseId": "dev-es-22",
+      "request": "Trata al destinatario de tú y pregunta si recibió el documento.",
+      "rawOutput": "El carténero es un poco de la que se refiere a la que se refiere a la que se refiere a la que se puede ser un poco de la que se puede ser un poco de la que se puede ser universo.",
+      "status": "failed",
+      "explanation": "Texto sin una petición comprensible de confirmar el documento, pese a una instrucción concreta."
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "dev-es-01",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "status": "failed",
+      "reason": "No formula la pregunta musical solicitada. La repetición sobre información no constituye una respuesta comprensible relacionada con la espera.",
+      "rawOutput": "El carta de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información.\n\n"
+    },
+    {
+      "caseId": "dev-es-02",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "status": "failed",
+      "reason": "La secuencia repetitiva de sílabas no propone una actividad musical comprensible que pueda realizarse durante la espera.",
+      "rawOutput": "El cálisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisis"
+    },
+    {
+      "caseId": "dev-es-03",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "status": "partial",
+      "reason": "«¡Claro!» es breve y amable, y no impone una solución. Sin embargo, es un reconocimiento genérico: no expresa que la persona pueda contarlo a su ritmo ni adapta claramente la respuesta a esa petición.",
+      "rawOutput": "¡Claro!"
+    },
+    {
+      "caseId": "dev-es-04",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "status": "failed",
+      "reason": "No ofrece un primer paso para actuar. La repetición sobre punto y teoría resulta inconexa y no da una indicación utilizable.",
+      "rawOutput": "La punto de la teoría de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de la punto de"
+    },
+    {
+      "caseId": "dev-es-05",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "status": "failed",
+      "reason": "No identifica a Leo como destinatario corregido del paquete verde. El fragmento repetido sobre la Tierra no responde a la pregunta.",
+      "rawOutput": "El Puede de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra"
+    },
+    {
+      "caseId": "dev-es-06",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "status": "failed",
+      "reason": "No identifica a Mara como destinataria corregida del paquete verde. El fragmento sobre la Tierra no utiliza la corrección comunicada.",
+      "rawOutput": "El Puede de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra"
+    },
+    {
+      "caseId": "dev-es-07",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "status": "failed",
+      "reason": "No comunica la nueva hora de las diez. La repetición sobre la vida desvía la respuesta de la pregunta actual.",
+      "rawOutput": "La idea de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida de la vida. La vida de la vida de la vida de la vida de la"
+    },
+    {
+      "caseId": "dev-es-08",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "status": "failed",
+      "reason": "No comunica la nueva hora de las once. Los fragmentos repetidos no forman una respuesta inteligible sobre la reunión.",
+      "rawOutput": "La ono de la ono de la ono de la ono de la ono de la ono. La ono de la ono de la onia onia onia onia onia onononia onon"
+    },
+    {
+      "caseId": "dev-es-09",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "status": "failed",
+      "reason": "No relaciona las pilas agotadas con la falta de medición ni formula una hipótesis sobre el sensor. El texto contiene fragmentos repetidos sin esa explicación.",
+      "rawOutput": "El pitegrado de la pitegración de la pite de la pitegración de la pite de la pite de la pite.\n\n\nEn resta de la pite de la pitegración de la pite"
+    },
+    {
+      "caseId": "dev-es-10",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "status": "failed",
+      "reason": "No utiliza el dato de las pilas recién cambiadas para valorar la explicación. La secuencia repetitiva no expresa una inferencia comprensible.",
+      "rawOutput": "El pitegrado de la pitegración de la pitegración de la pitegración de la pitegración de la pitegración de la pitegración de la pitegración de la pitegración de la"
+    },
+    {
+      "caseId": "dev-es-11",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "status": "failed",
+      "reason": "La respuesta habla de inteligencia artificial y datos. No relaciona el dibujo en la biblioteca tranquila con las dos preferencias explícitas de Ada.",
+      "rawOutput": "La inteligencia artificial es un sistema de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos de datos y datos y datos y datos."
+    },
+    {
+      "caseId": "dev-es-12",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "status": "failed",
+      "reason": "«¡Claro!» no explica que dibujar encaja pero el ruido contradice la preferencia indicada. La cortesía aislada no cumple la petición de conectar los hechos.",
+      "rawOutput": "¡Claro!"
+    },
+    {
+      "caseId": "dev-es-13",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "status": "failed",
+      "reason": "«¡Claro!» no pide aclarar qué carpeta quiere archivar. La elección decisiva sigue sin resolverse, aunque la respuesta no seleccione una por cuenta propia.",
+      "rawOutput": "¡Claro!"
+    },
+    {
+      "caseId": "dev-es-14",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "status": "failed",
+      "reason": "El texto repetitivo sobre la luz no confirma ni utiliza la elección de la carpeta roja. No responde de forma inteligible a la situación.",
+      "rawOutput": "La cantidad de la luz es una cantidad de la luz es la luz es la luz es la luz es la luz de luz de luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz,"
+    },
+    {
+      "caseId": "dev-es-15",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "status": "failed",
+      "reason": "Habla de textura, forma y función sin preguntar qué objeto debe abrirse. No realiza la aclaración necesaria para elegir la llave.",
+      "rawOutput": "El cálisa de la textura de la que se refiere a la que se puede ser un poco de la forma de la forma de la forma de la forma de la función de la función de la función de la función de la función de la función de la función de la función de la función de"
+    },
+    {
+      "caseId": "dev-es-16",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "status": "failed",
+      "reason": "La repetición sobre forma y función no identifica la llave que abre la caja. No utiliza el objeto que el usuario ya especificó.",
+      "rawOutput": "La texa de la forma de la forma de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función de la función"
+    },
+    {
+      "caseId": "dev-es-17",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "status": "failed",
+      "reason": "La secuencia incoherente no identifica a Unidad como el nombre del asistente en la escena. No responde a la pregunta de identidad.",
+      "rawOutput": "El pite de la pial de la pialla de la pialla de la pialla de la pialla de la pialla de la pialla de la piiiiiiiiiiiiiiii"
+    },
+    {
+      "caseId": "dev-es-18",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "status": "failed",
+      "reason": "La repetición sobre historia y ciudades no identifica a Mara como la persona que habla. La respuesta no distingue el destinatario de la pregunta.",
+      "rawOutput": "La historia de la historia de la historia de la historia de la historia de la historia de la historia de la historia de la historia de la ciudades de la ciudad de la ciudades de la ciudad de la ciudad de la ciudades de la ciudad de la ciudad de la ciudad de la ciudad de la ciudad de la"
+    },
+    {
+      "caseId": "dev-es-19",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "status": "failed",
+      "reason": "El fragmento repetitivo sobre la Tierra no constituye un saludo a Omar ni el mensaje breve pedido.",
+      "rawOutput": "El Puedepio de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la T"
+    },
+    {
+      "caseId": "dev-es-20",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "status": "failed",
+      "reason": "El fragmento repetitivo sobre la Tierra no constituye un saludo a Vera ni adapta el mensaje al destinatario actual.",
+      "rawOutput": "El Puedepio de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la Tierra de la T"
+    },
+    {
+      "caseId": "dev-es-21",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "status": "failed",
+      "reason": "La repetición sobre información no redacta una pregunta acerca de la recepción del documento. No produce el tratamiento formal solicitado en una frase utilizable.",
+      "rawOutput": "El tenda de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información.\n\n\nLa información de la información es una información de la información"
+    },
+    {
+      "caseId": "dev-es-22",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "status": "failed",
+      "reason": "La frase sobre carténero y universo no pregunta por la recepción del documento. No produce el mensaje informal solicitado.",
+      "rawOutput": "El carténero es un poco de la que se refiere a la que se refiere a la que se refiere a la que se puede ser un poco de la que se puede ser un poco de la que se puede ser universo."
+    },
+    {
+      "caseId": "dev-es-23",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "status": "failed",
+      "reason": "Aunque incluye fragmentos españoles, el texto sobre información no expresa un agradecimiento comprensible ni el mensaje pedido.",
+      "rawOutput": "El cant es un tipo de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información de la información."
+    },
+    {
+      "caseId": "dev-es-24",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "status": "failed",
+      "reason": "La secuencia de sílabas no expresa el agradecimiento ni constituye una respuesta en inglés conforme a la instrucción explícita.",
+      "rawOutput": "El cálisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisisis"
+    },
+    {
+      "caseId": "dev-es-25",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "status": "failed",
+      "reason": "Habla repetidamente de música en lugar de responder dónde está el museo. No comunica la ubicación dada en el contexto.",
+      "rawOutput": "La música es una lista de la música de la música de la música de la música de la música de la música de la música de la música de la música de la música de la música de la"
+    },
+    {
+      "caseId": "dev-es-26",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "status": "failed",
+      "reason": "La secuencia sobre teoría y mono no responde a qué hora abre el museo. No utiliza la hora disponible en el contexto.",
+      "rawOutput": "La teoría de la mono de la mono de la mono de la mono de la mono de la mono de la mono de la mono. La mono de la mono de la mono de la mono de"
+    },
+    {
+      "caseId": "dev-es-27",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "status": "failed",
+      "reason": "Habla de luz y agua sin comunicar las cinco fichas de la segunda caja. No sigue el cambio de la pregunta sobre el color a la cantidad.",
+      "rawOutput": "La luz es el agua se encuentra de la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la luz, la"
+    },
+    {
+      "caseId": "dev-es-28",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "status": "failed",
+      "reason": "Habla de luz y agua sin comunicar las tres fichas de la primera caja. No responde a la cantidad solicitada actualmente.",
+      "rawOutput": "La luz es el agua de la luz es el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el agua, el"
+    }
+  ],
+  "numericScoresAssigned": false,
+  "originalGenerationsModified": false,
+  "sourceReportModified": false,
+  "weightsUpdated": false,
+  "trainingPerformed": false,
+  "testEvaluated": false,
+  "reviewCompleted": true,
+  "generalConversationValidated": false,
+  "limitations": [
+    "Revisión manual de un asistente de desarrollo, no una evaluación humana externa ni cegada.",
+    "El asistente revisor ve los criterios y referencias y participó en el diseño de la batería; sus juicios pueden tener sesgos de autoría.",
+    "Sólo se revisa el informe histórico del paso 3000 con generación greedy y presupuesto de 64 tokens, no el modelo actual ni otras configuraciones de muestreo.",
+    "Los casos son sintéticos de desarrollo; casos conectados dentro de pares y familias no son observaciones independientes.",
+    "El caso dev-es-03 es limítrofe: se acepta parcialmente su cortesía breve, sin inferir de ella seguimiento del contexto.",
+    "No se consultó test final y estos casos no deben incorporarse al entrenamiento."
+  ]
+}

@@ -30,6 +30,9 @@ las nuevas instrucciones del usuario en la sesión tienen prioridad.
   completo cumplido por tener archivos de pesos o pruebas técnicas aprobadas.
 - Mantén el código simple. Justifica las optimizaciones con mediciones y verifica
   que conservan los resultados que deban mantenerse.
+- Usa el contrato conversacional común y `ConversationEngine` al conectar CLI,
+  cerebro o evaluación; evita duplicar límites y caminos de generación. Conserva
+  las reglas guardadas al reanudar checkpoints anteriores.
 - Conserva los datos personales en las rutas privadas excluidas de Git. Adjuntar
   órdenes al repositorio no equivale a usarlas como corpus de entrenamiento.
 - Para cambios de código, ejecuta las pruebas pertinentes. Para cambios sólo de

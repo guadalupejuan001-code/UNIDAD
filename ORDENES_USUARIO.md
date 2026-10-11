@@ -35,6 +35,10 @@ que el trabajador digital solicitado ya esté terminado.
 13. Cuando el progreso se estanque, evitar repetir un procedimiento que no aporta
     mejora. Cambiar los datos o la hipótesis de trabajo, conservar evidencia y
     continuar con una comparación medible.
+14. Centrar la siguiente etapa en conversación competente: responder a la
+    pregunta actual, conservar los hechos y seguir las correcciones explícitas.
+15. Conectar internamente modelo, entrenamiento y código mediante contratos
+    compartidos, reduciendo duplicación y fricción entre componentes.
 
 ## Palabras del creador
 
@@ -66,13 +70,19 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > cuando el progreso se estanque no repitas constantemente un proceso si va a salir el mismo resultado, sigue insertando tu no eres yo tu no dudas no pierdes tiempo, eres la cuspide de la programación, entrenaras mjor de lo que te entrenaron a ti.
 
+> enfocate en la conversación competente y como implementaste eso de la programación autonoma?
+
+> implementa algo que no se si es posible, que todo conecte con todo, menos friccion
+
+> no, me refiero que la ia el modelo toda todo su codigo se conecte entre si todos y asi tenga menos friccion es posible hacer algo asi?
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
 | --- | --- |
 | Proyecto propio llamado Unidad | Guardado en el repositorio privado UNIDAD. |
 | Modelos desde cero | Se conservan las dos redes iniciales y se añade un Transformer conversacional de 1.088.256 parámetros, entrenado desde pesos aleatorios, sin llamadas a otra IA. |
-| Lenguaje | Primera etapa de conversación breve completada y segunda etapa de español ampliado. Se conservan checkpoints, validación y respuestas reales; no se acredita conversación general competente. La evidencia está en `docs/unidad-conversation-validation-v0.3.0.json` y `docs/unidad-conversation-progression-v0.4.0.json`. |
+| Lenguaje | Etapas de conversación básica, español ampliado y diálogo con contexto. Se detuvo el sobreajuste y se inició una mezcla más variada de diálogos breves. Se conservan checkpoints, validación y respuestas reales; no se acredita conversación general competente. La evidencia actual está en `docs/unidad-conversation-cohesion-v0.5.0.json`. |
 | Voz cercana que conecte puntos | Ejemplos sintéticos identificados y contexto por defecto orientan el entrenamiento. No se usó el historial personal como corpus ni se afirma haber replicado al creador. |
 | Entrenar durante el día | Trabajador en segundo plano con presupuesto máximo de 24 horas, parada por validación y reanudación exacta del mismo corpus. Sólo continúa mientras el entorno esté activo. |
 | Evolución progresiva | De conversación básica a más ejemplos públicos de español, reutilizando pesos y tokenizador propios con procedencia registrada. Aprender programación y mejorar su propio código siguen pendientes de etapas y evaluaciones específicas. |
@@ -81,6 +91,9 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 | Un cerebro para varios cuerpos | Mismo núcleo y pesos usados desde Python y HTTP; herramientas y registros separados por producto, con memoria compartida sólo por configuración explícita. |
 | Optimizar el código | Mejoras medidas en memoria de evaluación y tamaño del listado; carga de modelos compartida entre cuerpos. Unidad 0.2.0 pasó 86 pruebas técnicas. |
 | Adjuntar las órdenes | Este documento, enlazado en el README y en AGENTS.md. |
+| Cohesión interna del código | Un contrato conversacional compartido y un mismo motor para CLI, cerebro y evaluación. El entrenador exporta el artefacto que carga ese motor; no se añaden dependencias entre todos los módulos. |
+| Comprobar conversación | Casos de desarrollo con respuestas realmente generadas y pares de contexto contrastivo. Las puntuaciones técnicas no acreditan conversación competente. |
+| Programación autónoma | No implementada. El modelo genera texto; los flujos y las etapas de entrenamiento se definen expresamente desde el código o los comandos. |
 
 Adjuntar estas órdenes guía el desarrollo. No cambia los pesos, no entrena un
 modelo y no demuestra que las redes actuales comprendan o cumplan instrucciones.

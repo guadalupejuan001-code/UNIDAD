@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "scope": "training_split_only",
+  "corpusSha256": "9872bd33ae96f38c19a6d250e134232d4b1b25d1b884fa2f1be07742e47ce0ff",
+  "tokenizerSha256": "ee3b0f263ce97919f0a6b6ea8bd1329d1a008883116ee3a2decc9eb15f6fbb59",
+  "contextLength": 256,
+  "parameterCount": 1088256,
+  "modelForwardCalls": 0,
+  "heldoutEvaluated": false,
+  "policies": {
+    "contiguous_nonoverlapping": {
+      "targetTokens": 3313288,
+      "windows": 22300,
+      "records": 11303,
+      "multiwindowRecords": 6619,
+      "replyLongerThanContextRecords": 4938,
+      "questionLongerThanContextRecords": 107,
+      "targetsWithoutCompleteLatestQuestion": 1930153,
+      "targetsWithoutAnyLatestQuestionText": 1866863,
+      "firstReplyTargetWithoutAnyQuestionRecords": 29,
+      "eachFinalReplyTargetExactlyOnce": true,
+      "percentTargetsWithoutAnyLatestQuestionText": 56.34472463607148,
+      "percentTargetsWithoutCompleteLatestQuestion": 58.25491173722296
+    },
+    "sliding_context": {
+      "targetTokens": 3313288,
+      "windows": 30251,
+      "records": 11303,
+      "multiwindowRecords": 6916,
+      "replyLongerThanContextRecords": 4938,
+      "questionLongerThanContextRecords": 107,
+      "targetsWithoutCompleteLatestQuestion": 1786519,
+      "targetsWithoutAnyLatestQuestionText": 1666814,
+      "eachFinalReplyTargetExactlyOnce": true,
+      "percentTargetsWithoutAnyLatestQuestionText": 50.30694584956092,
+      "percentTargetsWithoutCompleteLatestQuestion": 53.91982224304075,
+      "firstReplyTargetWithoutAnyQuestionRecords": 0
+    }
+  },
+  "replyTokensIncludingEos": {
+    "median": 212,
+    "p90": 613,
+    "p99": 1396,
+    "max": 6679
+  },
+  "latestQuestionTokens": {
+    "median": 24,
+    "p90": 70,
+    "p99": 238,
+    "max": 1900
+  },
+  "sourceRecordCounts": {
+    "authored-synthetic": 110,
+    "public-human-reviewed": 11193
+  },
+  "sourceTargetTokenCounts": {
+    "authored-synthetic": 2767,
+    "public-human-reviewed": 3310521
+  },
+  "interpretation": "Input context coverage only; no NLL, response-quality or comprehension measurement. Overlapping windows do not keep questions beyond the finite context indefinitely."
+}

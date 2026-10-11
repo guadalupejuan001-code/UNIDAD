@@ -11,9 +11,10 @@ las copias nuevas no trasladan textos reservados a entrenamiento. Sobre esta
 misma validación ampliada, la pérdida NLL bajó de **5,1455** al iniciar la etapa a
 **4,6214** en esta instantánea. Test no se ha evaluado.
 
-El proceso sigue entrenándose en el entorno donde se inició, con el tiempo
-restante del presupuesto original de 24 horas. La exportación es fija y no cambia
-cuando ese proceso guarda otros checkpoints.
+La etapa ampliada se pausó después para preparar una etapa centrada en conversación
+breve y contexto. Esta exportación del paso 500 es fija; conserva sus pesos y
+su manifiesto originales. Las corridas privadas y sus estados dependen del
+entorno donde se iniciaron.
 
 **Todavía no habla de forma competente.** Sus frases pueden mezclar temas,
 inventar palabras y perder la relación con la pregunta. Menor pérdida por token

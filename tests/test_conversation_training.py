@@ -197,6 +197,127 @@ class ConversationTrainingTests(unittest.TestCase):
         self.assertGreater(len(chunks["train"]), 1)
         self.assertTrue(all(len(inputs) <= 16 for inputs, _ in chunks["train"]))
 
+    def test_sliding_targets_once_overlap_masked_and_earlier_assistant_ignored(self):
+        from ia_propia.conversation.tokenizer import fit_tokenizer, dialogue_tokens, ASSISTANT_ID
+        record = {"split": "train", "messages": [{"role": "user", "content": "Primer encargo."},
+                  {"role": "assistant", "content": "Respuesta anterior sólo como contexto."},
+                  {"role": "user", "content": "Explica una idea sencilla."},
+                  {"role": "assistant", "content": "Nueva explicación detallada " * 40}]}
+        tokenizer = fit_tokenizer([record], vocab_size=300)
+        records = [dict(record, split=split) for split in ("train", "validation", "test")]
+        ids, masks = dialogue_tokens(record["messages"], tokenizer)
+        final = max(index for index, token in enumerate(ids) if token == ASSISTANT_ID)
+        expected = [token for token, teach in zip(ids[final + 1:], masks[final + 1:]) if teach]
+        sliding = training._encoded(records, tokenizer, 16, "sliding_context")["train"]
+        contiguous = training._encoded(records, tokenizer, 16)["train"]
+        for windows in (sliding, contiguous):
+            self.assertEqual([label for _, labels in windows for label in labels if label != -100], expected)
+        self.assertEqual(expected[-1], 2)
+        self.assertTrue(all(len(inputs) == 16 for inputs, _ in sliding))
+        self.assertTrue(all(any(label == -100 for label in labels) for _, labels in sliding[1:]))
+        positions = []
+        for start, end, previous_end in training._window_ranges(len(ids) - 1, 16, "sliding_context"):
+            positions.extend(index + 1 for index in range(max(start, previous_end, final), end) if masks[index + 1])
+        self.assertEqual(positions, list(range(final + 1, len(ids))))
+        self.assertEqual(len(positions), len(set(positions)))
+        self.assertEqual(list(training._window_ranges(17, 16, "sliding_context")), [(0, 16, 0), (1, 17, 16)])
+        self.assertEqual(list(training._window_ranges(17, 16, "contiguous_nonoverlapping")), [(0, 16, 0), (16, 17, 16)])
+
+    def test_sliding_retains_brief_multiturn_question_at_chunk_boundary(self):
+        from ia_propia.conversation.tokenizer import fit_tokenizer, dialogue_tokens, USER_ID, ASSISTANT_ID
+        record = {"messages": [{"role": "user", "content": "Primer mensaje."},
+                  {"role": "assistant", "content": "Ya vimos una opción."},
+                  {"role": "user", "content": "¿Cuál es el siguiente paso?"},
+                  {"role": "assistant", "content": "Revisa esa opción con calma y confirma qué ocurrió."}]}
+        tokenizer = fit_tokenizer([record], vocab_size=300)
+        ids, masks = dialogue_tokens(record["messages"], tokenizer)
+        assistant = max(index for index, token in enumerate(ids) if token == ASSISTANT_ID)
+        user = max(index for index, token in enumerate(ids[:assistant]) if token == USER_ID)
+        # Put the boundary exactly at the assistant marker: legacy loses every user token.
+        context = assistant
+        self.assertGreater(context, assistant - user)
+        records = [dict(record, split=split) for split in ("train", "validation", "test")]
+        legacy = training._encoded(records, tokenizer, context)["train"]
+        sliding = training._encoded(records, tokenizer, context, "sliding_context")["train"]
+        self.assertEqual(legacy[0][0][0], ASSISTANT_ID)
+        question = ids[user:assistant]
+        self.assertTrue(any(inputs[index:index + len(question)] == question
+                            for index in range(len(sliding[0][0]) - len(question) + 1)
+                            for inputs in [sliding[0][0]]))
+        labels = [label for _, labels in sliding for label in labels if label != -100]
+        self.assertEqual(labels, ids[assistant + 1:])
+
+    def test_window_audit_tokenizes_train_only_and_never_forwards_model(self):
+        import importlib.util
+        from ia_propia.conversation import model as model_module
+        artifact, _ = self._parent_artifact()
+        script = Path(__file__).resolve().parents[1] / "examples" / "audit_conversation_windows.py"
+        specification = importlib.util.spec_from_file_location("audit_conversation_windows", script)
+        module = importlib.util.module_from_spec(specification)
+        specification.loader.exec_module(module)
+        actual_tokens = module.dialogue_tokens
+        seen = []
+
+        def training_only(messages, tokenizer):
+            self.assertIn(messages[0]["content"], ("Hola 0. ¿Cómo empiezo?", "Hola 1. ¿Cómo empiezo?"))
+            seen.append(messages)
+            return actual_tokens(messages, tokenizer)
+
+        with patch.object(module, "dialogue_tokens", side_effect=training_only), patch.object(model_module.ConversationModel, "forward", side_effect=AssertionError("audit must not score model")):
+            report = module.audit(self.corpus, artifact)
+        self.assertEqual(len(seen), 2)
+        self.assertFalse(report["heldoutEvaluated"])
+        self.assertEqual(report["modelForwardCalls"], 0)
+        self.assertEqual(report["corpusSha256"], training._sha(self.corpus))
+        legacy = report["policies"]["contiguous_nonoverlapping"]
+        sliding = report["policies"]["sliding_context"]
+        self.assertEqual(legacy["targetTokens"], sliding["targetTokens"])
+        self.assertTrue(sliding["eachFinalReplyTargetExactlyOnce"])
+
+    def test_sliding_pause_resume_exact_and_legacy_schema_unchanged(self):
+        import torch
+        from unittest.mock import patch
+        config = {**self.config, "window_policy": "sliding_context"}
+        uninterrupted = training.train(self.corpus, self.root / "sliding-continuous",
+                                       model_config=self.model_config, training_config=config)
+        original = training._checkpoint
+        paused_once = []
+
+        def checkpoint(*args, **kwargs):
+            name = original(*args, **kwargs)
+            if args[5]["step"] == 2 and not paused_once:
+                paused_once.append(True)
+                os.kill(os.getpid(), signal.SIGTERM)
+            return name
+
+        with patch.object(training, "_checkpoint", side_effect=checkpoint):
+            paused = training.train(self.corpus, self.root / "sliding-paused", model_config=self.model_config,
+                                    training_config=config)
+        self.assertEqual(paused["step"], 2)
+        resumed = training.train(self.corpus, self.root / "sliding-paused", resume=True)
+        a, _, sa, pa = training._load_checkpoint(self.root / "sliding-continuous", uninterrupted["lastCheckpoint"])
+        b, _, sb, pb = training._load_checkpoint(self.root / "sliding-paused", resumed["lastCheckpoint"])
+        for key, value in a.state_dict().items():
+            self.assertTrue(torch.equal(value, b.state_dict()[key]), key)
+        for index, moments in pa["optimizer"]["state"].items():
+            for key, value in moments.items():
+                self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]))
+        self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+        self.assertEqual(pa["scheduler"], pb["scheduler"])
+        self.assertEqual(sa["python_rng"], sb["python_rng"])
+        self.assertEqual(sa["window_policy"], "sliding_context")
+        self.assertEqual(sa["best_validation_nll"], sb["best_validation_nll"])
+        exported = training.export_best(self.root / "sliding-paused", self.root / "sliding-export")
+        self.assertEqual(exported["training"]["windowPolicy"], "sliding_context")
+        self.assertEqual(exported["training"]["config"]["window_policy"], "sliding_context")
+        with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+            training.train(self.corpus, self.root / "sliding-paused", resume=True, training_config=self.config)
+        legacy = self.run_train("legacy-schema", budget_seconds=0.001)
+        _, _, legacy_state, _ = training._load_checkpoint(self.root / "legacy-schema", legacy["lastCheckpoint"])
+        self.assertNotIn("window_policy", legacy_state["training_config"])
+        self.assertEqual(legacy_state["window_policy"], "contiguous_nonoverlapping")
+        training.train(self.corpus, self.root / "legacy-schema", resume=True)
+
     def _parent_artifact(self):
         self.run_train("parent")
         return self.root / "parent-artifact", training.export_best(self.root / "parent", self.root / "parent-artifact")

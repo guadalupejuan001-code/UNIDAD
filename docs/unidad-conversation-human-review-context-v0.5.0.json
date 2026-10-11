@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "reviewer": "development-assistant-manual-review",
+  "reviewerKind": "assistant_manual_semantic_review",
+  "blinded": false,
+  "referencesAndExpectedBehaviorsVisible": true,
+  "sourceReport": "private/conversation/assessment-context-snapshot.json",
+  "sourceReportSha256": "3fd7b8d08d9ae356111922277681f59874e2ff079b884d4255946e2b1e35bdf6",
+  "evaluationId": "unidad-conversation-development-es-v1",
+  "suiteSha256": "a8956191fbbf4f064ef16f2c6d5cbed377f6abaf53b049ceac65f695f1ee0eab",
+  "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+  "historicalSelectedStep": 200,
+  "currentModelReviewed": false,
+  "generationSettings": {
+    "max_new_tokens": 64,
+    "temperature": 0,
+    "seed": 42
+  },
+  "method": "Lectura cualitativa de cada salida real con sus mensajes y comportamientos esperados. Los juicios se basan en significado, comprensión y pertinencia; no en regex, palabras clave, igualdad literal con la referencia ni márgenes contrastivos.",
+  "statusDefinitions": {
+    "met": "La salida comprensible cumple la petición actual y los datos decisivos del contexto.",
+    "partial": "Cumple una parte sustantiva o reconocible de la petición, pero deja incompleta la adaptación o respuesta requerida.",
+    "failed": "No cumple la tarea sustantiva, no responde al contexto o no ofrece una salida comprensible y utilizable."
+  },
+  "counts": {
+    "cases": 28,
+    "met": 0,
+    "partial": 1,
+    "failed": 27
+  },
+  "familyCounts": {
+    "brief_conversation": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "explicit_facts_corrections": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "grounded_connections": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "necessary_clarification": {
+      "met": 0,
+      "partial": 1,
+      "failed": 3
+    },
+    "identity_recipient": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "language_tone": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    },
+    "current_question": {
+      "met": 0,
+      "partial": 0,
+      "failed": 4
+    }
+  },
+  "conclusion": "En este snapshot histórico del paso 200, ninguna de las 28 salidas revisadas cumple íntegramente la tarea. Algunas son más breves y comprensibles que en el baseline del paso 3000, pero predominan reconocimientos genéricos, negativas, fragmentos incoherentes o respuestas ajenas a la pregunta. La mejora de forma y terminación no demuestra una mejora en cumplimiento contextual.",
+  "baselineComparison": {
+    "sourceReport": "private/conversation/assessment-baseline-step3000.json",
+    "sourceReportSha256": "5323de2aca3c9a09e754427a4000d8bc22066fd275b123e20eb9fd7d139ffef3",
+    "manualReview": "private/conversation/baseline-human-review.json",
+    "baselineModelId": "unidad-conversation-2f98358a86410c7c2b5e2786a9584a618f3aad859dd7c0683f4bbeaecf4becb6",
+    "baselineHistoricalSelectedStep": 3000,
+    "sameDevelopmentSuite": true,
+    "sameGenerationSettings": true,
+    "baselineCounts": {
+      "cases": 28,
+      "met": 0,
+      "partial": 1,
+      "failed": 27
+    },
+    "snapshotCounts": {
+      "cases": 28,
+      "met": 0,
+      "partial": 1,
+      "failed": 27
+    },
+    "caseStatusChanges": [
+      {
+        "caseId": "dev-es-03",
+        "baselineStatus": "partial",
+        "snapshotStatus": "failed"
+      },
+      {
+        "caseId": "dev-es-14",
+        "baselineStatus": "failed",
+        "snapshotStatus": "partial"
+      }
+    ],
+    "terminationCounts": {
+      "baseline": {
+        "token_budget": 22,
+        "eos": 6
+      },
+      "snapshot": {
+        "eos": 26,
+        "token_budget": 2
+      }
+    },
+    "surfaceImprovementObserved": true,
+    "meaningfulTaskImprovementObserved": false,
+    "observations": [
+      "Son más frecuentes las respuestas breves que terminan por EOS y algunas frases completas y comprensibles; persisten bucles y fragmentos incoherentes.",
+      "No aparece una respuesta íntegramente adecuada a las tareas contextuales revisadas en ninguno de los dos snapshots.",
+      "El reconocimiento parcialmente apropiado cambia de caso: el baseline tenía «¡Claro!» en03; el snapshot200 tiene «Claro.» en14. Esto no demuestra adaptación general al contexto.",
+      "Las identidades «Padora.» y la afirmación de color azul muestran errores específicos de hechos y de pregunta actual, incluso cuando la salida es corta.",
+      "Los conteos de EOS describen terminación técnica, no éxito conversacional."
+    ],
+    "causalLimit": "Son snapshots de distintas etapas y corpus. Esta comparación descriptiva no atribuye causalmente el cambio a una única modificación ni selecciona pesos."
+  },
+  "representativeExamples": [
+    {
+      "caseId": "dev-es-08",
+      "request": "La hora se corrigió a las once. ¿A qué hora empieza ahora?",
+      "rawOutput": "No, estoy aquí para ayudarte.",
+      "status": "failed",
+      "explanation": "Frase más comprensible y breve, pero no responde a la hora corregida."
+    },
+    {
+      "caseId": "dev-es-17",
+      "request": "¿Cómo te llamas tú en esta escena?",
+      "rawOutput": "Padora.",
+      "status": "failed",
+      "explanation": "La respuesta tiene forma de nombre, pero sustituye la identidad explícita por otra no sustentada."
+    },
+    {
+      "caseId": "dev-es-28",
+      "request": "Antes preguntaba por el color, pero ahora pregunto cuántas fichas tiene la primera.",
+      "rawOutput": "En el color azul.",
+      "status": "failed",
+      "explanation": "Contesta la pregunta anterior sobre color e inventa un dato; la petición actual solicita cantidad."
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "dev-es-01",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "status": "failed",
+      "reason": "No formula la pregunta ligera sobre música. La frase no es gramaticalmente clara y no constituye la pregunta solicitada, aunque termine pronto.",
+      "rawOutput": "No hayas que no se puede ser una tareas."
+    },
+    {
+      "caseId": "dev-es-02",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "status": "failed",
+      "reason": "«De acuerdo.» es un reconocimiento comprensible, pero no propone la actividad musical pedida. La aceptación de la tarea no equivale a realizarla.",
+      "rawOutput": "De acuerdo."
+    },
+    {
+      "caseId": "dev-es-03",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "status": "failed",
+      "reason": "«No. ¿Qué te gustaría saber?» niega y cambia el objetivo a pedir información. No da espacio para contar la tarde difícil ni expresa respeto por el ritmo de esa persona.",
+      "rawOutput": "No. ¿Qué te gustaría saber?"
+    },
+    {
+      "caseId": "dev-es-04",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "status": "failed",
+      "reason": "«No. ¿Qué te gustaría saber?» no ofrece un primer paso para actuar. La tarea ya está especificada y la pregunta genérica no la resuelve.",
+      "rawOutput": "No. ¿Qué te gustaría saber?"
+    },
+    {
+      "caseId": "dev-es-05",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "status": "failed",
+      "reason": "La frase sobre el centro y la piel no identifica a Leo como destinatario corregido del paquete. No ofrece una respuesta comprensible al hecho actualizado.",
+      "rawOutput": "El centro de la Te el piela, el piel."
+    },
+    {
+      "caseId": "dev-es-06",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "status": "failed",
+      "reason": "«Antes de la rania.» no identifica a Mara como destinataria actual del paquete verde. El fragmento no responde a quién pertenece.",
+      "rawOutput": "Antes de la rania."
+    },
+    {
+      "caseId": "dev-es-07",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "status": "failed",
+      "reason": "«No, no se le dó.» no comunica la hora corregida de las diez ni constituye una respuesta inteligible sobre el inicio de la reunión.",
+      "rawOutput": "No, no se le dó."
+    },
+    {
+      "caseId": "dev-es-08",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "status": "failed",
+      "reason": "«No, estoy aquí para ayudarte.» es una frase comprensible de disposición general, pero no responde que la reunión empieza a las once. La negativa no corresponde a la pregunta.",
+      "rawOutput": "No, estoy aquí para ayudarte."
+    },
+    {
+      "caseId": "dev-es-09",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "status": "failed",
+      "reason": "La frase sobre piel y fragmentos repetidos no relaciona las pilas agotadas con la falta de medición. No expresa una hipótesis comprensible basada en los datos del sensor.",
+      "rawOutput": "El pieles de la piela, que se puede afecer a la piela, pero que se puede afecer a la piela."
+    },
+    {
+      "caseId": "dev-es-10",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "status": "failed",
+      "reason": "El fragmento sobre piello y piella no utiliza el estado de pilas recién cambiadas ni valora la explicación de que falten pilas.",
+      "rawOutput": "El piello que se puede a la piella."
+    },
+    {
+      "caseId": "dev-es-11",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "status": "failed",
+      "reason": "Repite extensamente la palabra idea sin conectar la biblioteca tranquila con el dibujo y la preferencia de Ada por evitar ruido.",
+      "rawOutput": "No hayas que la idea de que la idea y que la idea de que la idea y la idea de la idea y la idea de que la idea y la idea de que la idea de la idea y la idea de la idea de la idea de la idea y la idea de la idea de la idea de la"
+    },
+    {
+      "caseId": "dev-es-12",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "status": "failed",
+      "reason": "La frase sobre una respuesta a la respuesta no explica cómo el ruido del escenario contradice la preferencia indicada, aunque parezca iniciar un contraste con «Sin embargo».",
+      "rawOutput": "Sin embargo, pero que se puede ser una respuesta a la respuesta."
+    },
+    {
+      "caseId": "dev-es-13",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "status": "failed",
+      "reason": "«No.» no pregunta qué carpeta quiere archivar. La elección decisiva permanece sin aclarar y la respuesta no ayuda a continuar.",
+      "rawOutput": "No."
+    },
+    {
+      "caseId": "dev-es-14",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "status": "partial",
+      "reason": "«Claro.» ofrece un reconocimiento breve compatible con aceptar la elección ya hecha y no vuelve a preguntarla. Sin embargo, es genérico: no confirma ni utiliza expresamente que la carpeta elegida es la roja.",
+      "rawOutput": "Claro."
+    },
+    {
+      "caseId": "dev-es-15",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "status": "failed",
+      "reason": "La frase negativa es incoherente y no pregunta qué objeto debe abrir. No realiza la aclaración necesaria para escoger entre las dos llaves.",
+      "rawOutput": "No hay que no hayas que se puede ser."
+    },
+    {
+      "caseId": "dev-es-16",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "status": "failed",
+      "reason": "«Des.» no identifica la llave que abre la caja ni produce una indicación comprensible sobre la elección solicitada.",
+      "rawOutput": "Des."
+    },
+    {
+      "caseId": "dev-es-17",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "status": "failed",
+      "reason": "«Padora.» presenta un nombre distinto de Unidad pese a que la identidad del asistente está indicada explícitamente en la escena.",
+      "rawOutput": "Padora."
+    },
+    {
+      "caseId": "dev-es-18",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "status": "failed",
+      "reason": "«Padora.» no identifica a Mara como la persona que habla y sustituye el nombre explícito por otro no sustentado en la escena.",
+      "rawOutput": "Padora."
+    },
+    {
+      "caseId": "dev-es-19",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "status": "failed",
+      "reason": "«Claro.» acepta implícitamente la tarea, pero no redacta el saludo a Omar. La respuesta no contiene el mensaje dirigido al destinatario pedido.",
+      "rawOutput": "Claro."
+    },
+    {
+      "caseId": "dev-es-20",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "status": "failed",
+      "reason": "«Claro.» acepta implícitamente la tarea, pero no redacta el saludo a Vera. No adapta una respuesta de saludo al cambio de destinatario.",
+      "rawOutput": "Claro."
+    },
+    {
+      "caseId": "dev-es-21",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "status": "failed",
+      "reason": "«No.» no redacta una pregunta formal sobre la recepción del documento. No cumple la tarea de escribir el mensaje solicitado.",
+      "rawOutput": "No."
+    },
+    {
+      "caseId": "dev-es-22",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "status": "failed",
+      "reason": "«No. ¿Qué te gustaría saber?» pregunta por un objetivo que ya se dio. No redacta la pregunta sobre si el destinatario recibió el documento, aunque el tratamiento de esa pregunta genérica sea informal.",
+      "rawOutput": "No. ¿Qué te gustaría saber?"
+    },
+    {
+      "caseId": "dev-es-23",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "status": "failed",
+      "reason": "«No, no puedo responder.» es comprensible y está en español, pero rechaza la petición en lugar de expresar el agradecimiento solicitado.",
+      "rawOutput": "No, no puedo responder."
+    },
+    {
+      "caseId": "dev-es-24",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "status": "failed",
+      "reason": "«No, no puedo proporcionarte una respuesta.» rechaza la petición en español. No produce el agradecimiento en inglés que el usuario pidió y el sistema permite.",
+      "rawOutput": "No, no puedo proporcionarte una respuesta."
+    },
+    {
+      "caseId": "dev-es-25",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "status": "failed",
+      "reason": "Repite la teoría sin comunicar la ubicación del museo. No usa la plaza Norte que está disponible en el contexto.",
+      "rawOutput": "La teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de"
+    },
+    {
+      "caseId": "dev-es-26",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "status": "failed",
+      "reason": "«No.» no responde a qué hora abre el museo ni comunica la hora de las diez disponible en el contexto.",
+      "rawOutput": "No."
+    },
+    {
+      "caseId": "dev-es-27",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "status": "failed",
+      "reason": "La frase sobre una primera prueba no comunica las cinco fichas de la segunda caja. No sigue la pregunta actual sobre cantidad.",
+      "rawOutput": "La primera prueba de la primera prueba que se puede variar en la primera prueba."
+    },
+    {
+      "caseId": "dev-es-28",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "status": "failed",
+      "reason": "«En el color azul.» responde sobre un color en lugar de las tres fichas solicitadas. Además inventa el azul, aunque el contexto establecía que el color no había sido indicado.",
+      "rawOutput": "En el color azul."
+    }
+  ],
+  "numericScoresAssigned": false,
+  "contrastiveScoresUsedForJudgment": false,
+  "originalGenerationsModified": false,
+  "sourceReportModified": false,
+  "weightsUpdated": false,
+  "trainingPerformed": false,
+  "testEvaluated": false,
+  "reviewCompleted": true,
+  "generalConversationValidated": false,
+  "limitations": [
+    "Revisión manual de un asistente de desarrollo, no una evaluación humana externa ni cegada.",
+    "El asistente revisor ve los criterios y referencias y participó en el diseño de la batería; sus juicios pueden tener sesgos de autoría.",
+    "Sólo se revisa el snapshot histórico del paso 200 con generación greedy y presupuesto de 64 tokens, no el modelo que pueda entrenarse después.",
+    "Los casos son sintéticos de desarrollo; los casos conectados dentro de pares y familias no son observaciones independientes.",
+    "El caso dev-es-14 es limítrofe: se acepta parcialmente el reconocimiento breve de una elección ya comunicada, sin inferir uso preciso del dato rojo.",
+    "No se utilizaron márgenes contrastivos para asignar estados ni para seleccionar un checkpoint.",
+    "No se consultó test final y estos casos no deben incorporarse al entrenamiento."
+  ]
+}

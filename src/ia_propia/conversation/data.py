@@ -18,17 +18,15 @@ from pathlib import Path
 import tempfile
 from typing import Any, Iterator
 
+from .contract import MAX_DIALOGUE_BYTES, MAX_MESSAGE_BYTES, MAX_MESSAGES, SPECIAL_TOKENS
 
 SPLITS = ("train", "validation", "test")
 MAX_FILE_BYTES = 1_073_741_824
 MAX_LINE_BYTES = 8_388_608
 MAX_RECORD_BYTES = 1_048_576
-MAX_TEXT_BYTES = 16_384
-MAX_MESSAGES = 64
-MAX_DIALOGUE_BYTES = 65_536
-# Keep ingestion independent of optional ML packages. These control strings and
-# limits match tokenizer.py; import additionally reserves room for its system turn.
-_CONTROL_TOKENS = ("<pad>", "<bos>", "<eos>", "<system>", "<user>", "<assistant>")
+MAX_TEXT_BYTES = MAX_MESSAGE_BYTES
+# Ingestion uses the pure contract without importing optional ML packages.
+_CONTROL_TOKENS = SPECIAL_TOKENS
 MAX_JSON_DEPTH = 64
 MAX_JSON_NODES = 100_000
 MAX_RECORDS = 1_000_000

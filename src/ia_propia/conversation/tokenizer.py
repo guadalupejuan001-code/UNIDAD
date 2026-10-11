@@ -5,20 +5,12 @@ import math
 
 from tokenizers import Tokenizer, decoders, models, pre_tokenizers, trainers
 
+from .contract import (ASSISTANT_ID, BOS_ID, DEFAULT_SYSTEM_PROMPT, EOS_ID, IGNORE_INDEX,
+                       MAX_DIALOGUE_BYTES, MAX_MESSAGE_BYTES, MAX_MESSAGES, PAD_ID, ROLE_IDS,
+                       SPECIAL_TOKENS, SYSTEM_ID, USER_ID)
 
-SPECIAL_TOKENS = ("<pad>", "<bos>", "<eos>", "<system>", "<user>", "<assistant>")
-PAD_ID, BOS_ID, EOS_ID, SYSTEM_ID, USER_ID, ASSISTANT_ID = range(6)
-ROLE_IDS = {"system": SYSTEM_ID, "user": USER_ID, "assistant": ASSISTANT_ID}
-IGNORE_INDEX = -100
-MAX_MESSAGES = 64
-MAX_MESSAGE_BYTES = 16_384
-MAX_DIALOGUE_BYTES = 65_536
 MAX_CONTEXT_LENGTH = 4096
 MAX_VOCAB_SIZE = 16_384
-DEFAULT_SYSTEM_PROMPT = (
-    "Eres Unidad. Habla en español de forma cercana y de confianza. Relaciona lo que la persona ya ha compartido; "
-    "distingue tus inferencias de los hechos y no inventes recuerdos."
-)
 
 
 class ConversationError(ValueError):

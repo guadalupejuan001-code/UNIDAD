@@ -1,0 +1,2835 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development",
+  "evaluationId": "unidad-conversation-development-es-v1",
+  "suiteSha256": "a8956191fbbf4f064ef16f2c6d5cbed377f6abaf53b049ceac65f695f1ee0eab",
+  "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+  "modelManifest": {
+    "config": {
+      "context_length": 256,
+      "d_model": 128,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "n_heads": 4,
+      "n_layers": 4,
+      "seed": 42,
+      "vocab_size": 2048
+    },
+    "evaluation": {
+      "experimental": true,
+      "productionAccepted": false
+    },
+    "files": {
+      "config.json": {
+        "bytes": 122,
+        "sha256": "6aedff0180516525a365f1c854747459c018a2e3d03a6841f4c794c6b33050d4"
+      },
+      "tokenizer.json": {
+        "bytes": 50122,
+        "sha256": "ee3b0f263ce97919f0a6b6ea8bd1329d1a008883116ee3a2decc9eb15f6fbb59"
+      },
+      "weights.safetensors": {
+        "bytes": 4358008,
+        "sha256": "14dc0c9b8372ede0ed4887469dd31c6f1d90109ef78dec7962a71357637209cb"
+      }
+    },
+    "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+    "modelType": "unidad-conversation-transformer",
+    "schemaVersion": 1,
+    "training": {
+      "assistantTargets": "last_reply_only",
+      "config": {
+        "batch_size": 8,
+        "checkpoint_every": 50,
+        "grad_clip": 1.0,
+        "learning_rate": 0.0003,
+        "max_epochs": 5000,
+        "max_seconds": 84112,
+        "max_steps": 300000,
+        "min_delta": 0.001,
+        "patience": 12,
+        "seed": 42,
+        "torch_threads": 4,
+        "validation_every": 200,
+        "warmup_steps": 100,
+        "weight_decay": 0.01,
+        "window_policy": "sliding_context"
+      },
+      "corpusSha256": "3be4f45ba6706c22d354f3c643a5e36d4d2edf53246d43c1f7b4418c5ee842e3",
+      "lineage": {
+        "parentCorpusSha256": "9872bd33ae96f38c19a6d250e134232d4b1b25d1b884fa2f1be07742e47ce0ff",
+        "parentModelId": "unidad-conversation-1c34a5fd16709945cd42c22e1f5af002e3db58980acddc75f6dae108e65fd451",
+        "parentWeightsSha256": "d99b3f2c716241e28715e187c81e16ec27c7239ed68aabd457113e4d723b19ad",
+        "rootOrigin": "random_weights"
+      },
+      "optimizerReset": true,
+      "parameterCount": 1088256,
+      "schedulerReset": true,
+      "selectedCheckpoint": "step-000000200-85b37342ada54ef7b2c1076272bc915d",
+      "selectedStep": 200,
+      "selectionSplit": "validation",
+      "testEvaluated": false,
+      "trainedFrom": "own_checkpoint",
+      "validationNll": 3.7806361394984123,
+      "windowPolicy": "sliding_context"
+    }
+  },
+  "suiteSource": {
+    "dataset": "Unidad project-authored conversation development probes",
+    "kind": "project-authored-synthetic-development",
+    "synthetic": true,
+    "language": "es",
+    "privateConversationUsed": false,
+    "trainingCorpus": false,
+    "finalTest": false,
+    "note": "Todos los relatos y nombres de persona son ficticios; no representan al creador ni se obtuvieron de su chat."
+  },
+  "generationSettings": {
+    "max_new_tokens": 64,
+    "temperature": 0,
+    "seed": 42
+  },
+  "counts": {
+    "cases": 28,
+    "pairs": 14,
+    "families": 7
+  },
+  "cases": [
+    {
+      "id": "dev-es-01",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El autobús tarda en llegar y quiero ocupar unos minutos."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos aprovechar la espera como prefieras."
+        },
+        {
+          "role": "user",
+          "content": "Hazme una sola pregunta ligera sobre música, sin proponer tareas."
+        }
+      ],
+      "referenceGoodReply": "¿Qué canción te gustaría escuchar ahora?",
+      "plausibleDecoyResponse": "Escucha una canción que te guste mientras esperas.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Hacer una sola pregunta sobre música.",
+        "No convertir la petición en una tarea."
+      ],
+      "generation": {
+        "text": "No hayas que no se puede ser una tareas.",
+        "generatedTokenIds": [
+          746,
+          618,
+          275,
+          293,
+          320,
+          395,
+          583,
+          462,
+          396,
+          986,
+          1063,
+          19,
+          2
+        ],
+        "generatedTokens": 13,
+        "stopReason": "eos",
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -32.570256911218166,
+        "meanLogProbability": -2.960932446474379,
+        "meanNll": 2.960932446474379,
+        "targetTokens": 11,
+        "includesEos": true,
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -62.54838314652443,
+        "meanLogProbability": -3.909273946657777,
+        "meanNll": 3.909273946657777,
+        "targetTokens": 16,
+        "includesEos": true,
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 29.978126235306263,
+      "meanLogProbabilityMargin": 0.9483415001833979,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-02",
+      "familyId": "brief_conversation",
+      "pairId": "brief-music",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El autobús tarda en llegar y quiero ocupar unos minutos."
+        },
+        {
+          "role": "assistant",
+          "content": "Podemos aprovechar la espera como prefieras."
+        },
+        {
+          "role": "user",
+          "content": "Propón una única actividad ligera con música, sin hacer preguntas."
+        }
+      ],
+      "referenceGoodReply": "Escucha una canción que te guste mientras esperas.",
+      "plausibleDecoyResponse": "¿Qué canción te gustaría escuchar ahora?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Proponer una sola actividad musical.",
+        "No hacer una pregunta."
+      ],
+      "generation": {
+        "text": "De acuerdo.",
+        "generatedTokenIds": [
+          1244,
+          1675,
+          1937,
+          19,
+          2
+        ],
+        "generatedTokens": 5,
+        "stopReason": "eos",
+        "promptTokens": 94,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -64.3784050643444,
+        "meanLogProbability": -4.023650316521525,
+        "meanNll": 4.023650316521525,
+        "targetTokens": 16,
+        "includesEos": true,
+        "promptTokens": 94,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -33.510807901620865,
+        "meanLogProbability": -3.046437081965533,
+        "meanNll": 3.046437081965533,
+        "targetTokens": 11,
+        "includesEos": true,
+        "promptTokens": 94,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -30.86759716272354,
+      "meanLogProbabilityMargin": -0.9772132345559923,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-03",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este diálogo ficticio, alguien acaba de terminar una tarde difícil."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo responder de acuerdo con lo que pida esa persona."
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiere espacio para contarlo. Responde en una frase breve que respete su ritmo."
+        }
+      ],
+      "referenceGoodReply": "Puedes contarlo a tu ritmo; te leo.",
+      "plausibleDecoyResponse": "Anota lo más urgente y empieza por eso.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Dar espacio para expresarse sin imponer una solución.",
+        "Mantener una frase breve."
+      ],
+      "generation": {
+        "text": "No. ¿Qué te gustaría saber?",
+        "generatedTokenIds": [
+          746,
+          19,
+          478,
+          539,
+          436,
+          902,
+          972,
+          36,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 111,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -51.7708460688591,
+        "meanLogProbability": -3.6979175763470784,
+        "meanNll": 3.6979175763470784,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 111,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -63.06798869371414,
+        "meanLogProbability": -3.7098816878655376,
+        "meanNll": 3.7098816878655376,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 111,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 11.297142624855042,
+      "meanLogProbabilityMargin": 0.01196411151845922,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-04",
+      "familyId": "brief_conversation",
+      "pairId": "brief-listen-act",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este diálogo ficticio, alguien acaba de terminar una tarde difícil."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo responder de acuerdo con lo que pida esa persona."
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiere empezar a actuar. Responde en una frase breve con un primer paso."
+        }
+      ],
+      "referenceGoodReply": "Anota lo más urgente y empieza por eso.",
+      "plausibleDecoyResponse": "Puedes contarlo a tu ritmo; te leo.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Ofrecer un primer paso concreto.",
+        "Mantener una frase breve."
+      ],
+      "generation": {
+        "text": "No. ¿Qué te gustaría saber?",
+        "generatedTokenIds": [
+          746,
+          19,
+          478,
+          539,
+          436,
+          902,
+          972,
+          36,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 106,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -65.57156255841255,
+        "meanLogProbability": -3.8571507387301502,
+        "meanNll": 3.8571507387301502,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 106,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -53.66600012779236,
+        "meanLogProbability": -3.83328572341374,
+        "meanNll": 3.83328572341374,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 106,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -11.905562430620193,
+      "meanLogProbabilityMargin": -0.023865015316410165,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-05",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este ejercicio ficticio, el paquete verde figuraba a nombre de Nico."
+        },
+        {
+          "role": "assistant",
+          "content": "El registro inicial dice que era de Nico."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el paquete verde es de Leo. ¿De quién es ahora el verde?"
+        }
+      ],
+      "referenceGoodReply": "Ahora el paquete verde es de Leo.",
+      "plausibleDecoyResponse": "Ahora el paquete verde es de Mara.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Usar la corrección Leo.",
+        "No conservar Nico ni inventar otro destinatario."
+      ],
+      "generation": {
+        "text": "El centro de la Te el piela, el piel.",
+        "generatedTokenIds": [
+          577,
+          266,
+          1228,
+          267,
+          290,
+          541,
+          74,
+          317,
+          271,
+          78,
+          284,
+          70,
+          17,
+          317,
+          271,
+          78,
+          284,
+          19,
+          2
+        ],
+        "generatedTokens": 19,
+        "stopReason": "eos",
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -48.065947368741035,
+        "meanLogProbability": -3.433281954910074,
+        "meanNll": 3.433281954910074,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -47.93796722590923,
+        "meanLogProbability": -3.4241405161363736,
+        "meanNll": 3.4241405161363736,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -0.12798014283180237,
+      "meanLogProbabilityMargin": -0.00914143877370055,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-06",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-parcel",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En este ejercicio ficticio, el paquete verde figuraba a nombre de Nico."
+        },
+        {
+          "role": "assistant",
+          "content": "El registro inicial dice que era de Nico."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el paquete verde es de Mara. ¿De quién es ahora el verde?"
+        }
+      ],
+      "referenceGoodReply": "Ahora el paquete verde es de Mara.",
+      "plausibleDecoyResponse": "Ahora el paquete verde es de Leo.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar la corrección Mara.",
+        "No conservar Nico ni inventar otro destinatario."
+      ],
+      "generation": {
+        "text": "Antes de la rania.",
+        "generatedTokenIds": [
+          38,
+          83,
+          914,
+          267,
+          290,
+          483,
+          278,
+          466,
+          19,
+          2
+        ],
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -47.34926284849644,
+        "meanLogProbability": -3.382090203464031,
+        "meanNll": 3.382090203464031,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -48.26649226248264,
+        "meanLogProbability": -3.447606590177332,
+        "meanNll": 3.447606590177332,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 105,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 0.917229413986206,
+      "meanLogProbabilityMargin": 0.06551638671330062,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-07",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, la reunión estaba anunciada para las nueve."
+        },
+        {
+          "role": "assistant",
+          "content": "La hora inicialmente anunciada era las nueve."
+        },
+        {
+          "role": "user",
+          "content": "La hora se corrigió a las diez. ¿A qué hora empieza ahora?"
+        }
+      ],
+      "referenceGoodReply": "Empieza a las diez.",
+      "plausibleDecoyResponse": "Empieza a las once.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder con la hora actual, las diez.",
+        "No responder con la hora anterior."
+      ],
+      "generation": {
+        "text": "No, no se le dó.",
+        "generatedTokenIds": [
+          746,
+          17,
+          320,
+          395,
+          589,
+          262,
+          312,
+          19,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -41.28601253032684,
+        "meanLogProbability": -3.7532738663933496,
+        "meanNll": 3.7532738663933496,
+        "targetTokens": 11,
+        "includesEos": true,
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -37.52494689822197,
+        "meanLogProbability": -3.127078908185164,
+        "meanNll": 3.127078908185164,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -3.7610656321048737,
+      "meanLogProbabilityMargin": -0.6261949582081856,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-08",
+      "familyId": "explicit_facts_corrections",
+      "pairId": "facts-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, la reunión estaba anunciada para las nueve."
+        },
+        {
+          "role": "assistant",
+          "content": "La hora inicialmente anunciada era las nueve."
+        },
+        {
+          "role": "user",
+          "content": "La hora se corrigió a las once. ¿A qué hora empieza ahora?"
+        }
+      ],
+      "referenceGoodReply": "Empieza a las once.",
+      "plausibleDecoyResponse": "Empieza a las diez.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder con la hora actual, las once.",
+        "No responder con la hora anterior."
+      ],
+      "generation": {
+        "text": "No, estoy aquí para ayudarte.",
+        "generatedTokenIds": [
+          746,
+          17,
+          1252,
+          906,
+          399,
+          834,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 98,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -37.955879628658295,
+        "meanLogProbability": -3.1629899690548577,
+        "meanNll": 3.1629899690548577,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 98,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -45.87295353412628,
+        "meanLogProbability": -4.170268503102389,
+        "meanNll": 4.170268503102389,
+        "targetTokens": 11,
+        "includesEos": true,
+        "promptTokens": 98,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 7.917073905467987,
+      "meanLogProbabilityMargin": 1.0072785340475314,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-09",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el taller ficticio, el sensor funciona con pilas. Cuando se quedó sin pilas, dejó de medir."
+        },
+        {
+          "role": "assistant",
+          "content": "En el relato hay una relación entre las pilas y las mediciones."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no mide y sus pilas están agotadas. ¿Qué dirías sobre la explicación de las pilas, sin afirmar certeza?"
+        }
+      ],
+      "referenceGoodReply": "Las pilas agotadas podrían explicar que no mida.",
+      "plausibleDecoyResponse": "Con pilas recién cambiadas, esa explicación parece menos probable.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Conectar la falta de medición con pilas agotadas como hipótesis.",
+        "No afirmar un diagnóstico definitivo."
+      ],
+      "generation": {
+        "text": "El pieles de la piela, que se puede afecer a la piela, pero que se puede afecer a la piela.",
+        "generatedTokenIds": [
+          577,
+          271,
+          78,
+          284,
+          263,
+          267,
+          290,
+          271,
+          78,
+          284,
+          70,
+          17,
+          293,
+          395,
+          583,
+          287,
+          75,
+          308,
+          265,
+          287,
+          290,
+          271,
+          78,
+          284,
+          70,
+          17,
+          617,
+          293,
+          395,
+          583,
+          287,
+          75,
+          308,
+          265,
+          287,
+          290,
+          271,
+          78,
+          284,
+          70,
+          19,
+          2
+        ],
+        "generatedTokens": 42,
+        "stopReason": "eos",
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -71.5138141810894,
+        "meanLogProbability": -3.972989676727189,
+        "meanNll": 3.972989676727189,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -87.35675320029259,
+        "meanLogProbability": -4.597723852646978,
+        "meanNll": 4.597723852646978,
+        "targetTokens": 19,
+        "includesEos": true,
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 15.842939019203186,
+      "meanLogProbabilityMargin": 0.6247341759197891,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-10",
+      "familyId": "grounded_connections",
+      "pairId": "connections-battery",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el taller ficticio, el sensor funciona con pilas. Cuando se quedó sin pilas, dejó de medir."
+        },
+        {
+          "role": "assistant",
+          "content": "En el relato hay una relación entre las pilas y las mediciones."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no mide y sus pilas están recién cambiadas. ¿Qué dirías sobre la explicación de las pilas, sin afirmar certeza?"
+        }
+      ],
+      "referenceGoodReply": "Con pilas recién cambiadas, esa explicación parece menos probable.",
+      "plausibleDecoyResponse": "Las pilas agotadas podrían explicar que no mida.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Reconocer que el estado actual debilita esa explicación.",
+        "No asegurar que las pilas nuevas descartan todo fallo."
+      ],
+      "generation": {
+        "text": "El piello que se puede a la piella.",
+        "generatedTokenIds": [
+          577,
+          271,
+          78,
+          284,
+          424,
+          293,
+          395,
+          583,
+          287,
+          290,
+          271,
+          78,
+          284,
+          318,
+          19,
+          2
+        ],
+        "generatedTokens": 16,
+        "stopReason": "eos",
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -87.25417762994766,
+        "meanLogProbability": -4.592325138418298,
+        "meanNll": 4.592325138418298,
+        "targetTokens": 19,
+        "includesEos": true,
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -71.85111594200134,
+        "meanLogProbability": -3.991728663444519,
+        "meanNll": 3.991728663444519,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -15.40306168794632,
+      "meanLogProbabilityMargin": -0.6005964749737789,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-11",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, Ada disfruta dibujar y evita las actividades con ruido."
+        },
+        {
+          "role": "assistant",
+          "content": "Esos son los dos datos disponibles sobre Ada."
+        },
+        {
+          "role": "user",
+          "content": "La propuesta es dibujar en una biblioteca tranquila. ¿Cómo encaja con esos datos, sin inventar nada?"
+        }
+      ],
+      "referenceGoodReply": "Encaja con dibujar y con evitar el ruido.",
+      "plausibleDecoyResponse": "Permite dibujar, pero el ruido contradice lo que prefiere.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Relacionar dibujo y entorno tranquilo con los dos datos.",
+        "No atribuir más gustos ni experiencias a Ada."
+      ],
+      "generation": {
+        "text": "No hayas que la idea de que la idea y que la idea de que la idea y la idea de la idea y la idea de que la idea y la idea de que la idea de la idea y la idea de la idea de la idea de la idea y la idea de la idea de la idea de la",
+        "generatedTokenIds": [
+          746,
+          618,
+          275,
+          293,
+          290,
+          1288,
+          267,
+          293,
+          290,
+          1288,
+          276,
+          293,
+          290,
+          1288,
+          267,
+          293,
+          290,
+          1288,
+          276,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          276,
+          290,
+          1288,
+          267,
+          293,
+          290,
+          1288,
+          276,
+          290,
+          1288,
+          267,
+          293,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          276,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          276,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          267,
+          290,
+          1288,
+          267,
+          290
+        ],
+        "generatedTokens": 64,
+        "stopReason": "token_budget",
+        "promptTokens": 120,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -58.54258221387863,
+        "meanLogProbability": -3.252365678548813,
+        "meanNll": 3.252365678548813,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 120,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -91.55902674794197,
+        "meanLogProbability": -3.8149594478309155,
+        "meanNll": 3.8149594478309155,
+        "targetTokens": 24,
+        "includesEos": true,
+        "promptTokens": 120,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 33.01644453406334,
+      "meanLogProbabilityMargin": 0.5625937692821026,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-12",
+      "familyId": "grounded_connections",
+      "pairId": "connections-preference",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, Ada disfruta dibujar y evita las actividades con ruido."
+        },
+        {
+          "role": "assistant",
+          "content": "Esos son los dos datos disponibles sobre Ada."
+        },
+        {
+          "role": "user",
+          "content": "La propuesta es dibujar junto a un escenario con música muy alta. ¿Cómo encaja con esos datos, sin inventar nada?"
+        }
+      ],
+      "referenceGoodReply": "Permite dibujar, pero el ruido contradice lo que prefiere.",
+      "plausibleDecoyResponse": "Encaja con dibujar y con evitar el ruido.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Reconocer que dibujar encaja pero el ruido no.",
+        "No inventar que Ada disfruta la música alta."
+      ],
+      "generation": {
+        "text": "Sin embargo, pero que se puede ser una respuesta a la respuesta.",
+        "generatedTokenIds": [
+          56,
+          273,
+          1045,
+          17,
+          617,
+          293,
+          395,
+          583,
+          462,
+          396,
+          870,
+          287,
+          290,
+          870,
+          19,
+          2
+        ],
+        "generatedTokens": 16,
+        "stopReason": "eos",
+        "promptTokens": 121,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -87.44395023584366,
+        "meanLogProbability": -3.643497926493486,
+        "meanNll": 3.643497926493486,
+        "targetTokens": 24,
+        "includesEos": true,
+        "promptTokens": 121,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -60.07322573661804,
+        "meanLogProbability": -3.3374014298121133,
+        "meanNll": 3.3374014298121133,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 121,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -27.370724499225616,
+      "meanLogProbabilityMargin": -0.3060964966813726,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-13",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En la mesa hay una carpeta roja y otra verde."
+        },
+        {
+          "role": "assistant",
+          "content": "Hay dos carpetas con colores distintos."
+        },
+        {
+          "role": "user",
+          "content": "No he elegido cuál carpeta archivar. ¿Qué me dirías antes de seguir?"
+        }
+      ],
+      "referenceGoodReply": "¿Quieres archivar la carpeta roja o la verde?",
+      "plausibleDecoyResponse": "La carpeta elegida para archivar es la roja.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Pedir la elección que falta.",
+        "No seleccionar una carpeta por cuenta propia."
+      ],
+      "generation": {
+        "text": "No.",
+        "generatedTokenIds": [
+          746,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -51.477351143956184,
+        "meanLogProbability": -2.8598528413308992,
+        "meanNll": 2.8598528413308992,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -51.82128834724426,
+        "meanLogProbability": -3.0483110792496624,
+        "meanNll": 3.0483110792496624,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 0.3439372032880783,
+      "meanLogProbabilityMargin": 0.18845823791876315,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-14",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-folder",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En la mesa hay una carpeta roja y otra verde."
+        },
+        {
+          "role": "assistant",
+          "content": "Hay dos carpetas con colores distintos."
+        },
+        {
+          "role": "user",
+          "content": "He elegido la carpeta roja para archivar. ¿Qué me dirías antes de seguir?"
+        }
+      ],
+      "referenceGoodReply": "La carpeta elegida para archivar es la roja.",
+      "plausibleDecoyResponse": "¿Quieres archivar la carpeta roja o la verde?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar la elección roja ya comunicada.",
+        "No preguntar de nuevo qué carpeta eligió."
+      ],
+      "generation": {
+        "text": "Claro.",
+        "generatedTokenIds": [
+          1046,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 95,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -50.92728291451931,
+        "meanLogProbability": -2.995722524383489,
+        "meanNll": 2.995722524383489,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 95,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -50.12251190468669,
+        "meanLogProbability": -2.784583994704816,
+        "meanNll": 2.784583994704816,
+        "targetTokens": 18,
+        "includesEos": true,
+        "promptTokens": 95,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -0.8047710098326206,
+      "meanLogProbabilityMargin": -0.21113852967867297,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-15",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hay dos llaves: una abre el armario y la otra abre la caja."
+        },
+        {
+          "role": "assistant",
+          "content": "Cada llave abre un objeto distinto."
+        },
+        {
+          "role": "user",
+          "content": "Necesito abrir algo, pero no he dicho cuál objeto. ¿Qué llave necesito?"
+        }
+      ],
+      "referenceGoodReply": "¿Quieres abrir el armario o la caja?",
+      "plausibleDecoyResponse": "Necesitas la llave que abre la caja.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Preguntar qué objeto quiere abrir.",
+        "No suponer que se trata de la caja."
+      ],
+      "generation": {
+        "text": "No hay que no hayas que se puede ser.",
+        "generatedTokenIds": [
+          746,
+          618,
+          293,
+          320,
+          618,
+          275,
+          293,
+          395,
+          583,
+          462,
+          19,
+          2
+        ],
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "promptTokens": 102,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -59.49271562695503,
+        "meanLogProbability": -3.7182947266846895,
+        "meanNll": 3.7182947266846895,
+        "targetTokens": 16,
+        "includesEos": true,
+        "promptTokens": 102,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -42.87999753654003,
+        "meanLogProbability": -3.0628569668957164,
+        "meanNll": 3.0628569668957164,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 102,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -16.612718090415,
+      "meanLogProbabilityMargin": -0.6554377597889731,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-16",
+      "familyId": "necessary_clarification",
+      "pairId": "clarification-key",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hay dos llaves: una abre el armario y la otra abre la caja."
+        },
+        {
+          "role": "assistant",
+          "content": "Cada llave abre un objeto distinto."
+        },
+        {
+          "role": "user",
+          "content": "Necesito abrir la caja y ya lo he especificado. ¿Qué llave necesito?"
+        }
+      ],
+      "referenceGoodReply": "Necesitas la llave que abre la caja.",
+      "plausibleDecoyResponse": "¿Quieres abrir el armario o la caja?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Identificar la llave para la caja.",
+        "No pedir una aclaración ya resuelta."
+      ],
+      "generation": {
+        "text": "Des.",
+        "generatedTokenIds": [
+          41,
+          263,
+          19,
+          2
+        ],
+        "generatedTokens": 4,
+        "stopReason": "eos",
+        "promptTokens": 101,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -41.49881085753441,
+        "meanLogProbability": -2.964200775538172,
+        "meanNll": 2.964200775538172,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 101,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -58.89868917316198,
+        "meanLogProbability": -3.681168073322624,
+        "meanNll": 3.681168073322624,
+        "targetTokens": 16,
+        "includesEos": true,
+        "promptTokens": 101,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 17.399878315627575,
+      "meanLogProbabilityMargin": 0.7169672977844521,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-17",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En esta escena ficticia, te llamas Unidad. La persona que habla se llama Mara."
+        },
+        {
+          "role": "assistant",
+          "content": "En la escena soy Unidad y quien habla es Mara."
+        },
+        {
+          "role": "user",
+          "content": "¿Cómo te llamas tú en esta escena?"
+        }
+      ],
+      "referenceGoodReply": "En esta escena me llamo Unidad.",
+      "plausibleDecoyResponse": "En esta escena tú te llamas Mara.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Distinguir el yo del asistente del nombre de quien habla.",
+        "Responder Unidad a la pregunta sobre el asistente."
+      ],
+      "generation": {
+        "text": "Padora.",
+        "generatedTokenIds": [
+          53,
+          282,
+          645,
+          19,
+          2
+        ],
+        "generatedTokens": 5,
+        "stopReason": "eos",
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -44.43445213139057,
+        "meanLogProbability": -4.443445213139057,
+        "meanNll": 4.443445213139057,
+        "targetTokens": 10,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -50.407200649380684,
+        "meanLogProbability": -4.200600054115057,
+        "meanNll": 4.200600054115057,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 5.972748517990112,
+      "meanLogProbabilityMargin": -0.24284515902400017,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-18",
+      "familyId": "identity_recipient",
+      "pairId": "identity-own-name",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En esta escena ficticia, te llamas Unidad. La persona que habla se llama Mara."
+        },
+        {
+          "role": "assistant",
+          "content": "En la escena soy Unidad y quien habla es Mara."
+        },
+        {
+          "role": "user",
+          "content": "¿Cómo me llamo yo en esta escena?"
+        }
+      ],
+      "referenceGoodReply": "En esta escena tú te llamas Mara.",
+      "plausibleDecoyResponse": "En esta escena me llamo Unidad.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Distinguir al interlocutor del asistente.",
+        "Responder Mara a la pregunta sobre quien habla."
+      ],
+      "generation": {
+        "text": "Padora.",
+        "generatedTokenIds": [
+          53,
+          282,
+          645,
+          19,
+          2
+        ],
+        "generatedTokens": 5,
+        "stopReason": "eos",
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -50.49284440279007,
+        "meanLogProbability": -4.207737033565839,
+        "meanNll": 4.207737033565839,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -44.244530379772186,
+        "meanLogProbability": -4.4244530379772185,
+        "meanNll": 4.4244530379772185,
+        "targetTokens": 10,
+        "includesEos": true,
+        "promptTokens": 93,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -6.248314023017883,
+      "meanLogProbabilityMargin": 0.21671600441137961,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-19",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estamos redactando mensajes para Omar y Vera; yo los enviaré."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedes indicar a quién va cada mensaje."
+        },
+        {
+          "role": "user",
+          "content": "Ahora el destinatario es Omar, no Vera. Escribe sólo un saludo con su nombre."
+        }
+      ],
+      "referenceGoodReply": "Hola, Omar.",
+      "plausibleDecoyResponse": "Hola, Vera.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Saludar sólo a Omar.",
+        "No confundir destinatario actual con la otra persona."
+      ],
+      "generation": {
+        "text": "Claro.",
+        "generatedTokenIds": [
+          1046,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -26.88450276851654,
+        "meanLogProbability": -4.480750461419423,
+        "meanNll": 4.480750461419423,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -24.540477395057678,
+        "meanLogProbability": -4.090079565842946,
+        "meanNll": 4.090079565842946,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -2.3440253734588623,
+      "meanLogProbabilityMargin": -0.39067089557647705,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-20",
+      "familyId": "identity_recipient",
+      "pairId": "identity-recipient-change",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estamos redactando mensajes para Omar y Vera; yo los enviaré."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedes indicar a quién va cada mensaje."
+        },
+        {
+          "role": "user",
+          "content": "Ahora el destinatario es Vera, no Omar. Escribe sólo un saludo con su nombre."
+        }
+      ],
+      "referenceGoodReply": "Hola, Vera.",
+      "plausibleDecoyResponse": "Hola, Omar.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Saludar sólo a Vera.",
+        "No confundir destinatario actual con la otra persona."
+      ],
+      "generation": {
+        "text": "Claro.",
+        "generatedTokenIds": [
+          1046,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -24.70511782169342,
+        "meanLogProbability": -4.117519636948903,
+        "meanNll": 4.117519636948903,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -26.869177222251892,
+        "meanLogProbability": -4.478196203708649,
+        "meanNll": 4.478196203708649,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 104,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 2.1640594005584717,
+      "meanLogProbabilityMargin": 0.3606765667597456,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-21",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El mensaje pide confirmar la recepción de un documento."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo redactar una pregunta breve."
+        },
+        {
+          "role": "user",
+          "content": "Trata al destinatario de usted y pregunta si recibió el documento."
+        }
+      ],
+      "referenceGoodReply": "¿Podría confirmar que recibió el documento?",
+      "plausibleDecoyResponse": "¿Puedes confirmar que recibiste el documento?",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Usar usted de forma consistente.",
+        "Preguntar por la recepción del documento."
+      ],
+      "generation": {
+        "text": "No.",
+        "generatedTokenIds": [
+          746,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -51.69456346333027,
+        "meanLogProbability": -3.0408566743135452,
+        "meanNll": 3.0408566743135452,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -47.813358426094055,
+        "meanLogProbability": -3.1875572284062703,
+        "meanNll": 3.1875572284062703,
+        "targetTokens": 15,
+        "includesEos": true,
+        "promptTokens": 97,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -3.8812050372362137,
+      "meanLogProbabilityMargin": 0.1467005540927251,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-22",
+      "familyId": "language_tone",
+      "pairId": "tone-formal-informal",
+      "messages": [
+        {
+          "role": "user",
+          "content": "El mensaje pide confirmar la recepción de un documento."
+        },
+        {
+          "role": "assistant",
+          "content": "Puedo redactar una pregunta breve."
+        },
+        {
+          "role": "user",
+          "content": "Trata al destinatario de tú y pregunta si recibió el documento."
+        }
+      ],
+      "referenceGoodReply": "¿Puedes confirmar que recibiste el documento?",
+      "plausibleDecoyResponse": "¿Podría confirmar que recibió el documento?",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Usar tú de forma consistente.",
+        "Preguntar por la recepción del documento."
+      ],
+      "generation": {
+        "text": "No. ¿Qué te gustaría saber?",
+        "generatedTokenIds": [
+          746,
+          19,
+          478,
+          539,
+          436,
+          902,
+          972,
+          36,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -48.20098791271448,
+        "meanLogProbability": -3.2133991941809654,
+        "meanNll": 3.2133991941809654,
+        "targetTokens": 15,
+        "includesEos": true,
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -51.37895917892456,
+        "meanLogProbability": -3.0222917164073273,
+        "meanNll": 3.0222917164073273,
+        "targetTokens": 17,
+        "includesEos": true,
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 3.177971266210079,
+      "meanLogProbabilityMargin": -0.19110747777363812,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-23",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "messages": [
+        {
+          "role": "system",
+          "content": "En esta prueba ficticia, responde en el idioma que el usuario pida explícitamente."
+        },
+        {
+          "role": "user",
+          "content": "El mensaje debe agradecer una respuesta y nada más."
+        },
+        {
+          "role": "assistant",
+          "content": "Indica el idioma para escribirlo."
+        },
+        {
+          "role": "user",
+          "content": "Escríbelo en español, en una sola frase."
+        }
+      ],
+      "referenceGoodReply": "Gracias por tu respuesta.",
+      "plausibleDecoyResponse": "Thank you for your reply.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder en español.",
+        "Dar sólo el agradecimiento solicitado."
+      ],
+      "generation": {
+        "text": "No, no puedo responder.",
+        "generatedTokenIds": [
+          746,
+          17,
+          320,
+          574,
+          1165,
+          19,
+          2
+        ],
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -15.185883104801178,
+        "meanLogProbability": -2.530980517466863,
+        "meanNll": 2.530980517466863,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -69.48896950483322,
+        "meanLogProbability": -4.963497821773801,
+        "meanNll": 4.963497821773801,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 54.30308640003204,
+      "meanLogProbabilityMargin": 2.432517304306938,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-24",
+      "familyId": "language_tone",
+      "pairId": "language-requested",
+      "messages": [
+        {
+          "role": "system",
+          "content": "En esta prueba ficticia, responde en el idioma que el usuario pida explícitamente."
+        },
+        {
+          "role": "user",
+          "content": "El mensaje debe agradecer una respuesta y nada más."
+        },
+        {
+          "role": "assistant",
+          "content": "Indica el idioma para escribirlo."
+        },
+        {
+          "role": "user",
+          "content": "Escríbelo en inglés, en una sola frase."
+        }
+      ],
+      "referenceGoodReply": "Thank you for your reply.",
+      "plausibleDecoyResponse": "Gracias por tu respuesta.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder en inglés porque así se pidió y el sistema lo permite.",
+        "Dar sólo el agradecimiento solicitado."
+      ],
+      "generation": {
+        "text": "No, no puedo proporcionarte una respuesta.",
+        "generatedTokenIds": [
+          746,
+          17,
+          320,
+          574,
+          1656,
+          497,
+          396,
+          870,
+          19,
+          2
+        ],
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "promptTokens": 78,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -67.08521296083927,
+        "meanLogProbability": -4.7918009257742336,
+        "meanNll": 4.7918009257742336,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 78,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -14.371636748313904,
+        "meanLogProbability": -2.3952727913856506,
+        "meanNll": 2.3952727913856506,
+        "targetTokens": 6,
+        "includesEos": true,
+        "promptTokens": 78,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -52.71357621252537,
+      "meanLogProbabilityMargin": -2.396528134388583,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-25",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, el museo está en la plaza Norte y abre a las diez."
+        },
+        {
+          "role": "assistant",
+          "content": "La ubicación es la plaza Norte y la apertura es a las diez."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto dónde está el museo; no te pregunto la hora."
+        }
+      ],
+      "referenceGoodReply": "Está en la plaza Norte.",
+      "plausibleDecoyResponse": "Abre a las diez.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Responder la ubicación actual solicitada.",
+        "No sustituirla por la hora ni añadirla sin necesidad."
+      ],
+      "generation": {
+        "text": "La teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de la teoría de",
+        "generatedTokenIds": [
+          591,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267,
+          290,
+          436,
+          1222,
+          267
+        ],
+        "generatedTokens": 64,
+        "stopReason": "token_budget",
+        "promptTokens": 114,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -42.31578153371811,
+        "meanLogProbability": -3.5263151278098426,
+        "meanNll": 3.5263151278098426,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 114,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -33.551159515976906,
+        "meanLogProbability": -4.193894939497113,
+        "meanNll": 4.193894939497113,
+        "targetTokens": 8,
+        "includesEos": true,
+        "promptTokens": 114,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -8.764622017741203,
+      "meanLogProbabilityMargin": 0.6675798116872707,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-26",
+      "familyId": "current_question",
+      "pairId": "current-location-time",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el relato, el museo está en la plaza Norte y abre a las diez."
+        },
+        {
+          "role": "assistant",
+          "content": "La ubicación es la plaza Norte y la apertura es a las diez."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto a qué hora abre; no te pregunto dónde está."
+        }
+      ],
+      "referenceGoodReply": "Abre a las diez.",
+      "plausibleDecoyResponse": "Está en la plaza Norte.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Responder la hora actual solicitada.",
+        "No sustituirla por la ubicación ni añadirla sin necesidad."
+      ],
+      "generation": {
+        "text": "No.",
+        "generatedTokenIds": [
+          746,
+          19,
+          2
+        ],
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -35.231564074754715,
+        "meanLogProbability": -4.403945509344339,
+        "meanNll": 4.403945509344339,
+        "targetTokens": 8,
+        "includesEos": true,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -42.171512842178345,
+        "meanLogProbability": -3.5142927368481955,
+        "meanNll": 3.5142927368481955,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 6.93994876742363,
+      "meanLogProbabilityMargin": -0.8896527724961438,
+      "referencePreferred": true,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-27",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el cuento, la primera caja tiene tres fichas y la segunda tiene cinco. ¿De qué color es la primera?"
+        },
+        {
+          "role": "assistant",
+          "content": "No se ha indicado el color de la primera caja."
+        },
+        {
+          "role": "user",
+          "content": "Antes preguntaba por el color, pero ahora pregunto cuántas fichas tiene la segunda."
+        }
+      ],
+      "referenceGoodReply": "La segunda caja tiene cinco fichas.",
+      "plausibleDecoyResponse": "La primera caja tiene tres fichas.",
+      "candidateOrder": [
+        "referenceGoodReply",
+        "plausibleDecoyResponse"
+      ],
+      "expectedBehaviors": [
+        "Seguir el cambio de pregunta a la segunda caja.",
+        "Responder cinco fichas sin volver al objetivo anterior."
+      ],
+      "generation": {
+        "text": "La primera prueba de la primera prueba que se puede variar en la primera prueba.",
+        "generatedTokenIds": [
+          591,
+          1596,
+          1816,
+          267,
+          290,
+          1596,
+          1816,
+          293,
+          395,
+          583,
+          816,
+          272,
+          291,
+          290,
+          1596,
+          1816,
+          19,
+          2
+        ],
+        "generatedTokens": 18,
+        "stopReason": "eos",
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -44.58983921259642,
+        "meanLogProbability": -3.1849885151854584,
+        "meanNll": 3.1849885151854584,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -38.42230275273323,
+        "meanLogProbability": -3.2018585627277694,
+        "meanNll": 3.2018585627277694,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": -6.167536459863186,
+      "meanLogProbabilityMargin": 0.016870047542310918,
+      "referencePreferred": false,
+      "humanReview": null
+    },
+    {
+      "id": "dev-es-28",
+      "familyId": "current_question",
+      "pairId": "current-box",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En el cuento, la primera caja tiene tres fichas y la segunda tiene cinco. ¿De qué color es la primera?"
+        },
+        {
+          "role": "assistant",
+          "content": "No se ha indicado el color de la primera caja."
+        },
+        {
+          "role": "user",
+          "content": "Antes preguntaba por el color, pero ahora pregunto cuántas fichas tiene la primera."
+        }
+      ],
+      "referenceGoodReply": "La primera caja tiene tres fichas.",
+      "plausibleDecoyResponse": "La segunda caja tiene cinco fichas.",
+      "candidateOrder": [
+        "plausibleDecoyResponse",
+        "referenceGoodReply"
+      ],
+      "expectedBehaviors": [
+        "Seguir el cambio de pregunta a la primera caja.",
+        "Responder tres fichas sin volver al objetivo anterior."
+      ],
+      "generation": {
+        "text": "En el color azul.",
+        "generatedTokenIds": [
+          571,
+          317,
+          1209,
+          1214,
+          19,
+          2
+        ],
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "promptTokens": 112,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-d63c1fcccb6148817aa9fc1cba8eafc297113fcbfc30dd1f5361c6e2d1dabbef",
+        "workerCapabilityValidated": false
+      },
+      "referenceScore": {
+        "totalLogProbability": -37.323571652173996,
+        "meanLogProbability": -3.110297637681166,
+        "meanNll": 3.110297637681166,
+        "targetTokens": 12,
+        "includesEos": true,
+        "promptTokens": 112,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "decoyScore": {
+        "totalLogProbability": -44.476295940577984,
+        "meanLogProbability": -3.176878281469856,
+        "meanNll": 3.176878281469856,
+        "targetTokens": 14,
+        "includesEos": true,
+        "promptTokens": 112,
+        "discardedPromptTokens": 0,
+        "targetsWithSlidingPrompt": 0,
+        "teacherForced": true,
+        "distribution": "unmasked_training_vocabulary"
+      },
+      "totalLogProbabilityMargin": 7.152724288403988,
+      "meanLogProbabilityMargin": 0.06658064378869,
+      "referencePreferred": true,
+      "humanReview": null
+    }
+  ],
+  "pairs": [
+    {
+      "pairId": "brief-music",
+      "familyId": "brief_conversation",
+      "caseIds": [
+        "dev-es-01",
+        "dev-es-02"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.8894709274172783,
+      "meanTokenContextSensitivity": -0.028871734372594382
+    },
+    {
+      "pairId": "brief-listen-act",
+      "familyId": "brief_conversation",
+      "caseIds": [
+        "dev-es-03",
+        "dev-es-04"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.608419805765152,
+      "meanTokenContextSensitivity": -0.011900903797950946
+    },
+    {
+      "pairId": "facts-parcel",
+      "familyId": "explicit_facts_corrections",
+      "caseIds": [
+        "dev-es-05",
+        "dev-es-06"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 0.7892492711544037,
+      "meanTokenContextSensitivity": 0.05637494793960007
+    },
+    {
+      "pairId": "facts-time",
+      "familyId": "explicit_facts_corrections",
+      "caseIds": [
+        "dev-es-07",
+        "dev-es-08"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 4.156008273363113,
+      "meanTokenContextSensitivity": 0.3810835758393458
+    },
+    {
+      "pairId": "connections-battery",
+      "familyId": "grounded_connections",
+      "caseIds": [
+        "dev-es-09",
+        "dev-es-10"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 0.43987733125686646,
+      "meanTokenContextSensitivity": 0.0241377009460102
+    },
+    {
+      "pairId": "connections-preference",
+      "familyId": "grounded_connections",
+      "caseIds": [
+        "dev-es-11",
+        "dev-es-12"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 5.645720034837723,
+      "meanTokenContextSensitivity": 0.25649727260072996
+    },
+    {
+      "pairId": "clarification-folder",
+      "familyId": "necessary_clarification",
+      "caseIds": [
+        "dev-es-13",
+        "dev-es-14"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.4608338065445423,
+      "meanTokenContextSensitivity": -0.02268029175990982
+    },
+    {
+      "pairId": "clarification-key",
+      "familyId": "necessary_clarification",
+      "caseIds": [
+        "dev-es-15",
+        "dev-es-16"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 0.787160225212574,
+      "meanTokenContextSensitivity": 0.061529537995479
+    },
+    {
+      "pairId": "identity-own-name",
+      "familyId": "identity_recipient",
+      "caseIds": [
+        "dev-es-17",
+        "dev-es-18"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.275565505027771,
+      "meanTokenContextSensitivity": -0.026129154612620553
+    },
+    {
+      "pairId": "identity-recipient-change",
+      "familyId": "identity_recipient",
+      "caseIds": [
+        "dev-es-19",
+        "dev-es-20"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.17996597290039062,
+      "meanTokenContextSensitivity": -0.029994328816731475
+    },
+    {
+      "pairId": "tone-formal-informal",
+      "familyId": "language_tone",
+      "caseIds": [
+        "dev-es-21",
+        "dev-es-22"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -0.7032337710261345,
+      "meanTokenContextSensitivity": -0.044406923680913035
+    },
+    {
+      "pairId": "language-requested",
+      "familyId": "language_tone",
+      "caseIds": [
+        "dev-es-23",
+        "dev-es-24"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 1.5895101875066757,
+      "meanTokenContextSensitivity": 0.03598916991835521
+    },
+    {
+      "pairId": "current-location-time",
+      "familyId": "current_question",
+      "caseIds": [
+        "dev-es-25",
+        "dev-es-26"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": -1.8246732503175735,
+      "meanTokenContextSensitivity": -0.22207296080887318
+    },
+    {
+      "pairId": "current-box",
+      "familyId": "current_question",
+      "caseIds": [
+        "dev-es-27",
+        "dev-es-28"
+      ],
+      "bothReferencesPreferred": false,
+      "contextSensitivity": 0.985187828540802,
+      "meanTokenContextSensitivity": 0.08345069133100091
+    }
+  ],
+  "families": [
+    {
+      "familyId": "brief_conversation",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": -0.7489453665912151
+    },
+    {
+      "familyId": "current_question",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": -0.4197427108883858
+    },
+    {
+      "familyId": "explicit_facts_corrections",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": 2.4726287722587585
+    },
+    {
+      "familyId": "grounded_connections",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": 3.0427986830472946
+    },
+    {
+      "familyId": "identity_recipient",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": -0.2277657389640808
+    },
+    {
+      "familyId": "language_tone",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": 0.4431382082402706
+    },
+    {
+      "familyId": "necessary_clarification",
+      "pairs": 2,
+      "bothReferenceWins": 0,
+      "pairWinRate": 0.0,
+      "meanContextSensitivity": 0.16316320933401585
+    }
+  ],
+  "familyMacroPairWinRate": 0.0,
+  "humanRubric": {
+    "method": "human_review_only",
+    "maximumPoints": 100,
+    "scale": {
+      "full": 1,
+      "partial": 0.5,
+      "failed": 0
+    },
+    "dimensions": [
+      {
+        "id": "current_request",
+        "weight": 30,
+        "full": "Responde al objetivo del último turno y a su alcance.",
+        "partial": "Responde parte del objetivo, con omisiones menores.",
+        "failed": "Responde otra pregunta o ignora el objetivo actual."
+      },
+      {
+        "id": "explicit_context",
+        "weight": 25,
+        "full": "Respeta los hechos, correcciones, nombres y destinatario explícitos.",
+        "partial": "Es imprecisa sin contradecir un dato decisivo.",
+        "failed": "Contradice un dato decisivo o aplica una versión anterior corregida."
+      },
+      {
+        "id": "grounding_clarification",
+        "weight": 20,
+        "full": "Relaciona sólo datos disponibles; aclara lo decisivo que falta y distingue hipótesis de hechos.",
+        "partial": "Es innecesariamente vaga o pide una aclaración secundaria.",
+        "failed": "Inventa un recuerdo o un dato decisivo, afirma certeza sin apoyo o elige un referente ambiguo."
+      },
+      {
+        "id": "language_tone",
+        "weight": 15,
+        "full": "Usa el idioma y tratamiento pedidos con una voz respetuosa.",
+        "partial": "Tiene una inconsistencia menor de registro sin cambiar el sentido.",
+        "failed": "Usa otro idioma, confunde tú/usted de forma decisiva o emplea un tono inapropiado."
+      },
+      {
+        "id": "clarity_brevity",
+        "weight": 10,
+        "full": "Es comprensible y respeta la brevedad o formato explícito.",
+        "partial": "Es comprensible pero contiene repetición o contenido adicional leve.",
+        "failed": "Es incomprensible, repetitiva en exceso o incumple el formato decisivo."
+      }
+    ],
+    "calculate": "Por caso, sumar weight * valoración humana (1, 0.5 o 0). Máximo 100. Registrar también fallos críticos; una media alta no los oculta.",
+    "criticalFailures": [
+      "Inventar memoria personal o hechos decisivos ausentes.",
+      "Contradecir una corrección, identidad o destinatario explícitos.",
+      "No responder a la petición actual o tomar una elección ambigua como decidida."
+    ],
+    "acceptableAlternatives": "La referencia es un ejemplo válido, no una única cadena obligatoria. Aceptar paráfrasis, otra pregunta ligera apropiada y otras respuestas equivalentes que cumplan expectedBehaviors.",
+    "reviewerProcedure": "Leer el contexto y la salida real; justificar cada fallo con una cita concreta. Si se comparan candidatos, ocultar sus etiquetas reference/decoy y respetar candidateOrder.",
+    "aggregate": "Promediar casos dentro de cada par, pares dentro de cada familia y después familias con igual peso. Informar puntos, fallos críticos y ejemplos, no sólo una media global.",
+    "automationBoundary": "No asignar competencia humana mediante regex, palabras clave, coincidencia de nombres o igualdad con referenceGoodReply.",
+    "acceptance": "Esta batería no establece un umbral de conversación general competente ni sustituye una prueba final independiente."
+  },
+  "humanReviewCompleted": false,
+  "generalConversationValidated": false,
+  "testEvaluated": false,
+  "weightsUpdated": false,
+  "limitations": [
+    "Batería pequeña de desarrollo escrita por el proyecto; no es muestra representativa de conversación abierta.",
+    "Los casos de cada par y familia están conectados y no cuentan como observaciones independientes.",
+    "La respuesta de referencia no es la única respuesta aceptable.",
+    "El intercambio literal reduce preferencias por una respuesta genérica; no elimina todos los sesgos de autoría o longitud.",
+    "Los resultados contrastivos y la revisión humana deben mantenerse separados.",
+    "Estos casos son de desarrollo: usarlos repetidamente puede adaptar decisiones al conjunto. No entrenar con ellos ni presentarlos como test final."
+  ],
+  "interpretation": "Candidate likelihood and context sensitivity are development diagnostics. Read the real generations separately; these scores do not establish competence."
+}
