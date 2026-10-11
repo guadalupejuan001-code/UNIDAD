@@ -32,6 +32,9 @@ que el trabajador digital solicitado ya esté terminado.
     El entrenamiento actual de conversación no acredita esa capacidad.
 12. Empezar por lo más básico y avanzar mediante etapas de dificultad creciente.
     Las mejoras se aceptan por resultados medidos, no por acumular horas.
+13. Cuando el progreso se estanque, evitar repetir un procedimiento que no aporta
+    mejora. Cambiar los datos o la hipótesis de trabajo, conservar evidencia y
+    continuar con una comparación medible.
 
 ## Palabras del creador
 
@@ -61,16 +64,18 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > entrena lo mas basico y que desate una evolucion progressive agresiva
 
+> cuando el progreso se estanque no repitas constantemente un proceso si va a salir el mismo resultado, sigue insertando tu no eres yo tu no dudas no pierdes tiempo, eres la cuspide de la programación, entrenaras mjor de lo que te entrenaron a ti.
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
 | --- | --- |
 | Proyecto propio llamado Unidad | Guardado en el repositorio privado UNIDAD. |
 | Modelos desde cero | Se conservan las dos redes iniciales y se añade un Transformer conversacional de 1.088.256 parámetros, entrenado desde pesos aleatorios, sin llamadas a otra IA. |
-| Lenguaje | Primera etapa de conversación breve en español; el proceso produce checkpoints, pérdidas de validación y respuestas reales. La evidencia actual está en `docs/unidad-conversation-validation-v0.3.0.json`; no se acredita conversación general competente. |
+| Lenguaje | Primera etapa de conversación breve completada y segunda etapa de español ampliado. Se conservan checkpoints, validación y respuestas reales; no se acredita conversación general competente. La evidencia está en `docs/unidad-conversation-validation-v0.3.0.json` y `docs/unidad-conversation-progression-v0.4.0.json`. |
 | Voz cercana que conecte puntos | Ejemplos sintéticos identificados y contexto por defecto orientan el entrenamiento. No se usó el historial personal como corpus ni se afirma haber replicado al creador. |
 | Entrenar durante el día | Trabajador en segundo plano con presupuesto máximo de 24 horas, parada por validación y reanudación exacta del mismo corpus. Sólo continúa mientras el entorno esté activo. |
-| Evolución progresiva | Primera etapa básica preparada y en entrenamiento. Ampliar datos, aprender programación y mejorar su propio código siguen pendientes de etapas y evaluaciones específicas. |
+| Evolución progresiva | De conversación básica a más ejemplos públicos de español, reutilizando pesos y tokenizador propios con procedencia registrada. Aprender programación y mejorar su propio código siguen pendientes de etapas y evaluaciones específicas. |
 | Cambios de criterio | Registro local de encargos y correcciones; la última valoración decide qué ejemplos se exportan. |
 | Trabajar por el creador | El núcleo ejecuta flujos explícitos y herramientas del producto; comprender un encargo abierto y planificarlo sigue pendiente. |
 | Un cerebro para varios cuerpos | Mismo núcleo y pesos usados desde Python y HTTP; herramientas y registros separados por producto, con memoria compartida sólo por configuración explícita. |

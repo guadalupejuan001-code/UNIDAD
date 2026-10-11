@@ -44,11 +44,17 @@ def status(run_dir):
 
 
 def start(corpus_path, run_dir, *, model_config=None, training_config=None,
-          resume=False, budget_seconds=None):
+          resume=False, budget_seconds=None, initial_model=None):
     """Validate a trusted local request, launch one independent worker, return its PID."""
     _configs(model_config, training_config)
     if type(resume) is not bool:
         raise ValueError("resume must be boolean")
+    if resume and initial_model is not None:
+        raise ValueError("initial_model is only allowed for a new stage, not resume")
+    if initial_model is not None:
+        initial_model = str(Path(initial_model).resolve())
+        if not Path(initial_model).is_dir():
+            raise ValueError("Initial model must be an existing own-artifact directory")
     import math
     if budget_seconds is not None and (type(budget_seconds) not in (int, float) or
             not math.isfinite(budget_seconds) or not 0 < budget_seconds <= 86400):
@@ -71,7 +77,7 @@ def start(corpus_path, run_dir, *, model_config=None, training_config=None,
         request_path = run_dir / f"request-{uuid.uuid4().hex}.json"
         request = {"corpus_path": str(corpus_path), "run_dir": str(run_dir),
                    "model_config": model_config, "training_config": training_config,
-                   "resume": resume, "budget_seconds": budget_seconds}
+                   "resume": resume, "budget_seconds": budget_seconds, "initial_model": initial_model}
         _atomic_json(request_path, request)
         # Launch and publish under the lock; the worker briefly retries this startup lock.
         log_path = run_dir / "worker.log"

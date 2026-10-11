@@ -290,14 +290,57 @@ def _load_checkpoint(run_dir, name):
 
 
 
+
+def _validate_lineage(lineage):
+    import re
+    fields = {"parentModelId", "parentWeightsSha256", "parentCorpusSha256", "rootOrigin"}
+    if type(lineage) is not dict or set(lineage) != fields or lineage["rootOrigin"] != "random_weights":
+        raise ValueError("Invalid own-model lineage")
+    if type(lineage["parentModelId"]) is not str or re.fullmatch(r"unidad-conversation-[0-9a-f]{64}", lineage["parentModelId"]) is None:
+        raise ValueError("Invalid lineage parent model identity")
+    for key in ("parentWeightsSha256", "parentCorpusSha256"):
+        if type(lineage[key]) is not str or re.fullmatch(r"[0-9a-f]{64}", lineage[key]) is None:
+            raise ValueError("Invalid lineage SHA-256")
+
+
+def _initial_own_model(path, model_config):
+    from .artifacts import load_artifact
+    from .model import validate_config
+    model, tokenizer, manifest = load_artifact(path)
+    config = model.config
+    if model_config is not None and validate_config({**config, **model_config}) != config:
+        raise ValueError("Initial model configuration mismatch")
+    metadata = manifest["training"]
+    origin = metadata.get("trainedFrom")
+    if origin == "own_checkpoint":
+        _validate_lineage(metadata.get("lineage"))
+    elif origin != "random_weights" or "lineage" in metadata:
+        raise ValueError("Initial artifact must originate from Unidad's own random-weight training")
+    lineage = {"parentModelId": manifest["modelId"],
+               "parentWeightsSha256": manifest["files"]["weights.safetensors"]["sha256"],
+               "parentCorpusSha256": metadata.get("corpusSha256"), "rootOrigin": "random_weights"}
+    _validate_lineage(lineage)
+    return model, tokenizer, config, lineage
+
+
+def _origin_metadata(state):
+    if "lineage" not in state:
+        return {"trainedFrom": "random_weights"}
+    _validate_lineage(state["lineage"])
+    return {"trainedFrom": "own_checkpoint", "lineage": copy.deepcopy(state["lineage"]),
+            "optimizerReset": True, "schedulerReset": True}
+
+
 def _validate_resume_state(state, examples):
     expected = {"schemaVersion", "corpus_path", "corpus_sha256", "requested_model_config",
                 "model_config", "training_config", "step", "epoch", "cursor", "order",
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if not isinstance(state, dict) or set(state) != expected or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1:
+    if not isinstance(state, dict) or set(state) not in (expected, expected | {"lineage"}) or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1:
         raise ValueError("Invalid checkpoint state schema")
+    if "lineage" in state:
+        _validate_lineage(state["lineage"])
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
@@ -388,7 +431,7 @@ def _status_write(run_dir, state, status, reason=None, **extra):
              "lastCheckpoint": state.get("last_checkpoint"), "bestCheckpoint": state.get("best_checkpoint"),
              "bestValidationNll": state.get("best_validation_nll"),
              "corpusSha256": state.get("corpus_sha256"), "experimental": True,
-             "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False, **extra}
+             "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False, **_origin_metadata(state), **extra}
     _atomic_json(Path(run_dir) / "status.json", value)
     return value
 
@@ -403,11 +446,13 @@ def _log(run_dir, event):
 
 
 def train(corpus_path, run_dir, *, model_config=None, training_config=None,
-          resume=False, budget_seconds=None):
+          resume=False, budget_seconds=None, initial_model=None):
     """Train a local run; budget_seconds limits this invocation, not the persistent total budget."""
     invocation_start = time.monotonic()
     if type(resume) is not bool:
         raise ValueError("resume must be boolean")
+    if resume and initial_model is not None:
+        raise ValueError("initial_model is only allowed for a new stage, not resume")
     if budget_seconds is not None and (type(budget_seconds) not in (int, float) or
             not math.isfinite(budget_seconds) or not 0 < budget_seconds <= 86400):
         raise ValueError("Invalid invocation time budget")
@@ -422,7 +467,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
     records = load_corpus(corpus_path)
     if _sha(corpus_path) != corpus_hash:
         raise ValueError("Corpus changed while loading")
-    validate_config(requested_model)
+    if initial_model is None and not resume:
+        validate_config(requested_model)
     with _run_lock(run_dir):
         if resume:
             if (run_dir / "evaluation.json").exists():
@@ -435,8 +481,10 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             model, tokenizer, state, payload = _load_checkpoint(run_dir, prior["lastCheckpoint"])
             if corpus_hash != state["corpus_sha256"]:
                 raise ValueError("Resume corpus hash mismatch")
-            if model_config is not None and requested_model != state["requested_model_config"]:
-                raise ValueError("Resume model configuration mismatch")
+            if model_config is not None:
+                candidate = validate_config({**state["requested_model_config"], **model_config}) if "lineage" in state else validate_config(requested_model)
+                if candidate != state["requested_model_config"]:
+                    raise ValueError("Resume model configuration mismatch")
             if training_config is not None and requested_training != state["training_config"]:
                 raise ValueError("Resume training configuration mismatch")
             config = state["training_config"]
@@ -449,10 +497,15 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             torch.set_num_threads(config["torch_threads"])
             random.seed(config["seed"])
             torch.manual_seed(config["seed"])
-            tokenizer = fit_tokenizer([record for record in records if record["split"] == "train"],
-                                      vocab_size=requested_model["vocab_size"])
-            actual_model = dict(requested_model, vocab_size=tokenizer.get_vocab_size())
-            model = ConversationModel(actual_model)
+            lineage = None
+            if initial_model is not None:
+                model, tokenizer, actual_model, lineage = _initial_own_model(initial_model, model_config)
+                requested_model = dict(actual_model)
+            else:
+                tokenizer = fit_tokenizer([record for record in records if record["split"] == "train"],
+                                          vocab_size=requested_model["vocab_size"])
+                actual_model = dict(requested_model, vocab_size=tokenizer.get_vocab_size())
+                model = ConversationModel(actual_model)
             state = {"schemaVersion": 1, "corpus_path": str(corpus_path), "corpus_sha256": corpus_hash,
                      "requested_model_config": requested_model, "model_config": actual_model,
                      "training_config": config, "step": 0, "epoch": 0, "cursor": 0,
@@ -461,6 +514,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                      "last_checkpoint": None, "best_checkpoint": None,
                      "created_at": time.time(), "assistant_targets": "last_reply_only",
                      "window_policy": "contiguous_nonoverlapping"}
+            if lineage is not None:
+                state["lineage"] = lineage
             payload = None
         torch.set_num_threads(config["torch_threads"])
         examples = _encoded(records, tokenizer, state["model_config"]["context_length"])
@@ -618,7 +673,7 @@ def export_best(run_dir, export_dir):
             if attempt == 2:
                 raise RuntimeError("Selected checkpoint changed during export; retry")
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                "trainedFrom": "random_weights", "selectionSplit": "validation",
+                **_origin_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
                 "assistantTargets": "last_reply_only", "windowPolicy": "contiguous_nonoverlapping",
                 "testEvaluated": False, "config": state["training_config"]}
@@ -646,7 +701,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         losses = _baseline(examples["train"], tokenizer.get_vocab_size())
         evaluation = {"schemaVersion": 1, "corpusSha256": state["corpus_sha256"],
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
-                      "selectionSplit": "validation", "testUsedForSelection": False,
+                      "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
                       "assistantTargets": "last_reply_only", "windowPolicy": "contiguous_nonoverlapping",
                       "train": _evaluate(model, examples["train"], state["training_config"]["batch_size"]),
                       "validation": _evaluate(model, examples["validation"], state["training_config"]["batch_size"]),
@@ -657,7 +712,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         if export_dir is not None:
             save_artifact(export_dir, model, tokenizer,
                           training={"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                                    "trainedFrom": "random_weights", "selectionSplit": "validation",
+                                    **_origin_metadata(state), "selectionSplit": "validation",
                                     "config": state["training_config"]}, evaluation=evaluation)
         _log(run_dir, {"event": "explicit_finalization", "selectedStep": state["step"],
                        "testNll": evaluation["test"]["nll"]})
@@ -671,7 +726,7 @@ def _main():
     worker.add_argument("--request", required=True)
     args = parser.parse_args()
     request = _json_read(args.request)
-    allowed = {"corpus_path", "run_dir", "model_config", "training_config", "resume", "budget_seconds"}
+    allowed = {"corpus_path", "run_dir", "model_config", "training_config", "resume", "budget_seconds", "initial_model"}
     if not isinstance(request, dict) or set(request) - allowed:
         raise ValueError("Invalid worker request")
     deadline = time.monotonic() + 5

@@ -190,10 +190,49 @@ los ejemplos, generadores aleatorios y tiempo acumulado. Exige el mismo hash del
 corpus y un checkpoint íntegro; no sirve para añadir datos a mitad de una corrida.
 Si ya se agotó el presupuesto total o la paciencia de validación, reanudar no
 amplía esos límites. Un corpus nuevo o una etapa distinta requieren otra corrida.
-Esta versión todavía no implementa inicializar esa etapa nueva desde un artefacto
-anterior: `start` comienza desde pesos aleatorios y `resume` continúa exactamente
-la misma corrida. La transferencia de pesos propios entre currículos queda
-pendiente; no hay un ciclo automático que aprenda tareas nuevas.
+Desde la versión 0.4 se puede iniciar una etapa nueva con `--initial-model`,
+reutilizando los pesos, el tokenizador y la arquitectura de un artefacto propio.
+El optimizador y su calendario comienzan de nuevo; `resume` mantiene también esos
+estados y continúa exactamente el mismo corpus. No se combina `resume` con
+`--initial-model`. Sin ese argumento, una corrida nueva empieza desde pesos
+aleatorios.
+
+## Ampliar lo aprendido sin reiniciar los pesos
+
+La primera corrida básica terminó por falta de mejora en validación, conservando
+el mejor checkpoint. La segunda etapa amplía los ejemplos de español y parte de
+esos pesos. El [preparador de ampliación](../examples/prepare_expanded_conversations.py)
+conserva primero los registros y particiones del corpus básico; después añade
+conversaciones públicas. Elimina copias exactas respetando la versión básica
+para que un texto antes reservado no reaparezca como entrenamiento de otra familia.
+
+```bash
+python examples/prepare_expanded_conversations.py \
+  --basic-corpus private/conversation/basic-es-v1.jsonl \
+  --oasst-corpus private/conversation/oasst-es.jsonl \
+  --output private/conversation/expanded-es-v1.jsonl
+unidad conversation snapshot \
+  --run-dir private/conversation/runs/basic-v1 \
+  --output local-models/basic-parent-final
+unidad conversation start \
+  --corpus private/conversation/expanded-es-v1.jsonl \
+  --run-dir private/conversation/runs/expanded-v2 \
+  --initial-model local-models/basic-parent-final \
+  --training-config private/conversation/config/expanded-training.json
+```
+
+Elige rutas nuevas y crea la configuración antes de ejecutar `start`. Para la
+corrida iniciada en este entorno, `expanded-v1`, el presupuesto de la segunda
+etapa sólo usa el tiempo restante del límite original de 24 horas. La configuración
+no debe conceder otras 24 horas por etapa. Ambas conservan test fuera de la
+selección; la pérdida de dos corpus diferentes no se compara directamente.
+
+La inicialización de una etapa registra la identidad del modelo anterior y los
+hashes de sus pesos y corpus. El tokenizador no se reajusta con los nuevos datos:
+conserva el significado de los embeddings, usando su alfabeto de bytes cuando
+aparecen palabras nuevas. Cambiar de arquitectura exige otro proceso y no está
+implementado aquí. Ampliar datos no cambia automáticamente las herramientas ni
+concede capacidad para programarse.
 
 El trabajador puede continuar al terminar el comando que lo lanzó. Sólo lo hace
 mientras el entorno de ejecución siga activo: `environmentLifetimeGuaranteed`
@@ -222,6 +261,10 @@ la identidad de cada instantánea; no cambies los archivos de un modelo cargado
 por un producto.
 
 Cuando decidas cerrar la etapa, detén el trabajador y ejecuta:
+
+Si vas a continuar entrenando otras etapas con las mismas familias reservadas,
+mantén test sin consultar hasta terminar ese desarrollo y usa `snapshot` para
+transferir los pesos. El comando siguiente corresponde a la evaluación final.
 
 ```bash
 unidad conversation evaluate \

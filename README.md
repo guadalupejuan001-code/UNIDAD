@@ -102,6 +102,22 @@ usando el mismo modelo entre dos cuerpos. Las respuestas de la instantánea
 todavía contienen errores y repeticiones: estas pruebas acreditan el código
 y la integración, no un habla competente.
 
+La versión 0.4 añade continuación entre etapas con `--initial-model`. La primera
+corrida se detuvo al estancarse; la segunda amplía el corpus a 14.207 registros
+y conserva sus mejores pesos y el mismo tokenizador. La ampliación mantiene
+las familias reservadas y usa el presupuesto restante de las 24 horas originales.
+El [registro de progresión](docs/unidad-conversation-progression-v0.4.0.json)
+conserva la comparación y el estado observado. Esta etapa sigue siendo experimental.
+Su [instantánea exportada](models/conversation-spanish-v2/README.md) se puede
+usar desde los productos sin instalar el corpus. Unidad 0.4 pasó 152 pruebas
+conversacionales y técnicas; sus respuestas todavía requieren mejoras.
+
+```bash
+unidad conversation chat --model models/conversation-spanish-v2 \
+  --message "Hola, ¿cómo empezamos?" --max-new-tokens 64 --seed 42
+unidad conversation status --run-dir private/conversation/runs/expanded-v1
+```
+
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
 
 ```bash

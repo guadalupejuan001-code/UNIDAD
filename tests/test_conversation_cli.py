@@ -60,6 +60,13 @@ class ConversationCliTests(_CliFixture, unittest.TestCase):
             start.assert_called_once_with(corpus, directory, model_config={"d_model": 16, "n_layers": 1},
                 training_config={"max_seconds": 86400, "torch_threads": 4}, budget_seconds=30.0)
             start.reset_mock()
+            parent = self.root / "own-parent-model"
+            code, _, error = self.call(["start", "--corpus", str(corpus), "--run-dir", str(directory),
+                                       "--initial-model", str(parent)])
+            self.assertEqual(code, 0, error)
+            start.assert_called_once_with(corpus, directory, model_config=None, training_config=None,
+                                          budget_seconds=None, initial_model=parent)
+            start.reset_mock()
             code, _, error = self.call(["resume", "--corpus", str(corpus), "--run-dir", str(directory), "--budget-seconds", "12"])
             self.assertEqual(code, 0, error)
             start.assert_called_once_with(corpus, directory, resume=True, budget_seconds=12.0)
@@ -154,7 +161,7 @@ class ConversationActualChatTests(_CliFixture, unittest.TestCase):
                 self.assertEqual(output, "")
             loading.assert_not_called()
 
-    def test_snapshot_exports_real_selected_weights_without_corpus_or_writer_access(self):
+    def test_snapshot_then_new_stage_reuses_own_tokenizer_and_preserves_lineage(self):
         from ia_propia.conversation import training
         from ia_propia.conversation.artifacts import load_artifact
         corpus, directory, exported = self.root / "snapshot-corpus.jsonl", self.root / "run", self.root / "snapshot"
@@ -182,6 +189,34 @@ class ConversationActualChatTests(_CliFixture, unittest.TestCase):
         self.assertEqual(loaded["training"]["selectionSplit"], "validation")
         self.assertEqual((directory / "status.json").read_bytes(), status_before)
         self.assertFalse((directory / "evaluation.json").exists())
+        # A new explicit corpus/optimizer stage continues the selected own
+        # artifact; it must not fit a replacement tokenizer or start random weights.
+        stage_corpus, stage_run = self.root / "stage.jsonl", self.root / "stage-run"
+        for record in records:
+            record["id"] += "-next"
+            record["groupId"] += "-next"
+            record["messages"][1]["content"] = "Otro ejemplo declarado para la siguiente etapa de prueba."
+        stage_corpus.write_text("".join(json.dumps(record) + "\n" for record in records), encoding="utf-8")
+        config = self.root / "stage-training.json"
+        config.write_text(json.dumps({"batch_size": 1, "max_steps": 1, "max_seconds": 10,
+            "validation_every": 1, "checkpoint_every": 1, "torch_threads": 1}), encoding="utf-8")
+        code, output, error = self.call(["train", "--corpus", str(stage_corpus), "--run-dir", str(stage_run),
+                                       "--initial-model", str(exported), "--training-config", str(config)])
+        self.assertEqual(code, 0, error)
+        status = json.loads(output)
+        self.assertEqual(status["trainedFrom"], "own_checkpoint")
+        self.assertEqual(status["lineage"], {"parentModelId": manifest["modelId"],
+            "parentWeightsSha256": manifest["files"]["weights.safetensors"]["sha256"],
+            "parentCorpusSha256": manifest["training"]["corpusSha256"], "rootOrigin": "random_weights"})
+        child_artifact = self.root / "child-artifact"
+        code, output, error = self.call(["snapshot", "--run-dir", str(stage_run), "--output", str(child_artifact)])
+        self.assertEqual(code, 0, error)
+        child = json.loads(output)
+        self.assertEqual(child["config"], manifest["config"])
+        self.assertEqual(child["files"]["tokenizer.json"]["sha256"], manifest["files"]["tokenizer.json"]["sha256"])
+        self.assertEqual(child["training"]["lineage"], status["lineage"])
+        self.assertTrue(child["training"]["optimizerReset"])
+        self.assertTrue(child["training"]["schedulerReset"])
 
 
 if __name__ == "__main__":

@@ -20,6 +20,9 @@ las nuevas instrucciones del usuario en la sesión tienen prioridad.
   estado real, incluido cuando el entorno deje de estar activo.
 - Conserva conjuntos de evaluación separados por conversación y familia de
   ejemplos; no ajustes el modelo usando los resultados de test.
+- Al ampliar el corpus, conserva las particiones anteriores y la procedencia de
+  los pesos propios. Una etapa nueva puede reutilizar modelo y tokenizador; una
+  reanudación mantiene además el optimizador. No confundas esas dos operaciones.
 - Mantén objetivos y correcciones en texto libre. No inventes categorías de
   personalidad para representar al creador.
 - Distingue registrar memoria, entrenar parámetros y ejecutar un trabajo. No

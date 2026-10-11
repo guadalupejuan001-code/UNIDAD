@@ -197,6 +197,109 @@ class ConversationTrainingTests(unittest.TestCase):
         self.assertGreater(len(chunks["train"]), 1)
         self.assertTrue(all(len(inputs) <= 16 for inputs, _ in chunks["train"]))
 
+    def _parent_artifact(self):
+        self.run_train("parent")
+        return self.root / "parent-artifact", training.export_best(self.root / "parent", self.root / "parent-artifact")
+
+    def test_new_stage_preserves_parent_weights_tokenizer_and_resets_optimizer(self):
+        import shutil
+        import torch
+        from ia_propia.conversation.artifacts import load_artifact
+        artifact, manifest = self._parent_artifact()
+        parent, tokenizer, _ = load_artifact(artifact)
+        with patch("ia_propia.conversation.tokenizer.fit_tokenizer", side_effect=AssertionError("warm stage must not refit")):
+            result = training.train(self.corpus, self.root / "warm", initial_model=artifact,
+                                    training_config=self.config, budget_seconds=0.001,
+                                    model_config={"d_model": parent.config["d_model"]})
+        model, child_tokenizer, state, payload = training._load_checkpoint(self.root / "warm", result["lastCheckpoint"])
+        self.assertEqual(state["step"], 0)
+        self.assertEqual(model.config, parent.config)
+        self.assertEqual(tokenizer.to_str(), child_tokenizer.to_str())
+        self.assertEqual(payload["optimizer"]["state"], {})
+        self.assertEqual(payload["scheduler"]["last_epoch"], 0)
+        for key, value in parent.state_dict().items():
+            self.assertTrue(torch.equal(value, model.state_dict()[key]), key)
+        lineage = {"parentModelId": manifest["modelId"],
+                   "parentWeightsSha256": manifest["files"]["weights.safetensors"]["sha256"],
+                   "parentCorpusSha256": manifest["training"]["corpusSha256"], "rootOrigin": "random_weights"}
+        self.assertEqual(state["lineage"], lineage)
+        self.assertEqual(result["lineage"], lineage)
+        self.assertEqual(result["trainedFrom"], "own_checkpoint")
+        shutil.rmtree(artifact)  # Resume is self-contained; the parent path is unnecessary.
+        learned = training.train(self.corpus, self.root / "warm", resume=True,
+                                 model_config={"d_model": parent.config["d_model"]})
+        trained, _, trained_state, _ = training._load_checkpoint(self.root / "warm", learned["lastCheckpoint"])
+        self.assertTrue(any(not torch.equal(value, trained.state_dict()[key]) for key, value in parent.state_dict().items()))
+        self.assertEqual(trained_state["lineage"], lineage)
+        exported = training.export_best(self.root / "warm", self.root / "warm-export")
+        self.assertEqual(exported["training"]["trainedFrom"], "own_checkpoint")
+        self.assertEqual(exported["training"]["lineage"], lineage)
+        self.assertTrue(exported["training"]["optimizerReset"])
+        self.assertTrue(exported["training"]["schedulerReset"])
+        finalized = training.finalize(self.root / "warm", export_dir=self.root / "warm-final")
+        _, _, final_manifest = load_artifact(self.root / "warm-final")
+        self.assertEqual(finalized["trainedFrom"], "own_checkpoint")
+        self.assertEqual(final_manifest["training"]["lineage"], lineage)
+
+    def test_warm_stage_pause_resume_exact(self):
+        import torch
+        artifact, _ = self._parent_artifact()
+        continuous = training.train(self.corpus, self.root / "warm-continuous", initial_model=artifact,
+                                    training_config=self.config)
+        original = training._checkpoint
+        stopped = []
+
+        def checkpoint(*args, **kwargs):
+            name = original(*args, **kwargs)
+            if args[5]["step"] == 2 and not stopped:
+                stopped.append(True)
+                os.kill(os.getpid(), signal.SIGTERM)
+            return name
+
+        with patch.object(training, "_checkpoint", side_effect=checkpoint):
+            paused = training.train(self.corpus, self.root / "warm-paused", initial_model=artifact,
+                                    training_config=self.config)
+        self.assertEqual(paused["step"], 2)
+        resumed = training.train(self.corpus, self.root / "warm-paused", resume=True)
+        a, _, sa, pa = training._load_checkpoint(self.root / "warm-continuous", continuous["lastCheckpoint"])
+        b, _, sb, pb = training._load_checkpoint(self.root / "warm-paused", resumed["lastCheckpoint"])
+        for key, value in a.state_dict().items():
+            self.assertTrue(torch.equal(value, b.state_dict()[key]), key)
+        for index, moments in pa["optimizer"]["state"].items():
+            for key, value in moments.items():
+                self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]))
+        self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+        self.assertEqual(pa["scheduler"], pb["scheduler"])
+        self.assertEqual(sa["python_rng"], sb["python_rng"])
+        self.assertEqual(sa["best_validation_nll"], sb["best_validation_nll"])
+        self.assertEqual(sa["lineage"], sb["lineage"])
+
+    def test_warm_start_rejects_configuration_external_origin_and_resume_reinitialization(self):
+        from ia_propia.conversation.artifacts import load_artifact, save_artifact
+        artifact, _ = self._parent_artifact()
+        with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+            training.train(self.corpus, self.root / "incompatible", initial_model=artifact,
+                           model_config={"d_model": 16}, training_config=self.config)
+        for operation in (training.train, jobs.start):
+            with self.assertRaisesRegex(ValueError, "only allowed for a new stage"):
+                operation(self.corpus, self.root / "parent", resume=True, initial_model=artifact)
+        model, tokenizer, manifest = load_artifact(artifact)
+        save_artifact(self.root / "external", model, tokenizer,
+                      training={**manifest["training"], "trainedFrom": "external_pretrained"})
+        with self.assertRaisesRegex(ValueError, "own random-weight"):
+            training.train(self.corpus, self.root / "external-run", initial_model=self.root / "external", training_config=self.config)
+        warm = training.train(self.corpus, self.root / "lineage", initial_model=artifact,
+                              training_config=self.config, budget_seconds=0.001)
+        directory = self.root / "lineage" / "checkpoints" / warm["lastCheckpoint"]
+        state = training._json_read(directory / "state.json")
+        state["lineage"]["rootOrigin"] = "external_pretrained"
+        training._atomic_json(directory / "state.json", state)
+        integrity = training._json_read(directory / "manifest.json")
+        integrity["files"]["state.json"] = training._sha(directory / "state.json")
+        training._atomic_json(directory / "manifest.json", integrity)
+        with self.assertRaisesRegex(ValueError, "lineage"):
+            training.train(self.corpus, self.root / "lineage", resume=True)
+
     def test_periodic_checkpoint_survives_validation_plateau_without_changing_best(self):
         from ia_propia.conversation import model as model_module
         import torch

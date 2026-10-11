@@ -22,6 +22,7 @@ def parser(prog=None):
         training = commands.add_parser(name, help="Entrenar localmente" if name == "train" else "Iniciar un trabajo local en segundo plano")
         training.add_argument("--corpus", type=Path, required=True)
         training.add_argument("--run-dir", type=Path, required=True)
+        training.add_argument("--initial-model", type=Path, help="Artefacto propio local cuyos pesos y tokenizador inicia esta nueva etapa")
         training.add_argument("--model-config", type=Path, help="Objeto JSON de configuración del Transformer y tokenizador")
         training.add_argument("--training-config", type=Path, help="Objeto JSON del entrenamiento; presupuesto total por defecto 86400 segundos")
         training.add_argument("--budget-seconds", type=float, help="Presupuesto de este segmento; el presupuesto total se conserva")
@@ -82,8 +83,11 @@ def main(argv=None, *, prog=None):
                 from .training import train as run
             else:
                 from .jobs import start as run
-            result = run(args.corpus, args.run_dir, model_config=model_config,
-                training_config=training_config, budget_seconds=args.budget_seconds)
+            options = {"model_config": model_config, "training_config": training_config,
+                       "budget_seconds": args.budget_seconds}
+            if args.initial_model is not None:
+                options["initial_model"] = args.initial_model
+            result = run(args.corpus, args.run_dir, **options)
         elif args.command == "resume":
             from .jobs import start
             result = start(args.corpus, args.run_dir, resume=True, budget_seconds=args.budget_seconds)
