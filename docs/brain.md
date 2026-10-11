@@ -88,6 +88,7 @@ o un error con `code` y `message`. `workerCapabilityValidated` permanece en
 | `attention.forecast` | `observations` como JSON; opcionales `signal_id`, `as_of` en milisegundos, `historical`, `source`, `metric`. |
 | `memory.task.add` | `goal` y `context` como texto. |
 | `memory.task.list` | Objeto vacío. |
+| `memory.task.search` | `query` como texto; `limit` opcional, de 1 a 20 (por defecto 10). |
 | `memory.task.show` | `task_id`. |
 | `memory.task.attempt` | `task_id`, `text` y opcional `evidence` como lista de referencias. |
 | `memory.task.feedback` | `task_id`, `attempt_id`, `text`, `accepted` booleano. |
@@ -158,6 +159,40 @@ separa registros, pero los pesos siguen siendo comunes. Un modelo entrenado con
 textos personales podría reproducir fragmentos en otros cuerpos; aislar registros
 no elimina lo aprendido en esos pesos. La demostración incluida usa textos
 inventados, y no entrena con este chat.
+
+`memory.task.search` recupera encargos dentro de ese mismo ámbito, sin ejecutar
+inferencia ni añadir recuerdos al contexto de una respuesta. Los modelos
+configurados se cargan al crear `Brain`, como en las demás operaciones. Por ejemplo:
+
+```json
+{"schemaVersion":1,"operation":"memory.task.search","input":{"query":"cartel feria","limit":5}}
+```
+
+La búsqueda exige todas las palabras de la consulta dentro de un mismo encargo,
+aunque aparezcan en campos distintos. Compara palabras Unicode completas sin
+distinguir mayúsculas; considera equivalentes las representaciones Unicode NFC
+y NFD de cada palabra, conservando los acentos: `café` es distinto de `cafe`.
+Las marcas combinantes siguen formando parte de la palabra. La normalización
+se aplica sólo para comparar; el texto, sus offsets y su SHA permanecen originales.
+No utiliza sinónimos ni búsqueda semántica.
+La consulta admite hasta 512 bytes UTF-8 y 16 palabras distintas. Revisa el
+encargo, su contexto, el texto de intentos actualmente aceptados y sólo la última
+corrección de cada intento. Una corrección de rechazo sigue disponible con
+`accepted: false`; el cuerpo rechazado y los comentarios anteriores quedan fuera.
+
+Devuelve como máximo 20 tareas, ordenadas por creación más reciente y después
+por ID, con el total de coincidencias en `matchCount` y `truncated` si hay más.
+Cada palabra aporta un extracto de hasta 160 caracteres y una fuente con ID de
+encargo, intento cuando corresponde, evento, campo y SHA-256 del texto completo.
+`source.start` y `source.end` señalan la palabra en el texto original; los
+offsets son índices de caracteres Python, con el final exclusivo.
+`excerptStart` y `excerptEnd` delimitan el extracto literal. Una palabra muy larga
+puede exceder el extracto; la fuente conserva sus offsets completos. Usa
+`memory.task.show` con el ID devuelto para comprobar esas referencias y consultar
+el historial. Las referencias de evidencia externas no se abren ni se verifican.
+La búsqueda lee un único snapshot validado y copia sólo los resultados acotados.
+El producto decide expresamente qué información consultar o enviar al modelo;
+la recuperación no ejecuta encargos, entrena pesos ni deduce preferencias.
 
 ## Conectarlo mediante HTTP
 

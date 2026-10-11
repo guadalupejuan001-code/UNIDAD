@@ -6,8 +6,11 @@ import json
 import os
 from pathlib import Path
 import stat
+import subprocess
+import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from ia_propia import workspace as ws
 
@@ -247,6 +250,150 @@ class WorkspaceTests(unittest.TestCase):
         self.assertEqual(len({task["id"] for task in tasks}), 12)
         self.assertEqual(ws.status(self.root)["taskCount"], 12)
         self.assertEqual(ws.status(self.root)["eventCount"], 13)
+
+    def test_repeated_reads_reuse_replay_but_detect_same_size_rewrite_with_restored_mtime(self):
+        task = ws.add_task(self.root, "alpha")
+        ws.status(self.root)
+        with patch.object(ws.json, "loads", wraps=ws.json.loads) as decoder:
+            ws.status(self.root)
+            ws.show(self.root, task["id"])
+            ws.list_tasks(self.root)
+            self.assertEqual(decoder.call_count, 0)
+        log = self.root / ws.LOG_NAME
+        before = log.read_bytes()
+        timestamps = log.stat()
+        changed = before.replace(b'"goal":"alpha"', b'"goal":"omega"')
+        self.assertEqual(len(changed), len(before))
+        self.assertNotEqual(changed, before)
+        log.write_bytes(changed)
+        os.utime(log, ns=(timestamps.st_atime_ns, timestamps.st_mtime_ns))
+        self.assertEqual(ws.show(self.root, task["id"])["goal"], "omega")
+        with ws._locked(self.root):
+            self.assertEqual(ws._load(self.root)["logSha256"], hashlib.sha256(changed).hexdigest())
+        # A cached valid history must not conceal in-place corruption either.
+        damaged = changed.replace(b'"schemaVersion":1', b'"schemaVersion":2', 1)
+        log.write_bytes(damaged)
+        os.utime(log, ns=(timestamps.st_atime_ns, timestamps.st_mtime_ns))
+        for operation in (lambda: ws.status(self.root), lambda: ws.list_tasks(self.root),
+                          lambda: ws.init_workspace(self.root)):
+            with self.assertRaises(ws.WorkspaceError):
+                operation()
+            self.assertEqual(log.read_bytes(), damaged)
+
+    def test_cache_does_not_publish_failed_or_partially_written_events(self):
+        before = self.log_bytes()
+        ws.status(self.root)
+        with patch.object(ws.os, "write", side_effect=OSError("Synthetic write failure")):
+            with self.assertRaises(OSError):
+                ws.add_task(self.root, "Must not become phantom cached memory")
+        self.assertEqual(self.log_bytes(), before)
+        self.assertEqual(ws.show(self.root)["tasks"], [])
+        original_write = os.write
+        calls = []
+
+        def partial_write(descriptor, data):
+            if calls:
+                raise OSError("Synthetic failure after a partial write")
+            calls.append(True)
+            return original_write(descriptor, data[:4])
+
+        with patch.object(ws.os, "write", side_effect=partial_write):
+            with self.assertRaises(OSError):
+                ws.add_task(self.root, "Interrupted event")
+        damaged = self.log_bytes()
+        self.assertEqual(damaged, before + b'{"sc')
+        with self.assertRaises(ws.WorkspaceError):
+            ws.status(self.root)
+        self.assertEqual(self.log_bytes(), damaged)
+
+    def test_fsync_error_reconstructs_actual_bytes_instead_of_claiming_rollback(self):
+        ws.status(self.root)
+        with patch.object(ws.os, "fsync", side_effect=OSError("Synthetic durability failure")):
+            with self.assertRaises(OSError):
+                ws.add_task(self.root, "Complete bytes were written before failed fsync")
+        actual = self.log_bytes()
+        shown = ws.show(self.root)
+        self.assertEqual(len(shown["tasks"]), 1)
+        self.assertEqual(shown["tasks"][0]["goal"], "Complete bytes were written before failed fsync")
+        self.assertEqual(ws.status(self.root)["eventCount"], 2)
+        self.assertEqual(self.log_bytes(), actual)
+
+    def test_other_process_correction_invalidates_warm_replay_and_export_eligibility(self):
+        task, attempt = self.task_attempt()
+        self.approve(task, attempt)
+        self.assertIs(ws.show(self.root, task["id"])["attempts"][0]["accepted"], True)
+        subprocess.run([sys.executable, "-c",
+                        "import sys; from ia_propia import workspace as ws; "
+                        "ws.feedback(sys.argv[1], sys.argv[2], sys.argv[3], "
+                        "'Synthetic correction from another process', accepted=False)",
+                        str(self.root), task["id"], attempt["id"]], check=True, capture_output=True)
+        shown = ws.show(self.root, task["id"])
+        self.assertIs(shown["attempts"][0]["accepted"], False)
+        self.assertEqual(len(shown["attempts"][0]["feedback"]), 2)
+        self.assertEqual(ws.status(self.root)["acceptedAttemptCount"], 0)
+        with self.assertRaises(ws.WorkspaceError):
+            ws.export_training(self.root, self.folder / "revoked.txt")
+        shown["attempts"][0]["accepted"] = True
+        shown["attempts"][0]["feedback"].clear()
+        self.assertIs(ws.show(self.root, task["id"])["attempts"][0]["accepted"], False)
+
+    def test_replay_cache_is_bounded_and_eviction_does_not_mix_workspaces(self):
+        roots = [self.folder / f"product-{index}" for index in range(4)]
+        with patch.object(ws, "_MAX_CACHED_WORKSPACES", 2):
+            with ws._REPLAY_CACHE_GUARD:
+                ws._REPLAY_CACHE.clear()
+            for index, root in enumerate(roots):
+                ws.init_workspace(root)
+                ws.add_task(root, f"Only product {index}")
+                ws.status(root)
+                with ws._REPLAY_CACHE_GUARD:
+                    self.assertLessEqual(len(ws._REPLAY_CACHE), 2)
+            for index, root in enumerate(roots):
+                self.assertEqual([task["goal"] for task in ws.show(root)["tasks"]], [f"Only product {index}"])
+        oversized_root = self.folder / "uncached"
+        with patch.object(ws, "_MAX_CACHED_LOG_BYTES", 1):
+            ws.init_workspace(oversized_root)
+            ws.add_task(oversized_root, "Too large for the deliberately tiny cache")
+            ws.status(oversized_root)
+            with ws._REPLAY_CACHE_GUARD:
+                self.assertNotIn(str(oversized_root.resolve()), ws._REPLAY_CACHE)
+
+    def test_independent_workspaces_use_the_global_lru_safely_with_parallel_writers(self):
+        roots = [self.folder / f"parallel-product-{index}" for index in range(6)]
+        for root in roots:
+            ws.init_workspace(root)
+
+        def writes(index):
+            for number in range(10):
+                ws.add_task(roots[index], f"product {index} task {number}")
+            return ws.status(roots[index])
+
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            results = list(executor.map(writes, range(6)))
+        for index, result in enumerate(results):
+            self.assertEqual((result["taskCount"], result["eventCount"]), (10, 11))
+            self.assertEqual([task["goal"] for task in ws.show(roots[index])["tasks"]],
+                             [f"product {index} task {number}" for number in range(10)])
+        with ws._REPLAY_CACHE_GUARD:
+            self.assertLessEqual(len(ws._REPLAY_CACHE), ws._MAX_CACHED_WORKSPACES)
+
+    def test_search_validates_before_loading_and_copies_only_detached_results(self):
+        task, attempt = self.task_attempt(goal="Synthetic viento task", text="Synthetic approved clue")
+        self.approve(task, attempt, "Latest explicit viento correction")
+        with patch.object(ws, "_load", wraps=ws._load) as loader:
+            result = ws.search_tasks(self.root, "VIENTO", limit=1)
+            self.assertEqual(loader.call_count, 1)
+        self.assertEqual(result["tasks"][0]["id"], task["id"])
+        before = self.log_bytes()
+        result["tasks"][0]["matches"][0]["source"]["eventId"] = "caller edit"
+        result["tasks"].clear()
+        self.assertEqual(ws.search_tasks(self.root, "VIENTO", limit=1)["tasks"][0]["id"], task["id"])
+        self.assertEqual(self.log_bytes(), before)
+        with patch.object(ws, "_load", wraps=ws._load) as loader:
+            for query, limit in (("", 1), ("viento", True), ("viento", 21), ("x" * 513, 1)):
+                with self.assertRaises(ws.WorkspaceError):
+                    ws.search_tasks(self.folder / "not-initialized", query, limit)
+            self.assertEqual(loader.call_count, 0)
 
 
 if __name__ == "__main__":

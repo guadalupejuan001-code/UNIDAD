@@ -5,6 +5,7 @@ can be exported for a separate, explicitly requested language-model training run
 """
 
 from contextlib import contextmanager
+from collections import OrderedDict
 from copy import deepcopy
 import hashlib
 import json
@@ -35,6 +36,12 @@ MAX_RECORD_BYTES = 262_144
 MAX_TIMESTAMP = 9_223_372_036_854_775_807
 _THREAD_LOCKS = {}
 _THREAD_LOCKS_GUARD = threading.Lock()
+# The log remains authoritative. Cached replay is reused only after hashing all
+# current bytes, including on same-size rewrites; no timestamp shortcut is used.
+_REPLAY_CACHE = OrderedDict()
+_REPLAY_CACHE_GUARD = threading.Lock()
+_MAX_CACHED_WORKSPACES = 4
+_MAX_CACHED_LOG_BYTES = 2 * 1024 * 1024
 
 
 def _root(path):
@@ -197,13 +204,43 @@ def _apply(state, event):
     state["lastAt"] = at
 
 
+def _cached_replay(root, *, remove=False):
+    key = str(root.resolve())
+    with _REPLAY_CACHE_GUARD:
+        if remove:
+            return _REPLAY_CACHE.pop(key, None)
+        entry = _REPLAY_CACHE.get(key)
+        if entry is not None:
+            _REPLAY_CACHE.move_to_end(key)
+        return entry
+
+
+def _cache_replay(root, state, digest, size):
+    # All callers hold the workspace lock. A separate guard protects the bounded
+    # process-wide LRU across independently locked product workspaces.
+    key = str(root.resolve())
+    with _REPLAY_CACHE_GUARD:
+        _REPLAY_CACHE.pop(key, None)
+        if size > _MAX_CACHED_LOG_BYTES:
+            return
+        _REPLAY_CACHE[key] = (state, digest.copy(), size)
+        while len(_REPLAY_CACHE) > _MAX_CACHED_WORKSPACES:
+            _REPLAY_CACHE.popitem(last=False)
+
+
 def _load(root):
     log = root / LOG_NAME
     if log.is_symlink() or not log.is_file():
         raise WorkspaceError("Initialize a regular workspace event log first")
-    state = {"workspaceId": None, "tasks": {}, "attempts": {}, "eventIds": set(), "lastAt": 0}
-    digest = hashlib.sha256()
     with log.open("rb") as stream:
+        cached = _cached_replay(root)
+        if cached is not None:
+            if hashlib.file_digest(stream, "sha256").digest() == cached[1].digest():
+                return cached[0]  # Internal state only; public snapshots are detached.
+            _cached_replay(root, remove=True)
+            stream.seek(0)
+        state = {"workspaceId": None, "tasks": {}, "attempts": {}, "eventIds": set(), "lastAt": 0}
+        digest = hashlib.sha256()
         while True:
             line = stream.readline(MAX_RECORD_BYTES + 1)
             if not line:
@@ -216,13 +253,18 @@ def _load(root):
             except (ValueError, UnicodeError, KeyError, TypeError, RecursionError) as error:
                 raise WorkspaceError(f"Cannot reconstruct workspace history; original log preserved: {error}") from error
             digest.update(line)
+        size = stream.tell()
     if not state["workspaceId"]:
         raise WorkspaceError("Empty workspace history; original log preserved")
     state["logSha256"] = digest.hexdigest()
+    _cache_replay(root, state, digest, size)
     return state
 
 
 def _append(root, state, event):
+    # Validation may mutate state, and any write/fsync can fail. Remove cached
+    # ownership before either, so a failed operation cannot publish phantom data.
+    cached = _cached_replay(root, remove=True)
     _apply(state, event)  # Validate before writing any new bytes.
     record = (json.dumps(event, ensure_ascii=False, allow_nan=False, separators=(",", ":")) + "\n").encode("utf-8")
     if len(record) > MAX_RECORD_BYTES:
@@ -239,6 +281,11 @@ def _append(root, state, event):
         _chmod(root / LOG_NAME, 0o600)
     finally:
         os.close(descriptor)
+    if cached is not None and cached[0] is state:
+        digest = cached[1].copy()
+        digest.update(record)
+        state["logSha256"] = digest.hexdigest()
+        _cache_replay(root, state, digest, cached[2] + len(record))
 
 
 def _status(root, state):
@@ -328,6 +375,19 @@ def status(path):
     root = _root(path)
     with _locked(root):
         return _status(root, _load(root))
+
+
+def search_tasks(path, query, limit=10):
+    """Search explicit local memory once, copying only bounded matching excerpts."""
+    from .memory_search import search_snapshot, validate_search
+
+    try:
+        validate_search(query, limit)
+    except ValueError as error:
+        raise WorkspaceError(str(error)) from error
+    root = _root(path)
+    with _locked(root):
+        return search_snapshot(_load(root), query, limit)
 
 
 def _write_new(path, content):

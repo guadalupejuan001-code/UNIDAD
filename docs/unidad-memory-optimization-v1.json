@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "evidenceType": "measured-local-memory-replay-and-explicit-lexical-search",
+  "conclusion": "Se evita reconstruir el historial sin cambios y copiarlo por completo para buscar. Los resultados medidos corresponden a memoria externa explícita, no a conversación ni aprendizaje de parámetros.",
+  "implementation": {
+    "authoritativeSource": "Existing events.jsonl; cache is process-local and disposable",
+    "cacheHitVerification": "SHA-256 of all bytes currently in events.jsonl",
+    "complexity": "Reads/hashing remain O(current log bytes), with status/list/search traversal dependent on records; no O(1) claim",
+    "eligibilityNotResidentRamBound": true,
+    "exportApprovalPolicyChanged": false,
+    "isolation": "Existing workspace-root locks plus a separate process-wide cache LRU guard",
+    "latestFeedbackPolicyChanged": false,
+    "maxCachedWorkspaces": 4,
+    "maxEligibleLogBytesPerWorkspace": 2097152,
+    "newPublicFunction": "search_tasks(path, query, limit=10)",
+    "persistentSchemaChanged": false,
+    "personalMemoryUsedForTraining": false,
+    "publicExistingInterfacesChanged": false,
+    "publicationRule": "Evict before applying append; reinsert only after successful complete write and fsync",
+    "queryNormalization": "NFC per original Unicode word, then casefold; Mn/Mc/Me remain inside word spans. Accents and original source offsets/SHA are preserved."
+  },
+  "retrieval": {
+    "operation": "memory.task.search",
+    "method": "lexical_all_words_nfc_casefold",
+    "unicode": "NFC por palabra para comparar; se conservan acentos y offsets de caracteres del texto original.",
+    "sourceReferences": [
+      "taskId",
+      "attemptId when applicable",
+      "eventId",
+      "field",
+      "textSha256",
+      "original character offsets"
+    ],
+    "automaticContextInjection": false,
+    "semanticSearch": false,
+    "maxQueryBytes": 512,
+    "maxDistinctQueryWords": 16,
+    "defaultResults": 10,
+    "maximumResults": 20,
+    "maximumExcerptCharacters": 160
+  },
+  "benchmark": {
+    "baselineCommit": "18b5b0a378f38c0c19d319c61bd95d262d4d19cb",
+    "baselineWorkspaceSha256": "15617818862790b33f787a345d51eb606e3293e467419a3c89d2de3e4aaadd8e",
+    "benchmarkSource": "examples/benchmark_memory.py",
+    "benchmarkSha256": "7ae0b1906e9511ab698247206c8a586a120d9e1cc4c1048daf53f958ecc2b758",
+    "fixture": {
+      "bytes": 1013097,
+      "counts": {
+        "acceptedAttemptCount": 400,
+        "attemptCount": 600,
+        "eventCount": 2001,
+        "taskCount": 200
+      },
+      "origin": "Authored deterministic fictional events only; no creator memory or model outputs",
+      "sha256": "9a828653d1d3a63d7a10548da610dc2eb8a1841dd2f793c4728703d8dde2c124",
+      "temporaryFixtureRemoved": true
+    },
+    "aggregation": "Median of three per-run medians; each operation warmed three times, except appends warm status before each trial",
+    "comparison": "Three alternating baseline/optimized subprocess pairs under the same period of background-worker activity",
+    "executionOrder": [
+      "before1",
+      "after1",
+      "before2",
+      "after2",
+      "before3",
+      "after3"
+    ],
+    "measurements": {
+      "feedback_append": {
+        "baselineMedianOfRunMediansSeconds": 0.020785731998330448,
+        "baselineOverOptimizedRatio": 19.980459623359945,
+        "baselineRunMediansSeconds": [
+          0.021739438001532108,
+          0.020785731998330448,
+          0.018819006996636745
+        ],
+        "optimizedMedianOfRunMediansSeconds": 0.001040302995534148,
+        "optimizedRunMediansSeconds": [
+          0.001040302995534148,
+          0.0010153849943890236,
+          0.0010982490057358518
+        ],
+        "samplesPerRun": 11,
+        "timeReductionPercent": 94.99511012834328
+      },
+      "lexical_retrieval": {
+        "baselineMedianOfRunMediansSeconds": 0.050298631002078764,
+        "baselineOverOptimizedRatio": 6.459571735399541,
+        "baselineRunMediansSeconds": [
+          0.05089974599832203,
+          0.04900045200338354,
+          0.050298631002078764
+        ],
+        "optimizedMedianOfRunMediansSeconds": 0.007786682006553747,
+        "optimizedRunMediansSeconds": [
+          0.007669807004276663,
+          0.008043796005949844,
+          0.007786682006553747
+        ],
+        "samplesPerRun": 31,
+        "timeReductionPercent": 84.51909753521535
+      },
+      "list_tasks": {
+        "baselineMedianOfRunMediansSeconds": 0.020519744997727685,
+        "baselineOverOptimizedRatio": 25.748200331703156,
+        "baselineRunMediansSeconds": [
+          0.02059166200342588,
+          0.018174456999986432,
+          0.020519744997727685
+        ],
+        "optimizedMedianOfRunMediansSeconds": 0.0007969389989739284,
+        "optimizedRunMediansSeconds": [
+          0.0008035890059545636,
+          0.0007969389989739284,
+          0.0007771189993945882
+        ],
+        "samplesPerRun": 31,
+        "timeReductionPercent": 96.11623341780232
+      },
+      "show_one_task": {
+        "baselineMedianOfRunMediansSeconds": 0.019640653001260944,
+        "baselineOverOptimizedRatio": 26.295348089242513,
+        "baselineRunMediansSeconds": [
+          0.02462444100092398,
+          0.019243692004238255,
+          0.019640653001260944
+        ],
+        "optimizedMedianOfRunMediansSeconds": 0.0007469250049325638,
+        "optimizedRunMediansSeconds": [
+          0.0007351669992203824,
+          0.0007469250049325638,
+          0.0007493480006814934
+        ],
+        "samplesPerRun": 31,
+        "timeReductionPercent": 96.19704596947662
+      },
+      "status": {
+        "baselineMedianOfRunMediansSeconds": 0.020518823999736924,
+        "baselineOverOptimizedRatio": 28.419148141363067,
+        "baselineRunMediansSeconds": [
+          0.020713254001748282,
+          0.019042172003537416,
+          0.020518823999736924
+        ],
+        "optimizedMedianOfRunMediansSeconds": 0.0007220070037874393,
+        "optimizedRunMediansSeconds": [
+          0.0007220070037874393,
+          0.0007447719981428236,
+          0.0007115819971659221
+        ],
+        "samplesPerRun": 31,
+        "timeReductionPercent": 96.48124569031492
+      }
+    },
+    "retrieval": {
+      "attribution": "Combined replay reuse plus avoiding deepcopy of the whole history; not an isolated measure of either component",
+      "baselineRoute": "Validated full detached workspace.show snapshot, then identical lexical helper",
+      "historicalSearchApiExisted": false,
+      "limit": 10,
+      "matchingTasks": 200,
+      "method": "lexical_all_words_nfc_casefold",
+      "newHelperOnBothRoutes": true,
+      "optimizedRoute": "workspace.search_tasks under one workspace lock/load; only bounded matching output copied",
+      "outputParity": "Asserted exact JSON equality with the full detached snapshot route in every subprocess",
+      "query": "synthetic correction"
+    },
+    "pythonVersion": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "limitations": [
+      "Background load is not controlled or constant; alternating trials reduce but do not eliminate timing confounds.",
+      "These are warmed synthetic local-log timings on this machine, not general latency, model-learning or quality guarantees.",
+      "Measurements do not include cold first replay, logs above the eligibility bound, peak RSS, remote storage or production workloads.",
+      "Earlier before.json/after.json, alternating-v1 reports and receipt.json are preserved historical studies; only the unicode-v2 alternating reports measure this final helper/public script."
+    ],
+    "torchImported": false,
+    "privateFinalReceiptSha256": "224f4223504f4677323f59bf2d37ec403ea23a8018b6ad7faa48186229b6ad98"
+  },
+  "sourceFiles": {
+    "benchmark": {
+      "path": "examples/benchmark_memory.py",
+      "sha256": "7ae0b1906e9511ab698247206c8a586a120d9e1cc4c1048daf53f958ecc2b758"
+    },
+    "optimized": {
+      "path": "src/ia_propia/workspace.py",
+      "sha256": "3d3910e08ceec4c954634e79ea8c21c8f222a05c7a576a1a7c2be33a8b9328bb"
+    },
+    "retrievalHelper": {
+      "path": "src/ia_propia/memory_search.py",
+      "sha256": "4ad1de56162fafc6ad4ba447b119870a41ae144103c6c88383d5bbb38a02e80c"
+    },
+    "tests": {
+      "path": "tests/test_workspace.py",
+      "sha256": "85bda25360e1e3b43e2401b5451bd2a55a60bbbde1be1bd3a695495aca1659d9"
+    }
+  },
+  "verification": {
+    "workspaceTests": {
+      "command": "python -m unittest tests.test_workspace -v",
+      "coveredInvariants": [
+        "Complete current-byte SHA check on cache hit; same-size rewrite with restored mtime is detected.",
+        "Malformed history is rejected without resetting or replacing original bytes.",
+        "Write failure, partial write and fsync failure invalidate cached mutable state; next read reconstructs real bytes.",
+        "Cross-process latest rejection overrides previously accepted feedback and prevents export.",
+        "Public snapshots and search results are detached from internal state.",
+        "Cache eviction/bypass bounds, parallel roots and existing same-root concurrent writes preserve isolation.",
+        "Search validates before filesystem access and loads once under the existing workspace lock."
+      ],
+      "elapsedSecondsReported": 0.269,
+      "finalUnicodeHelperAuthorReceipt": {
+        "executedByThisMeasuringAgent": false,
+        "existingMemoryTransportRegressionsPassed": 16,
+        "newMemoryOnlyTestsPassed": 14,
+        "path": "private/memory-explicit-search-v1/implementation-receipt-unicode-v2.json",
+        "sha256": "811dccea96aba2fd15a7b0b69bc08f81d34c62bd8f75d2592aade55f85d27aea",
+        "torchAndConversationImportGuard": "PASS reported by helper author"
+      },
+      "noTransformerTorchTestsExecuted": true,
+      "rawTestLogSaved": false,
+      "result": "21 tests passed",
+      "workspaceSuiteAttribution": "21/21 previously observed on the unchanged workspace/cache source and unchanged test file; final Unicode helper suites are attributed separately to their author receipt.",
+      "workspaceSuiteRerunDuringV2": false
+    },
+    "retrievalTests": {
+      "result": "14 tests passed",
+      "scope": "Lexical helper and Brain/CLI/HTTP with model execution disabled; includes Unicode equivalence, original offsets, isolation, latest feedback and bounds."
+    },
+    "selectedBrainCliHttpRegressions": {
+      "result": "16 tests passed",
+      "scope": "Existing transport and memory behavior, separately reported; these counts are not summed as a unique total."
+    },
+    "sameOutputForBothRetrievalRoutes": true,
+    "readOperationsPreservedLogBytes": true,
+    "appendCheckedLatestRejection": true,
+    "sourceAndHelperBytesBoundToMeasurements": true,
+    "modelParameterUpdatesPerformedByMemoryOperations": false
+  },
+  "limitations": [
+    "La caché valida todos los bytes actuales; el hash mantiene coste lineal. El límite de 2 MiB se refiere al historial elegible, no al consumo exacto de RAM.",
+    "La recuperación exige las palabras indicadas y sólo consulta registros de su ámbito. No interpreta sinónimos ni decide si un contexto inicial quedó obsoleto: devuelve su fuente literal.",
+    "Las referencias externas se conservan, sin abrirlas ni validar su contenido.",
+    "Las mediciones anteriores al arreglo Unicode quedan archivadas y no describen esta versión final."
+  ],
+  "privacy": {
+    "fixtureContainsCreatorMemory": false,
+    "personalRecordsPublished": false,
+    "personalMemoryUsedAsTrainingCorpus": false
+  }
+}

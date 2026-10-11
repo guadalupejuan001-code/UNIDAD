@@ -7,13 +7,15 @@ import re
 from typing import Callable
 
 from .. import workspace
+from ..memory_search import (DEFAULT_SEARCH_LIMIT, MAX_EXCERPT_CHARS, MAX_QUERY_BYTES,
+                             MAX_QUERY_TERMS, MAX_SEARCH_LIMIT, SEARCH_METHOD, validate_search)
 from .models import ModelRuntime, ModelUnavailableError
 from .protocol import (BrainError, MAX_REQUEST_BYTES, MAX_RESPONSE_BYTES, MAX_WORKFLOW_STEPS,
                        envelope, identifier, request_identity, validate_json, validate_request)
 from .workflow import has_references, is_reference, run_plan, validate_plan
 
 MODEL_OPERATIONS = {"language.generate", "attention.forecast", "conversation.reply"}
-MEMORY_OPERATIONS = {"memory.task.add", "memory.task.list", "memory.task.show", "memory.task.attempt",
+MEMORY_OPERATIONS = {"memory.task.add", "memory.task.list", "memory.task.search", "memory.task.show", "memory.task.attempt",
                      "memory.task.feedback", "memory.task.status"}
 OPERATIONS = MODEL_OPERATIONS | MEMORY_OPERATIONS | {"tool.call", "workflow.run"}
 
@@ -75,7 +77,11 @@ class Brain:
         result = {"schemaVersion": 1, "operations": sorted(available), "models": model_capabilities,
                   "workerCapabilityValidated": False, "instructionFollowingValidated": False,
                   "naturalLanguagePlanner": False, "automaticLearning": False,
-                  "memory": {"privacy": "PRIVATE", "isolatedByBody": True, "sharingRequiresHostConfiguration": True},
+                  "memory": {"privacy": "PRIVATE", "isolatedByBody": True, "sharingRequiresHostConfiguration": True,
+                             "retrieval": {"operation": "memory.task.search", "method": SEARCH_METHOD,
+                                           "automaticContextInjection": False, "queryBytes": MAX_QUERY_BYTES,
+                                           "queryTerms": MAX_QUERY_TERMS, "defaultResults": DEFAULT_SEARCH_LIMIT,
+                                           "maxResults": MAX_SEARCH_LIMIT, "excerptCharacters": MAX_EXCERPT_CHARS}},
                   "tools": "explicit bindings on each body session",
                   "workflow": {"maxSteps": MAX_WORKFLOW_STEPS, "planning": "explicit application-provided steps",
                                "referenceTraversal": "JSON dictionaries and lists only", "rollback": False},
@@ -176,6 +182,7 @@ class BodySession:
         shapes = {
             "memory.task.add": ({"goal"}, {"context"}),
             "memory.task.list": (set(), set()), "memory.task.status": (set(), set()),
+            "memory.task.search": ({"query"}, {"limit"}),
             "memory.task.show": ({"task_id"}, set()),
             "memory.task.attempt": ({"task_id", "text"}, {"evidence"}),
             "memory.task.feedback": ({"task_id", "attempt_id", "text", "accepted"}, set()),
@@ -183,6 +190,16 @@ class BodySession:
         required, optional = shapes[operation]
         if not required <= values.keys() or not values.keys() <= required | optional:
             raise BrainError("invalid_input", "Memory operation has unsupported or missing fields")
+        if operation == "memory.task.search":
+            query, limit = values["query"], values.get("limit", DEFAULT_SEARCH_LIMIT)
+            deferred_query = allow_refs and is_reference(query)
+            deferred_limit = allow_refs and is_reference(limit)
+            try:
+                validate_search("reference" if deferred_query else query,
+                                DEFAULT_SEARCH_LIMIT if deferred_limit else limit)
+            except ValueError as error:
+                raise BrainError("invalid_input", "Memory search needs bounded words and a result limit from 1 to 20") from error
+            return
         for key, value in values.items():
             if allow_refs and is_reference(value):
                 continue
@@ -222,6 +239,9 @@ class BodySession:
                 result = workspace.add_task(self._memory_directory, input_data["goal"], input_data.get("context", ""))
             elif operation == "memory.task.list":
                 result = workspace.list_tasks(self._memory_directory)
+            elif operation == "memory.task.search":
+                result = workspace.search_tasks(self._memory_directory, input_data["query"],
+                                                input_data.get("limit", DEFAULT_SEARCH_LIMIT))
             elif operation == "memory.task.show":
                 result = workspace.show(self._memory_directory, input_data["task_id"])
             elif operation == "memory.task.attempt":

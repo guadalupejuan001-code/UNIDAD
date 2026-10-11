@@ -34,9 +34,19 @@ registró 1 completa, 1 parcial y 38 fallidas. Con ranking, ambas registraron
 correcto ni superó la promoción. Son 40 turnos de desarrollo ya expuestos, revisados por
 asistentes de IA del proyecto. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json)
 conserva la validación y las diferencias; el ranking no se adoptó. La siguiente
-etapa se inició y está preparando los datos. También se trabaja en optimizar
-memoria en paralelo;
-los cambios y las capacidades nuevas se comprobarán por sus resultados.
+etapa está entrenando desde los pesos propios de v7, con muestreo uniforme sin
+reemplazo y pérdida media por token. Su calidad conversacional queda pendiente
+de una nueva generación y revisión de respuestas.
+
+La memoria local ahora reutiliza la reconstrucción validada del registro y
+permite buscar encargos con referencias al texto original y la corrección
+vigente. En una medición caliente con 2.001 eventos ficticios, consultar el estado
+pasó de **20,5 a 0,7 ms** y buscar de **50,3 a 7,8 ms**. Son tiempos de esta CPU,
+con carga de fondo; la búsqueda usa el mismo algoritmo léxico en ambos caminos.
+El [informe de memoria](docs/unidad-memory-optimization-v1.json) y la
+[guía reproducible](docs/workspace.md#medir-la-memoria-local) conservan alcance,
+pruebas y límites. Estas operaciones no entrenan pesos ni añaden recuerdos
+automáticamente a las conversaciones.
 
 ## Qué contiene
 
