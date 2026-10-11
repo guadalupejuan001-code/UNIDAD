@@ -162,6 +162,13 @@ Una pérdida alta también puede corresponder a ruido o ambigüedad: esta opció
 necesita una comparación de respuestas reales antes de afirmar que acelera la
 adquisición de conversación.
 
+La [comparación de la versión 0.5.2](unidad-adaptive-learning-v0.5.2.json)
+partió de los mismos pesos y usó 384 pasos por variante. La configuración
+adaptativa tuvo mayor pérdida de validación y 30 copias literales exactas de 89,
+frente a 38 de la política fija. Recuperó mejor algunos nombres en conversación
+libre, pero no superó de forma consistente a la instantánea v5. Por eso permanece
+como opción experimental desactivada por defecto.
+
 ## Dar peso a las conversaciones breves
 
 La reducción anterior, `token_mean`, promedia la pérdida de todos los tokens

@@ -1,0 +1,303 @@
+{
+  "version": "0.5.2",
+  "sourceCommit": "319019b9f128ae875a975a49b264aeb578b8b592",
+  "purpose": "learning-system-change-and-controlled-development-evidence",
+  "sourceHashes": {
+    "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "src/ia_propia/conversation/training.py": "076b0ecd22cf1757d0d4a11fa9b60c80c432f491df075b77ed242b2ec916fd9a",
+    "tests/test_conversation_adaptive.py": "2ecad8cd195892af3789c5753a022c715ba72359ba12a4b87f23118d4c0ad42f",
+    "tests/test_conversation_training.py": "aa6cb105b9d9b060b3d6af8993643131be6e33054468ede8f7ecae0e8d8af6be"
+  },
+  "softwareTests": {
+    "withConversationDependencies": {
+      "discovered": 277,
+      "passed": 277,
+      "skipped": 0,
+      "elapsedSeconds": 35.85,
+      "logSha256": "dbefa94db187a510ea2a7d8671175ab6ce867f94c8ac5a4824f7f521b7ff9642"
+    },
+    "withoutConversationDependencies": {
+      "discovered": 211,
+      "passed": 138,
+      "skipped": 73,
+      "elapsedSeconds": 3.557,
+      "logSha256": "ff6c8847bbcc0e6364349ae681490544aa22e53703a431c012e26d71f39dd599"
+    },
+    "narrowedFinalModule": {
+      "discovered": 16,
+      "passed": 16,
+      "elapsedSeconds": 0.002,
+      "scope": "final docstring-only change; mathematical implementation unchanged"
+    }
+  },
+  "ci": {
+    "status": "success",
+    "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38132627707",
+    "headSha": "319019b9f128ae875a975a49b264aeb578b8b592"
+  },
+  "conversationAccepted": false,
+  "prospectiveAcceptanceEvaluated": false,
+  "testEvaluated": false,
+  "schemaVersion": 1,
+  "trainingRoot": "Unidad own random-root weights; no external inference/model weights",
+  "implemented": {
+    "option": "adaptive_sampling",
+    "defaultEnabled": false,
+    "difficulty": "detached mean CE of final assistant reply including EOS, TRAIN only, observed before optimizer update and committed after a successful step",
+    "cache": "per encoded window EMA; .9 decay; duplicate draws in a batch are averaged once, while counts include every draw",
+    "distribution": "p = coverage * normalized(base_weights) + (1-coverage) * normalized(base_weights * bounded_priority)",
+    "defaults": {
+      "mode": "train_loss_ema",
+      "ema_decay": 0.9,
+      "exponent": 0.5,
+      "coverage": 0.25,
+      "min_priority": 0.5,
+      "max_priority": 2.0,
+      "epsilon": 1e-08,
+      "refresh_every_steps": 64
+    },
+    "defaultProbabilityRatioToBaseBounds": [
+      0.4375,
+      3.25
+    ],
+    "refresh": "drain the saved chunk; at most64 batches; an epoch remains N training draws",
+    "exactResume": "cache, observation counts, pending order, chunk and epoch cursors, optimizer/scheduler and RNG preserved",
+    "guards": [
+      "TRAIN-only observations; validation and test never update priorities",
+      "preflight before optimizer and atomic cache commit after successful step",
+      "sum observed draws agrees with epoch/cursors; consumed chunk draws must have observations",
+      "window order, corpus/tokenizer/config/base weights and finite cache checked on restore",
+      "absent option preserves the old path"
+    ],
+    "telemetry": "base/adaptive probability share and actual sampled draws by source",
+    "objective": "Intentionally changes the expected training objective without importance correction. This is a curriculum policy, not an unbiased reproduction of fixed-prior training."
+  },
+  "controlledComparison": {
+    "designSha256": "fb1ec54972d3a2a1399b349f2b59332870ec812d2e2efb81b602de3730bca1c0",
+    "trainSubsetSha256": "8ecfce98d9a1b7adbf390166bb347e3ada32e9814a80d3e4e40898bc2d465205",
+    "validationSubsetSha256": "f7453696acca66cd5e82405462bb2c205d27a91ada333a44a82d14ba41f093e9",
+    "trainRecords": 6218,
+    "validationRecords": 424,
+    "folds": "Existing whole families and TRAIN/validation assignments unchanged; known free-development entities excluded from this subset TRAIN; final TEST not read/scored. Parent has already seen the public development vocabulary.",
+    "parentModelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+    "parentSelectedStep": 500,
+    "shared52TensorsExactlyEqualInitially": true,
+    "common": {
+      "stepsEach": 384,
+      "batchSize": 16,
+      "torchThreads": 4,
+      "learningRate": 0.0003,
+      "warmupSteps": 32,
+      "lossReduction": "sequence_mean",
+      "projectionMode": "supervised",
+      "seed": 42,
+      "fixedEndpoint": true,
+      "trainingWallCapSeconds": 240,
+      "sourceBaseShares": {
+        "literal-copy-v1": 0.5,
+        "unidad-natural-diversity-v2": 0.25,
+        "unidad-variable-flow-v1": 0.125,
+        "unidad-conversation-recovery-v1": 0.125
+      }
+    },
+    "first64BatchesAndWeightsIdentical": true,
+    "ordersChangeAfterRefresh": true,
+    "trainingWallSeconds": 119.6074081830011,
+    "optimizerWallSeconds": {
+      "fixed": 59.00707877698369,
+      "adaptive": 60.45284355896729
+    },
+    "initialValidation": {
+      "fixed": {
+        "nll": 0.3092657157553817,
+        "targetTokens": 4479,
+        "perplexity": 1.3624243400234497,
+        "examples": 424,
+        "tokenWeightedNll": 0.31904638795667417,
+        "sequenceMeanNll": 0.3092657157553817,
+        "lossReduction": "sequence_mean",
+        "sequenceUnit": "encoded_window"
+      },
+      "adaptive": {
+        "nll": 0.3092657157553817,
+        "targetTokens": 4479,
+        "perplexity": 1.3624243400234497,
+        "examples": 424,
+        "tokenWeightedNll": 0.31904638795667417,
+        "sequenceMeanNll": 0.3092657157553817,
+        "lossReduction": "sequence_mean",
+        "sequenceUnit": "encoded_window"
+      }
+    },
+    "finalValidation": {
+      "fixed": {
+        "nll": 0.26070336596864574,
+        "targetTokens": 4479,
+        "perplexity": 1.2978426240386907,
+        "examples": 424,
+        "tokenWeightedNll": 0.2742932307770753,
+        "sequenceMeanNll": 0.26070336596864574,
+        "lossReduction": "sequence_mean",
+        "sequenceUnit": "encoded_window"
+      },
+      "adaptive": {
+        "nll": 0.2696692162492084,
+        "targetTokens": 4479,
+        "perplexity": 1.3095312074377017,
+        "examples": 424,
+        "tokenWeightedNll": 0.2795414204814653,
+        "sequenceMeanNll": 0.2696692162492084,
+        "lossReduction": "sequence_mean",
+        "sequenceUnit": "encoded_window"
+      }
+    },
+    "actualSourceDraws": {
+      "fixed": {
+        "unidad-natural-diversity-v2": 1585,
+        "literal-copy-v1": 3048,
+        "unidad-conversation-recovery-v1": 718,
+        "unidad-variable-flow-v1": 793
+      },
+      "adaptive": {
+        "unidad-natural-diversity-v2": 1591,
+        "literal-copy-v1": 3100,
+        "unidad-conversation-recovery-v1": 674,
+        "unidad-variable-flow-v1": 779
+      }
+    },
+    "actualUniqueWindows": {
+      "fixed": 3043,
+      "adaptive": 3111
+    },
+    "finalCache": {
+      "mode": "train_loss_ema",
+      "windows": 6218,
+      "observedWindows": 3111,
+      "observationDraws": 6144,
+      "meanObservedScore": 0.08985578307620386,
+      "coverage": 0.25,
+      "minActualBaseRatio": 0.6582328314349142,
+      "maxActualBaseRatio": 1.8829313257396572,
+      "refreshEverySteps": 64,
+      "qualityImprovementValidated": false
+    },
+    "experimentalModelIds": {
+      "fixed": "unidad-experiment-fixed-prior-959c50d7ea94d26ecad0a35b1ab0bb3c1fd69e635d1090191444bd69c09cf7ba",
+      "adaptive": "unidad-experiment-adaptive-ema-4fdfec7fabe95d4f40d03acd288309bb1679f5a44d999573dbbe60624282d066"
+    },
+    "literalCopyDevelopment": {
+      "turnsEach": 89,
+      "episodesEach": 25,
+      "fixedExact": 38,
+      "adaptiveExact": 30,
+      "fixedCompleteEpisodes": 2,
+      "adaptiveCompleteEpisodes": 1,
+      "generationErrorsEach": 0,
+      "truncatedPromptsEach": 0,
+      "comparison": "exact UTF8 bytes, actual previous outputs, no trimming or normalization"
+    },
+    "freeConversationDevelopment": {
+      "fixed": {
+        "responses": {
+          "total": 22,
+          "complete": 12,
+          "partial": 0,
+          "failed": 10
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 1,
+          "partial": 0,
+          "failed": 4
+        },
+        "rawSha256": "2f07b1d6a66ead80c0780470bb7651438d0a9313c3bea59e0d0113154e9aa126",
+        "reviewSha256": "f8947ce249089284eb4b064e84e16b3abbb0d466fe73ea83639a1064a507886a"
+      },
+      "adaptive": {
+        "responses": {
+          "total": 22,
+          "complete": 13,
+          "partial": 1,
+          "failed": 8
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 2,
+          "partial": 0,
+          "failed": 3
+        },
+        "rawSha256": "e89dc60bbb3942e5fa10a3fc7480179955b3f7405e3bb648c73f305d8d9f6b4f",
+        "reviewSha256": "9bf118036d95fdcfd40c4369936593394c1cc40fb68235c05299820dc2a42a09"
+      }
+    },
+    "semanticReview": "two same-project AI assistants; unblinded, not human/external independent acceptance",
+    "semanticCrosscheckSha256": "1dd88d31146bd684dab14e6805547dcf8a2d36aba17d4b34bd41d13d45c15b67",
+    "decision": "Do not adopt this tested adaptive configuration as a demonstrated improvement; keep optional and disabled by default. Adaptive improves some free turns versus fixed, but worsens heldout CE and literal copying and does not uniformly beat the saved A500 model.",
+    "selectedPublicModel": "models/conversation-basics-v5",
+    "savedPublicModelFreeDevelopment": {
+      "complete": 13,
+      "partial": 2,
+      "failed": 7,
+      "turns": 22,
+      "completeSessions": 2,
+      "sessions": 5
+    },
+    "finalTestEvaluated": false,
+    "prospectiveAcceptanceEvaluated": false,
+    "limitations": [
+      "One seed and a fixed early endpoint do not prove convergence or shorter time to competence.",
+      "Development probes have been consulted repeatedly and are not a final test.",
+      "The optimizer timing omits refresh/bookkeeping; total training wall includes both arms.",
+      "Higher CE may be noise/ambiguity rather than a missing useful skill."
+    ]
+  },
+  "discardedArchitectureExperiment": {
+    "hypothesis": "learned user-only predecessor-key successor-copy head",
+    "extraRandomParameters": 8321,
+    "stepsEach": 250,
+    "trainingWallSeconds": 78.08373410100103,
+    "fixedValidationNll": 0.2633967430524106,
+    "copyValidationNll": 0.272288252687398,
+    "fixedLiteralExact": 33,
+    "copyLiteralExact": 31,
+    "literalTurnsEach": 89,
+    "fixedFreeComplete": 12,
+    "copyFreeComplete": 10,
+    "freeTurnsEach": 22,
+    "causalityCheckedBeforeAndAfter": true,
+    "decision": "Not added to production; this configuration did not improve the matched control.",
+    "summarySha256": "2983c18292338a730593876fcc2bffbabfb1b63012bddcc6c61267600a126557",
+    "reviewsSha256": {
+      "base": "037091a548e8df5d8db7cf11c7c0dbec710dfce7956f0bde9c72399d173f5375",
+      "successor": "e827e86825950c055cbad76776efc7fdab82b764defeb13a9dab9ff57216cc25"
+    }
+  },
+  "appliedComputeOptimization": {
+    "receipt": "unidad-learning-optimization-v1.json",
+    "trainingStepTimeReductionPercent": 13.5202,
+    "scope": "measured on this four-core CPU; not a claim of13.5%less time to learn language"
+  },
+  "independentSourceReview": {
+    "blockingFindings": 0,
+    "reviewer": "another project AI assistant and subreview, source-only; not human quality acceptance",
+    "receiptSha256": "f8914f8b04cc03ab7f8b48b2b96ce40d5a7dc04c91d6b9b5ab64ba65f2ee7b35",
+    "traceabilityAddendumSha256": "7f1cf0d97945ceb4b7db16cccd4b382041943ac74d84983ff2b7d2eb50cdab31"
+  },
+  "installedWheelVerification": {
+    "wheelVersion": "0.5.2",
+    "wheelSha256": "af93a5ac7dcaede47b1838bba77384789e5b61b7971e0edfb2b9aa7ac2d9f696",
+    "receiptSha256": "d312548b24cdae98a426a914340f4cd934eb9075e441ea75bd14c695cc11b4b8",
+    "model": "conversation-basics-v5",
+    "cliPythonHttpTextAndTokenParity": true,
+    "bodyMemoryAndToolsIsolation": true,
+    "conversationAccepted": false,
+    "rawGreetingOutcome": "Te llamas Mar9.",
+    "meaning": "Transport and artifact compatibility pass; this reply fails useful conversation."
+  },
+  "privateEvidence": {
+    "ablationSummarySha256": "d3824eeea9b3e2c1684905d2441a25dff5a5fcf73e7a6226faa955d3d9b03171",
+    "ablationReceiptSha256": "8f0b97ced9b7947e551feb312a48ca17fa1ca9868422dd07f01f962cca960377",
+    "ablationTrainingResultsSha256": "1e35a134f0c8004d36604091382c2df64e044415a680c845c16a3c2c13c2430a",
+    "sourceValidationSha256": "c7b9590c3680b50c25fb477d34738b7bffa6b79f5496f71bc62e5c77ace5285b"
+  }
+}

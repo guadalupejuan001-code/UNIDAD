@@ -184,7 +184,11 @@ las pérdidas de `train` para dar más prioridad a lo difícil, con repaso y lí
 de prioridad. Se actualiza por bloques cortos y guarda ese estado para reanudar
 exactamente. Los casos de validación y test no ajustan esas prioridades. La
 [guía de configuración](docs/conversation.md#adaptar-la-práctica-a-lo-que-todavía-cuesta)
-explica la mezcla; su efecto en las respuestas se compara con una política fija.
+explica la mezcla. En la [comparación controlada](docs/unidad-adaptive-learning-v0.5.2.json),
+la configuración adaptativa conservó mejor algunos cambios de nombre, pero
+empeoró la validación y la copia literal. Sigue desactivada por defecto; se
+conservan los pesos anteriores y no se afirma que esta política haya acortado
+el tiempo necesario para aprender a conversar.
 
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6
