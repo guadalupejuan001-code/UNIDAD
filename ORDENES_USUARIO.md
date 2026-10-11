@@ -5,6 +5,35 @@ que trabaje por su creador y se adapte a sus cambios de criterio**. Las redes
 pequeñas actuales son componentes experimentales de ese proyecto; no acreditan
 que el trabajador digital solicitado ya esté terminado.
 
+## Prioridad vigente: conversación básica funcional
+
+La instrucción más reciente sustituye las prioridades de los planes amplios:
+conseguir y comprobar conversación básica en español antes de ampliar las
+capacidades. No desarrollar matemáticas, interfaces, herramientas autónomas,
+dispositivos ni más memoria, salvo corregir un defecto que bloquee directamente
+la conversación.
+
+Partir del estado real y comparar los checkpoints propios por sus respuestas,
+sin duplicar ni reiniciar una corrida activa. Generar diálogos completos con el
+mismo `ConversationEngine`, conservando sus respuestas anteriores como historia.
+Diagnosticar datos, roles, tokenización, supervisión, contexto y generación; usar
+un control pequeño de aprendizaje sin presentar memorización como generalización.
+Entrenar un experimento acotado contra la hipótesis observada y cambiarla si no
+mejora, sin sustituir el modelo por otra IA ni respuestas de plantilla en ejecución.
+
+La aceptación sigue exigiendo **36 respuestas completas de 40, 8 diálogos
+completamente correctos de 10 y ningún fallo crítico**. Mantener familias
+separadas y una evaluación nueva sin utilizar para decidir cambios. Las
+revisiones de agentes del proyecto son revisiones de IA, no evaluaciones humanas
+independientes. No usar los mensajes personales como corpus sin autorización.
+
+La entrega principal son pesos, configuración y tokenizador identificados,
+comparación con la referencia, conversaciones realmente generadas y una
+instrucción comprobada que cargue exactamente el candidato evaluado. Si el
+presupuesto o los recursos se agotan, conservar checkpoint y estado, explicar
+el bloqueo y el resultado real; no declarar el objetivo cumplido ni prometer
+procesos inactivos.
+
 ## Órdenes recibidas
 
 1. Crear modelos propios desde cero. La petición original contempla una capacidad

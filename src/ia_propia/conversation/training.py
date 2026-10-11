@@ -112,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -138,6 +138,8 @@ def _configs(model_config, training_config):
         raise ValueError("Invalid projection_mode")
     if "train_precision" in training and (type(training["train_precision"]) is not str or training["train_precision"] != "cpu_bfloat16"):
         raise ValueError("train_precision requires cpu_bfloat16")
+    if "partition_policy" in training and (type(training["partition_policy"]) is not str or training["partition_policy"] != "train_validation_only"):
+        raise ValueError("partition_policy requires train_validation_only")
     if "objective" in training and training["objective"] not in ("assistant_last_reply", "causal_lm"):
         raise ValueError("Invalid training objective")
     if "sampling_weights" in training:
@@ -209,7 +211,10 @@ def _window_ranges(input_length, context_length, window_policy):
 
 
 def _encoding_kwargs(config):
-    return {"objective": config["objective"]} if "objective" in config else {}
+    result = {"objective": config["objective"]} if "objective" in config else {}
+    if "partition_policy" in config:
+        result["partition_policy"] = config["partition_policy"]
+    return result
 
 
 def _supervision_policy(config):
@@ -219,22 +224,33 @@ def _supervision_policy(config):
 def _load_training_corpus(path, config):
     if config.get("objective") == "causal_lm":
         from .language_data import load_text_corpus
-        return load_text_corpus(path)
-    from .data import load_corpus
-    return load_corpus(path)
+        records = load_text_corpus(path)
+    else:
+        from .data import load_corpus
+        records = load_corpus(path)
+    if config.get("partition_policy") == "train_validation_only" and any(record["split"] == "test" for record in records):
+        raise ValueError("train_validation_only corpus must not contain TEST records")
+    return records
 
 
-def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping", *, objective=None):
+def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping", *, objective=None, partition_policy=None):
+    if partition_policy is not None:
+        return _encoded_data(records, tokenizer, context_length, window_policy,
+                             objective=objective, partition_policy=partition_policy)[0]
     if objective is None:
         return _encoded_data(records, tokenizer, context_length, window_policy)[0]
     return _encoded_data(records, tokenizer, context_length, window_policy, objective=objective)[0]
 
 
-def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None, *, objective=None):
+def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None, *, objective=None, partition_policy=None):
     """Retain causal overlap; supervise each objective's target exactly once."""
     from .tokenizer import ASSISTANT_ID, dialogue_tokens
     if objective not in (None, "assistant_last_reply", "causal_lm"):
         raise ValueError("Invalid encoding objective")
+    if partition_policy is not None and (type(partition_policy) is not str or partition_policy != "train_validation_only"):
+        raise ValueError("Invalid encoding partition_policy")
+    if partition_policy == "train_validation_only" and any(record["split"] == "test" for record in records):
+        raise ValueError("train_validation_only corpus must not contain TEST records")
     result = {"train": [], "validation": [], "test": []}
     weights, record_ids, strata = [], [], {}
     rule_matches = [0] * len(sampling_rules or [])
@@ -269,7 +285,8 @@ def _encoded_data(records, tokenizer, context_length, window_policy, sampling_ru
                     value["windows"] += 1
                     value["ids"].add(record["id"])
                     value["totalWeight"] += weight
-    if any(not result[split] for split in result):
+    required = ("train", "validation") if partition_policy == "train_validation_only" else result
+    if any(not result[split] for split in required):
         raise ValueError("Each split needs at least one encoded text target" if objective == "causal_lm"
                          else "Each split needs at least one encoded assistant target")
     summary = None
@@ -398,6 +415,9 @@ def _baseline_score(examples, losses, loss_reduction="token_mean"):
 def _loss_metadata(config):
     # Missing fields remain missing for legacy checkpoints and artifact schemas.
     result = {}
+    if "partition_policy" in config:
+        result["partitionPolicy"] = config["partition_policy"]
+        result["testPartitionPresent"] = False
     if "train_precision" in config:
         result["trainPrecision"] = config["train_precision"]
     if "projection_mode" in config:
@@ -612,6 +632,8 @@ def _validate_resume_state(state, examples):
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    if config.get("partition_policy") == "train_validation_only" and (examples["test"] or not examples["train"] or not examples["validation"]):
+        raise ValueError("Checkpoint train_validation_only partition mismatch")
     if ("train_precision_runtime" in state) != (config.get("train_precision") == "cpu_bfloat16"):
         raise ValueError("Checkpoint precision runtime policy mismatch")
     weighted = "sampling_weights" in config
@@ -1111,6 +1133,8 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         if not status.get("bestCheckpoint"):
             raise ValueError("No validation-selected checkpoint")
         model, tokenizer, state, _ = _load_checkpoint(run_dir, status["bestCheckpoint"])
+        if state["training_config"].get("partition_policy") == "train_validation_only":
+            raise ValueError("This run has no TEST partition; use export_best instead of finalize")
         path = Path(corpus_path or state["corpus_path"]).resolve()
         if _sha(path) != state["corpus_sha256"]:
             raise ValueError("Evaluation corpus hash mismatch")
