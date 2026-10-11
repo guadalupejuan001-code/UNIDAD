@@ -18,13 +18,25 @@ Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encar
 abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
 persona ni su forma completa de pensar.
 
-El candidato propio más reciente tiene **6.967.296 parámetros**, BPE de 8.192
+El sucesor propio tiene **6.967.296 parámetros**, BPE de 8.192
 tokens y contexto de 512 tokens. Completó 6.000 pasos de preentrenamiento desde
 pesos aleatorios y 6.000 de ajuste conversacional, pero falló la comprobación
 con 40 turnos nuevos: **2 respuestas completas, 3 parciales y 35 fallidas;
 0 de 10 diálogos completos**. No se aceptó ni promovió como modelo
 predeterminado. El [informe de v7](docs/unidad-conversation-language-v7-results.json)
 conserva la evidencia; el objetivo de conversación básica sigue pendiente.
+
+Una comparación posterior completó **384 pasos por brazo** para comprobar un
+objetivo adicional de ranking entre respuestas y contextos. El control obtuvo
+0 completas, 2 parciales y 38 fallidas en la revisión primaria; la cruzada
+registró 1 completa, 1 parcial y 38 fallidas. Con ranking, ambas registraron
+0 completas, 1 parcial y 39 fallidas. Ningún brazo logró un diálogo completamente
+correcto ni superó la promoción. Son 40 turnos de desarrollo ya expuestos, revisados por
+asistentes de IA del proyecto. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json)
+conserva la validación y las diferencias; el ranking no se adoptó. La siguiente
+etapa se inició y está preparando los datos. También se trabaja en optimizar
+memoria en paralelo;
+los cambios y las capacidades nuevas se comprobarán por sus resultados.
 
 ## Qué contiene
 

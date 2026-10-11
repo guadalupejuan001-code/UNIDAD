@@ -51,6 +51,9 @@ que el trabajador digital solicitado ya esté terminado.
 19. Continuar con una base más amplia de español, un modelo propio de mayor
     capacidad y más contexto, seguido de ajuste conversacional. Comprobarlo
     con conversaciones nuevas antes de declarar que ya conversa bien.
+20. Optimizar el código de memoria en paralelo y ampliar las capacidades de la
+    IA de forma continua, comprobando cada mejora con resultados medidos.
+    Conservar como pendientes los cambios que todavía no se hayan verificado.
 
 ## Palabras del creador
 
@@ -96,6 +99,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > hazlo entonces porque te detienes? termina
 
+> optimiza el codigo de la memoria potencia eso en segundo plazo, escala la ia a cada momento
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
@@ -113,6 +118,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 | Adjuntar las órdenes | Este documento, enlazado en el README y en AGENTS.md. |
 | Cohesión interna del código | Un contrato conversacional compartido y un mismo motor para CLI, cerebro y evaluación. El entrenador exporta el artefacto que carga ese motor; no se añaden dependencias entre todos los módulos. |
 | Comprobar conversación | Los 40 turnos nuevos de v7 se generaron sin errores ni truncamiento, pero sus respuestas fallaron la aceptación de conversación básica. Las revisiones corresponden a asistentes de IA del mismo proyecto, no a un panel externo. Las pruebas técnicas y la pérdida de validación no acreditan conversación competente. |
+| Comparar cómo aprende | El A/B posterior completó 384 pasos en cada brazo. El control obtuvo C0/P2/F38 en la revisión primaria y C1/P1/F38 en la cruzada; ranking obtuvo C0/P1/F39 en ambas. Ninguno logró un diálogo completamente correcto ni superó la promoción. Son turnos de desarrollo ya expuestos, sin evaluar TEST; se conservan los desacuerdos y no se adoptó ranking. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json) conserva los resultados. La siguiente etapa se inició y está preparando los datos; no hay resultados de ella todavía. |
+| Optimizar memoria en paralelo y ampliar capacidades | Nueva instrucción en curso. Las mejoras de memoria y las capacidades nuevas requieren evidencia concreta antes de declararlas terminadas; el A/B de conversación no demuestra esos cambios. |
 | Programación autónoma | No implementada. El modelo genera texto; los flujos y las etapas de entrenamiento se definen expresamente desde el código o los comandos. |
 
 Adjuntar estas órdenes guía el desarrollo. No cambia los pesos, no entrena un

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "evidenceType": "completed-counterfactual-ranking-development-ab",
+  "purpose": "Resumen público de una comparación completada; los datos, pares y respuestas individuales permanecen privados.",
+  "conclusion": "Añadir ranking contrafactual no demostró una mejora de conversación en esta comparación. Ningún brazo superó la promoción de desarrollo.",
+  "commonStart": {
+    "modelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+    "manifestSha256": "0dba7d9ddaedb4fba70f490a39ccfed85da12cec6f188b1d891ab6ac4e1aec11",
+    "weightsSha256": "dc4ba778deb188fabdf66b59aa2457578c720040bf0e36666ed9e234f1ed288e",
+    "configSha256": "0064db1f291f4f8e9d71fafc49c2a4eb776ed99ac1a760659f104b107a80c7a7",
+    "tokenizerSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "parameterCount": 6967296,
+    "vocabularySize": 8192,
+    "contextLength": 512,
+    "rootOrigin": "random_weights",
+    "externalPretrainedWeightsUsed": false,
+    "externalInferenceApiUsed": false
+  },
+  "comparison": {
+    "control": "Mismo repaso CE y misma exposición a los dos ejemplos positivos de cada par TRAIN.",
+    "ranking": "Mismo objetivo común, más ranking simétrico de respuestas correctas frente a respuestas intercambiadas entre contextos TRAIN.",
+    "updatesPerArm": 384,
+    "selectionMethod": "Ambos endpoints fijos del paso 384; no sustituir por el mejor checkpoint de validación.",
+    "positivePairCeWeight": 0.2,
+    "rankingWeight": 0.2,
+    "rankingMargin": 0.1,
+    "optimizer": "AdamW nuevo e idéntico en ambos brazos",
+    "learningRate": 0.0001,
+    "weightDecay": 0.01,
+    "torchThreads": 4,
+    "ceBatchSize": 8,
+    "ceReplayPlanSha256": "46942ab298487edbd727431891c040d97f792268635ad2a95cdc615c1e9757a2",
+    "pairDrawPlanSha256": "c0f18388f60dd83b1300a3b12e6682200fe1b726389cfbfd37d85b13baaa9e80",
+    "matching": "Mismos pesos iniciales, configuración, tokenizador, orden CE congelado y pares positivos; el ranking añade cálculo y candidatos negativos.",
+    "equalWallTimeClaim": false,
+    "designSha256": "210d3f73d6733802dbcbf509498a169b83946df05e5481244637a6ccaa36c982",
+    "completionReceiptSha256": "ab409730c7fc31221c8384600273f337a9f9033a4143db1fd0290c9cef67536b",
+    "wallBudgetClocksReset": false
+  },
+  "validation": {
+    "split": "validation",
+    "examples": 6963,
+    "targetTokens": 337251,
+    "sequenceUnit": "encoded_window",
+    "trainingLossReduction": "sequence_mean",
+    "interpretation": "La NLL por ventana y la ponderada por token son reducciones diferentes. Bajar NLL no demuestra respuestas correctas."
+  },
+  "arms": {
+    "control": {
+      "status": "completed",
+      "completedUpdates": 384,
+      "endpointSelection": "fixed_training_endpoint_not_best_validation_checkpoint",
+      "modelId": "unidad-conversation-05c5ffb350d5e5877e6e7a4a02efb461bbf46fc084d1a0c1bd6dbeab28f551dc",
+      "manifestSha256": "129c49231ceca785d373bcd63999fa343879bc2ee35bb84cb0bf24ce1bb65b1d",
+      "weightsSha256": "0346059fcae68e08913d9e19d2070a2fd1b117334b0a2cb00f238daffde006b3",
+      "statusSha256": "d580793d15c04f2b017ab1781cf24f43c7fbebe99f1147df657a12007918d851",
+      "rawGenerationReportSha256": "6a0cd0ca3a6ae8140d7f1617f2033caf7d996b0936e5cd1d346a85e210317faf",
+      "validation": [
+        {
+          "step": 0,
+          "sequenceMeanNll": 1.6373902535790683,
+          "tokenWeightedNll": 4.050960822047885
+        },
+        {
+          "step": 192,
+          "sequenceMeanNll": 1.5003178580754382,
+          "tokenWeightedNll": 3.98983597073838
+        },
+        {
+          "step": 384,
+          "sequenceMeanNll": 1.5010346631068348,
+          "tokenWeightedNll": 3.9679873297615895
+        }
+      ],
+      "generationCoverage": {
+        "actualOutputs": 40,
+        "executionErrors": 0,
+        "blockedTurns": 0,
+        "truncatedPrompts": 0,
+        "outputStopReasons": {
+          "eos": 39,
+          "token_budget": 1
+        },
+        "allOutputsEndedWithEos": false,
+        "promptAndOutputLimitDistinction": "Ningún prompt fue recortado; una salida llegó al límite de 32 tokens. Los otros 39 turnos terminaron en EOS."
+      }
+    },
+    "ranking": {
+      "status": "completed",
+      "completedUpdates": 384,
+      "endpointSelection": "fixed_training_endpoint_not_best_validation_checkpoint",
+      "modelId": "unidad-conversation-03332f1d958cfe28babfcb2136bc186b5f037b9646e0ee56dd307518a154f62d",
+      "manifestSha256": "52505716011b50f1e88ffbb2258118fa281a46d995a29380b74bd7dd20609f83",
+      "weightsSha256": "544dfd93e17d9adbae9da91e8fd6221471e6c1e731c9b51f091983a0139cbe5b",
+      "statusSha256": "608a172363e284d8f92f2a195290d55527984509a0c45cf02dae3296734b35fc",
+      "rawGenerationReportSha256": "98f4253976517589119fe349291dfea9678b551b2a61789b8ee1da5eb0ea2fef",
+      "validation": [
+        {
+          "step": 0,
+          "sequenceMeanNll": 1.6373902535790683,
+          "tokenWeightedNll": 4.050960822047885
+        },
+        {
+          "step": 192,
+          "sequenceMeanNll": 1.5044346916608744,
+          "tokenWeightedNll": 3.991660457535196
+        },
+        {
+          "step": 384,
+          "sequenceMeanNll": 1.502453095900917,
+          "tokenWeightedNll": 3.968753345219768
+        }
+      ],
+      "generationCoverage": {
+        "actualOutputs": 40,
+        "executionErrors": 0,
+        "blockedTurns": 0,
+        "truncatedPrompts": 0,
+        "outputStopReasons": {
+          "eos": 39,
+          "token_budget": 1
+        },
+        "allOutputsEndedWithEos": false,
+        "promptAndOutputLimitDistinction": "Ningún prompt fue recortado; una salida llegó al límite de 32 tokens. Los otros 39 turnos terminaron en EOS."
+      }
+    }
+  },
+  "conversationDevelopment": {
+    "episodes": 10,
+    "turns": 40,
+    "split": "development",
+    "alreadyExposed": true,
+    "freshHeldoutClaim": false,
+    "history": "Cada episodio empieza separado; cada turno conserva las respuestas reales anteriores de ese brazo, sin referencias oro ni edición.",
+    "generation": {
+      "maxNewTokens": 32,
+      "temperature": 0,
+      "seed": 42,
+      "torchThreads": 1
+    },
+    "casesSha256": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+    "protocolSha256": "95dce31bb7279a902bd0d3e0aac28083f9ddc34fade1b6f8ef844219d8f42f99",
+    "freezeManifestSha256": "c73875646bf5ce790f6564e2700a6a1fae258224c180c69b9902d304aabc6f91",
+    "runnerSha256": "02501cd2c6ca3c556e79447724b70162f5c18f32b8a67919183d34f427f0cc28",
+    "rubric": {
+      "C": "Respuesta completa, pertinente e inteligible que conserva los hechos y cumple las restricciones.",
+      "P": "Parte útil y correcta, con omisiones o expresión incompleta, sin contradicción, invención ni desobediencia explícita.",
+      "F": "Contradicción, invención, desobediencia explícita, respuesta a otro asunto sin parte pertinente o texto ininteligible."
+    },
+    "reviewMethod": "Juicios manuales de dos asistentes de IA del mismo proyecto, congelados antes de leer los grados del otro; identidades visibles, sin cegamiento ni revisión humana o externa. El revisor primario también es autor de los casos.",
+    "automaticSemanticScoring": false,
+    "reviews": {
+      "control": {
+        "primary": {
+          "reviewer": "/root/specialist_integration",
+          "reportSha256": "2426f01dc65a5b1d859591acd156c9fe6e9d6859038f3cc0e1ee4272086b9473",
+          "turns": {
+            "C": 0,
+            "P": 2,
+            "F": 38
+          },
+          "episodes": {
+            "C": 0,
+            "P": 0,
+            "F": 10
+          },
+          "criticalTurnCountAsOriginallyReported": 18,
+          "developmentPromotionPassed": false
+        },
+        "crosscheck": {
+          "reviewer": "/root/model_review",
+          "reportSha256": "5f49a37e67b7816def3ac18e2523ae014cc87389ed0e91342d6517611e874c2f",
+          "turns": {
+            "C": 1,
+            "F": 38,
+            "P": 1
+          },
+          "episodes": {
+            "C": 0,
+            "F": 10,
+            "P": 0
+          },
+          "criticalTurnCountAsOriginallyReported": 16,
+          "developmentPromotionPassed": false
+        }
+      },
+      "ranking": {
+        "primary": {
+          "reviewer": "/root/specialist_integration",
+          "reportSha256": "7f75c6c71c3698abf9412148262a2665ba4c646cd2bf507dc335397d92211127",
+          "turns": {
+            "C": 0,
+            "P": 1,
+            "F": 39
+          },
+          "episodes": {
+            "C": 0,
+            "P": 0,
+            "F": 10
+          },
+          "criticalTurnCountAsOriginallyReported": 21,
+          "developmentPromotionPassed": false
+        },
+        "crosscheck": {
+          "reviewer": "/root/model_review",
+          "reportSha256": "830ed69536628b2770361fa58609bb582d7be66143dc7d7ccaf3326a6f5039bd",
+          "turns": {
+            "C": 0,
+            "F": 39,
+            "P": 1
+          },
+          "episodes": {
+            "C": 0,
+            "F": 10,
+            "P": 0
+          },
+          "criticalTurnCountAsOriginallyReported": 22,
+          "developmentPromotionPassed": false
+        }
+      }
+    },
+    "reviewDisagreement": "En el control, un turno sobre un dato desconocido fue P para la revisión primaria y C para la cruzada. Ambos recuentos originales se conservan. Las diferencias de turnos críticos también se conservan por revisor, sin suma, promedio ni consenso nuevo.",
+    "originalPrivateReviewsModified": false,
+    "promotionRule": {
+      "minimumCompleteTurns": 36,
+      "minimumAllCompleteEpisodes": 8,
+      "maximumCriticalTurns": 0,
+      "requiredActualOutputs": 40,
+      "maximumExecutionErrors": 0,
+      "maximumBlockedTurns": 0,
+      "maximumTruncatedPrompts": 0,
+      "requiredNonRegressionAgainstFrozenV6Baseline": true
+    },
+    "bothArmsPassed": false
+  },
+  "decision": {
+    "rankingAdopted": false,
+    "modelPromoted": false,
+    "conversationCompetentValidated": false,
+    "productionAccepted": false,
+    "autonomousWorkValidated": false
+  },
+  "nextStage": {
+    "candidate": "B: ajuste conversacional orientado a cobertura",
+    "status": "started_preparing_data",
+    "workerIdentifiedBySupervisor": true,
+    "firstObservedWorkerStatus": "planned/worker_starting",
+    "trainingCompletionClaim": false,
+    "resultsReported": false,
+    "note": "El supervisor confirmó el lanzamiento y el trabajador. Se preparan los datos; no se informa una corrida terminada ni una mejora."
+  },
+  "limitations": [
+    "Una comparación corta, con una semilla y endpoints fijos, no establece una causa concluyente ni descarta todos los usos futuros de ranking.",
+    "Los 40 turnos ya se han expuesto durante el desarrollo; no son TEST final ni una estimación nueva de generalización.",
+    "Ambos brazos bajaron la NLL y aun así fallaron la conversación. La evaluación técnica completa tampoco acredita comprensión.",
+    "Cero prompts recortados no significa que todas las respuestas terminaran naturalmente: cada brazo tiene una salida limitada por 32 tokens; las revisiones originales se conservan.",
+    "Las respuestas reales siguen incluyendo invenciones, hechos equivocados y frases ininteligibles. No se sustituyeron por respuestas de otra IA."
+  ],
+  "privacy": {
+    "pairsPublished": false,
+    "rawConversationsPublished": false,
+    "personalDataPublished": false,
+    "ownerChatUsedAsTrainingCorpus": false
+  },
+  "testScored": false,
+  "reservedProspectiveTestRead": false
+}
