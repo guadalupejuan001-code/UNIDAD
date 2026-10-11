@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "purpose": "learning-curriculum-progress-not-conversation-acceptance",
+  "trainingRoot": "own random weights; no external model or inference templates",
+  "projectionOptimizationReceipt": "unidad-learning-optimization-v1.json",
+  "previousOptimizedStage": {
+    "runName": "optimized-copy-flow-v1",
+    "stoppedStep": 4196,
+    "elapsedSeconds": 885.1234017899988,
+    "selectedStep": 4000,
+    "selectedValidationSequenceMean": 0.47723494285929174,
+    "modelId": "unidad-conversation-00bb8ae6a9056e6dd4e1787b4e0dc0273da21385b6efdb13d59eb8e72901d400",
+    "weightsSha256": "2dd73123954b03d1e3ffe152ebc778d83c8759a2415b086464d21c9e04567869",
+    "literalCopyDevelopment": {
+      "turns": 89,
+      "episodes": 25,
+      "exactAtSelected500": 2,
+      "exactAtSelected1750": 21,
+      "exactAtSelected3000": 24,
+      "completeEpisodesAt3000": 1,
+      "scope": "actual-history exact UTF8, no stripping/normalization; development, not final test"
+    },
+    "freeConversationBeforeNextStage": {
+      "selectedStep": 4000,
+      "summary": {
+        "responses": {
+          "total": 22,
+          "complete": 6,
+          "partial": 5,
+          "failed": 11
+        },
+        "nonemptyGeneratedResponses": {
+          "total": 20,
+          "complete": 6,
+          "partial": 5,
+          "failed": 9
+        },
+        "modelCallsWithRecordedReply": 21,
+        "operationalFailures": {
+          "emptyReply": 1,
+          "blockedTurn": 1
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 0,
+          "partial": 0,
+          "failed": 5
+        },
+        "perTurn": {
+          "1": {
+            "total": 5,
+            "complete": 2,
+            "partial": 1,
+            "failed": 2
+          },
+          "2": {
+            "total": 5,
+            "complete": 1,
+            "partial": 1,
+            "failed": 3
+          },
+          "3": {
+            "total": 5,
+            "complete": 2,
+            "partial": 1,
+            "failed": 2
+          },
+          "4": {
+            "total": 4,
+            "complete": 1,
+            "partial": 2,
+            "failed": 1
+          },
+          "5": {
+            "total": 2,
+            "complete": 0,
+            "partial": 0,
+            "failed": 2
+          },
+          "6": {
+            "total": 1,
+            "complete": 0,
+            "partial": 0,
+            "failed": 1
+          }
+        },
+        "dimensions": {
+          "relevance": {
+            "complete": 12,
+            "partial": 4,
+            "failed": 6,
+            "not_assessable": 0
+          },
+          "contextGrounding": {
+            "complete": 6,
+            "partial": 6,
+            "failed": 8,
+            "not_assessable": 2
+          },
+          "spanish": {
+            "complete": 16,
+            "partial": 3,
+            "failed": 1,
+            "not_assessable": 2
+          }
+        },
+        "errorTagCounts": {
+          "blocked_by_prior_failed_reply": 1,
+          "correction_failure": 2,
+          "correction_not_acknowledged": 1,
+          "current_query": 6,
+          "empty_model_reply": 1,
+          "fact_retention": 5,
+          "field_confusion": 5,
+          "fluency": 4,
+          "literal_copy": 1,
+          "missing_knowledge": 3,
+          "preference_not_followed": 1,
+          "propagated_prior_error": 2,
+          "repetition": 2,
+          "topic_not_acknowledged": 1,
+          "unsupported_fact": 3
+        }
+      },
+      "casesSha256": "728c81960dacdd5a395501ae782a99e50fed0bbf902ddfeb5a4f341ba996e90a",
+      "rawSha256": "663e8e92f0c0d22d8fbf3c19b51f946624c0ec997f7492e526bb1e0ade5cb174",
+      "reviewSha256": "ad30b6c5b3fa129e79b7e3f45fcbe522879a9ca727b27b3782ff25e51891fba5",
+      "reviewer": "two unblinded same-project development assistants; not human or independent external review"
+    },
+    "reasonForChangingStage": "Free conversational corrections and factual recall did not show sustained improvement across selected500,1750,3000 and4000. Better literal copying did not establish competent dialogue."
+  },
+  "newCurricula": {
+    "natural": {
+      "dataset": "unidad-natural-diversity-v2",
+      "records": 6960,
+      "train": 5568,
+      "validation": 696,
+      "test": 696,
+      "worlds": 120,
+      "flows": 12,
+      "paraphrasesPerEventInEveryFold": 8,
+      "fullDialogueTokensMaximum": 204,
+      "valuesGloballyUnique": 840,
+      "sha256": "60774864d95dfdf5d89c9b47fd435048bb6be1bc35ef512530355e90b21169d6",
+      "independentDataReviewSha256": "fb3801e21089e216b7aa0fa29ec1f541b4c9974e3455f7a1fbf85803435ef04b",
+      "firstPrototypeV1Trained": false,
+      "prototypeRevisionReason": "Design-only audit removed correlation between correction and value length, plus cross-domain exact values; earlier V1 artifacts remain immutable."
+    },
+    "recovery": {
+      "dataset": "unidad-conversation-recovery-v1",
+      "records": 2072,
+      "train": 1630,
+      "validation": 221,
+      "test": 221,
+      "sha256": "bfc4129c5549204cc391a3ceb90afd5c1cb88a48758668cf1b3633bb660c2cb8",
+      "policy": "One fictional wrong previous assistant reply; all user text and final gold target unchanged; wrong history masked from targets."
+    }
+  },
+  "newStage": {
+    "runName": "natural-recovery-v2",
+    "corpusSha256": "9cc6a59e35b53f8f004f51dd360344b62458fcbe2a17d5f600cd2df404e4f71e",
+    "records": 49422,
+    "splits": {
+      "test": 5428,
+      "train": 38587,
+      "validation": 5407
+    },
+    "allOldRecordsAndFoldsRetained": true,
+    "dialoguesTruncated": false,
+    "projectionMode": "supervised",
+    "lossReduction": "sequence_mean",
+    "samplingExpectedShares": {
+      "priorReplay": 0.08726829569840247,
+      "naturalContext": 0.09495129683760609,
+      "cold20": 0.022607451628001447,
+      "cleanVariableFlow": 0.24589136059768452,
+      "literalCopy": 0.06954440686348101,
+      "recovery": 0.08636753004759928,
+      "freshNatural": 0.3933696583272252
+    },
+    "samplingScope": "TRAIN windows only; expected shares are not observed draw counts; validation and test unique unsampled",
+    "initializationProof": {
+      "schemaVersion": 1,
+      "parentModelId": "unidad-conversation-00bb8ae6a9056e6dd4e1787b4e0dc0273da21385b6efdb13d59eb8e72901d400",
+      "initialCheckpoint": "step-000000000-ea51bad3543f49169d70fedb8a990410",
+      "initialStep": 0,
+      "identicalOwnTensors": 52,
+      "allWeightsBitIdentical": true,
+      "tokenizerBytesIdentical": true,
+      "initialOptimizerStateEntries": 0,
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "initialWeightsSha256": "2dd73123954b03d1e3ffe152ebc778d83c8759a2415b086464d21c9e04567869",
+      "projectionMode": "supervised",
+      "finalTestUsed": false
+    },
+    "optimizerAndSchedulerReset": true,
+    "originalDayBudgetReset": false,
+    "originalWallDeadline": 1791790679.9280663,
+    "remainingConfiguredSeconds": 77654,
+    "environmentLifetimeGuaranteed": false,
+    "finalTestUsed": false,
+    "conversationAccepted": false
+  },
+  "projectTests": {
+    "fullSuiteWithExtras": {
+      "discovered": 260,
+      "passed": 260,
+      "elapsedSeconds": 36.826,
+      "logSha256": "251cde7f59984a97385b35f2d4ad151b86e0b744242d8a66eb0be910a90c412f"
+    },
+    "baseWithoutExtras": {
+      "discovered": 194,
+      "passed": 122,
+      "skipped": 72,
+      "elapsedSeconds": 4.058,
+      "logSha256": "c81fddd03130eee1722f53550660b6310a88b60e462d6db88c919bfc9f5bfcb0"
+    },
+    "publicTokenizerFollowup": {
+      "passed": 13,
+      "elapsedSeconds": 11.926,
+      "logSha256": "1a307385ef2a9ec1c486197ff3d5580cb07b33013996624011213ca0992b9afc",
+      "reason": "Replaced private-only fixture path with public byte-identical tokenizer so CI can exercise all13 tests. No data, core code or tokenizer bytes changed."
+    }
+  },
+  "sourceSha256": {
+    "examples/build_conversation_recovery.py": "580ae2e5aff8392f46be0103df7ca79e77f2283c02534bb508a0ded2f2b98eed",
+    "examples/build_natural_diversity_conversations.py": "48f3cbe2cf7c1ba6bddfd072c41a162e5166f707a5b238b42b7fd1e149229397",
+    "tests/test_conversation_recovery.py": "f3fad0e4f4cfe477b9e55678de2005f8496e8472766a38b8b80c98ca45c83dd9",
+    "tests/test_natural_diversity_conversations.py": "d3cb1f7bfbff274f2640e3230782b41b4eda960936018b4cf98fd4bd5de8f260"
+  },
+  "limitations": [
+    "Finite authored response grammar and software/data tests do not establish generated conversation competence.",
+    "Lower validation loss is not a substitute for preserving facts, following corrections and replying clearly.",
+    "The prospective final acceptance and reserved test remain unscored.",
+    "Autonomous programming is not implemented."
+  ],
+  "packageVersion": "0.5.1"
+}

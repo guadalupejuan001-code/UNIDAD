@@ -326,13 +326,24 @@ entrenamiento; el motor conversacional genera cada respuesta desde los pesos.
 
 La frecuencia también debe revisarse cuando un ejemplo deja de aportar
 aprendizaje. En una auditoría exclusiva de TRAIN, veinte aperturas tenían un
-error muy bajo y aun así recibían el 9,55 % de las muestras esperadas. La siguiente
-etapa reduce su multiplicador de 64 a 8 y conserva el repaso. Esto libera muestras
-para ejemplos nuevos; su efecto en retención y conversación se comprueba aparte.
+error muy bajo y aun así recibían el 9,55 % de las muestras esperadas. Una etapa
+redujo su multiplicador de 64 a 8. La pérdida baja no garantizó conservar esos
+comportamientos al generar; la etapa posterior lo ajusta a 32 mientras aporta
+contextos nuevos. Los factores se multiplican por el peso del conjunto, 2 en
+este caso. Su efecto en retención y conversación se comprueba por separado.
 El [generador de copia literal](../examples/build_literal_copy_conversations.py)
 añade nombres, frases, códigos y correcciones ficticias con valores separados
 por familia. Enseña a conservar incluso espacios y composición Unicode, sin
 añadir reglas de copia al generador de respuestas.
+
+El [currículo natural](unidad-natural-diversity-v2.md) añade ocho formulaciones
+por evento y hechos independientes intercalados. El
+[generador de recuperación](../examples/build_conversation_recovery.py) cambia
+una respuesta anterior por un error ficticio, conservando exactamente los
+mensajes del usuario y la respuesta final correcta. El entrenador supervisa
+sólo esa respuesta final y EOS; el error permanece como contexto, nunca como
+objetivo. Los datos anteriores y sus particiones se conservan. Ninguno de estos
+helpers participa en la inferencia.
 
 ## Detener y reanudar
 

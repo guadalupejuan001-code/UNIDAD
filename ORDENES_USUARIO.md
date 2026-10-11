@@ -99,7 +99,7 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 | Cambios de criterio | Registro local de encargos y correcciones; la última valoración decide qué ejemplos se exportan. |
 | Trabajar por el creador | El núcleo ejecuta flujos explícitos y herramientas del producto; comprender un encargo abierto y planificarlo sigue pendiente. |
 | Un cerebro para varios cuerpos | Mismo núcleo y pesos usados desde Python y HTTP; herramientas y registros separados por producto, con memoria compartida sólo por configuración explícita. |
-| Optimizar el código | Mejoras medidas en memoria de evaluación y tamaño del listado; carga de modelos compartida entre cuerpos. Unidad 0.2.0 pasó 86 pruebas técnicas. |
+| Optimizar el código | Proyección del vocabulario sólo en posiciones supervisadas: 13,5 % menos tiempo por paso en la CPU medida, con inferencia conservada. Pasaron 260 pruebas técnicas; datos nuevos y práctica de recuperación se comprueban aparte con respuestas generadas. |
 | Adjuntar las órdenes | Este documento, enlazado en el README y en AGENTS.md. |
 | Cohesión interna del código | Un contrato conversacional compartido y un mismo motor para CLI, cerebro y evaluación. El entrenador exporta el artefacto que carga ese motor; no se añaden dependencias entre todos los módulos. |
 | Comprobar conversación | Casos de desarrollo con respuestas realmente generadas y pares de contexto contrastivo. Las puntuaciones técnicas no acreditan conversación competente. |

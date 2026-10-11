@@ -173,7 +173,10 @@ Se adaptó el aprendizaje para evitar calcular salidas sin supervisión. En la
 CPU disponible, la [comparación medida](docs/unidad-learning-optimization-v1.json)
 redujo un 13,5 % el tiempo por paso y conservó la inferencia. La siguiente etapa
 reduce repeticiones de ejemplos fáciles y añade diversidad de textos y
-correcciones; mejorar su conversación debe comprobarse por separado. La
+correcciones. El [registro de aprendizaje](docs/unidad-learning-curriculum-v2.json)
+conserva la comparación de respuestas y la nueva etapa: las correcciones y los
+hechos de conversación libre siguen fallando. Pasaron 260 pruebas técnicas;
+mejorar su conversación debe comprobarse por separado. La
 [guía](docs/conversation.md) explica cómo activar el nuevo modo de entrenamiento.
 
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
