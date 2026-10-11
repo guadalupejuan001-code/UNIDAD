@@ -199,6 +199,23 @@ unidad conversation converse --model models/conversation-basics-v5 \
   --temperature 0 --max-new-tokens 32
 ```
 
+La [instantánea experimental v6](models/conversation-basics-v6/README.md)
+conserva otra etapa con más repaso de español público y actualizaciones más
+pequeñas. Obtuvo 15 respuestas completas de los mismos 22 turnos de desarrollo;
+siguen fallando las ciudades, algunos títulos y una pregunta sobre un dato
+desconocido. La etapa terminó y conserva el paso 600 seleccionado por validación.
+El [informe de refinamiento](docs/unidad-learning-refinement-v0.5.2.json)
+registra el cambio conjunto de currículo y tasa de aprendizaje. Son casos de
+desarrollo conocidos, no una prueba nueva de conversación general. Para probar
+este candidato, usa `--model models/conversation-basics-v6` en el comando anterior.
+
+También se compararon señales directas de aprendizaje de atención y selección
+de datos del diálogo. La segunda prueba elevó la copia literal de 37 a 50 casos
+exactos de 89 frente al control experimental ya entrenado, sin repetirlo.
+Quedó por debajo de v6 en conversación libre, por lo que se conserva como
+investigación y no modifica el modelo usable. El [diagnóstico de aprendizaje](docs/unidad-copy-learning-diagnostics-v1.json)
+registra las dos pruebas, sus resultados y los cambios descartados.
+
 El núcleo funciona también desde una instalación del paquete fuera del repositorio:
 
 ```bash

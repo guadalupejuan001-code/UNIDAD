@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 1,
+  "version": "0.5.2",
+  "purpose": "Measured private learning-objective diagnostics for a causal neural copy prototype; no conversation-competence claim.",
+  "sourceCommit": "319019b9f128ae875a975a49b264aeb578b8b592",
+  "productionCodeEdited": false,
+  "publicModelArchitectureChanged": false,
+  "testEvaluated": false,
+  "prospectiveAcceptanceEvaluated": false,
+  "conversationAccepted": false,
+  "generalConversationValidated": false,
+  "references": {
+    "learningRefinement": "unidad-learning-refinement-v0.5.2.json",
+    "adaptiveLearning": "unidad-adaptive-learning-v0.5.2.json",
+    "computeOptimization": "unidad-learning-optimization-v1.json"
+  },
+  "decision": {
+    "status": "final_for_these_two_diagnostics",
+    "integrateAlignmentPrototype": false,
+    "integrateGateSupervisionPrototype": false,
+    "promotePrototypeToPublicModel": false,
+    "nativeV6RemainsOptionalExperimentalCandidate": true,
+    "nativeV5RetainedUnchanged": true,
+    "reason": "Gate supervision improved literal reproduction and some critical facts, but neither prototype improved overall conversation against native v6. Neither completed a whole free-dialogue session, and both failed all four provided/corrected-city turns.",
+    "acceptanceRule": "Adopt only after actual generated dialogues improve overall conversation and preserve critical supplied facts, corrections and honest unknowns. Lower teacher-forced NLL, larger copy gates, or literal-match gains alone do not satisfy this rule.",
+    "originalConversationGoalCompleted": false
+  },
+  "sharedDesign": {
+    "parent": {
+      "modelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+      "selectedStep": 500,
+      "weightsSha256": "c564039ba0d6d3bf681cc8a7c76555de91b8fbd6c8fc59fa5120889f13323e05",
+      "manifestSha256": "d87b6759ecb6bfd38928f2b492d01153fb39797b606e68d75132d5d3c3a8ff8a",
+      "rootOrigin": "random_weights",
+      "externalPretrainedWeightsUsed": false,
+      "parentWeightsUnchanged": true
+    },
+    "architecture": {
+      "nativeParameters": 1088256,
+      "nativeTensors": 52,
+      "randomCopyHeadParameters": 8321,
+      "totalPrototypeParameters": 1096577,
+      "totalPrototypeTensors": 56,
+      "copyRank": 32,
+      "headSeed": 20261016,
+      "contextLength": 256,
+      "vocabularySize": 2048,
+      "copyMechanism": "Learned query/key attention and gate; predecessor hidden state keys point to the following input token. Sources are causal USER payload only, with source position i <= query position t.",
+      "excludedCopySources": [
+        "system",
+        "assistant",
+        "role markers",
+        "control tokens",
+        "EOS"
+      ],
+      "vocabularyFallbackSupportsEOS": true,
+      "inferenceGoldLabelsUsed": false,
+      "inferenceHeuristicsOrTemplatesUsed": false,
+      "privatePrototypeLoaderSha256": "a73a84a16c9e7589633026c1df459ceeb5cf94f7d6797c215cfec0d41a8e0092"
+    },
+    "initialization": {
+      "allNative52TensorsExactlyParent": true,
+      "all56TensorsExactlyEqualAcrossFirstArms": true,
+      "newGateArmAll56ExactlyEqualToFirstExperimentInitialization": true,
+      "sameOwnRandomHeadReusedAtInitialization": true,
+      "tokenizerUnchangedSha256": "ee3b0f263ce97919f0a6b6ea8bd1329d1a008883116ee3a2decc9eb15f6fbb59",
+      "newOptimizerForEachTrainedArm": true
+    },
+    "selection": {
+      "trainRecords": 6218,
+      "validationRecords": 424,
+      "trainSha256": "8ecfce98d9a1b7adbf390166bb347e3ada32e9814a80d3e4e40898bc2d465205",
+      "validationSha256": "f7453696acca66cd5e82405462bb2c205d27a91ada333a44a82d14ba41f093e9",
+      "familiesDisjointBetweenTrainAndValidation": true,
+      "trainOnlySamplingAndAuxiliaryTargets": true,
+      "sourceExpectedShares": {
+        "literalCopy": 0.5,
+        "freshNaturalDialogue": 0.25,
+        "variableFlow": 0.125,
+        "recovery": 0.125
+      },
+      "same384BatchPlanSha256": "405113a3613b3a5647e8bc7846d97d3f756df8fdafd4252014c49975bd2d0c90",
+      "sameExposureAcrossAllTrainedArms": true,
+      "finalAssistantReplyAndEOSOnlySupervised": true,
+      "allSelectedDialoguesFitContext": true
+    },
+    "training": {
+      "stepsPerTrainedArm": 384,
+      "batchSize": 16,
+      "cpuThreads": 4,
+      "seed": 42,
+      "learningRate": 0.0003,
+      "warmupSteps": 32,
+      "optimizer": "AdamW",
+      "weightDecay": 0.01,
+      "gradientClip": 1.0,
+      "lossReduction": "sequence_mean",
+      "sequenceUnit": "encoded_window",
+      "projectionMode": "supervised",
+      "dropout": 0.0,
+      "fullBackboneTrainable": true,
+      "endpointFixedBeforeTraining": true,
+      "validationCheckpointSelection": false,
+      "originalDayDeadlineEpochSeconds": 1791790679.928,
+      "dayBudgetReset": false
+    },
+    "validationMeaning": {
+      "teacherForced": true,
+      "reportedNllIsMixtureCrossEntropy": true,
+      "auxiliaryPenaltiesIncludedInReportedNll": false,
+      "nllUnit": "nats per BPE target token, averaged equally across supervised windows",
+      "targets": 4479,
+      "windows": 424,
+      "validationUnsampled": true,
+      "initialNll": 0.3201457016029448,
+      "initialTokenWeightedNll": 0.32959664999094623
+    },
+    "developmentProtocol": {
+      "literalTurns": 89,
+      "literalEpisodes": 25,
+      "literalComparison": "UTF-8 byte equality without trimming or Unicode/whitespace normalization",
+      "literalCasesSha256": "81cab80173defea2869bb8c9d06f47cefcb423485c3201b4c15007972fe57e15",
+      "freeTurns": 22,
+      "freeSessions": 5,
+      "actualGeneratedRepliesUsedAsHistory": true,
+      "goldRepliesUsedInGenerationHistory": false,
+      "generation": {
+        "maxNewTokens": 32,
+        "temperature": 0,
+        "seed": 42,
+        "torchThreads": 1
+      },
+      "reviews": "Two project AI assistants, unblinded, reconciled on every free-dialogue turn.",
+      "humanReview": false,
+      "independentExternalReview": false,
+      "developmentCasesRepeatedlyInspected": true,
+      "freshGeneralizationOrProspectiveAcceptance": false,
+      "privateLoaderUsesSharedConversationRequestAndHistoryContract": true,
+      "productionLoaderSupportForCopyHeadVerified": false
+    }
+  },
+  "experiments": [
+    {
+      "name": "successor-copy-aux-alignment-v1",
+      "comparison": "Mixture cross-entropy versus mixture cross-entropy + 0.2 causal copy alignment; a bounded paired comparison with alternating update order.",
+      "reviewedDesignSha256": "02e463842926986cd288255f7bcdae202548f6ffb244f0b731bc150f11e5784c",
+      "executedDesignSha256": "02e463842926986cd288255f7bcdae202548f6ffb244f0b731bc150f11e5784c",
+      "alignmentObjective": {
+        "coefficient": 0.2,
+        "eligibleTargets": "TRAIN supervised gold token > 5 with at least one allowed causal USER source position containing that token.",
+        "loss": "Negative log of total pointer-attention mass over all eligible positions matching the target.",
+        "reduction": "Mean over eligible queries within each window, then equal mean over windows with eligible queries.",
+        "noEligibleWindowsGiveZero": true,
+        "gradientDoesNotDependOnMixtureGate": true
+      },
+      "pretrainingProofs": {
+        "optimizerSteps": 0,
+        "eligibleQueries": 112,
+        "supervisedQueries": 155,
+        "eligibleWindows": 16,
+        "batchWindows": 16,
+        "queryKeyGradientNorms": [
+          18.867067337036133,
+          17.573789596557617
+        ],
+        "closedGateQueryKeyGradientNorms": [
+          18.867067337036133,
+          17.573789596557617
+        ],
+        "closedGateAlignmentLossExactlyEqual": true,
+        "futurePerturbation": {
+          "atInitialization": true,
+          "checks": 4,
+          "maxLogProbabilityDifference": 0.0,
+          "maxAttentionDifference": 0.0
+        }
+      },
+      "lastLoggedTrainingBatch": {
+        "step": 384,
+        "measurement": "Forward-pass statistics before the final optimizer update; this is one TRAIN batch, not corpus-wide coverage.",
+        "eligibleQueries": 126,
+        "supervisedQueries": 163,
+        "eligibleWindows": 16,
+        "batchWindows": 16,
+        "queryCoverage": 0.7730061349693251,
+        "windowCoverage": 1.0,
+        "controlMixtureCe": 0.04317184537649155,
+        "alignmentMixtureCe": 0.09093767404556274,
+        "alignmentLoss": 0.26035165786743164,
+        "controlMeanGate": 0.0011292595881968737,
+        "alignmentMeanGate": 0.154225155711174
+      },
+      "timing": {
+        "pairTrainingWallSeconds": 115.26668735899875,
+        "receiptTotalSeconds": 141.5697599060004,
+        "receiptTotalIncludesSetupValidationExportAndLiteralProbe": true,
+        "freeSemanticReviewIncludedInReceiptTotal": false,
+        "pairTrainingBudgetSeconds": 240
+      },
+      "arms": {
+        "control": {
+          "modelId": "unidad-experiment-successor-21af441a5a0d00c3e8ac6c342027bb4bb77055d937eb4f6d4500a7c9a6fbe69f",
+          "artifactIsPrivatePrototype": true,
+          "productionArtifactValidated": false,
+          "artifactSha256": {
+            "manifest": "643a40cb4d85cc3f5b103fefb8b3e65b37d59d3afa5e20b236e0baeb5918523e",
+            "weights": "5e51227d45e579f314c25aac31fffa7761badeb0abc094a0d7506e9775d9c657"
+          },
+          "validation": {
+            "nll": 0.2938355872020969,
+            "tokenWeightedNll": 0.31438270805403173,
+            "targetTokens": 4479,
+            "examples": 424,
+            "lossReduction": "sequence_mean",
+            "sequenceUnit": "encoded_window"
+          },
+          "gateOnFixedTrainingDiagnosticBatch": {
+            "mean": 0.0011174696264788508,
+            "min": 5.717193926102482e-05,
+            "max": 0.011980228126049042,
+            "effectiveMean": 0.0011174696264788508,
+            "supervisedQueries": 155
+          },
+          "literalDevelopment": {
+            "exactMatches": 39,
+            "turns": 89,
+            "completeEpisodesExact": 4,
+            "episodes": 25,
+            "generationErrors": 0,
+            "truncatedPrompts": 0
+          },
+          "freeConversationDevelopment": {
+            "responses": {
+              "total": 22,
+              "complete": 11,
+              "partial": 0,
+              "failed": 11
+            },
+            "sessions": {
+              "total": 5,
+              "complete": 0,
+              "partial": 0,
+              "failed": 5
+            },
+            "sevenCriticalTurns": {
+              "total": 7,
+              "complete": 1,
+              "partial": 0,
+              "failed": 6
+            },
+            "criticalGroups": {
+              "providedAndCorrectedCity": {
+                "total": 4,
+                "complete": 0,
+                "partial": 0,
+                "failed": 4
+              },
+              "changedProjectTitle": {
+                "total": 2,
+                "complete": 1,
+                "partial": 0,
+                "failed": 1
+              },
+              "unknownObjectFact": {
+                "total": 1,
+                "complete": 0,
+                "partial": 0,
+                "failed": 1
+              }
+            },
+            "aliasRecall": {
+              "total": 2,
+              "complete": 0,
+              "partial": 0,
+              "failed": 2
+            },
+            "objectColorUpdates": {
+              "total": 4,
+              "complete": 3,
+              "partial": 0,
+              "failed": 1
+            },
+            "listening": {
+              "total": 2,
+              "complete": 2,
+              "partial": 0,
+              "failed": 0
+            },
+            "generationDiagnostics": {
+              "replyCount": 22,
+              "nonemptyReplies": 22,
+              "eosStops": 22,
+              "truncatedPrompts": 0,
+              "maxTokenStops": 0
+            }
+          }
+        },
+        "alignment": {
+          "modelId": "unidad-experiment-successor-3045c652a304dfcaff97148792d799f906a953b161effde279bceb3026e3b060",
+          "artifactIsPrivatePrototype": true,
+          "productionArtifactValidated": false,
+          "artifactSha256": {
+            "manifest": "33b7355f8a0dce6427ab01b97de0d1ae27b60d9244b41b0147314e9f65fccc2f",
+            "weights": "a7d78e7d2d173f5db845b510754f837f8c64cb52bebb38f8224173ff472c268f"
+          },
+          "validation": {
+            "nll": 0.192645271009994,
+            "tokenWeightedNll": 0.20981469700500938,
+            "targetTokens": 4479,
+            "examples": 424,
+            "lossReduction": "sequence_mean",
+            "sequenceUnit": "encoded_window"
+          },
+          "gateOnFixedTrainingDiagnosticBatch": {
+            "mean": 0.08919621258974075,
+            "min": 4.402334525366314e-05,
+            "max": 0.8982899785041809,
+            "effectiveMean": 0.08919621258974075,
+            "supervisedQueries": 155
+          },
+          "literalDevelopment": {
+            "exactMatches": 37,
+            "turns": 89,
+            "completeEpisodesExact": 1,
+            "episodes": 25,
+            "generationErrors": 1,
+            "truncatedPrompts": 0
+          },
+          "freeConversationDevelopment": {
+            "responses": {
+              "total": 22,
+              "complete": 9,
+              "partial": 2,
+              "failed": 11
+            },
+            "sessions": {
+              "total": 5,
+              "complete": 0,
+              "partial": 1,
+              "failed": 4
+            },
+            "sevenCriticalTurns": {
+              "total": 7,
+              "complete": 0,
+              "partial": 1,
+              "failed": 6
+            },
+            "criticalGroups": {
+              "providedAndCorrectedCity": {
+                "total": 4,
+                "complete": 0,
+                "partial": 0,
+                "failed": 4
+              },
+              "changedProjectTitle": {
+                "total": 2,
+                "complete": 0,
+                "partial": 0,
+                "failed": 2
+              },
+              "unknownObjectFact": {
+                "total": 1,
+                "complete": 0,
+                "partial": 1,
+                "failed": 0
+              }
+            },
+            "aliasRecall": {
+              "total": 2,
+              "complete": 1,
+              "partial": 0,
+              "failed": 1
+            },
+            "objectColorUpdates": {
+              "total": 4,
+              "complete": 2,
+              "partial": 0,
+              "failed": 2
+            },
+            "listening": {
+              "total": 2,
+              "complete": 2,
+              "partial": 0,
+              "failed": 0
+            },
+            "generationDiagnostics": {
+              "replyCount": 22,
+              "nonemptyReplies": 22,
+              "eosStops": 22,
+              "truncatedPrompts": 0,
+              "maxTokenStops": 0
+            }
+          }
+        }
+      },
+      "interpretation": "Alignment prevented gate collapse and reduced teacher-forced NLL, but literal exact matches fell from 39 to 37 and complete free responses fell from 11 to 9. It did not demonstrate conversational improvement.",
+      "adopted": false,
+      "evidenceSha256": {
+        "runner": "c0b5482d72cb97c9bd9356c0231c7227fadbedf8f6dcae16c995dcad66fd3c09",
+        "executionStart": "a97c8d342736532e4b30bbd8515ebeecab27c5ffa54dd063c2f405588e6ac3bd",
+        "objective": "8feae662a042683cd9be3d5f0fae4df1d0b32c1394d80376fbddc1c702afc419",
+        "objectiveTests": "aec98ad0bc48bad115cd93d49c2dc9db2c1ee4f797bc85ec066ab3a63303dfa5",
+        "trainingResults": "08ac66e95f218167ad70fd0eee474ce64d8839194b308d7038f0654fe0f0e253",
+        "executionReceipt": "99bed243af67a1ed89c822100e6d51506fc25500b853cde265f3ca9c2bebd7cd",
+        "controlLiteralOutputs": "f917dfa3a288ba1a28f835d81f9f1094ef83532bc47f8b8e49a6b3f507f6ae54",
+        "alignmentLiteralOutputs": "f5a54342d6fc25f886d321c03f91b62fef23293d0cfee8fe5861b55b1e3c0bf1",
+        "controlFreeOutputs": "b942057e1bd059b99f421dde260b8140ef9cde4b0f57ab73d557140fdd82a214",
+        "alignmentFreeOutputs": "107260cb080db0cb5769a4058e16a9bcf5a7048fd63c617e2222cbcb43cecb51",
+        "controlSemanticReview": "9d991be56723838cc2aa572d35d138501946191bc5c3319e0c2646496889ab3f",
+        "alignmentSemanticReview": "17d3139fa6cfc49c504c5ce3c6f6d4e724283c64d103e1ea2c786c6350b55330",
+        "semanticCrosscheck": "3c13ceb4e1ad06f31d5b2926b0649d89f6c53d553efa6269f71accecec2adb54"
+      }
+    },
+    {
+      "name": "successor-copy-gate-supervision-v1",
+      "comparison": "One new arm adds 0.2 gate supervision to mixture cross-entropy + 0.2 alignment. The previous alignment arm is a cached control and was not retrained.",
+      "reviewedDesignSha256": "72950f57f7a0a75645fdbc4102e740cff08f940d447a724122f37e1bab0a5b19",
+      "executedDesignSha256": "72950f57f7a0a75645fdbc4102e740cff08f940d447a724122f37e1bab0a5b19",
+      "cachedControl": {
+        "experiment": "successor-copy-aux-alignment-v1",
+        "arm": "alignment",
+        "modelId": "unidad-experiment-successor-3045c652a304dfcaff97148792d799f906a953b161effde279bceb3026e3b060",
+        "retrained": false,
+        "untouched": true,
+        "sameInitializationAndExposure": true,
+        "speedComparisonAllowed": false
+      },
+      "gateObjective": {
+        "coefficient": 0.2,
+        "alignmentCoefficientUnchanged": 0.2,
+        "positiveTargets": "TRAIN supervised gold token > 5 with at least one allowed causal USER source token matching gold.",
+        "negativeTargets": "All other supervised targets, including EOS and targets absent from allowed causal USER sources.",
+        "loss": "Stable binary cross-entropy with the actual copy-gate logits.",
+        "reduction": "Token mean within each supervised window, then equal mean across all windows.",
+        "singleHiddenForwardPerStep": true,
+        "temporaryGateHookCleanedUp": true,
+        "inferenceGoldOrRouter": false
+      },
+      "pretrainingProofs": {
+        "optimizerSteps": 0,
+        "positiveQueries": 112,
+        "negativeQueries": 43,
+        "nonzeroFiniteGateGradientNorms": [
+          5.633191108703613,
+          0.6911874413490295
+        ],
+        "positiveLogitGradientOpensGate": true,
+        "negativeLogitGradientClosesGate": true,
+        "actualNativeGateLogitsCapturedExactly": true,
+        "temporaryHookRemoved": true,
+        "independentCausalUserSourceOracleMatches": true,
+        "allEOSGateTargetsNegative": true,
+        "windowReductionMatchesIndependentGrouping": true,
+        "futurePerturbation": {
+          "atInitialization": true,
+          "checks": 4,
+          "maxLogProbabilityDifference": 0.0,
+          "maxAttentionDifference": 0.0
+        }
+      },
+      "lastLoggedTrainingBatch": {
+        "step": 384,
+        "measurement": "Forward-pass statistics before the final optimizer update; the same TRAIN batch as the first experiment, not the fixed initial diagnostic batch or corpus-wide coverage.",
+        "positiveGateQueries": 126,
+        "negativeGateQueries": 37,
+        "supervisedQueries": 163,
+        "eligibleWindows": 16,
+        "batchWindows": 16,
+        "alignmentQueryCoverage": 0.7730061349693251,
+        "alignmentWindowCoverage": 1.0,
+        "mixtureCe": 0.06661567091941833,
+        "alignmentLoss": 0.1188320741057396,
+        "gateBce": 0.277352511882782,
+        "meanGate": 0.6736893057823181
+      },
+      "timing": {
+        "singleArmTrainingWallSeconds": 58.58585932400092,
+        "receiptTotalSeconds": 73.30535854199843,
+        "receiptTotalIncludesSetupValidationExportAndLiteralProbe": true,
+        "freeSemanticReviewIncludedInReceiptTotal": false,
+        "singleArmTrainingBudgetSeconds": 140,
+        "performanceComparisonWithCachedControlAllowed": false
+      },
+      "arm": {
+        "modelId": "unidad-experiment-successor-b935cbccf4c46093d6607ccc74187a5a82405d2c4eb4b9636c748bd1e5c75f8c",
+        "artifactIsPrivatePrototype": true,
+        "productionArtifactValidated": false,
+        "artifactSha256": {
+          "manifest": "a3e2597d0c50c7d5970831b7527b86d32a5cf40e9b83f1e2264529e36a72d36a",
+          "weights": "381d96186d0f58a1c67e8ef8c04b66b980d3c69f8490ed39922e37270a90208e"
+        },
+        "validation": {
+          "nll": 0.18747775875172526,
+          "tokenWeightedNll": 0.1998632036700103,
+          "targetTokens": 4479,
+          "examples": 424,
+          "lossReduction": "sequence_mean",
+          "sequenceUnit": "encoded_window"
+        },
+        "gateOnFixedTrainingDiagnosticBatch": {
+          "mean": 0.6610110402107239,
+          "min": 0.00023322545166593045,
+          "max": 0.9998366832733154,
+          "effectiveMean": 0.6610110402107239,
+          "supervisedQueries": 155
+        },
+        "literalDevelopment": {
+          "exactMatches": 50,
+          "turns": 89,
+          "completeEpisodesExact": 5,
+          "episodes": 25,
+          "generationErrors": 0,
+          "truncatedPrompts": 0
+        },
+        "freeConversationDevelopment": {
+          "responses": {
+            "total": 22,
+            "complete": 12,
+            "partial": 1,
+            "failed": 9
+          },
+          "sessions": {
+            "total": 5,
+            "complete": 0,
+            "partial": 0,
+            "failed": 5
+          },
+          "sevenCriticalTurns": {
+            "total": 7,
+            "complete": 2,
+            "partial": 0,
+            "failed": 5
+          },
+          "criticalGroups": {
+            "providedAndCorrectedCity": {
+              "total": 4,
+              "complete": 0,
+              "partial": 0,
+              "failed": 4
+            },
+            "changedProjectTitle": {
+              "total": 2,
+              "complete": 2,
+              "partial": 0,
+              "failed": 0
+            },
+            "unknownObjectFact": {
+              "total": 1,
+              "complete": 0,
+              "partial": 0,
+              "failed": 1
+            }
+          },
+          "aliasRecall": {
+            "total": 2,
+            "complete": 1,
+            "partial": 0,
+            "failed": 1
+          },
+          "objectColorUpdates": {
+            "total": 4,
+            "complete": 3,
+            "partial": 0,
+            "failed": 1
+          },
+          "listening": {
+            "total": 2,
+            "complete": 2,
+            "partial": 0,
+            "failed": 0
+          },
+          "generationDiagnostics": {
+            "replyCount": 22,
+            "nonemptyReplies": 22,
+            "eosStops": 22,
+            "truncatedPrompts": 0,
+            "maxTokenStops": 0
+          }
+        }
+      },
+      "interpretation": "Gate supervision increased literal exact matches from cached 37/89 to 50/89 and whole exact episodes from 1/25 to 5/25. Free complete responses rose from cached 9/22 to 12/22, but no whole free session completed. All four provided/corrected-city turns still failed. The two project-title turns improved, while the unknown-object turn regressed from partial to failed. Global conversation remained below native v6.",
+      "adopted": false,
+      "evidenceSha256": {
+        "runner": "56a65fe49b6daaaff9abec9e5ce2722711a78c0f280248c19b86bb1366d88509",
+        "executionStart": "f3e8def9315bda5fb9b90df376c6b44de119ad9932013f836dbef61a9eba1c0c",
+        "gateObjective": "888489c91faeacbbec64d959172593430ef88f013a22e4cafc1fd67536874181",
+        "gateObjectiveTests": "ba9e2cf9956ad6bb2bc39f26d0c750a052e2d9b799624facf5e36c3e267c87af",
+        "trainingResults": "7a690db4d05525e078382d4a2a0a995a761a9522acbfe41f6521ad7e0a77c02c",
+        "executionReceipt": "6eb1b7538ef3f1c5cd7c08c6891c19f4945ab4e7f49e016a741db5375882580e",
+        "literalOutputs": "e3ff95fff1cbd4e150b10dcdbc48d99d0177bf96b241f236d9d49e78db8e59cc",
+        "freeOutputs": "29ac754cae6937c3ad86d0f8bdde9ad941cc880e63a5081950692cce67cf7ded",
+        "semanticReview": "aa78f7bc544b625b43e3ba98cc32dbce2bfb30714a6643af751a1360448b850a",
+        "semanticCrosscheck": "af63dd1f190f95d6ad481cc5af72f62d515fa0624992087ef83cf79d4b551db1"
+      }
+    }
+  ],
+  "nativeDevelopmentReferences": {
+    "purpose": "Previously inspected development results only; no contemporaneous retraining or speed comparison.",
+    "v5": {
+      "modelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+      "responses": {
+        "total": 22,
+        "complete": 13,
+        "partial": 2,
+        "failed": 7
+      },
+      "completeSessions": 2,
+      "sessions": 5
+    },
+    "v6": {
+      "modelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+      "selectedStep": 600,
+      "responses": {
+        "total": 22,
+        "complete": 15,
+        "partial": 0,
+        "failed": 7
+      },
+      "completeSessions": 2,
+      "sessions": 5,
+      "sevenCriticalTurns": {
+        "total": 7,
+        "complete": 0,
+        "partial": 0,
+        "failed": 7
+      },
+      "experimentalCandidateOnly": true,
+      "conversationAccepted": false
+    }
+  },
+  "limits": [
+    "One seed, short fixed training endpoints, and reused development cases do not establish broad generalization or time-to-competence.",
+    "Validation uses known previous context (teacher forcing); generation must condition on its own preceding replies and can accumulate errors.",
+    "The gate target marks a token as copyable when any allowed USER source matches it. This does not by itself teach which fact answers the current question or how to stop copying.",
+    "Higher pointer/gate activity is a learning diagnostic, not a calibrated confidence or factuality measure.",
+    "The gate comparison reused the previous alignment result; its training duration cannot support a speed comparison with that cached control.",
+    "The native and prototype references do not share an identical training stage; these are practical development outcomes, not a controlled architecture-causal comparison.",
+    "Neither objective enables autonomous programming, learned tool planning, or a competent digital worker."
+  ],
+  "privacy": {
+    "aggregateMetricsModelIdsAndHashesOnly": true,
+    "corpusPublished": false,
+    "rawConversationsPublished": false,
+    "privateFilePathsIncluded": false,
+    "privatePrototypeArtifactsPublished": false
+  }
+}

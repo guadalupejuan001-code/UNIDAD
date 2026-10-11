@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "version": "0.5.2",
+  "purpose": "learning-refinement-and-repeated-development-evidence-not-acceptance",
+  "sourceCommit": "319019b9f128ae875a975a49b264aeb578b8b592",
+  "sourceUnchangedDuringStage": true,
+  "sourceHashes": {
+    "src/ia_propia/conversation/training.py": "076b0ecd22cf1757d0d4a11fa9b60c80c432f491df075b77ed242b2ec916fd9a",
+    "src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+    "src/ia_propia/conversation/model.py": "6986a8d26492dd8f73115889198c585eb059854518cb2d27b9d7709e48f08304",
+    "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "src/ia_propia/conversation/artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+    "src/ia_propia/conversation/tokenizer.py": "ae3b515dd6b6fbba5bd1eeed6fd58d6844690d6033af470397c292c46f131082"
+  },
+  "conversationAccepted": false,
+  "generalConversationValidated": false,
+  "prospectiveAcceptanceEvaluated": false,
+  "testEvaluated": false,
+  "rootDecision": "Preserve validation-selected600 as an optional experimental v6 snapshot, retain v5 unchanged; no conversation acceptance or production deployment.",
+  "experimentalSnapshotPath": "models/conversation-basics-v6",
+  "previousSnapshotRetained": "models/conversation-basics-v5",
+  "productionDeploymentPerformed": false,
+  "references": [
+    "unidad-adaptive-learning-v0.5.2.json",
+    "unidad-learning-optimization-v1.json"
+  ],
+  "stage": {
+    "name": "conservative-natural-replay-v1",
+    "status": "completed",
+    "completedOptimizerSteps": 1200,
+    "validationSelectedStep": 600,
+    "lastCheckpointStep": 1200,
+    "reason": "training_limit",
+    "elapsedSecondsIncludingTrainerPreparationAndValidation": 333.2478264650017,
+    "parentModelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+    "parentSelectedStep": 500,
+    "selectedModelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+    "selectedWeightsSha256": "6bb2128334dc701cf9f97d2c6501d4761b89ef5b0c149bdd3439f89976d01dc2",
+    "parameterCount": 1088256,
+    "tensorCount": 52,
+    "modelType": "unidad-conversation-transformer",
+    "trainedFrom": "own_checkpoint",
+    "rootOrigin": "random_weights",
+    "ownModelsOnly": true,
+    "externalPretrainedWeightsUsed": false,
+    "externalInferenceApiUsed": false,
+    "inferenceTemplatesOrRoutersAdded": false,
+    "architectureChanged": false,
+    "initialization": {
+      "own52TensorsBitIdentical": true,
+      "adamStateEmptyAtStep0": true,
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "tokenizerBytesUnchanged": true,
+      "tokenizerRefitted": false,
+      "tokenizerSha256": "ee3b0f263ce97919f0a6b6ea8bd1329d1a008883116ee3a2decc9eb15f6fbb59"
+    },
+    "corpus": {
+      "sha256": "9cc6a59e35b53f8f004f51dd360344b62458fcbe2a17d5f600cd2df404e4f71e",
+      "totalRecords": 49422,
+      "trainRecords": 38587,
+      "validationRecords": 5407,
+      "dataOrSplitsChanged": false,
+      "fullDialogueTruncation": false
+    },
+    "hypothesis": "Smaller parameter updates plus more human Spanish replay may preserve conversational behavior while reducing narrow authored-name substitutions.",
+    "combinedChange": "Learning rate0.0003→0.0001 and fixed provenance replay both changed; this run cannot attribute an outcome to either alone.",
+    "training": {
+      "batchSize": 16,
+      "torchThreads": 4,
+      "learningRate": 0.0001,
+      "warmupSteps": 50,
+      "weightDecay": 0.01,
+      "gradClip": 1.0,
+      "validationEverySteps": 200,
+      "checkpointEverySteps": 200,
+      "patience": 6,
+      "minDelta": 0.0001,
+      "maxSteps": 1200,
+      "maxEpochs": 1000,
+      "seed": 42,
+      "windowPolicy": "sliding_context",
+      "assistantTargets": "last_reply_only_including_EOS",
+      "lossReduction": "sequence_mean",
+      "sequenceUnit": "encoded_window",
+      "projectionMode": "supervised",
+      "adaptiveSamplingConfigFieldPresent": false,
+      "samplingRules": [
+        {
+          "dataset": "Unidad project-authored Spanish basics and style",
+          "factor": 0.3
+        },
+        {
+          "dataset": "unidad-conversation-focus-v1",
+          "factor": 0.3
+        },
+        {
+          "dataset": "unidad-grounded-conversations-v1",
+          "factor": 0.3
+        },
+        {
+          "dataset": "unidad-open-facts-v2",
+          "factor": 0.3
+        },
+        {
+          "dataset": "OpenAssistant/oasst1",
+          "factor": 12.0
+        },
+        {
+          "dataset": "unidad-natural-basics-v2",
+          "factor": 2.0
+        },
+        {
+          "dataset": "unidad-natural-basics-v2",
+          "prefixPairs": 1,
+          "factor": 16.0
+        },
+        {
+          "dataset": "unidad-variable-flow-v1",
+          "factor": 3.0
+        },
+        {
+          "dataset": "literal-copy-v1",
+          "factor": 0.5
+        },
+        {
+          "dataset": "unidad-conversation-recovery-v1",
+          "factor": 3.0
+        },
+        {
+          "dataset": "unidad-natural-diversity-v2",
+          "factor": 2.0
+        }
+      ]
+    },
+    "sampling": {
+      "policy": "fixed_provenance_with_replacement",
+      "totalMass": 62191.0,
+      "expectedSourceShares": {
+        "Unidad project-authored Spanish basics and style": 0.0005306234020999824,
+        "unidad-conversation-focus-v1": 0.0020839028155199306,
+        "unidad-grounded-conversations-v1": 0.05001366757247833,
+        "literal-copy-v1": 0.042208679712498594,
+        "unidad-natural-basics-v2": 0.0967342541525301,
+        "unidad-natural-diversity-v2": 0.17906127896319404,
+        "unidad-open-facts-v2": 0.021996751941599266,
+        "unidad-variable-flow-v1": 0.33578813654708883,
+        "unidad-conversation-recovery-v1": 0.07862874049299738,
+        "OpenAssistant/oasst1": 0.19295396439999357
+      },
+      "actualSourceDraws": {
+        "unidad-variable-flow-v1": 6452,
+        "unidad-grounded-conversations-v1": 897,
+        "unidad-natural-diversity-v2": 3343,
+        "OpenAssistant/oasst1": 3706,
+        "literal-copy-v1": 834,
+        "unidad-conversation-recovery-v1": 1539,
+        "unidad-natural-basics-v2": 1953,
+        "unidad-open-facts-v2": 427,
+        "unidad-conversation-focus-v1": 36,
+        "Unidad project-authored Spanish basics and style": 13
+      },
+      "draws": 19200,
+      "uniqueTrainingWindowsDrawn": 12091,
+      "everyUniqueWindowVisitedGuaranteed": false,
+      "validationSampled": false,
+      "testSampled": false
+    },
+    "validation": {
+      "selectionSplit": "validation",
+      "checkpointSelection": "Lowest unsampled sequenceMeanNll with min_delta0.0001; free22 did not select checkpoints.",
+      "initialNll": 0.47535643555308,
+      "selectedNll": 0.37595150808145594,
+      "unit": "mean per-window assistant target CE in nats per BPE token",
+      "targetTokensPerEvaluation": 72820,
+      "examplesPerEvaluation": 5407,
+      "history": [
+        {
+          "step": 0,
+          "sequenceMeanNll": 0.47535643555308,
+          "tokenWeightedNll": 1.302614584641285,
+          "selected": true
+        },
+        {
+          "step": 200,
+          "sequenceMeanNll": 0.4139370285525755,
+          "tokenWeightedNll": 1.1595764093123533,
+          "selected": true
+        },
+        {
+          "step": 400,
+          "sequenceMeanNll": 0.3883807171919506,
+          "tokenWeightedNll": 1.1278284918894417,
+          "selected": true
+        },
+        {
+          "step": 600,
+          "sequenceMeanNll": 0.37595150808145594,
+          "tokenWeightedNll": 1.1000675393614803,
+          "selected": true
+        },
+        {
+          "step": 800,
+          "sequenceMeanNll": 0.39316544461108655,
+          "tokenWeightedNll": 1.104193436758543,
+          "selected": false
+        },
+        {
+          "step": 1000,
+          "sequenceMeanNll": 0.3835964488767781,
+          "tokenWeightedNll": 1.100016600440546,
+          "selected": false
+        },
+        {
+          "step": 1200,
+          "sequenceMeanNll": 0.40580315964197594,
+          "tokenWeightedNll": 1.10843963190418,
+          "selected": false
+        }
+      ],
+      "lowerNllProvesConversationCompetence": false
+    },
+    "wallBudget": {
+      "originalDeadline": 1791790679.928,
+      "originalBudgetSeconds": 86400,
+      "configuredStageMaxSeconds": 75043,
+      "alreadyConsumedWallSecondsAtLaunch": 11326.648354530334,
+      "includesAllPreparationPausesAndAblations": true,
+      "stagePlusPriorWithinOriginalBudget": true,
+      "reset24h": false,
+      "environmentLifetimeGuaranteed": false,
+      "actualStageEndedBeforeOriginalDeadline": true
+    }
+  },
+  "repeatedFree22Development": {
+    "reviewStatus": "final600_conciliated_by_two_project_assistants",
+    "scope": "Same known fictional22-turn/five-session development cases reused across parent/checkpoints; not a fresh holdout, final test, prospective acceptance or generalization result.",
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "maxNewTokens": 32,
+      "torchThreads": 1,
+      "history": "Only actual generated prior replies; offline references never supplied to model."
+    },
+    "reviewMethod": "Two same-project AI assistants; unblinded, with outputs and histories visible; not human or externally independent acceptance.",
+    "humanReview": false,
+    "externalIndependentReview": false,
+    "blinded": false,
+    "series": [
+      {
+        "stage": "parent_natural_recovery",
+        "selectedStep": 500,
+        "modelId": "unidad-conversation-04c65431b87bff6e9877611cefeff883542b0a0157dc962d144826944f6a54b9",
+        "responses": {
+          "total": 22,
+          "complete": 13,
+          "partial": 2,
+          "failed": 7
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 2,
+          "partial": 0,
+          "failed": 3
+        }
+      },
+      {
+        "stage": "conservative_natural_replay",
+        "selectedStep": 400,
+        "modelId": "unidad-conversation-ef4d387223651f14feaf36cba4bcbae04396d5c331f689e11722cf4abf75f239",
+        "responses": {
+          "total": 22,
+          "complete": 14,
+          "partial": 1,
+          "failed": 7
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 2,
+          "partial": 0,
+          "failed": 3
+        }
+      },
+      {
+        "stage": "conservative_natural_replay",
+        "selectedStep": 600,
+        "modelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+        "responses": {
+          "total": 22,
+          "complete": 15,
+          "partial": 0,
+          "failed": 7
+        },
+        "sessions": {
+          "total": 5,
+          "complete": 2,
+          "partial": 0,
+          "failed": 3
+        }
+      }
+    ],
+    "firstCandidateRequestedStep": 200,
+    "firstCandidateActualExportSelectedStep": 400,
+    "currentCriticalFacts": {
+      "providedOrCorrectedCitiesComplete": 0,
+      "providedOrCorrectedCityTurns": 4,
+      "changedProjectComplete": 0,
+      "changedProjectTurns": 2,
+      "explicitlyUnknownBicycleColorHandled": false,
+      "currentPreferredNameComplete": 2,
+      "currentPreferredNameTurns": 2,
+      "cupColorComplete": 4,
+      "cupColorTurns": 4,
+      "listeningComplete": 2,
+      "listeningTurns": 2,
+      "drawingQuestionComplete": 1,
+      "drawingQuestionTurns": 1
+    },
+    "sameSevenFailedTurnIdsAt400And600": true,
+    "minorLanguageIssuesAcceptedUnderRubric": [
+      "noun_gender_agreement",
+      "preposition_redundancy",
+      "redundant_statement"
+    ],
+    "researchVerdict": "Parent500→candidate400→candidate600 has13→14→15 complete known replies, with seven failed replies and two wholly complete sessions throughout. There are local gains, but critical city/project/unknown-color constraints remain unmet. Preserved as an optional experimental v6 candidate alongside v5; no conversation acceptance or production deployment."
+  },
+  "earlierHypotheses": {
+    "adaptiveSampling": {
+      "report": "unidad-adaptive-learning-v0.5.2.json",
+      "defaultEnabled": false,
+      "usedInThisStage": false,
+      "controlled384StepOutcome": "Not demonstrated as an improvement: worse validation NLL and literal copying despite mixed free-turn gains."
+    },
+    "successorCopyHead": {
+      "addedToProduction": false,
+      "controlled250StepOutcome": "Matched native control better in validation and literal copying.",
+      "summarySha256": "2983c18292338a730593876fcc2bffbabfb1b63012bddcc6c61267600a126557"
+    },
+    "supervisedVocabularyProjection": {
+      "report": "unidad-learning-optimization-v1.json",
+      "usedInThisStage": true,
+      "measuredTrainingStepTimeReductionPercent": 13.520221656305498,
+      "scope": "Earlier four-core benchmark; does not measure time to conversational competence."
+    }
+  },
+  "privateEvidenceSha256": {
+    "stageSummary": "5a469f5fa117c19717094fdab9c5aaceff173381f2c6ab06c53396b424609486",
+    "stageReceipt": "b019f904a16789011673160608c5093c2c2f56df04589147e1630aacd5c176d0",
+    "stageDesign": "7f81a80a824fa9919ed45c5bac2e0b23e977b80a0a0f526784020fdf6c99ba7b",
+    "stageConfig": "edbba80d4860feec2fa0ccaca975d30755e9338c7e4ae63f04731efb20829f2a",
+    "initialCheckpointProof": "c5843b54a05a83cb5f37a2d67a566b7e89aebd3472da60099b21f31e4e77daaf",
+    "parent500RawFree22": "7897bd76791983144ab90aae9ba4fb57bc9f2174172889c11c0268ae388bde42",
+    "parent500SemanticReview": "415aa5f7414a042bf67593ff3c545c6d6126c846451e46d39ef918e89e8a3fd6",
+    "candidate400RawFree22": "4897cf09e964c077709696c89753009fdfd9dc89a081a636275766564736fd3b",
+    "candidate400SemanticReview": "a9531db9a242b8507f123ffc2281906238ea3c44c09b21057cc3fb8994894a31",
+    "candidate400ReviewCrosscheck": "06845f47ec28e4960a3d46f0b19e0da683636c8ba4dd62e1a124e7e754f2b4a9",
+    "candidate600RawFree22": "23838dbb2c8aca9fcc5c33df4c27e33e76fea2059b655519ef5aadddb8988406",
+    "candidate600SemanticReview": "e0fd2e37d062c262232addf7d8e206c38bc318fb06d0fba6508de3eca9abb3e1",
+    "candidate600ReviewCrosscheck": "246e90e383e1a2bf7462a88876cb04168a6f7b13e7c9d23ff0ad37214656df97",
+    "candidate400SnapshotManifest": "e4d4877db2ac9639eed97ffd25434a20e42abb184f64c763c75275259f00fae6",
+    "candidate600SnapshotManifest": "000b04c39d1b614733b2ffa7a96f1192904f21fc840f8f0d96513befe0d02b68"
+  },
+  "privacy": "No corpus, private artifact paths, message content or raw replies included; aggregate metrics, model identifiers and hashes only.",
+  "limitations": [
+    "One training run; learning rate and curriculum both changed.",
+    "Known development conversations have been consulted repeatedly. Two project assistants are not a human panel or external acceptance evaluation.",
+    "Teacher-forced validation, software tests and transport/artifact parity do not establish free conversation competence.",
+    "Original day wall budget was not reset; this333-second stage does not guarantee continuous24h training or an accelerated time to a quality threshold.",
+    "No final TEST, prospective acceptance, autonomous programming or production deployment was performed."
+  ],
+  "experimentalArtifactValidation": {
+    "fourArtifactFilesByteIdenticalToExport": true,
+    "tensorHeaderCount": 52,
+    "float32ParameterCount": 1088256,
+    "copiedManifestSha256": "000b04c39d1b614733b2ffa7a96f1192904f21fc840f8f0d96513befe0d02b68",
+    "nativeTransportSmoke": "passed CLI, isolated installed-wheel Python, Brain and HTTP parity; body memory/tools isolation verified",
+    "copyReceiptSha256": "cfb71aa6d0052deb87d50bf7053c461aebf72cf72a9f3143bb699d9a13d3f619",
+    "nativeTransportSmokeSha256": "0a917bb02a4c2ad1919add00c81ef2e40c4441df09ed1a3fba4ca134248b469b",
+    "wheelSha256": "af93a5ac7dcaede47b1838bba77384789e5b61b7971e0edfb2b9aa7ac2d9f696",
+    "wheelSourceCommit": "319019b9f128ae875a975a49b264aeb578b8b592",
+    "wheelRebuiltForThisSnapshot": false,
+    "softwareParityEstablishesConversationQuality": false,
+    "fixedAdditionalGreetingProbeSemanticCorrect": false,
+    "extraGreetingProbeObservation": "The frozen additional greeting elicited an unprovided personal name; no raw personal corpus used and quality was not accepted."
+  }
+}

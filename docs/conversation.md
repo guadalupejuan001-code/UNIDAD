@@ -169,6 +169,22 @@ frente a 38 de la política fija. Recuperó mejor algunos nombres en conversaci�
 libre, pero no superó de forma consistente a la instantánea v5. Por eso permanece
 como opción experimental desactivada por defecto.
 
+Se conserva también una etapa con prioridad fija, más repaso de español público
+y una tasa de aprendizaje menor. Terminó en 1.200 pasos y seleccionó el paso 600
+por la validación existente. En los mismos diálogos de desarrollo, el candidato
+v6 obtuvo 15 respuestas completas de 22, frente a 13 de v5; ambos completaron
+dos de cinco sesiones. Los hechos nuevos y algunas correcciones siguen fallando.
+El [informe de refinamiento](unidad-learning-refinement-v0.5.2.json) conserva
+pesos, métricas y límites. Cambiaron juntos el currículo y la tasa: la prueba
+no permite atribuir el resultado a uno de esos cambios por separado.
+
+El [diagnóstico de copia aprendida](unidad-copy-learning-diagnostics-v1.json)
+compara además objetivos auxiliares de atención y selección de tokens del
+usuario, empleados sólo al entrenar prototipos privados. Mejoraron parte de la
+copia literal, pero ninguno superó la conversación libre global de v6. El
+segundo reutilizó el control congelado; no permite comparar velocidades.
+Estos prototipos no cambian la arquitectura ni la inferencia del paquete.
+
 ## Dar peso a las conversaciones breves
 
 La reducción anterior, `token_mean`, promedia la pérdida de todos los tokens
