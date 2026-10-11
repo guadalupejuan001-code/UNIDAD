@@ -116,6 +116,45 @@ Si se omite `projection_mode`, permanece el cálculo anterior. Una reanudación
 conserva el modo guardado; para cambiarlo, empieza otra etapa con
 `--initial-model`. La inferencia y el formato de los pesos se conservan.
 
+### Entrenar con BF16 en CPU
+
+Una etapa nueva puede activar la precisión BF16 durante el forward:
+
+```json
+{
+  "train_precision": "cpu_bfloat16",
+  "projection_mode": "supervised",
+  "loss_reduction": "token_mean",
+  "torch_threads": 4
+}
+```
+
+La proyección del modelo usa autocast BF16. La pérdida recibe logits FP32 fuera
+de autocast; pesos, gradientes, Adam, validación y artefactos se conservan en
+FP32. La inferencia continúa usando el motor común. Al omitir `train_precision`,
+se conserva el entrenamiento anterior y sus campos de configuración y estado.
+
+En esta CPU, dos comparaciones cortas con orden invertido midieron **0,914 s
+frente a 0,501 s por paso completo**, un 45,2 % menos tiempo. Usaron 32 ventanas
+fijas de TRAIN, cuatro hilos y el modelo propio de 6.967.296 parámetros. Esto no
+estima el rendimiento de todo el corpus ni la calidad de sus conversaciones.
+El [informe de precisión](unidad-cpu-bfloat16-v1.json) conserva el alcance y los
+controles numéricos, incluida una medición inicial de coseno inválida que fue
+rechazada antes de la comparación posterior en FLOAT64.
+
+Una prueba nativa pequeña con dropout verificó exactamente seis pasos continuos
+frente a tres, guardado y otros tres: pesos, Adam, scheduler, orden de ejemplos y
+RNG coincidieron. También verificó que el modo predeterminado produce el mismo
+estado que el código anterior. Esta prueba usa ejemplos ficticios y no acredita
+competencia conversacional ni equivalencia de pesos entre FP32 y BF16.
+
+Reanudar exige el mismo modo y la misma configuración local registrada de Torch,
+CPU, hilos y opciones de cálculo; el modo BF16 requiere Linux y soporte de la CPU.
+El registro detecta cambios en esas opciones, pero no garantiza equivalencia
+universal entre máquinas ni cubre todas las variables externas de MKL/oneDNN.
+Para cambiar la precisión, exporta el checkpoint seleccionado y comienza una
+etapa nueva con `--initial-model`; se reinician Adam y el scheduler.
+
 ## Adaptar la práctica a lo que todavía cuesta
 
 Una nueva etapa puede activar el muestreo adaptativo de ventanas de `train`:

@@ -33,10 +33,21 @@ registró 1 completa, 1 parcial y 38 fallidas. Con ranking, ambas registraron
 0 completas, 1 parcial y 39 fallidas. Ningún brazo logró un diálogo completamente
 correcto ni superó la promoción. Son 40 turnos de desarrollo ya expuestos, revisados por
 asistentes de IA del proyecto. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json)
-conserva la validación y las diferencias; el ranking no se adoptó. La siguiente
-etapa está entrenando desde los pesos propios de v7, con muestreo uniforme sin
-reemplazo y pérdida media por token. Su calidad conversacional queda pendiente
-de una nueva generación y revisión de respuestas.
+conserva la validación y las diferencias; el ranking no se adoptó. La etapa
+posterior usó muestreo uniforme sin reemplazo y pérdida media por token desde
+los pesos propios de v7. Se guardó a los 2.786 pasos para cambiar la precisión
+del entrenamiento, conservando el checkpoint seleccionado por validación del
+paso 2.000. En 40 turnos de desarrollo, la revisión primaria obtuvo **2 completas,
+6 parciales y 32 fallidas**; la cruzada, **2 completas, 4 parciales y 34 fallidas**.
+Ninguna obtuvo un diálogo completo. El [informe de esa etapa](docs/unidad-uniform-coverage-b1-results.json)
+conserva los desacuerdos y el rechazo; se prepara otra etapa propia con BF16.
+
+El entrenador ahora permite activar `train_precision="cpu_bfloat16"`. En dos
+comparaciones cortas con orden invertido, el tiempo mediano por paso pasó de
+**0,914 a 0,501 s**. Una prueba nativa pequeña verificó reanudación exacta y
+conservación del modo predeterminado. El [informe de precisión](docs/unidad-cpu-bfloat16-v1.json)
+y la [guía](docs/conversation.md#entrenar-con-bf16-en-cpu) explican cómo usarlo;
+el efecto sobre la conversación se evalúa aparte.
 
 La memoria local ahora reutiliza la reconstrucción validada del registro y
 permite buscar encargos con referencias al texto original y la corrección
@@ -225,8 +236,9 @@ aprende los tokens de documentos de español con procedencia y particiones
 propias. Después puede ajustarse el mismo modelo con conversaciones, conservando
 sus pesos y tokenizador propios. La [guía de preentrenamiento](docs/language-pretraining.md)
 explica los formatos, la reanudación y una configuración nativa de 6.967.296
-parámetros con contexto de 512 tokens. La CI actual pasó **299 pruebas con
-dependencias conversacionales, 12 de ejemplos y 233 en la instalación mínima**.
+parámetros con contexto de 512 tokens. La [CI de la optimización de memoria](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38168377960)
+pasó **320 pruebas con dependencias conversacionales, 12 de ejemplos y 254 en
+la instalación mínima**, en el commit `ee3d5c2`.
 Son comprobaciones técnicas separadas de la aceptación del modelo; disponer de
 esta ruta de aprendizaje no demuestra que el nuevo modelo converse bien.
 
@@ -259,6 +271,14 @@ sin cambiar las 40 calificaciones ni el rechazo. No se consultó TEST ni se
 promovió v7 como modelo
 predeterminado. El [informe público](docs/unidad-conversation-language-v7-results.json)
 incluye procedencia, hashes y límites; no es una evaluación externa.
+
+También se conserva el [checkpoint uniforme B1](models/conversation-language-uniform-b1/README.md).
+Para probar sus pesos experimentales en una conversación local:
+
+```bash
+unidad conversation converse --model models/conversation-language-uniform-b1 \
+  --temperature 0 --max-new-tokens 32
+```
 
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6

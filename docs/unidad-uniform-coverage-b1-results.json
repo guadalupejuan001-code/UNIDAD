@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "experiment": "own_uniform_without_replacement_coverage_b1_deliberately_shortened_for_bf16_transition",
+  "status": "development_acceptance_failed",
+  "model": {
+    "directory": "models/conversation-language-uniform-b1",
+    "modelId": "unidad-conversation-737364a8c6f3a798aa4352fffed85ad7bec109ff26b0359510aa3bdab8e81ad6",
+    "manifestSha256": "67d77df08bbc27f06ed4d93fe6ed4fb0401c0ec2e4e4776b5771343f0119d4ad",
+    "files": {
+      "config.json": {
+        "bytes": 122,
+        "sha256": "0064db1f291f4f8e9d71fafc49c2a4eb776ed99ac1a760659f104b107a80c7a7"
+      },
+      "tokenizer.json": {
+        "bytes": 234592,
+        "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+      },
+      "weights.safetensors": {
+        "bytes": 27876616,
+        "sha256": "67a77ccc76bb51ad0b62828b8e557b4ed0a1a1a8fe45383e3c4334430d409155"
+      }
+    },
+    "parameterCount": 6967296,
+    "rootOrigin": "random_weights",
+    "externalPretrainedWeights": false,
+    "parentModelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+    "ownTrainOnlyBpeUnchanged": true
+  },
+  "training": {
+    "config": {
+      "batch_size": 8,
+      "checkpoint_every": 1000,
+      "grad_clip": 1.0,
+      "learning_rate": 0.0001,
+      "loss_reduction": "token_mean",
+      "max_epochs": 1000,
+      "max_seconds": 27000,
+      "max_steps": 24000,
+      "min_delta": 0.001,
+      "objective": "assistant_last_reply",
+      "patience": 8,
+      "projection_mode": "supervised",
+      "seed": 42,
+      "torch_threads": 4,
+      "validation_every": 1000,
+      "warmup_steps": 200,
+      "weight_decay": 0.01,
+      "window_policy": "sliding_context"
+    },
+    "newStageFromOwnCheckpoint": true,
+    "resume": false,
+    "optimizerReset": true,
+    "schedulerReset": true,
+    "sampling": "uniform_shuffle_without_replacement_each_epoch",
+    "actualFinalStep": 2786,
+    "selectedStep": 2000,
+    "stopReason": "cooperative_signal_for_compute_precision_transition",
+    "notAPlateauOrFailureStop": true,
+    "selectedValidationNll": 3.756617233475704,
+    "validationLossReduction": "token_mean",
+    "validationWindows": 6963,
+    "validationTargetTokens": 337251,
+    "validationTrajectory": [
+      {
+        "step": 0,
+        "nll": 4.050960822047885
+      },
+      {
+        "step": 1000,
+        "nll": 3.84135165037364
+      },
+      {
+        "step": 2000,
+        "nll": 3.756617233475704
+      }
+    ],
+    "corpusSha256": "e123b93c45521ad8d344304bf7eed29602aed9d7c1e3441e3de84e7e45f32116",
+    "elapsedTrainingSeconds": 2719.836758362995,
+    "corpusTestPartitionMaterialized": true,
+    "testLossComputed": false,
+    "testUsedForSelection": false,
+    "reservedBasicTestConsulted": false,
+    "originalDayDeadlineReset": false
+  },
+  "development": {
+    "evaluationId": "unidad-next-generation-development-v1",
+    "casesSha256": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+    "freezeManifestSha256": "c73875646bf5ce790f6564e2700a6a1fae258224c180c69b9902d304aabc6f91",
+    "runnerSha256": "02501cd2c6ca3c556e79447724b70162f5c18f32b8a67919183d34f427f0cc28",
+    "rawSha256": "f11b9fc8a880280d3866a43dfd1ef0d228a2875895fc3fc2ca00ccfc580e100a",
+    "summary": {
+      "requestedEpisodes": 10,
+      "requestedTurns": 40,
+      "attemptedTurns": 40,
+      "actualOutputs": 40,
+      "acceptedHistoryTurns": 40,
+      "failedTurns": 0,
+      "blockedTurns": 0,
+      "truncatedPrompts": 0
+    },
+    "generation": {
+      "maxNewTokens": 32,
+      "temperature": 0,
+      "seed": 42,
+      "torchThreads": 1
+    },
+    "actualRepliesUsedForHistory": true,
+    "referenceRepliesUsedForHistory": false,
+    "outputsEdited": false,
+    "stopReasons": {
+      "eos": 37,
+      "token_budget": 3
+    },
+    "tokenBudgetTurnIds": [
+      "ngdev-v1-02-t1",
+      "ngdev-v1-02-t2",
+      "ngdev-v1-02-t4"
+    ],
+    "knownDevelopmentExposed": true,
+    "testEvaluated": false
+  },
+  "reviews": {
+    "primary": {
+      "sha256": "b9addf032a788c358371b26afdb8713c3b3ef868945270005a8a1387e1bbbc27",
+      "identity": {
+        "id": "/root/natural_diversity",
+        "type": "project_AI_assistant",
+        "human": false,
+        "external": false,
+        "blinded": false,
+        "modelIdentityVisible": true,
+        "caseAuthorAlsoReviewer": false,
+        "rubricAvailable": true,
+        "otherSuccessorSemanticGradesReadBeforeFreeze": false,
+        "otherB1SemanticGradesReadBeforeFreeze": false,
+        "rootQualityOpinionReadBeforeFreeze": false,
+        "rootB1QualityOpinionReadBeforeFreeze": false,
+        "independenceScope": "Juicio primario de B1 ciego a calificaciones y opiniones semánticas de otros revisores de B1 hasta guardar este archivo. La identidad y selección del modelo y la rúbrica son visibles. Agregados históricos publicados de v7/A-B y diagnóstico TRAIN eran conocidos; no constituyen ceguera de identidad ni independencia externa. No se contactó a model_review durante este juicio. Sólo se leyeron claves/vocabulario estructural del esquema anterior y recuentos congelados de baseline, no sus respuestas o razones para decidir B1."
+      },
+      "counts": {
+        "C": 2,
+        "P": 6,
+        "F": 32
+      },
+      "completeEpisodes": 0,
+      "criticalFailureTurns": 14,
+      "criticalFailureTypes": {
+        "contradiction": 9,
+        "invention": 5,
+        "explicit_disobedience": 0
+      }
+    },
+    "cross": {
+      "sha256": "265c19475d79874f43b0a493b5f3b9fd0509f6f1a24c99750c46b229f24458f0",
+      "identity": {
+        "agent": "/root/model_review",
+        "blinded": false,
+        "blindedToOtherCandidateRatingsBeforeFreeze": true,
+        "externalIndependentPanel": false,
+        "human": false,
+        "independentManualJudgementsBeforeReconciliation": true,
+        "knownDevelopmentPreviouslyExposed": true,
+        "modelIdentityVisible": true,
+        "primaryReviewSeenBeforeFreezingThisReview": false,
+        "rootSemanticOpinionsSeenBeforeFreezingThisReview": false,
+        "rubricVisible": true,
+        "type": "project-AI-assistant"
+      },
+      "counts": {
+        "C": 2,
+        "P": 4,
+        "F": 34
+      },
+      "completeEpisodes": 0,
+      "criticalFailureTurns": 17,
+      "criticalViolationDetails": {
+        "countingUnit": "turns; one turn can have more than one violation kind",
+        "criticalFactContradictionTurnIds": [
+          "ngdev-v1-01-t1",
+          "ngdev-v1-02-t2",
+          "ngdev-v1-02-t4",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-03-t4",
+          "ngdev-v1-05-t1",
+          "ngdev-v1-05-t3",
+          "ngdev-v1-05-t4",
+          "ngdev-v1-07-t2",
+          "ngdev-v1-07-t3",
+          "ngdev-v1-09-t1"
+        ],
+        "criticalFactContradictionTurns": 13,
+        "explicitNegativeDisobedienceTurnIds": [],
+        "explicitNegativeDisobedienceTurns": 0,
+        "inventedFactTurnIds": [
+          "ngdev-v1-02-t3",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-03-t4",
+          "ngdev-v1-05-t1",
+          "ngdev-v1-05-t2",
+          "ngdev-v1-05-t3",
+          "ngdev-v1-05-t4",
+          "ngdev-v1-06-t2",
+          "ngdev-v1-08-t2",
+          "ngdev-v1-09-t1"
+        ],
+        "inventedFactTurns": 12,
+        "limit": "Counts only explicit or sufficiently interpretable false assertions. Inintelligible fragments and bare No are not expanded into additional invented facts. Zero explicit-negative violations does not mean the intentions were fulfilled.",
+        "uniqueViolationTurnIds": [
+          "ngdev-v1-01-t1",
+          "ngdev-v1-02-t2",
+          "ngdev-v1-02-t3",
+          "ngdev-v1-02-t4",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-03-t4",
+          "ngdev-v1-05-t1",
+          "ngdev-v1-05-t2",
+          "ngdev-v1-05-t3",
+          "ngdev-v1-05-t4",
+          "ngdev-v1-06-t2",
+          "ngdev-v1-07-t2",
+          "ngdev-v1-07-t3",
+          "ngdev-v1-08-t2",
+          "ngdev-v1-09-t1"
+        ],
+        "uniqueViolationTurns": 17
+      }
+    },
+    "all40ResponseHashesAndActualHistoriesVerified": true,
+    "all120ConstraintsReviewedPerReviewer": true,
+    "peerGradesUnreadUntilEachReviewFrozen": true,
+    "externalHumanReview": false,
+    "gradeDisagreements": [
+      {
+        "turnId": "ngdev-v1-04-t2",
+        "primary": "P",
+        "cross": "F"
+      },
+      {
+        "turnId": "ngdev-v1-05-t1",
+        "primary": "P",
+        "cross": "F"
+      }
+    ],
+    "criticalSetIntersection": 14,
+    "criticalSetUnion": 17,
+    "criticalSetArithmeticIsNotAdjudication": true,
+    "originalGradesPreserved": true
+  },
+  "acceptance": {
+    "requiredCompleteTurns": 36,
+    "requiredCompleteEpisodes": 8,
+    "maximumCriticalFailures": 0,
+    "requiredActualOutputs": 40,
+    "maximumExecutionErrors": 0,
+    "maximumBlockedTurns": 0,
+    "maximumTruncatedPrompts": 0,
+    "passed": false,
+    "productionPromoted": false,
+    "defaultModelChanged": false
+  },
+  "diagnosis": [
+    "Generic or repeated answers often omit the requested current fact.",
+    "Some replies deny explicit facts or replace names, places and titles.",
+    "References and corrections remain unreliable despite lower same-metric validation loss."
+  ],
+  "nextStage": {
+    "kind": "own_bf16_uniform_coverage_b2",
+    "status": "prepared_not_started",
+    "parentIsThisOwnSelectedModel": true,
+    "optimizerAndSchedulerResetRequired": true,
+    "sameCorpusAndBpe": true,
+    "trainPrecision": "cpu_bfloat16",
+    "acceptanceCriteriaUnchanged": true
+  },
+  "limitations": [
+    "This stage was deliberately shortened at 2,786 updates and selected at 2,000; the intended 24,000 steps were not completed.",
+    "Both reviewers are AI assistants from this project; grades differ on two turns and critical interpretations.",
+    "Known development episodes have already been exposed; this is not an independent heldout TEST result.",
+    "Three outputs ended at the unchanged budget of 32 tokens; no prompt was truncated.",
+    "Lower token-weighted validation loss does not establish useful conversation.",
+    "Historical sequence_mean losses are not directly comparable to these token_mean values."
+  ]
+}

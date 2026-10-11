@@ -112,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -136,6 +136,8 @@ def _configs(model_config, training_config):
         raise ValueError("Invalid loss_reduction")
     if training.get("projection_mode", "full") not in ("full", "supervised"):
         raise ValueError("Invalid projection_mode")
+    if "train_precision" in training and (type(training["train_precision"]) is not str or training["train_precision"] != "cpu_bfloat16"):
+        raise ValueError("train_precision requires cpu_bfloat16")
     if "objective" in training and training["objective"] not in ("assistant_last_reply", "causal_lm"):
         raise ValueError("Invalid training objective")
     if "sampling_weights" in training:
@@ -396,6 +398,8 @@ def _baseline_score(examples, losses, loss_reduction="token_mean"):
 def _loss_metadata(config):
     # Missing fields remain missing for legacy checkpoints and artifact schemas.
     result = {}
+    if "train_precision" in config:
+        result["trainPrecision"] = config["train_precision"]
     if "projection_mode" in config:
         result["projectionMode"] = config["projection_mode"]
     if "loss_reduction" in config:
@@ -409,7 +413,53 @@ def _loss_metadata(config):
     return result
 
 
+def _precision_runtime(config):
+    """Pin same-mode resume to the observed local Torch/CPU math environment."""
+    torch = _torch()
+    if torch.is_autocast_enabled("cpu"):
+        raise ValueError("cpu_bfloat16 training requires no enclosing CPU autocast")
+    flags = next((line.split(":", 1)[1].strip() for line in
+                  Path("/proc/cpuinfo").read_text().splitlines() if line.startswith("flags")), "")
+    return {"trainPrecision": "cpu_bfloat16", "torchVersion": str(torch.__version__),
+            "torchBuildSha256": hashlib.sha256(torch.__config__.show().encode()).hexdigest(),
+            "cpuFlagsSha256": hashlib.sha256(flags.encode()).hexdigest(),
+            "cpuCapability": torch.backends.cpu.get_cpu_capability(),
+            "torchThreads": torch.get_num_threads(), "interopThreads": torch.get_num_interop_threads(),
+            "mkldnnEnabled": torch.backends.mkldnn.enabled,
+            "mkldnnDeterministic": torch.backends.mkldnn.deterministic,
+            "deterministicAlgorithms": torch.are_deterministic_algorithms_enabled(),
+            "deterministicWarnOnly": torch.is_deterministic_algorithms_warn_only_enabled(),
+            "float32MatmulPrecision": torch.get_float32_matmul_precision()}
+
+
+def _bf16_train_forward(model, inputs, selected=None):
+    torch = _torch()
+    with torch.autocast("cpu", dtype=torch.bfloat16):
+        logits = model(inputs) if selected is None else model.selected_logits(inputs, selected)
+    if logits.dtype != torch.bfloat16:
+        raise ValueError("cpu_bfloat16 forward did not produce BF16 logits")
+    # Cross entropy and reductions run on F32 logits outside autocast.
+    return logits.float()
+
+
+def _precision_storage_guard(model, optimizer):
+    torch = _torch()
+    tensors = list(model.state_dict().values())
+    tensors += [value for moments in optimizer.state.values() for value in moments.values()
+                if isinstance(value, torch.Tensor)]
+    for tensor in tensors:
+        if tensor.is_floating_point() and (tensor.dtype != torch.float32 or not torch.isfinite(tensor).all()):
+            raise ValueError("cpu_bfloat16 requires finite F32 master parameters/Adam state")
+
+
 def _evaluate_configured(model, examples, config):
+    if config.get("train_precision") == "cpu_bfloat16":
+        with _torch().autocast("cpu", enabled=False):
+            return _evaluate_configured_fp32(model, examples, config)
+    return _evaluate_configured_fp32(model, examples, config)
+
+
+def _evaluate_configured_fp32(model, examples, config):
     if config.get("projection_mode", "full") == "supervised":
         return _evaluate(model, examples, config["batch_size"],
                          loss_reduction=config.get("loss_reduction", "token_mean"),
@@ -422,6 +472,8 @@ def _evaluate_configured(model, examples, config):
 def _checkpoint(run_dir, model, tokenizer, optimizer, scheduler, state, *, selected=False):
     from safetensors.torch import save_file
     torch = _torch()
+    if state["training_config"].get("train_precision") == "cpu_bfloat16":
+        _precision_storage_guard(model, optimizer)
     checkpoints = Path(run_dir) / "checkpoints"
     checkpoints.mkdir(exist_ok=True, mode=0o700)
     name = f"step-{state['step']:09d}-{uuid.uuid4().hex}"
@@ -552,7 +604,7 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor"}
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime"}
             or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
@@ -560,6 +612,8 @@ def _validate_resume_state(state, examples):
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    if ("train_precision_runtime" in state) != (config.get("train_precision") == "cpu_bfloat16"):
+        raise ValueError("Checkpoint precision runtime policy mismatch")
     weighted = "sampling_weights" in config
     adaptive = "adaptive_sampling" in config
     if ("adaptive_sampling" in state) != adaptive or ("epoch_cursor" in state) != adaptive:
@@ -774,6 +828,16 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 state["lineage"] = lineage
             payload = None
         torch.set_num_threads(config["torch_threads"])
+        if config.get("train_precision") == "cpu_bfloat16":
+            runtime = _precision_runtime(config)
+            if payload is not None:
+                saved_runtime = state.get("train_precision_runtime")
+                if (type(saved_runtime) is not dict or set(saved_runtime) != set(runtime)
+                        or any(type(saved_runtime[key]) is not type(value) or saved_runtime[key] != value
+                               for key, value in runtime.items())):
+                    raise ValueError("Resume precision runtime mismatch")
+            if payload is None:
+                state["train_precision_runtime"] = runtime
         if "sampling_weights" in config:
             examples, sampling_weights, sampling_ids, sampling_summary = _encoded_data(
                 records, tokenizer, state["model_config"]["context_length"], state["window_policy"], config["sampling_weights"], **_encoding_kwargs(config))
@@ -936,7 +1000,10 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     from .model import assistant_token_losses
                     projection = config.get("projection_mode", "full")
                     selected = labels != -100
-                    logits = model.selected_logits(inputs, selected) if projection == "supervised" else model(inputs)
+                    if config.get("train_precision") == "cpu_bfloat16":
+                        logits = _bf16_train_forward(model, inputs, selected if projection == "supervised" else None)
+                    else:
+                        logits = model.selected_logits(inputs, selected) if projection == "supervised" else model(inputs)
                     token_losses = assistant_token_losses(logits, labels, projection_mode=projection)
                     rows = selected.nonzero(as_tuple=False)[:, 0]
                     sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
@@ -946,15 +1013,19 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     difficulty = sequence_losses.detach().tolist()
                     adaptive_sampler.validate_update(batch_indices, difficulty)
                 elif config.get("projection_mode", "full") == "supervised":
-                    logits = model.selected_logits(inputs, labels != -100)
+                    logits = (_bf16_train_forward(model, inputs, labels != -100)
+                              if config.get("train_precision") == "cpu_bfloat16"
+                              else model.selected_logits(inputs, labels != -100))
                     loss = assistant_token_loss(logits, labels,
                                                 loss_reduction=config.get("loss_reduction", "token_mean"),
                                                 projection_mode="supervised")
                 elif config.get("loss_reduction", "token_mean") == "token_mean":
-                    logits = model(inputs)
+                    logits = (_bf16_train_forward(model, inputs)
+                              if config.get("train_precision") == "cpu_bfloat16" else model(inputs))
                     loss = assistant_token_loss(logits, labels)
                 else:
-                    logits = model(inputs)
+                    logits = (_bf16_train_forward(model, inputs)
+                              if config.get("train_precision") == "cpu_bfloat16" else model(inputs))
                     loss = assistant_token_loss(logits, labels, loss_reduction="sequence_mean")
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite training loss")

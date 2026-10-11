@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "purpose": "cpu_training_optimization_separate_from_conversation_acceptance",
+  "status": "implemented_opt_in_native_tiny_resume_verified",
+  "sourceFilesSha256": {
+    "src/ia_propia/conversation/training.py": "85d3485745841a41e7ef2ef8fb65092791ac5a88c0c8cf64967e10ee2127c5dc"
+  },
+  "configuration": {
+    "train_precision": "cpu_bfloat16",
+    "defaultChanged": false,
+    "projection_mode": "supervised",
+    "loss_reduction": "token_mean",
+    "torch_threads": 4
+  },
+  "precision": {
+    "forward": "cpu_bfloat16_autocast",
+    "crossEntropyLogits": "float32_outside_autocast",
+    "modelWeights": "float32",
+    "gradients": "float32",
+    "adamState": "float32",
+    "validation": "float32_autocast_disabled",
+    "exportAndInference": "float32"
+  },
+  "measurement": {
+    "reportSha256": "f7a6b99f1c7bc2cbf47a41b4b27a5dce5c86f4f8b3ca599c5262bc254d432f15",
+    "harnessSha256": "7e9f3ef2d11757bb670630de4948dbecb9e60ab779e2766bbdb5657e3f1c2695",
+    "torchVersion": "2.8.0+cpu",
+    "threads": 4,
+    "modelParameterCount": 6967296,
+    "batchSize": 8,
+    "fixedNativeTrainWindows": 32,
+    "stepsPerArm": 8,
+    "warmupStepsPerArm": 2,
+    "armOrder": [
+      "reverse.cpu_bfloat16",
+      "reverse.float32",
+      "forward.float32",
+      "forward.cpu_bfloat16"
+    ],
+    "medianCompleteStepSecondsByModeAcrossPairs": {
+      "float32": 0.9140113770008611,
+      "cpu_bfloat16": 0.5011263859996689
+    },
+    "timeReductionFraction": 0.4517285029383209,
+    "pairTimeReductionFractions": {
+      "reverse": 0.43459482637279445,
+      "forward": 0.47099798290551154
+    },
+    "firstBatchNumericsByPair": {
+      "reverse": {
+        "controlLoss": 3.222353219985962,
+        "bf16Loss": 3.223257541656494,
+        "lossAbsoluteDelta": 0.0009043216705322266,
+        "lossDeltaLimitAbsoluteOrRelative": 0.1611176609992981,
+        "gradientCosine": 0.9999736987542064,
+        "gradientRelativeL2": 0.007260574301034526,
+        "controlGradientL2": 2.4434807271448205,
+        "bf16GradientL2": 2.4442419771523665,
+        "controlSelfCosineFloat64": 0.9999999999999212,
+        "cosineFiniteAndRangeValid": true,
+        "gradientReductionDtype": "torch.float64",
+        "cosineClamped": false,
+        "prospectiveTolerancePassed": true
+      },
+      "forward": {
+        "controlLoss": 3.222353219985962,
+        "bf16Loss": 3.223257541656494,
+        "lossAbsoluteDelta": 0.0009043216705322266,
+        "lossDeltaLimitAbsoluteOrRelative": 0.1611176609992981,
+        "gradientCosine": 0.9999736987542064,
+        "gradientRelativeL2": 0.007260574301034526,
+        "controlGradientL2": 2.4434807271448205,
+        "bf16GradientL2": 2.4442419771523665,
+        "controlSelfCosineFloat64": 0.9999999999999212,
+        "cosineFiniteAndRangeValid": true,
+        "gradientReductionDtype": "torch.float64",
+        "cosineClamped": false,
+        "prospectiveTolerancePassed": true
+      }
+    },
+    "originalDiagnosticAnomaly": {
+      "reportSha256": "5eb177bb98cb8f266871938db40b506e163a5348e0dc359d42e15bce81b03585",
+      "reportedGradientCosine": 1.0021586418151855,
+      "originalGradientAgreementClaimAccepted": false,
+      "mathematicallyOutOfRange": true,
+      "originalReportPreserved": true,
+      "causeEstablished": false,
+      "followupReductionDtype": "torch.float64"
+    },
+    "wholeCorpusThroughputMeasured": false,
+    "batchFileSha256": "2b75d31b3a86bf303216991fc27b8491e358d2e71309132e30199557aa03cec8",
+    "parentModelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+    "parentArtifactFilesSha256": {
+      "manifest.json": "0dba7d9ddaedb4fba70f490a39ccfed85da12cec6f188b1d891ab6ac4e1aec11",
+      "config.json": "0064db1f291f4f8e9d71fafc49c2a4eb776ed99ac1a760659f104b107a80c7a7",
+      "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+      "weights.safetensors": "dc4ba778deb188fabdf66b59aa2457578c720040bf0e36666ed9e234f1ed288e"
+    }
+  },
+  "nativeResumeProof": {
+    "reportSha256": "47ffa24088c7a90179643c3e3758ac3a42db1846951b6a6e3c216bb4f0b490b3",
+    "harnessSha256": "3b05d2138658effd2e8de71d575431c873bcb3e81db3e6da3847f48133db4c49",
+    "architecture": {
+      "vocab_size": 300,
+      "d_model": 16,
+      "n_layers": 1,
+      "n_heads": 2,
+      "context_length": 64,
+      "dropout": 0.2,
+      "ffn_multiplier": 2,
+      "seed": 7
+    },
+    "trainingConfig": {
+      "batch_size": 2,
+      "max_steps": 6,
+      "max_epochs": 50,
+      "validation_every": 2,
+      "checkpoint_every": 2,
+      "patience": 100,
+      "min_delta": 0,
+      "seed": 7,
+      "warmup_steps": 2,
+      "torch_threads": 4,
+      "train_precision": "cpu_bfloat16",
+      "projection_mode": "supervised",
+      "loss_reduction": "token_mean"
+    },
+    "continuousSteps": 6,
+    "splitSteps": [
+      3,
+      3
+    ],
+    "allChecksPassed": true,
+    "checks": {
+      "legacyConfigAndMetadataAbsent": true,
+      "invalidPrecisionRejected": true,
+      "defaultMatchesOriginalBitExactly": {
+        "weights": true,
+        "tokenizer": true,
+        "adam": true,
+        "scheduler": true,
+        "torchRng": true,
+        "stateFields": {
+          "training_config": true,
+          "model_config": true,
+          "step": true,
+          "epoch": true,
+          "cursor": true,
+          "order": true,
+          "python_rng": true,
+          "best_validation_nll": true,
+          "bad_validations": true,
+          "last_validation_step": true
+        }
+      },
+      "legacyStateStatusSchemaUnchanged": true,
+      "removeModeRejected": true,
+      "RuntimePinTypeDriftRejected": true,
+      "RejectedResumeMadeNoStatusWrite": true,
+      "sameModeResumeBitExactly": {
+        "weights": true,
+        "tokenizer": true,
+        "adam": true,
+        "scheduler": true,
+        "torchRng": true,
+        "stateFields": {
+          "training_config": true,
+          "model_config": true,
+          "step": true,
+          "epoch": true,
+          "cursor": true,
+          "order": true,
+          "python_rng": true,
+          "best_validation_nll": true,
+          "bad_validations": true,
+          "last_validation_step": true
+        }
+      },
+      "precisionRuntimePinPreserved": true,
+      "bf16ActuallyUpdatedWeights": true,
+      "adamCompletedSixUpdates": true,
+      "bf16ForwardActuallyUsed": true,
+      "crossEntropyF32OutsideAutocast": true,
+      "evaluationOverridesOuterAutocastF32": true,
+      "inferenceF32": true
+    },
+    "runtimePin": {
+      "cpuCapability": "AVX512",
+      "cpuFlagsSha256": "57cd5e95d7a7385352729b899849852a461a66c4cca7cb767030f43b3a005a40",
+      "deterministicAlgorithms": false,
+      "deterministicWarnOnly": false,
+      "float32MatmulPrecision": "highest",
+      "interopThreads": 5,
+      "mkldnnDeterministic": false,
+      "mkldnnEnabled": true,
+      "torchBuildSha256": "137f019a8dafd1b6c9f19db31ada87008e425c9e1eb05fb3fec5f8ee0d85e309",
+      "torchThreads": 4,
+      "torchVersion": "2.8.0+cpu",
+      "trainPrecision": "cpu_bfloat16"
+    },
+    "scope": "single_process_fictional_tiny_native_fixture_supervised_token_mean",
+    "reservedBasicTestConsulted": false,
+    "corpusTestScored": false,
+    "fixtureCorpusSha256": "f3a39ab4cb1ce789f07f93ecc5c2ad5daaff738d921de7745e7c45dd8ded9318"
+  },
+  "operationalTransition": {
+    "oldStageWasDeliberatelyShortened": true,
+    "oldStageStoppedStep": 2786,
+    "oldStageSelectedStep": 2000,
+    "workerAndSupervisorExitedBeforeCoreChange": true,
+    "oldStageExportVerified": true,
+    "original24HourDeadlineReset": false,
+    "optimizerAndSchedulerResetRequiredForNewPrecisionStage": true,
+    "newPrecisionStageStatus": "prepared_not_started"
+  },
+  "limitations": [
+    "Thirty-two fixed TRAIN windows and two short reversed-order pairs are not whole-corpus throughput or quality evidence.",
+    "BF16-trained weights are not declared identical to FP32-trained weights.",
+    "Tiny resume tests cover their exercised local runtime and small unit branches; they are not a universal cross-machine guarantee.",
+    "The runtime pin detects its recorded Torch/CPU/thread/options changes and cannot cover all external MKL/oneDNN environment settings.",
+    "The mode requires Linux and BF16-capable CPU support.",
+    "No conversation acceptance, autonomous programming or automatic parameter learning is established by this optimization."
+  ],
+  "conversationCompetenceClaim": false,
+  "productionModelPromotion": false,
+  "publicTests": {
+    "path": "tests/test_conversation_precision.py",
+    "sha256": "29762bb06a1cd00ef96a2a6754e03d47537c74f895a990d9924890d7532270d4",
+    "focusedCount": 8,
+    "focusedSeconds": 2.289,
+    "focusedPassed": true,
+    "sameRuntimeResumeMatrix": [
+      "full/token_mean",
+      "full/sequence_mean",
+      "supervised/token_mean",
+      "supervised/sequence_mean",
+      "full/sequence_mean/adaptive_sampling_with_source_weights"
+    ],
+    "dropout": 0.2,
+    "steps": [
+      6,
+      [
+        3,
+        3
+      ]
+    ],
+    "negativeChecks": [
+      "invalid_precision",
+      "changed_precision_resume",
+      "runtime_pin_type_value_and_key_drift",
+      "no_optimizer_update_or_status_events_write_on_rejected_resume",
+      "nonfinite_Adam_or_non_F32_master_storage"
+    ],
+    "inferenceAndExportChecked": "float32",
+    "scope": "tiny_invented_unit_fixtures_no_conversation_quality_claim",
+    "fullSuite": {
+      "count": 328,
+      "seconds": 37.444,
+      "passed": true,
+      "logSha256": "aabb612a751c34a977a4ae0410c21cb822d7b8d5c44cd747e0da592e44b59904",
+      "command": "PYTHONPATH=src python -m unittest discover -s tests -v"
+    },
+    "focusedCommand": "PYTHONPATH=src python -m unittest tests.test_conversation_precision -v",
+    "examplesSuite": {
+      "count": 12,
+      "seconds": 4.939,
+      "passed": true,
+      "logSha256": "34c84e34c0162cebb6cea8d06d75202c3c80433d2649726838f960cf60588ea0",
+      "command": "PYTHONPATH=src python -m unittest discover -s examples -p test_*.py -v"
+    }
+  }
+}
