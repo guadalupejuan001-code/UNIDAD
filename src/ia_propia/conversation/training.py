@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter, defaultdict
 import contextlib
 import copy
 import hashlib
@@ -111,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -138,6 +139,11 @@ def _configs(model_config, training_config):
     if "sampling_weights" in training:
         _validate_sampling_rules(training["sampling_weights"])
         training["sampling_weights"] = copy.deepcopy(training["sampling_weights"])
+    if "adaptive_sampling" in training:
+        from .adaptive import validate_config
+        training["adaptive_sampling"] = validate_config(training["adaptive_sampling"])
+        if training["adaptive_sampling"] is None:
+            raise ValueError("adaptive_sampling requires an explicit configuration")
     # Constructor validates architecture; the requested vocabulary is bounded before fitting.
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
@@ -255,7 +261,19 @@ def _encoded_data(records, tokenizer, context_length, window_policy, sampling_ru
 
 
 def _sampling_metadata(state):
-    return {"trainingSampling": copy.deepcopy(state["sampling"])} if "sampling" in state else {}
+    result = {"trainingSampling": copy.deepcopy(state["sampling"])} if "sampling" in state else {}
+    config = state.get("training_config", {})
+    if "adaptive_sampling" in config:
+        if "trainingSampling" in result:
+            result["trainingSampling"]["purpose"] = "fixed_provenance_baseline_for_adaptive_sampling"
+        result["trainingAdaptiveSampling"] = {
+            "policy": "train_loss_ema", "unit": "encoded_window",
+            "config": copy.deepcopy(config["adaptive_sampling"]),
+            "validationSampled": False, "testSampled": False,
+            "refresh": "after draining the current saved chunk",
+            "maxDrawsBeforeRefresh": config["batch_size"] * config["adaptive_sampling"]["refresh_every_steps"],
+        }
+    return result
 
 
 def _batch(examples, indices, torch):
@@ -502,7 +520,7 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling"}
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor"}
             or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
@@ -511,6 +529,9 @@ def _validate_resume_state(state, examples):
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
     weighted = "sampling_weights" in config
+    adaptive = "adaptive_sampling" in config
+    if ("adaptive_sampling" in state) != adaptive or ("epoch_cursor" in state) != adaptive:
+        raise ValueError("Checkpoint adaptive sampling policy mismatch")
     if ("sampling" in state) != weighted:
         raise ValueError("Checkpoint sampling policy mismatch")
     if weighted and (type(state["sampling"]) is not dict or state["sampling"].get("rules") != config["sampling_weights"]):
@@ -536,15 +557,38 @@ def _validate_resume_state(state, examples):
     if type(order) is not list or any(type(index) is not int for index in order):
         raise ValueError("Invalid checkpoint order")
     if order:
-        if (len(order) != count or any(not 0 <= index < count for index in order)
-                or (not weighted and set(order) != set(range(count))) or not 0 <= cursor < count):
+        if (any(not 0 <= index < count for index in order) or not 0 <= cursor < len(order)
+                or (not adaptive and len(order) != count)
+                or (not weighted and not adaptive and set(order) != set(range(count)))):
             raise ValueError("Invalid checkpoint permutation/cursor")
         if cursor % config["batch_size"]:
             raise ValueError("Checkpoint cursor is not a completed batch boundary")
     elif cursor != 0:
         raise ValueError("Empty checkpoint order has nonzero cursor")
     batches = math.ceil(count / config["batch_size"])
-    if state["step"] != state["epoch"] * batches + cursor // config["batch_size"]:
+    epoch_cursor = cursor
+    if adaptive:
+        epoch_cursor = state["epoch_cursor"]
+        if (type(epoch_cursor) is not int or not 0 <= epoch_cursor < count
+                or epoch_cursor % config["batch_size"] or epoch_cursor < cursor):
+            raise ValueError("Invalid adaptive epoch cursor")
+        chunk_capacity = config["batch_size"] * config["adaptive_sampling"]["refresh_every_steps"]
+        chunk_start = epoch_cursor - cursor
+        if chunk_start % chunk_capacity:
+            raise ValueError("Invalid adaptive refresh boundary")
+        if order:
+            expected_draws = min(chunk_capacity, count - chunk_start)
+            if len(order) != expected_draws:
+                raise ValueError("Invalid adaptive sampling chunk")
+        cache = state["adaptive_sampling"]
+        counts = cache.get("counts") if type(cache) is dict else None
+        if (type(counts) is not list or len(counts) != count
+                or any(type(value) is not int or value < 0 for value in counts)
+                or sum(counts) != state["epoch"] * count + epoch_cursor):
+            raise ValueError("Adaptive observations disagree with completed training draws")
+        if any(counts[index] < consumed for index, consumed in Counter(order[:cursor]).items()):
+            raise ValueError("Adaptive observations omit consumed chunk draws")
+    if state["step"] != state["epoch"] * batches + epoch_cursor // config["batch_size"]:
         raise ValueError("Checkpoint step/epoch/cursor disagree")
 
 
@@ -701,14 +745,32 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             else:
                 state["sampling"] = sampling_summary
         else:
-            examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
-            sampling_weights, sampling_ids = None, None
+            if "adaptive_sampling" in config:
+                examples, sampling_weights, sampling_ids, _ = _encoded_data(
+                    records, tokenizer, state["model_config"]["context_length"], state["window_policy"], [])
+            else:
+                examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
+                sampling_weights, sampling_ids = None, None
+        if payload is not None:
+            _validate_resume_state(state, examples)
+        adaptive_sampler = None
+        adaptive_sources = None
+        if "adaptive_sampling" in config:
+            from .adaptive import AdaptiveSampler
+            adaptive_sampler = AdaptiveSampler(
+                [f"train-window:{index}" for index in range(len(examples["train"]))],
+                sampling_weights, config["adaptive_sampling"],
+                state=state.get("adaptive_sampling") if payload is not None else None)
+            source_by_id = {record["id"]: record["source"]["dataset"] for record in records if record["split"] == "train"}
+            adaptive_sources = [source_by_id[record_id] for record_id in sampling_ids]
+            if payload is None:
+                state["adaptive_sampling"] = adaptive_sampler.state_dict()
+                state["epoch_cursor"] = 0
         optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"],
                                       weight_decay=config["weight_decay"])
         warmup = config["warmup_steps"]
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda step: min(1.0, (step + 1) / max(1, warmup)))
         if payload is not None:
-            _validate_resume_state(state, examples)
             _validate_resume_payload(payload, optimizer, scheduler, model, state)
             optimizer.load_state_dict(payload["optimizer"])
             scheduler.load_state_dict(payload["scheduler"])
@@ -740,6 +802,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
 
         def save(*, selected=False):
             state["elapsed_seconds"] = elapsed_before + time.monotonic() - start
+            if adaptive_sampler is not None:
+                state["adaptive_sampling"] = adaptive_sampler.state_dict()
             _checkpoint(run_dir, model, tokenizer, optimizer, scheduler, state, selected=selected)
             heartbeat()
             # Retain only the durable last and validation-selected snapshots.
@@ -789,7 +853,28 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     reason = "training_limit"
                     break
                 if not state["order"]:
-                    if sampling_weights is None:
+                    if adaptive_sampler is not None:
+                        weights = adaptive_sampler.weights()
+                        draws = min(config["batch_size"] * config["adaptive_sampling"]["refresh_every_steps"],
+                                    len(examples["train"]) - state["epoch_cursor"])
+                        state["order"] = random.choices(range(len(examples["train"])), weights=weights, k=draws)
+                        ratios = [weight / base for weight, base in zip(weights, sampling_weights)]
+                        source_mass, base_mass = defaultdict(float), defaultdict(float)
+                        for source, weight, base in zip(adaptive_sources, weights, sampling_weights):
+                            source_mass[source] += weight
+                            base_mass[source] += base
+                        total, base_total = math.fsum(weights), math.fsum(sampling_weights)
+                        actual_draws = Counter(adaptive_sources[index] for index in state["order"])
+                        _log(run_dir, {"event": "adaptive_sampling_chunk", "step": state["step"],
+                                       "epoch": state["epoch"], "epochCursor": state["epoch_cursor"],
+                                       "draws": draws, "uniqueWindowsDrawn": len(set(state["order"])),
+                                       "uniqueRecordsDrawn": len({sampling_ids[index] for index in state["order"]}),
+                                       "minWeightRatio": min(ratios), "maxWeightRatio": max(ratios),
+                                       "sources": [{"dataset": source, "baseShare": base_mass[source] / base_total,
+                                                    "adaptiveShare": source_mass[source] / total,
+                                                    "sampledDraws": actual_draws[source]}
+                                                   for source in sorted(base_mass)]})
+                    elif sampling_weights is None:
                         state["order"] = list(range(len(examples["train"])))
                         random.shuffle(state["order"])
                     else:
@@ -804,9 +889,25 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                                        "repeatedWindowDraws": len(state["order"]) - unique})
                     state["cursor"] = 0
                 end = min(state["cursor"] + config["batch_size"], len(state["order"]))
-                inputs, labels = _batch(examples["train"], state["order"][state["cursor"]:end], torch)
+                batch_indices = state["order"][state["cursor"]:end]
+                inputs, labels = _batch(examples["train"], batch_indices, torch)
                 optimizer.zero_grad(set_to_none=True)
-                if config.get("projection_mode", "full") == "supervised":
+                if adaptive_sampler is not None:
+                    # Reuse one CE computation for both the gradient objective
+                    # and detached TRAIN-only difficulty observations.
+                    from .model import assistant_token_losses
+                    projection = config.get("projection_mode", "full")
+                    selected = labels != -100
+                    logits = model.selected_logits(inputs, selected) if projection == "supervised" else model(inputs)
+                    token_losses = assistant_token_losses(logits, labels, projection_mode=projection)
+                    rows = selected.nonzero(as_tuple=False)[:, 0]
+                    sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
+                    sequence_losses = sums / selected.sum(dim=1)
+                    loss = (sequence_losses.mean() if config.get("loss_reduction", "token_mean") == "sequence_mean"
+                            else token_losses.mean())
+                    difficulty = sequence_losses.detach().tolist()
+                    adaptive_sampler.validate_update(batch_indices, difficulty)
+                elif config.get("projection_mode", "full") == "supervised":
                     logits = model.selected_logits(inputs, labels != -100)
                     loss = assistant_token_loss(logits, labels,
                                                 loss_reduction=config.get("loss_reduction", "token_mean"),
@@ -823,10 +924,17 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 norm = torch.nn.utils.clip_grad_norm_(model.parameters(), config["grad_clip"], error_if_nonfinite=True)
                 optimizer.step()
                 scheduler.step()
+                if adaptive_sampler is not None:
+                    adaptive_sampler.update(batch_indices, difficulty)
                 state["step"] += 1
                 state["cursor"] = end
+                if adaptive_sampler is not None:
+                    state["epoch_cursor"] += len(batch_indices)
                 if end == len(state["order"]):
-                    state["epoch"] += 1
+                    if adaptive_sampler is None or state["epoch_cursor"] == len(examples["train"]):
+                        state["epoch"] += 1
+                        if adaptive_sampler is not None:
+                            state["epoch_cursor"] = 0
                     state["order"] = []
                     state["cursor"] = 0
                 checkpoint_saved = False

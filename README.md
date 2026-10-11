@@ -175,9 +175,16 @@ redujo un 13,5 % el tiempo por paso y conservó la inferencia. La siguiente etap
 reduce repeticiones de ejemplos fáciles y añade diversidad de textos y
 correcciones. El [registro de aprendizaje](docs/unidad-learning-curriculum-v2.json)
 conserva la comparación de respuestas y la nueva etapa: las correcciones y los
-hechos de conversación libre siguen fallando. Pasaron 260 pruebas técnicas;
+hechos de conversación libre siguen fallando. Pasaron 277 pruebas técnicas;
 mejorar su conversación debe comprobarse por separado. La
 [guía](docs/conversation.md) explica cómo activar el nuevo modo de entrenamiento.
+
+La versión 0.5.2 añade una política opcional de práctica adaptativa: reutiliza
+las pérdidas de `train` para dar más prioridad a lo difícil, con repaso y límites
+de prioridad. Se actualiza por bloques cortos y guarda ese estado para reanudar
+exactamente. Los casos de validación y test no ajustan esas prioridades. La
+[guía de configuración](docs/conversation.md#adaptar-la-práctica-a-lo-que-todavía-cuesta)
+explica la mezcla; su efecto en las respuestas se compara con una política fija.
 
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6

@@ -45,6 +45,9 @@ que el trabajador digital solicitado ya esté terminado.
 17. Antes de continuar, adaptar el aprendizaje para acortar el proceso. Medir
     cuánto cálculo se ahorra, reducir repeticiones de ejemplos ya aprendidos y
     comprobar que se conserva lo aprendido con conversaciones reales.
+18. Mejorar el sistema de aprendizaje y añadir los cambios necesarios para
+    refinar cómo aprende Unidad. Comparar los cambios antes de adoptarlos;
+    una optimización del código no equivale a mejorar las respuestas.
 
 ## Palabras del creador
 
@@ -86,6 +89,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > antes de seguir, mejora o adapta el modelo de aprendizaje para acortar mas todo
 
+> antes de continuar, mejora el sistema de aprendizaje, agrega lo que sea necesario, optimiza todo y modifica o altera el como aprende y refinate
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
@@ -99,7 +104,7 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 | Cambios de criterio | Registro local de encargos y correcciones; la última valoración decide qué ejemplos se exportan. |
 | Trabajar por el creador | El núcleo ejecuta flujos explícitos y herramientas del producto; comprender un encargo abierto y planificarlo sigue pendiente. |
 | Un cerebro para varios cuerpos | Mismo núcleo y pesos usados desde Python y HTTP; herramientas y registros separados por producto, con memoria compartida sólo por configuración explícita. |
-| Optimizar el código | Proyección del vocabulario sólo en posiciones supervisadas: 13,5 % menos tiempo por paso en la CPU medida, con inferencia conservada. Pasaron 260 pruebas técnicas; datos nuevos y práctica de recuperación se comprueban aparte con respuestas generadas. |
+| Optimizar el código | Proyección del vocabulario sólo en posiciones supervisadas: 13,5 % menos tiempo por paso en la CPU medida, con inferencia conservada. Muestreo adaptativo opcional de dificultades de entrenamiento, con repaso y reanudación exacta. Pasaron 277 pruebas técnicas; el efecto en respuestas se comprueba aparte. |
 | Adjuntar las órdenes | Este documento, enlazado en el README y en AGENTS.md. |
 | Cohesión interna del código | Un contrato conversacional compartido y un mismo motor para CLI, cerebro y evaluación. El entrenador exporta el artefacto que carga ese motor; no se añaden dependencias entre todos los módulos. |
 | Comprobar conversación | Casos de desarrollo con respuestas realmente generadas y pares de contexto contrastivo. Las puntuaciones técnicas no acreditan conversación competente. |

@@ -308,6 +308,92 @@ class ConversationTrainingTests(unittest.TestCase):
             self.assertEqual(manifest["training"]["projectionMode"], "supervised")
             self.assertEqual(manifest["training"]["config"]["projection_mode"], "supervised")
 
+    def test_adaptive_sampling_preserves_resume_across_chunks_and_epochs(self):
+        import copy
+        import math
+        import torch
+        self._sampling_corpus()
+        original_checkpoint = training._checkpoint
+        for projection in ("full", "supervised"):
+            for reduction in ("token_mean", "sequence_mean"):
+                name = "adaptive-" + projection + "-" + reduction
+                config = {**self.config, "max_steps": 9, "projection_mode": projection,
+                          "loss_reduction": reduction, "window_policy": "sliding_context",
+                          "validation_every": 3, "checkpoint_every": 1,
+                          "adaptive_sampling": {"mode": "train_loss_ema", "refresh_every_steps": 2}}
+                if projection == "supervised":
+                    config["sampling_weights"] = [{"dataset": "sampler-natural", "factor": 2}]
+                continuous_dir = self.root / (name + "-continuous")
+                continuous = training.train(self.corpus, continuous_dir,
+                                            model_config=self.model_config, training_config=config)
+                stopped = []
+
+                def checkpoint(*args, **kwargs):
+                    pointer = original_checkpoint(*args, **kwargs)
+                    if args[5]["step"] == 1 and not stopped:
+                        stopped.append(True)
+                        os.kill(os.getpid(), signal.SIGTERM)
+                    return pointer
+
+                paused_dir = self.root / (name + "-paused")
+                with patch.object(training, "_checkpoint", side_effect=checkpoint):
+                    paused = training.train(self.corpus, paused_dir,
+                                            model_config=self.model_config, training_config=config)
+                self.assertEqual(paused["step"], 1)
+                _, _, paused_state, _ = training._load_checkpoint(paused_dir, paused["lastCheckpoint"])
+                self.assertGreater(paused_state["cursor"], 0)
+                resumed = training.train(self.corpus, paused_dir, resume=True)
+                a, tokenizer, sa, pa = training._load_checkpoint(continuous_dir, continuous["lastCheckpoint"])
+                b, _, sb, pb = training._load_checkpoint(paused_dir, resumed["lastCheckpoint"])
+                for key, value in a.state_dict().items():
+                    self.assertTrue(torch.equal(value, b.state_dict()[key]), (name, key))
+                for index, moments in pa["optimizer"]["state"].items():
+                    for key, value in moments.items():
+                        self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]), (name, key))
+                self.assertEqual(pa["scheduler"], pb["scheduler"])
+                self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+                for key in ("order", "cursor", "epoch", "epoch_cursor", "python_rng",
+                            "adaptive_sampling", "best_validation_nll"):
+                    self.assertEqual(sa[key], sb[key], (name, key))
+                count = len(sa["adaptive_sampling"]["counts"])
+                self.assertEqual(sum(sa["adaptive_sampling"]["counts"]), sa["epoch"] * count + sa["epoch_cursor"])
+                self.assertEqual(sa["step"], sa["epoch"] * math.ceil(count / config["batch_size"])
+                                 + sa["epoch_cursor"] // config["batch_size"])
+                events = [json.loads(line) for line in (continuous_dir / "events.jsonl").read_text().splitlines()]
+                chunks = [event for event in events if event["event"] == "adaptive_sampling_chunk"]
+                self.assertGreater(len(chunks), 1)
+                self.assertEqual(chunks[0]["minWeightRatio"], 1)
+                self.assertEqual(chunks[0]["maxWeightRatio"], 1)
+                self.assertTrue(any(event["minWeightRatio"] != 1 or event["maxWeightRatio"] != 1
+                                    for event in chunks[1:]))
+                for event in chunks:
+                    self.assertEqual(sum(source["sampledDraws"] for source in event["sources"]), event["draws"])
+                    self.assertAlmostEqual(sum(source["adaptiveShare"] for source in event["sources"]), 1)
+                    self.assertAlmostEqual(sum(source["baseShare"] for source in event["sources"]), 1)
+                examples = training._encoded([json.loads(line) for line in self.corpus.read_text().splitlines()],
+                                             tokenizer, a.config["context_length"], sa["window_policy"])
+                broken = copy.deepcopy(sa)
+                broken["adaptive_sampling"]["counts"][0] += 1
+                with self.assertRaisesRegex(ValueError, "observations"):
+                    training._validate_resume_state(broken, examples)
+                missing = copy.deepcopy(paused_state)
+                consumed_index = missing["order"][0]
+                transfer_to = (consumed_index + 1) % len(missing["adaptive_sampling"]["counts"])
+                transfer = missing["adaptive_sampling"]["counts"][consumed_index]
+                missing["adaptive_sampling"]["counts"][consumed_index] = 0
+                missing["adaptive_sampling"]["counts"][transfer_to] += transfer
+                with self.assertRaisesRegex(ValueError, "consumed"):
+                    training._validate_resume_state(missing, examples)
+                changed = {**config, "adaptive_sampling": {"mode": "train_loss_ema", "refresh_every_steps": 3}}
+                with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+                    training.train(self.corpus, paused_dir, resume=True, training_config=changed)
+                exported = training.export_best(continuous_dir, self.root / (name + "-export"))
+                metadata = exported["training"]["trainingAdaptiveSampling"]
+                self.assertEqual(metadata["policy"], "train_loss_ema")
+                self.assertFalse(metadata["validationSampled"])
+                self.assertFalse(metadata["testSampled"])
+                self.assertFalse(exported["training"]["testEvaluated"])
+
     def test_sampling_plan_preserves_targets_and_unsampled_holdouts(self):
         from ia_propia.conversation.tokenizer import fit_tokenizer
         rows = self._sampling_corpus()

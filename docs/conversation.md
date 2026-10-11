@@ -116,6 +116,52 @@ Si se omite `projection_mode`, permanece el cálculo anterior. Una reanudación
 conserva el modo guardado; para cambiarlo, empieza otra etapa con
 `--initial-model`. La inferencia y el formato de los pesos se conservan.
 
+## Adaptar la práctica a lo que todavía cuesta
+
+Una nueva etapa puede activar el muestreo adaptativo de ventanas de `train`:
+
+```json
+{
+  "projection_mode": "supervised",
+  "loss_reduction": "sequence_mean",
+  "adaptive_sampling": {
+    "mode": "train_loss_ema",
+    "ema_decay": 0.9,
+    "exponent": 0.5,
+    "coverage": 0.25,
+    "min_priority": 0.5,
+    "max_priority": 2.0,
+    "refresh_every_steps": 64
+  }
+}
+```
+
+El entrenador reutiliza la pérdida media de los tokens de la última respuesta
+del asistente, incluido EOS. Registra esa dificultad sólo después de completar
+el paso del optimizador; no puntúa de nuevo el corpus para actualizarla. Una
+media móvil suaviza las observaciones de cada ventana. Las ventanas aún no
+observadas empiezan con prioridad neutra.
+
+El siguiente bloque combina un 25 % de la distribución base con un 75 % de la
+distribución de dificultad. Los pesos de procedencia, si se configuran, definen
+esa base. Los límites `min_priority` y `max_priority` se aplican antes de
+normalizar; con estos valores, la probabilidad relativa a la base queda entre
+0,4375 y 3,25. Esto conserva una probabilidad de repaso; no garantiza que cada
+ejemplo aparezca en un bloque finito.
+
+Cada bloque tiene como máximo 64 lotes y se consume por completo antes de
+actualizar las prioridades. Una época sigue siendo tantas extracciones como
+ventanas de entrenamiento. El checkpoint guarda las dificultades, las veces
+observadas, el bloque, los cursores y los estados aleatorios. Reanudar conserva
+todo ello; cambiar de política exige empezar otra etapa. El registro muestra
+cómo cambian la distribución y las extracciones por fuente.
+
+Sin `adaptive_sampling` se conserva el aprendizaje anterior. La validación y
+el test mantienen sus ejemplos únicos y nunca actualizan las prioridades.
+Una pérdida alta también puede corresponder a ruido o ambigüedad: esta opción
+necesita una comparación de respuestas reales antes de afirmar que acelera la
+adquisición de conversación.
+
 ## Dar peso a las conversaciones breves
 
 La reducción anterior, `token_mean`, promedia la pérdida de todos los tokens
