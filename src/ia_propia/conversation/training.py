@@ -111,7 +111,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -133,10 +133,53 @@ def _configs(model_config, training_config):
         raise ValueError("Invalid window_policy")
     if training.get("loss_reduction", "token_mean") not in ("token_mean", "sequence_mean"):
         raise ValueError("Invalid loss_reduction")
+    if "sampling_weights" in training:
+        _validate_sampling_rules(training["sampling_weights"])
+        training["sampling_weights"] = copy.deepcopy(training["sampling_weights"])
     # Constructor validates architecture; the requested vocabulary is bounded before fitting.
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
     return model, training
+
+
+def _validate_sampling_rules(rules):
+    """Explicit provenance selectors; matched factors multiply from base weight 1."""
+    if type(rules) is not list or not 1 <= len(rules) <= 64:
+        raise ValueError("sampling_weights requires 1 to 64 rules")
+    seen = set()
+    for rule in rules:
+        if type(rule) is not dict or not {"dataset", "factor"} <= set(rule) or set(rule) - {"dataset", "prefixPairs", "factor"}:
+            raise ValueError("Sampling rules require dataset/factor and optional prefixPairs")
+        dataset = rule["dataset"]
+        if type(dataset) is not str or not dataset.strip() or len(dataset) > 256 or any(ord(char) < 32 for char in dataset):
+            raise ValueError("Invalid sampling dataset")
+        try:
+            dataset.encode("utf-8")
+        except UnicodeError as exc:
+            raise ValueError("Invalid sampling dataset UTF-8") from exc
+        if "prefixPairs" in rule and (type(rule["prefixPairs"]) is not int or not 1 <= rule["prefixPairs"] <= 32):
+            raise ValueError("Invalid sampling prefixPairs")
+        factor = rule["factor"]
+        if type(factor) not in (int, float) or not math.isfinite(factor) or not 0 < factor <= 1_000_000:
+            raise ValueError("Invalid sampling factor")
+        selector = (dataset, rule.get("prefixPairs"))
+        if selector in seen:
+            raise ValueError("Duplicate sampling selector")
+        seen.add(selector)
+
+
+def _source_weight(source, rules):
+    matched, weight = [], 1.0
+    for index, rule in enumerate(rules):
+        if source["dataset"] != rule["dataset"]:
+            continue
+        if "prefixPairs" in rule and (type(source.get("prefixPairs")) is not int or source["prefixPairs"] != rule["prefixPairs"]):
+            continue
+        weight *= rule["factor"]
+        matched.append(index)
+    if not math.isfinite(weight) or not 0 < weight <= 1_000_000_000_000:
+        raise ValueError("Combined sampling weight must be positive, finite and at most 1e12")
+    return weight, matched
 
 
 def _window_ranges(input_length, context_length, window_policy):
@@ -154,9 +197,15 @@ def _window_ranges(input_length, context_length, window_policy):
 
 
 def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping"):
+    return _encoded_data(records, tokenizer, context_length, window_policy)[0]
+
+
+def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None):
     """Retain causal input overlap; supervise each final-reply token exactly once."""
     from .tokenizer import ASSISTANT_ID, dialogue_tokens
     result = {"train": [], "validation": [], "test": []}
+    weights, record_ids, strata = [], [], {}
+    rule_matches = [0] * len(sampling_rules or [])
     for record in records:
         tokens, supervised = dialogue_tokens(record["messages"], tokenizer)
         inputs = tokens[:-1]
@@ -170,9 +219,41 @@ def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonov
             chunk_labels[:overlap] = [-100] * overlap
             if any(label != -100 for label in chunk_labels):
                 result[record["split"]].append((chunk_inputs, chunk_labels))
+                if sampling_rules is not None and record["split"] == "train":
+                    source = record["source"]
+                    weight, matched = _source_weight(source, sampling_rules)
+                    weights.append(weight)
+                    record_ids.append(record["id"])
+                    for index in matched:
+                        rule_matches[index] += 1
+                    prefix = source.get("prefixPairs") if type(source.get("prefixPairs")) is int else None
+                    key = (source["dataset"], prefix)
+                    value = strata.setdefault(key, {"windows": 0, "ids": set(), "totalWeight": 0.0})
+                    value["windows"] += 1
+                    value["ids"].add(record["id"])
+                    value["totalWeight"] += weight
     if any(not result[split] for split in result):
         raise ValueError("Each split needs at least one encoded assistant target")
-    return result
+    summary = None
+    if sampling_rules is not None:
+        if any(count == 0 for count in rule_matches):
+            raise ValueError("Every sampling rule must match an encoded training window")
+        total = sum(weights)
+        summary = {"policy": "provenance_weighted_with_replacement", "unit": "encoded_window",
+                   "baseWeight": 1.0, "factorsMultiply": True, "epochDraws": len(weights),
+                   "uniqueWindows": len(weights), "uniqueRecords": len(set(record_ids)), "totalWeight": total,
+                   "ruleMatchedTrainingWindows": rule_matches, "validationSampled": False, "testSampled": False,
+                   "rules": copy.deepcopy(sampling_rules),
+                   "strata": [{"dataset": dataset, "prefixPairs": prefix, "windows": value["windows"],
+                               "uniqueRecords": len(value["ids"]), "totalWeight": value["totalWeight"],
+                               "expectedShare": value["totalWeight"] / total,
+                               "expectedDrawsPerEpoch": len(weights) * value["totalWeight"] / total}
+                              for (dataset, prefix), value in sorted(strata.items(), key=lambda item: (item[0][0], str(item[0][1])))]}
+    return result, weights, record_ids, summary
+
+
+def _sampling_metadata(state):
+    return {"trainingSampling": copy.deepcopy(state["sampling"])} if "sampling" in state else {}
 
 
 def _batch(examples, indices, torch):
@@ -403,13 +484,19 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if not isinstance(state, dict) or set(state) not in (expected, expected | {"lineage"}) or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1:
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling"}
+            or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
         _validate_lineage(state["lineage"])
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    weighted = "sampling_weights" in config
+    if ("sampling" in state) != weighted:
+        raise ValueError("Checkpoint sampling policy mismatch")
+    if weighted and (type(state["sampling"]) is not dict or state["sampling"].get("rules") != config["sampling_weights"]):
+        raise ValueError("Checkpoint sampling rules mismatch")
     actual = state["model_config"]
     if type(actual) is not dict or set(actual) != set(requested) or any(actual[key] != requested[key] for key in requested if key != "vocab_size") or type(actual["vocab_size"]) is not int or not 262 <= actual["vocab_size"] <= requested["vocab_size"]:
         raise ValueError("Checkpoint actual/requested model configuration disagree")
@@ -431,7 +518,8 @@ def _validate_resume_state(state, examples):
     if type(order) is not list or any(type(index) is not int for index in order):
         raise ValueError("Invalid checkpoint order")
     if order:
-        if len(order) != count or set(order) != set(range(count)) or not 0 <= cursor < count:
+        if (len(order) != count or any(not 0 <= index < count for index in order)
+                or (not weighted and set(order) != set(range(count))) or not 0 <= cursor < count):
             raise ValueError("Invalid checkpoint permutation/cursor")
         if cursor % config["batch_size"]:
             raise ValueError("Checkpoint cursor is not a completed batch boundary")
@@ -498,7 +586,8 @@ def _status_write(run_dir, state, status, reason=None, **extra):
              "bestValidationNll": state.get("best_validation_nll"),
              "corpusSha256": state.get("corpus_sha256"), "experimental": True,
              "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False,
-             **_origin_metadata(state), **_loss_metadata(state.get("training_config", {})), **extra}
+             **_origin_metadata(state), **_loss_metadata(state.get("training_config", {})),
+             **_sampling_metadata(state), **extra}
     _atomic_json(Path(run_dir) / "status.json", value)
     return value
 
@@ -585,7 +674,17 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 state["lineage"] = lineage
             payload = None
         torch.set_num_threads(config["torch_threads"])
-        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
+        if "sampling_weights" in config:
+            examples, sampling_weights, sampling_ids, sampling_summary = _encoded_data(
+                records, tokenizer, state["model_config"]["context_length"], state["window_policy"], config["sampling_weights"])
+            if payload is not None:
+                if state.get("sampling") != sampling_summary:
+                    raise ValueError("Checkpoint sampling distribution differs from its corpus/configuration")
+            else:
+                state["sampling"] = sampling_summary
+        else:
+            examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
+            sampling_weights, sampling_ids = None, None
         optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"],
                                       weight_decay=config["weight_decay"])
         warmup = config["warmup_steps"]
@@ -672,8 +771,19 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     reason = "training_limit"
                     break
                 if not state["order"]:
-                    state["order"] = list(range(len(examples["train"])))
-                    random.shuffle(state["order"])
+                    if sampling_weights is None:
+                        state["order"] = list(range(len(examples["train"])))
+                        random.shuffle(state["order"])
+                    else:
+                        # The full sampled order and RNG are checkpointed. N draws
+                        # define an epoch; they are not N distinct training records.
+                        state["order"] = random.choices(range(len(examples["train"])),
+                                                        weights=sampling_weights, k=len(examples["train"]))
+                        unique = len(set(state["order"]))
+                        _log(run_dir, {"event": "sampling_epoch", "epoch": state["epoch"],
+                                       "draws": len(state["order"]), "uniqueWindowsDrawn": unique,
+                                       "uniqueRecordsDrawn": len({sampling_ids[index] for index in state["order"]}),
+                                       "repeatedWindowDraws": len(state["order"]) - unique})
                     state["cursor"] = 0
                 end = min(state["cursor"] + config["batch_size"], len(state["order"]))
                 inputs, labels = _batch(examples["train"], state["order"][state["cursor"]:end], torch)
@@ -744,7 +854,7 @@ def export_best(run_dir, export_dir):
             if attempt == 2:
                 raise RuntimeError("Selected checkpoint changed during export; retry")
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                **_origin_metadata(state), **_loss_metadata(state["training_config"]), "selectionSplit": "validation",
+                **_origin_metadata(state), **_loss_metadata(state["training_config"]), **_sampling_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
                 "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
@@ -774,7 +884,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         evaluation = {"schemaVersion": 1, "corpusSha256": state["corpus_sha256"],
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
-                      **_loss_metadata(state["training_config"]),
+                      **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
                       "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
                       "train": _evaluate_configured(model, examples["train"], state["training_config"]),
                       "validation": _evaluate_configured(model, examples["validation"], state["training_config"]),
@@ -786,6 +896,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
             save_artifact(export_dir, model, tokenizer,
                           training={"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                                     **_origin_metadata(state), **_loss_metadata(state["training_config"]),
+                                    **_sampling_metadata(state),
                                     "selectionSplit": "validation",
                                     "config": state["training_config"]}, evaluation=evaluation)
         _log(run_dir, {"event": "explicit_finalization", "selectedStep": state["step"],

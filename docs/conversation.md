@@ -256,6 +256,47 @@ segundo plano, y checkpoints con pesos y estado de reanudación. Conserva el
 último checkpoint coherente y el elegido por validación. Un error o cierre brusco
 puede perder pasos posteriores al último checkpoint completo.
 
+## Dar suficiente frecuencia a las bases
+
+`sampling_weights` es una opción del JSON de entrenamiento. Selecciona ventanas
+por su procedencia, con reemplazo, usando factores explícitos. Por ejemplo:
+
+```json
+{
+  "loss_reduction": "sequence_mean",
+  "sampling_weights": [
+    {"dataset": "unidad-natural-basics-v2", "factor": 2.0},
+    {"dataset": "unidad-natural-basics-v2", "prefixPairs": 1, "factor": 64.0}
+  ]
+}
+```
+
+Las reglas coincidentes se multiplican: aquí una apertura de ese currículo tiene
+peso 128 y sus continuaciones peso 2. Las ventanas sin regla tienen peso 1.
+Cada regla debe coincidir con al menos una ventana de entrenamiento. La selección
+usa `source.dataset` y, si se especifica, `source.prefixPairs`; no inspecciona
+respuestas generadas ni modifica la inferencia.
+
+Una época conserva el número de ventanas originales, pero puede repetir algunas
+y dejar otras sin visitar. `trainingSampling` informa registros y ventanas únicos,
+factores y frecuencias esperadas; los eventos `sampling_epoch` registran las
+repeticiones observadas. Reexponer veinte aperturas no crea ejemplos nuevos.
+Validación y test mantienen todos sus ejemplos originales, sin sobremuestreo.
+La pérdida `sequence_mean` sigue dando el mismo peso a cada ventana del lote.
+
+Los checkpoints guardan el orden seleccionado, su posición y los generadores
+aleatorios. Reanudar exige las mismas reglas y el mismo corpus. Si se omite
+`sampling_weights`, permanece el recorrido anterior: una permutación de todas
+las ventanas por época, sin reemplazo.
+
+Los generadores [de hechos abiertos](../examples/build_open_fact_conversations.py)
+y [de conversación básica](../examples/build_natural_basics.py) producen ejemplos
+ficticios identificados, usando el tokenizador propio existente. El segundo
+conserva prototipos de aperturas sin datos previos; enseña la identidad de Unidad,
+nombres desconocidos, presentaciones, correcciones y cambios de intención. Ambos
+guardan manifiestos, hashes y particiones. Sus plantillas sólo crean datos de
+entrenamiento; el motor conversacional genera cada respuesta desde los pesos.
+
 ## Detener y reanudar
 
 ```bash

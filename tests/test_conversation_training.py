@@ -48,6 +48,28 @@ class JobStateTests(unittest.TestCase):
                     with training._run_lock(temporary):
                         pass
 
+    def test_sampling_rules_strict_multiplicative_and_detached(self):
+        invalid = [None, [], {}, [{"dataset": "natural", "factor": 0}],
+                   [{"dataset": "natural", "factor": True}],
+                   [{"dataset": "natural", "factor": float("nan")}],
+                   [{"dataset": "natural", "factor": 1, "prefixPairs": True}],
+                   [{"dataset": "natural", "factor": 1, "prefixPairs": 0}],
+                   [{"dataset": "natural", "factor": 1, "unknown": 2}],
+                   [{"dataset": "", "factor": 1}],
+                   [{"dataset": "natural", "factor": 2}, {"dataset": "natural", "factor": 3}]]
+        for rules in invalid:
+            with self.subTest(rules=rules), self.assertRaises(ValueError):
+                training._configs(None, {"sampling_weights": rules})
+        rules = [{"dataset": "natural", "factor": 2},
+                 {"dataset": "natural", "prefixPairs": 1, "factor": 64}]
+        self.assertNotIn("sampling_weights", training._configs(None, None)[1])
+        _, config = training._configs(None, {"sampling_weights": rules})
+        rules[0]["factor"] = 7
+        self.assertEqual(config["sampling_weights"][0]["factor"], 2)
+        self.assertEqual(training._source_weight({"dataset": "natural", "prefixPairs": 1}, config["sampling_weights"])[0], 128)
+        self.assertEqual(training._source_weight({"dataset": "natural", "prefixPairs": 2}, config["sampling_weights"])[0], 2)
+        self.assertEqual(training._source_weight({"dataset": "replay", "prefixPairs": 1}, config["sampling_weights"])[0], 1)
+
 
 @unittest.skipUnless(HAS_EXTRAS, "conversation optional dependencies unavailable")
 class ConversationLossTests(unittest.TestCase):
@@ -136,6 +158,95 @@ class ConversationTrainingTests(unittest.TestCase):
     def run_train(self, name, **kwargs):
         return training.train(self.corpus, self.root / name, model_config=self.model_config,
                               training_config=self.config, **kwargs)
+
+    def _sampling_corpus(self):
+        rows = [json.loads(line) for line in self.corpus.read_text().splitlines()]
+        for index in (0, 1):
+            rows[index]["source"]["dataset"] = "sampler-natural"
+            rows[index]["source"]["prefixPairs"] = index + 1
+        self.corpus.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+        return rows
+
+    def test_sampling_plan_preserves_targets_and_unsampled_holdouts(self):
+        from ia_propia.conversation.tokenizer import fit_tokenizer
+        rows = self._sampling_corpus()
+        tokenizer = fit_tokenizer(rows[:2], self.model_config["vocab_size"])
+        rules = [{"dataset": "sampler-natural", "factor": 2},
+                 {"dataset": "sampler-natural", "prefixPairs": 1, "factor": 64}]
+        legacy = training._encoded(rows, tokenizer, 16, "sliding_context")
+        examples, weights, ids, summary = training._encoded_data(rows, tokenizer, 16, "sliding_context", rules)
+        self.assertEqual(examples, legacy)
+        self.assertEqual(len(weights), len(examples["train"]))
+        self.assertTrue(all(weight == (128 if identifier == rows[0]["id"] else 2) for weight, identifier in zip(weights, ids)))
+        self.assertEqual(summary["uniqueRecords"], 2)
+        self.assertEqual(summary["uniqueWindows"], len(weights))
+        self.assertEqual(summary["epochDraws"], len(weights))
+        self.assertFalse(summary["validationSampled"])
+        self.assertFalse(summary["testSampled"])
+        self.assertAlmostEqual(sum(value["expectedShare"] for value in summary["strata"]), 1)
+        cold = next(value for value in summary["strata"] if value["prefixPairs"] == 1)
+        self.assertEqual(cold["totalWeight"], 128 * ids.count(rows[0]["id"]))
+        self.assertAlmostEqual(cold["expectedDrawsPerEpoch"], len(weights) * cold["totalWeight"] / sum(weights))
+        with self.assertRaisesRegex(ValueError, "match"):
+            training._encoded_data(rows, tokenizer, 16, "sliding_context", [{"dataset": "typo", "factor": 2}])
+
+    def test_weighted_sampling_resume_exact_for_both_losses_and_unweighted_validation(self):
+        import torch
+        rows = self._sampling_corpus()
+        original_checkpoint, original_evaluate = training._checkpoint, training._evaluate
+        for reduction in ("token_mean", "sequence_mean"):
+            with self.subTest(loss_reduction=reduction):
+                config = {**self.config, "window_policy": "sliding_context", "loss_reduction": reduction,
+                          "sampling_weights": [{"dataset": "sampler-natural", "factor": 2},
+                                               {"dataset": "sampler-natural", "prefixPairs": 1, "factor": 64}]}
+                name = "weighted-" + reduction
+                continuous = training.train(self.corpus, self.root / (name + "-continuous"),
+                                            model_config=self.model_config, training_config=config)
+                stopped, evaluated = [], []
+
+                def checkpoint(*args, **kwargs):
+                    pointer = original_checkpoint(*args, **kwargs)
+                    if args[5]["step"] == 2 and not stopped:
+                        stopped.append(True)
+                        os.kill(os.getpid(), signal.SIGTERM)
+                    return pointer
+
+                def evaluate(model, examples, batch_size, *args, **kwargs):
+                    evaluated.append(list(examples))
+                    return original_evaluate(model, examples, batch_size, *args, **kwargs)
+
+                run = self.root / (name + "-paused")
+                with patch.object(training, "_checkpoint", side_effect=checkpoint), patch.object(training, "_evaluate", side_effect=evaluate):
+                    paused = training.train(self.corpus, run, model_config=self.model_config, training_config=config)
+                self.assertEqual(paused["step"], 2)
+                _, tokenizer, paused_state, _ = training._load_checkpoint(run, paused["lastCheckpoint"])
+                expected = training._encoded(rows, tokenizer, 16, "sliding_context")
+                self.assertTrue(all(examples == expected["validation"] for examples in evaluated))
+                self.assertGreater(len(evaluated), 1)
+                self.assertLess(len(set(paused_state["order"])), len(paused_state["order"]))
+                with self.assertRaisesRegex(ValueError, "configuration mismatch"):
+                    changed = {**config, "sampling_weights": [{"dataset": "sampler-natural", "factor": 3}]}
+                    training.train(self.corpus, run, resume=True, training_config=changed)
+                resumed = training.train(self.corpus, run, resume=True)
+                a, _, sa, pa = training._load_checkpoint(self.root / (name + "-continuous"), continuous["lastCheckpoint"])
+                b, _, sb, pb = training._load_checkpoint(run, resumed["lastCheckpoint"])
+                for key, value in a.state_dict().items():
+                    self.assertTrue(torch.equal(value, b.state_dict()[key]), key)
+                for index, moments in pa["optimizer"]["state"].items():
+                    for key, value in moments.items():
+                        self.assertTrue(torch.equal(value, pb["optimizer"]["state"][index][key]))
+                self.assertEqual(pa["scheduler"], pb["scheduler"])
+                self.assertTrue(torch.equal(pa["torch_rng"], pb["torch_rng"]))
+                for key in ("order", "cursor", "epoch", "python_rng", "sampling", "best_validation_nll"):
+                    self.assertEqual(sa[key], sb[key])
+                self.assertEqual(resumed["trainingSampling"], sb["sampling"])
+                exported = training.export_best(run, self.root / (name + "-export"))
+                self.assertEqual(exported["training"]["trainingSampling"], sb["sampling"])
+                events = [json.loads(line) for line in (run / "events.jsonl").read_text().splitlines()]
+                draws = [event for event in events if event["event"] == "sampling_epoch"]
+                self.assertTrue(draws)
+                self.assertTrue(all(event["draws"] == sb["sampling"]["epochDraws"] for event in draws))
+                self.assertTrue(any(event["repeatedWindowDraws"] > 0 for event in draws))
 
     def test_actual_learning_checkpoints_holdout_and_finalization(self):
         import torch
