@@ -112,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective"} if result is training else set())
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -136,6 +136,8 @@ def _configs(model_config, training_config):
         raise ValueError("Invalid loss_reduction")
     if training.get("projection_mode", "full") not in ("full", "supervised"):
         raise ValueError("Invalid projection_mode")
+    if "objective" in training and training["objective"] not in ("assistant_last_reply", "causal_lm"):
+        raise ValueError("Invalid training objective")
     if "sampling_weights" in training:
         _validate_sampling_rules(training["sampling_weights"])
         training["sampling_weights"] = copy.deepcopy(training["sampling_weights"])
@@ -204,22 +206,47 @@ def _window_ranges(input_length, context_length, window_policy):
             break
 
 
-def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping"):
-    return _encoded_data(records, tokenizer, context_length, window_policy)[0]
+def _encoding_kwargs(config):
+    return {"objective": config["objective"]} if "objective" in config else {}
 
 
-def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None):
-    """Retain causal input overlap; supervise each final-reply token exactly once."""
+def _supervision_policy(config):
+    return "all_text_tokens" if config.get("objective") == "causal_lm" else "last_reply_only"
+
+
+def _load_training_corpus(path, config):
+    if config.get("objective") == "causal_lm":
+        from .language_data import load_text_corpus
+        return load_text_corpus(path)
+    from .data import load_corpus
+    return load_corpus(path)
+
+
+def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonoverlapping", *, objective=None):
+    if objective is None:
+        return _encoded_data(records, tokenizer, context_length, window_policy)[0]
+    return _encoded_data(records, tokenizer, context_length, window_policy, objective=objective)[0]
+
+
+def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None, *, objective=None):
+    """Retain causal overlap; supervise each objective's target exactly once."""
     from .tokenizer import ASSISTANT_ID, dialogue_tokens
+    if objective not in (None, "assistant_last_reply", "causal_lm"):
+        raise ValueError("Invalid encoding objective")
     result = {"train": [], "validation": [], "test": []}
     weights, record_ids, strata = [], [], {}
     rule_matches = [0] * len(sampling_rules or [])
     for record in records:
-        tokens, supervised = dialogue_tokens(record["messages"], tokenizer)
-        inputs = tokens[:-1]
-        labels = [token if teach else -100 for token, teach in zip(tokens[1:], supervised[1:])]
-        last_assistant = max(index for index, token in enumerate(inputs) if token == ASSISTANT_ID)
-        labels[:last_assistant] = [-100] * last_assistant
+        if objective == "causal_lm":
+            from .tokenizer import text_tokens
+            tokens = text_tokens(record["text"], tokenizer)
+            inputs, labels = tokens[:-1], tokens[1:]
+        else:
+            tokens, supervised = dialogue_tokens(record["messages"], tokenizer)
+            inputs = tokens[:-1]
+            labels = [token if teach else -100 for token, teach in zip(tokens[1:], supervised[1:])]
+            last_assistant = max(index for index, token in enumerate(inputs) if token == ASSISTANT_ID)
+            labels[:last_assistant] = [-100] * last_assistant
         for start, end, previous_end in _window_ranges(len(inputs), context_length, window_policy):
             chunk_inputs = inputs[start:end]
             chunk_labels = labels[start:end]
@@ -241,7 +268,8 @@ def _encoded_data(records, tokenizer, context_length, window_policy, sampling_ru
                     value["ids"].add(record["id"])
                     value["totalWeight"] += weight
     if any(not result[split] for split in result):
-        raise ValueError("Each split needs at least one encoded assistant target")
+        raise ValueError("Each split needs at least one encoded text target" if objective == "causal_lm"
+                         else "Each split needs at least one encoded assistant target")
     summary = None
     if sampling_rules is not None:
         if any(count == 0 for count in rule_matches):
@@ -374,6 +402,10 @@ def _loss_metadata(config):
         result["lossReduction"] = config["loss_reduction"]
     if config.get("loss_reduction") == "sequence_mean":
         result["sequenceUnit"] = "encoded_window"
+    if "objective" in config:
+        result["trainingObjective"] = config["objective"]
+        result["assistantTargets"] = _supervision_policy(config)
+        result["corpusFormat"] = "text" if config["objective"] == "causal_lm" else "messages"
     return result
 
 
@@ -539,7 +571,7 @@ def _validate_resume_state(state, examples):
     actual = state["model_config"]
     if type(actual) is not dict or set(actual) != set(requested) or any(actual[key] != requested[key] for key in requested if key != "vocab_size") or type(actual["vocab_size"]) is not int or not 262 <= actual["vocab_size"] <= requested["vocab_size"]:
         raise ValueError("Checkpoint actual/requested model configuration disagree")
-    if state["assistant_targets"] != "last_reply_only" or state["window_policy"] != config.get("window_policy", "contiguous_nonoverlapping"):
+    if state["assistant_targets"] != _supervision_policy(config) or state["window_policy"] != config.get("window_policy", "contiguous_nonoverlapping"):
         raise ValueError("Unsupported checkpoint supervision policy")
     for key in ("step", "epoch", "cursor", "bad_validations"):
         if type(state[key]) is not int or state[key] < 0:
@@ -676,15 +708,11 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
         raise ValueError("Invalid invocation time budget")
     requested_model, requested_training = _configs(model_config, training_config)
     torch = _torch()
-    from .data import load_corpus
     from .model import ConversationModel, assistant_token_loss, validate_config
     from .tokenizer import fit_tokenizer
     corpus_path = Path(corpus_path).resolve()
     run_dir = Path(run_dir).resolve()
     corpus_hash = _sha(corpus_path)
-    records = load_corpus(corpus_path)
-    if _sha(corpus_path) != corpus_hash:
-        raise ValueError("Corpus changed while loading")
     if initial_model is None and not resume:
         validate_config(requested_model)
     with _run_lock(run_dir):
@@ -706,12 +734,18 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             if training_config is not None and requested_training != state["training_config"]:
                 raise ValueError("Resume training configuration mismatch")
             config = state["training_config"]
+            records = _load_training_corpus(corpus_path, config)
+            if _sha(corpus_path) != corpus_hash:
+                raise ValueError("Corpus changed while loading")
         else:
             if (run_dir / "status.json").exists():
                 existing = _json_read(run_dir / "status.json")
                 if existing.get("status") != "planned" or existing.get("pid") != os.getpid() or existing.get("processBirth") != _birth(os.getpid()):
                     raise ValueError("Run already exists; resume it or choose a new directory")
             config = requested_training
+            records = _load_training_corpus(corpus_path, config)
+            if _sha(corpus_path) != corpus_hash:
+                raise ValueError("Corpus changed while loading")
             torch.set_num_threads(config["torch_threads"])
             random.seed(config["seed"])
             torch.manual_seed(config["seed"])
@@ -720,8 +754,12 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 model, tokenizer, actual_model, lineage = _initial_own_model(initial_model, model_config)
                 requested_model = dict(actual_model)
             else:
-                tokenizer = fit_tokenizer([record for record in records if record["split"] == "train"],
-                                          vocab_size=requested_model["vocab_size"])
+                fit = fit_tokenizer
+                if config.get("objective") == "causal_lm":
+                    from .tokenizer import fit_text_tokenizer
+                    fit = fit_text_tokenizer
+                tokenizer = fit([record for record in records if record["split"] == "train"],
+                                vocab_size=requested_model["vocab_size"])
                 actual_model = dict(requested_model, vocab_size=tokenizer.get_vocab_size())
                 model = ConversationModel(actual_model)
             state = {"schemaVersion": 1, "corpus_path": str(corpus_path), "corpus_sha256": corpus_hash,
@@ -730,7 +768,7 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                      "order": [], "elapsed_seconds": 0.0, "best_validation_nll": None,
                      "bad_validations": 0, "last_validation_step": -1,
                      "last_checkpoint": None, "best_checkpoint": None,
-                     "created_at": time.time(), "assistant_targets": "last_reply_only",
+                     "created_at": time.time(), "assistant_targets": _supervision_policy(config),
                      "window_policy": config.get("window_policy", "contiguous_nonoverlapping")}
             if lineage is not None:
                 state["lineage"] = lineage
@@ -738,7 +776,7 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
         torch.set_num_threads(config["torch_threads"])
         if "sampling_weights" in config:
             examples, sampling_weights, sampling_ids, sampling_summary = _encoded_data(
-                records, tokenizer, state["model_config"]["context_length"], state["window_policy"], config["sampling_weights"])
+                records, tokenizer, state["model_config"]["context_length"], state["window_policy"], config["sampling_weights"], **_encoding_kwargs(config))
             if payload is not None:
                 if state.get("sampling") != sampling_summary:
                     raise ValueError("Checkpoint sampling distribution differs from its corpus/configuration")
@@ -747,9 +785,9 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
         else:
             if "adaptive_sampling" in config:
                 examples, sampling_weights, sampling_ids, _ = _encoded_data(
-                    records, tokenizer, state["model_config"]["context_length"], state["window_policy"], [])
+                    records, tokenizer, state["model_config"]["context_length"], state["window_policy"], [], **_encoding_kwargs(config))
             else:
-                examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
+                examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"], **_encoding_kwargs(config))
                 sampling_weights, sampling_ids = None, None
         if payload is not None:
             _validate_resume_state(state, examples)
@@ -988,14 +1026,13 @@ def export_best(run_dir, export_dir):
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                 **_origin_metadata(state), **_loss_metadata(state["training_config"]), **_sampling_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
-                "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
+                "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
     return save_artifact(export_dir, model, tokenizer, training=metadata, evaluation=None)
 
 
 def finalize(run_dir, *, corpus_path=None, export_dir=None):
     """Evaluate the validation-selected snapshot on test, explicitly and outside the loop."""
-    from .data import load_corpus
     from .artifacts import save_artifact
     run_dir = Path(run_dir).resolve()
     with _run_lock(run_dir):
@@ -1006,10 +1043,10 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         path = Path(corpus_path or state["corpus_path"]).resolve()
         if _sha(path) != state["corpus_sha256"]:
             raise ValueError("Evaluation corpus hash mismatch")
-        records = load_corpus(path)
+        records = _load_training_corpus(path, state["training_config"])
         if _sha(path) != state["corpus_sha256"]:
             raise ValueError("Corpus changed while loading")
-        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"])
+        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"], **_encoding_kwargs(state["training_config"]))
         _torch().set_num_threads(state["training_config"]["torch_threads"])
         losses = _baseline(examples["train"], tokenizer.get_vocab_size())
         loss_reduction = state["training_config"].get("loss_reduction", "token_mean")
@@ -1017,7 +1054,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
                       **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
-                      "assistantTargets": "last_reply_only", "windowPolicy": state["window_policy"],
+                      "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                       "train": _evaluate_configured(model, examples["train"], state["training_config"]),
                       "validation": _evaluate_configured(model, examples["validation"], state["training_config"]),
                       "test": _evaluate_configured(model, examples["test"], state["training_config"]),

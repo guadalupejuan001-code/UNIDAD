@@ -48,6 +48,9 @@ que el trabajador digital solicitado ya esté terminado.
 18. Mejorar el sistema de aprendizaje y añadir los cambios necesarios para
     refinar cómo aprende Unidad. Comparar los cambios antes de adoptarlos;
     una optimización del código no equivale a mejorar las respuestas.
+19. Continuar con una base más amplia de español, un modelo propio de mayor
+    capacidad y más contexto, seguido de ajuste conversacional. Comprobarlo
+    con conversaciones nuevas antes de declarar que ya conversa bien.
 
 ## Palabras del creador
 
@@ -90,6 +93,8 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 > antes de seguir, mejora o adapta el modelo de aprendizaje para acortar mas todo
 
 > antes de continuar, mejora el sistema de aprendizaje, agrega lo que sea necesario, optimiza todo y modifica o altera el como aprende y refinate
+
+> hazlo entonces porque te detienes? termina
 
 ## Qué está hecho y qué falta
 

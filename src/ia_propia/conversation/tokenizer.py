@@ -136,6 +136,44 @@ def fit_tokenizer(train_records, vocab_size=2048):
     return validate_tokenizer(tokenizer, strict=True)
 
 
+def fit_text_tokenizer(train_records, vocab_size=8192):
+    """Fit own BPE on TRAIN document text only, without role/system wrappers."""
+    from .language_data import validate_text_record
+    integer(vocab_size, "vocab_size", 262, MAX_VOCAB_SIZE)
+    tokenizer = Tokenizer(models.BPE())
+    tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
+    tokenizer.decoder = decoders.ByteLevel()
+    trainer = trainers.BpeTrainer(vocab_size=vocab_size, min_frequency=2,
+                                  special_tokens=list(SPECIAL_TOKENS),
+                                  initial_alphabet=pre_tokenizers.ByteLevel.alphabet(), show_progress=False)
+    count = 0
+
+    def texts():
+        nonlocal count
+        for record in train_records:
+            validate_text_record(record)
+            if record["split"] != "train":
+                raise ConversationError("Text tokenizer fitting accepts TRAIN documents only")
+            count += 1
+            yield record["text"]
+
+    tokenizer.train_from_iterator(texts(), trainer=trainer)
+    if not count:
+        raise ConversationError("Cannot fit a tokenizer without training documents")
+    return validate_tokenizer(tokenizer, strict=True)
+
+
+def text_tokens(text, tokenizer):
+    """Document BOS + byte-preserving content + EOS, without system/role text."""
+    # Corpus validation handles document limits; this helper also bounds direct
+    # callers and prevents content from injecting special-token boundaries.
+    from .language_data import validate_text_record
+    validate_text_record({"id": "encode", "groupId": "encode", "split": "train",
+                          "source": {"dataset": "explicit-text", "kind": "internal-validation"}, "text": text})
+    validate_tokenizer(tokenizer)
+    return [BOS_ID, *tokenizer.encode(text, add_special_tokens=False).ids, EOS_ID]
+
+
 def _prepared_tokens(messages, tokenizer):
     validate_tokenizer(tokenizer)
     ids, supervised = [BOS_ID], [False]

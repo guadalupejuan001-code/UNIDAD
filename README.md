@@ -190,6 +190,14 @@ empeoró la validación y la copia literal. Sigue desactivada por defecto; se
 conservan los pesos anteriores y no se afirma que esta política haya acortado
 el tiempo necesario para aprender a conversar.
 
+La versión 0.6.0 añade una etapa previa de lenguaje: `objective="causal_lm"`
+aprende los tokens de documentos de español con procedencia y particiones
+propias. Después puede ajustarse el mismo modelo con conversaciones, conservando
+sus pesos y tokenizador propios. La [guía de preentrenamiento](docs/language-pretraining.md)
+explica los formatos, la reanudación y una configuración nativa de 6.967.296
+parámetros con contexto de 512 tokens. Pasaron 287 pruebas técnicas; disponer de
+esta ruta de aprendizaje no demuestra que el nuevo modelo converse bien.
+
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6
 del padre. Aún falla al recuperar ciudades y puede repetir sílabas. Para probarla:
