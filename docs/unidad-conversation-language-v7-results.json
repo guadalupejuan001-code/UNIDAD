@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "evidenceType": "completed-own-model-training-and-fresh-development-results",
+  "purpose": "Preserve completed native own-model lineage and the failed v7 conversation-development gate; technical delivery is not conversation acceptance.",
+  "sourceHeadObservedProvisional": "70c5f32458297562b48f974bb42f767ca60a8e36",
+  "finalSourceHead": null,
+  "finalReleaseHeadConfirmed": false,
+  "architecture": {
+    "modelType": "unidad-conversation-transformer",
+    "parameterCount": 6967296,
+    "vocabularySize": 8192,
+    "tokenizerType": "own BPE",
+    "dModel": 256,
+    "layers": 6,
+    "attentionHeads": 8,
+    "ffnMultiplier": 4,
+    "contextLength": 512,
+    "dropout": 0,
+    "seed": 42,
+    "rootOrigin": "random_weights",
+    "externalPretrainedWeightsUsed": false,
+    "externalGenerationApiUsedForInference": false
+  },
+  "nativeSnapshots": {
+    "foundation": {
+      "directory": "models/spanish-foundation-v1",
+      "modelId": "unidad-conversation-9077c0ede2a5564e671f44e10762933287c5c9ba5efc2c070e5a23e071d025a0",
+      "manifestSha256": "58a6e55c6f2f77d4d1907bc17febce15a74ff379fccd5dfa9fc578fd7ab5d749",
+      "weightsSha256": "1b4e52bae66e2ff6a3d56730b8da4fd4f69d2376d1fe5ce7b79d1408aa82d3db",
+      "configSha256": "0064db1f291f4f8e9d71fafc49c2a4eb776ed99ac1a760659f104b107a80c7a7",
+      "tokenizerSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+    },
+    "sft": {
+      "directory": "models/conversation-language-v7",
+      "modelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+      "manifestSha256": "0dba7d9ddaedb4fba70f490a39ccfed85da12cec6f188b1d891ab6ac4e1aec11",
+      "weightsSha256": "dc4ba778deb188fabdf66b59aa2457578c720040bf0e36666ed9e234f1ed288e",
+      "configSha256": "0064db1f291f4f8e9d71fafc49c2a4eb776ed99ac1a760659f104b107a80c7a7",
+      "tokenizerSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+      "parentModelId": "unidad-conversation-9077c0ede2a5564e671f44e10762933287c5c9ba5efc2c070e5a23e071d025a0",
+      "parentWeightsSha256": "1b4e52bae66e2ff6a3d56730b8da4fd4f69d2376d1fe5ce7b79d1408aa82d3db",
+      "rootOrigin": "random_weights"
+    },
+    "nativeBytesPreservedExact": true,
+    "historicalSnapshotsPreserved": true
+  },
+  "corpus": {
+    "provenanceDocument": "docs/unidad-spanish-language-base-v1.json",
+    "personalOwnerHistoryIncluded": false,
+    "text": {
+      "sha256": "dda15f4bda91e960e4b80247104017bf060c6e34890099dae4ace782a9302c40",
+      "trainingRecords": 17906,
+      "trainingWords": 3584459,
+      "trainingContentBpeTokens": 6275692,
+      "trainingEosTargets": 17906,
+      "trainingCausalLmTargets": 6293598,
+      "trainWindowsContext512": 24789,
+      "sourceKinds": [
+        "reviewed public Spanish OpenAssistant messages",
+        "public Spanish Wikipedia text"
+      ],
+      "tokenCountMeaning": "TRAIN content tokens plus one EOS per text record; this is corpus size, not generated-output correctness or validation NLL."
+    },
+    "sft": {
+      "sha256": "e123b93c45521ad8d344304bf7eed29602aed9d7c1e3441e3de84e7e45f32116",
+      "trainingRecords": 48862,
+      "trainingEncodedWindows": 51993,
+      "sourceKinds": [
+        "reviewed public Spanish OpenAssistant conversations",
+        "identified fictional project curricula"
+      ],
+      "validationAndTestFamiliesPreserved": true
+    },
+    "splitCountsAreNotModelTestScores": true
+  },
+  "training": {
+    "foundation": {
+      "objective": "causal_lm",
+      "assistantTargets": "all_text_tokens",
+      "completedSteps": 6000,
+      "selectedStep": 6000,
+      "selectionSplit": "validation",
+      "validationNll": 4.7754543702337795,
+      "lossReduction": "token_mean",
+      "testEvaluated": false
+    },
+    "sft": {
+      "objective": "assistant_last_reply",
+      "assistantTargets": "last_reply_only",
+      "completedSteps": 6000,
+      "selectedStep": 6000,
+      "selectionSplit": "validation",
+      "validationNll": 1.6373902535790683,
+      "lossReduction": "sequence_mean",
+      "sequenceUnit": "encoded_window",
+      "windowPolicy": "sliding_context",
+      "initialWeightsFromOwnFoundation": true,
+      "configAndTokenizerPreservedExact": true,
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "testEvaluated": false
+    },
+    "lossInterpretation": "TEXT token_mean and SFT sequence_mean use different supervised objectives and reductions. The SFT value averages each encoded window's supervised-token loss, then averages windows. Neither is a token count, conversation grade, or directly comparable proof of conversational improvement."
+  },
+  "freshDevelopment": {
+    "requestedTurns": 40,
+    "requestedEpisodes": 10,
+    "actualOutputs": 40,
+    "executionErrors": 0,
+    "blockedTurns": 0,
+    "incompleteEpisodes": 0,
+    "truncatedPrompts": 0,
+    "generation": {
+      "maxNewTokens": 32,
+      "temperature": 0,
+      "seed": 42,
+      "torchThreads": 1,
+      "contextLength": 512
+    },
+    "modelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+    "modelManifestSha256": "0dba7d9ddaedb4fba70f490a39ccfed85da12cec6f188b1d891ab6ac4e1aec11",
+    "evidenceSha256": {
+      "raw": "58291a3f0514fa19c76f92a59b92c55053e5ad4bfcfee1a09a3544ab0124ba9e",
+      "primaryReview": "d0e039c296988b674ec31a20f40ab983278385c994615406b314f451bcac0904",
+      "crosscheckReview": "146d476e76f2316d3acff604d63e46e72062a6803c43a1d6f1c85e4cd77d7d2a",
+      "reconciliation": "b96d2baa7c9d774438bbf699938345f2b96d598156809f59e397ec5bded39590",
+      "frozenCases": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+      "frozenRunner": "02501cd2c6ca3c556e79447724b70162f5c18f32b8a67919183d34f427f0cc28",
+      "frozenProtocol": "95dce31bb7279a902bd0d3e0aac28083f9ddc34fade1b6f8ef844219d8f42f99",
+      "frozenManifest": "c73875646bf5ce790f6564e2700a6a1fae258224c180c69b9902d304aabc6f91"
+    },
+    "primary": {
+      "turns": {
+        "complete": 2,
+        "partial": 3,
+        "failed": 35
+      },
+      "completeEpisodes": 0,
+      "criticalFailureTurns": 13
+    },
+    "crosscheck": {
+      "turns": {
+        "complete": 2,
+        "partial": 3,
+        "failed": 35
+      },
+      "completeEpisodes": 0,
+      "criticalFailureTurns": 12
+    },
+    "reviewerProvenance": {
+      "reviewers": "AI assistants of this same project",
+      "humanReview": false,
+      "externalIndependentPanel": false,
+      "scope": "Authorized private summaries and provenance support this public report. Actual generated reply histories were reviewed without fallback or replacement. Gold cases, private conversations and output text are omitted here."
+    },
+    "criticalFailureDiscrepancy": {
+      "primary": 13,
+      "crosscheck": 12,
+      "reconciledUnion": 14,
+      "sharedIntersection": 11,
+      "reconciled": true,
+      "bothReviewersConfirmedUnionAfterComparison": true,
+      "originalReviewsAndFrozenRubricPreserved": true,
+      "fortyTurnGradesChanged": 0,
+      "status": "Preserve frozen primary 13 and crosscheck 12 separately from the post-comparison union of 14 confirmed by both project reviewers. Grades and failed gate are unchanged."
+    },
+    "gate": {
+      "minimumCompleteTurns": 36,
+      "totalTurns": 40,
+      "minimumCompleteEpisodes": 8,
+      "totalEpisodes": 10,
+      "maximumCriticalFailures": 0,
+      "completeTurnsPass": false,
+      "completeEpisodesPass": false,
+      "zeroCriticalFailuresPass": false,
+      "coverageAndExecutionPass": true,
+      "passed": false
+    },
+    "testEvaluated": false,
+    "rawOutputsEdited": false,
+    "unicodeNormalizationApplied": false,
+    "productionAccepted": false,
+    "conversationAccepted": false,
+    "defaultModelPromoted": false,
+    "workerCapabilityValidated": false
+  },
+  "previousKnownDevelopment": {
+    "model": "conversation-basics-v6",
+    "completeTurns": 15,
+    "totalTurns": 22,
+    "knownDevelopmentCases": true,
+    "equivalentComparisonToFreshV7": false,
+    "note": "Previous known 22-turn development and current fresh 40-turn development differ; their totals are not an equivalent controlled model comparison."
+  },
+  "technicalCi": {
+    "receiptSha256": "adc1f6796f6e270cfe9f41f7df77d048760dacb0aeb7be14509087fd929382a0",
+    "runId": 38151813050,
+    "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38151813050",
+    "headSha": "70c5f32458297562b48f974bb42f767ca60a8e36",
+    "status": "completed",
+    "conclusion": "success",
+    "testCountsByJob": {
+      "conversation": 299,
+      "examples": 12,
+      "minimalPython": 233
+    },
+    "logSha256": "f6e10e247a63a23691ef5c52fc461462551d686d2724e6e0286ecfd114dc2387",
+    "countsAreSeparateJobsNotUniqueTotal": true,
+    "exactFinalReleaseCiBound": false,
+    "purpose": "Technical source checks for this explicit prior commit; not model conversation acceptance and not a claim of CI on a future final release HEAD."
+  },
+  "limitations": [
+    "The 40-turn development gate failed; the objective of competent basic conversation remains unmet.",
+    "A larger model, completed training, lower validation NLL, intact weights and passing CI do not establish conversation competence or autonomous work.",
+    "Primary and crosscheck agree on grades but originally counted 13 and 12 critical turns. Both reviewers confirmed their union of 14 after comparison; the frozen original counts, 40 grades and failed gate remain unchanged.",
+    "This is a project AI review, not human acceptance or external independent evaluation.",
+    "No reserved TEST was consulted or scored for this result; no default model promotion occurred.",
+    "No owner data, credentials, actual response text or gold cases are included.",
+    "Later private learning comparisons are separate experiments and are not adopted in these preserved snapshots."
+  ]
+}

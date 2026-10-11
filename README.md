@@ -18,6 +18,14 @@ Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encar
 abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
 persona ni su forma completa de pensar.
 
+El candidato propio más reciente tiene **6.967.296 parámetros**, BPE de 8.192
+tokens y contexto de 512 tokens. Completó 6.000 pasos de preentrenamiento desde
+pesos aleatorios y 6.000 de ajuste conversacional, pero falló la comprobación
+con 40 turnos nuevos: **2 respuestas completas, 3 parciales y 35 fallidas;
+0 de 10 diálogos completos**. No se aceptó ni promovió como modelo
+predeterminado. El [informe de v7](docs/unidad-conversation-language-v7-results.json)
+conserva la evidencia; el objetivo de conversación básica sigue pendiente.
+
 ## Qué contiene
 
 - Un especialista de atención, entrenado desde pesos aleatorios y separado de
@@ -25,11 +33,11 @@ persona ni su forma completa de pensar.
 - Un modelo de lenguaje pequeño con entrenamiento propio. Su demostración sirve
   para comprobar que cambian los pesos y se puede generar texto; no demuestra
   comprensión ni calidad conversacional.
-- Un Transformer conversacional nuevo, de 1.088.256 parámetros, inicializado
-  desde pesos aleatorios. Su primera etapa aprende respuestas breves en español
-  con ejemplos públicos y sintéticos identificados. Permite entrenamiento en
-  segundo plano, checkpoints y reanudación; su calidad debe comprobarse por
-  separado de las pruebas del código.
+- Transformers conversacionales propios desde pesos aleatorios: se conservan
+  las etapas pequeñas de 1.088.256 parámetros y el sucesor de 6.967.296.
+  Aprenden español con textos públicos y ejemplos ficticios identificados.
+  Permiten entrenamiento en segundo plano, checkpoints y reanudación; su
+  calidad debe comprobarse por separado de las pruebas del código.
 - Un registro local de encargos, intentos y correcciones en texto libre. No impone
   categorías de personalidad. Permite preparar ejemplos aprobados para entrenar,
   sin confundir memoria con aprendizaje de parámetros.
@@ -195,7 +203,9 @@ aprende los tokens de documentos de español con procedencia y particiones
 propias. Después puede ajustarse el mismo modelo con conversaciones, conservando
 sus pesos y tokenizador propios. La [guía de preentrenamiento](docs/language-pretraining.md)
 explica los formatos, la reanudación y una configuración nativa de 6.967.296
-parámetros con contexto de 512 tokens. Pasaron 287 pruebas técnicas; disponer de
+parámetros con contexto de 512 tokens. La CI actual pasó **299 pruebas con
+dependencias conversacionales, 12 de ejemplos y 233 en la instalación mínima**.
+Son comprobaciones técnicas separadas de la aceptación del modelo; disponer de
 esta ruta de aprendizaje no demuestra que el nuevo modelo converse bien.
 
 La [base pública de español](docs/unidad-spanish-language-base-v1.json) conserva
@@ -206,6 +216,27 @@ posterior usa diálogos humanos y ejemplos ficticios identificados del proyecto.
 El [preparador reproducible](examples/prepare_public_spanish_language.py) recibe
 las rutas y hashes de los corpus revisados y conserva familias completas. No
 lee el historial personal ni descarga pesos de otros modelos.
+
+Se conservan la [base española de 6.000 pasos](models/spanish-foundation-v1/README.md)
+y el [candidato SFT v7 de otros 6.000 pasos](models/conversation-language-v7/README.md).
+El SFT comenzó desde los pesos propios de la base y conservó su configuración
+y tokenizador, con optimizador y programador nuevos. Se seleccionó el paso
+6.000 por validación:
+NLL de texto 4,77545 en preentrenamiento y NLL 1,63739 con reducción por secuencia
+en SFT. Esas pérdidas tienen objetivos y reducciones distintos; no equivalen a
+recuentos de tokens ni demuestran conversación competente.
+
+En la evaluación nueva de v7, la revisión primaria y la cruzada, realizadas por
+asistentes de IA del proyecto, coincidieron en 2 respuestas completas, 3
+parciales y 35 fallidas, con 0 de 10 diálogos completos. Los 40 turnos se
+generaron sin errores ni truncamiento. No se superó el criterio de 36 respuestas
+completas, 8 diálogos completos y cero fallos críticos. Se mantiene explícita
+la diferencia original de 13 frente a 12 fallos críticos entre las revisiones;
+tras compararlas, ambos asistentes confirmaron una unión de 14 turnos críticos,
+sin cambiar las 40 calificaciones ni el rechazo. No se consultó TEST ni se
+promovió v7 como modelo
+predeterminado. El [informe público](docs/unidad-conversation-language-v7-results.json)
+incluye procedencia, hashes y límites; no es una evaluación externa.
 
 La [instantánea v5](models/conversation-basics-v5/README.md) conserva una mejora
 experimental: 13 respuestas completas de 22 turnos de desarrollo, frente a 6
@@ -225,6 +256,8 @@ El [informe de refinamiento](docs/unidad-learning-refinement-v0.5.2.json)
 registra el cambio conjunto de currículo y tasa de aprendizaje. Son casos de
 desarrollo conocidos, no una prueba nueva de conversación general. Para probar
 este candidato, usa `--model models/conversation-basics-v6` en el comando anterior.
+Sus 15 respuestas completas de 22 turnos conocidos no son comparables
+directamente con los 40 turnos nuevos de v7.
 
 También se compararon señales directas de aprendizaje de atención y selección
 de datos del diálogo. La segunda prueba elevó la copia literal de 37 a 50 casos
