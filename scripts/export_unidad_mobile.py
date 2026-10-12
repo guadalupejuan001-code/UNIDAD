@@ -1,12 +1,13 @@
 """Export existing own weights for a local ONNX adapter; never trains a model.
 
 Run with the repository's conversation dependencies plus onnx==1.17.0 and
-onnxruntime==1.20.1. The .unidad archive is NOT a renamed GGUF file.
+onnxruntime==1.20.0. The .unidad archive is NOT a renamed GGUF file.
 """
 import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import tempfile
 import zipfile
@@ -165,9 +166,21 @@ def main():
                     "files": {name: file_record(root / name) for name in ("model.onnx", "config.json", "tokenizer.json")}}
         (root / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        with zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED) as archive:
-            for name in ("manifest.json", "model.onnx", "config.json", "tokenizer.json"):
-                archive.write(root / name, name)
+        descriptor, pending = tempfile.mkstemp(prefix=".unidad-export-", suffix=".part", dir=args.output.parent)
+        os.close(descriptor)
+        try:
+            with zipfile.ZipFile(pending, "w", zipfile.ZIP_DEFLATED) as archive:
+                for name in ("manifest.json", "model.onnx", "config.json", "tokenizer.json"):
+                    info = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+                    info.compress_type = zipfile.ZIP_DEFLATED
+                    archive.writestr(info, (root / name).read_bytes())
+            with zipfile.ZipFile(pending) as archive:
+                assert archive.testzip() is None, "Export archive is incomplete"
+            with open(pending, "rb") as completed:
+                os.fsync(completed.fileno())
+            os.replace(pending, args.output)
+        finally:
+            Path(pending).unlink(missing_ok=True)
         evidence = {"modelId": engine.model_id, "sourceFiles": source, "export": file_record(args.output),
                     "versions": {"torch": torch.__version__, "onnx": onnx.__version__, "onnxruntime": ort.__version__},
                     "logitCases": len(tests), "maxAbsoluteLogitError": max_error,
