@@ -112,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy"} if result is training else set())
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision"} if result is training else {"copy_head"})
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -150,10 +150,100 @@ def _configs(model_config, training_config):
         training["adaptive_sampling"] = validate_config(training["adaptive_sampling"])
         if training["adaptive_sampling"] is None:
             raise ValueError("adaptive_sampling requires an explicit configuration")
+    if "copy_head" in model:
+        model["copy_head"] = _validate_copy_head(model["copy_head"])
+    if "copy_supervision" in training:
+        training["copy_supervision"] = _validate_copy_supervision(training["copy_supervision"])
+        if "copy_head" not in model:
+            raise ValueError("copy_supervision requires explicit model copy_head")
+        if training.get("objective", "assistant_last_reply") != "assistant_last_reply":
+            raise ValueError("copy_supervision requires last-reply assistant supervision")
+        if training.get("projection_mode", "full") != "supervised":
+            raise ValueError("copy_supervision requires supervised projection")
     # Constructor validates architecture; the requested vocabulary is bounded before fitting.
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
     return model, training
+
+
+# Conditional copy integration: these identifiers bind the verified own B1,
+# not a requested filesystem name or an assumed base tensor count.
+_COPY_B1_ID = "unidad-conversation-737364a8c6f3a798aa4352fffed85ad7bec109ff26b0359510aa3bdab8e81ad6"
+_COPY_B1_WEIGHTS = "67a77ccc76bb51ad0b62828b8e557b4ed0a1a1a8fe45383e3c4334430d409155"
+_COPY_B1_TOKENIZER = "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+_COPY_NEW_KEYS = {"copy_query.weight", "copy_key.weight", "copy_gate.weight", "copy_gate.bias"}
+
+
+def _validate_copy_head(value):
+    if (type(value) is not dict or set(value) != {"version", "rank", "seed"}
+            or type(value["version"]) is not int or value["version"] != 1
+            or type(value["rank"]) is not int or value["rank"] != 32
+            or type(value["seed"]) is not int or not 0 <= value["seed"] <= 2**32 - 1):
+        raise ValueError("copy_head requires version1/rank32 and an integer own seed")
+    return copy.deepcopy(value)
+
+
+def _validate_copy_supervision(value):
+    if type(value) is not dict or set(value) != {"alignment_weight", "gate_weight"}:
+        raise ValueError("copy_supervision requires exactly alignment_weight/gate_weight")
+    for weight in value.values():
+        if type(weight) not in (int, float) or not math.isfinite(weight) or not 0 <= weight <= 10:
+            raise ValueError("Copy auxiliary coefficients must be finite numbers in0..10")
+    return copy.deepcopy(value)
+
+
+def _validate_copy_bootstrap(proof, model_config, lineage, *, expected_base_keys=None):
+    fields = {"parentModelId", "parentWeightsSha256", "parentTokenizerSha256",
+              "baseTensorKeys", "newTensorKeys", "copyHead", "inheritedTensorsByteExact"}
+    if (type(proof) is not dict or set(proof) != fields
+            or proof["parentModelId"] != _COPY_B1_ID or proof["parentWeightsSha256"] != _COPY_B1_WEIGHTS
+            or proof["parentTokenizerSha256"] != _COPY_B1_TOKENIZER
+            or proof["inheritedTensorsByteExact"] is not True):
+        raise ValueError("Invalid own B1 copy bootstrap proof")
+    head = _validate_copy_head(proof["copyHead"])
+    if head != _validate_copy_head(model_config.get("copy_head")):
+        raise ValueError("Copy bootstrap/model configuration mismatch")
+    if (lineage.get("parentModelId") != proof["parentModelId"]
+            or lineage.get("parentWeightsSha256") != proof["parentWeightsSha256"]):
+        raise ValueError("Copy bootstrap/lineage mismatch")
+    keys = proof["baseTensorKeys"]
+    if (type(keys) is not list or not keys or any(type(key) is not str or not key for key in keys)
+            or len(set(keys)) != len(keys) or set(keys) & _COPY_NEW_KEYS
+            or type(proof["newTensorKeys"]) is not list
+            or proof["newTensorKeys"] != sorted(_COPY_NEW_KEYS)):
+        raise ValueError("Invalid inherited/new copy tensor keys")
+    if expected_base_keys is not None and set(keys) != set(expected_base_keys):
+        raise ValueError("Copy bootstrap keys do not match the actual inherited model tensors")
+
+
+def _copy_train_forward(model, inputs, labels, config):
+    """Called only from the TRAIN loop; evaluation remains prediction CE only.
+
+    The staged model shares one hidden pass and returns selected logits in the
+    original projection dtype; head math and auxiliary reductions remain F32.
+    """
+    torch = _torch()
+    if config.get("train_precision") == "cpu_bfloat16":
+        with torch.autocast("cpu", dtype=torch.bfloat16):
+            outputs = model.copy_training_outputs(inputs, labels)
+        expected_dtype = torch.bfloat16
+    else:
+        outputs = model.copy_training_outputs(inputs, labels)
+        expected_dtype = torch.float32
+    if type(outputs) is not tuple or len(outputs) != 4:
+        raise ValueError("Invalid copy training outputs")
+    logits, alignment, gate, stats = outputs
+    if logits.dtype != expected_dtype:
+        raise ValueError("Copy projection did not retain the original precision dtype")
+    for auxiliary in (alignment, gate):
+        if (not isinstance(auxiliary, torch.Tensor) or auxiliary.ndim != 0
+                or auxiliary.dtype != torch.float32 or not torch.isfinite(auxiliary)
+                or auxiliary < 0):
+            raise ValueError("Copy auxiliary losses must be finite nonnegative F32 scalars")
+    if type(stats) is not dict:
+        raise ValueError("Copy training statistics must be a detached JSON object")
+    _json_bytes(stats)
+    return logits.float(), alignment, gate, stats
 
 
 def _validate_sampling_rules(rules):
@@ -415,6 +505,10 @@ def _baseline_score(examples, losses, loss_reduction="token_mean"):
 def _loss_metadata(config):
     # Missing fields remain missing for legacy checkpoints and artifact schemas.
     result = {}
+    if "copy_supervision" in config:
+        result["copySupervision"] = copy.deepcopy(config["copy_supervision"])
+        result["auxiliaryLossSplit"] = "train_only"
+        result["reportedNll"] = "prediction_cross_entropy_only"
     if "partition_policy" in config:
         result["partitionPolicy"] = config["partition_policy"]
         result["testPartitionPresent"] = False
@@ -566,6 +660,9 @@ def _load_checkpoint(run_dir, name):
     if set(weights) != set(reference) or any(weights[key].shape != reference[key].shape or weights[key].dtype != reference[key].dtype for key in reference):
         raise ValueError("Checkpoint tensor keys/shapes/dtypes mismatch")
     model.load_state_dict(weights, strict=True)
+    if "copy_bootstrap" in state:
+        _validate_copy_bootstrap(state["copy_bootstrap"], state["model_config"], state.get("lineage", {}),
+                                 expected_base_keys=set(model.state_dict()) - _COPY_NEW_KEYS)
     tokenizer = Tokenizer.from_str((directory / "tokenizer.json").read_text(encoding="utf-8"))
     from .tokenizer import validate_tokenizer
     validate_tokenizer(tokenizer)
@@ -592,10 +689,12 @@ def _validate_lineage(lineage):
 
 def _initial_own_model(path, model_config):
     from .artifacts import load_artifact
-    from .model import validate_config
+    from .model import ConversationModel, validate_config
     model, tokenizer, manifest = load_artifact(path)
     config = model.config
-    if model_config is not None and validate_config({**config, **model_config}) != config:
+    requested = validate_config({**config, **model_config}) if model_config is not None else config
+    expand_copy = "copy_head" not in config and "copy_head" in requested
+    if not expand_copy and requested != config:
         raise ValueError("Initial model configuration mismatch")
     metadata = manifest["training"]
     origin = metadata.get("trainedFrom")
@@ -607,6 +706,42 @@ def _initial_own_model(path, model_config):
                "parentWeightsSha256": manifest["files"]["weights.safetensors"]["sha256"],
                "parentCorpusSha256": metadata.get("corpusSha256"), "rootOrigin": "random_weights"}
     _validate_lineage(lineage)
+    if expand_copy:
+        base_requested = {key: value for key, value in requested.items() if key != "copy_head"}
+        if base_requested != config:
+            raise ValueError("Copy bootstrap cannot resize or change any inherited base configuration")
+        if (manifest["modelId"] != _COPY_B1_ID
+                or manifest["files"]["weights.safetensors"]["sha256"] != _COPY_B1_WEIGHTS
+                or manifest["files"]["tokenizer.json"]["sha256"] != _COPY_B1_TOKENIZER):
+            raise ValueError("New copy head can only bootstrap the verified own B1")
+        inherited = model.state_dict()
+        torch = _torch()
+        # Construction initializes only the four new head tensors for the
+        # declared own seed; inherited tensors are then copied without casting.
+        expanded = ConversationModel(requested)
+        merged = expanded.state_dict()
+        if set(merged) - set(inherited) != _COPY_NEW_KEYS or not set(inherited) <= set(merged):
+            raise ValueError("Copy bootstrap must add exactly four head tensors")
+        for key, value in inherited.items():
+            if value.shape != merged[key].shape or value.dtype != merged[key].dtype:
+                raise ValueError("Inherited tensor shape/dtype changed")
+            merged[key] = value
+        expanded.load_state_dict(merged, strict=True)
+        actual = expanded.state_dict()
+        if any(not torch.equal(actual[key].contiguous().view(torch.uint8),
+                               value.contiguous().view(torch.uint8)) for key, value in inherited.items()):
+            raise ValueError("Inherited tensors are not byte exact")
+        if _sha(Path(path) / "tokenizer.json") != _COPY_B1_TOKENIZER:
+            raise ValueError("Inherited tokenizer changed during copy bootstrap")
+        proof = {"parentModelId": manifest["modelId"], "parentWeightsSha256": _COPY_B1_WEIGHTS,
+                 "parentTokenizerSha256": _COPY_B1_TOKENIZER, "baseTensorKeys": sorted(inherited),
+                 "newTensorKeys": sorted(_COPY_NEW_KEYS), "copyHead": requested["copy_head"],
+                 "inheritedTensorsByteExact": True}
+        _validate_copy_bootstrap(proof, requested, lineage, expected_base_keys=set(inherited))
+        # Private training handoff only; persisted state/metadata carries this
+        # proof. This attribute is neither a parameter nor an inference input.
+        expanded._copy_bootstrap_proof = proof
+        model, config = expanded, requested
     return model, tokenizer, config, lineage
 
 
@@ -614,8 +749,12 @@ def _origin_metadata(state):
     if "lineage" not in state:
         return {"trainedFrom": "random_weights"}
     _validate_lineage(state["lineage"])
-    return {"trainedFrom": "own_checkpoint", "lineage": copy.deepcopy(state["lineage"]),
-            "optimizerReset": True, "schedulerReset": True}
+    result = {"trainedFrom": "own_checkpoint", "lineage": copy.deepcopy(state["lineage"]),
+              "optimizerReset": True, "schedulerReset": True}
+    if "copy_bootstrap" in state:
+        _validate_copy_bootstrap(state["copy_bootstrap"], state["model_config"], state["lineage"])
+        result["copyBootstrap"] = copy.deepcopy(state["copy_bootstrap"])
+    return result
 
 
 def _validate_resume_state(state, examples):
@@ -624,7 +763,7 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime"}
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime", "copy_bootstrap"}
             or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
@@ -632,6 +771,11 @@ def _validate_resume_state(state, examples):
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    copy_from_b1 = ("copy_head" in requested and state.get("lineage", {}).get("parentModelId") == _COPY_B1_ID)
+    if ("copy_bootstrap" in state) != copy_from_b1:
+        raise ValueError("Checkpoint copy bootstrap policy mismatch")
+    if copy_from_b1:
+        _validate_copy_bootstrap(state["copy_bootstrap"], state["model_config"], state["lineage"])
     if config.get("partition_policy") == "train_validation_only" and (examples["test"] or not examples["train"] or not examples["validation"]):
         raise ValueError("Checkpoint train_validation_only partition mismatch")
     if ("train_precision_runtime" in state) != (config.get("train_precision") == "cpu_bfloat16"):
@@ -848,6 +992,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                      "window_policy": config.get("window_policy", "contiguous_nonoverlapping")}
             if lineage is not None:
                 state["lineage"] = lineage
+            if hasattr(model, "_copy_bootstrap_proof"):
+                state["copy_bootstrap"] = copy.deepcopy(model._copy_bootstrap_proof)
             payload = None
         torch.set_num_threads(config["torch_threads"])
         if config.get("train_precision") == "cpu_bfloat16":
@@ -1016,7 +1162,23 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 batch_indices = state["order"][state["cursor"]:end]
                 inputs, labels = _batch(examples["train"], batch_indices, torch)
                 optimizer.zero_grad(set_to_none=True)
-                if adaptive_sampler is not None:
+                if "copy_supervision" in config:
+                    from .model import assistant_token_losses
+                    logits, alignment_loss, gate_loss, copy_stats = _copy_train_forward(model, inputs, labels, config)
+                    token_losses = assistant_token_losses(logits, labels, projection_mode="supervised")
+                    selected = labels != -100
+                    rows = selected.nonzero(as_tuple=False)[:, 0]
+                    sums = token_losses.new_zeros(labels.shape[0]).scatter_add(0, rows, token_losses)
+                    sequence_losses = sums / selected.sum(dim=1)
+                    copy_ce = (sequence_losses.mean() if config.get("loss_reduction", "token_mean") == "sequence_mean"
+                               else token_losses.mean())
+                    coefficients = config["copy_supervision"]
+                    loss = (copy_ce + coefficients["alignment_weight"] * alignment_loss
+                            + coefficients["gate_weight"] * gate_loss)
+                    if adaptive_sampler is not None:
+                        difficulty = sequence_losses.detach().tolist()
+                        adaptive_sampler.validate_update(batch_indices, difficulty)
+                elif adaptive_sampler is not None:
                     # Reuse one CE computation for both the gradient objective
                     # and detached TRAIN-only difficulty observations.
                     from .model import assistant_token_losses
@@ -1076,8 +1238,14 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 if time.monotonic() - last_heartbeat >= 10:
                     heartbeat()
                     last_heartbeat = time.monotonic()
-                _log(run_dir, {"event": "train", "step": state["step"], "nll": float(loss.detach()),
-                               "gradientNorm": float(norm), "learningRate": optimizer.param_groups[0]["lr"]})
+                if "copy_supervision" in config:
+                    _log(run_dir, {"event": "train", "step": state["step"], "nll": float(copy_ce.detach()),
+                                   "combinedLoss": float(loss.detach()), "alignmentLoss": float(alignment_loss.detach()),
+                                   "gateLoss": float(gate_loss.detach()), "copyStatistics": copy_stats,
+                                   "gradientNorm": float(norm), "learningRate": optimizer.param_groups[0]["lr"]})
+                else:
+                    _log(run_dir, {"event": "train", "step": state["step"], "nll": float(loss.detach()),
+                                   "gradientNorm": float(norm), "learningRate": optimizer.param_groups[0]["lr"]})
             # A segment pause preserves the validation cadence; final limits get one final validation.
             if status == "completed" and state["last_validation_step"] != state["step"]:
                 validate()

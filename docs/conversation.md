@@ -453,6 +453,31 @@ sólo esa respuesta final y EOS; el error permanece como contexto, nunca como
 objetivo. Los datos anteriores y sus particiones se conservan. Ninguno de estos
 helpers participa en la inferencia.
 
+## Cabeza de copia aprendida, experimental
+
+La opción de modelo `"copy_head": {"version": 1, "rank": 32, "seed": 47}`
+añade cuatro tensores propios para atender a posiciones causales de mensajes
+USER. Una compuerta aprendida combina esa distribución con el vocabulario del
+Transformer. `ConversationEngine` carga ambas desde el mismo artefacto; no
+extrae nombres con reglas ni sustituye las respuestas generadas. Al omitir la
+opción se conservan el esquema y el comportamiento de los modelos anteriores.
+
+El entrenamiento puede incluir
+`"copy_supervision": {"alignment_weight": 0.2, "gate_weight": 0.2}` junto con
+`"objective": "assistant_last_reply"` y `"projection_mode": "supervised"`.
+Estos objetivos auxiliares sólo usan TRAIN. Esta primera versión exige
+contextos completos de hasta 512 tokens y respuestas completas de hasta 32
+tokens, contando EOS. Validación conserva la pérdida de predicción; el NLL
+registrado no incluye los auxiliares. La configuración se guarda y se verifica
+al reanudar.
+
+El bootstrap desde B1 verifica su identidad, pesos y tokenizador antes de
+copiar todos sus tensores y añadir únicamente la cabeza nueva. Los artefactos
+con cabeza ya guardada conservan sus propios pesos al iniciar otra etapa.
+Las pruebas cubren causalidad, FP32/BF16, gradientes, carga por el motor y
+reanudación de Adam/RNG. Esta opción sigue siendo experimental: esas pruebas y
+una pérdida menor no acreditan conversación básica.
+
 ## Detener y reanudar
 
 ```bash
