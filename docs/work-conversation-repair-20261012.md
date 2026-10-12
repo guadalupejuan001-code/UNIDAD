@@ -19,7 +19,7 @@ La referencia sigue siendo `models/conversation-reference-c7`, un Transformer pr
 | `tokenizer.json` | `fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d` |
 | `manifest.json` | `12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242` |
 
-Se publican su [configuración](work-repair-experiment-20261012/reference/config.json) y [manifiesto](work-repair-experiment-20261012/reference/manifest.json). Los pesos y los estados de optimizador se conservan fuera de Git.
+Se publican su [configuración](work-repair-experiment-20261012/reference/config.json) y [manifiesto](work-repair-experiment-20261012/reference/manifest.json). Los pesos y los estados de optimizador se conservan también en [la rama de artefactos de GitHub](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012), separados de main y de los cambios de código de este PR.
 
 La [comprobación de equivalencia](work-repair-experiment-20261012/reference/c7-baseline-equivalence.json) compara las 40 respuestas de C7 del PR, generadas con 32 tokens máximos, con las obtenidas en el motor preservado con 160: son iguales en preguntas, historial, tokens generados y texto. Todas terminan por EOS. Esta equivalencia acredita **C7 en esos casos**, no otros candidatos ni otros límites.
 
@@ -218,3 +218,17 @@ PYTHONPATH=src python -m ia_propia.conversation converse --model models/conversa
 ```
 
 El restaurador no inicia entrenamiento. Ambos runs alcanzaron su límite congelado de128; conservar un estado reanudable no autoriza ampliarlo automáticamente. Las rutas absolutas históricas permanecen intactas para no falsificar procedencia. La referencia sigue teniendo errores de idioma, relaciones, correcciones e instrucciones. La conversación cotidiana competente **no está conseguida**.
+
+## Pesos subidos a GitHub
+
+A petición del usuario se subió el paquete completo a [artifacts/unidad-contraste-relacional-20261012](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012), commit `9747b207a078a4c0c51cc2d3492b9179f050a900`. GitHub recibió seis partes consecutivas del ZIP, su manifiesto, hash, recibo y script de reconstrucción. Cada parte tiene como máximo 64 MiB, por debajo del límite de archivos de GitHub. Los 11 hashes de objetos Git y tamaños remotos coinciden con los locales.
+
+La reconstrucción se ejecutó y conservó exactamente el SHA-256 original `5978cf805f005ed3692117d9584ca7b515dc369458292289eaf42cb768619e88`. No se alteraron pesos, checkpoint ni código del modelo. El [recibo de subida](work-repair-experiment-20261012/github-weights-upload-receipt.json) registra la verificación y que main sigue intacta. El endpoint de adjuntos de release rechazó la credencial con 401; se usó la vía Git autenticada disponible y se retiró la release vacía creada por este intento.
+
+Desde un clon de la rama de artefactos:
+
+```bash
+python weights-packages/unidad-contraste-relacional-20261012/reconstruir.py
+```
+
+Obtendrás el ZIP completo para usar el restaurador descrito arriba. Esta subida conserva modelos experimentales; no los promueve ni inicia entrenamiento.
