@@ -321,13 +321,17 @@ class ConversationPrecisionTests(unittest.TestCase):
                 self.assertTrue(all(value.dtype == self.torch.float32 and self.torch.isfinite(value).all()
                                     for value in model.state_dict().values()))
                 observations = []
-                hook = model.register_forward_hook(lambda _model, _inputs, logits:
-                    observations.append((logits.dtype, self.torch.is_autocast_enabled("cpu"))))
-                try:
+                native_selected_logits = model.selected_logits
+
+                def observe_selected_logits(*args, **kwargs):
+                    logits = native_selected_logits(*args, **kwargs)
+                    observations.append((logits.dtype, self.torch.is_autocast_enabled("cpu")))
+                    return logits
+
+                # Selective decoding bypasses module forward hooks.
+                with patch.object(model, "selected_logits", side_effect=observe_selected_logits):
                     result = chat(model, tokenizer, [{"role": "user", "content": "Hola."}],
                                   max_new_tokens=2, temperature=0, seed=42)
-                finally:
-                    hook.remove()
                 self.assertTrue(result["experimental"])
                 self.assertTrue(observations)
                 self.assertTrue(all(value == (self.torch.float32, False) for value in observations))

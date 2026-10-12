@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUtc": "2026-10-12T20:47:24.331407+00:00",
+  "branch": "work/generacion-posicion-final-20261012",
+  "sourceHeadBeforeRepair": "eb2c89632f1a3135ecb80a55c66851fab2aacf2d",
+  "scope": "Only precision-test instrumentation and this evidence; no runtime, weights, archived replies, training or acceptance changes.",
+  "failureCause": "chat calls selected_logits directly; register_forward_hook on model observes no inference calls. The original precision test asserts a nonempty observation list.",
+  "intervention": "Only test instrumentation changed to wrap the real selected_logits method, retaining output-dtype/autocast, stored-weight, manifest, identity and export checks. No runtime/model/evaluation thresholds changed.",
+  "before": {
+    "targetedTestExitCode": 1,
+    "failingSubtests": 2,
+    "testSha256": "29762bb06a1cd00ef96a2a6754e03d47537c74f895a990d9924890d7532270d4",
+    "log": "before-targeted.log"
+  },
+  "after": {
+    "testSha256": "11ea3b5d8b7393f8e1aca6880ffe2e57a5096a1c88316cf369cb345b6ef3d422",
+    "precisionTests": 8,
+    "fullTests": 372,
+    "exampleTests": 12,
+    "exitCodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "commands": [
+    "PYTHONPATH=src:tests python -m unittest test_conversation_precision -v",
+    "PYTHONPATH=src python -m unittest discover -s tests -v",
+    "PYTHONPATH=src python -m unittest discover -s examples -p 'test_*.py' -v"
+  ],
+  "logs": {
+    "before-targeted.log": {
+      "sha256": "a254d1cbc864aaacc19045ec1bf50f0243dc94950e632fc0aeaccfd5e71a28f9",
+      "bytes": 1992
+    },
+    "after-precision.log": {
+      "sha256": "7461a22a9488cb93b0932c14080f2b32e72c08d3c2282c758c3707b016780d5c",
+      "bytes": 1704
+    },
+    "full-tests-after.log": {
+      "sha256": "092f893b637120f45e9a17aa8d0be631f566fb72e39b83bb2dac017eb664ef2a",
+      "bytes": 67560
+    },
+    "examples-tests-after.log": {
+      "sha256": "ef57a28a184c55c0967bff6be1fdfd1a620bc013db1ab0ffd646cb12e11ab482",
+      "bytes": 2465
+    }
+  },
+  "remoteFailuresBeforeRepair": [
+    "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38305657548",
+    "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38305649322"
+  ],
+  "historicalOriginalSourcesCompared": {
+    "tests/test_conversation_precision.py": {
+      "originalPR2Blob": "3ce36319391a9c3db1457b642f1a74d3522810d8",
+      "beforeRepairHeadBlob": "3ce36319391a9c3db1457b642f1a74d3522810d8"
+    },
+    ".github/workflows/checks.yml": {
+      "originalPR2Blob": "80ef39eb5bc74ff99aea7fc75ed406d7a36909e2",
+      "beforeRepairHeadBlob": "80ef39eb5bc74ff99aea7fc75ed406d7a36909e2"
+    },
+    "src/ia_propia/conversation/model.py": {
+      "originalPR2Blob": "bcaa08aabcb81f4f8fe3d2ac4071085ee343fc60",
+      "beforeRepairHeadBlob": "bcaa08aabcb81f4f8fe3d2ac4071085ee343fc60"
+    }
+  },
+  "historicCIQualification": "Historical cabc203 CI failure metadata exists but log-failed returned empty for those two runs. The identical source/test/workflow contents and local before-repair reproduction establish a pre-existing incompatible spy, without asserting a matching historic CI traceback.",
+  "runtimeAndAllModelFilesUnchanged": true,
+  "acceptanceEvaluatorUnchanged": true,
+  "conversationalQualityImprovementClaimed": false,
+  "budgetsReopened": false
+}
