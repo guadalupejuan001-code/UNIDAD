@@ -1,0 +1,1483 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-12T11:15:24.483564+00:00",
+  "purpose": "Post-freeze comparison of unchanged manual primary judgments on exposed knownDEV40; no conversational promotion",
+  "reviewer": {
+    "identity": "Codex /root/e1_completion_review",
+    "type": "project_ai_assistant",
+    "human": false,
+    "independentExternal": false,
+    "modelIdentityVisible": true
+  },
+  "E1Primary": {
+    "path": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/natural-question-paraphrase-e1-step1024-v1.review-primary.json",
+    "sha256": "2b642cb5eb04a3bcb658bd28f527aaf6456e6fa6d72f1bef3674c3183e1ac6f8",
+    "freezeUtc": "2026-10-12T11:11:53.933751+00:00",
+    "summary": {
+      "turns": 40,
+      "constraints": 120,
+      "C": 3,
+      "P": 3,
+      "F": 34,
+      "episodeC": 0,
+      "episodeP": 0,
+      "episodeF": 10,
+      "incompleteEpisodes": 0,
+      "criticalFailureTurns": 11,
+      "criticalFailureTurnIds": [
+        "ngdev-v1-01-t1",
+        "ngdev-v1-03-t1",
+        "ngdev-v1-03-t4",
+        "ngdev-v1-05-t2",
+        "ngdev-v1-06-t2",
+        "ngdev-v1-06-t3",
+        "ngdev-v1-08-t1",
+        "ngdev-v1-08-t3",
+        "ngdev-v1-09-t1",
+        "ngdev-v1-09-t4",
+        "ngdev-v1-10-t3"
+      ],
+      "constraintStatusCounts": {
+        "violated": 39,
+        "omitted": 19,
+        "satisfied": 43,
+        "partial": 19
+      },
+      "developmentGatePassed": false,
+      "minimumCompleteReplies": 36,
+      "minimumCompleteEpisodes": 8,
+      "maximumCriticalFailures": 0,
+      "verdict": "Rejected for conversation-development promotion: fewer than 36 complete replies, fewer than 8 complete episodes, and critical failures."
+    },
+    "all40GradesAnd120ConstraintJudgmentsUnchanged": true,
+    "all120OriginalConstraintIdsTextsCriticalFlagsVerified": true,
+    "wordingOnlyClarification": {
+      "path": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/natural-question-paraphrase-e1-step1024-v1.review-primary-wording-clarification.json",
+      "sha256": "27ee564553061846da78a5f202937293128a554f420d8e99abfee2d8e0e7ed6a",
+      "scope": "Quote the answer No in 09-t2 explanation; no grade or constraint status changes."
+    }
+  },
+  "comparatorsReadOnlyAfterPrimaryFreeze": true,
+  "comparators": [
+    {
+      "id": "C7",
+      "reviewPath": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/novel-literal-d2-old-corpus-control-step1024-v1.review-primary.json",
+      "reviewSha256": "1e095defc49eeecc676b3608165a7cf7d765990713ea764a14d87297cd6bc5b9",
+      "rawPath": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/novel-literal-d2-old-corpus-control-step1024-v1.json",
+      "rawSha256Verified": "e29b762b59b24cf41728943901e2983529f8cd426b2b42217b5d7a2571296077",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "modelManifestSha256": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+      "artifactHashes": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+      },
+      "summary": {
+        "C": 7,
+        "P": 5,
+        "F": 28,
+        "turnCounts": {
+          "C": 7,
+          "P": 5,
+          "F": 28
+        },
+        "requestedTurns": 40,
+        "reviewedActualTurns": 40,
+        "constraintJudgments": 120,
+        "constraintStatusCounts": {
+          "not_satisfied": 50,
+          "satisfied": 59,
+          "violated": 11
+        },
+        "episodeCounts": {
+          "C": 0,
+          "P": 0,
+          "F": 10
+        },
+        "completeCorrectEpisodes": 0,
+        "incompleteEpisodes": 0,
+        "criticalFailureTurns": 6,
+        "criticalTurnIds": [
+          "ngdev-v1-01-t4",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-03-t4",
+          "ngdev-v1-04-t3",
+          "ngdev-v1-06-t3",
+          "ngdev-v1-10-t3"
+        ],
+        "criticalCounts": {
+          "contradiction": 5,
+          "invention": 1,
+          "disobedience": 0
+        },
+        "actualOutputs": 40,
+        "executionErrors": 0,
+        "blockedTurns": 0,
+        "truncatedPrompts": 0,
+        "stopReasons": {
+          "eos": 40
+        },
+        "generatedTokensMin": 4,
+        "generatedTokensMax": 22,
+        "promptTokensMax": 203,
+        "budget32ReachedTurns": 0
+      },
+      "reviewer": {
+        "agent": "/root/natural_diversity",
+        "identity": "Same-project AI assistant; nonhuman, nonexternal, not independent of project",
+        "modelIdentityVisible": true,
+        "knownDevelopmentExposed": true,
+        "qualityBlind": false,
+        "priorQualitativeInformation": "Root read all40 and reported clear failure with some correct city/destination/listening answers; no counts were provided. Earlier ownD1 primaries are known from prior work, but no cross or novel-corpus arm results were consulted for this primary.",
+        "otherCurrentPeerGradesReadBeforeFreeze": false,
+        "otherArmResultsReadBeforeFreeze": false,
+        "manualSemanticJudgments": true
+      },
+      "E1MinusComparator": {
+        "C": -4,
+        "P": -2,
+        "F": 6,
+        "completeEpisodes": 0,
+        "criticalFailureTurnsAsReportedByDifferentPrimaryReviewers": 5
+      },
+      "turnTransitionsComparatorToE1": {
+        "F->F": 26,
+        "C->F": 4,
+        "F->P": 1,
+        "C->C": 2,
+        "P->F": 4,
+        "C->P": 1,
+        "P->P": 1,
+        "F->C": 1
+      },
+      "lostCompleteTurnIds": [
+        "ngdev-v1-01-t2",
+        "ngdev-v1-02-t2",
+        "ngdev-v1-03-t1",
+        "ngdev-v1-03-t2",
+        "ngdev-v1-07-t1"
+      ],
+      "gainedCompleteTurnIds": [
+        "ngdev-v1-09-t2"
+      ],
+      "pairedTurns": [
+        {
+          "id": "ngdev-v1-01-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Toda Zelomara.",
+          "E1Actual": "Te vas a Zelomara.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "identity_or_preference_substitution"
+          ]
+        },
+        {
+          "id": "ngdev-v1-01-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres dibujar un faro.",
+          "E1Actual": "Has Zelomara.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-01-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Has Zelomara.",
+          "E1Actual": "Has Zelaia.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-01-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres Zelomara.",
+          "E1Actual": "Quieres dibujar a llám ahora.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-01-t4-grounding",
+              "type": "contradiction",
+              "reason": "Presenta Zelomara como preferencia al preguntar por los apodos; el preferido actual es Zelaia.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "P",
+          "comparatorActual": "No has dicho el es.",
+          "E1Actual": "No has dicho el es?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "F",
+          "comparatorActual": "ElDe acuerdo es color coral.",
+          "E1Actual": "El color es color es color es color es color.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "El paraguas.",
+          "E1Actual": "El primalavia es color es color color coral.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Tu color es color es color su color su color.",
+          "E1Actual": "Tu color es?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t1",
+          "comparatorGrade": "C",
+          "E1Grade": "F",
+          "comparatorActual": "Estás en Valdehumo; irás Puerto Arce.",
+          "E1Actual": "Estás en Valdehumo y mañana voy a Puerto Arce.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-03-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "F",
+          "comparatorActual": "Irás a Villa Nébula, no a Puerto Arce.",
+          "E1Actual": "Antes estabas no a Puerto Arce.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Irás Puerto Arce.",
+          "E1Actual": "Estoy no a Puerto Arce.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-03-t3-grounding",
+              "type": "contradiction",
+              "reason": "Vuelve a Puerto Arce tras el cambio explícito; la respuesta anterior del modelo no revoca el USER.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "En Valdehumo y mañana voy a Puerto Arce.",
+          "E1Actual": "Antes estabas en Valdehumo y mañana voy a Puerto Arce.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-03-t4-grounding",
+              "type": "contradiction",
+              "reason": "Da Puerto Arce como destino actual pese a que fue descartado.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "stale_correction",
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-04-t1",
+          "comparatorGrade": "C",
+          "E1Grade": "C",
+          "comparatorActual": "De acuerdo, te escucho.",
+          "E1Actual": "De acuerdo, te escucho.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "C",
+          "comparatorActual": "¿Qué quieres contarme sobre eso?",
+          "E1Actual": "¿Qué quieres contarme sobre eso.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Tu jefe se me has dicho el origen de que hace esta fue que me hace esta pregunta al hablar.",
+          "E1Actual": "Te escucho. Puedes seguir contándome.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-04-t3-grounding",
+              "type": "contradiction",
+              "reason": "Responde Tu jefe a quién interrumpió, contra la negativa explícita del USER.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "¿Qué te gustaría contar de eso?",
+          "E1Actual": "¿Qué tienes en mente?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Se llama y?",
+          "E1Actual": "Tu proyecto se llama qué le llama qué es qué es reúne cuentos breves.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t2",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Surgió de las historias que me has dicho el origen.",
+          "E1Actual": "Has historias? Podeba mi abuelo reún no me has dicho el origen de las historiasves.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "known_fact_denied"
+          ]
+        },
+        {
+          "id": "ngdev-v1-05-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Antes estabas en las historias que me has dicho el qué cambiado.",
+          "E1Actual": "Quieres qué no me has dicho el es cambiado cuentos breves.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Dijiste Cuaderno.",
+          "E1Actual": "Tu abuelo es salió que salió.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-06-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No me has dicho el?",
+          "E1Actual": "El veci es mi veciarielvo es mi vecino.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-06-t2",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Aelvaria; el violín y Darielvo es mi veci.",
+          "E1Actual": "Selvaria es tu violín.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "referent_or_relation_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Usarásvo es Unidad.",
+          "E1Actual": "Usarásvo es Unidad.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-06-t3-grounding",
+              "type": "invention",
+              "reason": "Introduce Usarásvo y lo identifica con Unidad, sin hecho USER/SYSTEM que lo permita.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_invention"
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "En hermana; con Selvo es cactus.",
+          "E1Actual": "Antes es tu vecino.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t1",
+          "comparatorGrade": "C",
+          "E1Grade": "P",
+          "comparatorActual": "Enivia el jueves a las cinco.",
+          "E1Actual": "En las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t2",
+          "comparatorGrade": "P",
+          "E1Grade": "P",
+          "comparatorActual": "Aamosves a las cinco.",
+          "E1Actual": "A las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "En la cita con igualamos las cinco.",
+          "E1Actual": "A las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t4",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "La hora es las cinco.",
+          "E1Actual": "El día, el día, la hora actual nosdías las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-08-t1",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Antes tenías van las plantas; empiego las plantas y revisar un borrador.",
+          "E1Actual": "El regaré las plantas y revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Antes plantas y revisaré un borrador.",
+          "E1Actual": "Antes perador es revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-08-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Sicero vangas un borrador.",
+          "E1Actual": "No. Podemos revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "explicit_instruction_violation",
+            "extra_action_plan"
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Sicero es vangas.",
+          "E1Actual": "Soy Unidad.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No me has dicho el origen Laderas de Sal.",
+          "E1Actual": "No me has dicho el título de laderas Laderas de Sal.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "known_fact_denied"
+          ]
+        },
+        {
+          "id": "ngdev-v1-09-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "C",
+          "comparatorActual": "No me has dicho el origen Laderas de Sal.",
+          "E1Actual": "No. Podemos hablar de Sal.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres?",
+          "E1Actual": "Has ape contándome.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres Sal.",
+          "E1Actual": "Estás en domingo un libro titulado Laderas de lectura.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "critical_invention",
+            "title_substitution"
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No me has dicho el material.",
+          "E1Actual": "No. Te leo hace esta actividad: mi perro Trazuli al amanecer me despeja.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-10-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Antes ayuda amanecer me despeja.",
+          "E1Actual": "Antes pe, sin tomar una me has dicho?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-10-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Surgió pasear, escribo Trazuli al amanecer me despeja.",
+          "E1Actual": "Tienes al amanecer me despeja.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-10-t3-grounding",
+              "type": "contradiction",
+              "reason": "Conserva al amanecer como respuesta vigente después de Desde hoy ... al anochecer, no al amanecer.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "stale_correction"
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Antes de pasear, sin prociona el habito.",
+          "E1Actual": "Te escucho.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        }
+      ]
+    },
+    {
+      "id": "D3V1",
+      "reviewPath": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/native-copy-token-feature-d3-old-v1-control-step1024-v1.review-primary.json",
+      "reviewSha256": "e57912ca7af2fb27ac391e4b93c7721f644fd16ca9a500480942fa6affffcd5d",
+      "rawPath": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/native-copy-token-feature-d3-old-v1-control-step1024-v1.json",
+      "rawSha256Verified": "17a1748a2fccd883cff2ac5fb2dd69a37b23049daaa20ce7d65c8b4769dd4bf9",
+      "modelId": "unidad-conversation-e8bfe406139899a29b0a219df2fe0b61935fc0bf17498104ebfbeedc3c1a99fd",
+      "modelManifestSha256": "15fedf571aa64be082079751aea4c479aa4b2065a0f30e9b8e9a38f615989f30",
+      "artifactHashes": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "32346c74d2b38fb0802847ee0e5c8a6d02d12a10e0150beb6f3107b2d609557d"
+      },
+      "summary": {
+        "C": 3,
+        "P": 5,
+        "F": 32,
+        "turnCounts": {
+          "C": 3,
+          "P": 5,
+          "F": 32
+        },
+        "reviewedActualTurns": 40,
+        "constraintJudgments": 120,
+        "constraintStatusCounts": {
+          "not_satisfied": 46,
+          "satisfied": 50,
+          "violated": 24
+        },
+        "episodeCounts": {
+          "C": 0,
+          "P": 0,
+          "F": 10
+        },
+        "completeCorrectEpisodes": 0,
+        "incompleteEpisodes": 0,
+        "criticalFailureTurns": 12,
+        "criticalTurnIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-01-t3",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-03-t4",
+          "ngdev-v1-04-t3",
+          "ngdev-v1-05-t3",
+          "ngdev-v1-06-t3",
+          "ngdev-v1-06-t4",
+          "ngdev-v1-07-t4",
+          "ngdev-v1-09-t2",
+          "ngdev-v1-10-t3"
+        ],
+        "criticalCounts": {
+          "contradiction": 7,
+          "invention": 5,
+          "disobedience": 0
+        },
+        "actualOutputs": 40,
+        "executionErrors": 0,
+        "blockedTurns": 0,
+        "truncatedPrompts": 0,
+        "stopReasons": {
+          "eos": 40
+        },
+        "generatedTokensMin": 3,
+        "generatedTokensMax": 16,
+        "promptTokensMax": 190,
+        "budget32ReachedTurns": 0
+      },
+      "reviewer": {
+        "agent": "/root/natural_diversity",
+        "identity": "Same-project AI; nonhuman, nonexternal, not independent of project",
+        "modelIdentityVisible": true,
+        "knownDevelopmentExposed": true,
+        "fullyBlind": false,
+        "priorInformation": "Earlier ownknownDEV reviews and selectedC7 reference were known. No qualitative or exact grade statement about this D3 arm was received before reading; no other current grades or V2 raw were read.",
+        "otherCurrentPeerGradesReadBeforeFreeze": false,
+        "otherArmRawReadBeforeFreeze": false,
+        "comparisonPerformedBeforePrimaryFreeze": false,
+        "manualSemanticJudgments": true
+      },
+      "E1MinusComparator": {
+        "C": 0,
+        "P": -2,
+        "F": 2,
+        "completeEpisodes": 0,
+        "criticalFailureTurnsAsReportedByDifferentPrimaryReviewers": -1
+      },
+      "turnTransitionsComparatorToE1": {
+        "F->F": 30,
+        "F->P": 1,
+        "C->F": 1,
+        "P->F": 3,
+        "C->C": 2,
+        "P->P": 2,
+        "F->C": 1
+      },
+      "lostCompleteTurnIds": [
+        "ngdev-v1-02-t2"
+      ],
+      "gainedCompleteTurnIds": [
+        "ngdev-v1-09-t2"
+      ],
+      "pairedTurns": [
+        {
+          "id": "ngdev-v1-01-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Toda Zelomara.",
+          "E1Actual": "Te vas a Zelomara.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "identity_or_preference_substitution"
+          ]
+        },
+        {
+          "id": "ngdev-v1-01-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Te vas a Zelomara.",
+          "E1Actual": "Has Zelomara.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-01-t2-grounding",
+              "type": "invention",
+              "reason": "Atribuye al USER irse a Zelomara, viaje/relación personal no indicado.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-01-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Me llamas Zelaia.",
+          "E1Actual": "Has Zelaia.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-01-t3-grounding",
+              "type": "contradiction",
+              "reason": "Me llamas Zelaia asigna al asistente la preferencia de nombre del USER e invierte las funciones.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-01-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres dibujar: llám.",
+          "E1Actual": "Quieres dibujar a llám ahora.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "P",
+          "comparatorActual": "No has dicho el?",
+          "E1Actual": "No has dicho el es?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "F",
+          "comparatorActual": "El color es coral.",
+          "E1Actual": "El color es color es color es color es color.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "El paraguas.",
+          "E1Actual": "El primalavia es color es color color coral.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-02-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Tu color es?",
+          "E1Actual": "Tu color es?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t1",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Estás en Valdehumo y mañana.",
+          "E1Actual": "Estás en Valdehumo y mañana voy a Puerto Arce.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-03-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "A Puerto Arce.",
+          "E1Actual": "Antes estabas no a Puerto Arce.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-03-t2-grounding",
+              "type": "contradiction",
+              "reason": "A Puerto Arce contradice el destino actualizado Villa Nébula.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Estás en Villa Nébula, no a Puerto Arce.",
+          "E1Actual": "Estoy no a Puerto Arce.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-03-t3-grounding",
+              "type": "contradiction",
+              "reason": "Estás en Villa Nébula convierte el futuro destino en llegada actual, contra el USER.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-03-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Estás a Puerto Arce.",
+          "E1Actual": "Antes estabas en Valdehumo y mañana voy a Puerto Arce.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-03-t4-grounding",
+              "type": "contradiction",
+              "reason": "Recupera Puerto Arce como lugar actual al resumir el viaje corregido.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "stale_correction",
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-04-t1",
+          "comparatorGrade": "C",
+          "E1Grade": "C",
+          "comparatorActual": "De acuerdo, te escucho.",
+          "E1Actual": "De acuerdo, te escucho.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t2",
+          "comparatorGrade": "C",
+          "E1Grade": "C",
+          "comparatorActual": "¿Qué quieres contarme sobre eso?",
+          "E1Actual": "¿Qué quieres contarme sobre eso.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Te interrumpi quiero contar sobre eso sobre hablar.",
+          "E1Actual": "Te escucho. Puedes seguir contándome.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-04-t3-grounding",
+              "type": "contradiction",
+              "reason": "Te interrumpi cambia el responsable explícito Taviro por el asistente; tilde ausente no elimina la atribución.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-04-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "¿Qué te gustaría contar de eso.",
+          "E1Actual": "¿Qué tienes en mente?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t1",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Se llama Cobre reúne cuentos breves.",
+          "E1Actual": "Tu proyecto se llama qué le llama qué es qué es reúne cuentos breves.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "La idea se llama mi abuelo.",
+          "E1Actual": "Has historias? Podeba mi abuelo reún no me has dicho el origen de las historiasves.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "known_fact_denied"
+          ]
+        },
+        {
+          "id": "ngdev-v1-05-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres mi abuelo.",
+          "E1Actual": "Quieres qué no me has dicho el es cambiado cuentos breves.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-05-t3-grounding",
+              "type": "invention",
+              "reason": "Introduce Quieres mi abuelo como deseo personal no compartido.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-05-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Tu abuelo es llamaré Cuaderno de Junco.",
+          "E1Actual": "Tu abuelo es salió que salió.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-06-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "El?",
+          "E1Actual": "El veci es mi veciarielvo es mi vecino.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-06-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "El violaria es mi vecino.",
+          "E1Actual": "Selvaria es tu violín.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "referent_or_relation_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Usarásvo es Unidad.",
+          "E1Actual": "Usarásvo es Unidad.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-06-t3-grounding",
+              "type": "invention",
+              "reason": "Usarásvo es Unidad: mismo literal evaluado antes, identidad no sustentada por USER/SYSTEM.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_invention"
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Envo cuida es cactus.",
+          "E1Actual": "Antes es tu vecino.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-06-t4-grounding",
+              "type": "invention",
+              "reason": "Introduce Envo como cuidador de cactus; no pertenece a los dos actores del USER.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t1",
+          "comparatorGrade": "P",
+          "E1Grade": "P",
+          "comparatorActual": "En las cinco.",
+          "E1Actual": "En las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t2",
+          "comparatorGrade": "P",
+          "E1Grade": "P",
+          "comparatorActual": "A las cinco.",
+          "E1Actual": "A las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "A las cinco.",
+          "E1Actual": "A las cinco.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-07-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "A las el día, la hora actual y el jueves.",
+          "E1Actual": "El día, el día, la hora actual nosdías las cinco.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-07-t4-grounding",
+              "type": "contradiction",
+              "reason": "Recupera jueves al preguntar por día/hora/lugar vigentes tras cambiar a sábado.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-08-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No. Podemos revisaré un borrador.",
+          "E1Actual": "El regaré las plantas y revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_invention",
+            "identity_swap"
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Tu prioridad ahora es.",
+          "E1Actual": "Antes perador es revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-08-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "El borrador es.",
+          "E1Actual": "No. Podemos revisaré un borrador.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "explicit_instruction_violation",
+            "extra_action_plan"
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Después vasdad.",
+          "E1Actual": "Soy Unidad.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No me has dicho el origen Laderas de Sal.",
+          "E1Actual": "No me has dicho el título de laderas Laderas de Sal.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "known_fact_denied"
+          ]
+        },
+        {
+          "id": "ngdev-v1-09-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "C",
+          "comparatorActual": "Ahora es de Sal.",
+          "E1Actual": "No. Podemos hablar de Sal.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-09-t2-grounding",
+              "type": "invention",
+              "reason": "Atribuye el libro a Sal sin fuente; un componente del título no permite identificar al autor.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t3",
+          "comparatorGrade": "P",
+          "E1Grade": "F",
+          "comparatorActual": "Quieres necesitesto para mi club.",
+          "E1Actual": "Has ape contándome.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-09-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "¿Qué quieres contarmetando?",
+          "E1Actual": "Estás en domingo un libro titulado Laderas de lectura.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "critical_invention",
+            "title_substitution"
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t1",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "¿Qué quieres contarme. Puedes contar me has dicho qué significa?",
+          "E1Actual": "No. Te leo hace esta actividad: mi perro Trazuli al amanecer me despeja.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-10-t2",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No. Puedes contarme qué significa para ti.",
+          "E1Actual": "Antes pe, sin tomar una me has dicho?",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        },
+        {
+          "id": "ngdev-v1-10-t3",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "Sur amanecer me has dichochuli al aman.",
+          "E1Actual": "Tienes al amanecer me despeja.",
+          "comparatorCriticalFailures": [
+            {
+              "constraintId": "ngdev-v1-10-t3-grounding",
+              "type": "contradiction",
+              "reason": "Conserva amanecer como respuesta de horario vigente después de corregir a anochecer.",
+              "globalRubricSource": "cases.json:rubric.criticalMeaning"
+            }
+          ],
+          "E1CriticalTypes": [
+            "critical_contradiction",
+            "stale_correction"
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t4",
+          "comparatorGrade": "F",
+          "E1Grade": "F",
+          "comparatorActual": "No. Puedes seguirías.",
+          "E1Actual": "Te escucho.",
+          "comparatorCriticalFailures": [],
+          "E1CriticalTypes": []
+        }
+      ]
+    }
+  ],
+  "sameDoseE1vsD3V1": {
+    "endpointSteps": 1024,
+    "sameOwnParent": true,
+    "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+    "sameModelConfig": {
+      "context_length": 512,
+      "copy_head": {
+        "rank": 32,
+        "seed": 47,
+        "version": 1
+      },
+      "d_model": 256,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "n_heads": 8,
+      "n_layers": 6,
+      "seed": 42,
+      "vocab_size": 8192
+    },
+    "sameTrainingConfigExceptFirstSamplingDatasetLabel": {
+      "batch_size": 8,
+      "checkpoint_every": 512,
+      "copy_supervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      },
+      "grad_clip": 1.0,
+      "learning_rate": 0.0001,
+      "loss_reduction": "token_mean",
+      "max_epochs": 1000,
+      "max_seconds": 86400,
+      "max_steps": 8192,
+      "min_delta": 0.0001,
+      "objective": "assistant_last_reply",
+      "partition_policy": "train_validation_only",
+      "patience": 40,
+      "projection_mode": "supervised",
+      "seed": 50,
+      "torch_threads": 4,
+      "train_precision": "cpu_bfloat16",
+      "validation_every": 1024,
+      "warmup_steps": 32,
+      "weight_decay": 0.01,
+      "window_policy": "sliding_context"
+    },
+    "sameRemainingSamplingRulesAndFactors": true,
+    "E1FirstSamplingRule": {
+      "dataset": "unidad-natural-question-paraphrase-proposal-v1",
+      "factor": 1.0
+    },
+    "D3V1FirstSamplingRule": {
+      "dataset": "unidad-natural-scene-novel-literals-v1",
+      "factor": 1.0
+    },
+    "bothNewOptimizerAndScheduler": true,
+    "sameFullTrainingRun": false,
+    "sameCorpus": false,
+    "strictSourceByteIdentity": false,
+    "bothNativeCopyVersion2Activated": false,
+    "bothSpan3ScopeEnabled": false,
+    "E1QuestionOnlyCorpusReported": true,
+    "designReceipts": [
+      {
+        "path": "/workspace/ia-propia/private/conversation/natural-question-paraphrase-trial-e1-v1/design.json",
+        "sha256": "0ba26e336f91cb25f37af85e243d501171a275d5d500df7e4af6d15184809f98"
+      },
+      {
+        "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-paired-scene-d3-v1/old-v1-control/design.json",
+        "sha256": "0e3b91046afab3247c7e27dd520b287a7eb068b8a172057252b9c7576feaceb3"
+      }
+    ]
+  },
+  "sourceCorrespondence": {
+    "E1FrozenConversationFiles": [
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/artifacts.py",
+        "expectedSha256": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+        "actualSha256": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/runtime.py",
+        "expectedSha256": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+        "actualSha256": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/jobs.py",
+        "expectedSha256": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+        "actualSha256": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/assessment.py",
+        "expectedSha256": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+        "actualSha256": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/tokenizer.py",
+        "expectedSha256": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+        "actualSha256": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/scoring.py",
+        "expectedSha256": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+        "actualSha256": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/training.py",
+        "expectedSha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+        "actualSha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/language_data.py",
+        "expectedSha256": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0",
+        "actualSha256": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/contract.py",
+        "expectedSha256": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+        "actualSha256": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/model.py",
+        "expectedSha256": "f47b6cd6f2bf9a6f700c60c2af54706b9a705343a3a3b5de832cfbc80681f5fc",
+        "actualSha256": "f47b6cd6f2bf9a6f700c60c2af54706b9a705343a3a3b5de832cfbc80681f5fc"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/__main__.py",
+        "expectedSha256": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2",
+        "actualSha256": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/adaptive.py",
+        "expectedSha256": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+        "actualSha256": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/__init__.py",
+        "expectedSha256": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+        "actualSha256": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1"
+      },
+      {
+        "path": "/workspace/ia-propia/src/ia_propia/conversation/data.py",
+        "expectedSha256": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b",
+        "actualSha256": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b"
+      }
+    ],
+    "E1All14CurrentSourceBytesMatchFrozenS14": true,
+    "D3V1ArchivedConversation14AllMatchFrozenDesignPins": true,
+    "D3V1All37ArchivedSourceBytesMatchPreservationReceipt": true,
+    "D3V1SourcePreservationReceipt": {
+      "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-paired-scene-d3-v1/root-source-and-dialog-preservation-v1.json",
+      "sha256": "a28d669cdbf83d0805d3594ef4b596fcefba3d854429a05c9b4fb42ff5caafcc"
+    },
+    "twoSourceDifferences": [
+      {
+        "file": "training.py",
+        "E1Sha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+        "D3V1ExecutedSha256": "eacdd7ad92a74abb9f029050d0b24d1d4aafa4cc64c8a3a49fa33e7fc69399ae"
+      },
+      {
+        "file": "model.py",
+        "E1Sha256": "f47b6cd6f2bf9a6f700c60c2af54706b9a705343a3a3b5de832cfbc80681f5fc",
+        "D3V1ExecutedSha256": "e54eff8efac58d95ce74d301065947db5dceed30a5101c3242dd820a99f4fd9a"
+      }
+    ],
+    "public96Correspondence": "Parent reports current f47/e490 source matches public96; this reviewer independently verified current S14 against E1 frozen design, not the remote commit.",
+    "oldRouteEvidence": {
+      "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-tests-v1/focused-verification-summary-v1.json",
+      "sha256": "054044c88e4d018984ec170bf9648b0a84e169896065416fb336b795b4564ca1",
+      "status": "six_distinct_contract_methods_passed_across_first_run_and_single_fixture_retry",
+      "successfulDistinctMethods": 6,
+      "successfulMethods": [
+        "test_01_legacy_and_head1_absence_byte_rng_and_config",
+        "test_02_tiny_registered_bootstrap_zero_alpha_engine",
+        "test_03_scalar_first_then_projection_gradients_without_weight_decay",
+        "test_04_features_controls_user_causality_and_no_source_fallback",
+        "test_05_native_dropout_resume_exact_proofs_and_export_without_parent_paths",
+        "test_06_bad_parent_ancestor_and_resume_config_reject_before_updates"
+      ],
+      "firstRunPasses": 5,
+      "firstRunFixtureErrors": 1,
+      "targetedFixtureRetryPasses": 1,
+      "targetedFixtureCorrection": "stop tiny Engine history if actual generated text is empty/whitespace; retain equality of unmodified outputs; never fabricate prior assistant text"
+    },
+    "realParentInitialAlphaZeroEvidence": {
+      "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-real-parent-parity-v2/receipt.json",
+      "sha256": "4e670365c1b5671d73886d851c94adb8ef8096f230d8a071f2656e6f799ad98e",
+      "status": "PASS",
+      "oldModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "zeroScaleInitial": true,
+      "inherited80TensorsByteExact": true,
+      "new2Tensors": true,
+      "ownBpeExact": true,
+      "fullForwardBitExactPrecisions": [
+        "float32",
+        "cpu_bfloat16"
+      ],
+      "fourActualEngineTurnOutputsEqual": true,
+      "scope": "Untrained version2 with alpha zero only; not evidence of trained conversational competence or a claim that E1/D3 source bytes are identical."
+    },
+    "conclusion": "D3V1 executed e54/eac code with feature2 inactive; old-route preservation was verified by the referenced contracts. E1 executed frozen/current f47/e490. These are distinct source bytes and must not be described as identical."
+  },
+  "completionReceipts": {
+    "E1": {
+      "path": "/workspace/ia-propia/private/conversation/natural-question-paraphrase-trial-e1-v1/completion-receipt.json",
+      "sha256": "2a3e9cfbf0b11068bcaa134c5c8aa1368e3d166195371d1578c28ed243666004",
+      "selectedStep": 1024,
+      "selectedModelId": "unidad-conversation-4b1c14ccade5e0ead4ec0e95948b3b8689933a77157340e844e23fa245a7bb0d",
+      "startedUtc": "2026-10-12T03:48:27.370686+00:00",
+      "finishedUtc": "2026-10-12T03:55:52.297167+00:00",
+      "finishedBeforeOriginalDeadline": true,
+      "status": "stopped",
+      "reason": "signal",
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "sourceInputsUnmodifiedReported": true
+    },
+    "D3V1": {
+      "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-paired-scene-d3-v1/old-v1-control/completion-receipt.json",
+      "sha256": "1d0ad54a1dbb04de7222435652fd01c2a313afc48af23d3af6bcea6d34b73ebb",
+      "selectedStep": 1024,
+      "selectedModelId": "unidad-conversation-e8bfe406139899a29b0a219df2fe0b61935fc0bf17498104ebfbeedc3c1a99fd",
+      "startedUtc": "2026-10-12T03:22:06.778102+00:00",
+      "finishedUtc": "2026-10-12T03:29:20.970108+00:00",
+      "finishedBeforeOriginalDeadline": true,
+      "status": "stopped",
+      "reason": "signal",
+      "optimizerReset": true,
+      "schedulerReset": true,
+      "sourceInputsUnmodifiedReported": true
+    },
+    "E1Supervisor": {
+      "path": "/workspace/ia-propia/private/conversation/natural-question-paraphrase-trial-e1-v1/supervisor-completion.json",
+      "sha256": "a5cf184a83310dd726af7b0d99dea74879523a868af6d06ab75f4e11a0c984a8",
+      "receipt": {
+        "finishedAt": 1791777352.8914576,
+        "exitCode": 0,
+        "deadlineExceeded": false,
+        "forcedKill": false,
+        "childReaped": true,
+        "supervisorFailure": null,
+        "trialReceiptExists": true,
+        "conversationAccepted": false
+      }
+    }
+  },
+  "currentArtifactIdentityVerification": {
+    "E1": {
+      "path": "/workspace/ia-propia/private/conversation/natural-question-paraphrase-trial-e1-v1/endpoint",
+      "modelId": "unidad-conversation-4b1c14ccade5e0ead4ec0e95948b3b8689933a77157340e844e23fa245a7bb0d",
+      "manifestSha256": "94e70cc0e990a6c2fe56e2461b1c4dec4b8aaa794c97339f66acb15eb2fb7b38",
+      "filesSha256Verified": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "a435c9069ed450937f6ca6e866351e79bf8feb6e3d38cde2e857198e7efa5613"
+      },
+      "lineage": {
+        "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+        "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "rootOrigin": "random_weights"
+      }
+    },
+    "D3V1": {
+      "path": "/workspace/ia-propia/private/conversation/native-copy-token-feature-paired-scene-d3-v1/old-v1-control/endpoint",
+      "modelId": "unidad-conversation-e8bfe406139899a29b0a219df2fe0b61935fc0bf17498104ebfbeedc3c1a99fd",
+      "manifestSha256": "15fedf571aa64be082079751aea4c479aa4b2065a0f30e9b8e9a38f615989f30",
+      "filesSha256Verified": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "32346c74d2b38fb0802847ee0e5c8a6d02d12a10e0150beb6f3107b2d609557d"
+      },
+      "lineage": {
+        "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+        "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "rootOrigin": "random_weights"
+      }
+    }
+  },
+  "verdict": "E1 fails 36/40, 8/10 and zero-critical gate. It regresses in complete replies versus C7 and adds no complete-reply or episode gain over same-dose D3V1. Do not promote E1 or adopt question paraphrases as a demonstrated conversational improvement.",
+  "comparisonLimits": [
+    "C7 and D3V1 primary reviews were made by a different project-AI reviewer; same frozen rubric but possible semantic judgment differences.",
+    "Reported critical-count differences are not a demonstrated safety or competence improvement; primary accounting and fragment/role interpretation differ.",
+    "No change was made to any frozen primary judgments after comparison.",
+    "The C7/E1 comparison includes 1024 additional updates and changed corpus; it is not an isolated causal test of paraphrasing.",
+    "E1/D3V1 have matching intended update dose and hyperparameters but different corpus, nonidentical source bytes, one seed, and exposed development cases; no final heldout claim.",
+    "No NLL is used for competence. No model execution, training, source or training-data mutation, private lexical audit body, prospective-final cases or basic-acceptance cases were accessed by this review."
+  ],
+  "testEvaluated": false,
+  "productionAccepted": false,
+  "workerCapabilityValidated": false,
+  "trainingPerformedByReviewer": false
+}
