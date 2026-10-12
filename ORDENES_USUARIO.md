@@ -42,6 +42,16 @@ de pago, para entrenar desde los pesos propios de C7 con los ejemplos corregidos
 cuatro turnos y comprobar sus conversaciones. Esta ampliación no reinicia el presupuesto
 anterior ni cambia la aceptación.
 
+La misión posterior exige resolver el aprendizaje conversacional desde la
+evidencia real: distinguir defectos técnicos, falta de base lingüística,
+generalización, deterioro durante el ajuste y errores de evaluación. Utilizar
+controles de aprendizaje desde pesos aleatorios con preparación comparable;
+una referencia preentrenada sólo compara respuestas. Ejecutar las correcciones
+rutinarias y experimentos acotados con los recursos disponibles, sin pedir otro
+prompt para cada dificultad. Consultar gastos, accesos nuevos o cambios
+irreversibles. Los presupuestos anteriores cerrados no se reinician ni se
+presentan como procesos activos.
+
 ## Órdenes recibidas
 
 1. Crear modelos propios desde cero. La petición original contempla una capacidad

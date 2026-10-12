@@ -268,6 +268,8 @@ class ConversationModel(nn.Module):
         additionally requires the last ASSISTANT marker to remain visible in
         every window. Labels from older replies, USER text, PAD/role targets or
         markerless cropped fragments fail. Inference never calls this method.
+        Each whole-context window supports 1..128 last-reply targets including
+        EOS, within the existing maximum of 512 context tokens.
 
         Returns (selected_scores, alignment_loss, gate_loss, detached_stats).
         Alignment averages eligible tokens per window, then eligible windows.
@@ -284,8 +286,8 @@ class ConversationModel(nn.Module):
             raise ConversationError("Copy auxiliary supervision requires a nonempty whole context of at most 512 tokens")
         selected = labels != IGNORE_INDEX
         target_counts = selected.sum(dim=1)
-        if not torch.all((target_counts > 0) & (target_counts <= 32)):
-            raise ConversationError("Each copy training window requires 1..32 last-reply targets, including EOS")
+        if not torch.all((target_counts > 0) & (target_counts <= 128)):
+            raise ConversationError("Each copy training window requires 1..128 last-reply targets, including EOS")
         targets = labels[selected]
         if torch.any((targets < 0) | (targets >= self._config["vocab_size"])) or torch.any((targets <= ASSISTANT_ID) & (targets != EOS_ID)):
             raise ConversationError("Copy training targets must be payload tokens or EOS")
@@ -342,7 +344,7 @@ class ConversationModel(nn.Module):
                       "queryCoverage": int(eligible.sum()) / targets.numel(),
                       "windowCoverage": int(eligible_windows.sum()) / input_ids.shape[0],
                       "supervisionScope": "last_visible_assistant_full_context_only",
-                      "maxWholeContextTokens": 512, "maxReplyTargetTokensIncludingEos": 32}
+                      "maxWholeContextTokens": 512, "maxReplyTargetTokensIncludingEos": 128}
         return values, alignment, gate_loss, statistics
 
 

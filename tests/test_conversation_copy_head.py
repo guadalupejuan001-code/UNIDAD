@@ -427,6 +427,143 @@ class CopyNumericalTests(unittest.TestCase):
                 self.assertFalse(manifest["training"]["testEvaluated"])
                 self.assertEqual(manifest["training"]["copySupervision"], COEFFICIENTS)
 
+    def long_reply_fixture(self, target_counts=(64, 128)):
+        from ia_propia.conversation.contract import BOS_ID, USER_ID, ASSISTANT_ID, EOS_ID, IGNORE_INDEX
+        # Sources are declared explicitly: both 7 and 8 have four USER
+        # occurrences; the two older ASSISTANT occurrences of 9 cannot copy.
+        prefix = [BOS_ID, USER_ID, 7, 8, 7, 8, EOS_ID, ASSISTANT_ID, 9, 9,
+                  EOS_ID, USER_ID, 8, 7, 8, 7, EOS_ID, ASSISTANT_ID]
+        marker = len(prefix) - 1
+        ids = self.torch.zeros((len(target_counts), 512), dtype=self.torch.long)
+        labels = self.torch.full_like(ids, IGNORE_INDEX)
+        for row, count in enumerate(target_counts):
+            if row == 0:
+                payload = [7] * (count - 3) + [8, 9]
+            else:
+                payload = [8] * 10 + [7] + [9] * (count - 12)
+            sequence = prefix + payload
+            ids[row, :len(sequence)] = self.torch.tensor(sequence)
+            labels[row, marker:marker + count] = self.torch.tensor(payload + [EOS_ID])
+        return ids, labels, marker, [2, 3, 4, 5, 12, 13, 14, 15]
+
+    def test_long_reply_unequal_windows_source_scope_and_manual_reductions(self):
+        from ia_propia.conversation.contract import EOS_ID, IGNORE_INDEX
+        from torch.nn import functional
+        torch = self.torch
+        model = self.model(context_length=512)
+        ids, labels, marker, source_positions = self.long_reply_fixture()
+        selected = labels != IGNORE_INDEX
+        for row, count in enumerate((64, 128)):
+            self.assertEqual(selected[row].nonzero().flatten().tolist(), list(range(marker, marker + count)))
+            self.assertEqual(int(labels[row, marker + count - 1]), EOS_ID)
+            self.assertTrue(bool((ids[row, marker + count:] == 0).all()))
+        with patch.object(model, "_hidden", wraps=model._hidden) as hidden:
+            scores, alignment, gate, stats = model.copy_training_outputs(ids, labels)
+            self.assertEqual(hidden.call_count, 1)
+        self.assertEqual(tuple(scores.shape), (192, self.base_config["vocab_size"]))
+        self.assertEqual({key: stats[key] for key in (
+            "supervisedQueries", "eligibleQueries", "eligibleWindows", "batchWindows",
+            "gatePositiveQueries", "gateNegativeQueries", "matchingPositions",
+            "maxWholeContextTokens", "maxReplyTargetTokensIncludingEos")}, {
+            "supervisedQueries": 192, "eligibleQueries": 73, "eligibleWindows": 2,
+            "batchWindows": 2, "gatePositiveQueries": 73, "gateNegativeQueries": 119,
+            "matchingPositions": 292, "maxWholeContextTokens": 512,
+            "maxReplyTargetTokensIncludingEos": 128})
+        self.assertEqual(stats["queryCoverage"], 73 / 192)
+        self.assertEqual(stats["windowCoverage"], 1)
+        _, details = model._copy_project(ids, selected, details=True)
+        for allowed in details["allowed"]:
+            self.assertEqual(details["sourcePositions"][allowed].tolist(), source_positions)
+        self.assertFalse(bool(details["allowed"][:, [7, 8]].any()))
+        # Independent scalar reference uses the authored positions and raw head
+        # parameters, without the production role mask or auxiliary reductions.
+        with torch.no_grad():
+            hidden = model._hidden(ids)
+            alignment_windows, gate_windows = [], []
+            pooled_alignment, pooled_gate = [], []
+            for row, count in enumerate((64, 128)):
+                alignment_tokens, gate_tokens = [], []
+                keys = functional.linear(hidden[row, [position - 1 for position in source_positions]],
+                                         model.copy_key.weight)
+                for position in range(marker, marker + count):
+                    token = int(labels[row, position])
+                    query = functional.linear(hidden[row, position], model.copy_query.weight)
+                    attention = torch.softmax((keys * query).sum(-1) / math.sqrt(HEAD["rank"]), dim=0)
+                    eligible = token in (7, 8)
+                    if eligible:
+                        mass = sum(float(attention[index]) for index, source in enumerate(source_positions)
+                                   if int(ids[row, source]) == token)
+                        alignment_tokens.append(-math.log(mass))
+                    logit = float(functional.linear(hidden[row, position], model.copy_gate.weight,
+                                                    model.copy_gate.bias))
+                    gate_tokens.append(math.log1p(math.exp(logit)) - int(eligible) * logit)
+                alignment_windows.append(sum(alignment_tokens) / len(alignment_tokens))
+                gate_windows.append(sum(gate_tokens) / len(gate_tokens))
+                pooled_alignment.extend(alignment_tokens)
+                pooled_gate.extend(gate_tokens)
+        expected_alignment, expected_gate = sum(alignment_windows) / 2, sum(gate_windows) / 2
+        self.assertAlmostEqual(float(alignment.detach()), expected_alignment, places=6)
+        self.assertAlmostEqual(float(gate.detach()), expected_gate, places=6)
+        self.assertGreater(abs(expected_alignment - sum(pooled_alignment) / len(pooled_alignment)), 1e-4)
+        self.assertGreater(abs(expected_gate - sum(pooled_gate) / len(pooled_gate)), 0.1)
+
+    def test_long_reply_fp32_and_bf16_finite_all_parameter_and_nonzero_head_gradients(self):
+        from ia_propia.conversation.model import assistant_token_loss
+        torch = self.torch
+        ids, labels, _, _ = self.long_reply_fixture()
+        for precision in (torch.float32, torch.bfloat16):
+            with self.subTest(precision=precision):
+                model = self.model(context_length=512)
+                with torch.autocast("cpu", dtype=torch.bfloat16, enabled=precision == torch.bfloat16):
+                    scores, alignment, gate, stats = model.copy_training_outputs(ids, labels)
+                self.assertEqual(scores.dtype, precision)
+                self.assertEqual((alignment.dtype, gate.dtype), (torch.float32, torch.float32))
+                self.assertEqual(stats["maxReplyTargetTokensIncludingEos"], 128)
+                self.assertTrue(bool(torch.isfinite(scores).all()))
+                ce = assistant_token_loss(scores.float(), labels, "sequence_mean", projection_mode="supervised")
+                loss = ce + COEFFICIENTS["alignment_weight"] * alignment + COEFFICIENTS["gate_weight"] * gate
+                self.assertTrue(bool(torch.isfinite(loss)))
+                loss.backward()
+                for name, parameter in model.named_parameters():
+                    self.assertIsNotNone(parameter.grad, name)
+                    self.assertEqual(parameter.dtype, torch.float32, name)
+                    self.assertTrue(bool(torch.isfinite(parameter.grad).all()), name)
+                    if name in NEW_KEYS:
+                        self.assertGreater(float(parameter.grad.abs().sum()), 0, name)
+
+    def test_long_reply_malformed_supervision_rejects_before_hidden(self):
+        from ia_propia.conversation.contract import ASSISTANT_ID, EOS_ID, IGNORE_INDEX
+        model = self.model(context_length=512)
+        ids, labels, marker, _ = self.long_reply_fixture()
+        invalid = [("129 targets", *self.long_reply_fixture((129,))[:2])]
+        hidden_marker = ids.clone()
+        hidden_marker[0, marker] = 9
+        invalid.append(("hidden last marker", hidden_marker, labels))
+        missing_assistant = ids.clone()
+        missing_assistant[missing_assistant == ASSISTANT_ID] = 9
+        invalid.append(("missing ASSISTANT marker", missing_assistant, labels))
+        older_labels = labels.clone()
+        older_labels[0, 7:10] = self.torch.tensor([9, 9, EOS_ID])
+        invalid.append(("supervised older reply", ids, older_labels))
+        duplicate_eos_ids, duplicate_eos_labels = ids.clone(), labels.clone()
+        duplicate_eos_labels[0, marker + 1] = EOS_ID
+        duplicate_eos_ids[0, marker + 2] = EOS_ID
+        invalid.append(("duplicate EOS", duplicate_eos_ids, duplicate_eos_labels))
+        missing_eos = labels.clone()
+        missing_eos[0, marker + 63] = 9
+        invalid.append(("missing final EOS", ids, missing_eos))
+        shifted = labels.clone()
+        shifted[0, marker + 4] = 8
+        invalid.append(("shifted label", ids, shifted))
+        gapped = labels.clone()
+        gapped[0, marker + 15] = IGNORE_INDEX
+        invalid.append(("label gap", ids, gapped))
+        for name, bad_ids, bad_labels in invalid:
+            with self.subTest(name=name), patch.object(model, "_hidden", wraps=model._hidden) as hidden:
+                with self.assertRaises(ValueError):
+                    model.copy_training_outputs(bad_ids, bad_labels)
+                hidden.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
