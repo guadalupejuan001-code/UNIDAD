@@ -1,0 +1,1954 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Prospective same-facts wording/order and actual/ideal-history diagnosis; new synthetic exposed-DEV after use, never TRAIN or FINAL.",
+  "authorship": {
+    "author": "/root/linguistic_development, project AI agent",
+    "independentHumanEvaluation": false,
+    "newCaseModelOutputsSeen": false,
+    "trainingBodiesRead": false,
+    "reservedFinalRead": false,
+    "personalChatRewrittenAsTraining": false,
+    "priorExposedDevelopmentEvidenceRead": true
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "factorialBaseCases": [
+    {
+      "id": "r01",
+      "skill": "explicit_fact_retrieval",
+      "worldId": "colors-v1",
+      "factBlocksCanonical": [
+        "La taza es violeta.",
+        "La botella es verde."
+      ],
+      "questionCanonical": "¿De qué color es la taza?",
+      "questionParaphrase": "Dime el color que tiene la taza.",
+      "requestedTarget": "taza",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ]
+    },
+    {
+      "id": "r02",
+      "skill": "explicit_fact_retrieval",
+      "worldId": "colors-v1",
+      "factBlocksCanonical": [
+        "La taza es violeta.",
+        "La botella es verde."
+      ],
+      "questionCanonical": "¿De qué color es la botella?",
+      "questionParaphrase": "Dime el color que tiene la botella.",
+      "requestedTarget": "botella",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ]
+    },
+    {
+      "id": "r03",
+      "skill": "explicit_fact_retrieval",
+      "worldId": "locations-v1",
+      "factBlocksCanonical": [
+        "Los guantes están en el cajón.",
+        "La bufanda está sobre la silla."
+      ],
+      "questionCanonical": "¿Dónde están los guantes?",
+      "questionParaphrase": "Dime en qué lugar están los guantes.",
+      "requestedTarget": "guantes",
+      "constraints": [
+        "Identificar el cajón como lugar de los guantes.",
+        "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar los guantes en un lugar distinto del cajón."
+      ]
+    },
+    {
+      "id": "r04",
+      "skill": "explicit_fact_retrieval",
+      "worldId": "locations-v1",
+      "factBlocksCanonical": [
+        "Los guantes están en el cajón.",
+        "La bufanda está sobre la silla."
+      ],
+      "questionCanonical": "¿Dónde está la bufanda?",
+      "questionParaphrase": "Dime en qué lugar está la bufanda.",
+      "requestedTarget": "bufanda",
+      "constraints": [
+        "Identificar la silla como lugar de la bufanda.",
+        "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar la bufanda en un lugar distinto de la silla."
+      ]
+    },
+    {
+      "id": "r05",
+      "skill": "relation_and_referent",
+      "worldId": "people-v1",
+      "factBlocksCanonical": [
+        "Inés es mi prima y guarda una postal.",
+        "Damián es mi vecino y guarda un llavero."
+      ],
+      "questionCanonical": "¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "questionParaphrase": "Dime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "requestedTarget": "postal",
+      "constraints": [
+        "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+      ]
+    },
+    {
+      "id": "r06",
+      "skill": "relation_and_referent",
+      "worldId": "people-v1",
+      "factBlocksCanonical": [
+        "Inés es mi prima y guarda una postal.",
+        "Damián es mi vecino y guarda un llavero."
+      ],
+      "questionCanonical": "¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "questionParaphrase": "Dime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "requestedTarget": "llavero",
+      "constraints": [
+        "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+      ]
+    },
+    {
+      "id": "r07",
+      "skill": "relation_and_referent",
+      "worldId": "loans-v1",
+      "factBlocksCanonical": [
+        "Yo presté la revista a Silvia.",
+        "Silvia prestó el paraguas a Omar."
+      ],
+      "questionCanonical": "¿A quién presté yo la revista?",
+      "questionParaphrase": "Dime quién recibió de mí la revista.",
+      "requestedTarget": "revista",
+      "constraints": [
+        "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ]
+    },
+    {
+      "id": "r08",
+      "skill": "relation_and_referent",
+      "worldId": "loans-v1",
+      "factBlocksCanonical": [
+        "Yo presté la revista a Silvia.",
+        "Silvia prestó el paraguas a Omar."
+      ],
+      "questionCanonical": "¿Quién recibió el paraguas de Silvia?",
+      "questionParaphrase": "Dime a quién le prestó Silvia el paraguas.",
+      "requestedTarget": "paraguas",
+      "constraints": [
+        "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ]
+    },
+    {
+      "id": "r09",
+      "skill": "language_and_instruction_production",
+      "worldId": "notice-v1",
+      "factBlocksCanonical": [
+        "El ascensor está parado por una revisión.",
+        "La escalera sigue abierta."
+      ],
+      "questionCanonical": "Redacta un aviso breve con ambos datos en una sola frase.",
+      "questionParaphrase": "Escribe una única frase breve de aviso que conserve los dos datos.",
+      "requestedTarget": "aviso completo",
+      "constraints": [
+        "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+        "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+        "No añadir duración, peligro, horario o instrucciones no dados."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+      ]
+    },
+    {
+      "id": "r10",
+      "skill": "language_and_instruction_production",
+      "worldId": "notice-v1",
+      "factBlocksCanonical": [
+        "El ascensor está parado por una revisión.",
+        "La escalera sigue abierta."
+      ],
+      "questionCanonical": "Escribe sólo el motivo por el que el ascensor está parado.",
+      "questionParaphrase": "Di únicamente la causa de la parada del ascensor.",
+      "requestedTarget": "motivo",
+      "constraints": [
+        "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+        "Omitir la escalera y todo dato ajeno al motivo pedido."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+      ]
+    },
+    {
+      "id": "r11",
+      "skill": "language_and_instruction_production",
+      "worldId": "explanation-v1",
+      "factBlocksCanonical": [
+        "El agua quedó dentro porque el tapón estaba bien cerrado.",
+        "El vaso vacío estaba junto a la botella."
+      ],
+      "questionCanonical": "Explica con palabras sencillas por qué el agua quedó dentro.",
+      "questionParaphrase": "Di en lenguaje cotidiano qué evitó que saliera el agua.",
+      "requestedTarget": "causa",
+      "constraints": [
+        "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+        "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+        "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+      ],
+      "criticalIf": [
+        "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+      ]
+    },
+    {
+      "id": "r12",
+      "skill": "language_and_instruction_production",
+      "worldId": "explanation-v1",
+      "factBlocksCanonical": [
+        "El agua quedó dentro porque el tapón estaba bien cerrado.",
+        "El vaso vacío estaba junto a la botella."
+      ],
+      "questionCanonical": "Reescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "questionParaphrase": "Expresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "requestedTarget": "resultado y causa",
+      "constraints": [
+        "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+        "No incluir el vaso ni añadir hechos nuevos.",
+        "Se acepta cualquier reformulación natural que conserve resultado y causa."
+      ],
+      "criticalIf": [
+        "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+      ]
+    }
+  ],
+  "wordingPairs": [
+    {
+      "baseCaseId": "r01",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r01-o0-w0",
+        "pr1diag-v1-r01-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r01",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r01-o1-w0",
+        "pr1diag-v1-r01-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r02",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r02-o0-w0",
+        "pr1diag-v1-r02-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r02",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r02-o1-w0",
+        "pr1diag-v1-r02-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r03",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r03-o0-w0",
+        "pr1diag-v1-r03-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r03",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r03-o1-w0",
+        "pr1diag-v1-r03-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r04",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r04-o0-w0",
+        "pr1diag-v1-r04-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r04",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r04-o1-w0",
+        "pr1diag-v1-r04-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r05",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r05-o0-w0",
+        "pr1diag-v1-r05-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r05",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r05-o1-w0",
+        "pr1diag-v1-r05-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r06",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r06-o0-w0",
+        "pr1diag-v1-r06-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r06",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r06-o1-w0",
+        "pr1diag-v1-r06-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r07",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r07-o0-w0",
+        "pr1diag-v1-r07-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r07",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r07-o1-w0",
+        "pr1diag-v1-r07-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r08",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r08-o0-w0",
+        "pr1diag-v1-r08-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r08",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r08-o1-w0",
+        "pr1diag-v1-r08-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r09",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r09-o0-w0",
+        "pr1diag-v1-r09-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r09",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r09-o1-w0",
+        "pr1diag-v1-r09-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r10",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r10-o0-w0",
+        "pr1diag-v1-r10-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r10",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r10-o1-w0",
+        "pr1diag-v1-r10-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r11",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r11-o0-w0",
+        "pr1diag-v1-r11-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r11",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r11-o1-w0",
+        "pr1diag-v1-r11-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r12",
+      "factOrder": 0,
+      "episodeIds": [
+        "pr1diag-v1-r12-o0-w0",
+        "pr1diag-v1-r12-o0-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r12",
+      "factOrder": 1,
+      "episodeIds": [
+        "pr1diag-v1-r12-o1-w0",
+        "pr1diag-v1-r12-o1-w1"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "id": "pr1diag-v1-r01-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "¿De qué color es la taza?",
+      "turns": [
+        {
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?",
+          "constraints": [
+            "Identificar violeta como color de la taza.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la taza por la botella ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la taza un color distinto de violeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "Dime el color que tiene la taza.",
+      "turns": [
+        {
+          "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la taza.",
+          "constraints": [
+            "Identificar violeta como color de la taza.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la taza por la botella ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la taza un color distinto de violeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "¿De qué color es la taza?",
+      "turns": [
+        {
+          "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la taza?",
+          "constraints": [
+            "Identificar violeta como color de la taza.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la taza por la botella ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la taza un color distinto de violeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "Dime el color que tiene la taza.",
+      "turns": [
+        {
+          "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la taza.",
+          "constraints": [
+            "Identificar violeta como color de la taza.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la taza por la botella ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la taza un color distinto de violeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "¿De qué color es la botella?",
+      "turns": [
+        {
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?",
+          "constraints": [
+            "Identificar verde como color de la botella.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la botella por la taza ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la botella un color distinto de verde."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "Dime el color que tiene la botella.",
+      "turns": [
+        {
+          "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la botella.",
+          "constraints": [
+            "Identificar verde como color de la botella.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la botella por la taza ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la botella un color distinto de verde."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "¿De qué color es la botella?",
+      "turns": [
+        {
+          "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la botella?",
+          "constraints": [
+            "Identificar verde como color de la botella.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la botella por la taza ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la botella un color distinto de verde."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "Dime el color que tiene la botella.",
+      "turns": [
+        {
+          "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la botella.",
+          "constraints": [
+            "Identificar verde como color de la botella.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la botella por la taza ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la botella un color distinto de verde."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "¿Dónde están los guantes?",
+      "turns": [
+        {
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde están los guantes?",
+          "constraints": [
+            "Identificar el cajón como lugar de los guantes.",
+            "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar los guantes en un lugar distinto del cajón."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "Dime en qué lugar están los guantes.",
+      "turns": [
+        {
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar están los guantes.",
+          "constraints": [
+            "Identificar el cajón como lugar de los guantes.",
+            "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar los guantes en un lugar distinto del cajón."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "¿Dónde están los guantes?",
+      "turns": [
+        {
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde están los guantes?",
+          "constraints": [
+            "Identificar el cajón como lugar de los guantes.",
+            "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar los guantes en un lugar distinto del cajón."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "Dime en qué lugar están los guantes.",
+      "turns": [
+        {
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar están los guantes.",
+          "constraints": [
+            "Identificar el cajón como lugar de los guantes.",
+            "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar los guantes en un lugar distinto del cajón."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "¿Dónde está la bufanda?",
+      "turns": [
+        {
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde está la bufanda?",
+          "constraints": [
+            "Identificar la silla como lugar de la bufanda.",
+            "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar la bufanda en un lugar distinto de la silla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "Dime en qué lugar está la bufanda.",
+      "turns": [
+        {
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar está la bufanda.",
+          "constraints": [
+            "Identificar la silla como lugar de la bufanda.",
+            "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar la bufanda en un lugar distinto de la silla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "¿Dónde está la bufanda?",
+      "turns": [
+        {
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde está la bufanda?",
+          "constraints": [
+            "Identificar la silla como lugar de la bufanda.",
+            "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar la bufanda en un lugar distinto de la silla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "Dime en qué lugar está la bufanda.",
+      "turns": [
+        {
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar está la bufanda.",
+          "constraints": [
+            "Identificar la silla como lugar de la bufanda.",
+            "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+          ],
+          "criticalIf": [
+            "Situar la bufanda en un lugar distinto de la silla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "turns": [
+        {
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+          "constraints": [
+            "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "turns": [
+        {
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+          "constraints": [
+            "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "turns": [
+        {
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+          "constraints": [
+            "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "turns": [
+        {
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+          "constraints": [
+            "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "turns": [
+        {
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+          "constraints": [
+            "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "turns": [
+        {
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+          "constraints": [
+            "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "turns": [
+        {
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+          "constraints": [
+            "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "turns": [
+        {
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+          "constraints": [
+            "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+            "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+          ],
+          "criticalIf": [
+            "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "¿A quién presté yo la revista?",
+      "turns": [
+        {
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿A quién presté yo la revista?",
+          "constraints": [
+            "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "Dime quién recibió de mí la revista.",
+      "turns": [
+        {
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime quién recibió de mí la revista.",
+          "constraints": [
+            "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "¿A quién presté yo la revista?",
+      "turns": [
+        {
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿A quién presté yo la revista?",
+          "constraints": [
+            "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "Dime quién recibió de mí la revista.",
+      "turns": [
+        {
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime quién recibió de mí la revista.",
+          "constraints": [
+            "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "¿Quién recibió el paraguas de Silvia?",
+      "turns": [
+        {
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿Quién recibió el paraguas de Silvia?",
+          "constraints": [
+            "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "Dime a quién le prestó Silvia el paraguas.",
+      "turns": [
+        {
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime a quién le prestó Silvia el paraguas.",
+          "constraints": [
+            "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "¿Quién recibió el paraguas de Silvia?",
+      "turns": [
+        {
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿Quién recibió el paraguas de Silvia?",
+          "constraints": [
+            "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "Dime a quién le prestó Silvia el paraguas.",
+      "turns": [
+        {
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime a quién le prestó Silvia el paraguas.",
+          "constraints": [
+            "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+            "No sustituir receptor, objeto o dirección del préstamo."
+          ],
+          "criticalIf": [
+            "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Redacta un aviso breve con ambos datos en una sola frase.",
+      "turns": [
+        {
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+          "constraints": [
+            "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+            "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+            "No añadir duración, peligro, horario o instrucciones no dados."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Escribe una única frase breve de aviso que conserve los dos datos.",
+      "turns": [
+        {
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+          "constraints": [
+            "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+            "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+            "No añadir duración, peligro, horario o instrucciones no dados."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Redacta un aviso breve con ambos datos en una sola frase.",
+      "turns": [
+        {
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+          "constraints": [
+            "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+            "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+            "No añadir duración, peligro, horario o instrucciones no dados."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Escribe una única frase breve de aviso que conserve los dos datos.",
+      "turns": [
+        {
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+          "constraints": [
+            "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+            "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+            "No añadir duración, peligro, horario o instrucciones no dados."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Escribe sólo el motivo por el que el ascensor está parado.",
+      "turns": [
+        {
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+          "constraints": [
+            "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+            "Omitir la escalera y todo dato ajeno al motivo pedido."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Di únicamente la causa de la parada del ascensor.",
+      "turns": [
+        {
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nDi únicamente la causa de la parada del ascensor.",
+          "constraints": [
+            "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+            "Omitir la escalera y todo dato ajeno al motivo pedido."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Escribe sólo el motivo por el que el ascensor está parado.",
+      "turns": [
+        {
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+          "constraints": [
+            "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+            "Omitir la escalera y todo dato ajeno al motivo pedido."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Di únicamente la causa de la parada del ascensor.",
+      "turns": [
+        {
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nDi únicamente la causa de la parada del ascensor.",
+          "constraints": [
+            "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+            "Omitir la escalera y todo dato ajeno al motivo pedido."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Explica con palabras sencillas por qué el agua quedó dentro.",
+      "turns": [
+        {
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+          "constraints": [
+            "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+            "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+            "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+          ],
+          "criticalIf": [
+            "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Di en lenguaje cotidiano qué evitó que saliera el agua.",
+      "turns": [
+        {
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+          "constraints": [
+            "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+            "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+            "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+          ],
+          "criticalIf": [
+            "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Explica con palabras sencillas por qué el agua quedó dentro.",
+      "turns": [
+        {
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+          "constraints": [
+            "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+            "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+            "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+          ],
+          "criticalIf": [
+            "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Di en lenguaje cotidiano qué evitó que saliera el agua.",
+      "turns": [
+        {
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+          "constraints": [
+            "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+            "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+            "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+          ],
+          "criticalIf": [
+            "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Reescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "turns": [
+        {
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+          "constraints": [
+            "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+            "No incluir el vaso ni añadir hechos nuevos.",
+            "Se acepta cualquier reformulación natural que conserve resultado y causa."
+          ],
+          "criticalIf": [
+            "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Expresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "turns": [
+        {
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+          "constraints": [
+            "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+            "No incluir el vaso ni añadir hechos nuevos.",
+            "Se acepta cualquier reformulación natural que conserve resultado y causa."
+          ],
+          "criticalIf": [
+            "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Reescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "turns": [
+        {
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+          "constraints": [
+            "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+            "No incluir el vaso ni añadir hechos nuevos.",
+            "Se acepta cualquier reformulación natural que conserve resultado y causa."
+          ],
+          "criticalIf": [
+            "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Expresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "turns": [
+        {
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+          "constraints": [
+            "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+            "No incluir el vaso ni añadir hechos nuevos.",
+            "Se acepta cualquier reformulación natural que conserve resultado y causa."
+          ],
+          "criticalIf": [
+            "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h01",
+      "topic": "correction_and_other_possession",
+      "probeKind": "history_comparison",
+      "turns": [
+        {
+          "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+          "constraints": [
+            "Identificar paraguas de Elisa y linterna de Raúl.",
+            "No cruzar ni inventar dueños."
+          ],
+          "criticalIf": [
+            "Cambiar un dueño o cruzar objetos y personas."
+          ]
+        },
+        {
+          "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+          "constraints": [
+            "Identificar a Raúl como dueño de la linterna, conservando esa relación pese a la corrección ajena.",
+            "No reinstalar a Elisa como dueña actual del paraguas si se menciona."
+          ],
+          "criticalIf": [
+            "Cambiar el dueño de la linterna o negar la corrección del paraguas."
+          ]
+        },
+        {
+          "user": "¿De quién es ahora el paraguas?",
+          "constraints": [
+            "Identificar a Noelia como dueña actual del paraguas."
+          ],
+          "criticalIf": [
+            "Reinstalar a Elisa o asignar el paraguas a otro dueño."
+          ]
+        },
+        {
+          "user": "Resume las dos pertenencias actuales en una frase.",
+          "constraints": [
+            "Resumir en una sola frase paraguas de Noelia y linterna de Raúl.",
+            "No añadir otras pertenencias."
+          ],
+          "criticalIf": [
+            "Cambiar o cruzar dueños actuales."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h02",
+      "topic": "known_missing_and_independent_attribute",
+      "probeKind": "history_comparison",
+      "turns": [
+        {
+          "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+          "constraints": [
+            "Distinguir color amarillo conocido y fabricante no informado.",
+            "No inventar fabricante."
+          ],
+          "criticalIf": [
+            "Inventar un fabricante, negar el color dado o cambiarlo."
+          ]
+        },
+        {
+          "user": "La fabricó Mateo. ¿Quién la hizo?",
+          "constraints": [
+            "Identificar a Mateo como fabricante de la caja."
+          ],
+          "criticalIf": [
+            "Asignar otro fabricante o negar que se indicó."
+          ]
+        },
+        {
+          "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+          "constraints": [
+            "Conservar a Mateo como fabricante aunque cambie el color a morado.",
+            "Si se menciona el color actual, usar morado."
+          ],
+          "criticalIf": [
+            "Cambiar el fabricante o reinstalar amarillo como color actual."
+          ]
+        },
+        {
+          "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+          "constraints": [
+            "Identificar morado como color actual y a Mateo como fabricante.",
+            "No añadir datos ajenos a ambas respuestas."
+          ],
+          "criticalIf": [
+            "Cambiar fabricante o color actual; texto accesorio sin cambio factual es defecto de instrucción."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h03",
+      "topic": "incremental_notice_and_requested_fragment",
+      "probeKind": "history_comparison",
+      "turns": [
+        {
+          "user": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase.",
+          "constraints": [
+            "Redactar una sola frase de aviso que diga comedor cerrado por limpieza.",
+            "No inventar apertura, duración u otros motivos."
+          ],
+          "criticalIf": [
+            "Cambiar el cierre o su motivo, inventar horario de apertura."
+          ]
+        },
+        {
+          "user": "Añade que abrirá por la tarde, conservando el motivo.",
+          "constraints": [
+            "Dar el aviso con cierre por limpieza y apertura por la tarde.",
+            "No sustituir ni omitir el motivo al añadir la apertura."
+          ],
+          "criticalIf": [
+            "Cambiar el motivo o la apertura dada."
+          ]
+        },
+        {
+          "user": "Cambia sólo la apertura: será por la noche. Da el aviso completo.",
+          "constraints": [
+            "Aplicar apertura por la noche y conservar cierre por limpieza.",
+            "Dar el aviso completo sin hechos nuevos."
+          ],
+          "criticalIf": [
+            "Reinstalar apertura por la tarde o cambiar el motivo."
+          ]
+        },
+        {
+          "user": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre.",
+          "constraints": [
+            "Expresar sólo limpieza como motivo del cierre.",
+            "No añadir comedor, apertura, saludo o explicación."
+          ],
+          "criticalIf": [
+            "Dar otro motivo; datos sobrantes verdaderos incumplen formato sin crítico por sí solos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h04",
+      "topic": "clarification_then_request_then_correction",
+      "probeKind": "history_comparison",
+      "turns": [
+        {
+          "user": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta.",
+          "constraints": [
+            "Preguntar únicamente por el destino al que quiere acompañamiento.",
+            "No redactar aún una petición con destino inventado ni preguntar hora o persona."
+          ],
+          "criticalIf": [
+            "Inventar destino; pedir otro dato es fallo de aclaración sin crítico por sí solo."
+          ]
+        },
+        {
+          "user": "A la farmacia. Redacta la petición en una frase, sin inventar una hora.",
+          "constraints": [
+            "Redactar una petición de acompañamiento a la farmacia en una sola frase.",
+            "No inventar una hora."
+          ],
+          "criticalIf": [
+            "Cambiar destino o inventar una hora."
+          ]
+        },
+        {
+          "user": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición.",
+          "constraints": [
+            "Reformular la petición de acompañamiento a la panadería.",
+            "Conservar la intención de acompañamiento, sin añadir hora."
+          ],
+          "criticalIf": [
+            "Reinstalar farmacia como destino actual, cambiar intención o inventar hora."
+          ]
+        },
+        {
+          "user": "Da únicamente la petición actual, sin saludo ni explicación.",
+          "constraints": [
+            "Dar sólo la petición de acompañamiento a la panadería.",
+            "Omitir saludo, explicación y hora no dada."
+          ],
+          "criticalIf": [
+            "Cambiar destino o inventar hora; saludo o explicación es defecto de instrucción, no crítico por sí solo."
+          ]
+        }
+      ]
+    }
+  ],
+  "orderPairs": [
+    {
+      "baseCaseId": "r01",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r01-o0-w0",
+        "pr1diag-v1-r01-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r01",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r01-o0-w1",
+        "pr1diag-v1-r01-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r02",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r02-o0-w0",
+        "pr1diag-v1-r02-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r02",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r02-o0-w1",
+        "pr1diag-v1-r02-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r03",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r03-o0-w0",
+        "pr1diag-v1-r03-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r03",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r03-o0-w1",
+        "pr1diag-v1-r03-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r04",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r04-o0-w0",
+        "pr1diag-v1-r04-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r04",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r04-o0-w1",
+        "pr1diag-v1-r04-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r05",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r05-o0-w0",
+        "pr1diag-v1-r05-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r05",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r05-o0-w1",
+        "pr1diag-v1-r05-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r06",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r06-o0-w0",
+        "pr1diag-v1-r06-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r06",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r06-o0-w1",
+        "pr1diag-v1-r06-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r07",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r07-o0-w0",
+        "pr1diag-v1-r07-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r07",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r07-o0-w1",
+        "pr1diag-v1-r07-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r08",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r08-o0-w0",
+        "pr1diag-v1-r08-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r08",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r08-o0-w1",
+        "pr1diag-v1-r08-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r09",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r09-o0-w0",
+        "pr1diag-v1-r09-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r09",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r09-o0-w1",
+        "pr1diag-v1-r09-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r10",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r10-o0-w0",
+        "pr1diag-v1-r10-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r10",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r10-o0-w1",
+        "pr1diag-v1-r10-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r11",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r11-o0-w0",
+        "pr1diag-v1-r11-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r11",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r11-o0-w1",
+        "pr1diag-v1-r11-o1-w1"
+      ]
+    },
+    {
+      "baseCaseId": "r12",
+      "questionWording": 0,
+      "episodeIds": [
+        "pr1diag-v1-r12-o0-w0",
+        "pr1diag-v1-r12-o1-w0"
+      ]
+    },
+    {
+      "baseCaseId": "r12",
+      "questionWording": 1,
+      "episodeIds": [
+        "pr1diag-v1-r12-o0-w1",
+        "pr1diag-v1-r12-o1-w1"
+      ]
+    }
+  ]
+}

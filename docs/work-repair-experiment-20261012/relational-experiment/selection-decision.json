@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "decidedAtUtc": "2026-10-12T19:10:11.886715+00:00",
+  "codeCommitEvaluated": "8b466cc43015289a4568639304ef9841397ad6fa",
+  "designSha256": "bdffd461423d68b8c507b0d156e6d98d5483b8d6565e161a4e511e0dd1d02f98",
+  "decision": "STOP_DATA_INTERVENTION;KEEP_C7_REFERENCE;NO_PROMOTION;NO_FINAL_ACCEPTANCE_CLAIM",
+  "selectedReference": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "directory": "models/conversation-reference-c7",
+    "status": "REFERENCE_EXPERIMENTAL_NOT_ACCEPTED",
+    "manifestSha256": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+    "weightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+    "known40ArchivedPrimary": {
+      "C": 7,
+      "P": 5,
+      "F": 28,
+      "critical": 6,
+      "wholeDialogs": 0
+    },
+    "secondaryDevelopment80Primary": {
+      "complete": 3,
+      "partial": 15,
+      "failed": 62,
+      "critical": 14,
+      "completeDialogs": 0,
+      "technicalFailures": 0
+    }
+  },
+  "candidates": {
+    "original128": {
+      "modelId": "unidad-conversation-0f42de7d8a5e542deb4a42ef4cfe0ddbaec91098189214478431b777b29c0979",
+      "manifestSha256": "5bbd429916a6232146ae1796c563db95714b0836d76b0ed2a500a0a33c321733",
+      "weightsSha256": "0ae17e41e812b43babe7facd4eac1cc4dde0541fd4b86ced070d777934c05aea",
+      "status": "REJECTED_FOR_PROMOTION_PRESERVED",
+      "known40Primary": {
+        "C": 8,
+        "P": 1,
+        "F": 31,
+        "criticalFailureTurns": 7,
+        "completeCorrectEpisodes": 0,
+        "technicalFailures": 0,
+        "tokenBudgetStops": 1
+      },
+      "known40Cross": {
+        "C": 9,
+        "P": 8,
+        "F": 23,
+        "critical": 7,
+        "wholeDialogs": 0
+      },
+      "retainedC7PreviouslyComplete": 3,
+      "factorialActual64Primary": {
+        "C": 4,
+        "P": 11,
+        "F": 49,
+        "critical": 8
+      },
+      "secondaryDevelopment80Primary": {
+        "complete": 8,
+        "partial": 15,
+        "failed": 57,
+        "critical": 17,
+        "completeDialogs": 0,
+        "technicalFailures": 0
+      },
+      "retentionGatePassed": false
+    },
+    "relational128": {
+      "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+      "manifestSha256": "840bf279a6eb3b370eb60c4d7b567b854cfda1a24a8c327e8dad44f787725658",
+      "weightsSha256": "448cd17dbb6899d181a43553c45434efcc18f19ae1494118deaba9adc128eaca",
+      "status": "REJECTED_FOR_PROMOTION_PRESERVED",
+      "known40Primary": {
+        "C": 6,
+        "P": 2,
+        "F": 32,
+        "criticalFailureTurns": 9,
+        "completeCorrectEpisodes": 0,
+        "technicalFailures": 0,
+        "tokenBudgetStops": 0
+      },
+      "known40Cross": {
+        "C": 7,
+        "P": 6,
+        "F": 27,
+        "critical": 8,
+        "wholeDialogs": 0
+      },
+      "retainedC7PreviouslyComplete": 2,
+      "factorialActual64Primary": {
+        "C": 5,
+        "P": 7,
+        "F": 52,
+        "critical": 13
+      },
+      "secondaryDevelopment80Primary": {
+        "complete": 8,
+        "partial": 18,
+        "failed": 54,
+        "critical": 17,
+        "completeDialogs": 0,
+        "technicalFailures": 0
+      },
+      "retentionGatePassed": false
+    }
+  },
+  "extensionGatePassed": false,
+  "measuredRelationalCompleteGainAgainstOriginalActual64": 1,
+  "newFinalUsed": false,
+  "newFinalReason": "Both candidate endpoints fail prospectively defined free-generation and retention gates. A fresh acceptance suite is not consumed to approve a known-failing model. All used suites now DEVELOPMENT.",
+  "partialGoalAchieved": false,
+  "generalAcceptanceAchieved": false,
+  "competitiveQualityClaimed": false,
+  "reviewMethod": "Project AI semantic reviews; known40 cross labels differ substantially, all versions retained without replacing primary or claiming human independence. Both reviews reject promotion; secondary80 has one project AI primary reviewer.",
+  "criticalRubricComparability": "known40 archived rubric unchanged;factorial64 narrowcriticalIf unchanged with additional contradictions listed;secondary80 widerknownfact rubric. Do not compare critical totals across suites.",
+  "nativeRunStatuses": {
+    "original": "completed",
+    "relational": "completed"
+  },
+  "noMoreTrainingLaunched": true,
+  "previous24hAnd2hBudgetsRemainClosed": true,
+  "evidenceFilesSha256": {
+    "private/pr1-relational-contrast-v1/evaluation/matrix-retention-known40.json": "6ebdf554d48ed612c37119b46935d570aec181962d37e0a53a06bf0b8bb22bc4",
+    "private/pr1-relational-contrast-v1/evaluation/known40-cross-matrix.json": "5acf255b4b1138aaeffa38282bbc2b853668fd00907515128247df292f67ebf9",
+    "private/pr1-relational-contrast-v1/evaluation/factorial-candidate-comparison-matrix.json": "9d7ba3df6e1f9cc4653ab5a78fc822197aef5a6e75584ed7ab757e3d02e61e8c",
+    "private/pr1-relational-contrast-v1/evaluation/heldout-val80-primary-matrix.json": "94b24119893b2696eb23aaf2b50bad9e513efcfd08f778750c685c8dc5cfdf72",
+    "private/pr1-relational-contrast-v1/evaluation/effective-user-exclusion-audit.json": "d8955a95ef8ed1432de5765ead20e128ad55d0641a66b25e1d5e8c33ec16a5b4",
+    "private/pr1-relational-contrast-v1/actual-training-integrity-and-dose.json": "d7cb8403b41283309f89020ffa897f5fa21df4d6a2b3f35c03c4681c59c4f588",
+    "private/pr1-relational-contrast-v1/checkpoint-preservation-summary.json": "0290f6e46b8fdbecb90a3ea207bb5626efe7e27cdc37a98af71c12f03e80c66b",
+    "private/pr1-relational-contrast-v1/generated-evidence-custody-audit.json": "8f3547e984ade6115f58038d24cb97580eac9990dfaf6cc2562271dd51642158"
+  },
+  "diagnosis": {
+    "A": "Native initial tensors exactly C7; all80 tensors update; endpoint/load/last checkpoints exact; same formats/EOS/masks. Existing inherited+random16mem controls already passed. No demonstrated gross training/load defect; this is not a proof every implementation is faultless.",
+    "B": "No adequate everyday Spanish linguistic competence demonstrated; free answers remain often malformed. This trial does not isolate deficient language preparation from all generalization causes.",
+    "C": "Strong evidence of transfer/binding weakness: originalworld-only VAL shares all wording/compositions; fact order/query changes expose wrong entity-attribute bindings; new heldout-wording/composition remains mostly failed.",
+    "D": "Both new candidates lose most old C7 complete responses; limited output retention measurement does not isolate a specific forgetting mechanism.",
+    "E": "Two evaluator provenance/context holes repaired. Two secondaryVAL USER ambiguities clarified only in separately frozen evaluation copies. Almost all generation ends EOS without input cuts; short artificial caps do not explain the broad failures."
+  },
+  "limits": [
+    "One seed61 and one128-update DATA-block trial; four subfamilies changed together; no causal attribution to individual subchange or architecture.",
+    "Same record/order budget differs by actual supervised targets11679 vs11672.",
+    "User original diagnostic ZIP4ef475... remains unavailable/unrestored. Remote concurrentPR2 results are reported separately, not restored/evaluated/merged here.",
+    "Preservation and working CLI are verified; conversation goal remains unmet."
+  ]
+}

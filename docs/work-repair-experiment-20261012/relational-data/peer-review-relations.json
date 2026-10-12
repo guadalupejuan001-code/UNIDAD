@@ -1,0 +1,499 @@
+{
+  "schemaVersion": 1,
+  "kind": "project_ai_semantic_peer_review_of_train_data_seeds_not_model_evaluation",
+  "reviewer": "/root/spanish_data_review/human_source_quality",
+  "reviewerProjectAI": true,
+  "independentHumanReview": false,
+  "additionalProjectAiReviewer": "/root/spanish_data_review/human_source_quality/natural_dialogue_tail_review",
+  "additionalReviewerScope": "Eight two_people seeds and current people compiler path, including unknown-state correction.",
+  "sourceCompilerPath": "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/build_relational_contrast.py",
+  "sourceCompilerSha256": "14f784e6acc4d74e971d27f1f77e5ad038eb705a910384ce9e21d1c4400ffdb7",
+  "sourceSeedsPath": "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/semantic-review-seeds.json",
+  "sourceSeedsSha256": "2ac465af4f9d2981f0aeb05dd27bb89c6d14098ac96c4876f744148493b0d486",
+  "sourceTrainPath": "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/relational-train.jsonl",
+  "sourceTrainSha256": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8",
+  "sourceCorpusSha256": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8",
+  "all24ReadInFull": true,
+  "compilerPathsReviewed": true,
+  "all96GoldAnswersCheckedAgainstStateMaps": true,
+  "counts": {
+    "accept": 24,
+    "reject": 0
+  },
+  "countsByFamily": {
+    "current_and_future_place": {
+      "accept": 8,
+      "reject": 0
+    },
+    "preferred_address": {
+      "accept": 8,
+      "reject": 0
+    },
+    "two_people": {
+      "accept": 8,
+      "reject": 0
+    }
+  },
+  "compilerReview": {
+    "preferred": {
+      "lines": [
+        41,
+        63
+      ],
+      "allThreeStylesReviewed": true,
+      "orderAndRequestedRoleBranchesReviewed": true,
+      "identificationNeverUsedAsCallingPreference": true,
+      "updateOnlyPreferredAddress": true
+    },
+    "places": {
+      "lines": [
+        65,
+        83
+      ],
+      "allThreeStylesReviewed": true,
+      "currentFutureRequestedRoleAndYesNoBranchesReviewed": true,
+      "updateFuturePreservesCurrent": true
+    },
+    "people": {
+      "lines": [
+        85,
+        104
+      ],
+      "orderSingerCropActorAndCompositeRequestBranchesReviewed": true,
+      "cropUpdatesPreserveRolesAndSinging": true,
+      "unobservedSingingIsNone": true
+    }
+  },
+  "metadataCorrection": {
+    "priorCompilerSha256": "d81fb263807d760e634f23c8a499fbfbf7b3c6af9b612c1e70e530c0fa3c03b9",
+    "priorSeedsSha256": "cd7727f4c78ccfdfa41edad115a65c7b801364e4d23829b72982b29aa2155ae0",
+    "issue": "Unobserved singing had been False, suggesting an unsupported negative fact.",
+    "resolution": "None records unknown; only explicitly singing person becomes True. Crop correction preserves True/None and relationships.",
+    "all24MessagesCellsFactorsEquivalentToPriorSnapshot": true,
+    "onlyPeopleUnknownStateMetadataChanged": true,
+    "nativeTrainHashUnchanged": true,
+    "correctedByAuthorNotReviewer": true
+  },
+  "trainingPerformed": false,
+  "modelsExecuted": false,
+  "compilerExecutedByReviewer": false,
+  "sourceEditedByReviewer": false,
+  "devValidationFinalOwnerBodiesRead": false,
+  "limits": [
+    "This receipt reviews24 full seed histories and the three compiler functions, not semantic review of all352 changed dialogues.",
+    "The16 two_objects seeds are outside this receipt and require the separate peer.",
+    "All styles are inspected in code and represented in seeds, but the full style-by-cell product is not exhaustively sampled.",
+    "preferred_address secondaryBit is unused; its eight seeds represent four effective order/query cells with repeated worlds.",
+    "Acceptance of authored gold does not establish model learning, generation quality, broad generalization or independent human validation."
+  ],
+  "records": [
+    {
+      "id": "repair-20261012-world-000-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-000-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-000-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-001-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-001-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-001-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-002-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-002-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-002-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-003-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-003-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-003-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 0
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-004-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-004-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-004-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-005-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-005-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-005-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 0,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-006-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-006-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-006-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 0,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-007-preferred_address",
+      "family": "preferred_address",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Identificación selecciona nombre completo y trato selecciona apodo; actualizar apodo conserva nombre y actividad, con resumen anterior/actual correcto.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-007-current_and_future_place",
+      "family": "current_and_future_place",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Cambio de destino conserva ubicación actual; preguntas actual/futuro y sí/no responden al lugar solicitado y resumen mantiene ambas relaciones.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    },
+    {
+      "id": "repair-20261012-world-007-two_people",
+      "family": "two_people",
+      "split": "train",
+      "cell": {
+        "orderBit": 1,
+        "queryBit": 1,
+        "secondaryBit": 1
+      },
+      "decision": "accept",
+      "verdict": "accept",
+      "reason": "Actor que canta, cultivos corregidos y consulta compuesta coinciden con el mapa; relaciones y canto declarado se conservan; desconocido es None.",
+      "allFourUserAndFourGoldRead": true,
+      "allFourStateTracesAndFactorsRead": true,
+      "goldUniqueForRequestedBinding": true,
+      "stateUpdatePreservesUnchangedAttributes": true
+    }
+  ]
+}

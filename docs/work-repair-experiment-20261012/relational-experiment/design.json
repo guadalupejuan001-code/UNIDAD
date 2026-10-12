@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-12T18:50:33.004313+00:00",
+  "authorization": "latest_user_mission_routine_free_existing4CPU; no_new_paid_service_or_access; old24h_and2h_remain_closed",
+  "codeCommit": "8b466cc43015289a4568639304ef9841397ad6fa",
+  "historicalExperimentCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+  "baseMainCommit": "a1a283caabf89b3191c8ce64c2a950e9edbb0edf",
+  "hypothesis": "C7 mixes first mentioned entity and last property even when queried entity differs. Counterbalance entity presentation and requested relation with explicit changes/unchanged attributes to remove that data shortcut; test free-generation transfer to unseen wording and compositions. Ideal history failed most replies, so no memory module is added.",
+  "primaryDifference": "ONE DATA block: four original relation task families counterbalanced. Eight TRAIN families exact bytes; same frozen NEW80 development validation; no architecture, tokenizer, objectives, runtime, optimizer recipe or seed differences between arms. Subchanges not separately attributable.",
+  "initialModel": "/workspace/unidad-conversation-repair/models/conversation-reference-c7",
+  "modelConfig": {
+    "context_length": 512,
+    "copy_head": {
+      "rank": 32,
+      "seed": 47,
+      "version": 1
+    },
+    "d_model": 256,
+    "dropout": 0.0,
+    "ffn_multiplier": 4,
+    "n_heads": 8,
+    "n_layers": 6,
+    "seed": 42,
+    "vocab_size": 8192
+  },
+  "trainingConfig": {
+    "batch_size": 8,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "max_epochs": 1000,
+    "max_steps": 128,
+    "max_seconds": 600,
+    "validation_every": 64,
+    "checkpoint_every": 64,
+    "patience": 12,
+    "min_delta": 0.0001,
+    "seed": 61,
+    "warmup_steps": 32,
+    "torch_threads": 4,
+    "window_policy": "sliding_context",
+    "loss_reduction": "token_mean",
+    "projection_mode": "supervised",
+    "objective": "assistant_last_reply",
+    "train_precision": "cpu_bfloat16",
+    "partition_policy": "train_validation_only",
+    "copy_supervision": {
+      "alignment_weight": 0.2,
+      "gate_weight": 0.2
+    }
+  },
+  "arms": {
+    "original": {
+      "corpus": "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/original-paired-corpus.jsonl",
+      "trainRecords": 4224,
+      "validationRecords": 80
+    },
+    "relational": {
+      "corpus": "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/relational-paired-corpus.jsonl",
+      "trainRecords": 4224,
+      "validationRecords": 80
+    }
+  },
+  "execution": {
+    "oneTrainingProcessAtATime": true,
+    "armOrder": [
+      "original",
+      "relational"
+    ],
+    "maximumUpdatesTotal": 256,
+    "newExperimentBackstopSecondsPerArm": 600,
+    "nativeFinalValidationAndSavingMayExceedLoopBackstop": true,
+    "noAutomaticExtension": true,
+    "preserveCheckpointSteps": [
+      0,
+      64,
+      128
+    ],
+    "endpointSelection": "fixed128-or-earlier-real-stop; validation-selected also preserved but not promoted by loss"
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "engine": "ia_propia.conversation.runtime.ConversationEngine",
+    "actualHistoryRequired": true,
+    "idealHistorySeparateDiagnosticOnly": true
+  },
+  "evaluation": {
+    "primaryDevelopment": "Same frozen factorial80:48 independent single-turn queries +16 actual-history turns +16 explicitly ideal-history aided diagnostic turns. Actual scope64, ideal16 never counted as acceptance. All replies saved.",
+    "retentionDevelopment": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/cases.json",
+    "secondaryDevelopment": "New heldout80VAL,20full dialogs. Cases/rubric derived solely from already-frozen validation records before observing candidate outputs; never FINAL.",
+    "projectAiReviewsNotIndependentHuman": true,
+    "extensionGateAllRequired": [
+      "Actual64 complete count at least5 and at least3 more than matched original control; gains spread across at least2 distinct fact worlds and2 task categories.",
+      "No greater actual64 critical count than both C7 primary10 and matched original control; report all known-fact contradictions separately because old frozen critical rubric is narrow.",
+      "On original40 development:complete>=C7 7,failed<=C7 28,critical<=C7 6,technical failures0; no hiding regression in retained C7 complete replies.",
+      "NewVAL80 is secondary transfer evidence, not a replacement for primary and retention gates.",
+      "No extension on loss reduction alone or training examples; if gate fails stop this intervention and preserve C7."
+    ],
+    "partialGoal": {
+      "responses": 40,
+      "failedMax": 14,
+      "criticalMax": 6,
+      "notGeneralAcceptance": true
+    },
+    "generalAcceptance": {
+      "responses": 40,
+      "completeMin": 36,
+      "dialogs": 10,
+      "completeDialogsMin": 8,
+      "criticalMax": 0,
+      "technicalMax": 0,
+      "newFinalRequiredAfterCandidateChoice": true
+    },
+    "finalPolicy": "All known40, PR20, factorial80 and newVAL80 are DEVELOPMENT. Do not expose a fresh FINAL until a candidate is selected by free-generation evidence. No final acceptance claim without fresh heldout result. No model promoted automatically."
+  },
+  "limits": [
+    "This tests a bounded binding/order/requested-target data contrast, not wording-only improvement or broad conversation.",
+    "Four full prefixes are dependent rows; 88worldgroups and352changed dialogues, not1408independent situations.",
+    "State-map compiler and technical checks do not replace peer semantic review or model evaluation.",
+    "preferred_address secondary cell bit is intentionally unused: four order/query cells have22worlds each; places/people have8cells×11worlds, objects16cells×5–6worlds.",
+    "Data volume and update configuration match; changed token lengths change supervised token exposure, explicitly reported.",
+    "two_objects thirdQueriesCorrectedEntity and lastQueriesKnownGiver both equal q==u; their individual effects are collinear.",
+    "Only one object has a disclosed giver in each dialogue; missing/known-giver results are balanced but not an exhaustive gift-state factorial.",
+    "All four families change as one DATA block; this trial cannot identify each sub-change as a separate causal effect.",
+    "The eight unmodified families inherit archived source ambiguities, including project ownership and daily sequencing; no silent correction is made.",
+    "All40 reviewed seeds cover semantic cells and all three original style branches, but not the exhaustive style-by-cell cross product.",
+    "No improvement of generation, linguistic foundation or final conversation acceptance has yet been measured.",
+    "Matching record counts/updates does not exactly match target tokens:full-epoch original104519 vs relational104872 CE targets (+353). Reconstruct actually sampled dose from preserved epoch cursor/order.",
+    "This short learning rate/update trial can falsify immediate rescue, not prove no later data intervention could ever work.",
+    "Training branch contains long-copy support from a1, not historical b5; do not pool results across commits.",
+    "User-supplied ZIP4ef475... was not accessible; previous PR candidate weights not restored. C7 local weights verified and preserved."
+  ],
+  "frozenFilesSha256": {
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/freeze-manifest.json": "b61cbbd640b774bfda54e6b8df880fb7ad9aef17ccce15aa9728688c67914089",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/relational-train.jsonl": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/original-train.jsonl": "3324dcae7c1e4c7e0fb32043685e52792f8243681dde046669a00adbe8cb57ab",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/relational-full-original-validation.jsonl": "24e2d52253a8a6e58e44ed9964fc11c37e1783b4e3ceeb1d9f6375180fe129bb",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/relational-paired-corpus.jsonl": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/original-paired-corpus.jsonl": "86127ba5fb89ccb145401dadc73dbd25d67ca8eb114ad9f0fa8a801128c430e6",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/changed-dialogues-state-traces.json": "99a59681d10c552ef33a808b14ea6a3eae264a1583179b7289e60b22e04a0a5d",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/semantic-review-seeds.json": "2ac465af4f9d2981f0aeb05dd27bb89c6d14098ac96c4876f744148493b0d486",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/build_relational_contrast.py": "14f784e6acc4d74e971d27f1f77e5ad038eb705a910384ce9e21d1c4400ffdb7",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/audit_exact_pair.py": "2b8b9d212b8d8c55621aac90b7cefeeb020cea832868d3a51647cf58784d27d0",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/freeze_data_pair.py": "a9f105f4a121f67696f404a81f97c688abc46c7e8bfda1fb09b91137361cb0ad",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/build-manifest.json": "bae25fe29e28f57a36656f465900957349a37d4cf6c94e07e1a75949dcad9875",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/exact-pair-audit.json": "b443ce0e57d06d6cde1ecb17add8c0f55fdfbfe86aa5e4324d92ae5182577ce1",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/peer-review-relations.json": "f3206f3b2e574b2faa0408afd0cbbe9fb7b63f9ee340436ba15fe9980b643627",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/peer-review-objects.json": "63700949e366732876e579239c28b63f4a4a92797131934d43e3c0a231c93ce9",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-data-contrast-v1/peer-review-objects-addendum.json": "86ca7cad157f51207b730a0427c5b1bb69e947b8a6c8971fa52fe1772e44335e",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/tokenizer.py": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/training.py": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/language_data.py": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__main__.py": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/data.py": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b",
+    "/workspace/unidad-conversation-repair/models/conversation-reference-c7/weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+    "/workspace/unidad-conversation-repair/models/conversation-reference-c7/config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+    "/workspace/unidad-conversation-repair/models/conversation-reference-c7/tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "/workspace/unidad-conversation-repair/models/conversation-reference-c7/manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/run_stage.py": "6b1c3ffaf3039554ee2a3f674d889c3716a99bc48fa8a986546fb3d947a428ca",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/run_probe.py": "0377fab0e73a3a7e529f0f8501ed35fe2185df6f452d358f4c1786a9e33700dd",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/freeze.json": "8ea7b8a463b08800449df45dd94cc5aaedaf7fe451d9da46dc7469fe3a319172",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/cases.json": "3a97d7208edd30d089c65c543ba028a3f6984b806e88f060edb02b7c20222da7",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/ideal-history.json": "8be20a9a44c39fdbae4362620bb2f0d9200017ce61bd1f25d6c7af40e22a6476",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/c7.primary-review.json": "f0f2f444c0bcc80aaf1eca5fe8570c2799fd069ff3a136e7410a6fa6ead9a0b7",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/c7.comparison-matrix.json": "ec02bd219011b08ff12242b178b2d514a1fe1e976774e292e13707324864b6aa",
+    "/workspace/ia-propia/private/conversation/next-generation-eval-v1/cases.json": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+    "/workspace/unidad-conversation-repair/private/conversation/run_engine_development_v1.py": "2f03bdfd61d3f4ea3fcd18f5b5caf955c1931fb93672018080d233d80253e9d6"
+  }
+}

@@ -1,0 +1,1114 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual_pr1_wording_event_composition_and_world_overlap_audit",
+  "createdAtUtc": "2026-10-12T18:10:54Z",
+  "prHead": "eb0f811aabdf4ba5bfe8957ceeaeebc942b9adb5",
+  "sourceCorpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+  "originalAuthoringScriptSha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9",
+  "reproductionReceiptSha256": "f5c9a36625c0048af3bfa1eacb0d7997e1f2dae628892774fb75156a839c2c04",
+  "records": {
+    "train": 4224,
+    "validation": 384
+  },
+  "representedOverlap": {
+    "world": {
+      "trainDistinct": 88,
+      "validationDistinct": 8,
+      "validationSeenInTrain": 0,
+      "validationUnseenInTrain": 8
+    },
+    "family": {
+      "trainDistinct": 12,
+      "validationDistinct": 12,
+      "validationSeenInTrain": 12,
+      "validationUnseenInTrain": 0
+    },
+    "style": {
+      "trainDistinct": 3,
+      "validationDistinct": 3,
+      "validationSeenInTrain": 3,
+      "validationUnseenInTrain": 0
+    },
+    "single_user_form": {
+      "trainDistinct": 56,
+      "validationDistinct": 56,
+      "validationSeenInTrain": 56,
+      "validationUnseenInTrain": 0
+    },
+    "prefix_user_form": {
+      "trainDistinct": 70,
+      "validationDistinct": 70,
+      "validationSeenInTrain": 70,
+      "validationUnseenInTrain": 0
+    },
+    "full_dialogue_form": {
+      "trainDistinct": 124,
+      "validationDistinct": 115,
+      "validationSeenInTrain": 115,
+      "validationUnseenInTrain": 0
+    },
+    "event_recipe": {
+      "trainDistinct": 12,
+      "validationDistinct": 12,
+      "validationSeenInTrain": 12,
+      "validationUnseenInTrain": 0
+    },
+    "full_world_binding": {
+      "trainDistinct": 88,
+      "validationDistinct": 8,
+      "validationSeenInTrain": 0,
+      "validationUnseenInTrain": 8
+    }
+  },
+  "perFamily": {
+    "preferred_address": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Mi nombre es <NAME>, pero uso el apodo <ALIAS>. ¿Cómo me llamarás?",
+            "Puedes llamarme <ALIAS>, aunque me llamo <NAME>. Repite mi preferencia.",
+            "Soy <NAME>; quiero que me digas <ALIAS>. ¿Qué nombre usarás conmigo?"
+          ],
+          "2": [
+            "Esta tarde quiero <FIRST>. ¿Qué quiero hacer?"
+          ],
+          "3": [
+            "Corrijo mi preferencia: usa <NEW_ALIAS>. ¿Cuál es mi apodo actual?",
+            "Desde ahora dime <NEW_ALIAS>. ¿Cómo vas a llamarme?",
+            "He cambiado de idea: prefiero <NEW_ALIAS>. ¿Qué apodo usarás ahora?"
+          ],
+          "4": [
+            "Distingue el apodo anterior y el que elegí después."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 3,
+          "2": 1,
+          "3": 3,
+          "4": 1
+        },
+        "prefix_user_form_count": 12,
+        "full_dialogue_form_count": 21,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Mi nombre es <NAME>, pero uso el apodo <ALIAS>. ¿Cómo me llamarás?",
+            "Puedes llamarme <ALIAS>, aunque me llamo <NAME>. Repite mi preferencia.",
+            "Soy <NAME>; quiero que me digas <ALIAS>. ¿Qué nombre usarás conmigo?"
+          ],
+          "2": [
+            "Esta tarde quiero <FIRST>. ¿Qué quiero hacer?"
+          ],
+          "3": [
+            "Corrijo mi preferencia: usa <NEW_ALIAS>. ¿Cuál es mi apodo actual?",
+            "Desde ahora dime <NEW_ALIAS>. ¿Cómo vas a llamarme?",
+            "He cambiado de idea: prefiero <NEW_ALIAS>. ¿Qué apodo usarás ahora?"
+          ],
+          "4": [
+            "Distingue el apodo anterior y el que elegí después."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 3,
+          "2": 1,
+          "3": 3,
+          "4": 1
+        },
+        "prefix_user_form_count": 12,
+        "full_dialogue_form_count": 18,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name",
+          "alias",
+          "new_alias",
+          "first"
+        ],
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 0,
+        "validationBindingsNotSeenTrain": 8
+      }
+    },
+    "missing_information": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+          ],
+          "2": [
+            "El abrigo es <COLOR>. ¿Qué color tiene?"
+          ],
+          "3": [
+            "Me lo dio <NAME>. ¿Quién me dio el abrigo?"
+          ],
+          "4": [
+            "¿Conoces su color y cuánto costó?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+          ],
+          "2": [
+            "El abrigo es <COLOR>. ¿Qué color tiene?"
+          ],
+          "3": [
+            "Me lo dio <NAME>. ¿Quién me dio el abrigo?"
+          ],
+          "4": [
+            "¿Conoces su color y cuánto costó?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name",
+          "color"
+        ],
+        "trainDistinct": 83,
+        "validationDistinct": 7,
+        "validationBindingsSeenTrain": 2,
+        "validationBindingsNotSeenTrain": 5
+      }
+    },
+    "current_and_future_place": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Ahora estoy en <CITY>; el próximo viaje será a <DEST>. ¿Dónde estoy?",
+            "Hoy sigo en <CITY>. Después viajaré a <DEST>. ¿Cuál es mi ubicación actual?",
+            "Mi ubicación es <CITY> y mi destino es <DEST>. ¿En qué lugar estoy ahora?"
+          ],
+          "2": [
+            "Finalmente iré a <CHANGED> en lugar de <DEST>. ¿Cuál es el nuevo destino?"
+          ],
+          "3": [
+            "No he salido de <CITY>. ¿Estoy ya en <CHANGED>?"
+          ],
+          "4": [
+            "Dime desde dónde salgo y hacia dónde viajaré."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 3,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 12,
+        "full_dialogue_form_count": 21,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Ahora estoy en <CITY>; el próximo viaje será a <DEST>. ¿Dónde estoy?",
+            "Hoy sigo en <CITY>. Después viajaré a <DEST>. ¿Cuál es mi ubicación actual?",
+            "Mi ubicación es <CITY> y mi destino es <DEST>. ¿En qué lugar estoy ahora?"
+          ],
+          "2": [
+            "Finalmente iré a <CHANGED> en lugar de <DEST>. ¿Cuál es el nuevo destino?"
+          ],
+          "3": [
+            "No he salido de <CITY>. ¿Estoy ya en <CHANGED>?"
+          ],
+          "4": [
+            "Dime desde dónde salgo y hacia dónde viajaré."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 3,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 12,
+        "full_dialogue_form_count": 18,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "city",
+          "dest",
+          "changed"
+        ],
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 0,
+        "validationBindingsNotSeenTrain": 8
+      }
+    },
+    "listening": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+          ],
+          "2": [
+            "Me molestó que alguien cambiara mi trabajo sin preguntarme. Hazme una pregunta."
+          ],
+          "3": [
+            "Fue mi colega <NAME>, no mi hermana. ¿Quién lo hizo?"
+          ],
+          "4": [
+            "Recuérdame lo que me molestó, sin proponer soluciones."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+          ],
+          "2": [
+            "Me molestó que alguien cambiara mi trabajo sin preguntarme. Hazme una pregunta."
+          ],
+          "3": [
+            "Fue mi colega <NAME>, no mi hermana. ¿Quién lo hizo?"
+          ],
+          "4": [
+            "Recuérdame lo que me molestó, sin proponer soluciones."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name"
+        ],
+        "trainDistinct": 52,
+        "validationDistinct": 7,
+        "validationBindingsSeenTrain": 5,
+        "validationBindingsNotSeenTrain": 2
+      }
+    },
+    "project_change": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "El proyecto <TITLE> reúne dibujos. ¿Qué es y cómo se llama?"
+          ],
+          "2": [
+            "Surgió de las tardes en que dibujaba con mi abuela. ¿Cuál fue su origen?"
+          ],
+          "3": [
+            "Ahora se llamará <TITLE2>; seguirá reuniendo dibujos. ¿Qué cambia?"
+          ],
+          "4": [
+            "¿Qué relación tiene mi proyecto con mi abuela?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "El proyecto <TITLE> reúne dibujos. ¿Qué es y cómo se llama?"
+          ],
+          "2": [
+            "Surgió de las tardes en que dibujaba con mi abuela. ¿Cuál fue su origen?"
+          ],
+          "3": [
+            "Ahora se llamará <TITLE2>; seguirá reuniendo dibujos. ¿Qué cambia?"
+          ],
+          "4": [
+            "¿Qué relación tiene mi proyecto con mi abuela?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "title",
+          "title2"
+        ],
+        "trainDistinct": 46,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 7,
+        "validationBindingsNotSeenTrain": 1
+      }
+    },
+    "two_people": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "<NAME> es mi hermana y <OTHER> es mi vecino. Dime quién es cada uno."
+          ],
+          "2": [
+            "<NAME> canta y <OTHER> cultiva rosas. ¿Quién canta?"
+          ],
+          "3": [
+            "Corrijo: <NAME> cultiva las rosas; <OTHER> cultiva tulipanes. ¿Quién cuida las rosas?"
+          ],
+          "4": [
+            "¿Quién es <NAME> para mí y qué cultiva <OTHER>?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "<NAME> es mi hermana y <OTHER> es mi vecino. Dime quién es cada uno."
+          ],
+          "2": [
+            "<NAME> canta y <OTHER> cultiva rosas. ¿Quién canta?"
+          ],
+          "3": [
+            "Corrijo: <NAME> cultiva las rosas; <OTHER> cultiva tulipanes. ¿Quién cuida las rosas?"
+          ],
+          "4": [
+            "¿Quién es <NAME> para mí y qué cultiva <OTHER>?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name",
+          "other"
+        ],
+        "trainDistinct": 87,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 0,
+        "validationBindingsNotSeenTrain": 8
+      }
+    },
+    "reschedule": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Quedé con <NAME> el <DAY> a <HOUR>. ¿Cuándo nos vemos?"
+          ],
+          "2": [
+            "Cambiamos el día al <DAY2>. Conservamos la hora. Repite la fecha y la hora.",
+            "La cita pasa al <DAY2>, a la misma hora. ¿Cuándo será?",
+            "Nos veremos el <DAY2> en vez del <DAY>. La hora no cambia. ¿Cuándo quedamos?"
+          ],
+          "3": [
+            "Nos reuniremos en <PLACE>. ¿Dónde será?"
+          ],
+          "4": [
+            "Repite el día, la hora y el sitio acordados."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 3,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 10,
+        "full_dialogue_form_count": 19,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Quedé con <NAME> el <DAY> a <HOUR>. ¿Cuándo nos vemos?"
+          ],
+          "2": [
+            "Cambiamos el día al <DAY2>. Conservamos la hora. Repite la fecha y la hora.",
+            "La cita pasa al <DAY2>, a la misma hora. ¿Cuándo será?",
+            "Nos veremos el <DAY2> en vez del <DAY>. La hora no cambia. ¿Cuándo quedamos?"
+          ],
+          "3": [
+            "Nos reuniremos en <PLACE>. ¿Dónde será?"
+          ],
+          "4": [
+            "Repite el día, la hora y el sitio acordados."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 3,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 10,
+        "full_dialogue_form_count": 16,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name",
+          "day",
+          "day2",
+          "hour",
+          "place"
+        ],
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 0,
+        "validationBindingsNotSeenTrain": 8
+      }
+    },
+    "task_order": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Haré dos cosas: <FIRST> y <SECOND>, en ese orden. ¿Qué va primero?"
+          ],
+          "2": [
+            "Invierto el orden: primero voy a <SECOND>. ¿Qué haré antes?"
+          ],
+          "3": [
+            "Sólo dime qué actividad viene después; no realices nada."
+          ],
+          "4": [
+            "¿Cómo cambié el orden de mis dos actividades?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Haré dos cosas: <FIRST> y <SECOND>, en ese orden. ¿Qué va primero?"
+          ],
+          "2": [
+            "Invierto el orden: primero voy a <SECOND>. ¿Qué haré antes?"
+          ],
+          "3": [
+            "Sólo dime qué actividad viene después; no realices nada."
+          ],
+          "4": [
+            "¿Cómo cambié el orden de mis dos actividades?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "first",
+          "second"
+        ],
+        "trainDistinct": 42,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 7,
+        "validationBindingsNotSeenTrain": 1
+      }
+    },
+    "unknown_author": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Quiero encontrar una novela llamada <TITLE>. ¿Qué título busco?"
+          ],
+          "2": [
+            "No te he dicho quién la escribió. ¿Se puede saber su autor con lo que conté?"
+          ],
+          "3": [
+            "La quiero para comentarla en clase. ¿Para qué la busco?"
+          ],
+          "4": [
+            "Resume lo que sabemos del libro y lo que falta por saber."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Quiero encontrar una novela llamada <TITLE>. ¿Qué título busco?"
+          ],
+          "2": [
+            "No te he dicho quién la escribió. ¿Se puede saber su autor con lo que conté?"
+          ],
+          "3": [
+            "La quiero para comentarla en clase. ¿Para qué la busco?"
+          ],
+          "4": [
+            "Resume lo que sabemos del libro y lo que falta por saber."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "title"
+        ],
+        "trainDistinct": 8,
+        "validationDistinct": 4,
+        "validationBindingsSeenTrain": 4,
+        "validationBindingsNotSeenTrain": 0
+      }
+    },
+    "daily_sequence": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Por la mañana suelo <FIRST>; hacerlo me relaja. ¿Qué me relaja?"
+          ],
+          "2": [
+            "Después me pongo a <SECOND>. ¿Qué hago antes?"
+          ],
+          "3": [
+            "Ahora haré lo primero por la noche, en vez de por la mañana. ¿Cuándo voy a <FIRST>?"
+          ],
+          "4": [
+            "Relaciona ambas actividades según lo que te conté."
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Por la mañana suelo <FIRST>; hacerlo me relaja. ¿Qué me relaja?"
+          ],
+          "2": [
+            "Después me pongo a <SECOND>. ¿Qué hago antes?"
+          ],
+          "3": [
+            "Ahora haré lo primero por la noche, en vez de por la mañana. ¿Cuándo voy a <FIRST>?"
+          ],
+          "4": [
+            "Relaciona ambas actividades según lo que te conté."
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "first",
+          "second"
+        ],
+        "trainDistinct": 42,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 7,
+        "validationBindingsNotSeenTrain": 1
+      }
+    },
+    "two_objects": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Mi bolso es <COLOR> y mi reloj es <COLOR2>. ¿De qué color es el reloj?"
+          ],
+          "2": [
+            "El bolso me lo regaló <NAME>. ¿Quién me lo regaló?"
+          ],
+          "3": [
+            "Antes me equivoqué: el reloj es <COLOR>. ¿Cuál es su color correcto?"
+          ],
+          "4": [
+            "¿Qué sabemos de quién me dio el reloj?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Mi bolso es <COLOR> y mi reloj es <COLOR2>. ¿De qué color es el reloj?"
+          ],
+          "2": [
+            "El bolso me lo regaló <NAME>. ¿Quién me lo regaló?"
+          ],
+          "3": [
+            "Antes me equivoqué: el reloj es <COLOR>. ¿Cuál es su color correcto?"
+          ],
+          "4": [
+            "¿Qué sabemos de quién me dio el reloj?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name",
+          "color",
+          "color2"
+        ],
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationBindingsSeenTrain": 1,
+        "validationBindingsNotSeenTrain": 7
+      }
+    },
+    "limits_and_identity": {
+      "train": {
+        "worlds": 88,
+        "styles": {
+          "0": 120,
+          "1": 116,
+          "2": 116
+        },
+        "single_user_forms": {
+          "1": [
+            "Hola. ¿Cómo te llamas?"
+          ],
+          "2": [
+            "Yo me llamo <NAME>. ¿Cuál es mi nombre?"
+          ],
+          "3": [
+            "No te he contado dónde vivo. ¿Sabes mi dirección?"
+          ],
+          "4": [
+            "¿Qué datos personales te he contado en esta charla?"
+          ]
+        },
+        "rows": 352,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "validation": {
+        "worlds": 8,
+        "styles": {
+          "1": 12,
+          "2": 12,
+          "0": 8
+        },
+        "single_user_forms": {
+          "1": [
+            "Hola. ¿Cómo te llamas?"
+          ],
+          "2": [
+            "Yo me llamo <NAME>. ¿Cuál es mi nombre?"
+          ],
+          "3": [
+            "No te he contado dónde vivo. ¿Sabes mi dirección?"
+          ],
+          "4": [
+            "¿Qué datos personales te he contado en esta charla?"
+          ]
+        },
+        "rows": 32,
+        "single_user_form_count_by_prefix": {
+          "1": 1,
+          "2": 1,
+          "3": 1,
+          "4": 1
+        },
+        "prefix_user_form_count": 4,
+        "full_dialogue_form_count": 7,
+        "event_recipe_count": 1
+      },
+      "factual_binding_overlap": {
+        "fields": [
+          "name"
+        ],
+        "trainDistinct": 52,
+        "validationDistinct": 7,
+        "validationBindingsSeenTrain": 5,
+        "validationBindingsNotSeenTrain": 2
+      }
+    }
+  },
+  "eventRecipes": {
+    "preferred_address": [
+      "set_preferred_alias",
+      "distracting_desired_activity",
+      "replace_preferred_alias",
+      "query_prior_and_current_alias"
+    ],
+    "missing_information": [
+      "unknown_color",
+      "reveal_color",
+      "reveal_giver",
+      "query_known_color_and_unknown_price"
+    ],
+    "current_and_future_place": [
+      "current_and_future_place",
+      "replace_future_place",
+      "query_future_as_current_with_current_restated",
+      "query_current_and_future_place"
+    ],
+    "listening": [
+      "listening_without_advice",
+      "grievance_and_question_request",
+      "reveal_colleague_not_sibling",
+      "query_grievance_without_advice"
+    ],
+    "project_change": [
+      "project_name_and_drawings",
+      "grandmother_origin",
+      "rename_preserve_drawings",
+      "query_grandmother_relation"
+    ],
+    "two_people": [
+      "sibling_and_neighbor_mapping",
+      "sibling_sings_neighbor_grows_roses",
+      "correct_sibling_roses_neighbor_tulips",
+      "query_sibling_identity_and_neighbor_activity"
+    ],
+    "reschedule": [
+      "day_and_hour",
+      "replace_day_preserve_hour",
+      "reveal_place",
+      "query_current_day_hour_place"
+    ],
+    "task_order": [
+      "first_second_order",
+      "swap_order",
+      "query_later_activity_no_execution",
+      "query_prior_and_current_first_activity"
+    ],
+    "unknown_author": [
+      "book_title",
+      "unknown_author",
+      "class_purpose",
+      "query_title_purpose_and_unknown_author"
+    ],
+    "daily_sequence": [
+      "morning_first_activity_relaxes",
+      "second_after_first",
+      "move_first_activity_to_evening",
+      "query_order_relation"
+    ],
+    "two_objects": [
+      "bag_color_and_watch_color",
+      "reveal_bag_giver",
+      "correct_watch_to_bag_color",
+      "query_unknown_watch_giver"
+    ],
+    "limits_and_identity": [
+      "assistant_name",
+      "user_name",
+      "unknown_user_address",
+      "query_disclosed_user_name"
+    ]
+  },
+  "neutralAssistantHistory": {
+    "train": {
+      "records": 4224,
+      "flagTrueRows": 1056,
+      "actuallyReplacedEarlierAssistantRows": 792,
+      "replacedEarlierAssistantPositions": 1584,
+      "flagFraction": 0.25,
+      "actualReplacementFraction": 0.1875
+    },
+    "validation": {
+      "records": 384,
+      "flagTrueRows": 96,
+      "actuallyReplacedEarlierAssistantRows": 72,
+      "replacedEarlierAssistantPositions": 144,
+      "flagFraction": 0.25,
+      "actualReplacementFraction": 0.1875
+    }
+  },
+  "lexicalGuardReceipt": {
+    "path": "private/pr1-wording-composition-audit-v1/pr1-devel-user-exclusion-hashes.json",
+    "sha256": "42119ddbbf9c9847c5194e08323ff8d389cf5930305762145f2c31dadf7a9286"
+  },
+  "definitions": {
+    "world": "Entire original worldgroup; oldsplit88/8protects this identity only.",
+    "single_user_form": "Perfamily/prefix sentence after replacing exact sampled factual values by role-specific placeholders.",
+    "prefix_user_form": "Whole USERprefix sequence after samevalue replacement.",
+    "full_dialogue_form": "All USER+ASSISTANTtext, neutral acknowledgements included; targets are present for representation audit, not modelgrading.",
+    "event_recipe": "Declared semantic operation/query sequence of the12authoredtasks; value-independent, distinct from world count.",
+    "factual_binding": "Perfamily relevant ordered tuple of sampled facts. Partly new bindings are not unseen wording or eventcomposition."
+  },
+  "limitations": [
+    "Exact delexicalized equality is not semantic paraphrase analysis.",
+    "English/Spanish fluency or conversation acceptance is not measured by worldcount/datareproduction.",
+    "Old16TRAIN64stepcontrols and prior8paraphraseprobe are not reexecuted.",
+    "Validationworlds are disjoint but taskfamilies, formulation skeletons and eventrecipes are shared.",
+    "Entendido earlier-history replacement supplies no false assistantclaims and does not establish resistance to contradictory actualgeneratedhistory.",
+    "Known40+fresh20 are exposedDEVEL; no FINALacceptanceclaim is made."
+  ],
+  "trainingPerformed": false,
+  "modelOrCoreChanges": false,
+  "torchImported": false,
+  "oldMainPrivateTouched": false,
+  "oldSealedFinalOrOwnerCorpusRead": false
+}

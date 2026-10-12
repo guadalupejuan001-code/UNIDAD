@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "status": "complete-data-audit-and-frozen-additional-development-validation",
+  "createdAtUtc": "2026-10-12T18:22:39.205469+00:00",
+  "inputPins": [
+    {
+      "path": "docs/work-conversation-diagnosis-20261012.md",
+      "sha256": "cfd4d2180146641f9c4b49d866a86c8a75228da2f3339f426b8ede096cb845dc"
+    },
+    {
+      "path": "docs/work-experiment-20261012/corpus-audit.json",
+      "sha256": "430e562a79e276ded88925d9d0f53636fc28128ef3a7932811523f779a5fa2fb"
+    },
+    {
+      "path": "docs/work-experiment-20261012/split-audit.json",
+      "sha256": "c87e4748186827aa963fce677ca3b4a3bb01fa2eb98fd3159690aa76804c1e80"
+    },
+    {
+      "path": "docs/work-experiment-20261012/executed/build_repair_corpus.py",
+      "sha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9"
+    },
+    {
+      "path": "docs/work-experiment-20261012/wording-probe.json",
+      "sha256": "53e042490c1f962727f46c12e4187908a2519fbfa3ff5a52a652a3f48d7196f7"
+    }
+  ],
+  "originalCorpus": {
+    "sha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "exactArchiveReproduction": true,
+    "records": {
+      "train": 4224,
+      "validation": 384
+    },
+    "worldGroups": {
+      "train": 88,
+      "validation": 8
+    },
+    "taskFamilies": 12,
+    "formulationVariability": "Only preferred_address(turns1/3), current_and_future_place(turn1), and reschedule(turn2) have3 styles; the other nine families use fixed USER wording.",
+    "representedOverlap": {
+      "world": {
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationSeenInTrain": 0,
+        "validationUnseenInTrain": 8
+      },
+      "family": {
+        "trainDistinct": 12,
+        "validationDistinct": 12,
+        "validationSeenInTrain": 12,
+        "validationUnseenInTrain": 0
+      },
+      "style": {
+        "trainDistinct": 3,
+        "validationDistinct": 3,
+        "validationSeenInTrain": 3,
+        "validationUnseenInTrain": 0
+      },
+      "single_user_form": {
+        "trainDistinct": 56,
+        "validationDistinct": 56,
+        "validationSeenInTrain": 56,
+        "validationUnseenInTrain": 0
+      },
+      "prefix_user_form": {
+        "trainDistinct": 70,
+        "validationDistinct": 70,
+        "validationSeenInTrain": 70,
+        "validationUnseenInTrain": 0
+      },
+      "full_dialogue_form": {
+        "trainDistinct": 124,
+        "validationDistinct": 115,
+        "validationSeenInTrain": 115,
+        "validationUnseenInTrain": 0
+      },
+      "event_recipe": {
+        "trainDistinct": 12,
+        "validationDistinct": 12,
+        "validationSeenInTrain": 12,
+        "validationUnseenInTrain": 0
+      },
+      "full_world_binding": {
+        "trainDistinct": 88,
+        "validationDistinct": 8,
+        "validationSeenInTrain": 0,
+        "validationUnseenInTrain": 8
+      }
+    },
+    "meaning": "World-group exclusion protects full world bindings; all represented VAL formulation skeletons and event recipes are already TRAIN.",
+    "neutralHistory": {
+      "train": {
+        "records": 4224,
+        "flagTrueRows": 1056,
+        "actuallyReplacedEarlierAssistantRows": 792,
+        "replacedEarlierAssistantPositions": 1584,
+        "flagFraction": 0.25,
+        "actualReplacementFraction": 0.1875
+      },
+      "validation": {
+        "records": 384,
+        "flagTrueRows": 96,
+        "actuallyReplacedEarlierAssistantRows": 72,
+        "replacedEarlierAssistantPositions": 144,
+        "flagFraction": 0.25,
+        "actualReplacementFraction": 0.1875
+      }
+    }
+  },
+  "sourceGoldLimits": [
+    {
+      "family": "project_change",
+      "issue": "Old first target assumes ownership although USER only says the project; new first USER makes ownership explicit.",
+      "oldRecordsEdited": false,
+      "newCleanWordingPair": false
+    },
+    {
+      "family": "daily_sequence",
+      "issue": "Old habitual USER has future targets, and moving the first task to night does not explicitly retain the second-after-first relation. New gold and USER clarify both.",
+      "oldRecordsEdited": false,
+      "newCleanWordingPair": false
+    }
+  ],
+  "existingExposedWordingEvidence": {
+    "sourceSha256": "53e042490c1f962727f46c12e4187908a2519fbfa3ff5a52a652a3f48d7196f7",
+    "pairs": 8,
+    "earlierAssistantHistoryUsed": false,
+    "exactMatches": {
+      "original": 7,
+      "paraphrase": 0
+    },
+    "semanticComplete": {
+      "original": 7,
+      "paraphrase": 1
+    },
+    "reviewerLimit": "same-project AI; unblinded, nonhuman, nonindependent",
+    "interpretation": "Wording fragility appears without prior assistant history; exact0/8 paraphrases is not semantic0/8.",
+    "rerun": false,
+    "old16Train64ControlsRerun": false,
+    "notFinal": true
+  },
+  "newValidation": {
+    "path": "private/pr1-wording-composition-audit-v1/prospective-validation/validation.jsonl",
+    "sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+    "freezeManifestPath": "private/pr1-wording-composition-audit-v1/prospective-validation/freeze-manifest.json",
+    "freezeManifestSha256": "9fef6cc9d94a377571d7e00f8f36a026b0f30da67d3b1755c783c3dd4ff899a2",
+    "records": 80,
+    "fullDialogues": 20,
+    "originalValWorldGroups": 8,
+    "heldoutWordings": 48,
+    "newCompositionRecipes": 8,
+    "heldoutCompositionUserForms": 32,
+    "oldTrainDelexOverlap": 0,
+    "developmentUserGuardCollisions": 0,
+    "nativeC7MaximumInputTokens": 260,
+    "maximumLastTargetsIncludingEos": 34,
+    "cleanPairedPrefixRecords": 40,
+    "sourceAmbiguityClarifiedPrefixes": 8
+  },
+  "oneConditionalInterventionProposal": {
+    "status": "unselected; no TRAIN authored and no training",
+    "hypothesis": "Counterbalance formulation and fact order in existing TRAIN worlds, retaining role bindings and correction semantics.",
+    "fixed": "Start from C7, keep architecture, existing BPE, native message format and objectives; no source-pointer-v2 or inference rules.",
+    "selectionPrerequisite": "Independent baseline factorial48single+32history results must first distinguish wording/fact-order sensitivity from accumulated actual-history errors.",
+    "exclusion": "Future TRAIN must exclude these complete wording/composition families, all eight oldVAL worlds, known60USER and new64USER/prefix hash guard. No owner chat or sealed FINAL.",
+    "notAPromise": "A controlled data ablation can test this local hypothesis; current audit does not establish open-domain conversation or solve linguistic foundations."
+  },
+  "actionsNotPerformed": [
+    "training",
+    "model inference",
+    "core/source-pointer changes",
+    "old record moves",
+    "owner-chat reading",
+    "old sealed FINAL reading"
+  ],
+  "outputsInsideNewPrivateFolderOnly": true
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-development-validation-only",
+  "frozenAtUtc": "2026-10-12T18:22:39.205469+00:00",
+  "auditedWorktreeHead": "8b466cc43015289a4568639304ef9841397ad6fa",
+  "branch": "codex/conversation-wording-repair-20261012",
+  "files": {
+    "validation.jsonl": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/validation.jsonl",
+      "sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c"
+    },
+    "full-dialogues-for-review.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/full-dialogues-for-review.json",
+      "sha256": "231c40b0a9f250592e2671290ab4cb6f4324ebac5ac45cf44ac4b920b27d8d6e"
+    },
+    "holdout-config.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/holdout-config.json",
+      "sha256": "f24625d4cacab705564f22661e0ee8e4566afd002b3a678a39ddb691125c28e8"
+    },
+    "peer-reviewed-holdout-config.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/peer-reviewed-holdout-config.json",
+      "sha256": "67ac7e32deed8f9e2cc4e9a72324ff3e2b91cd61f9d0be3cc0e885a09d9a3e35"
+    },
+    "user-exclusion-hashes.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/user-exclusion-hashes.json",
+      "sha256": "e7866f7ea13fbc0afc2d20062486dae20d390785242b79a547ebe775dc6efaaf"
+    },
+    "technical-holdout-audit.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/technical-holdout-audit.json",
+      "sha256": "40a90e263eb41fae2bebdeef3800c8218b2003483175934a51a64fe63f12b078"
+    },
+    "peer-quality-review.json": {
+      "path": "private/pr1-wording-composition-audit-v1/prospective-validation/peer-quality-review.json",
+      "sha256": "b551d6b509d6858ff6a28ee569ff388952f9eb98372b2a1fec75f75aca49781c"
+    },
+    "build_new_validation.py": {
+      "path": "private/pr1-wording-composition-audit-v1/build_new_validation.py",
+      "sha256": "ad403a046fc62dc3185d7e16894ef9f096fdaa1804bc33977296157cacc5795e"
+    },
+    "verify_new_validation.py": {
+      "path": "private/pr1-wording-composition-audit-v1/verify_new_validation.py",
+      "sha256": "d5fd09df9ac49a3c2253b8c790d41a4773ef3e5cacedeed32fb4348c22141c6d"
+    },
+    "finalize_audit.py": {
+      "path": "private/pr1-wording-composition-audit-v1/finalize_audit.py",
+      "sha256": "9072e5b5a47a20e21c978fc59f7f765d3588d885cbb52e51a2144b59e106326a"
+    }
+  },
+  "records": {
+    "train": 0,
+    "validation": 80,
+    "test": 0
+  },
+  "originalValidationWorldGroups": 8,
+  "fullDialogues": 20,
+  "fourWholePrefixesEach": true,
+  "reservedCompleteWordings": 12,
+  "reservedUserFormsInWordings": 48,
+  "reservedNewCompositionRecipes": 8,
+  "reservedUserFormsInCompositions": 32,
+  "cleanWordingPairedPrefixRecords": 40,
+  "sourceAmbiguityClarifiedPrefixes": 8,
+  "countsAreDependent": "80 prefixes share 20 dialogue recipes and eight factual worlds; they are not 80 independent observations.",
+  "use": "DEVELOPMENT selection and diagnosis only; never TRAIN, never FINAL acceptance.",
+  "sourceProvenance": {
+    "kind": "first-party authored-synthetic fictional development cases",
+    "author": "Codex Work (project AI)",
+    "humanCorpus": false,
+    "externalTeacherApiCalled": false,
+    "originalCorpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "originalAuthoringScriptSha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9",
+    "reproducedWorldMetadataSha256": "88a76a66ad298fdb84307a1b41b0c14a080c5c5f4b02b82c5e0c5eafb13afb32",
+    "factualSource": "Original validation worlds88..95 only; groupId and source fold retained.",
+    "separateCorpusLicenseAssertion": null
+  },
+  "bounds": {
+    "loader": "ia_propia.conversation.data.load_corpus",
+    "allRecordsValid": true,
+    "idsUnique": true,
+    "originalGroupIdAndFoldPreserved": true,
+    "crossFoldWorldGroups": 0,
+    "completeContextsWithoutTruncation": true,
+    "minimumContextTokens": 72,
+    "maximumContextTokens": 260,
+    "minimumLastAssistantPayloadTokens": 3,
+    "maximumLastAssistantTargetsIncludingEos": 34,
+    "assistantEosSupervised": true,
+    "existingBpeSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+  },
+  "guards": {
+    "known60": {
+      "path": "private/pr1-wording-composition-audit-v1/pr1-devel-user-exclusion-hashes.json",
+      "sha256": "42119ddbbf9c9847c5194e08323ff8d389cf5930305762145f2c31dadf7a9286",
+      "USERonly": true
+    },
+    "newDiagnosis64": {
+      "path": "private/pr1-wording-history-diagnosis-v1/hash-only-exclusion.json",
+      "sha256": "0279193256fd4aa0b8d49fb49965dbe404ed345407f5991c5304502563a3a407",
+      "USERandUSERprefixHashFieldsOnly": true
+    },
+    "collisions": {
+      "known60UserRaw": 0,
+      "known60UserNormalized": 0,
+      "newDiagnosis64UserNormalized": 0,
+      "newDiagnosis64UserOnlyPrefixes": 0
+    },
+    "guardScope": "All guards are exposed DEVELOPMENT, never FINAL."
+  },
+  "review": {
+    "sourceReceiptSha256": "b551d6b509d6858ff6a28ee569ff388952f9eb98372b2a1fec75f75aca49781c",
+    "dialoguesAccepted": 20,
+    "dialoguesRejected": 0,
+    "reviewedConfigSnapshotSha256": "67ac7e32deed8f9e2cc4e9a72324ff3e2b91cd61f9d0be3cc0e885a09d9a3e35",
+    "frozenConfigDifference": "Only freeze status and receipt/hash metadata added after peer review; reviewed catalog bytes archived separately.",
+    "reviewer": "separate same-project AI agent; no human review",
+    "notModelAcceptance": "Review checks authored gold coherence, not model response quality."
+  },
+  "oldCorpusUnchanged": true,
+  "oldRecordsMoved": 0,
+  "oldTrainAugmentationBuilt": false,
+  "trainingPerformed": false,
+  "modelsLoaded": false,
+  "coreEdited": false,
+  "ownerChatOrOldSealedFinalRead": false,
+  "limitations": [
+    "Fictional first-party authored examples, no human corpus quality claim.",
+    "Whole formulation and event recipes are held out; ordinary Spanish vocabulary and elementary operations are shared.",
+    "The eight factual worlds were already old VAL, not new independent world or vocabulary samples.",
+    "These exposed cases support development selection, not FINAL acceptance.",
+    "Exact delex equality does not prove semantic or lexical independence.",
+    "Source project ownership and retained daily sequence are not clean old/new semantic pairs; only the new gold is explicit.",
+    "References remain short (at most34 targets including EOS); this is a bounded wording/composition holdout, not broad linguistic training data."
+  ]
+}

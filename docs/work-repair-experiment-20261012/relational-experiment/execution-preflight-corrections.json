@@ -1,0 +1,24 @@
+{
+  "modelOrTrainingChanged": false,
+  "issues": [
+    {
+      "kind": "evaluation_preflight",
+      "issue": "root supplied incorrect expected-manifest literal on first original probe launch",
+      "result": "assertion failed before engine loading or generation; no actual output produced",
+      "resolution": "retry only after using recorded completion manifest5bbd429...",
+      "rerunActualSourceUnchanged": true
+    },
+    {
+      "kind": "audit_helper_draft",
+      "issue": "root assumed checkpoint0 retained in native run; native retention correctly pruned it after observer preservation",
+      "result": "audit assertion failed, no integrity report produced",
+      "resolution": "read checkpoint0 from verified all-observed-checkpoints copies; preserve first helper draft"
+    },
+    {
+      "kind": "audit_helper_draft",
+      "issue": "root assumed parentModelId at training top level instead of nested lineage",
+      "result": "audit KeyError, no report produced",
+      "resolution": "use actual saved manifest training.lineage.parentModelId, second draft preserved; no model/config/data edits"
+    }
+  ]
+}

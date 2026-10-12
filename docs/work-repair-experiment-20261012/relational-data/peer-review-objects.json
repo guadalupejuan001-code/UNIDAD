@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-12T18:44:28.379623+00:00",
+  "reviewer": "/root/spanish_data_review/relational_objects_peer",
+  "reviewerProjectAI": true,
+  "notHuman": true,
+  "reviewNature": "Independent semantic project-AI review; no human independence claim. All seeds manually read; independent USER-only reconstruction cross-check supplements that reading.",
+  "family": "two_objects",
+  "status": "accept-semantics-with-design-limitations",
+  "sourceHashes": {
+    "semantic-review-seeds.json": "cd7727f4c78ccfdfa41edad115a65c7b801364e4d23829b72982b29aa2155ae0",
+    "build_relational_contrast.py": "d81fb263807d760e634f23c8a499fbfbf7b3c6af9b612c1e70e530c0fa3c03b9",
+    "relational-train.jsonl": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8"
+  },
+  "all16ReadInFull": true,
+  "compilerPathsReviewed": true,
+  "compilerPathDetails": [
+    {
+      "file": "build_relational_contrast.py",
+      "lines": "106-127",
+      "purpose": "objects() natural text, state update, gold, unknown giver, assertions and factor map"
+    },
+    {
+      "file": "build_relational_contrast.py",
+      "lines": "140-152",
+      "purpose": "88 TRAIN world indices, order/query/correction/equality factors, third-color choice and first16 seed selection"
+    },
+    {
+      "file": "build_relational_contrast.py",
+      "lines": "153-179",
+      "purpose": "native prefixes, original neutral-history policy, IDs/groups/splits retention and exports"
+    },
+    {
+      "file": "build_relational_contrast.py",
+      "lines": "204-214",
+      "purpose": "factor exposure, token bounds and 16-cell 5/6 assertions"
+    }
+  ],
+  "seedCounts": {
+    "dialogues": 16,
+    "userTurns": 64,
+    "goldTurns": 64,
+    "accepted": 16,
+    "rejected": 0,
+    "uniqueFactorCells": 16,
+    "colorsEqualAfterCorrection": 8,
+    "colorsDifferentAfterCorrection": 8,
+    "thirdQueriesCorrected": 8,
+    "thirdQueriesUntouched": 8,
+    "lastKnownGiver": 8,
+    "lastMissingGiver": 8
+  },
+  "compilerIndexEnumeration": {
+    "scope": "Independent enumeration of compiler bit formulas over 88 indices; not a reread of all native dialogue golds.",
+    "worldIndices": 88,
+    "uniqueCells": 16,
+    "cellSizes": [
+      5,
+      6
+    ],
+    "equalColorEndStates": 44,
+    "differentColorEndStates": 44,
+    "thirdQueriesCorrected": 44,
+    "thirdQueriesUntouched": 44
+  },
+  "checks": {
+    "explicitColorBindings": true,
+    "presentationOrderDoesNotChangeBinding": true,
+    "disclosedGiverBelongsOnlyToNamedObject": true,
+    "correctedObjectColorAlwaysChanges": true,
+    "otherObjectColorPreserved": true,
+    "bothGiverStatesPreserved": true,
+    "updatedAndUntouchedEntityGoldsCorrect": true,
+    "unknownGiverNeverInvented": true,
+    "equalAndDifferentEndColorsBothPresent": true,
+    "all64GoldsMatchIndependentExplicitUserStateReconstruction": true
+  },
+  "designLimitations": [
+    "thirdQueriesCorrectedEntity and lastQueriesKnownGiver are identical q==u; they are not independently manipulated factors.",
+    "Only one giver is disclosed per dialogue; preserving both giver states means preserving one known value and one unknown value, not evidence for retaining two simultaneously known givers.",
+    "Seeds cover all16 cells once but not all88 worlds; compiler index enumeration checks the 44/44 balance without claiming full-corpus semantic reading.",
+    "This is a bounded synthetic TRAIN-derived contrast; semantic review does not show model competence, natural language generalization or FINAL acceptance."
+  ],
+  "verdicts": [
+    {
+      "id": "repair-20261012-world-000-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=amarillo; T2: donante de bolso=Paula Hidalgo. T3: bolso cambia de amarillo a verde; reloj conserva azul y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta verde es correcta. T4: donante de bolso conocido: Paula Hidalgo.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-001-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=negro; T2: donante de bolso=Lidia Fuentes. T3: bolso cambia de negro a violeta; reloj conserva violeta y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta violeta es correcta. T4: donante de bolso conocido: Lidia Fuentes.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-002-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=blanco; T2: donante de reloj=Yolanda Serrano. T3: bolso cambia de negro a azul; reloj conserva blanco y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta blanco es correcta. T4: donante de bolso no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-003-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=amarillo; T2: donante de reloj=Noelia Hidalgo. T3: bolso cambia de violeta a amarillo; reloj conserva amarillo y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta amarillo es correcta. T4: donante de bolso no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-004-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=azul; T2: donante de bolso=Úrsula Castro. T3: reloj cambia de blanco a verde; bolso conserva azul y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta azul es correcta. T4: donante de reloj no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-005-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=violeta; T2: donante de bolso=Alicia Fuentes. T3: reloj cambia de azul a violeta; bolso conserva violeta y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta violeta es correcta. T4: donante de reloj no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-006-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=rojo; T2: donante de reloj=Yolanda Ortiz. T3: reloj cambia de rojo a azul; bolso conserva amarillo y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta azul es correcta. T4: donante de reloj conocido: Yolanda Ortiz.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-007-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=gris; T2: donante de reloj=Sonia Hidalgo. T3: reloj cambia de gris a azul; bolso conserva azul y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta azul es correcta. T4: donante de reloj conocido: Sonia Hidalgo.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-008-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=azul; T2: donante de bolso=Sonia Campos. T3: bolso cambia de azul a verde; reloj conserva verde y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta verde es correcta. T4: donante de bolso conocido: Sonia Campos.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-009-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=violeta; T2: donante de bolso=Sonia Campos. T3: bolso cambia de violeta a verde; reloj conserva blanco y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta verde es correcta. T4: donante de bolso conocido: Sonia Campos.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-010-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=azul; T2: donante de reloj=Úrsula Serrano. T3: bolso cambia de amarillo a azul; reloj conserva azul y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta azul es correcta. T4: donante de bolso no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-011-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=blanco; T2: donante de reloj=Lidia Hidalgo. T3: bolso cambia de negro a verde; reloj conserva blanco y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta blanco es correcta. T4: donante de bolso no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-012-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=violeta; T2: donante de bolso=Paula Fuentes. T3: reloj cambia de negro a violeta; bolso conserva violeta y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta violeta es correcta. T4: donante de reloj no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-013-two_objects",
+      "verdict": "accept",
+      "reason": "T1: bolso=verde; T2: donante de bolso=Úrsula Serrano. T3: reloj cambia de blanco a gris; bolso conserva verde y ambos estados de donante persisten. Se pregunta por bolso, cuya respuesta verde es correcta. T4: donante de reloj no declarado; gold reconoce información ausente.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-014-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=blanco; T2: donante de reloj=Clara Campos. T3: reloj cambia de blanco a violeta; bolso conserva violeta y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta violeta es correcta. T4: donante de reloj conocido: Clara Campos.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    },
+    {
+      "id": "repair-20261012-world-015-two_objects",
+      "verdict": "accept",
+      "reason": "T1: reloj=negro; T2: donante de reloj=Yolanda Castro. T3: reloj cambia de negro a gris; bolso conserva azul y ambos estados de donante persisten. Se pregunta por reloj, cuya respuesta gris es correcta. T4: donante de reloj conocido: Yolanda Castro.",
+      "readInFull": true,
+      "fourUserTurnsAndFourGoldsReviewed": true,
+      "allStateTraceEntriesReviewed": true,
+      "goldEntailedByExplicitUserFacts": true,
+      "goldAndStateTraceConsistent": true
+    }
+  ],
+  "nativeTrainReadPolicy": "SHA256 calculated only; native content not needed for seed semantic review.",
+  "modelOutputsRead": false,
+  "ownerDevValGoldsOrOldFinalRead": false,
+  "compilerExecuted": false,
+  "modelsLoaded": false,
+  "trainingPerformed": false,
+  "corpusModified": false
+}

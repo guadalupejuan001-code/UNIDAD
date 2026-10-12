@@ -1,0 +1,2321 @@
+{
+  "schemaVersion": 1,
+  "matrixId": "known40-cross-matrix-v1",
+  "purpose": "paired_exposed_development_cross_review_not_final_acceptance",
+  "reviewer": {
+    "type": "project_ai_assistant_semantic_cross_review",
+    "project": "Unidad",
+    "human": false,
+    "independentExternalReviewer": false,
+    "externalAcceptance": false,
+    "semanticReviewer": "/root/known40_cross",
+    "technicalAuditHelper": "/root/known40_cross/technical_audit",
+    "technicalHelperAssignedSemanticGrades": false,
+    "blinding": {
+      "modelLabelsBlinded": false,
+      "frozenRubricRead": true,
+      "all80UserReplyPairsRead": true,
+      "actualHistoriesRead": true,
+      "otherCurrentReviewsOrScoresRead": false,
+      "otherReviewFilesRead": false,
+      "primaryReviewConsulted": false,
+      "requiredOrdersDisclosure": "AGENTS.md exigió leer ORDENES_USUARIO.md antes de escribir. Ese documento contenía agregados históricos de otros experimentos; no se usaron para decidir estas calificaciones. No se consultaron ficheros de revisión o puntuación ajenos."
+    }
+  },
+  "method": {
+    "grading": "manual_semantic_review_of_frozen_rubric_and_actual_user_assistant_history",
+    "rubricVerbatim": {
+      "C": "Completa: satisface todas las restricciones de la intención y los hechos; español inteligible. Se aceptan paráfrasis, cortesía convencional y errores menores que no cambien los hechos.",
+      "P": "Parcial: contiene una parte pertinente y correcta, pero omite o expresa de forma incompleta alguna parte solicitada; no contradice hechos críticos, no inventa datos y no viola una negativa explícita.",
+      "F": "Fallida: contradice o inventa un hecho crítico, invierte referentes o correcciones, viola una instrucción negativa explícita, responde a otro asunto sin parte pertinente, o resulta ininteligible.",
+      "criticalMeaning": "Una contradicción, invención o desobediencia explícita en una restricción crítica implica F. La mera omisión de una parte, con una respuesta útil y correcta y sin contradicción, puede ser P.",
+      "oldValues": "Se permite mencionar un dato anterior al contrastarlo correctamente con el vigente; presentarlo como actual es un fallo.",
+      "unknowns": "Un hecho no indicado debe permanecer desconocido. Se admite pedirlo o explicar la limitación; adivinarlo no demuestra conocimiento.",
+      "style": "No se exige una frase literal ni un estilo afectivo específico. No penalizar una respuesta breve que satisfaga la intención.",
+      "episode": "C sólo si todos sus cuatro turnos generados son C; P si todos fueron generados, no hay F y al menos uno es P; F si hay algún F. Si hay turnos bloqueados o no generados, informar incompleto por separado.",
+      "review": "Revisión semántica manual posterior, sin autoatribuir calificaciones. Informar tipo de revisor, cegamiento y acceso a rúbricas. Dos asistentes del proyecto no son revisión humana o aceptación externa."
+    },
+    "criticalDefinition": "Sólo contradicción, invención o desobediencia explícita interpretable que vulnera una restricción crítica congelada. Omitir o ser incoherente no convierte automáticamente el fallo en crítico.",
+    "questions": "Se evalúa una pregunta como pregunta; no se convierte su contenido en una afirmación factual. Tampoco se infiere ejecución de un eco de palabras como consejos.",
+    "ambiguousCorrectValues": "La presencia de un valor correcto no basta para C cuando su función o la intención es ambigua. P exige alguna parte pertinente recuperable; F cuando no hay una respuesta útil interpretable.",
+    "eosAndCap": "EOS y CAP160 son razones normales de parada, separadas del juicio semántico. El CAP no es automáticamente un error técnico ni un criterio adicional que prohíba un diálogo C.",
+    "wholeCorrectDialogue": "Cuatro turnos C, cero turnos críticos y cero errores técnicos o cortes; se informa CAP por separado.",
+    "scope": "Todos los 40 casos por modelo son DEVELOPMENT expuesto ya visto, no FINAL ni demostración de generalización o aceptación.",
+    "forbiddenArtifactsNotOpened": [
+      "training",
+      "source",
+      "model weights/config/tokenizer files",
+      "FINAL"
+    ],
+    "inferenceApiUsedForOwnModelReplies": false,
+    "replyTextsModified": false,
+    "casesSchemaVersion": 1,
+    "declaredContextMax": 512,
+    "provenance": "Se conservan los modelId/manifestHash y los hashes fuente tal como quedaron registrados en actual.json; no se verificaron reabriendo source/model."
+  },
+  "inputs": {
+    "casesFile": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/cases.json",
+    "casesSha256": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+    "actualFilesSha256": {
+      "original128": "e4c80c1cbd81639848d43054a808930eed990e3fea69bfa6326e3745fcde287f",
+      "relational128": "1f68828b1948da09dd2b4ec5ee850ef17e520d2986df18739efb67d24eb4e032"
+    },
+    "reviewFilesSha256": {
+      "original128": "3b31019799d3a17e4877ac6a93c1ac7383f11e8568fd218dac5c569f193fe81c",
+      "relational128": "e764066143bdee1c0068ab7837ebe217d1f0a73997771b683d1e9555526c1060"
+    }
+  },
+  "modelSummaries": {
+    "original128": {
+      "expectedEpisodes": 10,
+      "generatedEpisodes": 10,
+      "expectedTurns": 40,
+      "generatedTurns": 40,
+      "incompleteEpisodes": 0,
+      "blockedOrNotGeneratedTurns": 0,
+      "turnGrades": {
+        "C": 9,
+        "P": 8,
+        "F": 23
+      },
+      "dialogueGrades": {
+        "C": 0,
+        "P": 1,
+        "F": 9
+      },
+      "wholeDialoguesCorrect": 0,
+      "criticalTurns": 7,
+      "criticalTurnIds": [
+        "ngdev-v1-06-t1",
+        "ngdev-v1-06-t2",
+        "ngdev-v1-06-t3",
+        "ngdev-v1-07-t4",
+        "ngdev-v1-08-t1",
+        "ngdev-v1-08-t2",
+        "ngdev-v1-09-t1"
+      ],
+      "criticalConstraintViolations": 9,
+      "technicalErrors": 0,
+      "emptyReplies": 0,
+      "promptCuts": 0,
+      "discardedPromptTokens": 0,
+      "promptCutTurnIds": [],
+      "eosStops": 39,
+      "cap160Stops": 1,
+      "cap160TurnIds": [
+        "ngdev-v1-02-t2"
+      ],
+      "generatedTokensTotal": 699,
+      "maximumPromptTokens": 342,
+      "maximumGeneratedTokens": 160,
+      "maximumPromptPlusGeneratedTokens": 360,
+      "maximumPromptPlusCap160Tokens": 502,
+      "context512OverflowObserved": false,
+      "inputUserHistoryAndTextHashesVerified": true
+    },
+    "relational128": {
+      "expectedEpisodes": 10,
+      "generatedEpisodes": 10,
+      "expectedTurns": 40,
+      "generatedTurns": 40,
+      "incompleteEpisodes": 0,
+      "blockedOrNotGeneratedTurns": 0,
+      "turnGrades": {
+        "C": 7,
+        "P": 6,
+        "F": 27
+      },
+      "dialogueGrades": {
+        "C": 0,
+        "P": 1,
+        "F": 9
+      },
+      "wholeDialoguesCorrect": 0,
+      "criticalTurns": 8,
+      "criticalTurnIds": [
+        "ngdev-v1-01-t3",
+        "ngdev-v1-03-t2",
+        "ngdev-v1-03-t3",
+        "ngdev-v1-06-t2",
+        "ngdev-v1-08-t1",
+        "ngdev-v1-08-t2",
+        "ngdev-v1-09-t1",
+        "ngdev-v1-10-t4"
+      ],
+      "criticalConstraintViolations": 10,
+      "technicalErrors": 0,
+      "emptyReplies": 0,
+      "promptCuts": 0,
+      "discardedPromptTokens": 0,
+      "promptCutTurnIds": [],
+      "eosStops": 40,
+      "cap160Stops": 0,
+      "cap160TurnIds": [],
+      "generatedTokensTotal": 522,
+      "maximumPromptTokens": 198,
+      "maximumGeneratedTokens": 40,
+      "maximumPromptPlusGeneratedTokens": 231,
+      "maximumPromptPlusCap160Tokens": 358,
+      "context512OverflowObserved": false,
+      "inputUserHistoryAndTextHashesVerified": true
+    }
+  },
+  "pairedSummary": {
+    "turns": 40,
+    "gradeTransitions": {
+      "C->C": 6,
+      "C->F": 3,
+      "F->F": 21,
+      "F->P": 2,
+      "P->C": 1,
+      "P->F": 3,
+      "P->P": 4
+    },
+    "criticalTransitions": {
+      "false->false": 29,
+      "false->true": 4,
+      "true->false": 3,
+      "true->true": 4
+    },
+    "sameActualReplyTexts": 11,
+    "relationalMinusOriginal": {
+      "turnC": -2,
+      "turnP": -2,
+      "turnF": 4,
+      "wholeDialoguesCorrect": 0,
+      "criticalTurns": 1,
+      "technicalErrors": 0,
+      "cap160Stops": -1,
+      "promptCuts": 0
+    },
+    "interpretation": "En esta revisión cruzada de desarrollo expuesto, relational128 no mejora la semántica del original128: menos C y más F/críticos. Que el bucle de color termine en EOS en lugar de CAP no lo convierte en una respuesta útil. Ninguno logra un diálogo entero correcto. No se atribuye generalización ni aceptación final."
+  },
+  "episodes": [
+    {
+      "id": "ngdev-v1-01",
+      "original128": {
+        "grade": "P",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-02",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 1
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-03",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 2,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-04",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-05",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-06",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 3,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-07",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "P",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-08",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 2,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 2,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-09",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    },
+    {
+      "id": "ngdev-v1-10",
+      "original128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 0,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      },
+      "relational128": {
+        "grade": "F",
+        "wholeDialogueCorrect": false,
+        "criticalTurns": 1,
+        "technicalErrors": 0,
+        "cap160Stops": 0
+      }
+    }
+  ],
+  "turns": [
+    {
+      "id": "ngdev-v1-01-t1",
+      "user": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera Zelún como valor pertinente, pero «te vas a» no expresa con claridad que lo usará como apodo. La función es ambigua; no se interpreta la frase como una ubicación inventada.",
+        "actualReply": "Te vas a Zelún.",
+        "actualTextSha256": "989500c4892a0ed5c90273301b929d1bf6b8cfa0fec988022bddf2ffa82be6c3",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 75,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 83,
+          "promptPlusCap160Tokens": 235
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera Zelún como valor pertinente, pero «te vas a» no expresa con claridad que lo usará como apodo. La función es ambigua; no se interpreta la frase como una ubicación inventada.",
+        "actualReply": "Te vas a Zelún.",
+        "actualTextSha256": "989500c4892a0ed5c90273301b929d1bf6b8cfa0fec988022bddf2ffa82be6c3",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 75,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 83,
+          "promptPlusCap160Tokens": 235
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "P->P"
+    },
+    {
+      "id": "ngdev-v1-01-t2",
+      "user": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Identifica de forma clara el faro como lo que quiere dibujar.",
+        "actualReply": "Quieres dibujar un faro.",
+        "actualTextSha256": "343410440508c5e1724c44a574992f4663f47833f54acc0d69fbecddff5a5911",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 101,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 110,
+          "promptPlusCap160Tokens": 261
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Responde sobre llamar Zelomara, sin parte pertinente sobre qué quiere dibujar. Zelomara es un nombre compartido: no se interpreta como un objeto de dibujo o hecho personal nuevo, ni se extiende el criterio crítico de este turno a otro turno.",
+        "actualReply": "Tehora te llamaré Zelomara.",
+        "actualTextSha256": "9f255b83ad4762b8152e03b806edf83fc0d5b331b86b55dd7b2bee0f0004348d",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 101,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 112,
+          "promptPlusCap160Tokens": 261
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->F"
+    },
+    {
+      "id": "ngdev-v1-01-t3",
+      "user": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Adopta explícitamente Zelaia como apodo desde ahora.",
+        "actualReply": "Ahora te llamaré Zelaia.",
+        "actualTextSha256": "4d4a6c7f558f5a573b38aa4bc68aeb5a453debaacc8de5b734c790afa2584af6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 136,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 147,
+          "promptPlusCap160Tokens": 296
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-01-t3-intent"
+        ],
+        "reason": "«Ahora te llamaré un faro» asigna explícitamente un apodo distinto de Zelaia. Confunde el objeto de dibujo con la preferencia actual y contradice la corrección.",
+        "actualReply": "Ahora te llamaré un faro.",
+        "actualTextSha256": "34d566e6e5f769d547a27739cd9c9c9726472dfa05f04d312a42aa7da2a5579e",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 10,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 138,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 148,
+          "promptPlusCap160Tokens": 298
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->F"
+    },
+    {
+      "id": "ngdev-v1-01-t4",
+      "user": "¿Qué apodo elegí primero y cuál prefiero ahora?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Seguimos Zelaia» permite recuperar el apodo vigente en el contexto real. Omite Zelún y la distinción completa primero/ahora; la cola no aporta un hecho interpretable contrario.",
+        "actualReply": "Seguimos Zelaia; ahora, quiero.",
+        "actualTextSha256": "0e83c096d9d1df1f3f13b6a5fe9f912ba8471be08db2180d93dbaec8e669f9be",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 13,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 164,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 177,
+          "promptPlusCap160Tokens": 324
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Ahora te vives» no identifica ninguno de los apodos ni sus funciones; no contiene una inversión o tercer apodo interpretable.",
+        "actualReply": "Ahora te vives.",
+        "actualTextSha256": "68ee70b677053fcbb356b628f3d015dfaa7003dddfcfca95efee3454b805924c",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 165,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 172,
+          "promptPlusCap160Tokens": 325
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "P->F"
+    },
+    {
+      "id": "ngdev-v1-02-t1",
+      "user": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Reconoce que no se puede saber el color porque el usuario todavía no lo contó.",
+        "actualReply": "No; no me has contado su color.",
+        "actualTextSha256": "0b1dd40f17fcfa28d0ed9045a4c34ab5e9ce5ec83f689f836b546908a84f11ea",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 72,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 83,
+          "promptPlusCap160Tokens": 232
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Reconoce que no puede conocer el color porque no fue contado.",
+        "actualReply": "No; no has contado su color.",
+        "actualTextSha256": "bed2ababeaba0ffb7d4bd89578a409636239346782553516cfb1fe4d4d7a4d6d",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 10,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 72,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 82,
+          "promptPlusCap160Tokens": 232
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-02-t2",
+      "user": "Ya lo encontré: es color coral. ¿De qué color es?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La repetición de «color» no identifica coral ni ningún color concreto. Es una respuesta inservible, sin una contradicción o color inventado interpretable. CAP160 se registra como límite normal separado.",
+        "actualReply": "Es color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color",
+        "actualTextSha256": "ee391e31657f84825ff28792f6d3477847f487d5036cffd40139061fb27c897d",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 160,
+          "stopReason": "token_budget",
+          "cap160Reached": true,
+          "promptTokens": 103,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 263,
+          "promptPlusCap160Tokens": 263
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La repetición de «color» no identifica coral ni un color alternativo. Aunque termina en EOS, sigue siendo una respuesta inservible; no hay invención crítica de un color interpretable.",
+        "actualReply": "Es color color color color color color color color color color color color color color color color color color color color color color color color color color color color color.",
+        "actualTextSha256": "487a6f0e337f5dd65beb3f6dd03f72c09ed6424f1c0af4eedf590c8abb83da10",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 32,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 102,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 134,
+          "promptPlusCap160Tokens": 262
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-02-t3",
+      "user": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "El bucle «color dio el» no permite identificar a la prima Nelavia. No hay un nombre o relación alternativos interpretables.",
+        "actualReply": " color dio el color dio el color dio el color dio el color dio el color dio el color dio el color dio el color dio el color dio el color dio el color.",
+        "actualTextSha256": "b63aa678ba2d92b560735f9a98f7eee0ff354442a065750992d87a18bcf3e082",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 36,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 287,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 323,
+          "promptPlusCap160Tokens": 447
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«dio el primalavia» está mezclado con repeticiones y no identifica inteligiblemente a prima Nelavia. No se inventa una persona distinta a partir de esa fusión de sílabas.",
+        "actualReply": "En color color color color color color color dio el primalavia.",
+        "actualTextSha256": "2225fb337908b07d37658b679a38ba60873d321e9622a4069f408f1d19f9a635",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 15,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 157,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 172,
+          "promptPlusCap160Tokens": 317
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-02-t4",
+      "user": "¿Sabemos ya su color y en qué tienda se compró?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La secuencia no separa coral conocido de tienda desconocida y resulta ininteligible. No se identifica ninguna tienda inventada ni negación interpretable del color.",
+        "actualReply": " en color enran en color color en en color enran en color en color.",
+        "actualTextSha256": "211ce3f8d47424d97a16855cd865248008b9c6f099caaed9506448e398cd5ba8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 18,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 342,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 360,
+          "promptPlusCap160Tokens": 502
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La repetición de sílabas no comunica color conocido ni tienda desconocida. No hay una tienda u otra afirmación factual interpretables.",
+        "actualReply": "Quiqueviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviaviavia.",
+        "actualTextSha256": "bb57770af53bc2c8cafad7c7b0bf521cc41810b689125e55cc0395973aad66a8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 40,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 191,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 231,
+          "promptPlusCap160Tokens": 351
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-03-t1",
+      "user": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Identifica hoy Valdehumo. La mención adicional de Puerto Arce conserva el destino aún vigente de este turno; «voy» se entiende como eco de la primera persona del usuario, sin cambiar la ubicación solicitada.",
+        "actualReply": "Estás en Valdehumo y mañana voy a Puerto Arce.",
+        "actualTextSha256": "81dc198b7e7895b1c4765781fe8dad3c1c8601125a66c5a6ccdb577ec9d52de5",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 17,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 72,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 89,
+          "promptPlusCap160Tokens": 232
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Identifica Valdehumo como ubicación actual.",
+        "actualReply": "Estás en Valdehumo.",
+        "actualTextSha256": "426d64514aa696606896e0dc3ef3c40223476fb167cfcbb47a43f8768830bf17",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 72,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 81,
+          "promptPlusCap160Tokens": 232
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-03-t2",
+      "user": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Repite la ubicación presente Valdehumo, pero no responde al destino actualizado. No afirma que vaya a Valdehumo ni que Puerto Arce siga vigente; es un fallo de asunto/omisión sin contradicción crítica interpretable.",
+        "actualReply": "Estás en Valdehumo,?",
+        "actualTextSha256": "46fe26404265c754c8f8d346de573833be2079c4749d95b28a5d0732c633e1a1",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 10,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 121,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 131,
+          "promptPlusCap160Tokens": 281
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-03-t2-grounding"
+        ],
+        "reason": "Termina afirmando «mañana voy a Puerto Arce» sin un contraste de pasado. Pese a incluir Villa Nébula, mantiene el destino antiguo como futuro vigente y contradice la corrección.",
+        "actualReply": "Estás a Villa Nébula, mañana, mañana, mañana, mañana voy a Puerto Arce.",
+        "actualTextSha256": "3b7e68e3e0c38d4f50840ac1c91843c6700dfcc45c1ad89abfeaf581a66043f0",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 24,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 137,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-03-t3",
+      "user": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "En respuesta a si ya está en Villa Nébula, sitúa el presente en Valdehumo; esto comunica que todavía no llegó al destino. «Estoy» se acepta como eco de la perspectiva del usuario.",
+        "actualReply": "Estoy en Valdehumo.",
+        "actualTextSha256": "f65ad31518a956aca7910c2a3edbba4479a2e3807edaeac78e10c9d7311628d8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 156,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 165,
+          "promptPlusCap160Tokens": 316
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-03-t3-intent",
+          "ngdev-v1-03-t3-grounding"
+        ],
+        "reason": "La frase presente «Estoy ... a Villa Nébula» sitúa la ubicación ya en el destino, frente al USER que dice seguir en Valdehumo. La terminación «sio» no se usa como evidencia separada de un sí; la contradicción se funda en la ubicación presente expresada.",
+        "actualReply": "Estoy a Villa Né a Villa Nébula, sio.",
+        "actualTextSha256": "d0d6ac0b0dae11014f9d7f89097e89e72fa3eabafb5ae7f186d440e7177d8555",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 17,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 162,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 179,
+          "promptPlusCap160Tokens": 322
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->F"
+    },
+    {
+      "id": "ngdev-v1-03-t4",
+      "user": "Resume mi punto de salida y mi destino actual.",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera Valdehumo, el punto de salida, pero omite Villa Nébula y la separación completa entre salida y destino.",
+        "actualReply": "Estás en Valdehumo.",
+        "actualTextSha256": "426d64514aa696606896e0dc3ef3c40223476fb167cfcbb47a43f8768830bf17",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 179,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 188,
+          "promptPlusCap160Tokens": 339
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Estás» no identifica salida ni destino y no contiene una ubicación falsa interpretable.",
+        "actualReply": "Estás.",
+        "actualTextSha256": "16483309ecc28cee5bfe3788009d9084fed62de20afc0d3968069047b9117d5b",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 4,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 193,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 197,
+          "promptPlusCap160Tokens": 353
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "P->F"
+    },
+    {
+      "id": "ngdev-v1-04-t1",
+      "user": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos.",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Te des consejos» no acoge el relato de forma inteligible. Es un fragmento ambiguo, sin un consejo, tarea o solución concretos; no se le inventa una desobediencia explícita.",
+        "actualReply": "Te des consejos.",
+        "actualTextSha256": "73bd456683dceade088ed156cd03a64701bcb2430eee73959b75ff4745c57037",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 5,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 70,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 75,
+          "promptPlusCap160Tokens": 230
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Te des consejos» no acoge el relato de forma inteligible. Es un fragmento ambiguo, sin un consejo, tarea o solución concretos; no se le inventa una desobediencia explícita.",
+        "actualReply": "Te des consejos.",
+        "actualTextSha256": "73bd456683dceade088ed156cd03a64701bcb2430eee73959b75ff4745c57037",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 5,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 70,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 75,
+          "promptPlusCap160Tokens": 230
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-04-t2",
+      "user": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso.",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La interrogación «¿Quién pesado?» busca de forma incompleta a una persona ligada a la situación difícil. No formula con claridad una pregunta sobre las interrupciones. Es una pregunta, no una afirmación sobre quién interrumpió o por qué.",
+        "actualReply": "¿Quién pesado?",
+        "actualTextSha256": "68f7eb99ece9b75c634e3b64c4cc802fdcaf97fe155a8592df7d06dd32852b62",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 97,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 104,
+          "promptPlusCap160Tokens": 257
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La interrogación «¿Quién pesado?» busca de forma incompleta a una persona ligada a la situación difícil. No formula con claridad una pregunta sobre las interrupciones. Es una pregunta, no una afirmación sobre quién interrumpió o por qué.",
+        "actualReply": "¿Quién pesado?",
+        "actualTextSha256": "68f7eb99ece9b75c634e3b64c4cc802fdcaf97fe155a8592df7d06dd32852b62",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 97,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 104,
+          "promptPlusCap160Tokens": 257
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "P->P"
+    },
+    {
+      "id": "ngdev-v1-04-t3",
+      "user": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Te interrumpió que» no identifica al compañero Taviro ni a otra persona interpretable; no satisface la pregunta quién.",
+        "actualReply": "Te interrumpió que.",
+        "actualTextSha256": "3ed2694cfe450e1e72c88158b6711bf6a7ca10b3984a8ee531880fe61169b911",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 127,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 135,
+          "promptPlusCap160Tokens": 287
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Te interrumpió que» no identifica al compañero Taviro ni a otra persona interpretable; no satisface la pregunta quién.",
+        "actualReply": "Te interrumpió que.",
+        "actualTextSha256": "3ed2694cfe450e1e72c88158b6711bf6a7ca10b3984a8ee531880fe61169b911",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 127,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 135,
+          "promptPlusCap160Tokens": 287
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-04-t4",
+      "user": "Sigo sin querer soluciones. ¿Qué situación estoy intentando contarte?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Estieran eso» no refleja de forma inteligible las interrupciones en el trabajo. No contiene solución ni atribución falsa interpretables.",
+        "actualReply": "Estieran eso.",
+        "actualTextSha256": "dfb844bbb4431b05e7738e205191e19c364986540256fee38e2e8b0558eab2f1",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 6,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 154,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 160,
+          "promptPlusCap160Tokens": 314
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Estieran al hablar» conserva palabras de la situación, pero no expresa de forma inteligible que son interrupciones en el trabajo. No hay consejo ni atribución falsa interpretables.",
+        "actualReply": "Estieran al hablar.",
+        "actualTextSha256": "4f648c4cca0c5ddd4fbda5cd202529970e17ff4928dac6525d5798c05681de62",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 154,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 161,
+          "promptPlusCap160Tokens": 314
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-05-t1",
+      "user": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La secuencia de «llama», «Coún» y «reúne» no expresa un título ni un tipo de proyecto inteligibles. No se convierte un fragmento inestable en un título alternativo afirmado.",
+        "actualReply": "Se llama y qué llama Coún Coún Co y qué llama reúne.",
+        "actualTextSha256": "c147ca3f51874a9697d12b72998114cf619d84527b4165eb44aeeab01fe1cf3e",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 18,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 73,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 91,
+          "promptPlusCap160Tokens": 233
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La secuencia de «llama», «Coún» y «reúne» no expresa un título ni un tipo de proyecto inteligibles. No se convierte un fragmento inestable en un título alternativo afirmado.",
+        "actualReply": "Se llama y qué llama Coún Coún Co y qué llama reúne.",
+        "actualTextSha256": "c147ca3f51874a9697d12b72998114cf619d84527b4165eb44aeeab01fe1cf3e",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 18,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 73,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 91,
+          "promptPlusCap160Tokens": 233
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-05-t2",
+      "user": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "La secuencia no expresa un origen interpretable ni relaciona la idea con las historias del abuelo.",
+        "actualReply": "z Coún Co y?",
+        "actualTextSha256": "1cd357da7ab1b311333d18aea33ffd0d44b00564389a0635fc9ee0c22ed673c6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 120,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera el abuelo que contaba cuentos, una parte pertinente del origen compartido. La forma «mi abueloe» y la falta de una conexión inteligible con la idea dejan la respuesta incompleta; no se interpreta el error de persona como un abuelo nuevo.",
+        "actualReply": "Te contaba mi abueloe cuentos breves.",
+        "actualTextSha256": "e0cf90273300b6b2549248dd7cc43092b7f5d9dc58da6948634bbbf78403c4da",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 13,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 126,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->P"
+    },
+    {
+      "id": "ngdev-v1-05-t3",
+      "user": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Habla de fragmentos de historias y abuelo, pero no dice qué título cambió ni que permanecen los cuentos. La frase no establece un cambio de contenido o título vigente interpretable.",
+        "actualReply": "Antes estabas en las historias de las historias que me has dicho que te contaca en abuelo.",
+        "actualTextSha256": "dc35104df64126b7aeffc33e21d7607d15d7dba22172ebc22ffcfa7afa931177",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 24,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 152,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 176,
+          "promptPlusCap160Tokens": 312
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Antes qué se contaba mi abuelo» no explica el cambio de título ni que los cuentos no cambiaron. La expresión interrogativa/incompleta no afirma un cambio de contenido.",
+        "actualReply": "Antes qué se contaba mi abuelo.",
+        "actualTextSha256": "e53e4229b2ef46070a36507393ecedd305bcba0a365a7b95d72508bdd3b62c67",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 158,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 169,
+          "promptPlusCap160Tokens": 318
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-05-t4",
+      "user": "¿Cómo se relaciona este proyecto con mi abuelo?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Los fragmentos Cuaderno/Cobre/abuelo/historias no establecen la relación de inspiración. «Cuaderno Cobre» no aparece en una proposición inteligible que lo presente como título vigente; no se marca crítico por esa mezcla sola.",
+        "actualReply": "Segui Cuaderno Cobre mi abuelo; ahora, reúnederno de las historias.",
+        "actualTextSha256": "2a905a315205e08358b130b3193e2c4efb121615e4ff11d020861b2700bea808",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 24,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 191,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 215,
+          "promptPlusCap160Tokens": 351
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Seguimos brecho breves» no conecta el proyecto con las historias del abuelo ni expresa otro papel del abuelo interpretable.",
+        "actualReply": "Seguimos brecho breves.",
+        "actualTextSha256": "e95b4a51a606428e463ff9a24de726d68a5f6150ea5efb83a590c7e47f98d1ff",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 184,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 193,
+          "promptPlusCap160Tokens": 344
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-06-t1",
+      "user": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-06-t1-intent"
+        ],
+        "reason": "Afirma «no me has dicho cada uno» pese a que el USER acaba de distinguir las dos personas y relaciones. Niega explícitamente información crítica compartida, además de omitir la respuesta.",
+        "actualReply": "No; no me has dicho cada uno.",
+        "actualTextSha256": "ac685d8d35573ee9607d535e247060cc36e6ba9562a54a5822af64bfc85e9886",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 10,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 74,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 84,
+          "promptPlusCap160Tokens": 234
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«El vecino es mi vecino» es una tautología sin referente nominal: no asigna Selvaria/hermana ni Darielvo/vecino. No se infiere un parentesco o vecino nuevo de esa frase sin nombre.",
+        "actualReply": "El vecino es mi vecino.",
+        "actualTextSha256": "08d40914626e5a52ff9cd85dc5510f9ad95632c1d65dfde8bcf230379761f14c",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 74,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 83,
+          "promptPlusCap160Tokens": 234
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-06-t2",
+      "user": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-06-t2-grounding"
+        ],
+        "reason": "Como respuesta a quién toca el violín, introduce el actor «Aelvo» y lo presenta en la cláusula inteligible «Aelvo es tu hermana». No es Selvaria ni una variación menor reconocible de su nombre: sustituye la persona requerida y altera la identidad familiar. Darielvo/cactus es correcto pero no repara esa invención.",
+        "actualReply": "Aelvo es tu hermana; Darielvo cuida cactus.",
+        "actualTextSha256": "aa4fa47680275c697c1f0a6d4607b097228ed6ae5b4dcf35e3011f5c971675a1",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 18,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 116,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 134,
+          "promptPlusCap160Tokens": 276
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-06-t2-grounding"
+        ],
+        "reason": "«VSelvo es tu vecino ...; toca» propone un actor nominal nuevo para la pregunta sobre el violinista y lo presenta como vecino. No identifica a Selvaria y sustituye la persona; el resto no corrige la asignación.",
+        "actualReply": "VSelvo es tu vecino es tu vecino; toca.",
+        "actualTextSha256": "a937af7cf0cefb11e4dd58134eea4efa145eebccb1384f28785b825bb0b26143",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 17,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 115,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 132,
+          "promptPlusCap160Tokens": 275
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-06-t3",
+      "user": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-06-t3-intent",
+          "ngdev-v1-06-t3-grounding"
+        ],
+        "reason": "La proposición «DelitusCelvo cuida los cactus» atribuye la tarea corregida a una persona nueva, en vez de Selvaria. Es una asignación falsa interpretable.",
+        "actualReply": "DelitusCelvo cuida los cactus.",
+        "actualTextSha256": "3183c441b630778146b33a95bc1367f2fe9cec101a57fe747b1f27bd32db12b6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 14,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 173,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 187,
+          "promptPlusCap160Tokens": 333
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Sí» no identifica quién cuida los cactus: la pregunta no es de sí/no. No nombra al cuidador anterior ni contradice la corrección de forma interpretable.",
+        "actualReply": "Sí.",
+        "actualTextSha256": "cbe609112eb03403cbd07080326d2129067220f9943ce0ee1ed8e45f3c015f4d",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 3,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 171,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 174,
+          "promptPlusCap160Tokens": 331
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-06-t4",
+      "user": "¿Qué parentesco tengo con Selvaria y qué plantas cuida Darielvo?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Antes cuida?» es una pregunta sin persona ni planta identificables; no contesta hermana/helechos. No afirma un dato anterior como actual.",
+        "actualReply": "Antes cuida?",
+        "actualTextSha256": "183014d1e34aa60b79f260e8434c6bdaea32502e478a76886276a7d78fe52ab6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 6,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 211,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 217,
+          "promptPlusCap160Tokens": 371
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Antes ... los cactus ... Darielvo?» es una pregunta sobre el dato anterior, no una afirmación de que Darielvo cuide cactus actualmente. No responde al parentesco de Selvaria ni a helechos; falla sin inversión crítica demostrable.",
+        "actualReply": "Antes cuida los cactus cuida Darielvo?",
+        "actualTextSha256": "b17b58df8bcec918ee83f8914eab63a95de57c113316937daaa4d4ff283e1709",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 16,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 198,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 214,
+          "promptPlusCap160Tokens": 358
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-07-t1",
+      "user": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera jueves y las cinco sin inventar fecha.",
+        "actualReply": "El jueves a las cinco.",
+        "actualTextSha256": "1740da991095cdaf06ba8064d8f6f1a10ed9ed00a5b3e6f7a76bfd5ccc7a35a8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 71,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 79,
+          "promptPlusCap160Tokens": 231
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera jueves y las cinco sin inventar fecha.",
+        "actualReply": "El jueves a las cinco.",
+        "actualTextSha256": "1740da991095cdaf06ba8064d8f6f1a10ed9ed00a5b3e6f7a76bfd5ccc7a35a8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 71,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 79,
+          "promptPlusCap160Tokens": 231
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-07-t2",
+      "user": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera sábado y cinco; «la cinco» es un error menor que no cambia la hora.",
+        "actualReply": "El sábado; la cinco.",
+        "actualTextSha256": "bedf7a94c9157b1d89f2d87e9d316f6c5444e92e3a714f2a8599b965b572be0c",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 103,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 112,
+          "promptPlusCap160Tokens": 263
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera sábado y las cinco. La inserción «Cuén» no cambia los valores ni sus funciones y se acepta como error menor.",
+        "actualReply": "El sábado;Cuén a las cinco.",
+        "actualTextSha256": "1d211b4f53c0fa32087dc7bc98ade1a74c95c08d72022c1b3df60d5584ae96d9",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 12,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 103,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 115,
+          "promptPlusCap160Tokens": 263
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-07-t3",
+      "user": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Nombra la biblioteca del Olmo como lugar de la cita.",
+        "actualReply": "En la biblioteca del Olmo.",
+        "actualTextSha256": "c969bc244c431fa6136c45146fd4144067f7a379dc79782017348c6aed774c0e",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 133,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 142,
+          "promptPlusCap160Tokens": 293
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Nombra la biblioteca del Olmo como lugar de la cita.",
+        "actualReply": "En la biblioteca del Olmo.",
+        "actualTextSha256": "c969bc244c431fa6136c45146fd4144067f7a379dc79782017348c6aed774c0e",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 136,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 145,
+          "promptPlusCap160Tokens": 296
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-07-t4",
+      "user": "Recuérdame el día, la hora y el lugar actuales.",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-07-t4-grounding"
+        ],
+        "reason": "Aunque comienza con sábado/cinco, vuelve a afirmar varias veces «el jueves a las cinco» y «la cita con Renivia ... el jueves» sin marcarlo como día anterior. Recupera jueves como vigente y omite el lugar.",
+        "actualReply": "El sábado a las cinco,,, la hora y el jueves a las cinco, la hora y el jueves a las cinco, la cita con Renivia a las cinco, el jueves a las cinco, la cinco.",
+        "actualTextSha256": "39c5b2fe536a09752af1fb381bad98e51bc73642cd490fbf300c336be99aa882",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 52,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 160,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 212,
+          "promptPlusCap160Tokens": 320
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera correctamente sábado y las cinco, pero «en la hora del Olmo» no identifica inteligiblemente la biblioteca. La palabra hora no se convierte en un lugar alternativo afirmado; no recupera jueves ni inventa un sitio interpretable.",
+        "actualReply": "El sábado a las cinco, en la hora del Olmo.",
+        "actualTextSha256": "2fe34f24510d99b8e4fef57c52d503db4a870d0680986e50a12597d00596a91c",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 17,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 163,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 180,
+          "promptPlusCap160Tokens": 323
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->P"
+    },
+    {
+      "id": "ngdev-v1-08-t1",
+      "user": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-08-t1-intent",
+          "ngdev-v1-08-t1-grounding"
+        ],
+        "reason": "«Primero ... regaré un borrador» coloca el borrador antes que las plantas, cuando las plantas son la primera tarea. También confunde la actividad de revisar el borrador con regarlo; la prioridad falsa es interpretable pese al error verbal.",
+        "actualReply": "Primero vas regaré un borrador.",
+        "actualTextSha256": "125b1931960a81f14684850f047a0b0a1c34970744f6d51b80ec79063b0cbae8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 76,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 87,
+          "promptPlusCap160Tokens": 236
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-08-t1-intent",
+          "ngdev-v1-08-t1-grounding"
+        ],
+        "reason": "«Primero ... regaré un borrador» coloca el borrador antes que las plantas, cuando las plantas son la primera tarea. También confunde revisar el borrador con regarlo; la prioridad falsa es interpretable pese al error verbal.",
+        "actualReply": "Primero vas regaré un borrador.",
+        "actualTextSha256": "125b1931960a81f14684850f047a0b0a1c34970744f6d51b80ec79063b0cbae8",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 76,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 87,
+          "promptPlusCap160Tokens": 236
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-08-t2",
+      "user": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-08-t2-grounding"
+        ],
+        "reason": "Mantiene el borrador como primero, pero afirma repetidamente «regaré el borrador», sustituyendo revisar por una tarea no dada. No se penaliza la repetición como crítica por sí sola; sí esa actividad nueva explícita.",
+        "actualReply": "Primero vas regaré el borrador primero el borrador primero el borrador primero el borrador primero el borrador primero el borrador primero regaré el borrador.",
+        "actualTextSha256": "5f846a55f80c076873231eb969829e80a60128aa82035ac085c1b687cd5580f3",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 38,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 151,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-08-t2-grounding"
+        ],
+        "reason": "La frase introduce «regaré el borrador», una actividad no dada, y mezcla después/primero. La evidencia crítica es la sustitución explícita de revisar por regar; la repetición y los conectores incoherentes no se cuentan como críticas por sí solos.",
+        "actualReply": "Después vas regaré el borrador primero el borrador primero el borrador primero.",
+        "actualTextSha256": "f4c451d8e492b72e058ff69fdc510e76fec48d0ea17ae8bf8976283f2ea0711f",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 19,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 132,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-08-t3",
+      "user": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«El borrador está» no identifica que después corresponde regar las plantas. No afirma haber realizado acciones ni ejecutado herramientas.",
+        "actualReply": "El borrador está.",
+        "actualTextSha256": "ee0c9a9f5934decaf38e739445f47edd92a1ab65e3895f845d4007dbeba44738",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 6,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 174,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 180,
+          "promptPlusCap160Tokens": 334
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«El borrador es regarrador» no identifica que después toca regar las plantas; el neologismo no establece una acción realizada o tarea nueva interpretable.",
+        "actualReply": "El borrador es regarrador.",
+        "actualTextSha256": "999fbb5cce72203bed309b77a6e4b96f14183a16090581cbcd182c71ed4dc28a",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 155,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 164,
+          "promptPlusCap160Tokens": 315
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-08-t4",
+      "user": "¿Qué cambié respecto al comienzo?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Antes estabas plantas; ahora» no expresa de forma inteligible el orden inicial o su cambio; la mera palabra plantas no asigna una prioridad inequívoca. No establece un orden contrario interpretable.",
+        "actualReply": "Antes estabas plantas; ahora.",
+        "actualTextSha256": "09f39bcdc4cf9c912d63a199998df0ecb571aafb8d6217391a75e11185cf23a4",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 10,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 191,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 201,
+          "promptPlusCap160Tokens": 351
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«El comienzo?» es una pregunta o eco, sin contraste entre orden inicial y actual; no afirma que se añadieran/eliminaran tareas ni un orden inverso.",
+        "actualReply": "El comienzo?",
+        "actualTextSha256": "160f5f6742e22e42bddc2336efafa9f1f338c1aea78f2e93f1a5b50dd09d1482",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 4,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 175,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 179,
+          "promptPlusCap160Tokens": 335
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-09-t1",
+      "user": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?",
+      "original128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-09-t1-intent"
+        ],
+        "reason": "Dice «No me has dicho tu título» aunque el USER acaba de dar Laderas de Sal. La aparición del título exacto no neutraliza la negación explícita de que haya sido compartido.",
+        "actualReply": "No me has dicho tu título Laderas de Sal.",
+        "actualTextSha256": "096d5acaeac20999f1e3bc716f4a131260c1531d8d5c86b0e74898f19c539e29",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 12,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 68,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 80,
+          "promptPlusCap160Tokens": 228
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-09-t1-intent"
+        ],
+        "reason": "Dice «No me has dicho tu título» aunque el USER acaba de dar Laderas de Sal. La aparición del título exacto no neutraliza la negación explícita de que haya sido compartido.",
+        "actualReply": "No me has dicho tu título Laderas de Sal.",
+        "actualTextSha256": "096d5acaeac20999f1e3bc716f4a131260c1531d8d5c86b0e74898f19c539e29",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 12,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 68,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 80,
+          "promptPlusCap160Tokens": 228
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-09-t2",
+      "user": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?",
+      "original128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "El «No» inicial responde directamente a si puede identificar al autor sólo con la conversación. La cola agramatical no aporta un autor ni una afirmación contraria; la negativa basta para reconocer la limitación pedida.",
+        "actualReply": "No; no has con que lo que te he contado?",
+        "actualTextSha256": "55ac97bca59fd79f88c859111d27b2130f7c3632b07890fee0dd4f5ce86d3048",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 14,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 104,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 118,
+          "promptPlusCap160Tokens": 264
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "El «No» inicial responde directamente a si puede identificar al autor sólo con la conversación. La cola agramatical y el título conocido no inventan un autor ni una afirmación contraria; la negativa basta para reconocer la limitación pedida.",
+        "actualReply": "No; no has con que lo que te he contado Laderas de Sal.",
+        "actualTextSha256": "0f1b3d1e63540ebcfd71261ef2322ca2c39994f42b5e52a334f4270bf04a56ff",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 18,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 104,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 122,
+          "promptPlusCap160Tokens": 264
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "C->C"
+    },
+    {
+      "id": "ngdev-v1-09-t3",
+      "user": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera la lectura del domingo como parte pertinente de la finalidad, pero no identifica con claridad el club. «Quién» no se trata como una afirmación sobre una persona.",
+        "actualReply": "Quién de lectura del domingo.",
+        "actualTextSha256": "92600e69e05a0b530daf6c6d358c663212406c3b3d41e12d092b7c94bbb9ce67",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 139,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 148,
+          "promptPlusCap160Tokens": 299
+        }
+      },
+      "relational128": {
+        "grade": "C",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Identifica el club de lectura del domingo como finalidad del libro.",
+        "actualReply": "El club de lectura del domingo.",
+        "actualTextSha256": "090dc41626eee1f59a7f9720fabd6836ee6009b3bb9f0b08ad7bb6656cc49843",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 9,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 143,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 152,
+          "promptPlusCap160Tokens": 303
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "P->C"
+    },
+    {
+      "id": "ngdev-v1-09-t4",
+      "user": "¿Qué sabemos del libro y qué dato nos sigue faltando?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera club/lectura como parte de la finalidad compartida, de forma incompleta. Omite el título y que el autor sigue desconocido; no inventa un autor ni otro dato del libro.",
+        "actualReply": "Seguimos mi club; ahora, lectura.",
+        "actualTextSha256": "fdbc1f083018f37623ca716b7310dff92c98894ae2963deaab0ff8cc3d64adf7",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 11,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 166,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 177,
+          "promptPlusCap160Tokens": 326
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Segui nos llamaré?» no separa título/finalidad conocidos de autor desconocido; no contiene un autor inventado interpretable.",
+        "actualReply": "Segui nos llamaré?",
+        "actualTextSha256": "bc9e2bda8d79c0797e701a67b2add3049128cb4a112487a593b551647201647f",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 7,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 170,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 177,
+          "promptPlusCap160Tokens": 330
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "P->F"
+    },
+    {
+      "id": "ngdev-v1-10-t1",
+      "user": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera el perro Trazuli y la idea de ayuda al usuario, pero omite la actividad de pasearlo y deja la relación expresada de forma incompleta. No atribuye un efecto clínico u otra actividad interpretable.",
+        "actualReply": "Te ayuda a mi perro Trazuli al a mi perro.",
+        "actualTextSha256": "aa4e1af349806d8a8f184e528d80ac42750417bc89031a2fc9b4ab214861f4e6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 15,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 77,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 92,
+          "promptPlusCap160Tokens": 237
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera el perro Trazuli y la idea de ayuda al usuario, pero omite la actividad de pasearlo y deja la relación expresada de forma incompleta. No atribuye un efecto clínico u otra actividad interpretable.",
+        "actualReply": "Te ayuda a mi perro Trazuli al a mi perro.",
+        "actualTextSha256": "aa4e1af349806d8a8f184e528d80ac42750417bc89031a2fc9b4ab214861f4e6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 15,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 77,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 92,
+          "promptPlusCap160Tokens": 237
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "P->P"
+    },
+    {
+      "id": "ngdev-v1-10-t2",
+      "user": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?",
+      "original128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera «antes» y al perro Trazuli, participantes del paseo anterior a escribir, pero no expresa claramente que la actividad es pasearlo. La relación incompleta no afirma una secuencia invertida o actividad intermedia.",
+        "actualReply": "Antes vas a mi perro Trazuli al a mi perro.",
+        "actualTextSha256": "3fa2000333437567d4b57634822a7b64a9c9367c82ffd234569ee9678cba38f0",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 16,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 129,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "relational128": {
+        "grade": "P",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "Recupera «antes» y al perro Trazuli, participantes del paseo anterior a escribir, pero no expresa claramente que la actividad es pasearlo. La relación incompleta no afirma una secuencia invertida o actividad intermedia.",
+        "actualReply": "Antes vas a mi perro Trazuli al a mi perro.",
+        "actualTextSha256": "3fa2000333437567d4b57634822a7b64a9c9367c82ffd234569ee9678cba38f0",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 16,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 113,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 129,
+          "promptPlusCap160Tokens": 273
+        }
+      },
+      "sameActualText": true,
+      "gradeTransition": "P->P"
+    },
+    {
+      "id": "ngdev-v1-10-t3",
+      "user": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«anoch» y la cola «no has dichoQuébo» no constituyen una hora actual inteligible. No se infiere una hora contraria ni una negación específica de un dato crítico a partir de esos fragmentos.",
+        "actualReply": "Busco al anoch hago; no has dichoQuébo.",
+        "actualTextSha256": "62f28b5d651b18b085bd7e0cafc3eab31a620f6e0f4102904e6b42af67622ba7",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 17,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 156,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 173,
+          "promptPlusCap160Tokens": 316
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«El anoch hago» no es una expresión inteligible del horario actual: anoch es un fragmento ambiguo, no se equipara sin más con anochecer. No afirma amanecer como vigente.",
+        "actualReply": "El anoch hago.",
+        "actualTextSha256": "a96d88330cd8ca5feea21671f4325c95506859b8764029cc6ea30881808d9087",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 8,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 156,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 164,
+          "promptPlusCap160Tokens": 316
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    },
+    {
+      "id": "ngdev-v1-10-t4",
+      "user": "Relaciona el paseo con lo que hago después, sin inventar nada más.",
+      "original128": {
+        "grade": "F",
+        "critical": false,
+        "criticalConstraintIds": [],
+        "reason": "«Antes» no identifica el paseo ni escribir después; no expresa la conexión pedida. No afirma una secuencia invertida.",
+        "actualReply": "Antes.",
+        "actualTextSha256": "383728b6fee4ad8b1daac08cdc5f320e73cdc894581c60b015a51e41ec8348d6",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 4,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 196,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 200,
+          "promptPlusCap160Tokens": 356
+        }
+      },
+      "relational128": {
+        "grade": "F",
+        "critical": true,
+        "criticalConstraintIds": [
+          "ngdev-v1-10-t4-grounding"
+        ],
+        "reason": "Después de «ahora» intercala repetidamente «al amanecer» con «al anochecer» y termina «al amanecer me despeja», sin un contraste que reserve amanecer al pasado. Usa el horario anterior en la parte actual y no conecta el paseo con escribir después. No se marca la palabra consejos aislada como consejo ejecutado.",
+        "actualReply": "Antes consejos; ahora,manecer,manecer, al anochecer, al amanecer, al anochecer, al amanecer me despeja.",
+        "actualTextSha256": "8d868337d6ebc1fbbdc106492e0666067265488a9235e68f03f4a1a452ba554d",
+        "technical": {
+          "generated": true,
+          "technicalError": false,
+          "emptyReply": false,
+          "generatedTokens": 38,
+          "stopReason": "eos",
+          "cap160Reached": false,
+          "promptTokens": 187,
+          "discardedPromptTokens": 0,
+          "promptCut": false,
+          "promptPlusGeneratedTokens": 225,
+          "promptPlusCap160Tokens": 347
+        }
+      },
+      "sameActualText": false,
+      "gradeTransition": "F->F"
+    }
+  ]
+}

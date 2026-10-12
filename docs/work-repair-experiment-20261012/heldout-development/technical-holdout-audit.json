@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "status": "all-technical-guards-pass-awaiting-semantic-peer-freeze",
+  "corpus": {
+    "path": "private/pr1-wording-composition-audit-v1/prospective-validation/validation.jsonl",
+    "sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+    "records": 80,
+    "trainRecords": 0,
+    "validationRecords": 80,
+    "originalValidationWorldGroups": 8,
+    "fullDialogues": 20,
+    "wordingPrefixRecords": 48,
+    "newCompositionPrefixRecords": 32,
+    "cleanWordingPairedPrefixRecords": 40,
+    "ambiguousSourceWordingPrefixRecords": 8
+  },
+  "nativeContract": {
+    "loader": "ia_propia.conversation.data.load_corpus",
+    "allRecordsValid": true,
+    "idsUnique": true,
+    "originalGroupIdAndFoldPreserved": true,
+    "crossFoldWorldGroups": 0,
+    "completeContextsWithoutTruncation": true,
+    "minimumContextTokens": 72,
+    "maximumContextTokens": 260,
+    "minimumLastAssistantPayloadTokens": 3,
+    "maximumLastAssistantTargetsIncludingEos": 34,
+    "assistantEosSupervised": true,
+    "existingBpeSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+  },
+  "representation": {
+    "newDistinctUserDelexForms": 80,
+    "newWordingDelexForms": 48,
+    "newCompositionDelexForms": 32,
+    "oldTrainDelexOverlap": 0,
+    "oldTrainAndValDelexOverlap": 0,
+    "declaredNewCompositionRecipes": 8,
+    "exactDeclaredOldRecipeOverlap": 0,
+    "cleanPairedAssistantHistoryAndTargetsUnchanged": true,
+    "caution": "Declared recipe difference and exact delex inequality are bounded checks, not proof of semantic or vocabulary independence."
+  },
+  "lexicalGuards": {
+    "known60": {
+      "path": "private/pr1-wording-composition-audit-v1/pr1-devel-user-exclusion-hashes.json",
+      "sha256": "42119ddbbf9c9847c5194e08323ff8d389cf5930305762145f2c31dadf7a9286",
+      "USERonly": true
+    },
+    "newDiagnosis64": {
+      "path": "private/pr1-wording-history-diagnosis-v1/hash-only-exclusion.json",
+      "sha256": "0279193256fd4aa0b8d49fb49965dbe404ed345407f5991c5304502563a3a407",
+      "USERandUSERprefixHashFieldsOnly": true
+    },
+    "collisions": {
+      "known60UserRaw": 0,
+      "known60UserNormalized": 0,
+      "newDiagnosis64UserNormalized": 0,
+      "newDiagnosis64UserOnlyPrefixes": 0
+    },
+    "guardScope": "All guards are exposed DEVELOPMENT, never FINAL."
+  },
+  "integrity": {
+    "oldCorpusSha256After": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "oldCorpusUnchanged": true,
+    "oldRecordsMoved": 0,
+    "builderSha256": "ad403a046fc62dc3185d7e16894ef9f096fdaa1804bc33977296157cacc5795e",
+    "verifierSha256": "d5fd09df9ac49a3c2253b8c790d41a4773ef3e5cacedeed32fb4348c22141c6d"
+  },
+  "limits": [
+    "No model replies or training used for this audit.",
+    "New records contain authored ideal/neutral history; actual generated-history diagnosis is a separate paired factorial.",
+    "Project ownership and daily retained sequence were clarified only in new VAL gold; those eight prefixes are excluded from clean wording pairing.",
+    "Whole formulation/composition reservation protects this explicit catalog; future authoring still requires semantic review.",
+    "All eight factual worlds remain old validation worlds; this does not establish independent entity or open-domain conversation generalization."
+  ],
+  "torchImported": false,
+  "modelsLoaded": false,
+  "trainingPerformed": false,
+  "oldSealedFinalOrOwnerCorpusRead": false
+}

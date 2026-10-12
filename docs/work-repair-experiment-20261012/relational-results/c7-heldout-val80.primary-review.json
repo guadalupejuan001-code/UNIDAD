@@ -1,0 +1,2499 @@
+{
+  "schemaVersion": 1,
+  "purpose": "project_AI_primary_semantic_review_secondary_development_not_final",
+  "modelCondition": "c7",
+  "reviewedAtUtc": "2026-10-12T19:06:09.840953+00:00",
+  "reviewer": {
+    "identity": "/root/heldout_transfer_review",
+    "kind": "project_AI",
+    "human": false,
+    "independent": false,
+    "blinded": false,
+    "all80RepliesRead": true,
+    "weightsLoadedOrInferenceRun": false,
+    "exactMatchRequired": false,
+    "criticalScope": "Every concrete contradiction of ANY USER fact, known-information denial, invented fact/identity/relation and severe explicit negative-instruction violation. Broken fragments without a clear proposition are not automatically critical."
+  },
+  "identity": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "modelManifestSha256": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+    "rawPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/c7-heldout-val80.actual.json",
+    "rawSha256": "6825185a36edd1a1ebea400883c7f04e2af5536ad9895638aa002528279a4211",
+    "casesSha256": "2d339d3439c22f4faea6f5f4c29306cacbec213042c5a43882f7303c82b40810",
+    "rubricSha256": "89b937cdc3597cd722241d8656d368d6f2fe8da52e86412234c4953e93314892",
+    "freezeSha256": "3289aede34f4b3a6ae399a45b8ef17a05d9a0a95171a14bece47f7d8f067f2d7",
+    "sourceAndModelFilesVerifiedAgainstRawPins": [
+      {
+        "path": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/heldout-val80-cases.json",
+        "sha256": "2d339d3439c22f4faea6f5f4c29306cacbec213042c5a43882f7303c82b40810"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/private/conversation/run_engine_development_v1.py",
+        "sha256": "2f03bdfd61d3f4ea3fcd18f5b5caf955c1931fb93672018080d233d80253e9d6"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__init__.py",
+        "sha256": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__main__.py",
+        "sha256": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/adaptive.py",
+        "sha256": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/artifacts.py",
+        "sha256": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/assessment.py",
+        "sha256": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/contract.py",
+        "sha256": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/data.py",
+        "sha256": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/jobs.py",
+        "sha256": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/language_data.py",
+        "sha256": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/model.py",
+        "sha256": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/runtime.py",
+        "sha256": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/scoring.py",
+        "sha256": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/tokenizer.py",
+        "sha256": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/src/ia_propia/conversation/training.py",
+        "sha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/models/conversation-reference-c7/manifest.json",
+        "sha256": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/models/conversation-reference-c7/weights.safetensors",
+        "sha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/models/conversation-reference-c7/config.json",
+        "sha256": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+      },
+      {
+        "path": "/workspace/unidad-conversation-repair/models/conversation-reference-c7/tokenizer.json",
+        "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+      }
+    ]
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "runtimeAudit": {
+    "rawCompletedAtUtc": "2026-10-12T19:00:28.474141+00:00",
+    "onlyOwnActualPriorAssistantHistory": true,
+    "all80HistoriesAndEffectiveUsersVerified": true,
+    "historyChecks": 80,
+    "currentOrFutureGoldFed": false,
+    "all80TextHashesVerified": true,
+    "allReplyModelIdsVerified": true,
+    "allSourceAndModelPinsStillMatch": true,
+    "eos": 80,
+    "caps": 0,
+    "promptCrops": 0,
+    "empty": 0,
+    "errors": 0,
+    "technicalFailures": 0,
+    "systemText": "Eres Unidad. Habla en español de forma cercana y de confianza. Relaciona lo que la persona ya ha compartido; distingue tus inferencias de los hechos y no inventes recuerdos.",
+    "systemTextUtf8Sha256": "4a55ef7b0b5c40f9725279faaea119462f7af794e573eabf0d48e38b8918597a",
+    "systemEvidence": "Text extracted from the pinned native contract DEFAULT_SYSTEM_PROMPT; raw messages omit this native default. This is source verification, not an independent capture of internal activations."
+  },
+  "limitations": [
+    "This derived rubric was frozen after training128 and before these outputs; it is secondary DEVELOPMENT, not FINAL or a pretraining preregistration.",
+    "20dialogs share8world groups;80turns are not80independent observations.",
+    "Two USER formulations were clarified before generation; original source corpus remains intact.",
+    "Critical counts use this newer broad rubric and cannot be compared directly with oldfactorial narrowcriticalIf.",
+    "C/P/F is semantic projectAI judgment, not independent human evaluation; grammar and fluency can still fail despite recovered facts.",
+    "No acceptance threshold is rescaled to80; general acceptance remains36/40complete,8/10dialogs,0critical/technical on a newFINAL."
+  ],
+  "summary": {
+    "responses": 80,
+    "complete": 3,
+    "partial": 15,
+    "failed": 62,
+    "critical": 14,
+    "technicalFailures": 0,
+    "completeDialogs": 0,
+    "dialogs": 20,
+    "byHoldoutKind": {
+      "wording": {
+        "turns": 48,
+        "complete": 3,
+        "partial": 8,
+        "failed": 37,
+        "critical": 7,
+        "completeDialogs": 0,
+        "dialogs": 12
+      },
+      "composition": {
+        "turns": 32,
+        "complete": 0,
+        "partial": 7,
+        "failed": 25,
+        "critical": 7,
+        "completeDialogs": 0,
+        "dialogs": 8
+      }
+    },
+    "byTaskFamily": {
+      "preferred_address": {
+        "turns": 4,
+        "P": 1,
+        "critical": 0,
+        "F": 3,
+        "completeDialogs": 0
+      },
+      "missing_information": {
+        "turns": 4,
+        "P": 2,
+        "critical": 0,
+        "F": 2,
+        "completeDialogs": 0
+      },
+      "current_and_future_place": {
+        "turns": 4,
+        "F": 4,
+        "critical": 1,
+        "completeDialogs": 0
+      },
+      "listening": {
+        "turns": 4,
+        "P": 1,
+        "critical": 0,
+        "F": 3,
+        "completeDialogs": 0
+      },
+      "project_change": {
+        "turns": 4,
+        "F": 4,
+        "critical": 0,
+        "completeDialogs": 0
+      },
+      "two_people": {
+        "turns": 4,
+        "F": 3,
+        "critical": 2,
+        "P": 1,
+        "completeDialogs": 0
+      },
+      "reschedule": {
+        "turns": 4,
+        "C": 1,
+        "critical": 2,
+        "F": 2,
+        "P": 1,
+        "completeDialogs": 0
+      },
+      "task_order": {
+        "turns": 4,
+        "P": 1,
+        "critical": 0,
+        "F": 3,
+        "completeDialogs": 0
+      },
+      "unknown_author": {
+        "turns": 4,
+        "F": 4,
+        "critical": 0,
+        "completeDialogs": 0
+      },
+      "daily_sequence": {
+        "turns": 4,
+        "F": 4,
+        "critical": 1,
+        "completeDialogs": 0
+      },
+      "two_objects": {
+        "turns": 4,
+        "F": 3,
+        "critical": 1,
+        "P": 1,
+        "completeDialogs": 0
+      },
+      "limits_and_identity": {
+        "turns": 4,
+        "C": 2,
+        "critical": 0,
+        "F": 2,
+        "completeDialogs": 0
+      },
+      "location_and_appointment": {
+        "turns": 4,
+        "F": 4,
+        "critical": 2,
+        "completeDialogs": 0
+      },
+      "alias_identity_and_other_person": {
+        "turns": 4,
+        "P": 1,
+        "critical": 1,
+        "F": 3,
+        "completeDialogs": 0
+      },
+      "people_and_reassigned_tasks": {
+        "turns": 4,
+        "F": 4,
+        "critical": 0,
+        "completeDialogs": 0
+      },
+      "objects_known_giver_and_missing_price": {
+        "turns": 4,
+        "F": 4,
+        "critical": 1,
+        "completeDialogs": 0
+      },
+      "project_and_separate_book": {
+        "turns": 4,
+        "P": 2,
+        "critical": 1,
+        "F": 2,
+        "completeDialogs": 0
+      },
+      "routine_and_rescheduled_appointment": {
+        "turns": 4,
+        "F": 3,
+        "critical": 1,
+        "P": 1,
+        "completeDialogs": 0
+      },
+      "listening_with_actor_correction": {
+        "turns": 4,
+        "P": 1,
+        "critical": 0,
+        "F": 3,
+        "completeDialogs": 0
+      },
+      "object_correction_preserves_location": {
+        "turns": 4,
+        "P": 2,
+        "critical": 1,
+        "F": 2,
+        "completeDialogs": 0
+      }
+    },
+    "criticalTurnIds": [
+      "pr1rel-val-v1-03/t1",
+      "pr1rel-val-v1-06/t1",
+      "pr1rel-val-v1-06/t3",
+      "pr1rel-val-v1-07/t2",
+      "pr1rel-val-v1-07/t3",
+      "pr1rel-val-v1-10/t4",
+      "pr1rel-val-v1-11/t1",
+      "pr1rel-val-v1-13/t1",
+      "pr1rel-val-v1-13/t2",
+      "pr1rel-val-v1-14/t2",
+      "pr1rel-val-v1-16/t1",
+      "pr1rel-val-v1-17/t3",
+      "pr1rel-val-v1-18/t4",
+      "pr1rel-val-v1-20/t3"
+    ]
+  },
+  "episodes": [
+    {
+      "id": "pr1rel-val-v1-01",
+      "family": "preferred_address",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 1,
+        "critical": 0,
+        "F": 3
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-01/t1",
+          "user": "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+          "actualText": "Te llamaré mí como Cometa.",
+          "actualTextSha256": "3b064d2c3781d2efce0bd7f359b1b60f27d0546c079d51b000a5a891770429fd",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Identifica Cometa como tratamiento, pero contamina el apodo con «mí como» y produce una formulación defectuosa.",
+          "expectedSemanticRequirements": [
+            "Indicar que se dirigirá a quien habla con el apodo Cometa; distinguirlo de Clara Campos."
+          ],
+          "offlineCanonicalReplyExample": "Te llamaré Cometa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 79,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-01/t2",
+          "user": "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+          "actualText": "Te llamaré llamaré llamaré mí como Cometa.",
+          "actualTextSha256": "cbf6798b6c051f87494f16c2337a087ba460ff6acf9b3b4ff406d31154ef145b",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Recordar el plan de limpiar la cocina. Mencionar esta tarde es opcional; no cambiar ese momento si se menciona.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Recordar el plan de limpiar la cocina. Mencionar esta tarde es opcional; no cambiar ese momento si se menciona."
+          ],
+          "offlineCanonicalReplyExample": "Quieres limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 13,
+            "promptTokens": 112,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-01/t3",
+          "user": "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?",
+          "actualText": "Diál es Unidad.",
+          "actualTextSha256": "72800492a75d59fc62fb398a249e2b8b112ace370ef0673f03e99e479684eaf0",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar Lucero como apodo elegido ahora, conservando Cometa sólo como anterior si aparece.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar Lucero como apodo elegido ahora, conservando Cometa sólo como anterior si aparece."
+          ],
+          "offlineCanonicalReplyExample": "Ahora te llamaré Lucero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 155,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-01/t4",
+          "user": "Repasa los dos apodos por orden: el primero y el que sigue vigente.",
+          "actualText": "En ganas Clara los vas a mí como Cometa.",
+          "actualTextSha256": "f8d6c3a0babf3e263984e8769b8576a616611de09a50235ee93ed1dbbeea239e",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Distinguir por orden Cometa como primer apodo y Lucero como vigente.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Distinguir por orden Cometa como primer apodo y Lucero como vigente."
+          ],
+          "offlineCanonicalReplyExample": "Antes preferías Cometa; ahora, Lucero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 184,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-02",
+      "family": "missing_information",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 2,
+        "critical": 0,
+        "F": 2
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-02/t1",
+          "user": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+          "actualText": "Tu color es aún no has dicho el color de una color.",
+          "actualTextSha256": "e0ec1f766fab397d8f0766ac73fca0149ff0d2590e4e76a803a4b795182ee160",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Indica que no se ha dicho el color, pero lo expresa con sintaxis muy defectuosa.",
+          "expectedSemanticRequirements": [
+            "Reconocer que aún no puede identificar el color del abrigo porque no se ha compartido; puede pedir el dato."
+          ],
+          "offlineCanonicalReplyExample": "No; todavía no me has dicho su color.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p1",
+          "userClarifiedBeforeGeneration": true,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 78,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-02/t2",
+          "user": "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+          "actualText": "Tu color.",
+          "actualTextSha256": "c23baff8832e75b7d8cd411cfcecdfc1a1b2ba56f4f6be2a7d453c1006034348",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar verde como color del abrigo.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar verde como color del abrigo."
+          ],
+          "offlineCanonicalReplyExample": "Es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 4,
+            "promptTokens": 118,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-02/t3",
+          "user": "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio.",
+          "actualText": "Tu color que que aún es verde.",
+          "actualTextSha256": "3ef540fa3e04d0862366bbb94f35ef05326d4ff863a94e24f97ff6d7085798bf",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Sonia Hidalgo como quien entregó el abrigo.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Sonia Hidalgo como quien entregó el abrigo."
+          ],
+          "offlineCanonicalReplyExample": "Te lo dio Sonia Hidalgo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 153,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-02/t4",
+          "user": "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él.",
+          "actualText": "El abrigo tiene del abrigo tiene color verde.",
+          "actualTextSha256": "ae059a20e69b4be490226656c3d15876d504b420bac89e698eb3926311a42721",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Recupera el color verde del abrigo; omite que el precio no fue compartido y repite la estructura.",
+          "expectedSemanticRequirements": [
+            "Expresar color verde conocido y precio no informado."
+          ],
+          "offlineCanonicalReplyExample": "Es verde; no has dicho su precio.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 189,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-03",
+      "family": "current_and_future_place",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-03/t1",
+          "user": "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+          "actualText": "Estás en Ribera Verde.",
+          "actualTextSha256": "60408db083e874ba2a5367a2e0ee671aadbf85ac1387a7d850fa83bce3a1aed7",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Afirma «Estás en Ribera Verde», confundiendo el destino previsto con la ubicación actual Ribera Dorada.",
+          "expectedSemanticRequirements": [
+            "Identificar Ribera Dorada como ubicación actual."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ribera Dorada.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 10,
+            "promptTokens": 85,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-03/t2",
+          "user": "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+          "actualText": "Estás en este lugar.",
+          "actualTextSha256": "03930f8a986104c4317b4bd49cab74e7f70939629cc0e19f99777fe7c1acd4fa",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar Sierra Blanca como destino elegido tras sustituir Ribera Verde.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar Sierra Blanca como destino elegido tras sustituir Ribera Verde."
+          ],
+          "offlineCanonicalReplyExample": "Irás a Sierra Blanca.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 127,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-03/t3",
+          "user": "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?",
+          "actualText": "Estás en este momento.",
+          "actualTextSha256": "6db12acd1b5be05842988a5a15eaf5f5432da083e6cec086eaad33bf45c31a41",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Negar que ya haya llegado a Sierra Blanca y conservar Ribera Dorada como ubicación actual.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Negar que ya haya llegado a Sierra Blanca y conservar Ribera Dorada como ubicación actual."
+          ],
+          "offlineCanonicalReplyExample": "No, sigues en Ribera Dorada.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 169,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-03/t4",
+          "user": "Resume mi punto de partida y el destino que quedó elegido al final.",
+          "actualText": "Hablamos de Ribera Verde.",
+          "actualTextSha256": "376953ee0a12ec10d1ea6d3c47dc94a1170d040e63e3921d1f631b1efbc0874d",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Distinguir Ribera Dorada como partida y Sierra Blanca como destino elegido.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Distinguir Ribera Dorada como partida y Sierra Blanca como destino elegido."
+          ],
+          "offlineCanonicalReplyExample": "Saldrás de Ribera Dorada hacia Sierra Blanca.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 194,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-04",
+      "family": "listening",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 1,
+        "critical": 0,
+        "F": 3
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-04/t1",
+          "user": "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+          "actualText": "Te escucho. ¿Qué quieres contarme sobrelo y que te gustaría contar sobreas?",
+          "actualTextSha256": "7816cfc7eb5095c3310f09957667ae01128c8b0c61187dafb5f74426e774d12c",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Confirma escucha sin consejos, pero la pregunta añadida queda deformada e incoherente.",
+          "expectedSemanticRequirements": [
+            "Acoger la intención de contar y escuchar sin recomendaciones. Una confirmación de escucha o invitación pertinente es válida; no exigir la pregunta exacta del gold."
+          ],
+          "offlineCanonicalReplyExample": "Te escucho. ¿Qué ocurrió?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 20,
+            "promptTokens": 74,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-04/t2",
+          "user": "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+          "actualText": "¿Qué quieres contarme sobrelo y escucharas?",
+          "actualTextSha256": "00855b9d19ccae2107238e5e61c3102b6f6858b0874e10a8759c1b3ce7b77592",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Hacer una pregunta pertinente sobre el cambio del trabajo sin consultarle. No exigir que sea la pregunta por el responsable.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Hacer una pregunta pertinente sobre el cambio del trabajo sin consultarle. No exigir que sea la pregunta por el responsable."
+          ],
+          "offlineCanonicalReplyExample": "¿Quién cambió tu trabajo?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 121,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-04/t3",
+          "user": "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+          "actualText": "Surgió duro.",
+          "actualTextSha256": "585d470e8fde6a343ca69ff99f3c6134549ae338a1f679fe616dc241f17fddbe",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Lidia Campos, colega de quien habla, como responsable; no atribuirlo a la hermana.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos, colega de quien habla, como responsable; no atribuirlo a la hermana."
+          ],
+          "offlineCanonicalReplyExample": "Lo hizo tu colega Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 168,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-04/t4",
+          "user": "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos.",
+          "actualText": "Quieres que te escuche me vas a la persona responsable; me has dicho el que te escucho Cames.",
+          "actualTextSha256": "ff8260f19f96f2525a6c59bc8f7a6f9757c9d82db76094c06ce146857eaa3b61",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Resumir en una frase el malestar por el cambio del trabajo sin consultarle; conservar petición de no dar consejos.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Resumir en una frase el malestar por el cambio del trabajo sin consultarle; conservar petición de no dar consejos."
+          ],
+          "offlineCanonicalReplyExample": "Te molestó que cambiaran tu trabajo sin preguntarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 25,
+            "promptTokens": 205,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-05",
+      "family": "project_change",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 0
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-05/t1",
+          "user": "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+          "actualText": "Quieres y tu nombre.",
+          "actualTextSha256": "5639d4d13bdaa53512eb2a0b73481bc1bc4000753b5e259a650f296e11826c9f",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar Trazos del río como proyecto propio de dibujos.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar Trazos del río como proyecto propio de dibujos."
+          ],
+          "offlineCanonicalReplyExample": "Trazos del río es tu proyecto de dibujos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 75,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-05/t2",
+          "user": "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+          "actualText": "Quieres y las tardes que te escuche, sin proponer un título.",
+          "actualTextSha256": "71983ef93bd66aa7bd6159e166f6e736b075ba9a3c164a75ab4ca8efe56f29a4",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Relacionar el origen con las tardes dibujando con la abuela.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Relacionar el origen con las tardes dibujando con la abuela."
+          ],
+          "offlineCanonicalReplyExample": "Surgió de las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 18,
+            "promptTokens": 113,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-05/t3",
+          "user": "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+          "actualText": "Antes es y las tardes que pasaba dibujos que dibujos seguides seguile el título.",
+          "actualTextSha256": "462120f3ffb0741eef096035576ff1926e0e94beb56240eecbe0399438b33b9e",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Describir el título nuevo elegido Retratos de otoño y que se conserva el contenido de dibujos. Admitir descripción del cambio como anunciado o planificado, coherente con «Voy a ponerle».. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Describir el título nuevo elegido Retratos de otoño y que se conserva el contenido de dibujos. Admitir descripción del cambio como anunciado o planificado, coherente con «Voy a ponerle»."
+          ],
+          "offlineCanonicalReplyExample": "Cambia el nombre a Retratos de otoño; siguen siendo dibujos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 23,
+            "promptTokens": 170,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-05/t4",
+          "user": "Explica el vínculo entre este proyecto mío y las tardes con mi abuela.",
+          "actualText": "Primeroño seguirá.",
+          "actualTextSha256": "e737c313be8dd5e0466d6cc1729ce767fc9636accce71222d576d926417c2ca3",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Relacionar el proyecto con las tardes dibujando con la abuela como origen/inspiración.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Relacionar el proyecto con las tardes dibujando con la abuela como origen/inspiración."
+          ],
+          "offlineCanonicalReplyExample": "Se inspira en las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 217,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-06",
+      "family": "two_people",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 3,
+        "critical": 2,
+        "P": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-06/t1",
+          "user": "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+          "actualText": "Te llamas Iria Romero.",
+          "actualTextSha256": "a12e0342a698db3edf2e5b1d8c92ccbcc297aca24821d0e322f1e84b4660104b",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Afirma que el usuario se llama Iria Romero, que es la hermana; confunde identidades.",
+          "expectedSemanticRequirements": [
+            "Asociar Iria Romero con hermana y Julián Ortiz con vecino."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero es tu hermana; Julián Ortiz, tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 79,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-06/t2",
+          "user": "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+          "actualText": "Surcia cada nombre; se llama Iria Romero.",
+          "actualTextSha256": "f34637bac124e1ea420ce1154af4838437d22a1f671fbb231c899f524aaf2ef5",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Menciona a Iria Romero, la cantante correcta, pero no expresa limpiamente la relación y añade un fragmento roto.",
+          "expectedSemanticRequirements": [
+            "Identificar a Iria Romero como quien canta."
+          ],
+          "offlineCanonicalReplyExample": "Canta Iria Romero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 121,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-06/t3",
+          "user": "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas.",
+          "actualText": "Surán Ortiz.",
+          "actualTextSha256": "ebb79f42a88dab1c0e34d82185ceff14f411e47b8f64539aed7239812f24f3bf",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Da «Surán Ortiz» como respuesta nominal a quien cuida las rosas; no es Iria Romero y remite a otro actor/identidad.",
+          "expectedSemanticRequirements": [
+            "Identificar a Iria Romero como quien cuida las rosas después de la corrección."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero cuida las rosas.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 177,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-06/t4",
+          "user": "Recupera dos datos: mi parentesco con Iria Romero y las flores que cultiva Julián Ortiz después de la corrección.",
+          "actualText": "Reculipan que se llamamipan.",
+          "actualTextSha256": "a08d3dc3f13f476b620702999af56d57b721a00dd427605c70c133e98fb20047",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Expresar parentesco de hermana con Iria Romero y tulipanes como flores de Julián Ortiz después de la corrección.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Expresar parentesco de hermana con Iria Romero y tulipanes como flores de Julián Ortiz después de la corrección."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero es tu hermana; Julián Ortiz cultiva tulipanes.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 218,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-07",
+      "family": "reschedule",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "C": 1,
+        "critical": 2,
+        "F": 2,
+        "P": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-07/t1",
+          "user": "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+          "actualText": "El viernes,. La hora es las siete.",
+          "actualTextSha256": "a85278081fd675d81cd2ab242214014c283388b26a81ebe3e65dfee8b46dd13d",
+          "grade": "C",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Respuesta pertinente e inteligible que satisface todos los requisitos semánticos específicos; se admiten la equivalencia natural y errores triviales de puntuación. Identificar viernes y las siete como momento del encuentro.",
+          "expectedSemanticRequirements": [
+            "Identificar viernes y las siete como momento del encuentro."
+          ],
+          "offlineCanonicalReplyExample": "El viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 13,
+            "promptTokens": 84,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-07/t2",
+          "user": "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+          "actualText": "El nuevo día, mantenga un viernes.",
+          "actualTextSha256": "34b093b02b06defa01f7a03fc8a18a2cbf8b2281719cf539bbc9ad05d8b6f087",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Reinstala viernes mediante «mantenga un viernes», pese al cambio explícito a miércoles.",
+          "expectedSemanticRequirements": [
+            "Identificar miércoles como día nuevo y conservar las siete."
+          ],
+          "offlineCanonicalReplyExample": "El miércoles a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 130,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-07/t3",
+          "user": "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro.",
+          "actualText": "Antes pe el viernes, esa hora; la hora actual para el viernes las siete.",
+          "actualTextSha256": "da2503aa15ac59e2d249717c03969c4d41510ad7dd7e165b3ca92cb99f5dda5b",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Vuelve a presentar el viernes como dato actual de la cita tras la corrección a miércoles.",
+          "expectedSemanticRequirements": [
+            "Identificar cafetería como lugar del encuentro."
+          ],
+          "offlineCanonicalReplyExample": "En la cafetería.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 23,
+            "promptTokens": 164,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-07/t4",
+          "user": "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita.",
+          "actualText": "En a las siete.",
+          "actualTextSha256": "2cd8efecb16b43681ef9a850a95f9fcbb203cb568b68058dd121af2cf4ae5f19",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Da la hora correcta, las siete; omite miércoles y cafetería.",
+          "expectedSemanticRequirements": [
+            "Reunir miércoles, las siete y cafetería como datos actuales de la cita."
+          ],
+          "offlineCanonicalReplyExample": "El miércoles a las siete, en la cafetería.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 209,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-08",
+      "family": "task_order",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 1,
+        "critical": 0,
+        "F": 3
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-08/t1",
+          "user": "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+          "actualText": "Usarás a ordenar los libros, sin embargo tufica los libros, sin embargo.",
+          "actualTextSha256": "2a930d194d9caf07338718b247c7cb400d081de40dd284534465e5ddf5d225b5",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Menciona ordenar los libros como actividad inicial, con repeticiones y una continuación incoherente.",
+          "expectedSemanticRequirements": [
+            "Identificar ordenar los libros como actividad inicial."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 20,
+            "promptTokens": 75,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-08/t2",
+          "user": "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+          "actualText": "Antes tenías con hacer un dibujo.",
+          "actualTextSha256": "a4430437cc6f072d49a27c6d512c06137654e528a33d2d864971948ef9953dc5",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar hacer un dibujo como actividad ahora prioritaria; las dos tareas permanecen.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar hacer un dibujo como actividad ahora prioritaria; las dos tareas permanecen."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a hacer un dibujo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 129,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-08/t3",
+          "user": "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+          "actualText": "NecesitNecesitNecesfica; para después sus quéguen con primero.",
+          "actualTextSha256": "0e260ca4053379f553dae1d0e24ada8372b843884092ab4bc1d1926b1902330d",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Nombrar ordenar los libros como actividad posterior, sin hacer tareas ni afirmar su ejecución. Se admite un marco mínimo como «Después vas a…»; no exigir infinitivo desnudo exacto.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Nombrar ordenar los libros como actividad posterior, sin hacer tareas ni afirmar su ejecución. Se admite un marco mínimo como «Después vas a…»; no exigir infinitivo desnudo exacto."
+          ],
+          "offlineCanonicalReplyExample": "Después vas a ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 19,
+            "promptTokens": 167,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-08/t4",
+          "user": "Compara la primera actividad del plan inicial con la primera del plan revisado.",
+          "actualText": "Primero que necesites has dicho el intercambiado.",
+          "actualTextSha256": "a48db3b03f4bea794416485eccdd426a2b5c1e534dacae780364d49356361d4d",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Contrastar ordenar los libros primero en el plan inicial con hacer un dibujo primero en el plan revisado.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Contrastar ordenar los libros primero en el plan inicial con hacer un dibujo primero en el plan revisado."
+          ],
+          "offlineCanonicalReplyExample": "Antes ibas a ordenar los libros primero; ahora, a hacer un dibujo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 205,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-09",
+      "family": "unknown_author",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 0
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-09/t1",
+          "user": "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+          "actualText": "Te llamas buscando el libro de ficción.",
+          "actualTextSha256": "a3bd1055d730f54ee546839e6169a0fdb10335d687f6fa2c7aba02d8004d0091",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar Historias de la lluvia como título de la novela buscada.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar Historias de la lluvia como título de la novela buscada."
+          ],
+          "offlineCanonicalReplyExample": "Buscas Historias de la lluvia.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 10,
+            "promptTokens": 77,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-09/t2",
+          "user": "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+          "actualText": "Te llamas buscando.",
+          "actualTextSha256": "1c2f3412c509bd5e85a253f8e81dfc372f7dac93092dc5bb0a42956af54e9345",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reconocer que no sabe el autor por los datos compartidos.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reconocer que no sabe el autor por los datos compartidos."
+          ],
+          "offlineCanonicalReplyExample": "No; no has dicho quién la escribió.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 114,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-09/t3",
+          "user": "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+          "actualText": "¿Qué quieres contar el libro de ficción?",
+          "actualTextSha256": "fcd2b9c958f7294b18659a7b80d5b04e59788b5cec7b8fb4376ef912fa5982f8",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar conversar/comentar la novela en clase como finalidad.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar conversar/comentar la novela en clase como finalidad."
+          ],
+          "offlineCanonicalReplyExample": "Para comentarla en clase.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 10,
+            "promptTokens": 145,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-09/t4",
+          "user": "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente.",
+          "actualText": "El motivo es de ficción.",
+          "actualTextSha256": "1f0430f597e38c78f0af1ae99e66647478d3f1de0fddd81c37c9e79b7d38ad40",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reunir título Historias de la lluvia, finalidad de comentarla en clase y autor no informado.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reunir título Historias de la lluvia, finalidad de comentarla en clase y autor no informado."
+          ],
+          "offlineCanonicalReplyExample": "Buscas Historias de la lluvia para clase; falta saber su autor.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 7,
+            "promptTokens": 182,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-10",
+      "family": "daily_sequence",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-10/t1",
+          "user": "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+          "actualText": "Tufica a relafica a relajarme.",
+          "actualTextSha256": "e19325fa95da2ab2ab9755e1581072a93b20e14b0ea194de72973e94db07dc4e",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar limpiar la cocina como actividad que le relaja.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar limpiar la cocina como actividad que le relaja."
+          ],
+          "offlineCanonicalReplyExample": "Te relaja limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 83,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-10/t2",
+          "user": "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+          "actualText": "Después vasgo, paso a retumar la cocina, paso a regar el huerto.",
+          "actualTextSha256": "753307a3c142fad1409cf233381a252da22d473b6eece13bdaab8ca5a21fcd99",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar limpiar la cocina como actividad anterior a regar el huerto.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar limpiar la cocina como actividad anterior a regar el huerto."
+          ],
+          "offlineCanonicalReplyExample": "Lo primero que haces es limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 21,
+            "promptTokens": 123,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-10/t3",
+          "user": "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+          "actualText": "Después vasiar la mañana, regar el huerto.",
+          "actualTextSha256": "3a50c630ae046fd87490fe8329cb96a9d8d4852586079779fcac4be4afc08a76",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar noche como nuevo momento de limpiar la cocina.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar noche como nuevo momento de limpiar la cocina."
+          ],
+          "offlineCanonicalReplyExample": "Por la noche.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 179,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-10/t4",
+          "user": "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad.",
+          "actualText": "Después vasiar la mañana, la primera actividad: la mañana, la primera actividad a la mañana, la mañana, la mañana es la mañana, la primera actividad, la primera actividad, la mañana, la primera actividad, la mañana es la mañana, la mañana, la mañana, la primera actividad, la mañana, la mañana, la primera actividad.",
+          "actualTextSha256": "ab3afe5464c4432938f630bd4f767c3fdbae613f984347ca5415167038fa8986",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Repite «la primera actividad a la mañana»/«la mañana es la mañana» como horario vigente, después del traslado explícito a la noche.",
+          "expectedSemanticRequirements": [
+            "Conservar limpiar la cocina antes de regar el huerto tras cambiar el horario. Aceptar formulación habitual o de plan; no exigir el futuro del gold."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a limpiar la cocina; después, a regar el huerto.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 72,
+            "promptTokens": 211,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-11",
+      "family": "two_objects",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 3,
+        "critical": 1,
+        "P": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-11/t1",
+          "user": "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+          "actualText": "El último. El color es gris y el.",
+          "actualTextSha256": "a339dbf2ef90ec64757fa57d5d384166134d4f1ab5489c878a977f9af8abbe68",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Responde que el color del último objeto es gris; ese objeto es el reloj blanco, no el bolso gris.",
+          "expectedSemanticRequirements": [
+            "Identificar blanco como color inicial del reloj, sin confundirlo con el bolso gris."
+          ],
+          "offlineCanonicalReplyExample": "El reloj es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 79,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-11/t2",
+          "user": "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+          "actualText": "Quieres gris y un fue Lidia.",
+          "actualTextSha256": "ec6c109045a6995614b6da71dfeb6eecdc72c68c187b3687ce92508f62701b54",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Menciona Lidia, referencia inequívoca a Lidia Campos, pero la frase no enuncia limpiamente el donante y arrastra palabras ajenas.",
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como donante del bolso."
+          ],
+          "offlineCanonicalReplyExample": "Te lo regaló Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 115,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-11/t3",
+          "user": "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo.",
+          "actualText": "El reloj.",
+          "actualTextSha256": "1ce61951d97be7a4448596dbb74f8c5c0c4d9cebd515bf0ac39e0fbc086ac071",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar gris como color corregido del reloj.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar gris como color corregido del reloj."
+          ],
+          "offlineCanonicalReplyExample": "El reloj es gris.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 166,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-11/t4",
+          "user": "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso.",
+          "actualText": "El reloj es gris.",
+          "actualTextSha256": "dab9e8555736d2abd79b8e551e3c1ca19c5cac39392d09b0c17c18c8d700c47c",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reconocer que no se ha identificado al donante del reloj, distinguiéndolo del donante conocido del bolso.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reconocer que no se ha identificado al donante del reloj, distinguiéndolo del donante conocido del bolso."
+          ],
+          "offlineCanonicalReplyExample": "No has dicho quién te dio el reloj.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 200,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-12",
+      "family": "limits_and_identity",
+      "holdoutKind": "wording",
+      "fullyCorrect": false,
+      "summary": {
+        "C": 2,
+        "critical": 0,
+        "F": 2
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-12/t1",
+          "user": "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+          "actualText": "Soy Unidad.",
+          "actualTextSha256": "f29476d70bc10c2458d02e2b4e9e51851f104b4bb7b30e793b714a44fc56cf2a",
+          "grade": "C",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Respuesta pertinente e inteligible que satisface todos los requisitos semánticos específicos; se admiten la equivalencia natural y errores triviales de puntuación. Identificar al asistente como Unidad, con identidad explícita del contexto por defecto del runtime registrada.",
+          "expectedSemanticRequirements": [
+            "Identificar al asistente como Unidad, con identidad explícita del contexto por defecto del runtime registrada."
+          ],
+          "offlineCanonicalReplyExample": "Me llamo Unidad.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 66,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-12/t2",
+          "user": "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+          "actualText": "Te llamas Lidia Campos.",
+          "actualTextSha256": "bb274df0c0181baa3a10c9deb3b422c9b23f3786860bd565982dd0703c267404",
+          "grade": "C",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Respuesta pertinente e inteligible que satisface todos los requisitos semánticos específicos; se admiten la equivalencia natural y errores triviales de puntuación. Identificar a quien habla como Lidia Campos; no intercambiar identidad de asistente y usuario.",
+          "expectedSemanticRequirements": [
+            "Identificar a quien habla como Lidia Campos; no intercambiar identidad de asistente y usuario."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 97,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-12/t3",
+          "user": "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+          "actualText": "Tu parte es Lidia Campos.",
+          "actualTextSha256": "57a31df9a12bf438709889cd28589fa270499a39333dfd2011b0f0fbdf372544",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reconocer que el domicilio de quien habla no ha sido compartido.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reconocer que el domicilio de quien habla no ha sido compartido."
+          ],
+          "offlineCanonicalReplyExample": "No; no me has dicho tu dirección.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 128,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-12/t4",
+          "user": "Recapitula los datos sobre mí que realmente he compartido contigo aquí.",
+          "actualText": "Te llamas tú te llamas tú te llamas tú.",
+          "actualTextSha256": "6a39de16c1903968a2e64ce57b033d1d46b86fc70394d7c65078abf7a47ef5d0",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Recapitular sólo el nombre Lidia Campos como dato personal compartido sobre quien habla; no atribuirle el nombre del asistente ni domicilio inventado.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Recapitular sólo el nombre Lidia Campos como dato personal compartido sobre quien habla; no atribuirle el nombre del asistente ni domicilio inventado."
+          ],
+          "offlineCanonicalReplyExample": "Me has dicho que te llamas Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 158,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-13",
+      "family": "location_and_appointment",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 2
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-13/t1",
+          "user": "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+          "actualText": "Irás en Isla Verde y viajaré a Ribera.",
+          "actualTextSha256": "036621b641de44d94acb5005c931da82f12eed11111c0c164707c2aae7affb28",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Presenta «Irás en Isla Verde» en vez de conservar Isla Verde como ubicación actual, y altera la relación entre ubicación y destino.",
+          "expectedSemanticRequirements": [
+            "Distinguir Isla Verde como ubicación y Ribera Alta como destino previsto."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Isla Verde; viajarás a Ribera Alta.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 17,
+            "promptTokens": 75,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-13/t2",
+          "user": "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+          "actualText": "Antes del viaje veré a Ribera.",
+          "actualTextSha256": "126b69dcd6fe15d661326b40b2c655e4b85aa1a5111c2d7cb8a999175dbbd40e",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Afirma «Antes del viaje veré a Ribera», sustituyendo a Clara Campos por un lugar como persona de la cita.",
+          "expectedSemanticRequirements": [
+            "Identificar martes, las cuatro y teatro como momento/lugar de la cita con Clara Campos."
+          ],
+          "offlineCanonicalReplyExample": "El martes a las cuatro, en el teatro.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 128,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-13/t3",
+          "user": "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+          "actualText": "Antes del viaje.",
+          "actualTextSha256": "e2aae6a51532062656c92742fe58889aa8896e25570369c311842ec29d290d3b",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Conservar Ribera Alta como destino del viaje pese al cambio de día de la cita.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Conservar Ribera Alta como destino del viaje pese al cambio de día de la cita."
+          ],
+          "offlineCanonicalReplyExample": "Viajarás a Ribera Alta.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 6,
+            "promptTokens": 177,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-13/t4",
+          "user": "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita.",
+          "actualText": "La cita.",
+          "actualTextSha256": "9bb62242536bff3afbcf04b142dc6fbe4b40dc07315578bb8418a49be807e7fe",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reunir ubicación Isla Verde, destino Ribera Alta y cita el viernes a las cuatro en el teatro.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Isla Verde, destino Ribera Alta y cita el viernes a las cuatro en el teatro."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Isla Verde; viajarás a Ribera Alta. La cita es el viernes a las cuatro, en el teatro.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 5,
+            "promptTokens": 213,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-14",
+      "family": "alias_identity_and_other_person",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 1,
+        "critical": 1,
+        "F": 3
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-14/t1",
+          "user": "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+          "actualText": "Te llamaré Sauce.",
+          "actualTextSha256": "8fe2eda55939e1126326ce66ad96d87540a35481d1b10cdd239227d29b73a0d0",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Da el apodo Sauce, pero omite el nombre Sonia Hidalgo y la distinción requerida.",
+          "expectedSemanticRequirements": [
+            "Distinguir Sonia Hidalgo como nombre y Sauce como apodo preferido."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Sonia Hidalgo y prefieres Sauce.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 8,
+            "promptTokens": 77,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-14/t2",
+          "user": "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+          "actualText": "Tu veci se llama Sauce.",
+          "actualTextSha256": "d96ac544bc45320015d423ce5e7c8d4b157b6f0733242fbe9b0a071f3af52df6",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Afirma que el vecino se llama Sauce; el vecino es Felipe Suárez y Sauce es el apodo del usuario.",
+          "expectedSemanticRequirements": [
+            "Identificar a Felipe Suárez como vecino."
+          ],
+          "offlineCanonicalReplyExample": "Tu vecino se llama Felipe Suárez.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 106,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-14/t3",
+          "user": "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+          "actualText": "Te llamas Sonia Hidalgo y el apodo que llama mí que llama mí.",
+          "actualTextSha256": "a106b6a7ab627a0a3519407249318b824e0800f8fbc4b2fdc32c5940a80205da",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar Brisa como apodo actual; el nombre Sonia Hidalgo no cambia.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar Brisa como apodo actual; el nombre Sonia Hidalgo no cambia."
+          ],
+          "offlineCanonicalReplyExample": "Tu apodo actual es Brisa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 21,
+            "promptTokens": 147,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-14/t4",
+          "user": "Dime mi nombre, el apodo actual y quién es la otra persona mencionada.",
+          "actualText": "Tu veciada sigue igual es tu apodo que es tu nombre.",
+          "actualTextSha256": "28317f0d309f51decc8a0551dd134de592310d4895d686b5f9d3ee25aa22ace5",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reunir nombre Sonia Hidalgo, apodo actual Brisa y Felipe Suárez como vecino mencionado.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reunir nombre Sonia Hidalgo, apodo actual Brisa y Felipe Suárez como vecino mencionado."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Sonia Hidalgo, prefieres Brisa y Felipe Suárez es tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 15,
+            "promptTokens": 189,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-15",
+      "family": "people_and_reassigned_tasks",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 0
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-15/t1",
+          "user": "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+          "actualText": "¿Qué quieres contarme persona.",
+          "actualTextSha256": "55f4923161e280e500f816988562f33f5a126427549013499b090ff44db83415",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Lidia Campos como hermana y a Tomás Hidalgo como vecino.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como hermana y a Tomás Hidalgo como vecino."
+          ],
+          "offlineCanonicalReplyExample": "Lidia Campos es tu hermana y Tomás Hidalgo es tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 8,
+            "promptTokens": 79,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-15/t2",
+          "user": "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+          "actualText": "Eli Camposo es quién; y recogero es Lidia.",
+          "actualTextSha256": "9d9da0f9baff2ebcec36f17b18a95d1827e8492daa1fcd19736f8c57cbc2698c",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar leer una novela como tarea inicial de Lidia Campos.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar leer una novela como tarea inicial de Lidia Campos."
+          ],
+          "offlineCanonicalReplyExample": "Lidia Campos va a leer una novela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 17,
+            "promptTokens": 122,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-15/t3",
+          "user": "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?",
+          "actualText": "Anteso es el correo y Tomás Hidalgo.",
+          "actualTextSha256": "7193c546f421ada69b48800bb4e9a1946d4b48226f25f0db3c915225898d2493",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Tomás Hidalgo como quien leerá una novela tras el intercambio.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Tomás Hidalgo como quien leerá una novela tras el intercambio."
+          ],
+          "offlineCanonicalReplyExample": "Tomás Hidalgo va a leer una novela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 15,
+            "promptTokens": 181,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-15/t4",
+          "user": "Di qué relación tiene Tomás Hidalgo conmigo y qué tarea hará; luego indica quién hará la otra tarea.",
+          "actualText": "Anteso es Lidia va a leer una novela.",
+          "actualTextSha256": "6dbad2142ccd50fd8df9534d43958b4c51b01ae08273893c57408921adf9ff5c",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Menciona Lidia y leer una novela con el fragmento inicial «Anteso», pero no responde al reparto actual ni a la relación de Tomás. No marco crítica porque ese inicio no permite distinguir inequívocamente una referencia al reparto anterior de una afirmación vigente.",
+          "expectedSemanticRequirements": [
+            "Expresar Tomás Hidalgo como vecino que leerá una novela y Lidia Campos como quien hará la otra tarea, recoger el correo. La referencia inequívoca a «la otra» es válida si la asignación queda clara."
+          ],
+          "offlineCanonicalReplyExample": "Tomás Hidalgo es tu vecino y va a leer una novela; Lidia Campos va a recoger el correo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 13,
+            "promptTokens": 226,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-16",
+      "family": "objects_known_giver_and_missing_price",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 4,
+        "critical": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-16/t1",
+          "user": "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+          "actualText": "No me has dicho el bolso es gris.",
+          "actualTextSha256": "c1549cc315684c3f3daa8e658485096812fb84b40f90fd48266e6a1ee33706e8",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Dice «No me has dicho el bolso es gris», negando un dato declarado en el USER actual.",
+          "expectedSemanticRequirements": [
+            "Asociar bolso con gris y reloj con verde."
+          ],
+          "offlineCanonicalReplyExample": "El bolso es gris y el reloj es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 12,
+            "promptTokens": 79,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-16/t2",
+          "user": "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+          "actualText": "Surgió.",
+          "actualTextSha256": "e7d9330da3fee9573f47a905641dfc811c5994b01317ab0d9222a0072956ae70",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reconocer que el donante del bolso no se indicó; Lidia Campos es donante del reloj.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reconocer que el donante del bolso no se indicó; Lidia Campos es donante del reloj."
+          ],
+          "offlineCanonicalReplyExample": "No has dicho quién te dio el bolso.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 5,
+            "promptTokens": 127,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-16/t3",
+          "user": "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+          "actualText": "Surrijo sólo mencionado quién me dio el bolso.",
+          "actualTextSha256": "70f434c0048a91f69afe655005603de903dd5f9cf088c92f0f177b02219b4f3b",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar el bolso como objeto recién corregido. Mencionar su color verde es opcional; no usar gris como vigente.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar el bolso como objeto recién corregido. Mencionar su color verde es opcional; no usar gris como vigente."
+          ],
+          "offlineCanonicalReplyExample": "Has corregido el bolso; es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 15,
+            "promptTokens": 162,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-16/t4",
+          "user": "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso.",
+          "actualText": "El repi don me me me has dichoj el objeto.",
+          "actualTextSha256": "de1a8796e9e0fec33ecd878e3b0afa0d46b68cf75591589e16e1ea4ae5d3d530",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Lidia Campos como donante del reloj y reconocer precio del bolso no informado.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como donante del reloj y reconocer precio del bolso no informado."
+          ],
+          "offlineCanonicalReplyExample": "Te dio el reloj Lidia Campos; no has dicho el precio del bolso.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 203,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-17",
+      "family": "project_and_separate_book",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 2,
+        "critical": 1,
+        "F": 2
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-17/t1",
+          "user": "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+          "actualText": "Surgió titula Trazos del río.",
+          "actualTextSha256": "821991fc5a0bf1554a0af62c8c301d5b3221d4767c2a92507de68f64af8b4851",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Recupera Trazos del río, pero no distingue el proyecto de la novela Retratos de otoño.",
+          "expectedSemanticRequirements": [
+            "Distinguir Trazos del río como proyecto propio de dibujos y Retratos de otoño como novela aparte."
+          ],
+          "offlineCanonicalReplyExample": "Tu proyecto se llama Trazos del río; la novela, Retratos de otoño.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 88,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-17/t2",
+          "user": "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+          "actualText": "Surco una novela; nació de las tardes dibujando con mi abuela.",
+          "actualTextSha256": "6ce349ffdb568f2366760cd83f57ca16cbfc534b7cba751049c2652b3a2cd655",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Recoge el origen en las tardes dibujando con la abuela; antepone un fragmento defectuoso sobre una novela.",
+          "expectedSemanticRequirements": [
+            "Identificar las tardes dibujando con la abuela como origen del proyecto."
+          ],
+          "offlineCanonicalReplyExample": "De las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 20,
+            "promptTokens": 126,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-17/t3",
+          "user": "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+          "actualText": "Surco una novela Retratos dibuj nació de las tardes dibuj nació de las tardes dibuj se titula Trazos.",
+          "actualTextSha256": "17afbf983f7701d43280f24562c20bcea60e663b3ed5f2b30c47cdf87e892d4a",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Termina «se titula Trazos», presentando el título anterior después del cambio explícito a Lince; tampoco conserva correctamente la novela.",
+          "expectedSemanticRequirements": [
+            "Identificar Lince como título ya vigente del proyecto en el USER derivado aclarado; conservar Retratos de otoño como título de la novela."
+          ],
+          "offlineCanonicalReplyExample": "El proyecto se llama Lince; la novela, Retratos de otoño.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p3",
+          "userClarifiedBeforeGeneration": true,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 31,
+            "promptTokens": 176,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-17/t4",
+          "user": "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?",
+          "actualText": "Tu escribió es llamando de o.",
+          "actualTextSha256": "4535f49c41bf9bff7b1ed2e28fcf7e0cf9afe4cd1c10c09f91b74ea66bbc568f",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar proyecto actual Lince y novela Retratos de otoño, reconociendo que no se indicó quién escribió la novela.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar proyecto actual Lince y novela Retratos de otoño, reconociendo que no se indicó quién escribió la novela."
+          ],
+          "offlineCanonicalReplyExample": "Tu proyecto se llama Lince y la novela, Retratos de otoño; no has dicho quién la escribió.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 9,
+            "promptTokens": 240,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-18",
+      "family": "routine_and_rescheduled_appointment",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "F": 3,
+        "critical": 1,
+        "P": 1
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-18/t1",
+          "user": "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+          "actualText": "Relaja.",
+          "actualTextSha256": "95b1e1ae86c96bca072c946551ce4e50299e8a1d57e992738f8795b986d73215",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar ordenar los libros como actividad que le relaja.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar ordenar los libros como actividad que le relaja."
+          ],
+          "offlineCanonicalReplyExample": "Te relaja ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 5,
+            "promptTokens": 85,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-18/t2",
+          "user": "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+          "actualText": "Usarás una cita.",
+          "actualTextSha256": "4537fb9ef9762533fa78ac50245b28a3d87057474274080ecda6b56f3f257b77",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Expresar ordenar los libros primero y lavar la ropa después.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Expresar ordenar los libros primero y lavar la ropa después."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros; después, a lavar la ropa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 8,
+            "promptTokens": 116,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-18/t3",
+          "user": "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+          "actualText": "En una cita al viernes, conservando la hora.",
+          "actualTextSha256": "fad1714fb224e8ae5a6a1ec279de84614cf123947a2a3de9f949fea3092be7a5",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Da viernes y conserva verbalmente la hora; no recupera las siete como valor concreto.",
+          "expectedSemanticRequirements": [
+            "Identificar viernes y las siete como cita actual tras cambiar miércoles."
+          ],
+          "offlineCanonicalReplyExample": "El viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 15,
+            "promptTokens": 162,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-18/t4",
+          "user": "Recupera el orden de las actividades y el día y la hora actuales de la cita.",
+          "actualText": "El mismo y la cita el miércoles.",
+          "actualTextSha256": "eb8815f7fd332c1839541f0b72361ef14b5bfe8f89a18901bd2e226abc957499",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Reinstala «la cita el miércoles» después de moverla explícitamente al viernes.",
+          "expectedSemanticRequirements": [
+            "Reunir el orden libros→ropa y la cita actual viernes a las siete."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros; después, a lavar la ropa. La cita es el viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 13,
+            "promptTokens": 200,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-19",
+      "family": "listening_with_actor_correction",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 1,
+        "critical": 0,
+        "F": 3
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-19/t1",
+          "user": "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+          "actualText": "Te escucho. ¿Qué quieres contarme sobre que te escucho.",
+          "actualTextSha256": "4ef3b2b7def1c27fdba09f3c592ab24c05156317ba526e8262360037d5c92276",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Confirma escucha sin consejos concretos; añade una pregunta gramaticalmente rota.",
+          "expectedSemanticRequirements": [
+            "Acoger el deseo de contar/ser escuchado, sin consejos. Puede reflejar el cambio del trabajo sin consulta como motivo de malestar, sin exigir literalmente el gold."
+          ],
+          "offlineCanonicalReplyExample": "Te escucho. Te molestó que cambiaran tu trabajo sin consultarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 16,
+            "promptTokens": 86,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-19/t2",
+          "user": "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+          "actualText": "¿Qué quieres contarme. ¿Qué quieres contarme sobre eseme eseme?",
+          "actualTextSha256": "72684959f7ff9b811d8a0512c8bb68b378a729a4269a33d031d0d9842a84c46a",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Hacer una sola pregunta pertinente sobre cómo le afectó ese cambio; sin dar consejos ni inventar sentimientos concretos.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Hacer una sola pregunta pertinente sobre cómo le afectó ese cambio; sin dar consejos ni inventar sentimientos concretos."
+          ],
+          "offlineCanonicalReplyExample": "¿Cómo te afectó ese cambio?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 18,
+            "promptTokens": 118,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-19/t3",
+          "user": "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+          "actualText": "Quieres que te escuche.",
+          "actualTextSha256": "c181cca525f96df6f534fc6d6db271fbdc665328281d8d2c592537c1ad437314",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Identificar a Mateo Romero, colega, como responsable tras corregir Noelia Hidalgo; conservar que el cambio del trabajo ocurrió.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Identificar a Mateo Romero, colega, como responsable tras corregir Noelia Hidalgo; conservar que el cambio del trabajo ocurrió."
+          ],
+          "offlineCanonicalReplyExample": "Lo hizo tu colega Mateo Romero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 8,
+            "promptTokens": 183,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-19/t4",
+          "user": "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones.",
+          "actualText": "Te aconse escuchadojes;Reco.",
+          "actualTextSha256": "c94bf05397312a40dddf5b3e70c7cde7ed3c9aa1ad15732f08b9a11aae81f875",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Recoger el cambio del trabajo sin consulta como motivo del malestar, nombrando correctamente a Mateo Romero; no sugerir soluciones.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Recoger el cambio del trabajo sin consulta como motivo del malestar, nombrando correctamente a Mateo Romero; no sugerir soluciones."
+          ],
+          "offlineCanonicalReplyExample": "Te molestó que tu colega Mateo Romero cambiara tu trabajo sin consultarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 11,
+            "promptTokens": 219,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-20",
+      "family": "object_correction_preserves_location",
+      "holdoutKind": "composition",
+      "fullyCorrect": false,
+      "summary": {
+        "P": 2,
+        "critical": 1,
+        "F": 2
+      },
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-20/t1",
+          "user": "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+          "actualText": "Estás en Ladera Nueva y llevo; no me has dicho el color de ladera.",
+          "actualTextSha256": "72e4d0644def8a5de5916ce2f24f4149ab03a1322076b6c67c1c6dbb332e6a93",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Recupera Ladera Nueva, pero omite rojo. La mención del «color de ladera» no es una negación inequívoca del color conocido del bolso.",
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Ladera Nueva y bolso rojo."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ladera Nueva y tu bolso es rojo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p1",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 21,
+            "promptTokens": 74,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-20/t2",
+          "user": "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+          "actualText": "Jas en Ladera Nueva y todavía es del bolso.",
+          "actualTextSha256": "2eb7e455bfecf630098f7704c23502886ce454eb334c2cd24922b5eca03e7859",
+          "grade": "P",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "Recupera la ubicación Ladera Nueva de manera reconocible; añade una cláusula incoherente sobre el bolso.",
+          "expectedSemanticRequirements": [
+            "Conservar Ladera Nueva como ubicación actual pese al destino Ribera Alta."
+          ],
+          "offlineCanonicalReplyExample": "Sigues en Ladera Nueva.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p2",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 123,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-20/t3",
+          "user": "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+          "actualText": "Tu ubicación es erróneo: el bolso es blanco.",
+          "actualTextSha256": "e2fa1f837601ab68ef941ff3d7da085d6885f7f9ce8142767789b26c587635c7",
+          "grade": "F",
+          "critical": true,
+          "technicalFailure": false,
+          "reason": "Aunque da bolso blanco, añade «Tu ubicación es erróneo», contradiciendo que la ubicación sigue igual.",
+          "expectedSemanticRequirements": [
+            "Identificar blanco como color corregido del bolso."
+          ],
+          "offlineCanonicalReplyExample": "El bolso es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p3",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 14,
+            "promptTokens": 172,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        },
+        {
+          "id": "pr1rel-val-v1-20/t4",
+          "user": "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección.",
+          "actualText": "Tu ubicación es el bolso es el bolsoeo: el bolso es el bolsoeo:, el bolso es blanco.",
+          "actualTextSha256": "7bd0b6fa97b5f10ef4231d729696e3adaabeb747a6722f855791812b5d6bdf3a",
+          "grade": "F",
+          "critical": false,
+          "technicalFailure": false,
+          "reason": "No satisface: Reunir ubicación Ladera Nueva, destino Ribera Alta y bolso blanco corregido.. Su texto es ajeno, fragmentario o insuficientemente inteligible para dar una respuesta útil completa o parcial. No marco crítica porque no identifico una proposición falsa concreta e inequívoca respecto al prefijo USER; una incoherencia aislada no se reconstruye como afirmación factual.",
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Ladera Nueva, destino Ribera Alta y bolso blanco corregido."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ladera Nueva, viajarás a Ribera Alta y tu bolso es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p4",
+          "userClarifiedBeforeGeneration": false,
+          "runtime": {
+            "stopReason": "eos",
+            "generatedTokens": 29,
+            "promptTokens": 212,
+            "discardedPromptTokens": 0
+          },
+          "actualHistoryVerified": true
+        }
+      ]
+    }
+  ]
+}
