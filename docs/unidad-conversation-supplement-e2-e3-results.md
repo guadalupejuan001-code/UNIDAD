@@ -22,3 +22,5 @@ El [informe JSON](unidad-conversation-supplement-e2-e3-results.json) conserva SH
 La referencia externa Qwen2.5-0.5B-Instruct es pública, Apache 2.0, revisión fijada. Se ejecutó sólo para comparar sobre los mismos 40 turnos conocidos y el mismo sistema, con historia propia real, generación greedy y 32 tokens por su tokenizador. Difieren tokenizador, adaptador, capacidad, contexto configurado y número de hilos; no se afirma igualdad de cómputo ni velocidad. Sus respuestas nunca entraron en el entrenamiento ni sustituyen el runtime o los pesos de Unidad. Esta muestra limitada no demuestra competitividad.
 
 Qwen, primaria C8/P7/F25; cruzada C10/P4/F26; críticos 15/20; 0/10 diálogos completos.
+
+Una [prueba adicional de desarrollo cotidiano](unidad-conversation-supplement-e2-e3-evidence/everyday-probe/actual-generation.json) pidió explicaciones, un ejemplo, una reformulación, una invitación y correcciones. C7 no cumplió completamente ninguna de sus seis peticiones, aunque se permitió hasta 96 tokens. Las respuestas y la revisión de IA del proyecto se conservan sin cambios; esta prueba no se mezcló con el entrenamiento ni con la evaluación final reservada.
