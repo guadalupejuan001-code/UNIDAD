@@ -163,6 +163,11 @@ def assess(suite_dir, outputs_path, review_path, output_path):
         raise ValueError("Review must identify this suite, artifact and exact output file")
     if not review.get("reviewer") or not review.get("method"):
         raise ValueError("Semantic review must identify reviewer and method")
+    manifest = outputs.get("modelManifest")
+    if (type(manifest) is not dict or manifest.get("modelId") != outputs["modelId"]
+            or type(manifest.get("training")) is not dict
+            or manifest["training"].get("trainedFrom") not in ("random_weights", "own_checkpoint")):
+        raise ValueError("Outputs must identify the same recorded own-model artifact as its manifest")
     expected = {step["id"]: step for scenario in cases["scenarios"] for step in scenario["steps"]}
     judged = {row["id"]: row for row in review["turns"]}
     generated = {row["id"]: row for row in outputs["outputs"]}
@@ -202,6 +207,12 @@ def assess(suite_dir, outputs_path, review_path, output_path):
                 or type(context.get("discardedPromptTokens")) is not int
                 or context["discardedPromptTokens"] < 0):
             raise ValueError("Effective context must record a nonnegative discarded-token count")
+        if actual["error"] is None:
+            reply_discarded = actual["reply"].get("discardedPromptTokens")
+            if type(reply_discarded) is not int or reply_discarded < 0:
+                raise ValueError("A successful reply must record its nonnegative discarded-token count")
+            if context is not None and reply_discarded != context["discardedPromptTokens"]:
+                raise ValueError("Reply and effective context must agree on discarded prompt tokens")
         if actual["error"] is not None or context is None or context["discardedPromptTokens"]:
             technical_failures.append(identifier)
         dimensions_met = all(row[key] for key in ("relevance", "contextGrounding", "spanish"))

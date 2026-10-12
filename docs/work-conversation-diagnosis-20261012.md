@@ -1,5 +1,7 @@
 # Diagnóstico y reparación de evaluación — 12 de octubre de 2026
 
+> Informe histórico del experimento indicado abajo. La corrección del evaluador se incorporó después a main; el estado vigente y la disponibilidad de artefactos están en [ESTADO_ACTUAL.md](ESTADO_ACTUAL.md). Las métricas, respuestas, hashes y presupuestos de este informe no se reinterpretan como procesos activos.
+
 **No se consiguió reducir a la mitad los fallos de conversación. Se conserva C7 como referencia.** Ningún candidato de este experimento se recomienda para promoción. Las corridas están terminadas; no hay entrenamiento pendiente en segundo plano.
 
 Se trabajó sobre `b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a`, con una copia independiente. La captura aportada por el creador mostró otra sesión de Codex evaluando ajustes de textos de 256/512 pasos. Se cambió el experimento de Work para investigar el mecanismo de copia. No se inspeccionó ni modificó la carpeta privada de esa otra sesión.

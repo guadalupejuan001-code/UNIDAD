@@ -10,7 +10,22 @@ Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Defi
 el objetivo de Unidad y distinguen lo realizado de lo pendiente. Las instrucciones
 para quienes modifiquen el código están en [AGENTS.md](AGENTS.md).
 
-**Estado: núcleo conectable con modelos experimentales.**
+**Estado verificado el 12 de octubre de 2026: la conversación competente sigue
+pendiente; no hay entrenamiento activo comprobado en este entorno.** C7 se conserva
+como referencia experimental: **7 completas, 5 parciales, 28 fallidas, seis críticas
+y 0/10 diálogos completos** en los 40 turnos conocidos, según la revisión primaria
+de IA del proyecto. Los candidatos posteriores de la comparación relacional
+fallaron la conservación de capacidades y no se promovieron. Los presupuestos
+anteriores de 24 horas y dos horas están cerrados.
+
+El [estado actual y sus fuentes](docs/ESTADO_ACTUAL.md) distingue resultados,
+versiones, ramas y límites. Los pesos de C7 están incluidos en `main`; el
+[paquete completo de pesos y checkpoints](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012)
+está publicado en la rama de artefactos. Esa publicación conserva experimentos;
+no declara aceptado ningún modelo. C7 tiene **6.983.937 parámetros**, incluidos
+los de copia v1; la base anterior sin esa cabeza tiene 6.967.296.
+
+**Núcleo conectable con modelos experimentales.**
 Ya puede ejecutar operaciones y flujos definidos por el producto, usando las
 herramientas que ese producto le proporciona. Los modelos actuales todavía no
 comprenden encargos abiertos ni planifican el trabajo de forma competente.
@@ -18,7 +33,10 @@ Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encar
 abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
 persona ni su forma completa de pensar.
 
-El sucesor propio tiene **6.967.296 parámetros**, BPE de 8.192
+Los antecedentes siguientes conservan los resultados de sus etapas; no describen
+procesos activos ni presupuestos disponibles actualmente.
+
+El sucesor propio sin cabeza de copia tiene **6.967.296 parámetros**, BPE de 8.192
 tokens y contexto de 512 tokens. Completó 6.000 pasos de preentrenamiento desde
 pesos aleatorios y 6.000 de ajuste conversacional, pero falló la comprobación
 con 40 turnos nuevos: **2 respuestas completas, 3 parciales y 35 fallidas;
@@ -40,7 +58,8 @@ del entrenamiento, conservando el checkpoint seleccionado por validación del
 paso 2.000. En 40 turnos de desarrollo, la revisión primaria obtuvo **2 completas,
 6 parciales y 32 fallidas**; la cruzada, **2 completas, 4 parciales y 34 fallidas**.
 Ninguna obtuvo un diálogo completo. El [informe de esa etapa](docs/unidad-uniform-coverage-b1-results.json)
-conserva los desacuerdos y el rechazo; se prepara otra etapa propia con BF16.
+conserva los desacuerdos y el rechazo. Las etapas posteriores con BF16 también
+terminaron; sus resultados y cierres están identificados en el estado actual.
 
 El entrenador ahora permite activar `train_precision="cpu_bfloat16"`. En dos
 comparaciones cortas con orden invertido, el tiempo mediano por paso pasó de
@@ -106,7 +125,7 @@ no son cifrado.
 
 ## Primeros pasos
 
-La referencia conversacional propia más reciente elegida por respuestas es [Unidad
+La referencia conversacional propia conservada es [Unidad
 C7](models/conversation-reference-c7/README.md). Sigue siendo experimental: obtuvo 7
 respuestas completas de 40 y ningún diálogo completamente correcto de 10. Sus
 [conversaciones reales](models/conversation-reference-c7/evidence/dialogues-actual.txt),
@@ -120,9 +139,20 @@ python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/
 python -m pip install -e '.[conversation]'
 ```
 
+Para abrir C7 con el motor y las condiciones comprobadas:
+
+```bash
+PYTHONPATH=src python -m ia_propia.conversation converse \
+  --model models/conversation-reference-c7 --max-new-tokens 160 --temperature 0 --seed 42
+```
+
+La prueba de consola conservó el historial real y reprodujo cuatro respuestas
+evaluadas. Una consola funcional no acredita conversación competente.
+
 La [guía de entrenamiento conversacional](docs/conversation.md) explica cómo
 preparar datos, empezar, comprobar el progreso, guardar un modelo y reanudar.
-Hay una [instantánea experimental guardada](models/conversation-basic-v1/README.md)
+Las versiones siguientes son antecedentes conservados. Hay una
+[instantánea experimental guardada](models/conversation-basic-v1/README.md)
 con pesos, configuración y tokenizador:
 
 ```bash
@@ -142,8 +172,8 @@ El estilo solicitado —confidente, cercano y que conecte puntos— orienta los
 ejemplos y el contexto del modelo; eso todavía no demuestra que lo haya aprendido.
 La [evidencia de esta etapa](docs/unidad-conversation-validation-v0.3.0.json)
 registra pesos, métricas y respuestas reales, sin reemplazar su texto por respuestas
-de otra IA. El presupuesto de entrenamiento de 24 horas es un máximo; el proceso
-puede parar antes si deja de mejorar o si el entorno se detiene.
+de otra IA. El presupuesto original de entrenamiento fue de hasta 24 horas;
+permitía parar antes por validación o cierre del entorno y está cerrado.
 Unidad 0.3.0 pasó 139 pruebas con las dependencias conversacionales. También
 se comprobó una instalación del paquete fuera del repositorio, con Python y HTTP
 usando el mismo modelo entre dos cuerpos. Las respuestas de la instantánea
@@ -151,9 +181,9 @@ todavía contienen errores y repeticiones: estas pruebas acreditan el código
 y la integración, no un habla competente.
 
 La versión 0.4 añade continuación entre etapas con `--initial-model`. La primera
-corrida se detuvo al estancarse; la segunda amplía el corpus a 14.207 registros
-y conserva sus mejores pesos y el mismo tokenizador. La ampliación mantiene
-las familias reservadas y usa el presupuesto restante de las 24 horas originales.
+corrida se detuvo al estancarse; la segunda amplió el corpus a 14.207 registros
+y conservó sus mejores pesos y el mismo tokenizador. La ampliación mantuvo
+las familias reservadas y usó el presupuesto restante de las 24 horas originales.
 El [registro de progresión](docs/unidad-conversation-progression-v0.4.0.json)
 conserva la comparación y el estado observado. Esta etapa sigue siendo experimental.
 Su [instantánea exportada](models/conversation-spanish-v2/README.md) se puede
@@ -174,8 +204,8 @@ el cerebro y la evaluación. El entrenamiento exporta los mismos pesos, configur
 y tokenizador que consume ese motor. Se conserva un único comportamiento de
 inferencia en todos esos caminos.
 
-La siguiente etapa prioriza diálogos cortos con contexto completo. Las ventanas
-deslizantes de entrenamiento conservan texto anterior y enseñan cada token de
+La etapa histórica siguiente priorizó diálogos cortos con contexto completo.
+Las ventanas deslizantes de entrenamiento conservan texto anterior y enseñan cada token de
 la respuesta final una sola vez. La batería de desarrollo contiene 28 casos
 en 14 pares que cambian la petición actual, con candidatos intercambiados;
 también conserva las respuestas reales para revisión humana:
@@ -197,8 +227,8 @@ conserva pruebas, datos, procedencia y las respuestas defectuosas observadas.
 
 La etapa concentrada se pausó cuando empezó a sobreajustarse. Se conserva su
 [mejor instantánea experimental](models/conversation-context-v3/README.md),
-y la siguiente etapa combina 5.608 diálogos breves con un ritmo de aprendizaje
-menor. Usa el tiempo restante del mismo presupuesto original. La
+y la etapa posterior combinó 5.608 diálogos breves con un ritmo de aprendizaje
+menor. Usó el tiempo restante del mismo presupuesto original, ahora cerrado. La
 [guía de conversación](docs/conversation.md) explica ambos recorridos.
 
 ```bash
@@ -219,8 +249,8 @@ unidad conversation converse --model models/conversation-basics-v4 \
 
 Se adaptó el aprendizaje para evitar calcular salidas sin supervisión. En la
 CPU disponible, la [comparación medida](docs/unidad-learning-optimization-v1.json)
-redujo un 13,5 % el tiempo por paso y conservó la inferencia. La siguiente etapa
-reduce repeticiones de ejemplos fáciles y añade diversidad de textos y
+redujo un 13,5 % el tiempo por paso y conservó la inferencia. La etapa posterior
+redujo repeticiones de ejemplos fáciles y añadió diversidad de textos y
 correcciones. El [registro de aprendizaje](docs/unidad-learning-curriculum-v2.json)
 conserva la comparación de respuestas y la nueva etapa: las correcciones y los
 hechos de conversación libre siguen fallando. Pasaron 277 pruebas técnicas;

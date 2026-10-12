@@ -5,11 +5,21 @@ que trabaje por su creador y se adapte a sus cambios de criterio**. Las redes
 pequeñas actuales son componentes experimentales de ese proyecto; no acreditan
 que el trabajador digital solicitado ya esté terminado.
 
+## Encargo actual: coherencia del repositorio y de GitHub
+
+Después de pedir la subida de pesos y checkpoints, el creador solicitó comprobar
+que GitHub sea coherente con los archivos locales, corregir las inconsistencias
+y actualizar los datos. Este encargo administrativo no declara conseguida la
+conversación ni autoriza reiniciar entrenamientos. El
+[estado actual comprobado](docs/ESTADO_ACTUAL.md) identifica versiones,
+evaluaciones, pesos publicados y procesos cerrados. La prioridad de desarrollo
+conversacional que sigue a continuación permanece vigente.
+
 ## Prioridad vigente: conversación competitiva en español
 
 La misión vigente exige conversación cotidiana natural, coherente y útil, comparable con asistentes de referencia bajo condiciones declaradas. Superar una prueba básica no basta para afirmar calidad competitiva; la comparación debe conservar respuestas e historiales reales, procedencia, condiciones y límites. Unidad mantiene sus pesos propios y no se sustituye por el asistente usado como referencia.
 
-La instrucción más reciente sustituye las prioridades de los planes amplios:
+La prioridad de desarrollo sustituye las prioridades de los planes amplios:
 conseguir y comprobar conversación básica en español antes de ampliar las
 capacidades. No desarrollar matemáticas, interfaces, herramientas autónomas,
 dispositivos ni más memoria, salvo corregir un defecto que bloquee directamente
@@ -24,7 +34,7 @@ Entrenar un experimento acotado contra la hipótesis observada y cambiarla si no
 mejora, sin sustituir el modelo por otra IA ni respuestas de plantilla en ejecución.
 
 La aceptación sigue exigiendo **36 respuestas completas de 40, 8 diálogos
-completamente correctos de 10 y ningún fallo crítico**. Mantener familias
+completamente correctos de 10 y ningún fallo crítico o técnico**. Mantener familias
 separadas y una evaluación nueva sin utilizar para decidir cambios. Las
 revisiones de agentes del proyecto son revisiones de IA, no evaluaciones humanas
 independientes. No usar los mensajes personales como corpus sin autorización.
@@ -40,7 +50,8 @@ El 12 de octubre de 2026, después de cerrar el presupuesto anterior de 24 horas
 creador autorizó hasta dos horas adicionales en el mismo entorno de 4 CPU, sin servicios
 de pago, para entrenar desde los pesos propios de C7 con los ejemplos corregidos de
 cuatro turnos y comprobar sus conversaciones. Esta ampliación no reinicia el presupuesto
-anterior ni cambia la aceptación.
+anterior ni cambia la aceptación. Tanto las 24 horas como las dos horas
+adicionales están cerradas; no se presentan como presupuesto disponible.
 
 La misión posterior exige resolver el aprendizaje conversacional desde la
 evidencia real: distinguir defectos técnicos, falta de base lingüística,
@@ -51,6 +62,19 @@ rutinarias y experimentos acotados con los recursos disponibles, sin pedir otro
 prompt para cada dificultad. Consultar gastos, accesos nuevos o cambios
 irreversibles. Los presupuestos anteriores cerrados no se reinician ni se
 presentan como procesos activos.
+
+La continuación indicada desde el PR en borrador
+[1](https://github.com/guadalupejuan001-code/UNIDAD/pull/1) distingue la base
+`a1a283caabf89b3191c8ce64c2a950e9edbb0edf` de los experimentos anteriores
+`b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a`. Mantener C7 como referencia y
+conservar los candidatos descartados. La meta parcial de como máximo 14 fallidas
+de los 40 turnos conocidos, sin superar seis críticas, no sustituye la aceptación
+general. Reservar formulaciones y composiciones completas; medir redacción,
+orden de hechos e historia ideal frente a la realmente generada. Exigir mejora
+en generación libre antes de ampliar una intervención. No aplicar
+`source-pointer-v2.patch` como si fuera una reparación aprobada ni editar
+respuestas reales. Las revisiones de IA del proyecto deben identificarse como
+tales; los casos de desarrollo examinados no son una aceptación final nueva.
 
 ## Órdenes recibidas
 
@@ -101,6 +125,9 @@ presentan como procesos activos.
 20. Optimizar el código de memoria en paralelo y ampliar las capacidades de la
     IA de forma continua, comprobando cada mejora con resultados medidos.
     Conservar como pendientes los cambios que todavía no se hayan verificado.
+21. Publicar en GitHub los pesos y checkpoints entregados; comprobar que los
+    datos, documentación, código y artefactos publicados sean coherentes con
+    el estado local, y corregir las inconsistencias sin alterar la evidencia.
 
 ## Palabras del creador
 
@@ -148,15 +175,20 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > optimiza el codigo de la memoria potencia eso en segundo plazo, escala la ia a cada momento
 
+> pz subelos
+
+> verifica que todo en github sea coherente con lo que tenemos corrige todo y actualiza cualquier dato
+
 ## Qué está hecho y qué falta
 
 | Petición | Estado comprobado |
 | --- | --- |
+| Estado actual y publicación | C7 se conserva como referencia experimental: siete completas, cinco parciales, 28 fallidas, seis críticas y 0/10 diálogos completos en los 40 turnos conocidos, según la revisión primaria de IA. Los candidatos posteriores original128 (C8/P1/F31, siete críticas) y relacional128 (C6/P2/F32, nueve críticas) no se promovieron; ambos obtuvieron 0/10 diálogos completos. El paquete completo está publicado en la rama de artefactos de GitHub. El [estado actual](docs/ESTADO_ACTUAL.md) identifica fuentes y cierres; no hay entrenamiento activo comprobado en este entorno. |
 | Proyecto propio llamado Unidad | Guardado en el repositorio privado UNIDAD. |
-| Modelos desde cero | Se conservan las redes iniciales y los Transformers pequeños; el sucesor propio tiene 6.967.296 parámetros, BPE de 8.192 tokens y contexto de 512. Completó 6.000 pasos de preentrenamiento desde pesos aleatorios y 6.000 de SFT desde ese checkpoint propio, con el mismo tokenizador y un optimizador nuevo; sin pesos preentrenados externos ni llamadas a otra IA en inferencia. |
+| Modelos desde cero | Se conservan las redes iniciales y los Transformers pequeños; el sucesor propio sin cabeza de copia tiene 6.967.296 parámetros, BPE de 8.192 tokens y contexto de 512. Completó 6.000 pasos de preentrenamiento desde pesos aleatorios y 6.000 de SFT desde ese checkpoint propio, con el mismo tokenizador y un optimizador nuevo; sin pesos preentrenados externos ni llamadas a otra IA en inferencia. C7 conserva el linaje propio y tiene 6.983.937 parámetros con copia v1. |
 | Lenguaje | V7 se conserva como candidato experimental. En 40 turnos nuevos, la revisión primaria y la cruzada del proyecto coincidieron en 2 respuestas completas, 3 parciales y 35 fallidas, con 0 de 10 diálogos completos. No superó el criterio de 36 respuestas completas, 8 diálogos completos y cero fallos críticos; no se consultó TEST ni se promovió como modelo predeterminado. Se conservan los recuentos críticos originales de 13 y 12; ambos asistentes confirmaron una unión de 14 tras comparar sus revisiones, sin cambiar las 40 calificaciones ni el rechazo. El [informe de v7](docs/unidad-conversation-language-v7-results.json) conserva la evidencia. V6 había obtenido 15 respuestas completas en otros 22 turnos conocidos, una evaluación distinta sin comparación equivalente. |
 | Voz cercana que conecte puntos | Ejemplos sintéticos identificados y contexto por defecto orientan el entrenamiento. No se usó el historial personal como corpus ni se afirma haber replicado al creador. |
-| Entrenar durante el día | Trabajador en segundo plano con presupuesto máximo de 24 horas, parada por validación y reanudación exacta del mismo corpus. Sólo continúa mientras el entorno esté activo. |
+| Entrenar durante el día | Se implementó un trabajador en segundo plano con parada por validación y reanudación exacta del mismo corpus. El presupuesto original máximo de 24 horas y la ampliación de dos horas están cerrados. No hay entrenamiento activo comprobado en este entorno; conservar checkpoints no inicia ni autoriza otra corrida. |
 | Evolución progresiva | De conversación básica a más ejemplos públicos de español, reutilizando pesos y tokenizador propios con procedencia registrada. Aprender programación y mejorar su propio código siguen pendientes de etapas y evaluaciones específicas. |
 | Cambios de criterio | Registro local de encargos y correcciones; la última valoración decide qué ejemplos se exportan. |
 | Trabajar por el creador | El núcleo ejecuta flujos explícitos y herramientas del producto; comprender un encargo abierto y planificarlo sigue pendiente. |
@@ -165,7 +197,7 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 | Adjuntar las órdenes | Este documento, enlazado en el README y en AGENTS.md. |
 | Cohesión interna del código | Un contrato conversacional compartido y un mismo motor para CLI, cerebro y evaluación. El entrenador exporta el artefacto que carga ese motor; no se añaden dependencias entre todos los módulos. |
 | Comprobar conversación | Los 40 turnos nuevos de v7 se generaron sin errores ni truncamiento, pero sus respuestas fallaron la aceptación de conversación básica. Las revisiones corresponden a asistentes de IA del mismo proyecto, no a un panel externo. Las pruebas técnicas y la pérdida de validación no acreditan conversación competente. |
-| Comparar cómo aprende | El A/B posterior completó 384 pasos en cada brazo. El control obtuvo C0/P2/F38 en la revisión primaria y C1/P1/F38 en la cruzada; ranking obtuvo C0/P1/F39 en ambas. Ninguno logró un diálogo completamente correcto ni superó la promoción. Son turnos de desarrollo ya expuestos, sin evaluar TEST; se conservan los desacuerdos y no se adoptó ranking. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json) conserva los resultados. La etapa posterior desde v7 usó muestreo uniforme sin reemplazo y pérdida media por token; se guardó a los 2.786 pasos para cambiar a BF16, con checkpoint seleccionado en el paso 2.000. En 40 turnos de desarrollo obtuvo C2/P6/F32 en la primaria y C2/P4/F34 en la cruzada, sin diálogos completos ni promoción. El [informe de cobertura uniforme](docs/unidad-uniform-coverage-b1-results.json) conserva las dos revisiones. Se prepara otra etapa propia con BF16. |
+| Comparar cómo aprende | El A/B posterior completó 384 pasos en cada brazo. El control obtuvo C0/P2/F38 en la revisión primaria y C1/P1/F38 en la cruzada; ranking obtuvo C0/P1/F39 en ambas. Ninguno logró un diálogo completamente correcto ni superó la promoción. Son turnos de desarrollo ya expuestos, sin evaluar TEST; se conservan los desacuerdos y no se adoptó ranking. El [informe del A/B](docs/unidad-counterfactual-ranking-v1-results.json) conserva los resultados. La etapa posterior desde v7 usó muestreo uniforme sin reemplazo y pérdida media por token; se guardó a los 2.786 pasos para cambiar a BF16, con checkpoint seleccionado en el paso 2.000. En 40 turnos de desarrollo obtuvo C2/P6/F32 en la primaria y C2/P4/F34 en la cruzada, sin diálogos completos ni promoción. El [informe de cobertura uniforme](docs/unidad-uniform-coverage-b1-results.json) conserva las dos revisiones. Las etapas posteriores con BF16 terminaron; el [estado actual](docs/ESTADO_ACTUAL.md) conserva sus resultados y cierres. |
 | Optimizar memoria en paralelo y ampliar capacidades | Implementadas caché de reconstrucción validada por el hash de todos los bytes actuales y búsqueda léxica explícita con fuentes, aislamiento por ámbito y última corrección de cada intento. En 2.001 eventos ficticios y lecturas calientes, estado pasó de 20,5 a 0,7 ms y búsqueda de 50,3 a 7,8 ms. El [informe de memoria](docs/unidad-memory-optimization-v1.json) conserva mediciones, pruebas y límites. La memoria no actualiza parámetros ni se inyecta automáticamente en el diálogo; la conversación y las capacidades posteriores siguen requiriendo evaluación. |
 | Programación autónoma | No implementada. El modelo genera texto; los flujos y las etapas de entrenamiento se definen expresamente desde el código o los comandos. |
 
