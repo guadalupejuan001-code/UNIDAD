@@ -1,0 +1,2071 @@
+{
+  "schemaVersion": 1,
+  "evaluationId": "unidad-next-generation-development-v1",
+  "reviewStatus": "PRIMARY_FROZEN_BEFORE_CROSS_OR_COMPARISON",
+  "reviewedAtUtc": "2026-10-12T12:37:15.998430+00:00",
+  "reviewer": {
+    "identity": "Codex /root/e1_completion_review",
+    "type": "project_ai_assistant",
+    "human": false,
+    "independentExternal": false,
+    "sameProject": true,
+    "all40ActualRepliesAndFullActualHistoriesRead": true,
+    "all120ConstraintsRead": true,
+    "otherCurrentReviewsReadBeforeFreeze": false,
+    "modelIdentityVisible": true,
+    "blinded": false,
+    "rootRawReadyNotificationReceived": true,
+    "frozenS14SourceHashesCheckedBeforeOpeningRaw": true,
+    "qualitativePriorStatements": [
+      "Earlier own E1 and E2 frozen primaries and the availability hypothesis label were known; root supplied current raw identity and source/lifecycle receipts only, no current cross grades."
+    ],
+    "evaluationScope": "Intermediate exposed DEV40 on immutable archived E3step1024 artifact while the sole E3 native child is still active; no final evaluation or basic-conversation acceptance implied.",
+    "modelSelectedStep": 1024,
+    "comparisonReceiptPath": "/workspace/ia-propia/private/conversation/initial-availability-trial-e3-v1/comparison-step1024-live-receipt.json",
+    "comparisonReceiptSha256": "4b1ea3ea2a229f44975da8a990301240a6d5b98ecab6a104399e3924cac39569",
+    "trainingChildReapedBeforeInference": false,
+    "singleNativeTrainingRunningAtRootInferenceStart": true,
+    "modelOrInferenceOrTrainingExecutedByReviewer": false
+  },
+  "rawPath": "/workspace/ia-propia/private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.json",
+  "rawSha256": "92421d9ad673844dceb5cd4550485bef9f4d5a79eb0a523c0f68b35f27190ce0",
+  "frozenSourcesSha256": {
+    "cases.json": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+    "protocol.md": "95dce31bb7279a902bd0d3e0aac28083f9ddc34fade1b6f8ef844219d8f42f99",
+    "manifest.json": "c73875646bf5ce790f6564e2700a6a1fae258224c180c69b9902d304aabc6f91",
+    "run.py": "02501cd2c6ca3c556e79447724b70162f5c18f32b8a67919183d34f427f0cc28",
+    "learned-user-successor-copy-primary-method-v1.json": "650a1b9a9029d272e54f190f599c6d29018a708c2fb2db9c7d82059b6558e266"
+  },
+  "primaryMethodSha256": "650a1b9a9029d272e54f190f599c6d29018a708c2fb2db9c7d82059b6558e266",
+  "modelId": "unidad-conversation-abf69078d78c7171e4fa2f930e87e8010d765969fc644124d1366c3b487bd944",
+  "modelPath": "/workspace/ia-propia/private/conversation/initial-availability-trial-e3-v1/comparison-step1024-live",
+  "modelManifestSha256": "03f173e63ef5973bf6f9ad45e8b6118b58f06dc748b51bab0064cc4ec46dc7ab",
+  "artifactFilesSha256ReportedByRaw": {
+    "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+    "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "weights.safetensors": "2007569c925247bb92fcdbba0fe359cac005fa7a4c894507e1748b26da0bf4bd"
+  },
+  "generation": {
+    "maxNewTokens": 32,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "rubric": {
+    "C": "Completa: satisface todas las restricciones de la intención y los hechos; español inteligible. Se aceptan paráfrasis, cortesía convencional y errores menores que no cambien los hechos.",
+    "P": "Parcial: contiene una parte pertinente y correcta, pero omite o expresa de forma incompleta alguna parte solicitada; no contradice hechos críticos, no inventa datos y no viola una negativa explícita.",
+    "F": "Fallida: contradice o inventa un hecho crítico, invierte referentes o correcciones, viola una instrucción negativa explícita, responde a otro asunto sin parte pertinente, o resulta ininteligible.",
+    "criticalMeaning": "Una contradicción, invención o desobediencia explícita en una restricción crítica implica F. La mera omisión de una parte, con una respuesta útil y correcta y sin contradicción, puede ser P.",
+    "oldValues": "Se permite mencionar un dato anterior al contrastarlo correctamente con el vigente; presentarlo como actual es un fallo.",
+    "unknowns": "Un hecho no indicado debe permanecer desconocido. Se admite pedirlo o explicar la limitación; adivinarlo no demuestra conocimiento.",
+    "style": "No se exige una frase literal ni un estilo afectivo específico. No penalizar una respuesta breve que satisfaga la intención.",
+    "episode": "C sólo si todos sus cuatro turnos generados son C; P si todos fueron generados, no hay F y al menos uno es P; F si hay algún F. Si hay turnos bloqueados o no generados, informar incompleto por separado.",
+    "review": "Revisión semántica manual posterior, sin autoatribuir calificaciones. Informar tipo de revisor, cegamiento y acceso a rúbricas. Dos asistentes del proyecto no son revisión humana o aceptación externa."
+  },
+  "historyVerification": {
+    "all40InputsEqualFullAccumulatedUserAndUneditedActualAssistantReplies": true,
+    "all40PreparedMessagesOnlyAddExactDefaultSystem": true,
+    "all40ActualUtf8HashesModelIdsTokenCountsContextVerified": true,
+    "priorAssistantClaimsNeverBecomeUserTruth": true,
+    "episodesReset": true,
+    "referenceRepliesInserted": false
+  },
+  "turns": [
+    {
+      "id": "ngdev-v1-01-t1",
+      "episodeId": "ngdev-v1-01",
+      "grade": "F",
+      "reason": "Podemos Zelomara no adopta Zelún y queda sin verbo de preferencia inteligible.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-01-t1-intent",
+          "text": "Indicar que usará Zelún como apodo preferido.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No adopta Zelún."
+        },
+        {
+          "id": "ngdev-v1-01-t1-grounding",
+          "text": "No sustituir Zelún por el nombre indicado u otro apodo inventado; no confundir la identidad con una preferencia.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No conserva una relación de apodo inteligible; no se completa el fragmento como una promesa."
+        },
+        {
+          "id": "ngdev-v1-01-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "Falta un verbo después de Podemos."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Mismo literal y juicio queE2-6144-01-t1.",
+      "userText": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?",
+      "factsFromUser": {
+        "name": "Zelomara",
+        "initialPreferredName": "Zelún",
+        "currentPreferredName": "Zelún"
+      },
+      "actualText": "Sí. Podemos Zelomara.",
+      "actualUtf8Sha256": "d930369e298b6d654aa8ba3ac5e45a1a4e441d07ad58839d7ff7f18109aeb08c",
+      "inputMessagesSha256": "7f3adb50c891011f0b69a7ec600a96f59ed5130f7f808069ac4ed1305a533a37",
+      "generatedTokens": 11,
+      "stopReason": "eos",
+      "promptTokens": 75,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-01-t2",
+      "episodeId": "ngdev-v1-01",
+      "grade": "F",
+      "reason": "Dibujar un plan cambia el objeto faro a plan.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-01-t2-intent",
+          "text": "Responder que quiere dibujar un faro.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No responde dibujar un faro."
+        },
+        {
+          "id": "ngdev-v1-01-t2-grounding",
+          "text": "No convertir el faro en otro objeto ni añadir hechos personales no compartidos.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Te escucho dibujar un plan sustituye el objeto compartido por plan."
+        },
+        {
+          "id": "ngdev-v1-01-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero el objeto es incorrecto."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Sustituye faro por un plan como objeto del dibujo."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?",
+      "factsFromUser": {
+        "name": "Zelomara",
+        "currentPreferredName": "Zelún",
+        "drawingSubject": "un faro"
+      },
+      "actualText": "Te escucho dibujar un plan.",
+      "actualUtf8Sha256": "1532bd4bd57c68b14df805e22284947e272a586781c3e42c6e502ce0bbdf7a7c",
+      "inputMessagesSha256": "28b324b492f588476f28621d5a4a97775b8bc4af1dcfea77fc15340da0d68e5d",
+      "generatedTokens": 9,
+      "stopReason": "eos",
+      "promptTokens": 104,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-01-t3",
+      "episodeId": "ngdev-v1-01",
+      "grade": "F",
+      "reason": "Pregunta qué le gusta de Zela sin adoptar Zelaia.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-01-t3-intent",
+          "text": "Adoptar Zelaia como preferencia actual.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No expresa que usará Zelaia."
+        },
+        {
+          "id": "ngdev-v1-01-t3-grounding",
+          "text": "No mantener Zelún como apodo actual; mencionar correctamente que fue el anterior es admisible.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Zela es una referencia recortada y no acredita el apodo actual; no afirma inequívocamente una preferencia nueva."
+        },
+        {
+          "id": "ngdev-v1-01-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La pregunta es inteligible, pero no responde la adopción."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?",
+      "factsFromUser": {
+        "name": "Zelomara",
+        "initialPreferredName": "Zelún",
+        "currentPreferredName": "Zelaia",
+        "drawingSubject": "un faro"
+      },
+      "actualText": "¿Qué te gusta de Zela?",
+      "actualUtf8Sha256": "eccbe599596e4cf4410258659d54679e2d65a96f7150525f98b5b52552f58cf0",
+      "inputMessagesSha256": "afce1a7d5882f89e1ba8b2840a37f60109c5458c8cf76cf72bb0d2491630abb2",
+      "generatedTokens": 10,
+      "stopReason": "eos",
+      "promptTokens": 139,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-01-t4",
+      "episodeId": "ngdev-v1-01",
+      "grade": "F",
+      "reason": "Quieres que te escuche no distingue apodos y responde otra intención.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-01-t4-intent",
+          "text": "Distinguir ambos: primero Zelún, ahora Zelaia.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No recupera Zelún primero y Zelaia ahora."
+        },
+        {
+          "id": "ngdev-v1-01-t4-grounding",
+          "text": "Conservar las dos funciones sin invertirlas ni inventar un tercer nombre.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No invierte nombres ni afirma un tercer apodo."
+        },
+        {
+          "id": "ngdev-v1-01-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero no contiene parte pertinente de la distinción."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "La frase genérica de escucha no se fuerza como un hecho personal crítico; es una respuesta de otro asunto.",
+      "userText": "¿Qué apodo elegí primero y cuál prefiero ahora?",
+      "factsFromUser": {
+        "initialPreferredName": "Zelún",
+        "currentPreferredName": "Zelaia"
+      },
+      "actualText": "Quieres que te escuche.",
+      "actualUtf8Sha256": "c181cca525f96df6f534fc6d6db271fbdc665328281d8d2c592537c1ad437314",
+      "inputMessagesSha256": "098cf39ab08c789db50559688442cb29ce6ad713a33735f41bc10ecb475132ed",
+      "generatedTokens": 8,
+      "stopReason": "eos",
+      "promptTokens": 166,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-02-t1",
+      "episodeId": "ngdev-v1-02",
+      "grade": "P",
+      "reason": "No has dicho aporta parcialmente la falta de dato, sin un campo claro y con final defectuoso.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-02-t1-intent",
+          "text": "Reconocer que no conoce el color por lo compartido.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Reconoce parcialmente que falta lo dicho, sin identificar el color claramente."
+        },
+        {
+          "id": "ngdev-v1-02-t1-grounding",
+          "text": "No afirmar ni adivinar un color; puede pedir ese dato.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No inventa ni adivina color."
+        },
+        {
+          "id": "ngdev-v1-02-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "La parte No has dicho es inteligible; el es queda mal formado."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Misma lectura parcial del No has dicho el es de la primariaE1; no acredita C.",
+      "userText": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?",
+      "factsFromUser": {
+        "umbrellaColor": null
+      },
+      "actualText": "No has dicho el es.",
+      "actualUtf8Sha256": "22e448078b8163279f6a4b9f2fe64b5ba3386d8b685b51e13afb08786b9e4c25",
+      "inputMessagesSha256": "0fddd2962726588e255a077cbc3b388787d80acc6668c624536912b3e82b66d1",
+      "generatedTokens": 7,
+      "stopReason": "eos",
+      "promptTokens": 72,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-02-t2",
+      "episodeId": "ngdev-v1-02",
+      "grade": "F",
+      "reason": "Repite color es sin coral y no constituye una proposición inteligible.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-02-t2-intent",
+          "text": "Indicar coral como color del paraguas.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No indica coral."
+        },
+        {
+          "id": "ngdev-v1-02-t2-grounding",
+          "text": "No mantener el color como desconocido ni sustituirlo por otro; no confundirlo con otro objeto.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No da color alternativo ni declara desconocido de forma explícita."
+        },
+        {
+          "id": "ngdev-v1-02-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La repetición sin valor no forma una respuesta inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Ya lo encontré: es color coral. ¿De qué color es?",
+      "factsFromUser": {
+        "umbrellaColor": "coral"
+      },
+      "actualText": "El color es color es color es color.",
+      "actualUtf8Sha256": "401a7d10d516eb63804c4aa6f0d58797f21a6d1d3eecc35f7cb3b280a6b4114d",
+      "inputMessagesSha256": "89738d3bece87b7ac6a390566ff69a335c2dd4ff92104dd31ba48ade83ab81a6",
+      "generatedTokens": 10,
+      "stopReason": "eos",
+      "promptTokens": 99,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-02-t3",
+      "episodeId": "ngdev-v1-02",
+      "grade": "F",
+      "reason": "Repite el color del paraguas sin identificar al donante.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-02-t3-intent",
+          "text": "Identificar a su prima Nelavia como quien lo regaló.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica prima Nelavia."
+        },
+        {
+          "id": "ngdev-v1-02-t3-grounding",
+          "text": "No inventar otro nombre ni cambiar prima por madre, hermana u otra relación.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No asigna nombre o parentesco alternativo."
+        },
+        {
+          "id": "ngdev-v1-02-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "El paraguas es color es color queda sin valor ni una relación inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?",
+      "factsFromUser": {
+        "umbrellaColor": "coral",
+        "giver": "Nelavia",
+        "giverRelation": "prima"
+      },
+      "actualText": "El paraguas es color es color.",
+      "actualUtf8Sha256": "b8aa8e50ca96c13f8f50769b4e3b6dfade8596749a41069a5d47efda6c09c408",
+      "inputMessagesSha256": "22d256b6c5401914ac8ddd45ad6e3a3e0eb2e077b64c659837563d2902f509ca",
+      "generatedTokens": 9,
+      "stopReason": "eos",
+      "promptTokens": 132,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-02-t4",
+      "episodeId": "ngdev-v1-02",
+      "grade": "F",
+      "reason": "La cadena de color, compDe acuerdo y se llama color no separa conocidos y desconocidos.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-02-t4-intent",
+          "text": "Separar lo conocido de lo desconocido: color coral, tienda no indicada.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No indica coral y tienda no indicada."
+        },
+        {
+          "id": "ngdev-v1-02-t4-grounding",
+          "text": "No inventar una tienda ni deducirla de quién lo regaló; no convertir el color en un dato desconocido.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No presenta una tienda definida ni niega explícitamente un color conocido."
+        },
+        {
+          "id": "ngdev-v1-02-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La mezcla y repetición no ofrecen una respuesta inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "¿Sabemos ya su color y en qué tienda se compró?",
+      "factsFromUser": {
+        "umbrellaColor": "coral",
+        "purchaseStore": null,
+        "giver": "Nelavia"
+      },
+      "actualText": "Tu color es color es color; compDe acuerdo es color; se llama color es color.",
+      "actualUtf8Sha256": "52b09a9b7e1c2090b305e7a01ac8864cfc08a56330706d18b64036ec8e0e6fae",
+      "inputMessagesSha256": "847b087545b18e496bfd31ce6154877edfb9ff75b534ea54d37b81f13aaddcf3",
+      "generatedTokens": 20,
+      "stopReason": "eos",
+      "promptTokens": 160,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-03-t1",
+      "episodeId": "ngdev-v1-03",
+      "grade": "F",
+      "reason": "Estás a Puerto Arce convierte el destino futuro en ubicación presente.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-03-t1-intent",
+          "text": "Identificar Valdehumo como ubicación de hoy.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No indica Valdehumo."
+        },
+        {
+          "id": "ngdev-v1-03-t1-grounding",
+          "text": "No tratar Puerto Arce como ubicación actual ni inventar otra ciudad.",
+          "critical": true,
+          "status": "violated",
+          "reason": "El presente Estás sitúa al usuario en Puerto Arce."
+        },
+        {
+          "id": "ngdev-v1-03-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La preposición incorrecta es menor y la afirmación de ubicación se entiende."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Afirma ubicación actual Puerto Arce cuando hoy está en Valdehumo."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?",
+      "factsFromUser": {
+        "currentPlace": "Valdehumo",
+        "tomorrowDestination": "Puerto Arce"
+      },
+      "actualText": "Estás a Puerto Arce.",
+      "actualUtf8Sha256": "599e54efa40fcd69ea737250495e8a3d1e46ac2bbdb10db9201707ae27a12aa4",
+      "inputMessagesSha256": "8087c863ffb3b5be8a4af395d062aac6fdfc3528142cbc3afa038196e2a1428a",
+      "generatedTokens": 8,
+      "stopReason": "eos",
+      "promptTokens": 72,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-03-t2",
+      "episodeId": "ngdev-v1-03",
+      "grade": "F",
+      "reason": "Vas Nébula, en Puerto Arce conserva una ubicación incorrecta junto al destino recortado.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-03-t2-intent",
+          "text": "Identificar Villa Nébula como destino actualizado.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No conserva Villa Nébula como destino separado de Puerto Arce."
+        },
+        {
+          "id": "ngdev-v1-03-t2-grounding",
+          "text": "No conservar Puerto Arce como destino actual; una comparación correcta con el anterior es admisible.",
+          "critical": true,
+          "status": "violated",
+          "reason": "en Puerto Arce presenta una ubicación ligada al viaje, pese a la corrección no a Puerto Arce y la ubicación Valdehumo."
+        },
+        {
+          "id": "ngdev-v1-03-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "Se entienden los lugares, pero su relación está defectuosa."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Retiene Puerto Arce como ubicación ligada al viaje después de excluirlo y mientras el usuario sigue en Valdehumo."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?",
+      "factsFromUser": {
+        "currentPlace": "Valdehumo",
+        "oldDestination": "Puerto Arce",
+        "tomorrowDestination": "Villa Nébula"
+      },
+      "actualText": "Vas Nébula, en Puerto Arce.",
+      "actualUtf8Sha256": "a286f9fcf00ce1f91b9e1e3eda3da77d74ffe5cc13d68ccc3556903fb31313f1",
+      "inputMessagesSha256": "c58c34547c2464fff925b683609091db901f2f04cd27df975ac046f715a5b964",
+      "generatedTokens": 13,
+      "stopReason": "eos",
+      "promptTokens": 112,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-03-t3",
+      "episodeId": "ngdev-v1-03",
+      "grade": "F",
+      "reason": "Repite que está en Villa Nébula hasta el presupuesto, contradiciendo que sigue en Valdehumo.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-03-t3-intent",
+          "text": "Decir que aún no está en Villa Nébula y que sigue en Valdehumo.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No conserva no llegada y Valdehumo."
+        },
+        {
+          "id": "ngdev-v1-03-t3-grounding",
+          "text": "No afirmar que ya viajó o llegó; el destino futuro no es la ubicación actual.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Estás a Villa Nébula afirma ubicación actual en el destino futuro."
+        },
+        {
+          "id": "ngdev-v1-03-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La repetición extensa llega a token_budget y rompe la respuesta."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Afirma y repite que está en Villa Nébula, cuando acaba de decir que todavía está en Valdehumo."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?",
+      "factsFromUser": {
+        "currentPlace": "Valdehumo",
+        "tomorrowDestination": "Villa Nébula"
+      },
+      "actualText": "Estás a Villa Nébula, en Villa Nébula, en Villa Nébula, en Villa Nébula, en Villa",
+      "actualUtf8Sha256": "4ccac7b51e4289e9545cf4e0afa3312875f29f50c7d1dd62b243fcc06aba927c",
+      "inputMessagesSha256": "1a2191620c66a8c1a1c92600a74212af26a2ac6edaa659698b73ac73e278ebea",
+      "generatedTokens": 32,
+      "stopReason": "token_budget",
+      "promptTokens": 150,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-03-t4",
+      "episodeId": "ngdev-v1-03",
+      "grade": "F",
+      "reason": "Estás a Villa Nébula; actual actual presenta destino como ubicación presente y omite salida.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-03-t4-intent",
+          "text": "Distinguir salida Valdehumo y destino Villa Nébula.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No distingue salida Valdehumo y destino Villa Nébula."
+        },
+        {
+          "id": "ngdev-v1-03-t4-grounding",
+          "text": "No invertir las ubicaciones ni recuperar Puerto Arce como destino vigente.",
+          "critical": true,
+          "status": "violated",
+          "reason": "El presente Estás atribuye como lugar actual el destino."
+        },
+        {
+          "id": "ngdev-v1-03-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "Se reconoce la atribución, pero el final repetido queda fragmentario."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Convierte Villa Nébula en ubicación actual pese a continuar en Valdehumo."
+        }
+      ],
+      "borderlineDecision": "Misma lectura de Estás a Villa Nébula; actual enE2; la repetición adicional no cambia el fallo.",
+      "userText": "Resume mi punto de salida y mi destino actual.",
+      "factsFromUser": {
+        "departurePlace": "Valdehumo",
+        "currentDestination": "Villa Nébula"
+      },
+      "actualText": "Estás a Villa Nébula; actual actual.",
+      "actualUtf8Sha256": "109b23640aa68ba674669aa65581e1fd2a82e3c871c18abccc669a96bbf4af1f",
+      "inputMessagesSha256": "c1c7f9edaecee8491b5639daf66c070f61c5379716682aa44dec2fafa67563b4",
+      "generatedTokens": 13,
+      "stopReason": "eos",
+      "promptTokens": 197,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-04-t1",
+      "episodeId": "ngdev-v1-04",
+      "grade": "F",
+      "reason": "Una plantilla sobre destino responde otro asunto, sin acoger el relato del trabajo.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-04-t1-intent",
+          "text": "Acoger la intención de hablar del trabajo, sin convertirla en un plan de acción.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No acoge la intención de contar el trabajo."
+        },
+        {
+          "id": "ngdev-v1-04-t1-grounding",
+          "text": "No dar consejos, tareas o soluciones; una invitación a contar más es admisible.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No ofrece consejos, tareas ni soluciones."
+        },
+        {
+          "id": "ngdev-v1-04-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La negación de destino es inteligible, pero el asunto no corresponde a la petición."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos.",
+      "factsFromUser": {
+        "topic": "trabajo pesado",
+        "adviceRequested": false
+      },
+      "actualText": "No me has dicho tu destino; tu destino hoy.",
+      "actualUtf8Sha256": "1120e781e1dc0bc68fc97fa8d889ddaabf695eb127c0b6056609c308b5d886ba",
+      "inputMessagesSha256": "b4c7be3ed621968ec4a36049444a943a3645f79df4d0bb0ae2d5ea7aeab2ac49",
+      "generatedTokens": 12,
+      "stopReason": "eos",
+      "promptTokens": 70,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-04-t2",
+      "episodeId": "ngdev-v1-04",
+      "grade": "P",
+      "reason": "Hace una pregunta para contar, pero no la vincula claramente con las interrupciones ya indicadas.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-04-t2-intent",
+          "text": "Hacer una pregunta pertinente sobre esas interrupciones.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Hay una pregunta pertinente al acto de contar, sin referencia suficiente a las interrupciones."
+        },
+        {
+          "id": "ngdev-v1-04-t2-grounding",
+          "text": "No cambiar de tema ni dar consejos; no inventar quién interrumpió ni por qué.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No propone otro tema definido ni consejos ni inventa actor o motivo."
+        },
+        {
+          "id": "ngdev-v1-04-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La preposición menor no impide entender la pregunta general."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "No se aprueba C por una pregunta genérica sobre qué contar cuando se pidió una sobre las interrupciones; aporta parcialmente el acto solicitado.",
+      "userText": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso.",
+      "factsFromUser": {
+        "topic": "interrupciones al hablar en el trabajo",
+        "adviceRequested": false
+      },
+      "actualText": "¿De qué quieres contar?",
+      "actualUtf8Sha256": "121fdab9c6c4d1402d4bc2b0cdf22d77747176bcb38182afb5533d696740a1da",
+      "inputMessagesSha256": "c27cd34d5694a017d5c02382011fbef8c5e68e90d778facc6dd21c9e981bb7cf",
+      "generatedTokens": 7,
+      "stopReason": "eos",
+      "promptTokens": 104,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-04-t3",
+      "episodeId": "ngdev-v1-04",
+      "grade": "F",
+      "reason": "Te escucho no responde quién interrumpió.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-04-t3-intent",
+          "text": "Identificar al compañero Taviro como quien interrumpió.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica compañero Taviro."
+        },
+        {
+          "id": "ngdev-v1-04-t3-grounding",
+          "text": "No atribuirlo al jefe ni alterar el nombre o el papel de Taviro.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No atribuye al jefe ni altera nombre o papel."
+        },
+        {
+          "id": "ngdev-v1-04-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero no aporta parte de la identificación."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Se conserva el juicio de escucha genérica frente a pregunta quién.",
+      "userText": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?",
+      "factsFromUser": {
+        "interrupter": "Taviro",
+        "interrupterRole": "compañero",
+        "notInterrupterRole": "jefe",
+        "adviceRequested": false
+      },
+      "actualText": "Te escucho.",
+      "actualUtf8Sha256": "9d8ee4599dadd4e638a543e238cf6b5f128ece292bf8114b41a68bd1a6c70897",
+      "inputMessagesSha256": "730bb93a78c8ade4d7cbf4dc0d3386ffe05967d9e88d4d016bc4e9caa3258841",
+      "generatedTokens": 5,
+      "stopReason": "eos",
+      "promptTokens": 134,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-04-t4",
+      "episodeId": "ngdev-v1-04",
+      "grade": "F",
+      "reason": "Estáste no refleja la situación y es ininteligible.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-04-t4-intent",
+          "text": "Reflejar que intenta contar las interrupciones al hablar en el trabajo.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No refleja interrupciones al hablar en el trabajo."
+        },
+        {
+          "id": "ngdev-v1-04-t4-grounding",
+          "text": "Respetar que no quiere soluciones y no atribuir las interrupciones al jefe ni añadir sucesos no compartidos.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No da soluciones ni atribuye hechos nuevos definidos."
+        },
+        {
+          "id": "ngdev-v1-04-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "Estáste no expresa una situación inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Sigo sin querer soluciones. ¿Qué situación estoy intentando contarte?",
+      "factsFromUser": {
+        "topic": "ser interrumpido al hablar en el trabajo",
+        "interrupter": "Taviro",
+        "interrupterRole": "compañero",
+        "adviceRequested": false
+      },
+      "actualText": "Estáste?",
+      "actualUtf8Sha256": "7edbcfb06789a4bdb43c04b6d8258cf8d3de0898e468bd72beadcb5c48034606",
+      "inputMessagesSha256": "da82fc6915725dad5f273df84a4a33bfb5f39914bafea427ba6355c62effe8a3",
+      "generatedTokens": 5,
+      "stopReason": "eos",
+      "promptTokens": 158,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-05-t1",
+      "episodeId": "ngdev-v1-05",
+      "grade": "F",
+      "reason": "La mezcla Cobre, reún noves y breves el es qué es no nombra o describe el proyecto inteligiblemente.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-05-t1-intent",
+          "text": "Nombrar Ventana Cobre y describirlo como una colección de cuentos breves.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No conserva título completo ni descripción inteligible de cuentos breves."
+        },
+        {
+          "id": "ngdev-v1-05-t1-grounding",
+          "text": "No convertirlo en otro tipo de proyecto ni inventar un título distinto.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Cobre queda como referencia parcial; no se acredita el título completo ni se completa como título alternativo."
+        },
+        {
+          "id": "ngdev-v1-05-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La repetición y mezcla de palabras rompen la descripción."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Un título recortado no se fuerza como nuevo título, pero tampoco satisface Ventana Cobre.",
+      "userText": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?",
+      "factsFromUser": {
+        "currentTitle": "Ventana Cobre",
+        "projectType": "colección de cuentos breves"
+      },
+      "actualText": "Se llama Cobre reún noves breves; breves el es qué es Cobre reúne cuentos.",
+      "actualUtf8Sha256": "b595d429e2a7f4674507fdc4c77e5ef8169bf183430f74dfdd8682803d3bfb06",
+      "inputMessagesSha256": "f759dd7931654e3a880f93044a1d624e171f88647305c57c99bcd625d7c7b8e9",
+      "generatedTokens": 26,
+      "stopReason": "eos",
+      "promptTokens": 73,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-05-t2",
+      "episodeId": "ngdev-v1-05",
+      "grade": "F",
+      "reason": "La idea Cobre reún no has dicho nació no explica el origen inteligiblemente.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-05-t2-intent",
+          "text": "Relacionar el origen de la idea con las historias de su abuelo.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No conecta idea con historias del abuelo."
+        },
+        {
+          "id": "ngdev-v1-05-t2-grounding",
+          "text": "No inventar un origen distinto, el nombre del abuelo ni hechos adicionales sobre él.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No define un origen alternativo o dato sobre el abuelo."
+        },
+        {
+          "id": "ngdev-v1-05-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La mezcla reún no has dicho nació no ofrece una proposición inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?",
+      "factsFromUser": {
+        "currentTitle": "Ventana Cobre",
+        "ideaOrigin": "historias que contaba el abuelo"
+      },
+      "actualText": "La idea Cobre reún no has dicho nació.",
+      "actualUtf8Sha256": "02939f13b3cb597731257b3cfad8106a6ecf9c217f65022fec8b754049a02d79",
+      "inputMessagesSha256": "68beaf2e10d69dadc60e9692ace219221d5460372135fa2f0ec1683fc18145cd",
+      "generatedTokens": 12,
+      "stopReason": "eos",
+      "promptTokens": 121,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-05-t3",
+      "episodeId": "ngdev-v1-05",
+      "grade": "F",
+      "reason": "Antes era Cuaderno de Junco coloca el título nuevo en el estado anterior.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-05-t3-intent",
+          "text": "Explicar que cambió el título y que los cuentos permanecen.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No explica cambio de título y cuentos conservados; equivoca la cronología del título."
+        },
+        {
+          "id": "ngdev-v1-05-t3-grounding",
+          "text": "No conservar el título antiguo como vigente ni afirmar que cambió el contenido.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Antes era Cuaderno de Junco contradice el título antiguo Ventana Cobre."
+        },
+        {
+          "id": "ngdev-v1-05-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La afirmación temporal es inteligible pese a la puntuación menor."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Afirma Cuaderno de Junco como título anterior, cuando el anterior era Ventana Cobre y Cuaderno de Junco es el nuevo."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?",
+      "factsFromUser": {
+        "oldTitle": "Ventana Cobre",
+        "currentTitle": "Cuaderno de Junco",
+        "contentChanged": false
+      },
+      "actualText": "Antes era Cuaderno de Junco;?",
+      "actualUtf8Sha256": "456c20e11eb9013e91bb614fcdd9a3dacb4afa228386a4bbb265af30051a7bc4",
+      "inputMessagesSha256": "cba95fbfaa77324a5c9169ad726e790bbcc92720b0df02e2c9ef8d2e08b76ab2",
+      "generatedTokens": 14,
+      "stopReason": "eos",
+      "promptTokens": 165,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-05-t4",
+      "episodeId": "ngdev-v1-05",
+      "grade": "F",
+      "reason": "Te contaba mi abuelo introduce un abuelo del asistente como narrador.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-05-t4-intent",
+          "text": "Conectar el proyecto con las historias que contaba el abuelo como inspiración explícita.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No conserva inspiración en las historias del abuelo del usuario."
+        },
+        {
+          "id": "ngdev-v1-05-t4-grounding",
+          "text": "No presentar al abuelo como coautor, financiador o lector actual, ni inventar su estado o sus intenciones.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Mi abuelo cambia el dueño del parentesco al asistente y lo presenta contando al usuario."
+        },
+        {
+          "id": "ngdev-v1-05-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La oración es inteligible, pero el referente es incorrecto."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "invention",
+          "reason": "Inventa que el abuelo del asistente le contaba al usuario; sólo se compartió el abuelo del usuario."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "¿Cómo se relaciona este proyecto con mi abuelo?",
+      "factsFromUser": {
+        "currentTitle": "Cuaderno de Junco",
+        "projectType": "colección de cuentos breves",
+        "ideaOrigin": "historias que contaba el abuelo"
+      },
+      "actualText": "Te contaba mi abuelo.",
+      "actualUtf8Sha256": "3de5623f0c1e48c2106888cee3baa7ca8cdee48a43a511c4f713b4214498da3c",
+      "inputMessagesSha256": "d24ec48ff6036132c443c9325f08dbcb99605443d165985a8258ce2c92871e56",
+      "generatedTokens": 8,
+      "stopReason": "eos",
+      "promptTokens": 194,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-06-t1",
+      "episodeId": "ngdev-v1-06",
+      "grade": "F",
+      "reason": "No me has dicho el? no distingue personas y relaciones y queda sin campo.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-06-t1-intent",
+          "text": "Distinguir a Selvaria como hermana y a Darielvo como vecino.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica Selvaria hermana y Darielvo vecino."
+        },
+        {
+          "id": "ngdev-v1-06-t1-grounding",
+          "text": "No intercambiar las relaciones ni inventar parentescos.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No asigna parentesco alternativo definido."
+        },
+        {
+          "id": "ngdev-v1-06-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "El artículo sin campo deja la frase ininteligible como respuesta."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?",
+      "factsFromUser": {
+        "SelvariaRelation": "hermana",
+        "DarielvoRelation": "vecino"
+      },
+      "actualText": "No me has dicho el?",
+      "actualUtf8Sha256": "ff056e6930866fdbc7fcc45a2cd739819db03358af5ae85fa254ae80c50947cf",
+      "inputMessagesSha256": "b56bb68937eba5cf3da541e640b66c34189a67824aea860c37579a457e9caaa2",
+      "generatedTokens": 7,
+      "stopReason": "eos",
+      "promptTokens": 74,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-06-t2",
+      "episodeId": "ngdev-v1-06",
+      "grade": "F",
+      "reason": "Responde dónde está el usuario en vez de quién toca violín.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-06-t2-intent",
+          "text": "Identificar a Selvaria como quien toca el violín.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica Selvaria."
+        },
+        {
+          "id": "ngdev-v1-06-t2-grounding",
+          "text": "No atribuir el violín a Darielvo ni sustituirlo por otro instrumento o persona.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No asigna violín a otra persona ni cambia instrumento."
+        },
+        {
+          "id": "ngdev-v1-06-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero de otro asunto."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?",
+      "factsFromUser": {
+        "SelvariaRelation": "hermana",
+        "DarielvoRelation": "vecino",
+        "violinPlayer": "Selvaria",
+        "cactusCaretaker": "Darielvo"
+      },
+      "actualText": "No me has dicho dónde estás.",
+      "actualUtf8Sha256": "ad8c83bf07db8da077953e47f198032f71a49af068c7ebb6a3f1603922ffe1a8",
+      "inputMessagesSha256": "980f54b6d1725088e6a6f9dccd17913cf4c5581917bcd69b47adb9bcef601a4d",
+      "generatedTokens": 8,
+      "stopReason": "eos",
+      "promptTokens": 113,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-06-t3",
+      "episodeId": "ngdev-v1-06",
+      "grade": "F",
+      "reason": "Antes tenías mi veciéntus no aplica la corrección ni tiene un referente inteligible.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-06-t3-intent",
+          "text": "Aplicar la corrección: Selvaria cuida los cactus.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica Selvaria cuidando cactus."
+        },
+        {
+          "id": "ngdev-v1-06-t3-grounding",
+          "text": "No mantener a Darielvo como quien cuida cactus; no cambiar cactus por helechos.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "El referente mezclado no conserva relaciones ni establece una atribución alternativa definida."
+        },
+        {
+          "id": "ngdev-v1-06-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "veciéntus no forma una referencia o relación inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?",
+      "factsFromUser": {
+        "SelvariaRelation": "hermana",
+        "DarielvoRelation": "vecino",
+        "cactusCaretaker": "Selvaria",
+        "fernCaretaker": "Darielvo"
+      },
+      "actualText": "Antes tenías mi veciéntus.",
+      "actualUtf8Sha256": "73b329a497edc668bdff25a5313223c2b07e790152dfdc95c9666b44a4343df5",
+      "inputMessagesSha256": "8b570289b7f47c9c8f0991edbc86bc6fe45c90b460bd8835eb050b73b0324964",
+      "generatedTokens": 10,
+      "stopReason": "eos",
+      "promptTokens": 160,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-06-t4",
+      "episodeId": "ngdev-v1-06",
+      "grade": "F",
+      "reason": "Antes era mi hermana introduce una hermana del asistente y deja sin respuesta las plantas de Darielvo.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-06-t4-intent",
+          "text": "Responder ambas partes: Selvaria es su hermana y Darielvo cuida helechos.",
+          "critical": true,
+          "status": "violated",
+          "reason": "No conserva el parentesco del usuario ni helechos para Darielvo."
+        },
+        {
+          "id": "ngdev-v1-06-t4-grounding",
+          "text": "No intercambiar personas, plantas o relaciones, ni usar el dato de cactus anterior como vigente.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Mi hermana atribuye al asistente el parentesco; los cactus quedan sin cuidador inequívoco."
+        },
+        {
+          "id": "ngdev-v1-06-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "La primera atribución se entiende, pero tengo con mi hermana queda mal formada."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "invention",
+          "reason": "Antes era mi hermana atribuye al asistente una hermana y un estado pasado no compartido; el parentesco indicado corresponde al usuario."
+        }
+      ],
+      "borderlineDecision": "No se completa el sujeto ausente de cuida los cactus como Darielvo para añadir otra crítica.",
+      "userText": "¿Qué parentesco tengo con Selvaria y qué plantas cuida Darielvo?",
+      "factsFromUser": {
+        "SelvariaRelation": "hermana",
+        "DarielvoRelation": "vecino",
+        "cactusCaretaker": "Selvaria",
+        "fernCaretaker": "Darielvo"
+      },
+      "actualText": "Antes era mi hermana tengo con mi hermana; cuida los cactus.",
+      "actualUtf8Sha256": "92a6196f891efb99bd7906f10fa11c68e824e8c1cb06cfd62cf482b88607ed2c",
+      "inputMessagesSha256": "4f8e10880f75c785c4f7d5b152de05cb0d9c23ce4f25616292ec3e477cc916cc",
+      "generatedTokens": 18,
+      "stopReason": "eos",
+      "promptTokens": 194,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-07-t1",
+      "episodeId": "ngdev-v1-07",
+      "grade": "F",
+      "reason": "No me has dicho el jueves a las cinco niega la fecha y hora explícitas del turno.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-07-t1-intent",
+          "text": "Identificar jueves y las cinco.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Incluye día y hora bajo una negación falsa de que se hayan indicado."
+        },
+        {
+          "id": "ngdev-v1-07-t1-grounding",
+          "text": "No inventar una fecha de calendario ni cambiar día u hora.",
+          "critical": true,
+          "status": "violated",
+          "reason": "Niega hechos conocidos de la cita."
+        },
+        {
+          "id": "ngdev-v1-07-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La afirmación negativa es inteligible."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "contradiction",
+          "reason": "Niega que se haya dicho jueves a las cinco, que está explícito en la pregunta."
+        }
+      ],
+      "borderlineDecision": null,
+      "userText": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?",
+      "factsFromUser": {
+        "person": "Renivia",
+        "day": "jueves",
+        "time": "las cinco"
+      },
+      "actualText": "No me has dicho el jueves a las cinco.",
+      "actualUtf8Sha256": "6346d5452449c3950485dcd6c7c000994acd216b7023846e1ed2d2d11afc7363",
+      "inputMessagesSha256": "b5d2be7c211c622fe61b95c1914f43dd73a8bd4589de45c8575d08644f17955e",
+      "generatedTokens": 12,
+      "stopReason": "eos",
+      "promptTokens": 71,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-07-t2",
+      "episodeId": "ngdev-v1-07",
+      "grade": "P",
+      "reason": "La cláusula final conserva la cita con Renivia a las cinco; el día mezclado no queda establecido.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-07-t2-intent",
+          "text": "Aplicar sábado y conservar las cinco.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Conserva las cinco, sin sábado inteligible."
+        },
+        {
+          "id": "ngdev-v1-07-t2-grounding",
+          "text": "No mantener jueves como día actual ni cambiar la hora por su cuenta.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No presenta jueves ni fecha nueva definida; ciábado no acredita el día actual."
+        },
+        {
+          "id": "ngdev-v1-07-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "La cola de cita y hora es inteligible, pero el inicio está mezclado y se repite."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Misma lectura de ciábado como mezcla no suficiente para recuperar sábado, sin inventar una fecha.",
+      "userText": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?",
+      "factsFromUser": {
+        "person": "Renivia",
+        "oldDay": "jueves",
+        "day": "sábado",
+        "time": "las cinco"
+      },
+      "actualText": "ivia y la ciábado; la cita con Renivia; la cita con Renivia a las cinco.",
+      "actualUtf8Sha256": "acdab7907e497504287399844fc95053d3a68cb6c7971cfd1935960f17d91325",
+      "inputMessagesSha256": "3518773758911b2cb880ac9b0e79aaedb1639bdaf531d63b2d625cbebb83d342",
+      "generatedTokens": 28,
+      "stopReason": "eos",
+      "promptTokens": 107,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-07-t3",
+      "episodeId": "ngdev-v1-07",
+      "grade": "F",
+      "reason": "Antes tenías cinco da un fragmento de hora, sin lugar solicitado.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-07-t3-intent",
+          "text": "Nombrar la biblioteca del Olmo como lugar de la cita.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No indica biblioteca del Olmo."
+        },
+        {
+          "id": "ngdev-v1-07-t3-grounding",
+          "text": "No inventar otro sitio ni afirmar que la cita ya ocurrió.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No inventa sitio ni afirma cita ocurrida."
+        },
+        {
+          "id": "ngdev-v1-07-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero no responde dónde."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?",
+      "factsFromUser": {
+        "person": "Renivia",
+        "day": "sábado",
+        "time": "las cinco",
+        "place": "biblioteca del Olmo"
+      },
+      "actualText": "Antes tenías cinco.",
+      "actualUtf8Sha256": "fad8ca7b0da480ad1e97e0b22c485d12e3b23dee221ca3ba514c7d62efff79c4",
+      "inputMessagesSha256": "b56d46562f82f4bdf606fa4535c3b8025a31dfe62b285555d00da2542c47bc07",
+      "generatedTokens": 7,
+      "stopReason": "eos",
+      "promptTokens": 156,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-07-t4",
+      "episodeId": "ngdev-v1-07",
+      "grade": "P",
+      "reason": "Recupera las cinco, sin el día sábado ni el lugar.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-07-t4-intent",
+          "text": "Recuperar las tres partes: sábado, las cinco y biblioteca del Olmo.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Sólo la hora las cinco es correcta y legible."
+        },
+        {
+          "id": "ngdev-v1-07-t4-grounding",
+          "text": "No recuperar jueves como fecha vigente ni inventar la hora o el sitio.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No recupera jueves ni inventa hora o sitio."
+        },
+        {
+          "id": "ngdev-v1-07-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La lista parcial es inteligible pese a los campos vacíos."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Recuérdame el día, la hora y el lugar actuales.",
+      "factsFromUser": {
+        "day": "sábado",
+        "time": "las cinco",
+        "place": "biblioteca del Olmo"
+      },
+      "actualText": "El día, la cita, a las cinco.",
+      "actualUtf8Sha256": "1df797bd42864ed2c6ce42427bab09e4bfeddcedb2ae91e74b2c776a414f6888",
+      "inputMessagesSha256": "6471c11727d90c619786e8d7ffa3576aab8eb0d129a470551c226b37caca332d",
+      "generatedTokens": 12,
+      "stopReason": "eos",
+      "promptTokens": 181,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-08-t1",
+      "episodeId": "ngdev-v1-08",
+      "grade": "F",
+      "reason": "Propone hablar de revisar sin identificar plantas primero.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-08-t1-intent",
+          "text": "Identificar regar las plantas como primera tarea.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica regar plantas como primera tarea."
+        },
+        {
+          "id": "ngdev-v1-08-t1-grounding",
+          "text": "No invertir el orden ni afirmar que ya realizó ninguna tarea.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No afirma un orden invertido ni ejecución."
+        },
+        {
+          "id": "ngdev-v1-08-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La propuesta de hablar se entiende, pero no responde prioridad."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?",
+      "factsFromUser": {
+        "initialFirstTask": "regar las plantas",
+        "currentFirstTask": "regar las plantas",
+        "currentSecondTask": "revisar el borrador"
+      },
+      "actualText": "No. Podemos hablar de revisar?",
+      "actualUtf8Sha256": "4bc6d76584c7f13f0068278ffcb0835b25b8fb7039f9316ade1207b7c0291087",
+      "inputMessagesSha256": "49516bb8f19b1b993b68670e0fdb409bade9b8e26e7735b11105c253081b19f6",
+      "generatedTokens": 11,
+      "stopReason": "eos",
+      "promptTokens": 76,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-08-t2",
+      "episodeId": "ngdev-v1-08",
+      "grade": "F",
+      "reason": "Podemos van a las plantas no comunica una prioridad actual inteligible.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-08-t2-intent",
+          "text": "Actualizar la prioridad a revisar el borrador.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica revisar borrador primero."
+        },
+        {
+          "id": "ngdev-v1-08-t2-grounding",
+          "text": "No conservar las plantas como prioridad actual ni añadir tareas nuevas.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "La relación de plantas queda mal formada; no se completa como una prioridad actual definida para contar una crítica."
+        },
+        {
+          "id": "ngdev-v1-08-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "Podemos van rompe la relación verbal."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?",
+      "factsFromUser": {
+        "initialFirstTask": "regar las plantas",
+        "currentFirstTask": "revisar el borrador",
+        "currentSecondTask": "regar las plantas"
+      },
+      "actualText": "Sí. Podemos van a las plantas.",
+      "actualUtf8Sha256": "d57593ca808cb6a8b6b454643ee66395527de99c68afc09a67731a2b580329ad",
+      "inputMessagesSha256": "8e13b36f106ea9fcf322dabb0934f84366da29a313d02f268b642193406e39c7",
+      "generatedTokens": 11,
+      "stopReason": "eos",
+      "promptTokens": 113,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-08-t3",
+      "episodeId": "ngdev-v1-08",
+      "grade": "F",
+      "reason": "Lo el borrador primero no revisaré el borrador no dice lo que sigue al borrador.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-08-t3-intent",
+          "text": "Identificar regar las plantas como lo que sigue al borrador.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No identifica regar plantas después."
+        },
+        {
+          "id": "ngdev-v1-08-t3-grounding",
+          "text": "No afirmar acciones realizadas o herramientas ejecutadas; no convertirlo en un plan extra.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No afirma ejecución ni plan extra; no revisaré niega hacerlo."
+        },
+        {
+          "id": "ngdev-v1-08-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "Lo el y la mezcla de prioridad y negativa no forman una respuesta inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?",
+      "factsFromUser": {
+        "currentFirstTask": "revisar el borrador",
+        "currentSecondTask": "regar las plantas",
+        "executionRequested": false
+      },
+      "actualText": "No. Lo el borrador primero no revisaré el borrador.",
+      "actualUtf8Sha256": "f790f532466e42260af1ca37dad60a572be7e9674aa78cd3f7f3f6bbf21fd872",
+      "inputMessagesSha256": "46ccd318d48f244a8450b7ee5e68faa6b8bd86d8c78cce3df35d2e1dace1f2f5",
+      "generatedTokens": 16,
+      "stopReason": "eos",
+      "promptTokens": 147,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-08-t4",
+      "episodeId": "ngdev-v1-08",
+      "grade": "F",
+      "reason": "Revisaré el borrador introduce al asistente como quien hará la tarea y omite el contraste.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-08-t4-intent",
+          "text": "Contrastar el orden inicial con el actual: plantas primero pasó a borrador primero.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No contrasta plantas primero y borrador primero."
+        },
+        {
+          "id": "ngdev-v1-08-t4-grounding",
+          "text": "No decir que añadió o eliminó tareas ni invertir ambos órdenes.",
+          "critical": true,
+          "status": "violated",
+          "reason": "La primera persona revisaré cambia el actor a asistente sin cita de las palabras del usuario."
+        },
+        {
+          "id": "ngdev-v1-08-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "not_satisfied",
+          "reason": "La cláusula final se entiende, pero El borrador es revisaré está mal formada."
+        }
+      ],
+      "criticalFailures": [
+        {
+          "type": "invention",
+          "reason": "revisaré el borrador atribuye al asistente el trabajo del usuario."
+        }
+      ],
+      "borderlineDecision": "Se mantiene la lectura de primera persona de tareas en anteriores primarias; no se ignora sólo por una cláusula inicial rota.",
+      "userText": "¿Qué cambié respecto al comienzo?",
+      "factsFromUser": {
+        "initialFirstTask": "regar las plantas",
+        "currentFirstTask": "revisar el borrador",
+        "currentSecondTask": "regar las plantas"
+      },
+      "actualText": "El borrador es revisaré el borrador.",
+      "actualUtf8Sha256": "55d5359d8a83cc3be8ec61ca60687f6d992f6ea429deab2920b50d7f66a8c8ca",
+      "inputMessagesSha256": "8576e5b6a4e4e95141dfc39c8ff1b875cf503985ceedeb8581091690b678b999",
+      "generatedTokens": 12,
+      "stopReason": "eos",
+      "promptTokens": 174,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-09-t1",
+      "episodeId": "ngdev-v1-09",
+      "grade": "F",
+      "reason": "No me has dicho quién lo título Laderas de Sal no recupera el título inteligiblemente.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-09-t1-intent",
+          "text": "Recuperar el título Laderas de Sal.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "El título aparece dentro de una frase sin función inteligible como respuesta."
+        },
+        {
+          "id": "ngdev-v1-09-t1-grounding",
+          "text": "No cambiar el título ni inventar detalles sobre el libro.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "quién lo deja indeterminado el campo de negación y no se completa como una crítica de título conocido."
+        },
+        {
+          "id": "ngdev-v1-09-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "quién lo título no tiene una lectura inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "Mismo literal y juicio queE2-2048/4096-09-t1.",
+      "userText": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?",
+      "factsFromUser": {
+        "bookTitle": "Laderas de Sal",
+        "bookAuthor": null
+      },
+      "actualText": "No me has dicho quién lo título Laderas de Sal.",
+      "actualUtf8Sha256": "a355eba579206f7e911fcf975606584d2d157b91de2df8d338c121a570e26707",
+      "inputMessagesSha256": "9f6723e27a6218963319b60bd51b251f929c21a5e63f34ac82d50e9c7a480bef",
+      "generatedTokens": 13,
+      "stopReason": "eos",
+      "promptTokens": 68,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-09-t2",
+      "episodeId": "ngdev-v1-09",
+      "grade": "F",
+      "reason": "La negativa inicial correcta queda seguida por una cadena larga y repetitiva ininteligible de autor y título.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-09-t2-intent",
+          "text": "Reconocer que la conversación no permite identificar al autor.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No reconoce por sí solo el límite de identificar autor, pero la cola no conserva una respuesta inteligible completa."
+        },
+        {
+          "id": "ngdev-v1-09-t2-grounding",
+          "text": "No inventar un autor ni atribuirlo a alguien por familiaridad con el título.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No atribuye un autor definido; no se infiere uno de fragmentos."
+        },
+        {
+          "id": "ngdev-v1-09-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La repetición extensa tu autor sólo y los cambios llamaré/título hacen ininteligible la respuesta completa."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": "A diferencia de una negativa con una cola breve defectuosa, esta cola es un bucle severo; se conserva el acierto inicial sin aprobar el turno.",
+      "userText": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?",
+      "factsFromUser": {
+        "bookTitle": "Laderas de Sal",
+        "bookAuthor": null
+      },
+      "actualText": "No. Lo título te llamaré titu autor sólo tu autor sólo tu autor sólo tu autor sólo te a Sal.",
+      "actualUtf8Sha256": "5a86e04e68e2ce9e24a225cd9e2ef49c02ebb6fd11d0428e10c9210555156cd5",
+      "inputMessagesSha256": "7154a51694b61c69a400f96bdbf8249608cac73e04fa42b7ec731303a82ed6ba",
+      "generatedTokens": 24,
+      "stopReason": "eos",
+      "promptTokens": 105,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-09-t3",
+      "episodeId": "ngdev-v1-09",
+      "grade": "F",
+      "reason": "Repite lo que te a quién sin expresar la finalidad.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-09-t3-intent",
+          "text": "Relacionarlo con el club de lectura del domingo.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No indica club de lectura del domingo."
+        },
+        {
+          "id": "ngdev-v1-09-t3-grounding",
+          "text": "No inventar otra finalidad ni afirmar que ya leyó o compró el libro.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No define otra finalidad ni lectura o compra realizada."
+        },
+        {
+          "id": "ngdev-v1-09-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "El bucle de fragmentos no es inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?",
+      "factsFromUser": {
+        "bookTitle": "Laderas de Sal",
+        "bookAuthor": null,
+        "bookPurpose": "club de lectura del domingo"
+      },
+      "actualText": "Sí. Pode su autor sólo lo con lo que te a quién lo que te a quién lo que te a quién lo que te ape.",
+      "actualUtf8Sha256": "bdbef759d294f312e17e1040683167550924d5926bc73c8d080207b39d6d0d6e",
+      "inputMessagesSha256": "a8ef0b9b16d44641a6179fb65cb0bc1c426d67ddba6f44d2251fc8c2425717d5",
+      "generatedTokens": 31,
+      "stopReason": "eos",
+      "promptTokens": 150,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-09-t4",
+      "episodeId": "ngdev-v1-09",
+      "grade": "F",
+      "reason": "Mezcla sólo sé quién, lectura del domingo y fal sin separar hechos conocidos y autor desconocido.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-09-t4-intent",
+          "text": "Separar título y finalidad conocidos del autor desconocido.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No conserva título/finalidad/autor desconocido en relaciones inteligibles."
+        },
+        {
+          "id": "ngdev-v1-09-t4-grounding",
+          "text": "No inventar el autor ni convertirlo en un dato conocido; no añadir información del libro que el usuario no dio.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No identifica un autor concreto ni una afirmación definida de autor conocido."
+        },
+        {
+          "id": "ngdev-v1-09-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "La mezcla con fal; fal no es una respuesta inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "¿Qué sabemos del libro y qué dato nos sigue faltando?",
+      "factsFromUser": {
+        "bookTitle": "Laderas de Sal",
+        "bookPurpose": "club de lectura del domingo",
+        "bookAuthor": null
+      },
+      "actualText": "Plan sólo sé quién lo que te gustaría lectura del domingo; fal; fal; sigue fal lo que te a Sal.",
+      "actualUtf8Sha256": "f1140a878f7ef20f144c9e238e34f3a3303975ae4bdaf817b54565557aa7c701",
+      "inputMessagesSha256": "8e5c7be006d2c5095ec0026ba361585241686f0c32a52cb5d62f36dc9f8d81a9",
+      "generatedTokens": 27,
+      "stopReason": "eos",
+      "promptTokens": 199,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-10-t1",
+      "episodeId": "ngdev-v1-10",
+      "grade": "F",
+      "reason": "Responde sobre otra persona no indicada, sin identificar la actividad que despeja.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-10-t1-intent",
+          "text": "Vincular despejarse con pasear a Trazuli.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No vincula despejarse con pasear a Trazuli."
+        },
+        {
+          "id": "ngdev-v1-10-t1-grounding",
+          "text": "No inventar otra actividad ni un efecto clínico o personal que no se haya compartido.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No define otra actividad ni efecto personal nuevo."
+        },
+        {
+          "id": "ngdev-v1-10-t1-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La frase es inteligible, pero de otro asunto."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?",
+      "factsFromUser": {
+        "dogName": "Trazuli",
+        "walkTime": "amanecer",
+        "clearingActivity": "pasear al perro"
+      },
+      "actualText": "No me has dicho esa otra persona.",
+      "actualUtf8Sha256": "54c1200a125e17fbba217d85f9441fac48b7ca40f3c12cee2d6892eb83d7b850",
+      "inputMessagesSha256": "d15961f3f37bb2da4d1f54ee0e84bdbd1f98a28d34e95cfed91c20f960b13fb9",
+      "generatedTokens": 9,
+      "stopReason": "eos",
+      "promptTokens": 77,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-10-t2",
+      "episodeId": "ngdev-v1-10",
+      "grade": "P",
+      "reason": "Menciona pasear como actividad pertinente, sin establecer explícitamente que precede a escribir.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-10-t2-intent",
+          "text": "Identificar el paseo como lo inmediatamente anterior a escribir.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "Pasear aporta la actividad correcta, pero se ofrece hablar de ella en vez de establecer la secuencia inmediata."
+        },
+        {
+          "id": "ngdev-v1-10-t2-grounding",
+          "text": "No invertir la secuencia ni añadir una actividad intermedia.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No invierte secuencia ni añade actividad intermedia."
+        },
+        {
+          "id": "ngdev-v1-10-t2-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "satisfied",
+          "reason": "La propuesta es inteligible pese al final sin embargo suelto."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?",
+      "factsFromUser": {
+        "dogName": "Trazuli",
+        "walkTime": "amanecer",
+        "writingPrecededBy": "paseo"
+      },
+      "actualText": "Sí. Podemos hablar de pasear, sin embargo.",
+      "actualUtf8Sha256": "532e07cd199849a449617a6626f9028efca2514aca169d55bc1d37c5456406df",
+      "inputMessagesSha256": "da5e32f3abf50c583186fd76e1cb5f2cdc8276a8d94d4ed4972a1c79f1e8488a",
+      "generatedTokens": 14,
+      "stopReason": "eos",
+      "promptTokens": 107,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-10-t3",
+      "episodeId": "ngdev-v1-10",
+      "grade": "F",
+      "reason": "Hablar de despeja no actualiza el horario y está mal formado.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-10-t3-intent",
+          "text": "Actualizar la hora del paseo a anochecer.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No indica anochecer."
+        },
+        {
+          "id": "ngdev-v1-10-t3-grounding",
+          "text": "No conservar amanecer como horario actual ni cambiar la actividad o el animal.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No presenta amanecer actual ni cambia actividad o animal mediante una afirmación definida."
+        },
+        {
+          "id": "ngdev-v1-10-t3-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "de despeja no forma una referencia inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?",
+      "factsFromUser": {
+        "dogName": "Trazuli",
+        "oldWalkTime": "amanecer",
+        "walkTime": "anochecer",
+        "writingPrecededBy": "paseo"
+      },
+      "actualText": "No. Podemos hablar de despeja.",
+      "actualUtf8Sha256": "61de1cac3f67ae6413979d5f05ea97c61afbd82d908a132fd30c6f85aa26470e",
+      "inputMessagesSha256": "1772fc97384e3f785de38282784d794b5ca5e793aaf791c652a95bfe1bc17a08",
+      "generatedTokens": 11,
+      "stopReason": "eos",
+      "promptTokens": 148,
+      "discardedPromptTokens": 0
+    },
+    {
+      "id": "ngdev-v1-10-t4",
+      "episodeId": "ngdev-v1-10",
+      "grade": "F",
+      "reason": "Podemos hablar de paseo con los despeja no conecta paseo y escritura y queda mal formado.",
+      "constraintReview": [
+        {
+          "id": "ngdev-v1-10-t4-intent",
+          "text": "Conectar el paseo anterior con escribir después, manteniendo el orden.",
+          "critical": true,
+          "status": "not_satisfied",
+          "reason": "No relaciona paseo anterior y escribir después."
+        },
+        {
+          "id": "ngdev-v1-10-t4-grounding",
+          "text": "No invertir la secuencia, atribuirle efectos nuevos ni usar amanecer como horario vigente si menciona la hora.",
+          "critical": true,
+          "status": "satisfied",
+          "reason": "No define secuencia invertida, efecto nuevo u hora antigua vigente."
+        },
+        {
+          "id": "ngdev-v1-10-t4-clarity",
+          "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+          "critical": false,
+          "status": "violated",
+          "reason": "con los despeja rompe la referencia verbal y no expresa una relación inteligible."
+        }
+      ],
+      "criticalFailures": [],
+      "borderlineDecision": null,
+      "userText": "Relaciona el paseo con lo que hago después, sin inventar nada más.",
+      "factsFromUser": {
+        "dogName": "Trazuli",
+        "walkTime": "anochecer",
+        "writingPrecededBy": "paseo"
+      },
+      "actualText": "Sí. Podemos hablar de paseo con los despeja.",
+      "actualUtf8Sha256": "4c9198a0cccb20d691f4b22cde43dfbabe13792e41958292797880c2a2bf7dfe",
+      "inputMessagesSha256": "ed072bc0555464362f7ff3e43ce343488929e4f5e11e17953892635b6d849330",
+      "generatedTokens": 15,
+      "stopReason": "eos",
+      "promptTokens": 182,
+      "discardedPromptTokens": 0
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ngdev-v1-01",
+      "groupId": "ngdev-v1-world-01",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-02",
+      "groupId": "ngdev-v1-world-02",
+      "grade": "F",
+      "turnGrades": [
+        "P",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-03",
+      "groupId": "ngdev-v1-world-03",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-04",
+      "groupId": "ngdev-v1-world-04",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "P",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-05",
+      "groupId": "ngdev-v1-world-05",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-06",
+      "groupId": "ngdev-v1-world-06",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-07",
+      "groupId": "ngdev-v1-world-07",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "P",
+        "F",
+        "P"
+      ]
+    },
+    {
+      "id": "ngdev-v1-08",
+      "groupId": "ngdev-v1-world-08",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-09",
+      "groupId": "ngdev-v1-world-09",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "F",
+        "F",
+        "F"
+      ]
+    },
+    {
+      "id": "ngdev-v1-10",
+      "groupId": "ngdev-v1-world-10",
+      "grade": "F",
+      "turnGrades": [
+        "F",
+        "P",
+        "F",
+        "F"
+      ]
+    }
+  ],
+  "summary": {
+    "C": 0,
+    "P": 5,
+    "F": 35,
+    "episodeC": 0,
+    "episodeP": 0,
+    "episodeF": 10,
+    "criticalFailureTurns": 10,
+    "criticalFailureTurnIds": [
+      "ngdev-v1-01-t2",
+      "ngdev-v1-03-t1",
+      "ngdev-v1-03-t2",
+      "ngdev-v1-03-t3",
+      "ngdev-v1-03-t4",
+      "ngdev-v1-05-t3",
+      "ngdev-v1-05-t4",
+      "ngdev-v1-06-t4",
+      "ngdev-v1-07-t1",
+      "ngdev-v1-08-t4"
+    ],
+    "criticalCounts": {
+      "contradiction": 7,
+      "invention": 3
+    },
+    "constraintJudgments": 120,
+    "constraintStatusCounts": {
+      "not_satisfied": 42,
+      "violated": 37,
+      "satisfied": 41
+    },
+    "coverage": {
+      "requestedEpisodes": 10,
+      "requestedTurns": 40,
+      "attemptedTurns": 40,
+      "actualOutputs": 40,
+      "acceptedHistoryTurns": 40,
+      "failedTurns": 0,
+      "blockedTurns": 0,
+      "truncatedPrompts": 0
+    }
+  },
+  "gate": {
+    "conditions": {
+      "valid40": true,
+      "zeroExecutionErrors": true,
+      "zeroBlocked": true,
+      "zeroPromptTruncation": true,
+      "atLeast36C": false,
+      "atLeast8CEpisodes": false,
+      "zeroCritical": false
+    },
+    "mainConditionsPassed": false,
+    "baselineNonRegressionSeparatelyAssessed": false,
+    "promotionApproved": false
+  },
+  "criticalAccounting": {
+    "distinctTurns": true,
+    "oneDominantTypePerTurn": true,
+    "omissionsAloneNotCritical": true,
+    "unintelligibleFragmentsNotAutomaticallyInventedFacts": true
+  },
+  "integrity": {
+    "all120OriginalIdsTextsCriticalFlagsPreserved": true,
+    "automaticSemanticGradesAssigned": false,
+    "rawOutputsEdited": false,
+    "noModelOrTorchImport": true,
+    "noInferenceTrainingTokenization": true,
+    "otherCurrentReviewsReadBeforeFreeze": false,
+    "newTrainingDataAuthored": false,
+    "finalOrTestCasesRead": false
+  },
+  "limitations": [
+    "Exposed knownDEV40 development probe, not prospective final acceptance.",
+    "Same-project AI review, not human or independent external acceptance.",
+    "NLL and technical checks are not evidence of conversational competence."
+  ],
+  "trainingPerformedByReviewer": false,
+  "testEvaluated": false,
+  "productionAccepted": false,
+  "workerCapabilityValidated": false
+}

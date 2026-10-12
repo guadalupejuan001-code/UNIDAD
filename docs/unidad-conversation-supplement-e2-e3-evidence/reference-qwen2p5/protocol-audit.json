@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "auditScope": "Read-only source audit of the external pretrained reference runner; no inference, training, download, model data inspection, or benchmark answer inspection.",
+  "auditedFiles": [
+    "/workspace/ia-propia/private/conversation/reference-qwen2p5-v1/run_reference.py",
+    "/workspace/ia-propia/src/ia_propia/conversation/contract.py",
+    "/workspace/ia-propia/private/conversation/next-generation-eval-v1/run.py"
+  ],
+  "casesContentReadByAuditor": false,
+  "curriculumReservedOrFinalContentRead": false,
+  "assessment": "No reference identity, prompt leakage, invented history, unauthorized training, or online model loading issue found in the inspected code. Runtime completion and artifact integrity must be checked in the resulting evidence.",
+  "checks": {
+    "externalReferenceIdentityExplicit": true,
+    "neverUnidadRuntimeClaimExplicit": true,
+    "noTrainingCodeFound": true,
+    "sharedSystemPromptReadFromOwnContract": true,
+    "knownDevelopmentFreezeValidated": true,
+    "factsAndConstraintsExcludedFromInferencePrompt": true,
+    "onlyActualAcceptedReferenceRepliesInHistory": true,
+    "historyReconstructionCheckPresent": true,
+    "localFilesOnlyAndOfflineEnvironment": true,
+    "trustRemoteCodeFalse": true,
+    "safetensorsRequired": true,
+    "modelRevisionAndFileDigestsValidatedAgainstProvenance": true,
+    "greedyMaxNewTokens32Seed42Explicit": true,
+    "cpuFloat32TorchThreads4Explicit": true,
+    "deadlineArmedBeforeModelImportOrLoad": true,
+    "deadlineUnix": 1791811971.4726555,
+    "maxInferenceRunSeconds": 600,
+    "deadlineExceptionInheritsBaseException": true
+  },
+  "findings": [
+    {
+      "id": "completion-exit-gate",
+      "severity": "medium",
+      "lines": [190, 192, 200, 226, 235, 242],
+      "finding": "An actual output is stored before the empty-answer validation. An empty final reply can remain counted in actualOutputs and review.generated while its row is failed. The exit condition checks actualOutputs and fatalError only, so exit zero alone does not establish complete valid history.",
+      "requiredEvidenceCheck": "Require acceptedHistoryTurns == 40, failedTurns == 0, blockedTurns == 0, fatalError == null, and all 40 rows status generated with nonempty actual text.",
+      "mitigationReportedByParent": "Main evaluator will use acceptedHistoryTurns, failure and blocking counts, and errors rather than exit status alone."
+    },
+    {
+      "id": "artifact-integrity-exit-gate",
+      "severity": "medium",
+      "lines": [221, 242],
+      "finding": "artifactFilesUnmodified is recorded but a false value does not produce a failing exit status.",
+      "requiredEvidenceCheck": "Require artifactFilesUnmodified == true independently of process exit status."
+    },
+    {
+      "id": "deadline-finalization-and-native-calls",
+      "severity": "low",
+      "lines": [73, 77, 213, 218, 219, 220, 221, 237],
+      "finding": "The deadline is the minimum of the absolute user deadline and start plus 600 seconds, with an outer BaseException handler. Python signal delivery can wait for native operations to return. The timer is disabled before final artifact hashes and report writes; endedUtc and elapsedSeconds describe entry to finalization, not complete process termination.",
+      "mitigationReportedByParent": "A supervisor owns the Popen child and will check, kill, and reap only its PID 3471 process group at 610 seconds or the absolute user deadline. The supervisor claim was supplied by the parent and was not independently inspected in this audit."
+    },
+    {
+      "id": "effective-generation-config",
+      "severity": "low",
+      "lines": [141, 142, 177, 178, 179, 180],
+      "finding": "The explicit generation arguments cover greedy decoding, token cap, repetition penalty, sampling controls, EOS, and padding, but unspecified options are inherited from model.generation_config. The report records model.config rather than the full effective generation configuration.",
+      "implication": "The model snapshot pins these defaults through provenance. For strict reproducibility, retain the pinned generation_config file provenance and describe inherited settings if they alter output. No non-greedy setting was established by this code-only audit."
+    },
+    {
+      "id": "context-and-runtime-comparability",
+      "severity": "information",
+      "lines": [115, 122, 168, 170, 172],
+      "finding": "Reference inference retains its full history up to its model context length. The inspected own DEV runner permits context truncation and requests one torch thread, whereas this reference requests four. Different tokenizers and chat adapters are already disclosed.",
+      "requiredEvidenceCheck": "Disclose any own-model truncated prompts when comparing conversation quality; do not interpret raw timing as a controlled model speed comparison. Parent reports native known DEV E3 has no truncation and root will verify this."
+    }
+  ],
+  "independentSecondReader": "A delegated code-only audit independently confirmed the deadline, success-exit, artifact-integrity-exit, CPU thread, and inherited generation-configuration findings.",
+  "auditDoesNotAssert": [
+    "Successful inference completion",
+    "Conversational competence or semantic grades",
+    "Final or reserved test performance",
+    "Independent external verification of the downloaded model source",
+    "Verification of the parent-reported supervisor"
+  ]
+}

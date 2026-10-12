@@ -5,7 +5,9 @@ que trabaje por su creador y se adapte a sus cambios de criterio**. Las redes
 pequeñas actuales son componentes experimentales de ese proyecto; no acreditan
 que el trabajador digital solicitado ya esté terminado.
 
-## Prioridad vigente: conversación básica funcional
+## Prioridad vigente: conversación competitiva en español
+
+La misión vigente exige conversación cotidiana natural, coherente y útil, comparable con asistentes de referencia bajo condiciones declaradas. Superar una prueba básica no basta para afirmar calidad competitiva; la comparación debe conservar respuestas e historiales reales, procedencia, condiciones y límites. Unidad mantiene sus pesos propios y no se sustituye por el asistente usado como referencia.
 
 La instrucción más reciente sustituye las prioridades de los planes amplios:
 conseguir y comprobar conversación básica en español antes de ampliar las
@@ -33,6 +35,12 @@ instrucción comprobada que cargue exactamente el candidato evaluado. Si el
 presupuesto o los recursos se agotan, conservar checkpoint y estado, explicar
 el bloqueo y el resultado real; no declarar el objetivo cumplido ni prometer
 procesos inactivos.
+
+El 12 de octubre de 2026, después de cerrar el presupuesto anterior de 24 horas, el
+creador autorizó hasta dos horas adicionales en el mismo entorno de 4 CPU, sin servicios
+de pago, para entrenar desde los pesos propios de C7 con los ejemplos corregidos de
+cuatro turnos y comprobar sus conversaciones. Esta ampliación no reinicia el presupuesto
+anterior ni cambia la aceptación.
 
 ## Órdenes recibidas
 

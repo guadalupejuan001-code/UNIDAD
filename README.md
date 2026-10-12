@@ -106,6 +106,13 @@ no son cifrado.
 
 ## Primeros pasos
 
+La referencia conversacional propia más reciente elegida por respuestas es [Unidad
+C7](models/conversation-reference-c7/README.md). Sigue siendo experimental: obtuvo 7
+respuestas completas de 40 y ningún diálogo completamente correcto de 10. Sus
+[conversaciones reales](models/conversation-reference-c7/evidence/dialogues-actual.txt),
+pesos y comando comprobado están guardados; todavía no cumple la aceptación de
+conversación básica.
+
 Para el nuevo modelo de conversación, instala las dependencias CPU:
 
 ```bash

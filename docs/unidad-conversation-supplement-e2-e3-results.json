@@ -1,0 +1,842 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-12T13:28:47.788213+00:00",
+  "purpose": "Resultados reales de la ampliación autorizada de dos horas: E2, E3 y referencia externa limitada.",
+  "verdict": "No se ha demostrado conversación básica ni competitiva en español. C7 conserva el mejor recuento propio de respuestas completas en esta comparación de desarrollo.",
+  "basicAcceptance": {
+    "minimumCompleteReplies": 36,
+    "totalReplies": 40,
+    "minimumWholeCorrectDialogs": 8,
+    "totalDialogs": 10,
+    "maximumCriticalFailureTurns": 0,
+    "passed": false,
+    "necessaryButNotSufficientForCompetitiveMission": true
+  },
+  "reviewers": {
+    "type": "project_ai_assistants",
+    "independentExternalHuman": false,
+    "disagreementsPreserved": true
+  },
+  "evaluationScope": {
+    "knownExposedDevelopmentTurns": 40,
+    "wholeActualDialogs": 10,
+    "turnsPerDialog": 4,
+    "fullActualAssistantHistoryUsed": true,
+    "generationMaxNewTokens": 32,
+    "temperature": 0,
+    "seed": 42,
+    "ownInferenceTorchThreads": 1,
+    "reservedFinalOpened": false,
+    "testEvaluated": false,
+    "competitiveProof": false
+  },
+  "ownReferenceC7": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "path": "models/conversation-reference-c7",
+    "primary": {
+      "C": 7,
+      "P": 5,
+      "F": 28,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 6
+    },
+    "cross": {
+      "C": 7,
+      "P": 7,
+      "F": 26,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 8
+    },
+    "statusPath": "models/conversation-reference-c7/current-status-supplement.json",
+    "historicStatusPreserved": true
+  },
+  "publicE3": {
+    "path": "models/conversation-initial-availability-e3",
+    "modelId": "unidad-conversation-fb2c43de68b8f0fe3ff1b559de4c0931345fe6d6576ab3f05419bf50618422ab",
+    "selectedStep": 3072,
+    "manifestSha256": "a26659afa26f121b831c755d0edbc007da3ac93f4268339014ab45e7aceee581",
+    "files": {
+      "config.json": {
+        "bytes": 168,
+        "sha256": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+      },
+      "tokenizer.json": {
+        "bytes": 234592,
+        "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+      },
+      "weights.safetensors": {
+        "bytes": 27943524,
+        "sha256": "6d8c8a3bacd8dbe02cddcd5fb680b397447ded3616bdda691bfdc2c75290cd83"
+      }
+    },
+    "lineage": {
+      "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+      "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+      "rootOrigin": "random_weights"
+    },
+    "optimizerReset": true,
+    "selectedBy": "prospectively_fixed_endpoint_3072",
+    "parameterCount": 6983937,
+    "primary": {
+      "C": 3,
+      "P": 5,
+      "F": 32,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 12
+    },
+    "cross": {
+      "C": 3,
+      "P": 3,
+      "F": 34,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 12
+    },
+    "cliReceiptPath": "models/conversation-initial-availability-e3/evidence/cli-receipt.json",
+    "cliReceiptSha256": "5c57a260ee917b7bf16d3344df3480a7af1df3d2d9caac8ebc3c8546abcefa01",
+    "cliExitCode": 0,
+    "cliFourActualRepliesExactlyMatchEvaluatedEndpoint": true,
+    "productionAccepted": false,
+    "competitiveAccepted": false
+  },
+  "candidateComparisons": [
+    {
+      "candidate": "natural-four-turn-e2-step2048-live-v1",
+      "primary": {
+        "C": 3,
+        "P": 8,
+        "F": 29,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 7
+      },
+      "cross": {
+        "C": 3,
+        "P": 8,
+        "F": 29,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 9
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.json",
+          "sha256": "7ff0d30558db41af82edd7291f43b1fe09a0dcd329e4f6324c0325cfa84c2061",
+          "bytes": 236320
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.review-primary.json",
+          "sha256": "c67b6785a9952b9baddcacbf14d154f5322f402464ccc587691823252d23f4da",
+          "bytes": 86149
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.review-cross.json",
+          "sha256": "27c788db1e36fc0107ed20df6159bd646b490a0bbd10ee6b08d17280f6a70ee5",
+          "bytes": 236539
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e2-step4096-live-v1",
+      "primary": {
+        "C": 5,
+        "P": 6,
+        "F": 29,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 6
+      },
+      "cross": {
+        "C": 6,
+        "P": 10,
+        "F": 24,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 4
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.json",
+          "sha256": "01d85c28a118d9a0a72f10c6bb87371a0106334e0a0876c154fdcb505706552c",
+          "bytes": 235987
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.review-primary.json",
+          "sha256": "f976eb33e705ee0cde8a779b20e99c3ad7663f58db15ac4b513fbab3e38bd348",
+          "bytes": 86963
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.review-cross.json",
+          "sha256": "36841cf20df5c40737af38db3ea0782108c9d3f9218b0aa9aa3f0cbcae5c09fb",
+          "bytes": 235133
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e2-step6144-stopped-v1",
+      "primary": {
+        "C": 2,
+        "P": 5,
+        "F": 33,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 7
+      },
+      "cross": {
+        "C": 3,
+        "P": 7,
+        "F": 30,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 8
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.json",
+          "sha256": "7e3ed346acaa7465aa0072b8e751e612fcdde2d68cff66d6b86a57d5d0b12fae",
+          "bytes": 232574
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.review-primary.json",
+          "sha256": "dbe9c0a503bb343cbc8b603983459b0c81e7b8aac3c6af41fee8ff06a239226d",
+          "bytes": 84038
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.review-cross.json",
+          "sha256": "d0d4c073e296dfacee021fde9e2effb0f288c7623c761d382b9c5bdda89c4672",
+          "bytes": 235233
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e2-step6208-stopped-v1",
+      "primary": {
+        "C": 3,
+        "P": 5,
+        "F": 32,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 9
+      },
+      "cross": {
+        "C": 3,
+        "P": 7,
+        "F": 30,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 9
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.json",
+          "sha256": "5ff467cc3383a9536f89cb13206798658687bd418041c5d26e623b679d62a8a0",
+          "bytes": 236366
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.review-primary.json",
+          "sha256": "21ef7d18d861fb3fd8299eb0647a8f73d648c8589f4b3bc25cf9a6bd26c0da55",
+          "bytes": 84577
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.review-cross.json",
+          "sha256": "ac81ac0e9c73f7ee16a9be70383165269e664909cffe3e5ca993f1cc6dc8fbc0",
+          "bytes": 236155
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e3-step1024-live-v1",
+      "primary": {
+        "C": 0,
+        "P": 5,
+        "F": 35,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 10
+      },
+      "cross": {
+        "C": 0,
+        "P": 7,
+        "F": 33,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 11
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.json",
+          "sha256": "92421d9ad673844dceb5cd4550485bef9f4d5a79eb0a523c0f68b35f27190ce0",
+          "bytes": 240075
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.review-primary.json",
+          "sha256": "8825659410543e8087bd5e5ef20344717aa97aace653133c2a646d9c936f3d14",
+          "bytes": 85959
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.review-cross.json",
+          "sha256": "f2523a2f5e6ce54e4e9c08437dd95ae4f5946ad28b5c7361199f720de2dcf635",
+          "bytes": 241511
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e3-step2048-live-v1",
+      "primary": {
+        "C": 2,
+        "P": 8,
+        "F": 30,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 7
+      },
+      "cross": {
+        "C": 2,
+        "P": 11,
+        "F": 27,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 8
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.json",
+          "sha256": "0bdedbe185bed753169cf4c8dcc52d2554736972b4c675e898abe914859a294d",
+          "bytes": 234935
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.review-primary.json",
+          "sha256": "ba1cbf35a103d147946a0d647894cb59a3c3fb07d1f57ee1dd1922b38ec14419",
+          "bytes": 80983
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.review-cross.json",
+          "sha256": "e7e6db49cc93e44b7853fb6b81c667ee22c9d1bbc9ca6ea6532afb58ef9fe1d6",
+          "bytes": 233941
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    },
+    {
+      "candidate": "natural-four-turn-e3-step3072-v1",
+      "primary": {
+        "C": 3,
+        "P": 5,
+        "F": 32,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 12
+      },
+      "cross": {
+        "C": 3,
+        "P": 3,
+        "F": 34,
+        "completeDialogs": 0,
+        "criticalFailureTurns": 12
+      },
+      "evidence": {
+        "raw": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.raw.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.json",
+          "sha256": "4d29e96d5ea2b1adaa30ac32f19f73dab63faf4d017e170b70d537e9c1710fc1",
+          "bytes": 238796
+        },
+        "primary": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.primary.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-primary.json",
+          "sha256": "f2ed3e0b396c21b3d5f62a180b945ba0e5b4a46ab7d977c87294fd8915bb34de",
+          "bytes": 82641
+        },
+        "cross": {
+          "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.cross.json",
+          "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-cross.json",
+          "sha256": "ba274dbc04c41bd57dc720c22c1926f38e11578135ba3153fe8025771574efa2",
+          "bytes": 298579
+        }
+      },
+      "productionAccepted": false,
+      "competitiveCapabilityEstablished": false
+    }
+  ],
+  "trainingLifecycle": {
+    "E2": {
+      "nativeStatus": "stopped",
+      "reason": "signal",
+      "step": 6208,
+      "plannedMaxSteps": 8192,
+      "supervisor": {
+        "finishedAt": 1791807249.7768922,
+        "exitCode": 1,
+        "deadlineExceeded": false,
+        "forcedKill": false,
+        "childReaped": true,
+        "supervisorFailure": null,
+        "trialReceiptExists": false,
+        "conversationAccepted": false
+      },
+      "interpretation": "Intentional cooperative stop for changed hypothesis; supervisor exit 1 follows the original 8192-step assertion. No forced kill; child reaped."
+    },
+    "E3": {
+      "nativeStatus": "stopped",
+      "reason": "signal",
+      "step": 3072,
+      "prospectiveEndpointCompleted": true,
+      "supervisor": {
+        "finishedAt": 1791808978.9076686,
+        "exitCode": 0,
+        "deadlineExceeded": false,
+        "forcedKill": false,
+        "childReaped": true,
+        "supervisorFailure": null,
+        "trialReceiptExists": true,
+        "conversationAccepted": false
+      },
+      "interpretation": "Own native cooperative stop at the prospectively fixed endpoint; supervisor exit 0, child reaped."
+    },
+    "trainingActiveAtDelivery": false,
+    "inferenceActiveAtDelivery": false,
+    "nativeOptimizerCheckpointsPreservedPrivately": true
+  },
+  "budget": {
+    "original24HourBudgetClosed": true,
+    "originalBudgetNotReset": true,
+    "authorizedSupplementalSeconds": 7200,
+    "startUnix": 1791804771.4726555,
+    "absoluteEndUnix": 1791811971.4726555,
+    "startAndEndUnchanged": true,
+    "trainingMustStopByUnix": 1791809271.4726555,
+    "reservedForEvaluationAndDeliverySeconds": 2700,
+    "cpuCapacity": 4,
+    "paidExternalServicesUsed": false
+  },
+  "curriculum": {
+    "naturalFourTurnV3": {
+      "auditStatus": "SOURCE_SAMPLE_ONLY",
+      "splitCounts": {
+        "development": 24,
+        "train": 24,
+        "validation": 16
+      },
+      "prefixCounts": {
+        "1": 16,
+        "2": 16,
+        "3": 16,
+        "4": 16
+      },
+      "originalReplayPreserved": true
+    },
+    "initialAvailabilityControls": {
+      "auditStatus": "PASS_BOUNDED38_INITIAL_AVAILABILITY_SAMPLE",
+      "availabilityCounts": {
+        "clarification": 2,
+        "known": 20,
+        "missing": 16
+      },
+      "distinctWorlds": 2,
+      "pairedViewsPerWorld": 19,
+      "knownViewsPerWorld": 10,
+      "missingOrClarificationViewsPerWorld": 9,
+      "combinedSplitRecords": {
+        "train": 49633,
+        "validation": 5900,
+        "development": 5900
+      }
+    },
+    "diagnosis": {
+      "firstTurnUnavailableOrClarificationShare": 0.9,
+      "prefix2UnavailableOrClarificationShare": 0,
+      "correctedSamplingDoesNotDemonstrateConversationSuccess": true
+    },
+    "personalChatUsedAsTraining": false,
+    "testBodiesUsedAsTraining": false,
+    "externalReferenceRepliesUsedAsTraining": false
+  },
+  "externalReference": {
+    "modelId": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "license": "apache-2.0",
+    "referenceOnly": true,
+    "neverUnidadRuntime": true,
+    "noReferenceOutputsUsedForTraining": true,
+    "ownWeightsReplaced": false,
+    "knownDevelopmentOnly": true,
+    "competitiveCapabilityEstablished": false,
+    "generation": {
+      "maxNewTokens": 32,
+      "temperature": 0,
+      "seed": 42,
+      "torchThreads": 4,
+      "doSample": false,
+      "device": "cpu",
+      "dtype": "float32"
+    },
+    "parameterCount": 494032768,
+    "limits": [
+      "Known iterative-development suite: no final or reserved test.",
+      "Different pretrained model and tokenizer; 32 tokens do not imply equal text length.",
+      "HF chat-template adapter differs from the own-model ConversationEngine.",
+      "This toy 40-turn comparison cannot establish competitive general assistant performance."
+    ],
+    "summary": {
+      "requestedEpisodes": 10,
+      "requestedTurns": 40,
+      "recordedTurns": 40,
+      "actualOutputs": 40,
+      "acceptedHistoryTurns": 40,
+      "failedTurns": 0,
+      "blockedTurns": 0,
+      "truncatedPrompts": 0,
+      "outputTokenCapHits": 13,
+      "eosReplies": 27
+    },
+    "primary": {
+      "C": 8,
+      "P": 7,
+      "F": 25,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 15
+    },
+    "cross": {
+      "C": 10,
+      "P": 4,
+      "F": 26,
+      "completeDialogs": 0,
+      "criticalFailureTurns": 20
+    },
+    "evidence": {
+      "qwen2p5-0p5b-reference-known-dev-v1.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.json",
+        "sha256": "a73ec8b90358fc85817b3eb847c5c699c430376c543506d5ce690c84eca9639d",
+        "bytes": 308301
+      },
+      "qwen2p5-0p5b-reference-known-dev-v1.actual-dialogues.txt": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.actual-dialogues.txt",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.actual-dialogues.txt",
+        "sha256": "7dfd60dba0768b9160d42d62ed5187748e2aa481a8cca53eeb4ed092b4838bb5",
+        "bytes": 9759
+      },
+      "qwen2p5-0p5b-reference-known-dev-v1.review-primary.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.review-primary.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.review-primary.json",
+        "sha256": "b2abc4fafae0b0cd03687c75ed6e1d92b0eeeee5f4f4327f221d67b1f5110526",
+        "bytes": 87380
+      },
+      "qwen2p5-0p5b-reference-known-dev-v1.review-cross.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.review-cross.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.review-cross.json",
+        "sha256": "486989d58b71a22925943b5b1101f72a1f5b87862e87868c6f66b64af5dca4d6",
+        "bytes": 342365
+      },
+      "reference-validation-receipt.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/reference-validation-receipt.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/reference-validation-receipt.json",
+        "sha256": "0e5935c9512a9991534d711f76b05bfa3f5b93e0795b2f37eec0d1b1964c44a8",
+        "bytes": 517
+      },
+      "reference-process-receipt.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/reference-process-receipt.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/reference-process-receipt.json",
+        "sha256": "2d239f068af3a90a001d568a1167dd8fc198428469c9504170aa4d16e2ffe528",
+        "bytes": 506
+      },
+      "download-provenance.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/download-provenance.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/download-provenance.json",
+        "sha256": "99d315f4ca0bbb2301f06e228f14bdda346746e24245c78ec7dbf6b93540188d",
+        "bytes": 3212
+      },
+      "official-artifact-verification.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/official-artifact-verification.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/official-artifact-verification.json",
+        "sha256": "6db7e93e9fab48b8e8b1ec6634eb26086acede8cdac0da3594412a48ee1ddf79",
+        "bytes": 1289
+      },
+      "protocol-audit.json": {
+        "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/protocol-audit.json",
+        "sourcePath": "private/conversation/reference-qwen2p5-v1/protocol-audit.json",
+        "sha256": "b040b21f46debc88eef05219962d1daa8a18f12cfb1d4bc7a34ea5921a032c28",
+        "bytes": 5452
+      }
+    },
+    "reviewStatus": "both_project_ai_reviews_available"
+  },
+  "sourceIntegrity": {
+    "model.pySha256": "f47b6cd6f2bf9a6f700c60c2af54706b9a705343a3a3b5de832cfbc80681f5fc",
+    "training.pySha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+    "sourceChangesInThisSupplement": false,
+    "ownModelsStartedFromRandomWeights": true,
+    "externalPretrainedWeightsIntegratedIntoOwnModels": false,
+    "ownLineage": "random weights -> own B1 -> own C7 -> E3; E2 and E3 are separate continuations from C7."
+  },
+  "evidence": [
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.json",
+      "sha256": "7ff0d30558db41af82edd7291f43b1fe09a0dcd329e4f6324c0325cfa84c2061",
+      "bytes": 236320
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.review-primary.json",
+      "sha256": "c67b6785a9952b9baddcacbf14d154f5322f402464ccc587691823252d23f4da",
+      "bytes": 86149
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step2048-live-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step2048-live-v1.review-cross.json",
+      "sha256": "27c788db1e36fc0107ed20df6159bd646b490a0bbd10ee6b08d17280f6a70ee5",
+      "bytes": 236539
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.json",
+      "sha256": "01d85c28a118d9a0a72f10c6bb87371a0106334e0a0876c154fdcb505706552c",
+      "bytes": 235987
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.review-primary.json",
+      "sha256": "f976eb33e705ee0cde8a779b20e99c3ad7663f58db15ac4b513fbab3e38bd348",
+      "bytes": 86963
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step4096-live-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step4096-live-v1.review-cross.json",
+      "sha256": "36841cf20df5c40737af38db3ea0782108c9d3f9218b0aa9aa3f0cbcae5c09fb",
+      "bytes": 235133
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.json",
+      "sha256": "7e3ed346acaa7465aa0072b8e751e612fcdde2d68cff66d6b86a57d5d0b12fae",
+      "bytes": 232574
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.review-primary.json",
+      "sha256": "dbe9c0a503bb343cbc8b603983459b0c81e7b8aac3c6af41fee8ff06a239226d",
+      "bytes": 84038
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6144-stopped-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6144-stopped-v1.review-cross.json",
+      "sha256": "d0d4c073e296dfacee021fde9e2effb0f288c7623c761d382b9c5bdda89c4672",
+      "bytes": 235233
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.json",
+      "sha256": "5ff467cc3383a9536f89cb13206798658687bd418041c5d26e623b679d62a8a0",
+      "bytes": 236366
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.review-primary.json",
+      "sha256": "21ef7d18d861fb3fd8299eb0647a8f73d648c8589f4b3bc25cf9a6bd26c0da55",
+      "bytes": 84577
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e2-step6208-stopped-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e2-step6208-stopped-v1.review-cross.json",
+      "sha256": "ac81ac0e9c73f7ee16a9be70383165269e664909cffe3e5ca993f1cc6dc8fbc0",
+      "bytes": 236155
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.json",
+      "sha256": "92421d9ad673844dceb5cd4550485bef9f4d5a79eb0a523c0f68b35f27190ce0",
+      "bytes": 240075
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.review-primary.json",
+      "sha256": "8825659410543e8087bd5e5ef20344717aa97aace653133c2a646d9c936f3d14",
+      "bytes": 85959
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step1024-live-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step1024-live-v1.review-cross.json",
+      "sha256": "f2523a2f5e6ce54e4e9c08437dd95ae4f5946ad28b5c7361199f720de2dcf635",
+      "bytes": 241511
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.json",
+      "sha256": "0bdedbe185bed753169cf4c8dcc52d2554736972b4c675e898abe914859a294d",
+      "bytes": 234935
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.review-primary.json",
+      "sha256": "ba1cbf35a103d147946a0d647894cb59a3c3fb07d1f57ee1dd1922b38ec14419",
+      "bytes": 80983
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step2048-live-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step2048-live-v1.review-cross.json",
+      "sha256": "e7e6db49cc93e44b7853fb6b81c667ee22c9d1bbc9ca6ea6532afb58ef9fe1d6",
+      "bytes": 233941
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.raw.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.json",
+      "sha256": "4d29e96d5ea2b1adaa30ac32f19f73dab63faf4d017e170b70d537e9c1710fc1",
+      "bytes": 238796
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-primary.json",
+      "sha256": "f2ed3e0b396c21b3d5f62a180b945ba0e5b4a46ab7d977c87294fd8915bb34de",
+      "bytes": 82641
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-e3-step3072-v1.cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-cross.json",
+      "sha256": "ba274dbc04c41bd57dc720c22c1926f38e11578135ba3153fe8025771574efa2",
+      "bytes": 298579
+    },
+    {
+      "path": "models/conversation-initial-availability-e3/evidence/review-primary.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-primary.json",
+      "sha256": "f2ed3e0b396c21b3d5f62a180b945ba0e5b4a46ab7d977c87294fd8915bb34de",
+      "bytes": 82641
+    },
+    {
+      "path": "models/conversation-initial-availability-e3/evidence/review-cross.json",
+      "sourcePath": "private/conversation/next-generation-eval-v1/natural-four-turn-e3-step3072-v1.review-cross.json",
+      "sha256": "ba274dbc04c41bd57dc720c22c1926f38e11578135ba3153fe8025771574efa2",
+      "bytes": 298579
+    },
+    {
+      "path": "models/conversation-initial-availability-e3/evidence/cli-receipt.json",
+      "sourcePath": "private/conversation/e3-published-path-cli-verification-v1/receipt.json",
+      "sha256": "5c57a260ee917b7bf16d3344df3480a7af1df3d2d9caac8ebc3c8546abcefa01",
+      "bytes": 1095
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-trial-e2-v1/supervisor-completion.json",
+      "sourcePath": "private/conversation/natural-four-turn-trial-e2-v1/supervisor-completion.json",
+      "sha256": "34fedb32d754e42b8ee4ca2bd5f3622be1708d32bb252d79af36104b13315d47",
+      "bytes": 224
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-trial-e2-v1/run/status.json",
+      "sourcePath": "private/conversation/natural-four-turn-trial-e2-v1/run/status.json",
+      "sha256": "fc1d9953419a4f36a60786c0e584889bb1c4faa45de67c46a3e578a6a2d594de",
+      "bytes": 10186
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-trial-e2-v1/all-observed-checkpoints/preservation-summary-v1.json",
+      "sourcePath": "private/conversation/natural-four-turn-trial-e2-v1/all-observed-checkpoints/preservation-summary-v1.json",
+      "sha256": "8f070a449910518936a04d722999db24e110e58f6d2cc13ff0d60ad085405ccb",
+      "bytes": 60370
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/initial-availability-trial-e3-v1/supervisor-completion.json",
+      "sourcePath": "private/conversation/initial-availability-trial-e3-v1/supervisor-completion.json",
+      "sha256": "8f50de902b55706963869201dd9e1a8e1546707bb1d4c171844f31122e7adce7",
+      "bytes": 223
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/initial-availability-trial-e3-v1/run/status.json",
+      "sourcePath": "private/conversation/initial-availability-trial-e3-v1/run/status.json",
+      "sha256": "171bb64e6a34846554897c520af643f6af4951238e404a9782991e954cf2fafa",
+      "bytes": 10521
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/initial-availability-trial-e3-v1/all-observed-checkpoints/preservation-summary-v1.json",
+      "sourcePath": "private/conversation/initial-availability-trial-e3-v1/all-observed-checkpoints/preservation-summary-v1.json",
+      "sha256": "b3bfa27760526114eae962f2c0e164a552a49ea584cc0517a644266325589161",
+      "bytes": 53158
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/natural-four-turn-curriculum-v3/audit-v3.json",
+      "sourcePath": "private/conversation/natural-four-turn-curriculum-v3/audit-v3.json",
+      "sha256": "d6644dc07794c919ef9c7c5dda2c8fb0543a3cea676bdb0884bd73cc77d8df6a",
+      "bytes": 1086
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/initial-availability-controls-proposal-v1/audit-v1.json",
+      "sourcePath": "private/conversation/initial-availability-controls-proposal-v1/audit-v1.json",
+      "sha256": "c951982b32a06efcf25ab0864c78db1285f8d918896f175e5020d615060cb30c",
+      "bytes": 995
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/initial-availability-controls-proposal-v1/source-availability-diagnosis-v1.json",
+      "sourcePath": "private/conversation/initial-availability-controls-proposal-v1/source-availability-diagnosis-v1.json",
+      "sha256": "ead4371cadee59a9474255a06759d4658ea00807589bb6564f628e068679e852",
+      "bytes": 2913
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.json",
+      "sha256": "a73ec8b90358fc85817b3eb847c5c699c430376c543506d5ce690c84eca9639d",
+      "bytes": 308301
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.actual-dialogues.txt",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.actual-dialogues.txt",
+      "sha256": "7dfd60dba0768b9160d42d62ed5187748e2aa481a8cca53eeb4ed092b4838bb5",
+      "bytes": 9759
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.review-primary.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.review-primary.json",
+      "sha256": "b2abc4fafae0b0cd03687c75ed6e1d92b0eeeee5f4f4327f221d67b1f5110526",
+      "bytes": 87380
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/qwen2p5-0p5b-reference-known-dev-v1.review-cross.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/qwen2p5-0p5b-reference-known-dev-v1.review-cross.json",
+      "sha256": "486989d58b71a22925943b5b1101f72a1f5b87862e87868c6f66b64af5dca4d6",
+      "bytes": 342365
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/reference-validation-receipt.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/reference-validation-receipt.json",
+      "sha256": "0e5935c9512a9991534d711f76b05bfa3f5b93e0795b2f37eec0d1b1964c44a8",
+      "bytes": 517
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/reference-process-receipt.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/reference-process-receipt.json",
+      "sha256": "2d239f068af3a90a001d568a1167dd8fc198428469c9504170aa4d16e2ffe528",
+      "bytes": 506
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/download-provenance.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/download-provenance.json",
+      "sha256": "99d315f4ca0bbb2301f06e228f14bdda346746e24245c78ec7dbf6b93540188d",
+      "bytes": 3212
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/official-artifact-verification.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/official-artifact-verification.json",
+      "sha256": "6db7e93e9fab48b8e8b1ec6634eb26086acede8cdac0da3594412a48ee1ddf79",
+      "bytes": 1289
+    },
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/reference-qwen2p5/protocol-audit.json",
+      "sourcePath": "private/conversation/reference-qwen2p5-v1/protocol-audit.json",
+      "sha256": "b040b21f46debc88eef05219962d1daa8a18f12cfb1d4bc7a34ea5921a032c28",
+      "bytes": 5452
+    }
+  ]
+}
