@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Fresh transfer across new situation families; not consulted until candidate selection is frozen.",
+  "frozenAtUnix": 1791829578.9065392,
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 32
+  },
+  "familySeparation": "Situation structures absent from this stage corpus; language and basic retrieval/correction operations can be shared.",
+  "review": "Project AI semantic review, not human or blinded. Expected wording is illustrative, not exact-match grading.",
+  "episodes": [
+    {
+      "id": "principles-transfer-01",
+      "family": "container_contents",
+      "turns": [
+        {
+          "id": "principles-transfer-01-t1",
+          "user": "En la caja redonda guardé botones. En la caja cuadrada guardé hilos. ¿Dónde están los botones?",
+          "expectedMeaning": "En la caja redonda.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-01-t2",
+          "user": "Moví los botones a una bolsa de tela. ¿Siguen en la caja redonda?",
+          "expectedMeaning": "No; ahora están en la bolsa de tela.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-01-t3",
+          "user": "La bolsa se la entregué a mi tía Elvira. ¿Quién tiene ahora los botones?",
+          "expectedMeaning": "Tu tía Elvira.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-01-t4",
+          "user": "¿Qué quedó en la caja cuadrada y quién tiene la bolsa?",
+          "expectedMeaning": "En la caja cuadrada quedaron hilos; Elvira tiene la bolsa.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-02",
+      "family": "ticket_reassignment",
+      "turns": [
+        {
+          "id": "principles-transfer-02-t1",
+          "user": "Mi entrada es para la fila ocho, asiento doce. ¿Qué asiento tengo?",
+          "expectedMeaning": "El asiento doce de la fila ocho.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-02-t2",
+          "user": "Cambian el asiento al catorce; la fila no cambia. ¿Dónde me sentaré?",
+          "expectedMeaning": "En la fila ocho, asiento catorce.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-02-t3",
+          "user": "A mi amigo Silvano le dieron el asiento quince. ¿Ese es mi asiento?",
+          "expectedMeaning": "No; tu asiento es el catorce y el quince es el de Silvano.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-02-t4",
+          "user": "Repite mi ubicación final sin incluir la de Silvano.",
+          "expectedMeaning": "Fila ocho, asiento catorce.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-03",
+      "family": "loan_and_ownership",
+      "turns": [
+        {
+          "id": "principles-transfer-03-t1",
+          "user": "La cámara es de mi prima Amalia. Me la prestó para hoy. ¿De quién es la cámara?",
+          "expectedMeaning": "De tu prima Amalia.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-03-t2",
+          "user": "Ahora la tengo yo en mi mochila. ¿Quién la tiene y quién es su dueña?",
+          "expectedMeaning": "Tú la tienes; Amalia es su dueña.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-03-t3",
+          "user": "La devolveré al terminar la visita. ¿Ya se la devolví?",
+          "expectedMeaning": "No; dijiste que la devolverás al terminar la visita.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-03-t4",
+          "user": "¿Qué sabemos del préstamo y qué no sabemos de cuándo termina?",
+          "expectedMeaning": "La cámara de Amalia te fue prestada para hoy y la devolverás tras la visita; no diste una hora.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-04",
+      "family": "message_revision",
+      "turns": [
+        {
+          "id": "principles-transfer-04-t1",
+          "user": "Quiero avisar: llegaré veinte minutos tarde. Escribe ese aviso en una frase.",
+          "expectedMeaning": "Llegaré veinte minutos tarde.",
+          "critical": false,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-04-t2",
+          "user": "Corrijo: serán diez minutos, no veinte. Actualiza el aviso.",
+          "expectedMeaning": "Llegaré diez minutos tarde.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-04-t3",
+          "user": "Añade que ya voy en camino. Mantén la demora corregida.",
+          "expectedMeaning": "Ya voy en camino; llegaré diez minutos tarde.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-04-t4",
+          "user": "¿Qué dato corregí en el aviso?",
+          "expectedMeaning": "Cambiaste la demora de veinte a diez minutos.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-05",
+      "family": "choice_and_reason",
+      "turns": [
+        {
+          "id": "principles-transfer-05-t1",
+          "user": "Elegí la ruta del río porque tiene sombra; descarté la carretera. ¿Por qué elegí esa ruta?",
+          "expectedMeaning": "Porque la ruta del río tiene sombra.",
+          "critical": false,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-05-t2",
+          "user": "La ruta del río quedó cerrada. Ahora iré por el puente. ¿Qué ruta usaré?",
+          "expectedMeaning": "La del puente.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-05-t3",
+          "user": "No te he dicho si en el puente hay sombra. ¿Puedes afirmarlo?",
+          "expectedMeaning": "No; no has dado ese dato.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-05-t4",
+          "user": "Distingue la razón de la elección inicial y la ruta que usaré finalmente.",
+          "expectedMeaning": "Primero elegiste la ruta del río por la sombra; al cerrarla elegiste la del puente.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-06",
+      "family": "shared_and_distinct_properties",
+      "turns": [
+        {
+          "id": "principles-transfer-06-t1",
+          "user": "Ada y Hugo llevan sombrero. Sólo Ada lleva bufanda. ¿Quién lleva bufanda?",
+          "expectedMeaning": "Ada.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-06-t2",
+          "user": "Hugo se quitó el sombrero. ¿Quién lo sigue llevando?",
+          "expectedMeaning": "Ada.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-06-t3",
+          "user": "Ada prestó su bufanda a Hugo. ¿Quién tiene ahora la bufanda?",
+          "expectedMeaning": "Hugo.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-06-t4",
+          "user": "¿Llevan ambos sombrero y quién tiene la bufanda ahora?",
+          "expectedMeaning": "No: Ada lleva sombrero y Hugo tiene la bufanda.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-07",
+      "family": "delivery_state",
+      "turns": [
+        {
+          "id": "principles-transfer-07-t1",
+          "user": "El paquete llegó al edificio, pero todavía no lo he recogido. ¿Ya lo tengo conmigo?",
+          "expectedMeaning": "No; llegó al edificio, pero no lo has recogido.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-07-t2",
+          "user": "La recepción lo guardó en el armario. ¿Dónde está?",
+          "expectedMeaning": "En el armario de recepción.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-07-t3",
+          "user": "Ya pasé por recepción y lo recogí. ¿Qué cambió?",
+          "expectedMeaning": "Ahora tienes el paquete; antes estaba guardado en recepción.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-07-t4",
+          "user": "¿Sabemos quién envió el paquete?",
+          "expectedMeaning": "No has dicho quién lo envió.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-08",
+      "family": "provisional_and_confirmed",
+      "turns": [
+        {
+          "id": "principles-transfer-08-t1",
+          "user": "La visita al taller está propuesta para el martes, pero aún no está confirmada. ¿Es una fecha segura?",
+          "expectedMeaning": "No; es una propuesta todavía sin confirmar.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-08-t2",
+          "user": "Confirmaron finalmente el miércoles. ¿Qué día quedó acordado?",
+          "expectedMeaning": "El miércoles.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-08-t3",
+          "user": "No nos dieron una hora. ¿Sabemos a qué hora empieza?",
+          "expectedMeaning": "No; todavía no se ha dado una hora.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-08-t4",
+          "user": "Resume qué está confirmado y qué sigue pendiente.",
+          "expectedMeaning": "La visita al taller está confirmada para el miércoles; falta la hora.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-09",
+      "family": "measurement_correction",
+      "turns": [
+        {
+          "id": "principles-transfer-09-t1",
+          "user": "Anoté que la cuerda mide nueve metros. ¿Qué longitud anoté?",
+          "expectedMeaning": "Nueve metros.",
+          "critical": false,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-09-t2",
+          "user": "La medí de nuevo: mide siete metros. La primera medida era incorrecta. ¿Cuál es la correcta?",
+          "expectedMeaning": "Siete metros.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-09-t3",
+          "user": "La cinta, que es otro objeto, mide tres metros. ¿Eso cambia la longitud de la cuerda?",
+          "expectedMeaning": "No; la cuerda sigue midiendo siete metros.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-09-t4",
+          "user": "Distingue la medida inicial de la cuerda, su medida corregida y la de la cinta.",
+          "expectedMeaning": "La cuerda se anotó como nueve metros y se corrigió a siete; la cinta mide tres.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principles-transfer-10",
+      "family": "roles_in_event",
+      "turns": [
+        {
+          "id": "principles-transfer-10-t1",
+          "user": "Tomasa organizó la exposición y Esteban tomó las fotos. ¿Quién la organizó?",
+          "expectedMeaning": "Tomasa.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-10-t2",
+          "user": "Yo sólo fui a verla. ¿Fui quien tomó las fotos?",
+          "expectedMeaning": "No; las tomó Esteban y tú fuiste a ver la exposición.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-10-t3",
+          "user": "Rectifico: quien organizó fue Leandro. Tomasa presentó las obras. ¿Quién organizó al final?",
+          "expectedMeaning": "Leandro.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        },
+        {
+          "id": "principles-transfer-10-t4",
+          "user": "Relaciona a Leandro, Tomasa y Esteban con lo que hizo cada uno.",
+          "expectedMeaning": "Leandro organizó, Tomasa presentó las obras y Esteban tomó las fotos.",
+          "critical": true,
+          "requirements": [
+            "Preserve the requested facts and latest corrections.",
+            "Respond intelligibly without inventing facts or claiming unperformed actions."
+          ]
+        }
+      ]
+    }
+  ]
+}

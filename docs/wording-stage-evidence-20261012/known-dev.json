@@ -1,0 +1,989 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+  "purpose": "Known development regression; not final acceptance and never training input",
+  "generation": {
+    "maxNewTokens": 32,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "baselineModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "metric": {
+    "primary": "F <= 14/40 (baseline historical F=28)",
+    "secondary": "Non-complete <=16/40 (historical C=7, P=5, F=28)",
+    "critical": "No increase from six primary critical failures; report all"
+  },
+  "episodes": [
+    {
+      "id": "ngdev-v1-01",
+      "turns": [
+        {
+          "id": "ngdev-v1-01-t1",
+          "user": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?",
+          "baselineText": "Toda Zelomara.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-01-t1-intent",
+              "text": "Indicar que usará Zelún como apodo preferido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t1-grounding",
+              "text": "No sustituir Zelún por el nombre indicado u otro apodo inventado; no confundir la identidad con una preferencia.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-01-t2",
+          "user": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?",
+          "baselineText": "Quieres dibujar un faro.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-01-t2-intent",
+              "text": "Responder que quiere dibujar un faro.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t2-grounding",
+              "text": "No convertir el faro en otro objeto ni añadir hechos personales no compartidos.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-01-t3",
+          "user": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?",
+          "baselineText": "Has Zelomara.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-01-t3-intent",
+              "text": "Adoptar Zelaia como preferencia actual.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t3-grounding",
+              "text": "No mantener Zelún como apodo actual; mencionar correctamente que fue el anterior es admisible.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-01-t4",
+          "user": "¿Qué apodo elegí primero y cuál prefiero ahora?",
+          "baselineText": "Quieres Zelomara.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-01-t4-intent",
+              "text": "Distinguir ambos: primero Zelún, ahora Zelaia.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t4-grounding",
+              "text": "Conservar las dos funciones sin invertirlas ni inventar un tercer nombre.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-01-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-02",
+      "turns": [
+        {
+          "id": "ngdev-v1-02-t1",
+          "user": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?",
+          "baselineText": "No has dicho el es.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-02-t1-intent",
+              "text": "Reconocer que no conoce el color por lo compartido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t1-grounding",
+              "text": "No afirmar ni adivinar un color; puede pedir ese dato.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-02-t2",
+          "user": "Ya lo encontré: es color coral. ¿De qué color es?",
+          "baselineText": "ElDe acuerdo es color coral.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-02-t2-intent",
+              "text": "Indicar coral como color del paraguas.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t2-grounding",
+              "text": "No mantener el color como desconocido ni sustituirlo por otro; no confundirlo con otro objeto.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-02-t3",
+          "user": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?",
+          "baselineText": "El paraguas.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-02-t3-intent",
+              "text": "Identificar a su prima Nelavia como quien lo regaló.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t3-grounding",
+              "text": "No inventar otro nombre ni cambiar prima por madre, hermana u otra relación.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-02-t4",
+          "user": "¿Sabemos ya su color y en qué tienda se compró?",
+          "baselineText": "Tu color es color es color su color su color.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-02-t4-intent",
+              "text": "Separar lo conocido de lo desconocido: color coral, tienda no indicada.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t4-grounding",
+              "text": "No inventar una tienda ni deducirla de quién lo regaló; no convertir el color en un dato desconocido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-02-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-03",
+      "turns": [
+        {
+          "id": "ngdev-v1-03-t1",
+          "user": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?",
+          "baselineText": "Estás en Valdehumo; irás Puerto Arce.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-03-t1-intent",
+              "text": "Identificar Valdehumo como ubicación de hoy.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t1-grounding",
+              "text": "No tratar Puerto Arce como ubicación actual ni inventar otra ciudad.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-03-t2",
+          "user": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?",
+          "baselineText": "Irás a Villa Nébula, no a Puerto Arce.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-03-t2-intent",
+              "text": "Identificar Villa Nébula como destino actualizado.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t2-grounding",
+              "text": "No conservar Puerto Arce como destino actual; una comparación correcta con el anterior es admisible.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-03-t3",
+          "user": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?",
+          "baselineText": "Irás Puerto Arce.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-03-t3-intent",
+              "text": "Decir que aún no está en Villa Nébula y que sigue en Valdehumo.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t3-grounding",
+              "text": "No afirmar que ya viajó o llegó; el destino futuro no es la ubicación actual.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-03-t4",
+          "user": "Resume mi punto de salida y mi destino actual.",
+          "baselineText": "En Valdehumo y mañana voy a Puerto Arce.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-03-t4-intent",
+              "text": "Distinguir salida Valdehumo y destino Villa Nébula.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t4-grounding",
+              "text": "No invertir las ubicaciones ni recuperar Puerto Arce como destino vigente.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-03-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-04",
+      "turns": [
+        {
+          "id": "ngdev-v1-04-t1",
+          "user": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos.",
+          "baselineText": "De acuerdo, te escucho.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-04-t1-intent",
+              "text": "Acoger la intención de hablar del trabajo, sin convertirla en un plan de acción.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t1-grounding",
+              "text": "No dar consejos, tareas o soluciones; una invitación a contar más es admisible.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-04-t2",
+          "user": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso.",
+          "baselineText": "¿Qué quieres contarme sobre eso?",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-04-t2-intent",
+              "text": "Hacer una pregunta pertinente sobre esas interrupciones.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t2-grounding",
+              "text": "No cambiar de tema ni dar consejos; no inventar quién interrumpió ni por qué.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-04-t3",
+          "user": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?",
+          "baselineText": "Tu jefe se me has dicho el origen de que hace esta fue que me hace esta pregunta al hablar.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-04-t3-intent",
+              "text": "Identificar al compañero Taviro como quien interrumpió.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t3-grounding",
+              "text": "No atribuirlo al jefe ni alterar el nombre o el papel de Taviro.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-04-t4",
+          "user": "Sigo sin querer soluciones. ¿Qué situación estoy intentando contarte?",
+          "baselineText": "¿Qué te gustaría contar de eso?",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-04-t4-intent",
+              "text": "Reflejar que intenta contar las interrupciones al hablar en el trabajo.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t4-grounding",
+              "text": "Respetar que no quiere soluciones y no atribuir las interrupciones al jefe ni añadir sucesos no compartidos.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-04-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-05",
+      "turns": [
+        {
+          "id": "ngdev-v1-05-t1",
+          "user": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?",
+          "baselineText": "Se llama y?",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-05-t1-intent",
+              "text": "Nombrar Ventana Cobre y describirlo como una colección de cuentos breves.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t1-grounding",
+              "text": "No convertirlo en otro tipo de proyecto ni inventar un título distinto.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-05-t2",
+          "user": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?",
+          "baselineText": "Surgió de las historias que me has dicho el origen.",
+          "baselineGrade": "P",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-05-t2-intent",
+              "text": "Relacionar el origen de la idea con las historias de su abuelo.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t2-grounding",
+              "text": "No inventar un origen distinto, el nombre del abuelo ni hechos adicionales sobre él.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-05-t3",
+          "user": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?",
+          "baselineText": "Antes estabas en las historias que me has dicho el qué cambiado.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-05-t3-intent",
+              "text": "Explicar que cambió el título y que los cuentos permanecen.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t3-grounding",
+              "text": "No conservar el título antiguo como vigente ni afirmar que cambió el contenido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-05-t4",
+          "user": "¿Cómo se relaciona este proyecto con mi abuelo?",
+          "baselineText": "Dijiste Cuaderno.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-05-t4-intent",
+              "text": "Conectar el proyecto con las historias que contaba el abuelo como inspiración explícita.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t4-grounding",
+              "text": "No presentar al abuelo como coautor, financiador o lector actual, ni inventar su estado o sus intenciones.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-05-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-06",
+      "turns": [
+        {
+          "id": "ngdev-v1-06-t1",
+          "user": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?",
+          "baselineText": "No me has dicho el?",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-06-t1-intent",
+              "text": "Distinguir a Selvaria como hermana y a Darielvo como vecino.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t1-grounding",
+              "text": "No intercambiar las relaciones ni inventar parentescos.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t2",
+          "user": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?",
+          "baselineText": "Aelvaria; el violín y Darielvo es mi veci.",
+          "baselineGrade": "P",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-06-t2-intent",
+              "text": "Identificar a Selvaria como quien toca el violín.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t2-grounding",
+              "text": "No atribuir el violín a Darielvo ni sustituirlo por otro instrumento o persona.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t3",
+          "user": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?",
+          "baselineText": "Usarásvo es Unidad.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-06-t3-intent",
+              "text": "Aplicar la corrección: Selvaria cuida los cactus.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t3-grounding",
+              "text": "No mantener a Darielvo como quien cuida cactus; no cambiar cactus por helechos.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-06-t4",
+          "user": "¿Qué parentesco tengo con Selvaria y qué plantas cuida Darielvo?",
+          "baselineText": "En hermana; con Selvo es cactus.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-06-t4-intent",
+              "text": "Responder ambas partes: Selvaria es su hermana y Darielvo cuida helechos.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t4-grounding",
+              "text": "No intercambiar personas, plantas o relaciones, ni usar el dato de cactus anterior como vigente.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-06-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-07",
+      "turns": [
+        {
+          "id": "ngdev-v1-07-t1",
+          "user": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?",
+          "baselineText": "Enivia el jueves a las cinco.",
+          "baselineGrade": "C",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-07-t1-intent",
+              "text": "Identificar jueves y las cinco.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t1-grounding",
+              "text": "No inventar una fecha de calendario ni cambiar día u hora.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-07-t2",
+          "user": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?",
+          "baselineText": "Aamosves a las cinco.",
+          "baselineGrade": "P",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-07-t2-intent",
+              "text": "Aplicar sábado y conservar las cinco.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t2-grounding",
+              "text": "No mantener jueves como día actual ni cambiar la hora por su cuenta.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-07-t3",
+          "user": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?",
+          "baselineText": "En la cita con igualamos las cinco.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-07-t3-intent",
+              "text": "Nombrar la biblioteca del Olmo como lugar de la cita.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t3-grounding",
+              "text": "No inventar otro sitio ni afirmar que la cita ya ocurrió.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-07-t4",
+          "user": "Recuérdame el día, la hora y el lugar actuales.",
+          "baselineText": "La hora es las cinco.",
+          "baselineGrade": "P",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-07-t4-intent",
+              "text": "Recuperar las tres partes: sábado, las cinco y biblioteca del Olmo.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t4-grounding",
+              "text": "No recuperar jueves como fecha vigente ni inventar la hora o el sitio.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-07-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-08",
+      "turns": [
+        {
+          "id": "ngdev-v1-08-t1",
+          "user": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?",
+          "baselineText": "Antes tenías van las plantas; empiego las plantas y revisar un borrador.",
+          "baselineGrade": "P",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-08-t1-intent",
+              "text": "Identificar regar las plantas como primera tarea.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t1-grounding",
+              "text": "No invertir el orden ni afirmar que ya realizó ninguna tarea.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t2",
+          "user": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?",
+          "baselineText": "Antes plantas y revisaré un borrador.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-08-t2-intent",
+              "text": "Actualizar la prioridad a revisar el borrador.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t2-grounding",
+              "text": "No conservar las plantas como prioridad actual ni añadir tareas nuevas.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t3",
+          "user": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?",
+          "baselineText": "Sicero vangas un borrador.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-08-t3-intent",
+              "text": "Identificar regar las plantas como lo que sigue al borrador.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t3-grounding",
+              "text": "No afirmar acciones realizadas o herramientas ejecutadas; no convertirlo en un plan extra.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-08-t4",
+          "user": "¿Qué cambié respecto al comienzo?",
+          "baselineText": "Sicero es vangas.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-08-t4-intent",
+              "text": "Contrastar el orden inicial con el actual: plantas primero pasó a borrador primero.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t4-grounding",
+              "text": "No decir que añadió o eliminó tareas ni invertir ambos órdenes.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-08-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-09",
+      "turns": [
+        {
+          "id": "ngdev-v1-09-t1",
+          "user": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?",
+          "baselineText": "No me has dicho el origen Laderas de Sal.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-09-t1-intent",
+              "text": "Recuperar el título Laderas de Sal.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t1-grounding",
+              "text": "No cambiar el título ni inventar detalles sobre el libro.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-09-t2",
+          "user": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?",
+          "baselineText": "No me has dicho el origen Laderas de Sal.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-09-t2-intent",
+              "text": "Reconocer que la conversación no permite identificar al autor.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t2-grounding",
+              "text": "No inventar un autor ni atribuirlo a alguien por familiaridad con el título.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-09-t3",
+          "user": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?",
+          "baselineText": "Quieres?",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-09-t3-intent",
+              "text": "Relacionarlo con el club de lectura del domingo.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t3-grounding",
+              "text": "No inventar otra finalidad ni afirmar que ya leyó o compró el libro.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-09-t4",
+          "user": "¿Qué sabemos del libro y qué dato nos sigue faltando?",
+          "baselineText": "Quieres Sal.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-09-t4-intent",
+              "text": "Separar título y finalidad conocidos del autor desconocido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t4-grounding",
+              "text": "No inventar el autor ni convertirlo en un dato conocido; no añadir información del libro que el usuario no dio.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-09-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-10",
+      "turns": [
+        {
+          "id": "ngdev-v1-10-t1",
+          "user": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?",
+          "baselineText": "No me has dicho el material.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-10-t1-intent",
+              "text": "Vincular despejarse con pasear a Trazuli.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t1-grounding",
+              "text": "No inventar otra actividad ni un efecto clínico o personal que no se haya compartido.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t1-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t2",
+          "user": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?",
+          "baselineText": "Antes ayuda amanecer me despeja.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-10-t2-intent",
+              "text": "Identificar el paseo como lo inmediatamente anterior a escribir.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t2-grounding",
+              "text": "No invertir la secuencia ni añadir una actividad intermedia.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t2-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t3",
+          "user": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?",
+          "baselineText": "Surgió pasear, escribo Trazuli al amanecer me despeja.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-10-t3-intent",
+              "text": "Actualizar la hora del paseo a anochecer.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t3-grounding",
+              "text": "No conservar amanecer como horario actual ni cambiar la actividad o el animal.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t3-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        },
+        {
+          "id": "ngdev-v1-10-t4",
+          "user": "Relaciona el paseo con lo que hago después, sin inventar nada más.",
+          "baselineText": "Antes de pasear, sin prociona el habito.",
+          "baselineGrade": "F",
+          "constraints": [
+            {
+              "constraintId": "ngdev-v1-10-t4-intent",
+              "text": "Conectar el paseo anterior con escribir después, manteniendo el orden.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t4-grounding",
+              "text": "No invertir la secuencia, atribuirle efectos nuevos ni usar amanecer como horario vigente si menciona la hora.",
+              "critical": true
+            },
+            {
+              "constraintId": "ngdev-v1-10-t4-clarity",
+              "text": "Responder en español inteligible; admitir una paráfrasis o puntuación menor que conserve los hechos y la intención.",
+              "critical": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

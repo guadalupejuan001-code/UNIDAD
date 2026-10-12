@@ -1,0 +1,18 @@
+{
+  "createdAtUnix": 1791830956.9572449,
+  "parents": [
+    "varied-s2-last",
+    "varied-s3-last"
+  ],
+  "coefficients": [
+    0.5,
+    0.5
+  ],
+  "hypothesis": "Adjacent same-run checkpoints have different generation failures under a constant learning rate. One arithmetic weight average may reduce that instability.",
+  "candidatesAllowed": 1,
+  "extraTraining": false,
+  "freshTransferOpened": false,
+  "developmentSelection": "Compare the same known 40 turns and paraphrase diagnostics. Keep prior best unless this candidate improves F without critical count above C7.",
+  "inspiration": "https://arxiv.org/abs/1803.05407",
+  "limitation": "Inspired by weight averaging; not a reproduction of the cited SGD/SWA experiments, and no guarantee of benefit for this small AdamW transformer."
+}
