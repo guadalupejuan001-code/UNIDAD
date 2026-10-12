@@ -232,3 +232,11 @@ python weights-packages/unidad-contraste-relacional-20261012/reconstruir.py
 ```
 
 Obtendrás el ZIP completo para usar el restaurador descrito arriba. Esta subida conserva modelos experimentales; no los promueve ni inicia entrenamiento.
+
+## Coherencia actualizada después de la entrega
+
+La auditoría posterior actualizó [el estado actual de main](https://github.com/guadalupejuan001-code/UNIDAD/blob/main/docs/ESTADO_ACTUAL.md), README, órdenes, guía, índice de modelos y cuerpos de los cuatro PR. La corrección comprobada del evaluador de 40 turnos se incorporó a main sin fusionar los cambios experimentales del motor o exportador. Los commits main a1 y upload 9747 citados en recibos fechados describen sus observaciones anteriores; no son una promesa de que esas ramas permanezcan siempre en aquellos commits.
+
+Se verificaron 131 copias exactas de evidencia, 480 respuestas nuevas y 720 filas de revisión, sin corregir las respuestas ni sus etiquetas. Los 44 archivos de once modelos publicados coinciden con los manifiestos y GitHub. C7 ya tenía sus pesos de inferencia en main antes de subir el paquete relacional: la afirmación global de que los pesos no estaban en GitHub era imprecisa. Lo subido después añade los nuevos candidatos y checkpoints completos. La revisión administrativa no cambia la selección, las métricas ni los hashes de los modelos.
+
+La descripción genérica del repositorio sigue siendo verdadera; GitHub rechazó su edición con 403 «Resource not accessible by integration». Esta limitación no impidió actualizar los archivos y cuerpos de PR. El [recibo de metadatos](github-coherence-audit-20261012/pr-metadata-receipt.json) conserva los resultados. No se reinició entrenamiento ni se declaró aceptada la conversación.
