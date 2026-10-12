@@ -1,0 +1,15 @@
+======================================================================
+FAIL: test_detached_planned_stop_and_invalid_worker_status (test_conversation_training.ConversationTrainingTests.test_detached_planned_stop_and_invalid_worker_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cee2efe6e4f7/unidad-baseline-tests/tests/test_conversation_training.py", line 962, in test_detached_planned_stop_and_invalid_worker_status
+    self.assertEqual(value["status"], "failed", value)
+AssertionError: 'stale' != 'failed'
+- stale
++ failed
+ : {'environmentLifetimeGuaranteed': False, 'heartbeatAt': 1791825859.1532385, 'pid': 24, 'processBirth': None, 'reason': 'worker_not_alive', 'schemaVersion': 1, 'status': 'stale', 'processAlive': False, 'heartbeatAgeSeconds': 0.0035827159881591797, 'recordedStatus': 'planned'}
+
+----------------------------------------------------------------------
+Ran 1 test in 8.118s
+
+FAILED (failures=1)

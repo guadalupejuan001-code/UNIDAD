@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-12",
+  "sourceCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+  "goal": {
+    "knownDevelopmentFailedTurnsAtMost": 14,
+    "baselineFailedTurns": 28,
+    "criticalFailuresAtMost": 6,
+    "officialAcceptanceUnchanged": {
+      "completeTurns": 36,
+      "turns": 40,
+      "completeDialogs": 8,
+      "dialogs": 10,
+      "criticalFailures": 0
+    }
+  },
+  "result": {
+    "goalReached": false,
+    "promoteCandidate": false,
+    "retainedReference": "models/conversation-reference-c7",
+    "trainingActiveAtDelivery": false,
+    "reason": "Neither matched variant improves the known regression suite; later lower-NLL checkpoints reduce complete answers and increase critical failures."
+  },
+  "baseline": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "weightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+    "exactReproductions": 40,
+    "knownDevelopment": {
+      "C": 7,
+      "P": 5,
+      "F": 28
+    },
+    "criticalFailureTurns": 6,
+    "freshTransfer": {
+      "C": 0,
+      "P": 1,
+      "F": 19,
+      "total": 20,
+      "nonComplete": 20,
+      "criticalFailureTurns": 1,
+      "completeDialogs": 0,
+      "dialogs": 5
+    }
+  },
+  "learningControl": {
+    "trainExamples": 16,
+    "beforeExact": 0,
+    "afterExact": 16,
+    "stepsRun": 64,
+    "selectedStep": 32,
+    "generalizationClaim": false
+  },
+  "corpus": {
+    "schemaVersion": 1,
+    "seed": 20261012,
+    "records": {
+      "train": 4224,
+      "validation": 384
+    },
+    "groups": {
+      "train": 88,
+      "validation": 8
+    },
+    "testPartitionPresent": false,
+    "discarded": [],
+    "corpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "authoringScriptSha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9",
+    "maxReplyTargets": 25,
+    "maxContextTokens": 255,
+    "familyCounts": {
+      "preferred_address": 384,
+      "missing_information": 384,
+      "current_and_future_place": 384,
+      "listening": 384,
+      "project_change": 384,
+      "two_people": 384,
+      "reschedule": 384,
+      "task_order": 384,
+      "unknown_author": 384,
+      "daily_sequence": 384,
+      "two_objects": 384,
+      "limits_and_identity": 384
+    },
+    "knownDevelopmentRead": false,
+    "inferenceTemplates": false
+  },
+  "splitAudit": {
+    "knownUserPromptOverlap": 0,
+    "freshUserPromptOverlap": 0,
+    "familyLeakage": false,
+    "knownDevSha256": "59f9097815b988e5046a72e729e53359ba6aaf05848c592d9a67953e3f27608b",
+    "freshProbeSha256": "2d1b04daca63e36d1674848524c40dbdfe1cdeb2f7bcbd9f1aea22b252d5f807",
+    "note": "Audit performed after authoring. Generic task types overlap known development; no claim of unseen-family generalization."
+  },
+  "models": [
+    {
+      "id": "pointer-v1-step128",
+      "comparison": "matched common step",
+      "modelId": "unidad-conversation-f3f4dec9186f86d54272a26bce1bc061002af82840f0f56ed9404f315e2688a7",
+      "weightsSha256": "481995f9baef452e9f6467dc3d2986e770d52429ede0b7eb03311baa8d62efbe",
+      "config": {
+        "context_length": 512,
+        "copy_head": {
+          "rank": 32,
+          "seed": 47,
+          "version": 1
+        },
+        "d_model": 256,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "n_heads": 8,
+        "n_layers": 6,
+        "seed": 42,
+        "vocab_size": 8192
+      },
+      "selectedStep": 128,
+      "knownDevelopment": {
+        "C": 7,
+        "P": 4,
+        "F": 29,
+        "total": 40,
+        "nonComplete": 33,
+        "criticalFailureTurns": 7,
+        "completeDialogs": 0,
+        "dialogs": 10
+      },
+      "reviewer": {
+        "kind": "project AI assistant",
+        "human": false,
+        "independent": false,
+        "blinded": false
+      },
+      "actualOutputSha256": "c5c1a48ad3a36416d7abf0bdf23e28494b17da21c768d9b18143d7613f2dd2ff"
+    },
+    {
+      "id": "pointer-v2-step128",
+      "comparison": "matched common step",
+      "modelId": "unidad-conversation-e4558c104703c67bacefa277e6c9bfcbcf9e235db03379c0b8f16dadbf2e9572",
+      "weightsSha256": "9e6fcdbbb02ff4940f322f54a8f31748898c191203ab4126caa3ad8cfed57c52",
+      "config": {
+        "context_length": 512,
+        "copy_head": {
+          "rank": 32,
+          "seed": 47,
+          "version": 2
+        },
+        "d_model": 256,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "n_heads": 8,
+        "n_layers": 6,
+        "seed": 42,
+        "vocab_size": 8192
+      },
+      "selectedStep": 128,
+      "knownDevelopment": {
+        "C": 1,
+        "P": 5,
+        "F": 34,
+        "total": 40,
+        "nonComplete": 39,
+        "criticalFailureTurns": 5,
+        "completeDialogs": 0,
+        "dialogs": 10
+      },
+      "reviewer": {
+        "kind": "project AI assistant",
+        "human": false,
+        "independent": false,
+        "blinded": false
+      },
+      "actualOutputSha256": "2432a3220bcbaef2e014d626bc4efd83b1fad7bc85a3ecae39ad39d3fe69f20e"
+    },
+    {
+      "id": "pointer-v1-best",
+      "comparison": "validation-selected; unequal endpoint",
+      "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+      "weightsSha256": "3e97b00c4373cb2e114bdfc6ac22b18e90bf1a3159dcf274ed3fb5245233301f",
+      "config": {
+        "context_length": 512,
+        "copy_head": {
+          "rank": 32,
+          "seed": 47,
+          "version": 1
+        },
+        "d_model": 256,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "n_heads": 8,
+        "n_layers": 6,
+        "seed": 42,
+        "vocab_size": 8192
+      },
+      "selectedStep": 254,
+      "knownDevelopment": {
+        "C": 5,
+        "P": 10,
+        "F": 25,
+        "total": 40,
+        "nonComplete": 35,
+        "criticalFailureTurns": 11,
+        "completeDialogs": 0,
+        "dialogs": 10
+      },
+      "reviewer": {
+        "kind": "project AI assistant",
+        "human": false,
+        "independent": false,
+        "blinded": false
+      },
+      "actualOutputSha256": "6068af9a8b150ccb445e8c45cf4db951cf9ed8bddec48392826d3622f1eae5c8",
+      "freshTransfer": {
+        "C": 0,
+        "P": 2,
+        "F": 18,
+        "total": 20,
+        "nonComplete": 20,
+        "criticalFailureTurns": 2,
+        "completeDialogs": 0,
+        "dialogs": 5
+      }
+    },
+    {
+      "id": "pointer-v2-best",
+      "comparison": "validation-selected; unequal endpoint",
+      "modelId": "unidad-conversation-75ba203b04fb25ae2dcc0f4cc2dda7aaa30aa6cac5be3cd7a026c5c935390a40",
+      "weightsSha256": "5d698e6dcdd8e48c00a9eda216014baad772da3be3f6ed5c76507c1eaaa61115",
+      "config": {
+        "context_length": 512,
+        "copy_head": {
+          "rank": 32,
+          "seed": 47,
+          "version": 2
+        },
+        "d_model": 256,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "n_heads": 8,
+        "n_layers": 6,
+        "seed": 42,
+        "vocab_size": 8192
+      },
+      "selectedStep": 238,
+      "knownDevelopment": {
+        "C": 2,
+        "P": 9,
+        "F": 29,
+        "total": 40,
+        "nonComplete": 38,
+        "criticalFailureTurns": 8,
+        "completeDialogs": 0,
+        "dialogs": 10
+      },
+      "reviewer": {
+        "kind": "project AI assistant",
+        "human": false,
+        "independent": false,
+        "blinded": false
+      },
+      "actualOutputSha256": "0c75ee6aedc9ae6a5739451514b1a278d871140545096302cf959e1806b2ec3b",
+      "freshTransfer": {
+        "C": 0,
+        "P": 1,
+        "F": 19,
+        "total": 20,
+        "nonComplete": 20,
+        "criticalFailureTurns": 0,
+        "completeDialogs": 0,
+        "dialogs": 5
+      }
+    }
+  ],
+  "runs": {
+    "v1": {
+      "assistantTargets": "last_reply_only",
+      "auxiliaryLossSplit": "train_only",
+      "bestCheckpoint": "step-000000254-e930c196fa3b4f05b6e78f85601aeb5f",
+      "bestValidationNll": 0.05371883757102919,
+      "cooperativeSignalInstalled": false,
+      "copySupervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      },
+      "corpusFormat": "messages",
+      "corpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+      "elapsedSeconds": 621.2997938389999,
+      "environmentLifetimeGuaranteed": false,
+      "epoch": 0,
+      "experimental": true,
+      "heartbeatAt": 1791826317.809372,
+      "lastCheckpoint": "step-000000254-bf8e5b7bc8ef4201ab3d6a7ee3dcdd35",
+      "lineage": {
+        "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+        "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "rootOrigin": "random_weights"
+      },
+      "lossReduction": "token_mean",
+      "optimizerReset": true,
+      "partitionPolicy": "train_validation_only",
+      "pid": 2,
+      "processBirth": null,
+      "projectionMode": "supervised",
+      "reason": "total_time_budget",
+      "reportedNll": "prediction_cross_entropy_only",
+      "schedulerReset": true,
+      "schemaVersion": 1,
+      "status": "completed",
+      "step": 254,
+      "testPartitionPresent": false,
+      "trainPrecision": "cpu_bfloat16",
+      "trainedFrom": "own_checkpoint",
+      "trainingObjective": "assistant_last_reply"
+    },
+    "v2": {
+      "assistantTargets": "last_reply_only",
+      "auxiliaryLossSplit": "train_only",
+      "bestCheckpoint": "step-000000238-96f55a5f8905485bb2a3ebf3d226aaf9",
+      "bestValidationNll": 0.11488124577036576,
+      "cooperativeSignalInstalled": false,
+      "copySupervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      },
+      "corpusFormat": "messages",
+      "corpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+      "elapsedSeconds": 615.3245222989999,
+      "environmentLifetimeGuaranteed": false,
+      "epoch": 0,
+      "experimental": true,
+      "heartbeatAt": 1791826400.557095,
+      "lastCheckpoint": "step-000000238-9c42ad0d48c04df8b6c34a3e30a44aec",
+      "lineage": {
+        "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+        "parentModelId": "unidad-conversation-100c58b7cf39a009acb671408f9bf6b02c380da1f6fd09d09d35eb46d1fc4cc0",
+        "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "rootOrigin": "random_weights"
+      },
+      "lossReduction": "token_mean",
+      "optimizerReset": true,
+      "partitionPolicy": "train_validation_only",
+      "pid": 2,
+      "processBirth": null,
+      "projectionMode": "supervised",
+      "reason": "total_time_budget",
+      "reportedNll": "prediction_cross_entropy_only",
+      "schedulerReset": true,
+      "schemaVersion": 1,
+      "status": "completed",
+      "step": 238,
+      "testPartitionPresent": false,
+      "trainPrecision": "cpu_bfloat16",
+      "trainedFrom": "own_checkpoint",
+      "trainingObjective": "assistant_last_reply"
+    }
+  },
+  "matchedComparison": {
+    "step": 128,
+    "reason": "Prospective compute-budget amendment before either arm reached step128; final endpoints 254 and 238 are unequal and not a controlled architecture comparison."
+  },
+  "generation": {
+    "engine": "ConversationEngine",
+    "maxNewTokens": 32,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "history": "actual_generated_assistant_replies"
+  },
+  "inferenceTemplates": false,
+  "externalModelWeights": false,
+  "review": {
+    "type": "manual semantic review by same-project AI",
+    "human": false,
+    "independent": false,
+    "blinded": false,
+    "knownDevelopmentIsNotFinalTest": true,
+    "freshProbeUsedForSelection": false
+  },
+  "findings": [
+    {
+      "status": "observed",
+      "claim": "The original checkpoint reproduces all40 archived replies exactly; gross artifact-loading or environment differences do not explain the known failures."
+    },
+    {
+      "status": "observed",
+      "claim": "The model can memorize16 training answers exactly after a small continuation."
+    },
+    {
+      "status": "observed",
+      "claim": "Validation NLL dropped from2.741646 to0.053719 for v1, yet complete known replies fell from7 to5 and fresh complete replies remained0/20."
+    },
+    {
+      "status": "inference",
+      "claim": "Transfer beyond the authored wording and stability under generated history are major unresolved learning problems; low teacher-forced validation loss is an inadequate quality selection signal here."
+    },
+    {
+      "status": "observed",
+      "claim": "The proposed current-token copy key worsened the matched128-step result; reject it for promotion under this experiment."
+    },
+    {
+      "status": "observed",
+      "claim": "Both random and inherited comparable64-step controls memorize16/16 TRAIN answers. On one validation world, changing only the first-turn wording reduces exact matches7/8→0/8; semantic complete answers7/8→1/8. This effect occurs without earlier assistant replies."
+    }
+  ],
+  "evaluationFix": {
+    "file": "examples/run_basic_acceptance.py",
+    "requiredTurns": 40,
+    "turnsPerDialog": 4,
+    "completeTurnsMinimum": 36,
+    "completeDialogsMinimum": 8,
+    "casesAndRubricHashBound": true,
+    "emptyRepliesCannotPass": true,
+    "actualHistoryValidation": true,
+    "newTestsPassed": 15
+  },
+  "limitations": [
+    "One own initialization, one short continuation seed; not a broad architecture study.",
+    "Authored templates are shared across training/validation worlds; validation loss is in-template generalization, not conversational acceptance.",
+    "Manual grades are not blind or independent; borderline C/P/F can vary but no candidate is near36/40 or the14-F goal.",
+    "Training budget includes a final validation/checkpoint overrun; endpoints are254 and238, not256.",
+    "A detached-worker liveness test fails in this environment on both original and modified code."
+  ],
+  "researchMotivation": [
+    {
+      "url": "https://aclanthology.org/P17-1099/",
+      "use": "Source copying as an experimental motivation only; the paper is not evidence that the tested change improves Unidad."
+    }
+  ],
+  "latestRepositoryContext": {
+    "commit": "a1a283caabf89b3191c8ce64c2a950e9edbb0edf",
+    "change": "Support complete longer replies in native copy supervision; updated orders ask for comparable random-weight controls",
+    "experimentalSourceRemains": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+    "publicationPreservesNewRemoteChanges": true
+  },
+  "randomWeightControl": {
+    "initialization": "own random tensors; same architecture and own C7 tokenizer",
+    "steps": 64,
+    "count": 16,
+    "exactMatches": 16,
+    "inheritedFixed64ExactMatches": 16,
+    "modelId": "unidad-conversation-ee1ef69f190be32cdd02c258c177d9435238aa13c409b4507b3a7ee1b5e06c48",
+    "inheritedModelId": "unidad-conversation-f369fc18cbd63055de86086ebbd612a1126dca6cb506c9a14b2393aef93802d8",
+    "generalizationClaim": false
+  },
+  "wordingProbe": {
+    "exactMatches": {
+      "original": 7,
+      "paraphrase": 0
+    },
+    "semanticReview": {
+      "reviewer": "same-project AI; unblinded, nonhuman, nonindependent",
+      "originalGrades": [
+        "C",
+        "C",
+        "C",
+        "C",
+        "F",
+        "C",
+        "C",
+        "C"
+      ],
+      "paraphraseGrades": [
+        "F",
+        "P",
+        "F",
+        "C",
+        "F",
+        "P",
+        "F",
+        "P"
+      ],
+      "originalComplete": 7,
+      "paraphraseComplete": 1,
+      "count": 8,
+      "notes": [
+        "The original project answer distorts its title; the seven other originals match their targets exactly.",
+        "The reformulated listening answer Antes. ¿Qué ocurrió? remains a valid invitation to speak, despite a stray word.",
+        "The reformulated color-unknown, appointment and title answers retain partial information.",
+        "Exact-match0/8 does not mean every paraphrased answer is semantically wrong."
+      ],
+      "use": "Post-hoc diagnosis only; never checkpoint selection or training."
+    },
+    "sameModelAndFacts": true,
+    "earlierAssistantHistoryUsed": false,
+    "postHoc": true,
+    "trainingPerformed": false
+  }
+}

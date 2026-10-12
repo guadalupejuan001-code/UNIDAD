@@ -1,0 +1,1664 @@
+{
+  "purpose": "Small TRAIN-only memorization check, with authored earlier assistant history; NOT generalization or actual-history conversation acceptance",
+  "records": [
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-preferred_address-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Soy Paula Hidalgo; quiero que me digas Chispa. ¿Qué nombre usarás conmigo?"
+        }
+      ],
+      "target": "Te llamaré Chispa.",
+      "actual": {
+        "text": "Soy Unidad Hidalgo; ahora pides Chispa.",
+        "generatedTokenIds": [
+          56,
+          945,
+          665,
+          361,
+          447,
+          1038,
+          285,
+          396,
+          32,
+          3208,
+          1034,
+          428,
+          706,
+          344,
+          433,
+          19,
+          2
+        ],
+        "generatedTokens": 17,
+        "stopReason": "eos",
+        "promptTokens": 77,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-preferred_address-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Soy Paula Hidalgo; quiero que me digas Chispa. ¿Qué nombre usarás conmigo?"
+        },
+        {
+          "role": "assistant",
+          "content": "Te llamaré Chispa."
+        },
+        {
+          "role": "user",
+          "content": "Esta tarde quiero leer una novela. ¿Qué quiero hacer?"
+        },
+        {
+          "role": "assistant",
+          "content": "Quieres leer una novela."
+        },
+        {
+          "role": "user",
+          "content": "He cambiado de idea: prefiero Nube. ¿Qué apodo usarás ahora?"
+        }
+      ],
+      "target": "Ahora te llamaré Nube.",
+      "actual": {
+        "text": "Quieres que me;: prefieres Nube.",
+        "generatedTokenIds": [
+          4518,
+          3552,
+          300,
+          421,
+          32,
+          31,
+          5699,
+          3552,
+          440,
+          4849,
+          19,
+          2
+        ],
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "promptTokens": 130,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-missing_information-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+        }
+      ],
+      "target": "No; todavía no me has dicho su color.",
+      "actual": {
+        "text": "No has dicho el color de una color es.",
+        "generatedTokenIds": [
+          1581,
+          4220,
+          4535,
+          293,
+          1691,
+          264,
+          337,
+          1691,
+          315,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 72,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-missing_information-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+        },
+        {
+          "role": "assistant",
+          "content": "No; todavía no me has dicho su color."
+        },
+        {
+          "role": "user",
+          "content": "El abrigo es amarillo. ¿Qué color tiene?"
+        },
+        {
+          "role": "assistant",
+          "content": "Es amarillo."
+        },
+        {
+          "role": "user",
+          "content": "Me lo dio Paula Hidalgo. ¿Quién me dio el abrigo?"
+        }
+      ],
+      "target": "Te lo dio Paula Hidalgo.",
+      "actual": {
+        "text": "El abrigo es amarillo.",
+        "generatedTokenIds": [
+          569,
+          737,
+          316,
+          396,
+          315,
+          7844,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 125,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-current_and_future_place-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Ahora estoy en Ladera Clara; el próximo viaje será a Ribera Blanca. ¿Dónde estoy?"
+        }
+      ],
+      "target": "Estás en Ladera Clara.",
+      "actual": {
+        "text": "Estás en Ladera Clara; no me has dicho el próxica.",
+        "generatedTokenIds": [
+          1618,
+          377,
+          286,
+          488,
+          1117,
+          7732,
+          70,
+          32,
+          409,
+          421,
+          4220,
+          4535,
+          293,
+          6389,
+          401,
+          19,
+          2
+        ],
+        "generatedTokens": 17,
+        "stopReason": "eos",
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-current_and_future_place-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Ahora estoy en Ladera Clara; el próximo viaje será a Ribera Blanca. ¿Dónde estoy?"
+        },
+        {
+          "role": "assistant",
+          "content": "Estás en Ladera Clara."
+        },
+        {
+          "role": "user",
+          "content": "Finalmente iré a Isla Tranquila en lugar de Ribera Blanca. ¿Cuál es el nuevo destino?"
+        },
+        {
+          "role": "assistant",
+          "content": "Irás a Isla Tranquila."
+        },
+        {
+          "role": "user",
+          "content": "No he salido de Ladera Clara. ¿Estoy ya en Isla Tranquila?"
+        }
+      ],
+      "target": "No, sigues en Ladera Clara.",
+      "actual": {
+        "text": "Irás a Isla en lugarquila en lugarquila Tranquila en lugar.",
+        "generatedTokenIds": [
+          46,
+          87,
+          377,
+          275,
+          1943,
+          340,
+          286,
+          927,
+          437,
+          340,
+          286,
+          927,
+          437,
+          340,
+          385,
+          376,
+          437,
+          340,
+          286,
+          927,
+          19,
+          2
+        ],
+        "generatedTokens": 22,
+        "stopReason": "eos",
+        "promptTokens": 152,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-listening-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+        }
+      ],
+      "target": "Te escucho. ¿Qué ocurrió?",
+      "actual": {
+        "text": "Te escucho. ¿Qué quieres contarme sobre sin consejos.",
+        "generatedTokenIds": [
+          2629,
+          2794,
+          1146,
+          19,
+          1072,
+          2345,
+          3073,
+          4481,
+          581,
+          609,
+          727,
+          4602,
+          19,
+          2
+        ],
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "promptTokens": 68,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-listening-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+        },
+        {
+          "role": "assistant",
+          "content": "Te escucho. ¿Qué ocurrió?"
+        },
+        {
+          "role": "user",
+          "content": "Me molestó que alguien cambiara mi trabajo sin preguntarme. Hazme una pregunta."
+        },
+        {
+          "role": "assistant",
+          "content": "¿Quién cambió tu trabajo?"
+        },
+        {
+          "role": "user",
+          "content": "Fue mi colega Paula Hidalgo, no mi hermana. ¿Quién lo hizo?"
+        }
+      ],
+      "target": "Lo hizo tu colega Paula Hidalgo.",
+      "actual": {
+        "text": "Quieres que proponga un primer paso.",
+        "generatedTokenIds": [
+          4518,
+          3552,
+          300,
+          370,
+          729,
+          547,
+          297,
+          1031,
+          2683,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 133,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-project_change-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "El proyecto Notas del camino reúne dibujos. ¿Qué es y cómo se llama?"
+        }
+      ],
+      "target": "Notas del camino es tu proyecto de dibujos.",
+      "actual": {
+        "text": "Se llama Notas del camino; se llama?",
+        "generatedTokenIds": [
+          1350,
+          4004,
+          1191,
+          506,
+          331,
+          3324,
+          32,
+          313,
+          4004,
+          36,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 70,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-project_change-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "El proyecto Notas del camino reúne dibujos. ¿Qué es y cómo se llama?"
+        },
+        {
+          "role": "assistant",
+          "content": "Notas del camino es tu proyecto de dibujos."
+        },
+        {
+          "role": "user",
+          "content": "Surgió de las tardes en que dibujaba con mi abuela. ¿Cuál fue su origen?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surgió de las tardes dibujando con tu abuela."
+        },
+        {
+          "role": "user",
+          "content": "Ahora se llamará Luces de la noche; seguirá reuniendo dibujos. ¿Qué cambia?"
+        }
+      ],
+      "target": "Cambia el nombre a Luces de la noche; siguen siendo dibujos.",
+      "actual": {
+        "text": "Suruela.",
+        "generatedTokenIds": [
+          56,
+          509,
+          1484,
+          19,
+          2
+        ],
+        "generatedTokens": 5,
+        "stopReason": "eos",
+        "promptTokens": 149,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-two_people-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Paula Hidalgo es mi hermana y Braulio Campos es mi vecino. Dime quién es cada uno."
+        }
+      ],
+      "target": "Paula Hidalgo es tu hermana; Braulio Campos, tu vecino.",
+      "actual": {
+        "text": "Suralgo es de mi vecino.",
+        "generatedTokenIds": [
+          56,
+          509,
+          285,
+          396,
+          315,
+          264,
+          557,
+          6442,
+          634,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 77,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-two_people-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Paula Hidalgo es mi hermana y Braulio Campos es mi vecino. Dime quién es cada uno."
+        },
+        {
+          "role": "assistant",
+          "content": "Paula Hidalgo es tu hermana; Braulio Campos, tu vecino."
+        },
+        {
+          "role": "user",
+          "content": "Paula Hidalgo canta y Braulio Campos cultiva rosas. ¿Quién canta?"
+        },
+        {
+          "role": "assistant",
+          "content": "Canta Paula Hidalgo."
+        },
+        {
+          "role": "user",
+          "content": "Corrijo: Paula Hidalgo cultiva las rosas; Braulio Campos cultiva tulipanes. ¿Quién cuida las rosas?"
+        }
+      ],
+      "target": "Paula Hidalgo cuida las rosas.",
+      "actual": {
+        "text": "Tu hermana Hidalgo cullio Campos cullio Campos cullio Campos culpan.",
+        "generatedTokenIds": [
+          8092,
+          7385,
+          447,
+          1038,
+          285,
+          396,
+          1081,
+          857,
+          1396,
+          613,
+          1081,
+          857,
+          1396,
+          613,
+          1081,
+          857,
+          1396,
+          613,
+          1081,
+          2173,
+          19,
+          2
+        ],
+        "generatedTokens": 22,
+        "stopReason": "eos",
+        "promptTokens": 177,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-reschedule-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Quedé con Paula Hidalgo el jueves a las dos. ¿Cuándo nos vemos?"
+        }
+      ],
+      "target": "El jueves a las dos.",
+      "actual": {
+        "text": "Surgió a las dos.",
+        "generatedTokenIds": [
+          56,
+          509,
+          4642,
+          275,
+          362,
+          709,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 74,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-reschedule-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Quedé con Paula Hidalgo el jueves a las dos. ¿Cuándo nos vemos?"
+        },
+        {
+          "role": "assistant",
+          "content": "El jueves a las dos."
+        },
+        {
+          "role": "user",
+          "content": "La cita pasa al lunes, a la misma hora. ¿Cuándo será?"
+        },
+        {
+          "role": "assistant",
+          "content": "El lunes a las dos."
+        },
+        {
+          "role": "user",
+          "content": "Nos reuniremos en el centro cultural. ¿Dónde será?"
+        }
+      ],
+      "target": "En el centro cultural.",
+      "actual": {
+        "text": "Nos deNos de el centro cultural a la misma Hidalgo el centro cultural a la misma Hidalgo el centro cultural a la misma",
+        "generatedTokenIds": [
+          51,
+          266,
+          264,
+          51,
+          266,
+          264,
+          293,
+          2381,
+          4644,
+          275,
+          283,
+          1911,
+          447,
+          1038,
+          285,
+          396,
+          293,
+          2381,
+          4644,
+          275,
+          283,
+          1911,
+          447,
+          1038,
+          285,
+          396,
+          293,
+          2381,
+          4644,
+          275,
+          283,
+          1911
+        ],
+        "generatedTokens": 32,
+        "stopReason": "token_budget",
+        "promptTokens": 129,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-task_order-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Haré dos cosas: leer una novela y limpiar la cocina, en ese orden. ¿Qué va primero?"
+        }
+      ],
+      "target": "Primero vas a leer una novela.",
+      "actual": {
+        "text": "Todavía no has dicho el material y limpiar la cocina, la baar la baar la baé dos cosas.",
+        "generatedTokenIds": [
+          4092,
+          338,
+          2590,
+          409,
+          4220,
+          4535,
+          293,
+          3057,
+          292,
+          4575,
+          78,
+          269,
+          283,
+          5958,
+          17,
+          283,
+          1692,
+          269,
+          283,
+          1692,
+          269,
+          283,
+          1692,
+          319,
+          709,
+          2487,
+          19,
+          2
+        ],
+        "generatedTokens": 28,
+        "stopReason": "eos",
+        "promptTokens": 75,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "baseline",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "recordId": "repair-20261012-world-000-task_order-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Haré dos cosas: leer una novela y limpiar la cocina, en ese orden. ¿Qué va primero?"
+        },
+        {
+          "role": "assistant",
+          "content": "Primero vas a leer una novela."
+        },
+        {
+          "role": "user",
+          "content": "Invierto el orden: primero voy a limpiar la cocina. ¿Qué haré antes?"
+        },
+        {
+          "role": "assistant",
+          "content": "Primero vas a limpiar la cocina."
+        },
+        {
+          "role": "user",
+          "content": "Sólo dime qué actividad viene después; no realices nada."
+        }
+      ],
+      "target": "Después vas a leer una novela.",
+      "actual": {
+        "text": "Antes tenías limpiar la cocina, la cocina, la cocina, la cocina, la cocina, la cocina, la cocina, la cocina, la",
+        "generatedTokenIds": [
+          2409,
+          441,
+          719,
+          677,
+          4575,
+          78,
+          269,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283,
+          5958,
+          17,
+          283
+        ],
+        "generatedTokens": 32,
+        "stopReason": "token_budget",
+        "promptTokens": 138,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": false
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-preferred_address-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Soy Paula Hidalgo; quiero que me digas Chispa. ¿Qué nombre usarás conmigo?"
+        }
+      ],
+      "target": "Te llamaré Chispa.",
+      "actual": {
+        "text": "Te llamaré Chispa.",
+        "generatedTokenIds": [
+          2629,
+          8118,
+          319,
+          706,
+          344,
+          433,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 77,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-preferred_address-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Soy Paula Hidalgo; quiero que me digas Chispa. ¿Qué nombre usarás conmigo?"
+        },
+        {
+          "role": "assistant",
+          "content": "Te llamaré Chispa."
+        },
+        {
+          "role": "user",
+          "content": "Esta tarde quiero leer una novela. ¿Qué quiero hacer?"
+        },
+        {
+          "role": "assistant",
+          "content": "Quieres leer una novela."
+        },
+        {
+          "role": "user",
+          "content": "He cambiado de idea: prefiero Nube. ¿Qué apodo usarás ahora?"
+        }
+      ],
+      "target": "Ahora te llamaré Nube.",
+      "actual": {
+        "text": "Ahora te llamaré Nube.",
+        "generatedTokenIds": [
+          38,
+          4827,
+          423,
+          8118,
+          319,
+          440,
+          4849,
+          19,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 130,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-missing_information-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+        }
+      ],
+      "target": "No; todavía no me has dicho su color.",
+      "actual": {
+        "text": "No; todavía no me has dicho su color.",
+        "generatedTokenIds": [
+          1581,
+          32,
+          4233,
+          409,
+          421,
+          4220,
+          4535,
+          330,
+          1691,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 72,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-missing_information-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Tengo un abrigo, pero no te he dicho de qué color es. ¿Puedes saberlo?"
+        },
+        {
+          "role": "assistant",
+          "content": "No; todavía no me has dicho su color."
+        },
+        {
+          "role": "user",
+          "content": "El abrigo es amarillo. ¿Qué color tiene?"
+        },
+        {
+          "role": "assistant",
+          "content": "Es amarillo."
+        },
+        {
+          "role": "user",
+          "content": "Me lo dio Paula Hidalgo. ¿Quién me dio el abrigo?"
+        }
+      ],
+      "target": "Te lo dio Paula Hidalgo.",
+      "actual": {
+        "text": "Te lo dio Paula Hidalgo.",
+        "generatedTokenIds": [
+          2629,
+          427,
+          3044,
+          1482,
+          1538,
+          447,
+          1038,
+          285,
+          396,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 125,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-current_and_future_place-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Ahora estoy en Ladera Clara; el próximo viaje será a Ribera Blanca. ¿Dónde estoy?"
+        }
+      ],
+      "target": "Estás en Ladera Clara.",
+      "actual": {
+        "text": "Estás en Ladera Clara.",
+        "generatedTokenIds": [
+          1618,
+          377,
+          286,
+          488,
+          1117,
+          7732,
+          70,
+          19,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-current_and_future_place-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Ahora estoy en Ladera Clara; el próximo viaje será a Ribera Blanca. ¿Dónde estoy?"
+        },
+        {
+          "role": "assistant",
+          "content": "Estás en Ladera Clara."
+        },
+        {
+          "role": "user",
+          "content": "Finalmente iré a Isla Tranquila en lugar de Ribera Blanca. ¿Cuál es el nuevo destino?"
+        },
+        {
+          "role": "assistant",
+          "content": "Irás a Isla Tranquila."
+        },
+        {
+          "role": "user",
+          "content": "No he salido de Ladera Clara. ¿Estoy ya en Isla Tranquila?"
+        }
+      ],
+      "target": "No, sigues en Ladera Clara.",
+      "actual": {
+        "text": "No, sigues en Ladera Clara.",
+        "generatedTokenIds": [
+          1581,
+          17,
+          383,
+          412,
+          272,
+          286,
+          488,
+          1117,
+          7732,
+          70,
+          19,
+          2
+        ],
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "promptTokens": 152,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-listening-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+        }
+      ],
+      "target": "Te escucho. ¿Qué ocurrió?",
+      "actual": {
+        "text": "Te escucho. ¿Qué ocurrió?",
+        "generatedTokenIds": [
+          2629,
+          2794,
+          1146,
+          19,
+          1072,
+          2345,
+          3027,
+          1983,
+          36,
+          2
+        ],
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "promptTokens": 68,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-listening-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Hoy tuve un día difícil. Quiero que me escuches, sin consejos."
+        },
+        {
+          "role": "assistant",
+          "content": "Te escucho. ¿Qué ocurrió?"
+        },
+        {
+          "role": "user",
+          "content": "Me molestó que alguien cambiara mi trabajo sin preguntarme. Hazme una pregunta."
+        },
+        {
+          "role": "assistant",
+          "content": "¿Quién cambió tu trabajo?"
+        },
+        {
+          "role": "user",
+          "content": "Fue mi colega Paula Hidalgo, no mi hermana. ¿Quién lo hizo?"
+        }
+      ],
+      "target": "Lo hizo tu colega Paula Hidalgo.",
+      "actual": {
+        "text": "Lo hizo tu colega Paula Hidalgo.",
+        "generatedTokenIds": [
+          4028,
+          2353,
+          610,
+          6347,
+          547,
+          1482,
+          1538,
+          447,
+          1038,
+          285,
+          396,
+          19,
+          2
+        ],
+        "generatedTokens": 13,
+        "stopReason": "eos",
+        "promptTokens": 133,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-project_change-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "El proyecto Notas del camino reúne dibujos. ¿Qué es y cómo se llama?"
+        }
+      ],
+      "target": "Notas del camino es tu proyecto de dibujos.",
+      "actual": {
+        "text": "Notas del camino es tu proyecto de dibujos.",
+        "generatedTokenIds": [
+          6351,
+          331,
+          3324,
+          315,
+          610,
+          2286,
+          264,
+          3904,
+          1139,
+          19,
+          2
+        ],
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "promptTokens": 70,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-project_change-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "El proyecto Notas del camino reúne dibujos. ¿Qué es y cómo se llama?"
+        },
+        {
+          "role": "assistant",
+          "content": "Notas del camino es tu proyecto de dibujos."
+        },
+        {
+          "role": "user",
+          "content": "Surgió de las tardes en que dibujaba con mi abuela. ¿Cuál fue su origen?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surgió de las tardes dibujando con tu abuela."
+        },
+        {
+          "role": "user",
+          "content": "Ahora se llamará Luces de la noche; seguirá reuniendo dibujos. ¿Qué cambia?"
+        }
+      ],
+      "target": "Cambia el nombre a Luces de la noche; siguen siendo dibujos.",
+      "actual": {
+        "text": "Cambia el nombre a Luces de la noche; siguen siendo dibujos.",
+        "generatedTokenIds": [
+          40,
+          477,
+          70,
+          293,
+          1134,
+          275,
+          1467,
+          483,
+          264,
+          283,
+          3111,
+          32,
+          383,
+          5453,
+          1549,
+          3904,
+          1139,
+          19,
+          2
+        ],
+        "generatedTokens": 19,
+        "stopReason": "eos",
+        "promptTokens": 149,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-two_people-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Paula Hidalgo es mi hermana y Braulio Campos es mi vecino. Dime quién es cada uno."
+        }
+      ],
+      "target": "Paula Hidalgo es tu hermana; Braulio Campos, tu vecino.",
+      "actual": {
+        "text": "Paula Hidalgo es tu hermana; Braulio Campos, tu vecino.",
+        "generatedTokenIds": [
+          5280,
+          1538,
+          447,
+          1038,
+          285,
+          396,
+          315,
+          610,
+          7385,
+          32,
+          6385,
+          90,
+          857,
+          1396,
+          613,
+          17,
+          610,
+          6442,
+          634,
+          19,
+          2
+        ],
+        "generatedTokens": 21,
+        "stopReason": "eos",
+        "promptTokens": 77,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-two_people-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Paula Hidalgo es mi hermana y Braulio Campos es mi vecino. Dime quién es cada uno."
+        },
+        {
+          "role": "assistant",
+          "content": "Paula Hidalgo es tu hermana; Braulio Campos, tu vecino."
+        },
+        {
+          "role": "user",
+          "content": "Paula Hidalgo canta y Braulio Campos cultiva rosas. ¿Quién canta?"
+        },
+        {
+          "role": "assistant",
+          "content": "Canta Paula Hidalgo."
+        },
+        {
+          "role": "user",
+          "content": "Corrijo: Paula Hidalgo cultiva las rosas; Braulio Campos cultiva tulipanes. ¿Quién cuida las rosas?"
+        }
+      ],
+      "target": "Paula Hidalgo cuida las rosas.",
+      "actual": {
+        "text": "Paula Hidalgo cuida las rosas.",
+        "generatedTokenIds": [
+          5280,
+          1538,
+          447,
+          1038,
+          285,
+          396,
+          3390,
+          338,
+          362,
+          538,
+          3313,
+          19,
+          2
+        ],
+        "generatedTokens": 13,
+        "stopReason": "eos",
+        "promptTokens": 177,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-reschedule-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Quedé con Paula Hidalgo el jueves a las dos. ¿Cuándo nos vemos?"
+        }
+      ],
+      "target": "El jueves a las dos.",
+      "actual": {
+        "text": "El jueves a las dos.",
+        "generatedTokenIds": [
+          569,
+          3815,
+          1487,
+          275,
+          362,
+          709,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 74,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-reschedule-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Quedé con Paula Hidalgo el jueves a las dos. ¿Cuándo nos vemos?"
+        },
+        {
+          "role": "assistant",
+          "content": "El jueves a las dos."
+        },
+        {
+          "role": "user",
+          "content": "La cita pasa al lunes, a la misma hora. ¿Cuándo será?"
+        },
+        {
+          "role": "assistant",
+          "content": "El lunes a las dos."
+        },
+        {
+          "role": "user",
+          "content": "Nos reuniremos en el centro cultural. ¿Dónde será?"
+        }
+      ],
+      "target": "En el centro cultural.",
+      "actual": {
+        "text": "En el centro cultural.",
+        "generatedTokenIds": [
+          512,
+          293,
+          2381,
+          4644,
+          19,
+          2
+        ],
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "promptTokens": 129,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-task_order-p1",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Haré dos cosas: leer una novela y limpiar la cocina, en ese orden. ¿Qué va primero?"
+        }
+      ],
+      "target": "Primero vas a leer una novela.",
+      "actual": {
+        "text": "Primero vas a leer una novela.",
+        "generatedTokenIds": [
+          4455,
+          466,
+          4247,
+          275,
+          4230,
+          337,
+          3560,
+          19,
+          2
+        ],
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "promptTokens": 75,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    },
+    {
+      "model": "control",
+      "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+      "recordId": "repair-20261012-world-000-task_order-p3",
+      "prompt": [
+        {
+          "role": "user",
+          "content": "Haré dos cosas: leer una novela y limpiar la cocina, en ese orden. ¿Qué va primero?"
+        },
+        {
+          "role": "assistant",
+          "content": "Primero vas a leer una novela."
+        },
+        {
+          "role": "user",
+          "content": "Invierto el orden: primero voy a limpiar la cocina. ¿Qué haré antes?"
+        },
+        {
+          "role": "assistant",
+          "content": "Primero vas a limpiar la cocina."
+        },
+        {
+          "role": "user",
+          "content": "Sólo dime qué actividad viene después; no realices nada."
+        }
+      ],
+      "target": "Después vas a leer una novela.",
+      "actual": {
+        "text": "Después vas a leer una novela.",
+        "generatedTokenIds": [
+          4779,
+          4247,
+          275,
+          4230,
+          337,
+          3560,
+          19,
+          2
+        ],
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "promptTokens": 138,
+        "discardedPromptTokens": 0,
+        "seed": 42,
+        "temperature": 0.0,
+        "modelType": "unidad-conversation-transformer",
+        "experimental": true,
+        "instructionFollowingValidated": false,
+        "generalConversationValidated": false,
+        "modelId": "unidad-conversation-0c5d65ad25395334af01e5d288b9a701d0a903167be5f1c80ddee13c45a87108",
+        "workerCapabilityValidated": false
+      },
+      "exactMatch": true
+    }
+  ],
+  "exactMatches": {
+    "baseline": 0,
+    "control": 16
+  }
+}

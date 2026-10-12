@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "createdAtUnix": 1791825438.5535781,
+  "request": {
+    "corpus_path": "/workspace/scratch/cee2efe6e4f7/unidad-fix/learning-control.jsonl",
+    "run_dir": "/workspace/scratch/cee2efe6e4f7/unidad-fix/control-run",
+    "training_config": {
+      "batch_size": 8,
+      "learning_rate": 0.0005,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "max_epochs": 1000,
+      "max_steps": 64,
+      "max_seconds": 240,
+      "validation_every": 32,
+      "checkpoint_every": 32,
+      "patience": 12,
+      "seed": 61,
+      "torch_threads": 4,
+      "warmup_steps": 16,
+      "window_policy": "sliding_context",
+      "objective": "assistant_last_reply",
+      "loss_reduction": "token_mean",
+      "projection_mode": "supervised",
+      "partition_policy": "train_validation_only",
+      "train_precision": "cpu_bfloat16",
+      "copy_supervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      }
+    },
+    "resume": false,
+    "budget_seconds": 240,
+    "model_config": {
+      "context_length": 512,
+      "copy_head": {
+        "rank": 32,
+        "seed": 47,
+        "version": 1
+      },
+      "d_model": 256,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "n_heads": 8,
+      "n_layers": 6,
+      "seed": 42,
+      "vocab_size": 8192
+    },
+    "initial_model": "/workspace/scratch/cee2efe6e4f7/UNIDAD/models/conversation-reference-c7"
+  },
+  "purpose": "Memorization control only",
+  "hypothesis": "Balanced multi-turn supervision with some neutral past assistant replies improves reliance on user facts and corrections. Preserve C7 copy head, copy auxiliary coefficients, token-mean loss and production inference. This is a data intervention; it does not isolate individual curriculum ingredients.",
+  "baselineWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+  "corpusSha256": "a87486ac35b8845a66fe1a353d6cabc5e919280b41d3c0aa96d0af66a9fefb2b",
+  "knownDevSha256": "59f9097815b988e5046a72e729e53359ba6aaf05848c592d9a67953e3f27608b",
+  "freshProbeSha256": "2d1b04daca63e36d1674848524c40dbdfe1cdeb2f7bcbd9f1aea22b252d5f807",
+  "successCriterion": "Known development F <= 14 of 40, critical failures no greater than 6; disclose C/P/F and fresh transfer separately",
+  "freshProbeUsedForSelection": false,
+  "optimizerReset": true,
+  "schedulerReset": true,
+  "externalModelUsed": false,
+  "runtimeTemplates": false
+}

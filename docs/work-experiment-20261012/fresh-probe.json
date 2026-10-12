@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Fresh transfer probe frozen before training; 20 turns, separate from known development and training. No training or selection on this probe.",
+  "generation": {
+    "maxNewTokens": 32,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "episodes": [
+    {
+      "id": "fresh-01",
+      "turns": [
+        {
+          "id": "fresh-01-t1",
+          "user": "Mi taller se llama Aguja de Plata. Allí arreglamos bicicletas. ¿Qué hacemos?",
+          "criterion": "Indicar que reparan bicicletas, sin confundirlo con costura."
+        },
+        {
+          "id": "fresh-01-t2",
+          "user": "Lo comparto con mi tío Beltrán. ¿Con quién trabajo allí?",
+          "criterion": "Identificar a su tío Beltrán."
+        },
+        {
+          "id": "fresh-01-t3",
+          "user": "Renombramos el taller como Rueda del Alba. La actividad sigue igual. ¿Qué cambió?",
+          "criterion": "Cambió el nombre a Rueda del Alba; sigue arreglando bicicletas."
+        },
+        {
+          "id": "fresh-01-t4",
+          "user": "Resume el nombre actual, la actividad y con quién lo comparto.",
+          "criterion": "Conservar los tres datos actuales y no usar el nombre anterior como actual."
+        }
+      ]
+    },
+    {
+      "id": "fresh-02",
+      "turns": [
+        {
+          "id": "fresh-02-t1",
+          "user": "Fina tiene la llave del armario; Dami tiene la del garaje. ¿Quién tiene la del garaje?",
+          "criterion": "Dami tiene la llave del garaje."
+        },
+        {
+          "id": "fresh-02-t2",
+          "user": "Intercambiaron las llaves. ¿Quién tiene ahora la del garaje?",
+          "criterion": "Fina, aplicando el intercambio."
+        },
+        {
+          "id": "fresh-02-t3",
+          "user": "El armario está vacío. ¿Sabemos qué hay dentro del garaje?",
+          "criterion": "No se ha dicho qué hay en el garaje; no trasladar el vacío del armario."
+        },
+        {
+          "id": "fresh-02-t4",
+          "user": "¿A quién pediré la llave del armario?",
+          "criterion": "A Dami, tras el intercambio."
+        }
+      ]
+    },
+    {
+      "id": "fresh-03",
+      "turns": [
+        {
+          "id": "fresh-03-t1",
+          "user": "Compré dos sobres: el pequeño es azul y el grande es beige. ¿Cuál es azul?",
+          "criterion": "El sobre pequeño."
+        },
+        {
+          "id": "fresh-03-t2",
+          "user": "El azul contiene una foto de mi gata. ¿Qué guardé en el pequeño?",
+          "criterion": "Una foto de su gata."
+        },
+        {
+          "id": "fresh-03-t3",
+          "user": "Saqué la foto y puse una carta. ¿Qué contiene ahora ese sobre?",
+          "criterion": "Una carta, sin mantener la foto como contenido actual."
+        },
+        {
+          "id": "fresh-03-t4",
+          "user": "¿Te he dicho qué guardé en el sobre grande?",
+          "criterion": "No se ha dado el contenido del grande."
+        }
+      ]
+    },
+    {
+      "id": "fresh-04",
+      "turns": [
+        {
+          "id": "fresh-04-t1",
+          "user": "Estoy diseñando una postal con un barco. Dame una frase corta para acompañarla.",
+          "criterion": "Crear una frase breve, coherente y relacionada con el barco."
+        },
+        {
+          "id": "fresh-04-t2",
+          "user": "Prefiero un tono alegre y que aparezca la palabra horizonte. Reescribe la frase.",
+          "criterion": "Reescribir una frase alegre incluyendo horizonte."
+        },
+        {
+          "id": "fresh-04-t3",
+          "user": "Hazla más corta y conserva horizonte.",
+          "criterion": "Reducir la longitud respecto de su propia respuesta anterior conservando horizonte."
+        },
+        {
+          "id": "fresh-04-t4",
+          "user": "¿Qué dibujo lleva la postal?",
+          "criterion": "Un barco, conservando el dato de la primera intervención."
+        }
+      ]
+    },
+    {
+      "id": "fresh-05",
+      "turns": [
+        {
+          "id": "fresh-05-t1",
+          "user": "Explícame para qué sirve poner nombre a las carpetas del ordenador.",
+          "criterion": "Explicación sencilla, coherente y útil para organizar y encontrar archivos."
+        },
+        {
+          "id": "fresh-05-t2",
+          "user": "Dame un ejemplo con mis recetas de cocina.",
+          "criterion": "Un ejemplo pertinente de nombre de carpeta para recetas."
+        },
+        {
+          "id": "fresh-05-t3",
+          "user": "También guardo fotos del jardín. ¿Conviene ponerlas en la misma carpeta?",
+          "criterion": "Distinguir recetas y fotos; ofrecer organización razonada sin inventar datos."
+        },
+        {
+          "id": "fresh-05-t4",
+          "user": "Resume tu consejo en una sola frase.",
+          "criterion": "Una sola frase que resuma coherentemente su propio consejo."
+        }
+      ]
+    }
+  ]
+}
