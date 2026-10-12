@@ -52,6 +52,22 @@ prompt para cada dificultad. Consultar gastos, accesos nuevos o cambios
 irreversibles. Los presupuestos anteriores cerrados no se reinician ni se
 presentan como procesos activos.
 
+La continuación indicada desde el PR en borrador
+[1](https://github.com/guadalupejuan001-code/UNIDAD/pull/1) parte de
+`a1a283caabf89b3191c8ce64c2a950e9edbb0edf`; sus experimentos anteriores
+utilizaron `b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a`. Conservar ambas
+procedencias y C7 como referencia; no promover los candidatos del PR ni aplicar
+su parche experimental `source-pointer-v2.patch` como reparación aprobada.
+La meta parcial es reducir las 28 respuestas fallidas conocidas a un máximo
+de 14, sin aumentar los seis fallos críticos. Eso no sustituye la aceptación
+general de 36/40 respuestas completas, 8/10 diálogos completos y cero fallos
+críticos o técnicos. Las baterías ya examinadas de 40 y 20 turnos son desarrollo.
+Reservar formulaciones y composiciones completas, medir por separado redacción,
+orden de hechos e historia ideal frente a historia realmente generada, y elegir
+una intervención acotada con criterio de parada antes de entrenar. Exigir mejora
+en generación libre antes de ampliar la corrida. Conservar todas las respuestas,
+los artefactos anteriores y una prueba final nueva para el candidato elegido.
+
 ## Órdenes recibidas
 
 1. Crear modelos propios desde cero. La petición original contempla una capacidad

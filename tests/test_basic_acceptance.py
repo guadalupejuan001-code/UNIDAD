@@ -49,7 +49,8 @@ class BasicAcceptanceTests(unittest.TestCase):
             history = []
             for step in scenario["steps"]:
                 history.append({"role": "user", "content": step["user"]})
-                reply = {"modelId": "synthetic-model", "text": f"Texto ficticio {step['id']}."}
+                reply = {"modelId": "synthetic-model", "text": f"Texto ficticio {step['id']}.",
+                         "discardedPromptTokens": 0}
                 outputs.append({"id": step["id"], "scenarioId": scenario["id"],
                     "modelId": "synthetic-model", "inputMessages": deepcopy(history), "reply": reply,
                     "effectiveContext": {"discardedPromptTokens": 0}, "error": None})
@@ -59,6 +60,7 @@ class BasicAcceptanceTests(unittest.TestCase):
                     "spanish": True, "criticalCorrect": True if step["critical"] else None,
                     "note": "Fallo ficticio de prueba." if not ok else ""})
         self.outputs = {"suiteId": self.cases["suiteId"], "modelId": "synthetic-model",
+            "modelManifest": {"modelId": "synthetic-model", "training": {"trainedFrom": "random_weights"}},
             "suiteFreeze": frozen, "outputs": outputs}
         self.review = {"suiteId": self.cases["suiteId"], "modelId": "synthetic-model",
             "reviewer": "unit-test", "method": "fabricated booleans", "turns": turns}
@@ -177,6 +179,7 @@ class BasicAcceptanceTests(unittest.TestCase):
     def test_truncated_context_blocks_acceptance(self):
         self.fixture()
         self.outputs["outputs"][-1]["effectiveContext"]["discardedPromptTokens"] = 1
+        self.outputs["outputs"][-1]["reply"]["discardedPromptTokens"] = 1
         self.save_evidence()
         result = self.assess()
         self.assertFalse(result["accepted"])
@@ -188,6 +191,50 @@ class BasicAcceptanceTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.assess()
         self.assertEqual((self.root / "assessment.json").read_text(), "KEEP")
+
+    def test_manifest_must_identify_the_same_artifact(self):
+        self.fixture()
+        self.outputs["modelManifest"]["modelId"] = "another-model"
+        self.save_evidence()
+        with self.assertRaisesRegex(ValueError, "own-model artifact"):
+            self.assess()
+
+    def test_external_origin_cannot_claim_own_model_acceptance(self):
+        self.fixture()
+        self.outputs["modelManifest"]["training"]["trainedFrom"] = "external_pretrained"
+        self.save_evidence()
+        with self.assertRaisesRegex(ValueError, "own-model artifact"):
+            self.assess()
+
+    def test_missing_model_manifest_rejected(self):
+        self.fixture()
+        self.outputs.pop("modelManifest")
+        self.save_evidence()
+        with self.assertRaisesRegex(ValueError, "own-model artifact"):
+            self.assess()
+
+    def test_reply_crop_cannot_contradict_saved_effective_context(self):
+        self.fixture()
+        self.outputs["outputs"][-1]["reply"]["discardedPromptTokens"] = 9
+        self.save_evidence()
+        with self.assertRaisesRegex(ValueError, "agree on discarded"):
+            self.assess()
+
+    def test_reply_crop_requires_a_nonnegative_integer(self):
+        for invalid in (None, True, -1, 0.5, "0"):
+            with self.subTest(value=invalid):
+                self.fixture()
+                self.outputs["outputs"][-1]["reply"]["discardedPromptTokens"] = invalid
+                self.save_evidence()
+                with self.assertRaisesRegex(ValueError, "discarded-token count"):
+                    self.assess()
+
+    def test_reply_cannot_claim_another_model_id(self):
+        self.fixture()
+        self.outputs["outputs"][-1]["reply"]["modelId"] = "another-model"
+        self.save_evidence()
+        with self.assertRaisesRegex(ValueError, "selected model artifact"):
+            self.assess()
 
 
 if __name__ == "__main__":
