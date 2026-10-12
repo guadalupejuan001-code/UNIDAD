@@ -103,6 +103,8 @@ def main():
     source = {name: file_record(args.model / name) for name in
               ("weights.safetensors", "tokenizer.json", "config.json", "manifest.json")}
     context = model.config["context_length"]
+    if not 512 <= context <= 4096:
+        parser.error("The Android adapter requires the source model context_length to be between 512 and 4096")
     example = [1, 3, 100, 2, 4, 101, 102, 2, 5]
     wrapper = MobileProjection(model).eval()
     with tempfile.TemporaryDirectory(prefix="unidad-export-") as temporary:
@@ -114,6 +116,8 @@ def main():
                               dynamic_axes={"input_ids": {1: "sequence"}, "copy_allowed": {1: "sequence"}},
                               opset_version=17, dynamo=False, external_data=False)
         graph = onnx.load(graph_path)
+        if graph_path.stat().st_size > 96 * 1024 * 1024:
+            parser.error("The exported graph exceeds the Android package size limit")
         onnx.checker.check_model(graph, full_check=True)
         assert all(t.data_location != onnx.TensorProto.EXTERNAL for t in graph.graph.initializer)
         assert all(node.domain in ("", "ai.onnx") for node in graph.graph.node)
