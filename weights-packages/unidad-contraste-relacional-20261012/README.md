@@ -26,3 +26,7 @@ PYTHONPATH=src python -m ia_propia.conversation converse --model models/conversa
 ```
 
 La rama contiene el mismo código de la entrega `57a8190` del PR #3, más el paquete. Código del experimento: `8b466cc`. Main, el PR #3, las otras ramas y los archivos históricos se conservan. Los presupuestos anteriores están cerrados; conservar estados no autoriza ampliar automáticamente los 128 pasos completados. Este paquete tiene nombre propio y no sustituye el ZIP diagnóstico ausente aportado por el usuario.
+
+## Estado actual e historial del paquete
+
+Consulta [el estado actual del proyecto](../../docs/ESTADO_ACTUAL.md). El ZIP conserva el snapshot verificado de su creación; las actualizaciones posteriores de documentación no reescriben sus bytes. Los hashes del manifiesto de partes y del archivo original se mantienen. C7 ya tenía pesos de inferencia en main; este paquete añade los candidatos y estados del contraste relacional.

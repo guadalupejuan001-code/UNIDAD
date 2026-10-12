@@ -1,5 +1,18 @@
 # Conversación en español desde pesos propios
 
+**Estado comprobado el 12 de octubre de 2026:** C7 sigue siendo una referencia
+experimental, sin conversación básica aceptada. En los 40 turnos conocidos
+obtuvo siete respuestas completas, cinco parciales, 28 fallidas, seis críticas
+y ningún diálogo completo, según la revisión primaria de IA del proyecto.
+No hay entrenamiento activo comprobado en este entorno; los presupuestos de
+24 horas y dos horas adicionales están cerrados. El
+[estado actual](ESTADO_ACTUAL.md) identifica resultados, código y
+[pesos publicados](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012).
+
+Esta guía describe comandos disponibles y etapas históricas. Sus ejemplos de
+`train`, `start` y `resume` no indican que esos procesos sigan ejecutándose ni
+reinician automáticamente los presupuestos cerrados.
+
 Unidad incorpora un Transformer pequeño para aprender a responder en español.
 Sus pesos comienzan aleatorios; el código no descarga pesos preentrenados ni
 consulta otra IA para generar las respuestas. Es una primera etapa experimental:
@@ -37,7 +50,7 @@ par de módulos. El cerebro coordina las operaciones suministradas por el produc
 ```python
 from ia_propia.conversation.runtime import ConversationEngine
 
-engine = ConversationEngine("models/conversation-spanish-v2")
+engine = ConversationEngine("models/conversation-reference-c7")
 reply = engine.reply([{"role": "user", "content": "Hola."}])
 score = engine.score_reply([{"role": "user", "content": "Hola."}], "Hola, ¿cómo estás?")
 ```
@@ -75,11 +88,13 @@ modelo conversacional.
 
 ## Conversar en terminal
 
-La consola interactiva carga el mismo `ConversationEngine` que los productos:
+La consola interactiva carga el mismo `ConversationEngine` que los productos.
+Este comando de C7 se comprobó conservando el historial real y reproduciendo
+cuatro respuestas evaluadas, incluidos sus errores:
 
 ```bash
-unidad conversation converse --model models/conversation-context-v3 \
-  --temperature 0 --max-new-tokens 64
+PYTHONPATH=src python -m ia_propia.conversation converse \
+  --model models/conversation-reference-c7 --max-new-tokens 160 --temperature 0 --seed 42
 ```
 
 Escribe un mensaje por línea. `/reiniciar` borra el historial de esa sesión y
@@ -365,8 +380,9 @@ unidad conversation start \
 unidad conversation status --run-dir private/conversation/runs/basic-v2
 ```
 
-`basic-v1` es el nombre de la primera corrida iniciada en este entorno; se puede
-consultar con `status --run-dir private/conversation/runs/basic-v1`. Los comandos
+`basic-v1` fue el nombre de la primera corrida iniciada en este entorno; su estado
+histórico puede consultarse con `status --run-dir private/conversation/runs/basic-v1`
+si se conserva ese directorio. Los comandos
 anteriores usan `basic-v2` para iniciar una corrida nueva. Un directorio existente
 no se reinicia ni se sobrescribe mediante `start`.
 
@@ -509,7 +525,7 @@ aleatorios.
 ## Ampliar lo aprendido sin reiniciar los pesos
 
 La primera corrida básica terminó por falta de mejora en validación, conservando
-el mejor checkpoint. La segunda etapa amplía los ejemplos de español y parte de
+el mejor checkpoint. La segunda etapa amplió los ejemplos de español y partió de
 esos pesos. El [preparador de ampliación](../examples/prepare_expanded_conversations.py)
 conserva primero los registros y particiones del corpus básico; después añade
 conversaciones públicas. Elimina copias exactas respetando la versión básica
@@ -530,10 +546,10 @@ unidad conversation start \
   --training-config private/conversation/config/expanded-training.json
 ```
 
-Elige rutas nuevas y crea la configuración antes de ejecutar `start`. Para la
-corrida iniciada en este entorno, `expanded-v1`, el presupuesto de la segunda
-etapa sólo usa el tiempo restante del límite original de 24 horas. La configuración
-no debe conceder otras 24 horas por etapa. Ambas conservan test fuera de la
+Elige rutas nuevas y crea la configuración antes de ejecutar `start`. En la
+corrida histórica `expanded-v1`, el presupuesto de la segunda etapa sólo usó
+el tiempo restante del límite original de 24 horas, ahora cerrado. No se concedió
+otro día por etapa. Ambos corpus conservaron test fuera de la
 selección; la pérdida de dos corpus diferentes no se compara directamente.
 
 La inicialización de una etapa registra la identidad del modelo anterior y los
@@ -543,8 +559,9 @@ aparecen palabras nuevas. Cambiar de arquitectura exige otro proceso y no está
 implementado aquí. Ampliar datos no cambia automáticamente las herramientas ni
 concede capacidad para programarse.
 
-El trabajador puede continuar al terminar el comando que lo lanzó. Sólo lo hace
-mientras el entorno de ejecución siga activo: `environmentLifetimeGuaranteed`
+Un trabajador iniciado expresamente puede continuar al terminar el comando que
+lo lanzó. Sólo lo hace mientras el entorno de ejecución siga activo:
+`environmentLifetimeGuaranteed`
 es `false`. La persistencia de los archivos y la continuidad del proceso dependen
 del entorno. Para continuar en otro equipo conserva el corpus, el directorio de
 la corrida y una instalación compatible; no copies sólo los pesos si necesitas
@@ -763,11 +780,11 @@ con el sistema predeterminado y el BPE propio; 666 de los registros de
 entrenamiento tienen varios turnos de usuario. El currículo nuevo contiene
 540 registros ficticios de 180 familias. No se entrenó con este chat.
 
-Se inicia la nueva etapa con `--initial-model` y un archivo de configuración
+Una etapa nueva se inicia con `--initial-model` y un archivo de configuración
 que indique la política nueva; conserva el tokenizador y los pesos propios,
-y reinicia optimizador y calendario. El presupuesto se calcula con el tiempo
-restante del día solicitado, sin abrir otras 24 horas por etapa. Las pérdidas
-de corpus o políticas diferentes no constituyen una comparación directa de
+y reinicia optimizador y calendario. La etapa histórica utilizó el tiempo
+restante del día solicitado, sin abrir otras 24 horas por etapa; ese presupuesto
+está cerrado. Las pérdidas de corpus o políticas diferentes no constituyen una comparación directa de
 competencia; hay que conservar las respuestas y evaluar las mismas preguntas.
 
 En esta etapa concentrada, la validación bajó de 3,9018 a 3,7806 en el paso
@@ -777,14 +794,15 @@ entrenamiento. Se pausó por esa evidencia de sobreajuste y se conservó el paso
 Sus respuestas de desarrollo siguen sin cumplir las tareas; no se acepta como
 conversación competente.
 
-La etapa posterior amplía sólo los diálogos breves, incluyendo un turno de
-usuario además de los de varios turnos. Se prepara con el mismo helper y
+La etapa posterior amplió sólo los diálogos breves, incluyendo un turno de
+usuario además de los de varios turnos. Se preparó con el mismo helper y
 `--min-human-turns 2`, en un destino nuevo `balanced-short-es-v1.jsonl`.
 Contiene 5.608 registros: 4.466 train, 530 validation y 612 test, todos completos
 en el contexto. Conserva los 660 sintéticos y añade variedad con 4.948 diálogos
 públicos revisados. Su tasa de aprendizaje es 0,0001, frente a 0,0003 en la
-etapa concentrada; se inicializa desde el mejor modelo anterior.
-`private/conversation/runs/balanced-short-v1` es la corrida que continúa.
+etapa concentrada; se inicializó desde el checkpoint anterior seleccionado.
+`private/conversation/runs/balanced-short-v1` identifica esa corrida histórica;
+no se presenta como un proceso activo.
 
 Estas decisiones de datos y parámetros se prepararon con código y comandos
 explícitos. El entrenador guarda checkpoints y detiene una corrida cuando
