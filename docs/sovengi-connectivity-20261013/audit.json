@@ -118,6 +118,15 @@
   },
   "implementedConnections": [
     {
+      "connection": "Own trained preference selector to candidate coordination",
+      "state": "implemented_as_explicit_host_configuration",
+      "behavior": "conversation_selector loads verified own pairwise-preference weights once and shares the same selector object through the common ensemble across bodies. Inference receives original generated candidates and diagnostics, without training utilities, and returns one original candidate unchanged.",
+      "parameterCount": 18,
+      "trainingPolicy": "Separate TRAIN and validation cohort IDs; caller must additionally preserve complete family partitions. The trainer has no TEST argument. Selection uses minimum validation pairwise loss.",
+      "limits": "This optional linear selector uses lexical and diagnostic features; it does not verify facts, establish conversation quality or activate a new artifact without host configuration. A single-model configuration rejects a coordination selector.",
+      "codeRefs": ["src/ia_propia/conversation/selection.py", "src/ia_propia/conversation/ensemble.py", "src/ia_propia/brain/models.py", "src/ia_propia/gnosis/project.py", "tests/test_trained_coordination.py"]
+    },
+    {
       "connection": "Own Transformer catalog to shared conversation runtime",
       "state": "implemented",
       "behavior": "GNOSIS accepts a pinned host-selected catalog and passes ModelSpec descriptors through Brain and ModelRuntime to ConversationEnsemble. Models coordinate through original generated text, including different tokenizers.",
@@ -222,6 +231,25 @@
     "fixtureLimits": "Conversational transport fixtures are explicitly declared and do not load conversational weights or prove learned language/planning. Auxiliary RNN and MLP computations use actual existing own weights.",
     "newTrainingExecutedByThisAudit": false,
     "codeRefs": ["tests/test_model_connections.py", "tests/test_language_scoring.py", "tests/test_autonomy_action_sft.py", "examples/prepare_autonomy_action_sft.py"]
+  },
+  "trainedCoordinationVerification": {
+    "command": "python -m unittest tests.test_trained_coordination -v",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "fixture": "Two actual small random-weight Transformers; own selector trained for 40 epochs on declared fictional feature preferences from disjoint TRAIN/validation family IDs.",
+    "coverage": [
+      "All bodies share the selector object and verified artifact identity.",
+      "The reply text and token IDs exactly match one genuinely generated candidate from at least two Transformer members.",
+      "Requests cannot change the selector path or parameters.",
+      "Corrupted selector weights reject before conversational tensor allocation.",
+      "Learning runs cannot overwrite the selector artifact.",
+      "Single-model mode rejects a trained coordination selector."
+    ],
+    "generalConversationValidated": false,
+    "personalConversationUsed": false,
+    "oldHeldoutUsedForTraining": false,
+    "codeRefs": ["tests/test_trained_coordination.py"]
   },
   "preservedSeparation": [
     "Private dialogue and saved task history are not automatically exported as a training corpus.",

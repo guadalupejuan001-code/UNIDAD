@@ -125,12 +125,14 @@ class GnosisProject:
             config["brain"].setdefault("conversation_cache", True)
         _keys(config["brain"], ("state_dir", "language_backend", "conversation_model", "expected_model_id",
                                 "conversation_decoder", "conversation_cache"),
-              ("conversation_ensemble", "language_model", "attention_model"))
+              ("conversation_ensemble", "language_model", "attention_model", "conversation_selector"))
         brain = config["brain"]
-        for key in ("language_model", "attention_model"):
+        for key in ("language_model", "attention_model", "conversation_selector"):
             if brain.get(key) is not None:
                 _text(brain[key], key)
         ensemble = brain.get("conversation_ensemble")
+        if brain.get("conversation_selector") is not None and ensemble is None:
+            raise ValueError("A coordination selector requires a host-configured ensemble")
         self._catalog = None
         if ensemble is not None:
             _keys(ensemble, ("catalog", "primary"), ("max_candidates", "min_candidates", "max_resident",
@@ -198,7 +200,7 @@ class GnosisProject:
         reference = self.path(brain["conversation_model"]) if brain["conversation_model"] else None
         if reference is not None and any(_overlap(reference, p) for p in paths):
             raise ValueError("Learning runs cannot overwrite the selected reference artifact")
-        if any(_overlap(self.path(brain[key]), run) for key in ("language_model", "attention_model")
+        if any(_overlap(self.path(brain[key]), run) for key in ("language_model", "attention_model", "conversation_selector")
                if brain.get(key) is not None for run in paths):
             raise ValueError("Learning runs cannot overwrite selected auxiliary artifacts")
         if self._catalog is not None and any(_overlap(self.path(entry["path"]), run) for entry in self._catalog for run in paths):
@@ -238,6 +240,7 @@ class GnosisProject:
                     for entry in self._catalog], "ensemble_primary": ensemble["primary"],
                     "ensemble_budget": {key: value for key, value in ensemble.items() if key not in ("catalog", "primary")}}
             brain = Brain(self.path(config["state_dir"]), conversation_model=selected,
+                          conversation_selector=self.path(config["conversation_selector"]) if config.get("conversation_selector") else None,
                           language_model=self.path(config["language_model"]) if config.get("language_model") else None,
                           attention_model=self.path(config["attention_model"]) if config.get("attention_model") else None,
                           language_backend=config["language_backend"], conversation_decoder=config["conversation_decoder"],

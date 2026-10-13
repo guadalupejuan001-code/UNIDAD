@@ -56,7 +56,7 @@ class Tool:
 class Brain:
     def __init__(self, state_dir, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy",
                  conversation_decoder="torch", conversation_cache=True, conversation_models=None,
-                 ensemble_budget=None, ensemble_primary=None):
+                 ensemble_budget=None, ensemble_primary=None, conversation_selector=None):
         if not isinstance(state_dir, (str, Path)):
             raise BrainError("invalid_input", "Brain state directory must be configured by the host")
         self._state_dir = Path(state_dir).expanduser().absolute()
@@ -65,7 +65,7 @@ class Brain:
                                    conversation_model=conversation_model, language_backend=language_backend,
                                    conversation_decoder=conversation_decoder, conversation_cache=conversation_cache,
                                    conversation_models=conversation_models, ensemble_budget=ensemble_budget,
-                                   ensemble_primary=ensemble_primary)
+                                   ensemble_primary=ensemble_primary, conversation_selector=conversation_selector)
         self._autonomy_bindings = {}
         self._connection_lock = threading.Lock()
 

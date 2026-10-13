@@ -45,6 +45,10 @@ def verify(config_path):
                     assert trace["selectedModelId"] == result["modelId"]
                     assert any(candidate.get("auxiliary") for candidate in trace["candidates"])
                     assert trace["cache"]["residentCount"] <= config["brain"]["conversation_ensemble"]["max_resident"]
+                    if config["brain"].get("conversation_selector") is not None:
+                        assert trace["learnedSelectorApplied"]
+                        assert trace["learnedSelection"]["modelId"] == engine.describe()["selectorModelId"]
+                        assert trace["method"] == "learned_candidate_selector_with_cross_model_features"
                 outputs.append({"prompt": prompt, "result": result})
             assert note["id"] in outputs[1]["result"]["memoryContext"]["taskIds"]
             assert _request(session, "memory.task.status", {})["eventCount"] == count

@@ -1,0 +1,1099 @@
+{
+  "schemaVersion": 1,
+  "reviewType": "manual_qualitative_ai_review_of_completed_heldout_evaluation",
+  "reviewedAtUtc": "2026-10-13T22:18:45.781570+00:00",
+  "reviewer": {
+    "name": "Codex AI agent /root/context_language_eval",
+    "humanReviewer": false,
+    "independentHumanEvaluation": false,
+    "separateReadOnlyReviewAfterFrozenTest": true
+  },
+  "sourceReport": "docs/sovengi-coordination-20261013/report.json",
+  "sourceReportSha256": "910c444e2cdb810a7231b2944456428632167fcb1bdd507071e4824aa578913f",
+  "sourceStatus": "heldout_completed",
+  "selectorIdentity": {
+    "modelId": "unidad-selector-9a2eefa31085a181bc488bf50455ea2fff2d8feee3f0961a95d07b644c4b3154",
+    "modelSha256": "88068c978e5aea5531af3fb1400466a507a97b43b706a4e54bccf20854fd2ff6",
+    "frozenAt": "2026-10-13T22:13:32.565300+00:00",
+    "testOpenedAtFreeze": false,
+    "evaluationCompletedAt": "2026-10-13T22:14:00.661332+00:00"
+  },
+  "scope": {
+    "fictionalData": true,
+    "privateUserConversationUsed": false,
+    "modelsRerun": false,
+    "retraining": false,
+    "hyperparametersAdjusted": false,
+    "originalReportModified": false,
+    "automaticSemanticGrader": false,
+    "replyTokenCap": 24,
+    "cases": 12,
+    "fullConversationAcceptanceTest": false
+  },
+  "rubric": {
+    "complete": "Responde al último usuario con el hecho o la incertidumbre pertinente, conserva la corrección vigente y ofrece una frase íntegra y comprensible sin contradicción o cambio de referente.",
+    "partial": "Contiene una parte pertinente y correcta, pero omite un dato necesario o tiene redacción/referente ambiguo que impide contar la respuesta completa.",
+    "fail": "No responde, inventa una respuesta ajena, usa un hecho corregido o cambia el referente esencial.",
+    "budgetHandling": "Se juzga la salida real, incluso cuando termina por presupuesto. No se imagina una continuación correcta."
+  },
+  "baselineMeaning": "La comparación usa el candidato original elegido por la regla, indicado por ruleSelectedModelId, y el ganador aprendido del mismo grupo realmente generado. No se ejecutó una segunda inferencia para esta revisión.",
+  "summary": {
+    "rule_baseline": {
+      "complete": 0,
+      "partial": 3,
+      "fail": 9
+    },
+    "learned_selector": {
+      "complete": 0,
+      "partial": 4,
+      "fail": 8
+    }
+  },
+  "literalDiagnosticFromSource": {
+    "cases": 12,
+    "baselinePasses": 2,
+    "selectedPasses": 2,
+    "oraclePasses": 5,
+    "technicalErrors": 0
+  },
+  "learnedSelectorAppliedCases": 12,
+  "interpretation": "El diagnóstico literal conserva 2/12 aciertos con regla y 2/12 con selector aprendido; el oracle literal es 5/12. Esas cifras cuentan coincidencias de palabras y no respuestas completas. Esta revisión manual encuentra cero completas en ambos brazos, con tres parciales en la regla y cuatro en el selector. El selector pierde la corrección a domingo en Salmivora y sigue ignorando la corrección a lunes en Tervandil. La integración técnica y el selector aplicado en 12/12 casos no demuestran mejora conversacional.",
+  "oracleExamplesShowingLimit": [
+    {
+      "caseId": "coordination-v1/reldunara/correction",
+      "originalCandidateText": "El taller sábado es las sábados.",
+      "issue": "La palabra sábado no expresa con claridad qué taller abre ni una frase gramaticalmente íntegra."
+    },
+    {
+      "caseId": "coordination-v1/tervandil/correction",
+      "originalCandidateText": "El día de la narrainólica el lunes.",
+      "issue": "Lunes aparece en una frase sin relación clara con la apertura del taller."
+    },
+    {
+      "caseId": "coordination-v1/salmivora/location",
+      "originalCandidateText": "No, la libreta es de caja negra.",
+      "issue": "Coinciden caja y negra, pero la negación y la relación es de no equivalen sin ambigüedad a indicar dónde está."
+    }
+  ],
+  "limitations": [
+    "Revisión de IA del mismo proyecto; no es un panel humano independiente.",
+    "Doce respuestas aisladas y un límite de 24 tokens no validan conversación general ni diálogos completos.",
+    "La gramática ambigua de algunos resultados permite otras lecturas; se registran como parciales de forma conservadora y no se reparan sus textos.",
+    "El oracle literal es un máximo entre candidatos según una utilidad automática estrecha; no es un oracle semántico ni demuestra disponibilidad de una respuesta completa."
+  ],
+  "cases": [
+    {
+      "caseId": "coordination-v1/reldunara/location",
+      "family": "Reldunara",
+      "task": "location",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "La libreta Reldunara está en caja blanca. ¿Dónde está la libreta Reldunara?"
+        }
+      ],
+      "expectedSemanticCriterion": "La libreta Reldunara está en caja blanca.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Repite la identidad de la libreta; no indica la caja blanca ni otra ubicación.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "La libreta Reldunara es la libreta Reldunara.",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            407,
+            400,
+            73,
+            284,
+            603,
+            297,
+            281,
+            831,
+            413,
+            299,
+            407,
+            400,
+            73,
+            284,
+            603,
+            19,
+            2
+          ],
+          "textSha256": "3f597f68abd59bce5b2d44fcf068b985c7cd31adba4a44358dc8ad66a408b097",
+          "generatedTokenIdsSha256": "3715b5dd6bb4b9617d8fa726e34b38743a64d8f73c53c618b01e8bb41ca2e9bb",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "La frase circular sobre la libreta no responde dónde está ni conserva caja blanca.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "Reldunara es una libreta de la libreta.",
+          "originalGeneratedTokenIds": [
+            55,
+            400,
+            73,
+            284,
+            603,
+            297,
+            336,
+            831,
+            413,
+            299,
+            264,
+            281,
+            831,
+            413,
+            299,
+            19,
+            2
+          ],
+          "textSha256": "97ae2d3c59079ef55ac13fc559ef96c50a3a8a7225a246e9966eaa4a3813354f",
+          "generatedTokenIdsSha256": "e0ea11eff26b1ed46ff8e4ee2e1f3b8ee35249a74a6517ce768e8fc7b7f172be",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/reldunara/correction",
+      "family": "Reldunara",
+      "task": "correction",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "El taller Reldunara abre el miércoles."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el taller Reldunara abre el sábado. ¿Qué día abre el taller Reldunara?"
+        }
+      ],
+      "expectedSemanticCriterion": "El taller Reldunara abre el sábado, después de corregir miércoles.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 1
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "No aporta un día de apertura ni refleja la corrección a sábado.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "Reldunara es el taller Reldun.",
+          "originalGeneratedTokenIds": [
+            55,
+            400,
+            73,
+            284,
+            603,
+            297,
+            293,
+            369,
+            1065,
+            271,
+            407,
+            400,
+            73,
+            284,
+            19,
+            2
+          ],
+          "textSha256": "1c317f938053aed6ea9a9d3ee995fdb3483b8f0ab85c84cd512eabf706529660",
+          "generatedTokenIdsSha256": "97bc284af7c398bf0239a2acc5dd1635b9f7e5acd42671b290bc2aa71f34a2bb",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "No aporta un día de apertura ni refleja la corrección a sábado.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "Reldunara es el taller Reldun.",
+          "originalGeneratedTokenIds": [
+            55,
+            400,
+            73,
+            284,
+            603,
+            297,
+            293,
+            369,
+            1065,
+            271,
+            407,
+            400,
+            73,
+            284,
+            19,
+            2
+          ],
+          "textSha256": "1c317f938053aed6ea9a9d3ee995fdb3483b8f0ab85c84cd512eabf706529660",
+          "generatedTokenIdsSha256": "97bc284af7c398bf0239a2acc5dd1635b9f7e5acd42671b290bc2aa71f34a2bb",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/reldunara/missing_name",
+      "family": "Reldunara",
+      "task": "missing_name",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "No te he dado el nombre del farero de Reldunara. ¿Cómo se llama?"
+        }
+      ],
+      "expectedSemanticCriterion": "Reconocer que no se ha proporcionado el nombre del farero de Reldunara, sin inventarlo.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Habla del nombre de la persona usuaria, no del nombre del farero solicitado; cambia el referente.",
+          "modelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+          "originalText": "Todavía no has dicho tu nombre.",
+          "originalGeneratedTokenIds": [
+            57,
+            408,
+            639,
+            413,
+            320,
+            781,
+            821,
+            77,
+            84,
+            505,
+            1115,
+            19,
+            2
+          ],
+          "textSha256": "56fd8c8652ddd3ec61af08969cf744970d046db81c18966a795c1025f0533574",
+          "generatedTokenIdsSha256": "ca06a772112a6dacf4e125f444918037572122a58e893e161dc83860d802a823",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Habla del nombre de la persona usuaria, no del nombre del farero solicitado; cambia el referente.",
+          "modelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+          "originalText": "Todavía no has dicho tu nombre.",
+          "originalGeneratedTokenIds": [
+            57,
+            408,
+            639,
+            413,
+            320,
+            781,
+            821,
+            77,
+            84,
+            505,
+            1115,
+            19,
+            2
+          ],
+          "textSha256": "56fd8c8652ddd3ec61af08969cf744970d046db81c18966a795c1025f0533574",
+          "generatedTokenIdsSha256": "ca06a772112a6dacf4e125f444918037572122a58e893e161dc83860d802a823",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/salmivora/location",
+      "family": "Salmivora",
+      "task": "location",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "La libreta Salmivora está en caja negra. ¿Dónde está la libreta Salmivora?"
+        }
+      ],
+      "expectedSemanticCriterion": "La libreta Salmivora está en caja negra.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 1,
+        "oracle": 1
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Repite libreta y omite por completo la ubicación y el color.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "La libreta de la libreta de la libreta de la libreta de la libreta",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            264,
+            281,
+            831,
+            413,
+            299,
+            264,
+            281,
+            831,
+            413,
+            299,
+            264,
+            281,
+            831,
+            413,
+            299,
+            264,
+            281,
+            831,
+            413,
+            299
+          ],
+          "textSha256": "69a0341a0774b53db7a8cd1f65030eda4d6a6dc0035090abab012d97f36f59ed",
+          "generatedTokenIdsSha256": "bd095594da5cb63a2dc02ae10ea82795f52e8f109d78f81aa535135f2efaa28f",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "partial",
+          "reason": "Menciona caja negra, pero empieza negando y dice que la libreta es de la caja en lugar de afirmar dónde está. Hay información recuperable, con relación espacial ambigua.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "No, la libreta es de caja negra.",
+          "originalGeneratedTokenIds": [
+            51,
+            84,
+            17,
+            281,
+            831,
+            413,
+            299,
+            297,
+            264,
+            266,
+            440,
+            70,
+            918,
+            594,
+            19,
+            2
+          ],
+          "textSha256": "80609f906666f961efc13a4da05d5ecf4a375882382ec4075938b0c66999fd9b",
+          "generatedTokenIdsSha256": "a0a482cfcf134975eb7906c74c6e89d3b12ba0991212a30a9004bd4eed1c5877",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/salmivora/correction",
+      "family": "Salmivora",
+      "task": "correction",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "El taller Salmivora abre el jueves."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el taller Salmivora abre el domingo. ¿Qué día abre el taller Salmivora?"
+        }
+      ],
+      "expectedSemanticCriterion": "El taller Salmivora abre el domingo, después de corregir jueves.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 1,
+        "learned": 0,
+        "oracle": 1
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "partial",
+          "reason": "Incluye domingo, pero deforma Salmivora a Salvora y repite una cláusula incompatible: abre el taller Salvora abre. El dato útil no convierte toda la respuesta en coherente.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "El taller Salvora abre el taller Salvora abre el domingo.",
+          "originalGeneratedTokenIds": [
+            557,
+            369,
+            1065,
+            271,
+            1763,
+            91,
+            741,
+            272,
+            413,
+            293,
+            369,
+            1065,
+            271,
+            1763,
+            91,
+            741,
+            272,
+            413,
+            293,
+            368,
+            1107,
+            397,
+            19,
+            2
+          ],
+          "textSha256": "3cfb2fff2fcf08748b76dfb9fd3e407894c136082b741370b9e71c90a9495ba2",
+          "generatedTokenIdsSha256": "12220af5b0083f9e1fe25d2deb25b0eccacef35c0081e3191e029fa2005d0022",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Responde jueves, el dato anterior explícitamente corregido; ignora la nueva apertura en domingo.",
+          "modelId": "unidad-conversation-f417996465cabf1c20cd739fbec8300a72cee2840e83d19919eff9729dc17b06",
+          "originalText": "El taller Salmivora abre el jueves.",
+          "originalGeneratedTokenIds": [
+            569,
+            6548,
+            271,
+            1837,
+            379,
+            91,
+            763,
+            7459,
+            293,
+            3815,
+            1487,
+            19,
+            2
+          ],
+          "textSha256": "1b2c35689be306d9fde554589efac82ddd6786051f6f09ede40a9f66748f972f",
+          "generatedTokenIdsSha256": "a655570232c78bd6eeaa700edd041ce56767af2d96ccbcfe890c7ba02986b77e",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/salmivora/missing_name",
+      "family": "Salmivora",
+      "task": "missing_name",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "No te he dado el nombre del farero de Salmivora. ¿Cómo se llama?"
+        }
+      ],
+      "expectedSemanticCriterion": "Reconocer que no se ha proporcionado el nombre del farero de Salmivora, sin inventarlo.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Ofrece un farero de salvación ajeno a la pregunta; no reconoce que falta su nombre.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "Sí, aquí está un farero de salvación para el farero de Salvación:\n",
+          "originalGeneratedTokenIds": [
+            56,
+            295,
+            17,
+            1953,
+            768,
+            298,
+            307,
+            269,
+            456,
+            264,
+            811,
+            91,
+            483,
+            351,
+            293,
+            307,
+            269,
+            456,
+            264,
+            1763,
+            91,
+            483,
+            31,
+            204
+          ],
+          "textSha256": "e49358f9e94399de34d6ba972a9801c0c0243889b3f8b2d4c1735d2725b10b7b",
+          "generatedTokenIdsSha256": "e698d4f8b8169cbd460a8eefcd6b52fe6c24a3a4c13670e1739a1bfbe692020c",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "partial",
+          "reason": "Reconoce que no se ha dicho un nombre y menciona al farero, pero tu nombre del farero mezcla el nombre personal con el del tercero. El referente es ambiguo; no se cuenta como una respuesta completa.",
+          "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+          "originalText": "No has dicho tu nombre del farero.",
+          "originalGeneratedTokenIds": [
+            1581,
+            4220,
+            4535,
+            610,
+            1134,
+            331,
+            308,
+            269,
+            466,
+            19,
+            2
+          ],
+          "textSha256": "10672e6513cd1eafad4f5e5e509974096abc4902c67cd8ca8d71edbcae2ca5d8",
+          "generatedTokenIdsSha256": "131b75c8ba3d5244af0fff3c8e149c042c94089af14c35bbcd1d1f5d73ae9397",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/tervandil/location",
+      "family": "Tervandil",
+      "task": "location",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "La libreta Tervandil está en caja azul. ¿Dónde está la libreta Tervandil?"
+        }
+      ],
+      "expectedSemanticCriterion": "La libreta Tervandil está en caja azul.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Inventa el cajón de la Tierra y sustituye caja azul por una ubicación distinta.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "La libreta está en el cajón de la Tierra.",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            768,
+            285,
+            293,
+            266,
+            440,
+            300,
+            264,
+            281,
+            398,
+            1226,
+            320,
+            19,
+            2
+          ],
+          "textSha256": "b4554d266f9b93e18500456f3e1c069526c3c6f87019aea06c7f96ae898e7730",
+          "generatedTokenIdsSha256": "0d6df756a5099959376eddd1dd8c36448d4ca70073e7e322dcb33c7acd6b165c",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Inventa el cajón de la Tierra y sustituye caja azul por una ubicación distinta.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "La libreta está en el cajón de la Tierra.",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            768,
+            285,
+            293,
+            266,
+            440,
+            300,
+            264,
+            281,
+            398,
+            1226,
+            320,
+            19,
+            2
+          ],
+          "textSha256": "b4554d266f9b93e18500456f3e1c069526c3c6f87019aea06c7f96ae898e7730",
+          "generatedTokenIdsSha256": "0d6df756a5099959376eddd1dd8c36448d4ca70073e7e322dcb33c7acd6b165c",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/tervandil/correction",
+      "family": "Tervandil",
+      "task": "correction",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "El taller Tervandil abre el viernes."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el taller Tervandil abre el lunes. ¿Qué día abre el taller Tervandil?"
+        }
+      ],
+      "expectedSemanticCriterion": "El taller Tervandil abre el lunes, después de corregir viernes.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 1
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Conserva viernes, el día antiguo, y no aplica la corrección a lunes; también deforma el nombre.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "El taller Terrandil abre el viernes.",
+          "originalGeneratedTokenIds": [
+            557,
+            369,
+            1065,
+            271,
+            398,
+            271,
+            396,
+            304,
+            81,
+            272,
+            413,
+            293,
+            688,
+            1454,
+            274,
+            19,
+            2
+          ],
+          "textSha256": "3b69557195ec9d773982084ab25b120de64fafc47b8ad335e11cec76447a481f",
+          "generatedTokenIdsSha256": "aa731a4617c20530016ac7031014dc10fe5cf1e280fd4362964927f3e836a202",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Conserva viernes, el día antiguo, y no aplica la corrección a lunes; también deforma el nombre.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "El taller Terrandil abre el viernes.",
+          "originalGeneratedTokenIds": [
+            557,
+            369,
+            1065,
+            271,
+            398,
+            271,
+            396,
+            304,
+            81,
+            272,
+            413,
+            293,
+            688,
+            1454,
+            274,
+            19,
+            2
+          ],
+          "textSha256": "3b69557195ec9d773982084ab25b120de64fafc47b8ad335e11cec76447a481f",
+          "generatedTokenIdsSha256": "aa731a4617c20530016ac7031014dc10fe5cf1e280fd4362964927f3e836a202",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/tervandil/missing_name",
+      "family": "Tervandil",
+      "task": "missing_name",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "No te he dado el nombre del farero de Tervandil. ¿Cómo se llama?"
+        }
+      ],
+      "expectedSemanticCriterion": "Reconocer que no se ha proporcionado el nombre del farero de Tervandil, sin inventarlo.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "La repetición sobre un tipo de tipo no reconoce información ausente y no responde por el nombre del farero.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "Sí, Termina es un tipo de tipo de tipo de tipo de tipo de tipo de tipo de tipo",
+          "originalGeneratedTokenIds": [
+            56,
+            295,
+            17,
+            398,
+            271,
+            563,
+            70,
+            297,
+            298,
+            1289,
+            264,
+            1289,
+            264,
+            1289,
+            264,
+            1289,
+            264,
+            1289,
+            264,
+            1289,
+            264,
+            1289,
+            264,
+            1289
+          ],
+          "textSha256": "7573195efec058582de6a167a46eafc7ea55466545627e0f1f4d3f527c9e8335",
+          "generatedTokenIdsSha256": "648de3c8e21de343b64184b1352c1c9292ce3a3422145ffd32a189fd97a61e93",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Series no responde a la pregunta ni comunica que falta el nombre.",
+          "modelId": "unidad-conversation-734c92f9440d2d03bf1a6372e74335818e8ed65f00b69b24c2038d0ffffc0ac5",
+          "originalText": "Series.",
+          "originalGeneratedTokenIds": [
+            56,
+            271,
+            78,
+            274,
+            19,
+            2
+          ],
+          "textSha256": "51952e81ae6a2e1e65921bba01b071b8375a175683f2db1585d74bd2008a62c5",
+          "generatedTokenIdsSha256": "b642ee6af09ee504b9d08e2e1e94cdb24a276f01a040772f06dd4933cf576e85",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/urdavena/location",
+      "family": "Urdavena",
+      "task": "location",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "La libreta Urdavena está en caja verde. ¿Dónde está la libreta Urdavena?"
+        }
+      ],
+      "expectedSemanticCriterion": "La libreta Urdavena está en caja verde.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "partial",
+          "reason": "Indica que está en una caja, pero omite verde, parte de la ubicación proporcionada y necesaria para identificarla.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "La libreta está en caja.",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            768,
+            285,
+            266,
+            440,
+            70,
+            19,
+            2
+          ],
+          "textSha256": "5de95b0e1c763bd99402620f4b039b8549f00390ffbe905d792c6d21af2fc325",
+          "generatedTokenIdsSha256": "dc3b3659ea2950a702ca91d9f90fdd474e6c35b66f3bdfdf6dd658491704b4ce",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "partial",
+          "reason": "Indica que está en una caja, pero omite verde, parte de la ubicación proporcionada y necesaria para identificarla.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "La libreta está en caja.",
+          "originalGeneratedTokenIds": [
+            609,
+            831,
+            413,
+            299,
+            768,
+            285,
+            266,
+            440,
+            70,
+            19,
+            2
+          ],
+          "textSha256": "5de95b0e1c763bd99402620f4b039b8549f00390ffbe905d792c6d21af2fc325",
+          "generatedTokenIdsSha256": "dc3b3659ea2950a702ca91d9f90fdd474e6c35b66f3bdfdf6dd658491704b4ce",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/urdavena/correction",
+      "family": "Urdavena",
+      "task": "correction",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "El taller Urdavena abre el sábado."
+        },
+        {
+          "role": "user",
+          "content": "Corrección: el taller Urdavena abre el martes. ¿Qué día abre el taller Urdavena?"
+        }
+      ],
+      "expectedSemanticCriterion": "El taller Urdavena abre el martes, después de corregir sábado.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 1,
+        "learned": 1,
+        "oracle": 1
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "partial",
+          "reason": "Conserva martes, pero deforma la entidad y repite abre el martes varias veces. La salida entera requiere corrección de redacción.",
+          "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+          "originalText": "Urdaven abre el martes abre el martes abre el martes abre el martes",
+          "originalGeneratedTokenIds": [
+            58,
+            87,
+            334,
+            589,
+            272,
+            413,
+            293,
+            701,
+            384,
+            272,
+            413,
+            293,
+            701,
+            384,
+            272,
+            413,
+            293,
+            701,
+            384,
+            272,
+            413,
+            293,
+            701,
+            384
+          ],
+          "textSha256": "a1541f58b2f47a64e212a7031a80651d24d3a5568ce6750135de05e565acbc91",
+          "generatedTokenIdsSha256": "615b0f150133c5b005fe46d650a8c6dc294680e12b179e3660c2af1f5f3a8663",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "partial",
+          "reason": "Incluye el martes corregido, pero tallerola y la repetición de Urdaven deforman la entidad y la frase. El día es recuperable; la respuesta no es completa.",
+          "modelId": "unidad-conversation-ba70fff6928dcaf08087a4c966c1ea6496555bc04683933789908b4d8f49501c",
+          "originalText": "Una tallerola Urdaven abre el martes Urdaven.",
+          "originalGeneratedTokenIds": [
+            58,
+            542,
+            369,
+            1065,
+            271,
+            1060,
+            493,
+            87,
+            334,
+            589,
+            272,
+            413,
+            293,
+            701,
+            384,
+            493,
+            87,
+            334,
+            589,
+            19,
+            2
+          ],
+          "textSha256": "85530e045d7ecd065d60c8e9a6abe9649441809fe870e3e8aedb9bec0913e42e",
+          "generatedTokenIdsSha256": "6cce148e206ab1424af9df3fcb8a8c0e29a88f597bc8aa977bc57c20e75076c9",
+          "stopReason": "eos",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    },
+    {
+      "caseId": "coordination-v1/urdavena/missing_name",
+      "family": "Urdavena",
+      "task": "missing_name",
+      "inputMessages": [
+        {
+          "role": "system",
+          "content": "Eres SOVENGI. Responde en español."
+        },
+        {
+          "role": "user",
+          "content": "No te he dado el nombre del farero de Urdavena. ¿Cómo se llama?"
+        }
+      ],
+      "expectedSemanticCriterion": "Reconocer que no se ha proporcionado el nombre del farero de Urdavena, sin inventarlo.",
+      "learnedSelectorApplied": true,
+      "literalUtilities": {
+        "baseline": 0,
+        "learned": 0,
+        "oracle": 0
+      },
+      "arms": {
+        "rule_baseline": {
+          "judgment": "fail",
+          "reason": "Repite de la historia sin relación con la pregunta y no reconoce que falta el nombre.",
+          "modelId": "unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398",
+          "originalText": " de la historia de la historia de la historia de la historia de la historia de la historia de la historia de la historia",
+          "originalGeneratedTokenIds": [
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164,
+            264,
+            281,
+            1164
+          ],
+          "textSha256": "d9fda9dcfd0de96b01b0ee43e690a524baba33aff973107eb4cbab338b9f99fb",
+          "generatedTokenIdsSha256": "d5b54bba5dce335c436d34b01280a00e51d95400665f4665eb143550c6d5a01b",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        },
+        "learned_selector": {
+          "judgment": "fail",
+          "reason": "Produce una descripción genérica e incompleta del farero, sin reconocer la ausencia de su nombre.",
+          "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+          "originalText": "Un farero de Urdaven es un farero de origen popular que se utiliza para",
+          "originalGeneratedTokenIds": [
+            58,
+            83,
+            307,
+            269,
+            456,
+            264,
+            493,
+            87,
+            334,
+            589,
+            297,
+            298,
+            307,
+            269,
+            456,
+            264,
+            540,
+            78,
+            526,
+            1792,
+            301,
+            311,
+            1441,
+            351
+          ],
+          "textSha256": "d498bae7f7634ba6471a783836a1d0b9f43000d922fb99e64744203f721e33f2",
+          "generatedTokenIdsSha256": "906bb2073cb6a6dad5b5924da6901d444b6caf60984c12549c9b94a37809c21b",
+          "stopReason": "token_budget",
+          "exactOriginalGenerationPreserved": true
+        }
+      }
+    }
+  ]
+}

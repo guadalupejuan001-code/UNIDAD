@@ -1,5 +1,22 @@
 # Estado actual de Unidad
 
+## SOVENGI 0.9: entrenamiento de la coordinación, 13 de octubre de 2026
+
+Se entrenó y conectó un selector propio de 18 pesos en 1.000 épocas, con
+38 preferencias TRAIN y 15 VALIDATION de candidatos realmente generados. El
+[informe](sovengi-coordination-20261013/README.md) conserva corpus ficticio nuevo,
+pesos congelados y la evaluación reservada posterior. TRAIN pasó de 9/36 a
+12/36 cumplimientos literales; VALIDATION quedó en 4/12. TEST quedó en 2/12,
+igual que las reglas, con una ganancia y una regresión. En 7/12 casos ningún
+candidato cumplía el criterio; estas cifras no acreditan conversación natural.
+
+`configs/sovengi-coordination-candidate.json` ejecuta el selector entrenado en
+SOVENGI, conservando la salida original y ambas decisiones en la traza. La
+configuración habitual mantiene las reglas anteriores. La integración del
+catálogo está fusionada mediante el [PR 21](https://github.com/guadalupejuan001-code/UNIDAD/pull/21),
+con cuatro tareas CI aprobadas. Esta etapa de entrenamiento está cerrada;
+no se reutilizó TEST para ajustar sus parámetros.
+
 ## SOVENGI 0.8: coordinación y conexiones, 13 de octubre de 2026
 
 La configuración común coordina los 35 Transformers propios del

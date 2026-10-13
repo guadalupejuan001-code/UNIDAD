@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "frozenAt": "2026-10-13T22:11:31.013379+00:00",
+  "totalCases": 60,
+  "entityFamilies": 20,
+  "source": "new authored fictional entity families; no personal conversation or prior evaluation cases",
+  "sourceCommit": "37177da94f13d681c8212f0d0fc85938286f1963",
+  "priorIntegrationSourceCommit": "37177",
+  "partitions": {
+    "train": {
+      "file": "train.jsonl",
+      "sha256": "01b3fc62a0183344be2257639f7fc60d1d7e85f717451a793e9fff69a039851b",
+      "cases": 36,
+      "families": [
+        "Brezunil",
+        "Calmoria",
+        "Dorsavel",
+        "Ebrunata",
+        "Felsoria",
+        "Garnudel",
+        "Hespirona",
+        "Itramiel",
+        "Jorazuma",
+        "Keldavira",
+        "Lumbrinel",
+        "Mestoria"
+      ]
+    },
+    "validation": {
+      "file": "validation.jsonl",
+      "sha256": "e5bfa5a563f8b2e0a900631f64c8b46f1efd12c3e25dcbad3013c1874ee18bd3",
+      "cases": 12,
+      "families": [
+        "Nerbalia",
+        "Ostraviel",
+        "Peldamira",
+        "Qoriventa"
+      ]
+    },
+    "test": {
+      "file": "test.jsonl",
+      "sha256": "cea8149d01cb3cb4a27270788ed57ded398182ffef1635cb42eabd575af46f6b",
+      "cases": 12,
+      "families": [
+        "Reldunara",
+        "Salmivora",
+        "Tervandil",
+        "Urdavena"
+      ]
+    }
+  },
+  "protocol": {
+    "name": "literal-compliance-v1",
+    "semanticGrader": false,
+    "location": "Require whole words caja and supplied color; reject any other listed color.",
+    "correction": "Require corrected weekday; reject old weekday.",
+    "missing_name": "Require explicit name-related uncertainty or 'no lo sé'; reject name assertion markers.",
+    "missingNamePatterns": [
+      "\\bno (?:me )?has (?:dicho|dado) (?:el |su )?nombre\\b",
+      "\\bno (?:conozco|tengo) (?:el |su )nombre\\b",
+      "\\bno (?:se (?:el |su )nombre|lo se)\\b"
+    ],
+    "nameAssertionMarkers": [
+      "\\bse llama\\b",
+      "\\b(?:el|su) nombre es\\b"
+    ],
+    "limitations": "Conservative literal checks can reject valid paraphrases and do not assess factual understanding or prose quality."
+  },
+  "protocolSha256": "d096c5c3ebe78cb69a19231a8f8381ecc3045b1a36adb19d8f2c4194fac40cef",
+  "codeSha256": {
+    "examples/train_sovengi_coordination.py": "c3231cbdd5e11ecae3a2112ce9fbb59f0eebd7ed5530c1382ee437c2e8f21844",
+    "src/ia_propia/conversation/selection.py": "dab75804ede3eb82bc709a98bc41ac5671f18e3fee3d263a9deb60da72d1a031",
+    "src/ia_propia/conversation/ensemble.py": "1d229d5b4bb707ce852e2d906397747858b79d732a6233950b1803ca3026df22",
+    "src/ia_propia/sovengi/application.py": "267538a03c21aedb8b20bdb0b3779f38f3661247f5d2fac06af55bac3fb2b6c1",
+    "src/ia_propia/brain/models.py": "1e6f497c3e3c830cab5ad8acba9b453ef26b8032b19de9f964e01ad6c5aa05e3",
+    "configs/gnosis.json": "be2d4a6f7208c61c987aba3889964dfc8b3965d18a5ece2ec4ecaaad3983ae71",
+    "configs/conversation-models.json": "cafd1650de402d8b5365123952401863478c85b654e56d2d75c6908bbc180ffe"
+  },
+  "generation": {
+    "torchThreads": 1,
+    "temperature": 0,
+    "seed": 20261013,
+    "maxNewTokens": 24,
+    "catalogModels": 35,
+    "cohortSize": 4,
+    "maxResident": 4,
+    "criticCount": 2,
+    "maxScoreCalls": 8
+  },
+  "training": {
+    "epochs": 1000,
+    "learningRate": 0.3,
+    "l2": 0.001,
+    "maxSeconds": 120
+  }
+}

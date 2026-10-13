@@ -1,4 +1,16 @@
-# Usar SOVENGI 0.8
+# Usar SOVENGI 0.9
+
+La etapa 0.9 entrenó un selector de coordinación de 18 parámetros sobre
+candidatos originales de los 35 Transformers. Está conectado mediante
+`configs/sovengi-coordination-candidate.json`. En la evaluación reservada quedó
+en 2/12 cumplimientos literales, igual que las reglas anteriores; se conserva
+como candidato experimental. El [informe de entrenamiento](sovengi-coordination-20261013/README.md)
+identifica los pesos y separa la comprobación literal de calidad conversacional.
+
+```bash
+sovengi --config configs/sovengi-coordination-candidate.json models
+sovengi --config configs/sovengi-coordination-candidate.json chat
+```
 
 La [integración conversacional de NERVA](nerva-conversation-20261013/README.md)
 se aplica también a esta entrada: `brain.conversation_decoder` en la configuración
