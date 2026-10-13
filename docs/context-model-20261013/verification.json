@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "c446a095bb986dee4c84036b1c6ac4ffe527678b",
+  "checks": {
+    "regression": {
+      "command": "python -m unittest discover -s tests",
+      "tests": 704,
+      "passed": 703,
+      "skipped": 1,
+      "seconds": 65.475,
+      "status": "passed",
+      "logSha256": "6e90781a5a291a2e2124392060dc028001b4a4d18e46e465005ee11431a717be"
+    },
+    "examples": {
+      "command": "python -m unittest discover -s examples -p 'test_*.py'",
+      "tests": 12,
+      "status": "passed",
+      "seconds": 5.201,
+      "logSha256": "51dfecc52b3dc6092e421f0357829ef2f7b77f5ae9c1fedc555cd71dc44d7259"
+    },
+    "minimalWheel": {
+      "tests": 27,
+      "status": "passed",
+      "torchImported": false,
+      "numpyImported": false,
+      "wheel": "unidad-0.7.0-py3-none-any.whl",
+      "logSha256": "5972b1028f856f19f449097b4c58ff219a85a41babfd119fd7de0ae3dfe54436"
+    },
+    "documentationLinks": {
+      "checked": 111,
+      "status": "passed"
+    },
+    "diffWhitespace": "passed"
+  },
+  "sourceFileSha256": {
+    "src/ia_propia/context/model.py": "7cb7b823d34bde84b22776bc2704989c28d0b218098dd721267492165a9715bf",
+    "src/ia_propia/context/training.py": "bd0395fa55fac95867f856f8c38854553b65fd678ea0abe71591826e35e740e0",
+    "src/ia_propia/context/store.py": "6fc715eb34edcdfe7719b78fd52f6f05fc8ecafa6b00f64120a3613a63deffcd",
+    "src/ia_propia/context/manager.py": "13fdc991bb8974d4ffe6fbd1a9b7d186d6dc5959de927938ed097e357ce442e1",
+    "src/ia_propia/sovengi/application.py": "33c22a2c41b58dd97006c22d988b5e9d905abd29a347ca869bbbccf36cbef145",
+    "src/ia_propia/sovengi/__main__.py": "fcf6f1f979b62b85843643fa38a096746d1489456c212c54ed2be97139a21f84",
+    "src/ia_propia/assets/context-ranker-v1.json": "c90dfebbd49d505a8d137c0ca645a7fe64dfc72d9d9bc02df1571adf419ab844"
+  },
+  "trainedContextArtifact": {
+    "path": "models/context-reference-v1/ranker.json",
+    "fileSha256": "c90dfebbd49d505a8d137c0ca645a7fe64dfc72d9d9bc02df1571adf419ab844",
+    "packagedFileSha256": "c90dfebbd49d505a8d137c0ca645a7fe64dfc72d9d9bc02df1571adf419ab844"
+  },
+  "publishedGeneratorWeights": {
+    "models/learning-repair-20261013/pattern-relations-v1/reference-wiki1/weights.safetensors": "a1b52c676927c2dbebc76a0550c545310760f130e479ba2e29ee946b00fdc671",
+    "models/sovengi-memory-20261013/candidate-best/weights.safetensors": "08a4f57c420bc3c454abc326f61a664fcdf23c756db9e6b0b53157f97105c031"
+  },
+  "generatorTrainingExecuted": false,
+  "generalConversationValidated": false
+}

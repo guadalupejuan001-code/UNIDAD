@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-13T20:22:28.277639+00:00",
+  "scope": "context_store_retrieval_ranker_no_conversation_generation",
+  "fixture": {
+    "kind": "fictional-performance-sources",
+    "generator": "examples/benchmark_context.py",
+    "personalData": false,
+    "trainedOnBenchmark": false
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+  },
+  "durationSeconds": 4.513846521000005,
+  "samples": [
+    {
+      "records": 1000,
+      "batchSize": 64,
+      "candidateLimit": 48,
+      "selectionLimit": 8,
+      "rankerModelId": "unidad-context-90befedd5f5534a3f5da59de9040c169e41e62fb16175b5e5fc2ece97dce7fbf",
+      "rankerParameters": 21,
+      "ingestionSeconds": 0.02502445400000397,
+      "ingestionSourcesPerSecond": 39960.91183447364,
+      "search": {
+        "calls": 30,
+        "p50Milliseconds": 0.5614809999769932,
+        "p95Milliseconds": 0.7189106500277376,
+        "minMilliseconds": 0.5086159999336815,
+        "maxMilliseconds": 0.8247429998391453
+      },
+      "rankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 1.1872245000859039,
+        "p95Milliseconds": 1.4589384500141023,
+        "minMilliseconds": 1.1195270001280733,
+        "maxMilliseconds": 1.481924000017898
+      },
+      "searchRankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 1.796336499978679,
+        "p95Milliseconds": 2.0155420000264708,
+        "minMilliseconds": 1.6357250001419743,
+        "maxMilliseconds": 2.155187999960617
+      },
+      "queriesPerSecond": 551.3004755526852,
+      "selectedRelevantSources": 30,
+      "queries": 30,
+      "candidateCountRange": [
+        32,
+        33
+      ],
+      "managerPrepare": {
+        "latency": {
+          "calls": 30,
+          "p50Milliseconds": 3.553600500140419,
+          "p95Milliseconds": 5.059066600097137,
+          "minMilliseconds": 2.5368639999214793,
+          "maxMilliseconds": 6.186512999875049
+        },
+        "engine": "deterministic_regex_count_fixture_excludes_BPE_and_generation",
+        "capacityCountingUnits": 4096,
+        "reservedReplyCountingUnits": 32,
+        "relevantSourcesSelectedById": 30,
+        "relevantSourcesPreservedInLiveHistory": 0,
+        "relevantSourcesAvailable": 30,
+        "queries": 30,
+        "storedMessagesAfter": 1030,
+        "includesIngestionRetrievalRankingSerializationAndCountFixture": true
+      },
+      "store": {
+        "count": 1000,
+        "fts_enabled": true
+      },
+      "baselinePeakRss": {
+        "bytes": 15859712,
+        "raw": 15488,
+        "rawUnit": "KiB"
+      },
+      "ingestionPeakRss": {
+        "bytes": 17825792,
+        "raw": 17408,
+        "rawUnit": "KiB"
+      },
+      "finalPeakRss": {
+        "bytes": 18554880,
+        "raw": 18120,
+        "rawUnit": "KiB"
+      },
+      "additionalPeakRssBytes": 2695168,
+      "databaseLiveFilesBytes": {
+        "database": 4096,
+        "-wal": 4062352,
+        "-shm": 32768
+      },
+      "databaseClosedFilesBytes": {
+        "database": 823296
+      },
+      "torchImported": false
+    },
+    {
+      "records": 10000,
+      "batchSize": 64,
+      "candidateLimit": 48,
+      "selectionLimit": 8,
+      "rankerModelId": "unidad-context-90befedd5f5534a3f5da59de9040c169e41e62fb16175b5e5fc2ece97dce7fbf",
+      "rankerParameters": 21,
+      "ingestionSeconds": 0.29740848000005826,
+      "ingestionSourcesPerSecond": 33623.789072853746,
+      "search": {
+        "calls": 30,
+        "p50Milliseconds": 1.1900134999223155,
+        "p95Milliseconds": 1.4638286500030517,
+        "minMilliseconds": 0.8354890001101012,
+        "maxMilliseconds": 1.9234480000704934
+      },
+      "rankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 1.710603000105948,
+        "p95Milliseconds": 1.87626460001411,
+        "minMilliseconds": 1.5774080000028334,
+        "maxMilliseconds": 1.903209000147399
+      },
+      "searchRankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 2.920555999935459,
+        "p95Milliseconds": 3.3381596000026548,
+        "minMilliseconds": 2.4128970001129346,
+        "maxMilliseconds": 3.8266570002178923
+      },
+      "queriesPerSecond": 340.5423461478162,
+      "selectedRelevantSources": 30,
+      "queries": 30,
+      "candidateCountRange": [
+        32,
+        33
+      ],
+      "managerPrepare": {
+        "latency": {
+          "calls": 30,
+          "p50Milliseconds": 4.428474500059565,
+          "p95Milliseconds": 7.57971144995508,
+          "minMilliseconds": 3.522127999985969,
+          "maxMilliseconds": 10.330909000003885
+        },
+        "engine": "deterministic_regex_count_fixture_excludes_BPE_and_generation",
+        "capacityCountingUnits": 4096,
+        "reservedReplyCountingUnits": 32,
+        "relevantSourcesSelectedById": 30,
+        "relevantSourcesPreservedInLiveHistory": 0,
+        "relevantSourcesAvailable": 30,
+        "queries": 30,
+        "storedMessagesAfter": 10030,
+        "includesIngestionRetrievalRankingSerializationAndCountFixture": true
+      },
+      "store": {
+        "count": 10000,
+        "fts_enabled": true
+      },
+      "baselinePeakRss": {
+        "bytes": 15859712,
+        "raw": 15488,
+        "rawUnit": "KiB"
+      },
+      "ingestionPeakRss": {
+        "bytes": 19267584,
+        "raw": 18816,
+        "rawUnit": "KiB"
+      },
+      "finalPeakRss": {
+        "bytes": 20054016,
+        "raw": 19584,
+        "rawUnit": "KiB"
+      },
+      "additionalPeakRssBytes": 4194304,
+      "databaseLiveFilesBytes": {
+        "database": 6811648,
+        "-wal": 4268352,
+        "-shm": 32768
+      },
+      "databaseClosedFilesBytes": {
+        "database": 7344128
+      },
+      "torchImported": false
+    },
+    {
+      "records": 100000,
+      "batchSize": 64,
+      "candidateLimit": 48,
+      "selectionLimit": 8,
+      "rankerModelId": "unidad-context-90befedd5f5534a3f5da59de9040c169e41e62fb16175b5e5fc2ece97dce7fbf",
+      "rankerParameters": 21,
+      "ingestionSeconds": 3.2518292780000593,
+      "ingestionSourcesPerSecond": 30751.92190332391,
+      "search": {
+        "calls": 30,
+        "p50Milliseconds": 1.5263454999967507,
+        "p95Milliseconds": 1.8567657000403415,
+        "minMilliseconds": 0.633585000059611,
+        "maxMilliseconds": 1.8733630001861457
+      },
+      "rankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 1.1511794999705671,
+        "p95Milliseconds": 1.5750672499848404,
+        "minMilliseconds": 1.1059870000735827,
+        "maxMilliseconds": 2.5186849998135585
+      },
+      "searchRankAndSelect": {
+        "calls": 30,
+        "p50Milliseconds": 2.7012699999886536,
+        "p95Milliseconds": 3.3002166000755997,
+        "minMilliseconds": 1.74211499984267,
+        "maxMilliseconds": 4.24357399992914
+      },
+      "queriesPerSecond": 365.38573308995313,
+      "selectedRelevantSources": 30,
+      "queries": 30,
+      "candidateCountRange": [
+        32,
+        33
+      ],
+      "managerPrepare": {
+        "latency": {
+          "calls": 30,
+          "p50Milliseconds": 5.423596999889924,
+          "p95Milliseconds": 7.1767451998653025,
+          "minMilliseconds": 4.47481199989852,
+          "maxMilliseconds": 8.295739999994112
+        },
+        "engine": "deterministic_regex_count_fixture_excludes_BPE_and_generation",
+        "capacityCountingUnits": 4096,
+        "reservedReplyCountingUnits": 32,
+        "relevantSourcesSelectedById": 30,
+        "relevantSourcesPreservedInLiveHistory": 0,
+        "relevantSourcesAvailable": 30,
+        "queries": 30,
+        "storedMessagesAfter": 100030,
+        "includesIngestionRetrievalRankingSerializationAndCountFixture": true
+      },
+      "store": {
+        "count": 100000,
+        "fts_enabled": true
+      },
+      "baselinePeakRss": {
+        "bytes": 15859712,
+        "raw": 15488,
+        "rawUnit": "KiB"
+      },
+      "ingestionPeakRss": {
+        "bytes": 19267584,
+        "raw": 18816,
+        "rawUnit": "KiB"
+      },
+      "finalPeakRss": {
+        "bytes": 20447232,
+        "raw": 19968,
+        "rawUnit": "KiB"
+      },
+      "additionalPeakRssBytes": 4587520,
+      "databaseLiveFilesBytes": {
+        "database": 73838592,
+        "-wal": 5751552,
+        "-shm": 32768
+      },
+      "databaseClosedFilesBytes": {
+        "database": 74178560
+      },
+      "torchImported": false
+    }
+  ],
+  "fallbackEquivalence": {
+    "records": 256,
+    "queries": 5,
+    "relevantSourcesEquivalent": true,
+    "orderingEquivalenceRequired": false,
+    "modes": [
+      {
+        "requestedFts": true,
+        "store": {
+          "count": 256,
+          "fts_enabled": true
+        }
+      },
+      {
+        "requestedFts": false,
+        "store": {
+          "count": 256,
+          "fts_enabled": false
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "Single-process CPU measurements; no concurrency or generation throughput claim.",
+    "RSS is a high-water mark from a fresh worker for each corpus size.",
+    "Manager timings use deterministic regex counting units and exclude BPE tokenization and generation.",
+    "Fallback correctness comparison uses 256 sources within its bounded scan window.",
+    "Retrieval of distant sources at scale requires the optional SQLite FTS index."
+  ]
+}

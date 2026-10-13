@@ -14,6 +14,20 @@ conversacional y comparte esos pesos entre sus productos, conversación y
 propuestas de herramientas. Las respuestas proceden del modelo propio; no hay
 respuestas de otra IA ni frases programadas para simular sus capacidades.
 
+El [modelo independiente de contexto](context-model-20261013/README.md) está
+conectado antes de ese motor. Selecciona texto original del historial con pesos
+propios, conserva el sistema y la petición actual y reserva tokens para generar.
+Los turnos antiguos se recuperan desde SQLite; las respuestas anteriores se
+mantienen con rol `assistant`, sin aceptarlas automáticamente como hechos.
+
+`sovengi --context-session trabajo chat` permite recuperar el mismo contexto
+local al reabrir. El identificador lo elige el anfitrión y no cambia carpetas ni
+herramientas. `/nuevo` elimina el contexto de esa conversación y conserva las
+notas explícitas. `sovengi --no-context chat` sirve para comparar el mismo
+generador. Si las instrucciones y el mensaje actual no caben con el presupuesto
+de respuesta, devuelve `context_budget` y pide dividir el texto; no los recorta
+silenciosamente. La ventana aprendida del Transformer continúa siendo 2.048.
+
 ## Empezar
 
 Desde la raíz del repositorio completo, con Python 3.11 o posterior:
@@ -57,6 +71,7 @@ entrenamiento al abrir el chat.
 | --- | --- |
 | Brain + ConversationEngine | Una implementación de generación y protocolo para consola, Python y HTTP. |
 | Memoria | Conserva texto guardado expresamente y lo recupera en el diálogo. |
+| Modelo de contexto | Ordena fuentes del historial, prepara una entrada acotada y conserva procedencia. |
 | Herramientas y controlador | Ejecutan tareas acotadas con observaciones, permisos y límites. |
 | GNOSIS | Selecciona los pesos y configura etapas de aprendizaje. |
 | NERVA | Conserva el backend que esté implementado y verificado en GNOSIS; no es otro modelo con conocimientos propios. |

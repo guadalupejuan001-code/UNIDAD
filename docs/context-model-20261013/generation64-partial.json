@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "experiment": "context-integration-heldout-v1-initial-resource-probe",
+  "status": "stopped_by_operator_to_bound_runtime",
+  "generation": {"seed": 20261013, "temperature": 0, "maxNewTokens": 64, "torchThreads": 1},
+  "generatorSha256": "a55254aba35df591bd10011708bfe96f062fe165e9332a613cf8362ec53834fa",
+  "decision": "The baseline's full 2048-token window repeatedly requires cache prefills as generation slides. Initial completed stdout observations are retained below. Both arms of the final complete run use a 24-token reply cap, with the same fixed cases, weights, seed and temperature. No weights, source-selection policy or cases were tuned using these replies.",
+  "evidenceScope": "Unmodified fields from actual evaluator stdout. The interrupted runs had not yet persisted complete raw response envelopes or token IDs. This partial evidence is not a completed paired evaluation and must not replace the final reports.",
+  "personalData": false,
+  "finalConversationAcceptanceTest": false,
+  "observations": [
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Asterión","arm":"without_context","modelId":"unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4","text":"Partnginta de la peníntes:\n\n\nEn la peníntes: En la peníntes:\n\nEn la peníntes: En la peníntes:\n\n\nEn la peníntes: En la pendiente de la","sourcesRetained":[false],"elapsedSeconds":84.32406391299992},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Asterión","arm":"with_context","modelId":"unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4","text":"Perdinta ficción de la peníntesis de la peníntesis:\n\nEn la peníntesistolis: En la peníntesis: En la peníntesta de la península, la pendiente re","sourcesRetained":[true],"elapsedSeconds":1.7258006439999463},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Asterión","arm":"without_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"Ella ficticio de la penométición contegrafías de la pensa.","sourcesRetained":[false],"elapsedSeconds":36.877871613000025},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Asterión","arm":"with_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"El tallertnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn","sourcesRetained":[true],"elapsedSeconds":1.9016157589999239},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Bellavista","arm":"without_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":" de la penametición con la penométiragías de la pendiente.","sourcesRetained":[false],"elapsedSeconds":31.604413536000038},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Bellavista","arm":"with_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"El taller Bellavista revisa contiz de la palabra de la palabra de la palabra.","sourcesRetained":[true],"elapsedSeconds":1.4830844570001318},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Crisálida","arm":"without_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"Ellaxta de la penametas de la peníntes.","sourcesRetained":[false],"elapsedSeconds":22.34366646100011},
+    {"event":"context_generation","caseId":"context-integration-heldout/distant_fact/Crisálida","arm":"with_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"El taller Cristida abreo, contizco de la pregunta pendiente.","sourcesRetained":[true],"elapsedSeconds":1.1857856500000707},
+    {"event":"context_generation","caseId":"context-integration-heldout/correction/Dromedario","arm":"without_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"Ellavo de la penametición con la pensa de la peníntes.","sourcesRetained":[false],"elapsedSeconds":28.455114046000062},
+    {"event":"context_generation","caseId":"context-integration-heldout/correction/Dromedario","arm":"with_context","modelId":"unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c","text":"El tallero dejambes.","sourcesRetained":[true],"elapsedSeconds":1.21275231300001}
+  ]
+}

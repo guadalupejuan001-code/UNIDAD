@@ -41,6 +41,7 @@ def _chat(session, settings):
         if text == "/salir":
             return 0
         if text == "/nuevo":
+            session.reset_context()
             history.clear()
             print("Conversación reiniciada; la memoria guardada se conserva.")
             continue
@@ -67,6 +68,8 @@ def parser(prog="sovengi"):
     root = argparse.ArgumentParser(prog=prog, description="SOVENGI: conversación, memoria y herramientas con pesos propios")
     root.add_argument("--config", default="configs/gnosis.json", help="Configuración común de SOVENGI/GNOSIS")
     root.add_argument("--body", default="sovengi", help="Producto y memoria privada seleccionados por el anfitrión")
+    root.add_argument("--context-session", help="Identificador de conversación para recuperar su contexto local")
+    root.add_argument("--no-context", action="store_true", help="Desactivar selección de contexto para comparación")
     root.add_argument("--input-root", help="Carpeta existente de archivos autorizados")
     root.add_argument("--report-root", help="Carpeta existente de informes")
     commands = root.add_subparsers(dest="command", required=True)
@@ -117,7 +120,8 @@ def main(argv=None, *, prog="sovengi"):
             _print(getattr(application.project, args.command)(args.stage, **kwargs))
             return 0
         session = application.connect(args.body, input_root=args.input_root, report_root=args.report_root,
-            operator_token=os.environ.get("SOVENGI_OPERATOR_TOKEN") if args.input_root else None)
+            operator_token=os.environ.get("SOVENGI_OPERATOR_TOKEN") if args.input_root else None,
+            context_enabled=not args.no_context, context_session_id=args.context_session)
         if args.command == "chat":
             return _chat(session, settings)
         if args.command == "status":
