@@ -69,6 +69,13 @@ unidad gnosis assess --project configs/gnosis.json --stage conversation \
   --cases casos-nuevos.json --output evaluacion.json
 ```
 
+La configuración entregada selecciona `data_loading="mmap"` en las nuevas
+etapas. El cargador valida el corpus por iteraciones y prepara TRAIN/VALIDATION
+en disco sin materializar todos los textos ni ventanas. No cambia los datos sin
+configurar ni inicia una corrida. Consulta los
+[controles y límites del modo mmap](language-pretraining.md#corpus-y-ventanas-desde-disco).
+Las configuraciones y checkpoints anteriores mantienen su modo guardado.
+
 `export` conserva el checkpoint elegido por validación en `run_dir/artifact`.
 No lo convierte en referencia ni acredita conversación. `assess` conserva las
 respuestas reales mediante el motor común; para aceptar un candidato hacen falta
@@ -96,6 +103,11 @@ pesos entrenados, GPU ni calidad. Las estimaciones de recursos incluyen parámet
 gradientes, AdamW, activaciones, proyección, datos en RAM y margen; no son una
 garantía del pico real. Se verifican también espacio libre e identidad del corpus.
 Las rutas de las etapas no pueden anidarse ni invadir memoria o referencia.
+La admisión conserva la reserva conservadora de memoria para datos incluso con
+mmap, porque el tokenizador, metadatos y orden aún consumen RAM; no interpreta
+el ahorro de una medición como garantía para cualquier corpus. Añade una
+estimación de almacenamiento de la caché. Estas heurísticas por tamaño de archivo
+no garantizan el espacio de corpus comprimidos ni sustituyen la medición real.
 
 ## Optimizaciones comprobadas
 
@@ -148,7 +160,9 @@ PyTorch ejecuta el Transformer. GNOSIS coordina ambos, no traduce C7 a NERVA.
 La siguiente prioridad es ampliar y diversificar la base lingüística de español,
 con entrenamiento verificable y diálogos nuevos que midan conservación de hechos
 y correcciones. Aumentar parámetros antes de resolver datos y generalización no
-acredita acercamiento conversacional a asistentes comerciales. Continúan pendientes
-entrenamiento con GPU y datos tokenizados mediante streaming/mmap: el cargador
-actual todavía materializa documentos y ventanas en RAM. No hay autoaprendizaje,
+acredita acercamiento conversacional a asistentes comerciales. El cargador mmap
+opcional resuelve la retención de textos y ventanas en RAM para muestreo uniforme;
+el [contraste de preparación](tokenized-data-20261013.md) documenta su efecto.
+Continúan pendientes entrenamiento con GPU y aprendizaje conversacional aceptado.
+No hay autoaprendizaje,
 autoprogramación ni conversación competitiva demostrados por esta entrega.

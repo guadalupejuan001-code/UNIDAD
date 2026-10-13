@@ -60,6 +60,7 @@ Un `pretrain.json` de ejemplo:
 ```json
 {
   "objective": "causal_lm",
+  "data_loading": "mmap",
   "batch_size": 4,
   "learning_rate": 0.0005,
   "warmup_steps": 200,
@@ -88,6 +89,38 @@ No se evalúa test al entrenar ni al exportar una instantánea. `snapshot` selec
 por validación y declara `trainingObjective="causal_lm"`,
 `assistantTargets="all_text_tokens"` y `testEvaluated=false`. Puede exportarse
 durante el entrenamiento; el snapshot queda separado del checkpoint reanudable.
+
+## Corpus y ventanas desde disco
+
+`data_loading="mmap"` recorre el JSONL validado y guarda ventanas tokenizadas en
+`run_dir/tokenized-cache`. Sirve tanto para `causal_lm` como para
+`assistant_last_reply`, con las dos políticas de ventanas. El tokenizador nuevo
+se ajusta sólo a TRAIN mediante un iterador; TEST no se tokeniza en la caché de
+entrenamiento. Los controles de IDs, familias, procedencia y duplicados de texto
+siguen aplicándose al corpus completo. Con `partition_policy="train_validation_only"`,
+el archivo de entrenamiento sigue rechazando cualquier registro TEST.
+
+La caché conserva tokens y objetivos en enteros de 32 bits, con índices leídos
+mediante mmap. Un manifiesto fija corpus, tokenizador, contexto, objetivo,
+política de ventanas y particiones, y verifica hashes y tamaños antes de usarla.
+Se publica el directorio completo al terminar la preparación. Una caché ausente
+se reconstruye; una caché dañada o de otra identidad se rechaza. Para reconstruir
+una caché dañada, detén el trabajador y elimina sólo `tokenized-cache`, conservando
+corpus y checkpoints. La reanudación restaura el mismo orden, RNG, Adam y scheduler.
+
+Omitir `data_loading` conserva el cargador anterior y las configuraciones de
+checkpoints históricos. No cambies esa configuración al reanudar: utiliza el
+modo elegido al crear la corrida. Esta primera versión mmap usa muestreo uniforme;
+rechaza `sampling_weights` y `adaptive_sampling`. Admite microbatches y BF16 en
+CPU con sus restricciones existentes. `finalize` es una evaluación explícita y
+puede preparar TEST en una caché separada; `snapshot` no lo evalúa.
+
+No conserva todos los textos ni todas las listas de ventanas en RAM. Los IDs,
+familias, hashes de duplicados, vocabulario BPE y orden de muestreo todavía crecen
+con el corpus, y las páginas mmap leídas pueden permanecer residentes. Necesita
+espacio adicional en disco y no implementa GPU. El
+[contraste reproducible de datos](tokenized-data-20261013.md) mide la preparación;
+no atribuye a esta optimización una mejora de conversación.
 
 ## Ajustar conversación con el mismo modelo
 

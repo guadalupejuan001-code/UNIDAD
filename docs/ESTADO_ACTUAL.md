@@ -20,6 +20,13 @@ validados como arquitecturas y no son modelos entrenados. C7 continúa intacto.
 La [guía GNOSIS](gnosis.md) conserva instrucciones, mediciones y límites de CPU,
 datos, adaptación y recursos.
 
+Nueva continuación técnica del 13 de octubre: `data_loading="mmap"` prepara
+corpus y ventanas tokenizadas en disco para texto y diálogo, con el mismo
+generador de ventanas y reanudación. GNOSIS lo selecciona en sus nuevas etapas
+todavía sin corpus configurado. El [informe de datos](tokenized-data-20261013.md)
+conserva pruebas, mediciones de RAM y regresión de C7. Es una mejora del cargador;
+no añade pesos conversacionales ni modifica los resultados de aceptación.
+
 ## Modelo conservado y aceptación
 
 C7 ya estaba publicado en `main`: [pesos](../models/conversation-reference-c7/weights.safetensors), [configuración](../models/conversation-reference-c7/config.json), [tokenizador](../models/conversation-reference-c7/tokenizer.json) y [manifiesto](../models/conversation-reference-c7/manifest.json). Tiene 6.983.937 parámetros con copia v1; su backbone tiene 6.967.296. BPE de 8.192 y contexto de 512 tokens. La [auditoría de once modelos](unidad-github-model-inventory-20261012.json) verificó los 44 archivos contra GitHub y sus manifiestos, sin inconsistencias. No acredita competencia conversacional.

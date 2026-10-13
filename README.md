@@ -50,8 +50,10 @@ conversacional entrenado de ese tamaño.
 El código admite hasta 1.200 millones de parámetros mediante un
 `parameter_budget` explícito. Las configuraciones anteriores conservan el límite
 de 20 millones. Un perfil no proporciona el hardware, los datos ni las horas de
-entrenamiento que necesita. El entrenamiento actual es CPU; GPU y carga de datos
-tokenizados mediante streaming/mmap siguen pendientes.
+entrenamiento que necesita. El entrenamiento actual es CPU. El cargador opcional
+`data_loading="mmap"` prepara corpus y ventanas en disco para muestreo uniforme;
+GPU sigue pendiente. Los [controles y mediciones del cargador](docs/tokenized-data-20261013.md)
+no acreditan una mejora de las respuestas.
 
 ## Qué dicen las evaluaciones
 
@@ -100,9 +102,11 @@ pérdida con diferencias mínimas de gradientes. Esa cifra no representa la RAM 
 NERVA reprodujo **448 caracteres** de NumPy en siete generaciones; el arranque de
 Node añadió tiempo. No se demostró aceleración con ese backend.
 
-La última verificación del código aprobó **441 pruebas y 12 pruebas de ejemplos**;
-[GitHub Actions también aprobó la integración](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38332550358).
-Esto acredita funcionamiento técnico, no comprensión ni calidad conversacional.
+La verificación local del cargador en disco aprobó **462 pruebas y 12 pruebas de
+ejemplos**; el [recibo](docs/tokenized-data-20261013/software-verification.json)
+identifica código y comprobaciones. La integración anterior de GNOSIS aprobó
+441 pruebas y también [GitHub Actions](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38332550358).
+Estas comprobaciones acreditan funcionamiento técnico, no comprensión ni calidad conversacional.
 Las [mediciones y límites](docs/gnosis.md) y la
 [verificación de software](docs/gnosis-evidence/software-verification.json)
 conservan el detalle.
@@ -165,8 +169,8 @@ Ese potencial depende de resolver la calidad del aprendizaje. La prioridad es:
    derechos de uso y separación entre entrenamiento, validación y evaluación.
 2. Conseguir conversación que mantenga hechos, siga correcciones y responda a la
    petición actual; medirla con diálogos nuevos e historias realmente generadas.
-3. Escalar datos, contexto y modelos con recursos adecuados, incorporando GPU y
-   un cargador de datos que no materialice todo en RAM.
+3. Escalar datos, contexto y modelos con recursos adecuados, utilizando el
+   cargador en disco e incorporando GPU.
 4. Comprobar adaptación y retención entre etapas antes de promover nuevos pesos.
 5. Evaluar después herramientas, tareas completas y propuestas de modificación
    de código, cada una con criterios propios.

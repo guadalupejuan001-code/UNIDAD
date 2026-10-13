@@ -251,9 +251,14 @@ class GnosisProject:
         # Keep the unresolved path while checking links; resolving first hides them.
         corpus = self._root / selected["corpus"] if selected["corpus"] else None
         corpus_size = corpus.stat().st_size if corpus is not None and corpus.is_file() else 0
-        data_memory = 80 * corpus_size  # Current Python corpus/windows are in RAM.
+        # Keep the conservative admission allowance for either loader: mmap
+        # removes retained text/windows, but tokenizer fitting, metadata and the
+        # shuffled order still grow with data. This is not a measured peak.
+        data_memory = 80 * corpus_size
+        data_loading = training.get("data_loading", "memory")
         estimate = persistent + activations + projection + data_memory + GIB
-        storage = count * 4 * 12 + corpus_size  # checkpoints, Adam states, export, write-in-progress.
+        cache_storage = 32 * corpus_size if data_loading == "mmap" else 0
+        storage = count * 4 * 12 + corpus_size + cache_storage  # checkpoints, Adam states, export, cache.
         available_memory = _memory_available()
         parent = self.path(selected["run_dir"])
         while not parent.exists() and parent != parent.parent:
@@ -279,11 +284,15 @@ class GnosisProject:
                            "projectionEstimateBytes": projection, "corpusEstimateBytes": data_memory,
                            "admissionEstimateBytes": estimate, "budgetBytes": int(learning["memory_budget_gib"] * GIB),
                            "availableBytes": available_memory, "measuredPeak": False},
-                "storage": {"estimateBytes": storage, "freeBytes": free_storage},
+                "storage": {"estimateBytes": storage, "freeBytes": free_storage,
+                            "tokenizedCacheEstimateBytes": cache_storage},
+                "dataLoading": data_loading,
                 "execution": "local_cpu", "blockers": blockers, "canStart": not blockers,
                 "weightsCreated": False, "conversationQualityValidated": False, "automaticLearning": False,
                 "priority": ["broader_spanish_foundation", "new_dialogues_and_retention", "larger_capacity"],
-                "limitations": ["resource_estimates_are_not_peak_guarantees", "corpus_and_windows_are_still_in_memory",
+                "limitations": ["resource_estimates_are_not_peak_guarantees",
+                                "mmap_metadata_order_and_tokenizer_still_use_memory" if data_loading == "mmap"
+                                else "corpus_and_windows_are_still_in_memory",
                                 "gpu_training_not_implemented", "nerva_runs_char_rnn_only", "larger_profiles_are_not_trained_models"]}
 
     def train(self, stage, *, budget_seconds, resume=False):

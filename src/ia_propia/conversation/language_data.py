@@ -40,13 +40,16 @@ def validate_text_record(record):
     _check_json(record)
 
 
-def load_text_corpus(path):
-    """Read canonical TEXT JSONL; preserve supplied folds and provenance.
+def iter_text_corpus(path):
+    """Yield validated TEXT JSONL without retaining document text.
 
     Article chunks may share a group within one fold. Exact duplicate text is
     rejected rather than silently choosing which document/fold to keep.
+    IDs, family splits and text digests take O(number of records) metadata.
+    Exhaust the iterator to validate the entire corpus.
     """
-    records, ids, groups, texts = [], set(), {}, set()
+    ids, groups, texts = set(), {}, set()
+    count = 0
     for record in _json_lines(path, max_line=MAX_RECORD_BYTES):
         validate_text_record(record)
         if record["id"] in ids:
@@ -58,9 +61,14 @@ def load_text_corpus(path):
         if digest in texts:
             raise CorpusError("Exact document text is duplicated")
         ids.add(record["id"]); groups[group] = split; texts.add(digest)
-        records.append(record)
-        if len(records) > MAX_RECORDS:
+        count += 1
+        if count > MAX_RECORDS:
             raise CorpusError("Text record count limit exceeded")
-    if not records:
+        yield record
+    if not count:
         raise CorpusError("Text corpus has no usable documents")
-    return records
+
+
+def load_text_corpus(path):
+    """Read canonical TEXT JSONL; preserve supplied folds and provenance."""
+    return list(iter_text_corpus(path))

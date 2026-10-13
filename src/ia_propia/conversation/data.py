@@ -176,17 +176,19 @@ def _encoded(record: dict[str, Any]) -> bytes:
     return (json.dumps(record, ensure_ascii=False, separators=(",", ":"), allow_nan=False) + "\n").encode("utf-8")
 
 
-def load_corpus(path: str | Path) -> list[dict[str, Any]]:
-    """Read canonical JSONL; reject repeated IDs and family split leakage.
+def iter_corpus(path: str | Path) -> Iterator[dict[str, Any]]:
+    """Yield validated canonical JSONL in file order without retaining text.
 
-    Returns records in file order. Callers fit tokenizers only to ``train``
+    Validation retains only IDs and family splits, O(number of records)
+    metadata. Exhaust the iterator to validate the entire corpus.
+    Callers fit tokenizers only to ``train``
     messages, and supervise assistant text rather than source metadata.
     Explicit split assignments are permitted for authored/previous corpora;
     the importer uses :func:`assign_split` for whole OASST trees.
     """
-    records: list[dict[str, Any]] = []
     ids: set[str] = set()
     groups: dict[str, str] = {}
+    count = 0
     for record in _json_lines(path, max_line=MAX_RECORD_BYTES):
         validate_record(record)
         if record["id"] in ids:
@@ -195,12 +197,17 @@ def load_corpus(path: str | Path) -> list[dict[str, Any]]:
             raise CorpusError("conversation family appears in multiple splits")
         ids.add(record["id"])
         groups[record["groupId"]] = record["split"]
-        records.append(record)
-        if len(records) > MAX_RECORDS:
+        count += 1
+        if count > MAX_RECORDS:
             raise CorpusError("record count limit exceeded")
-    if not records:
+        yield record
+    if not count:
         raise CorpusError("corpus contains no usable conversations")
-    return records
+
+
+def load_corpus(path: str | Path) -> list[dict[str, Any]]:
+    """Read canonical JSONL; reject repeated IDs and family split leakage."""
+    return list(iter_corpus(path))
 
 
 def _label_values(message: dict[str, Any]) -> dict[str, float]:
