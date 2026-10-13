@@ -106,3 +106,19 @@ archivos en `successful-request-receipts` conservan entradas, hashes y respuesta
 HTTP. Los fallos anteriores y sus logs permanecen en las rutas privadas de
 recuperación. La revisión corresponde a un agente del proyecto, no a un auditor
 humano independiente.
+
+## Corrección de una prueba inestable detectada por CI
+
+La primera ejecución completa de CI de la rama encontró un fallo en
+`test_elapsed_handler_budget_prevents_verifier_and_keeps_actual_result`; la
+ejecución del PR del mismo commit había pasado. La prueba asignaba diez
+milisegundos desde la creación del encargo y asumía que el handler comenzaba
+antes. La latencia de SQLite/fsync y del servidor pudo consumir ese tiempo
+previamente; el controlador rechazó ejecutar la herramienta al vencer su límite.
+
+Se conservan el [fallo original](historical-ci-failure-summary.txt), el límite
+y todas las comprobaciones. El test ahora controla el reloj sólo dentro de
+ese caso y avanza veinte milisegundos durante el handler, que sigue escribiendo
+el archivo real. Verifica que no se llama al verificador después del vencimiento
+y que se conserva el resultado y su hash. El código y los límites reales del
+controlador no cambian. Sus [25 pruebas pasan](controller-clock-check.log).

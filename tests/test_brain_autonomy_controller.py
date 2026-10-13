@@ -7,6 +7,7 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 
 from ia_propia.brain.autonomy import AutonomyController, AutonomyLimits, AutonomyTool
 from ia_propia.brain.protocol import BrainError
@@ -365,9 +366,10 @@ class AutonomyControllerTests(unittest.TestCase):
 
     def test_elapsed_handler_budget_prevents_verifier_and_keeps_actual_result(self):
         calls = []
+        clock = [1000.0]
         def handler(arguments):
             calls.append("handler")
-            time.sleep(0.02)
+            clock[0] += 0.02
             return self.save(arguments)
         def verifier(arguments, result):
             calls.append("verifier")
@@ -375,7 +377,10 @@ class AutonomyControllerTests(unittest.TestCase):
         tool = AutonomyTool("save", handler, self.save_validator, effect="write", verifier=verifier)
         controller = self.controller(FixtureProposer([action("save", {"text": "effect remains"})]), [tool],
                                      limits=AutonomyLimits(max_seconds=0.01))
-        result = controller.step(controller.start("Stop new callbacks after deadline")["task_id"])
+        # Exercise expiry inside the handler, independent of SQLite/fsync or
+        # scheduler latency consuming the 10 ms budget before it can be called.
+        with patch("ia_propia.brain.autonomy.time.time", side_effect=lambda: clock[0]):
+            result = controller.step(controller.start("Stop new callbacks after deadline")["task_id"])
         self.assertEqual(result["status"], "limit_reached")
         self.assertEqual(calls, ["handler"])
         self.assertEqual(self.destination.read_text(), "effect remains")
