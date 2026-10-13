@@ -24,6 +24,10 @@ def configuration(root):
     value["brain"].update(conversation_model=None, expected_model_id=None, language_backend="numpy",
                           conversation_decoder="torch")
     value["learning"]["profile"] = "small"
+    # This fixture exercises a fresh three-stage lifecycle. The product default
+    # instead continues the published current model at its conversation stage.
+    foundation = value["learning"]["stages"]["foundation"]["run_dir"]
+    value["learning"]["stages"]["conversation"]["initial_model"] = foundation + "/artifact"
     return value
 
 
@@ -53,7 +57,7 @@ class GnosisPlanningTests(unittest.TestCase):
                 self.project(config)
 
     def test_plan_counts_scaling_without_loading_a_model_or_writing_weights(self):
-        for profile, expected in (("small", 6_967_296), ("50m", 48_852_992), ("100m", 99_446_400), ("1b", 991_586_304)):
+        for profile, expected in (("small", 6_967_296), ("15m", 15_769_344), ("50m", 48_852_992), ("100m", 99_446_400), ("1b", 991_586_304)):
             with self.subTest(profile=profile):
                 self.config["learning"]["profile"] = profile
                 with patch("ia_propia.brain.Brain", side_effect=AssertionError("plan must not load models")):

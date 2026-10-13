@@ -12,6 +12,8 @@ import threading
 MAX_PROJECT_BYTES = 262_144
 GIB = 1024 ** 3
 PROFILES = {
+    "15m": {"vocab_size": 2048, "d_model": 384, "n_layers": 8, "n_heads": 8,
+            "context_length": 2048},
     "small": {"vocab_size": 8192, "d_model": 256, "n_layers": 6, "n_heads": 8,
               "context_length": 512},
     "50m": {"vocab_size": 8192, "d_model": 512, "n_layers": 14, "n_heads": 8,

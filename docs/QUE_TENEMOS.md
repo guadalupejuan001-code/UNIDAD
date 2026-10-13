@@ -1,5 +1,9 @@
 # Qué tenemos en Unidad
 
+La entrada unificada y la IA se llaman **SOVENGI**; UNIDAD conserva el nombre
+del repositorio y del paquete por compatibilidad. La [guía de SOVENGI](SOVENGI.md)
+explica su configuración actual, memoria y API.
+
 Tenemos un proyecto de IA propia que puede entrenarse y ejecutarse localmente,
 con un núcleo para conectarlo a distintas aplicaciones. Hay código funcional,
 pesos entrenados, datos con procedencia y pruebas conservadas. La misión de

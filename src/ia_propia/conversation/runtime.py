@@ -6,6 +6,7 @@ validation and inference stay explicit; messages never choose files or tools.
 
 from copy import deepcopy
 from pathlib import Path
+import threading
 
 from .contract import (DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED, DEFAULT_TEMPERATURE,
                        MAX_MESSAGES, MAX_NEW_TOKENS, ROLE_IDS)
@@ -67,6 +68,7 @@ class ConversationEngine:
         self._use_cache = use_cache
         from .artifacts import load_artifact
         self._model, self._tokenizer, self._manifest = load_artifact(Path(model_dir))
+        self._inference_lock = threading.RLock()
 
     @property
     def manifest(self):
@@ -92,10 +94,18 @@ class ConversationEngine:
                                          "temperature": temperature, "seed": seed,
                                          "top_k": top_k, "top_p": top_p, "repetition_penalty": repetition_penalty})
         from .model import chat
-        result = chat(self._model, self._tokenizer, decoder_backend=self._decoder_backend,
-                      use_cache=self._use_cache, **values)
+        with self._inference_lock:
+            result = chat(self._model, self._tokenizer, decoder_backend=self._decoder_backend,
+                          use_cache=self._use_cache, **values)
         return {**result, "modelId": self.model_id, "workerCapabilityValidated": False}
 
     def score_reply(self, messages, text):
         from .scoring import score_reply
         return score_reply(self._model, self._tokenizer, messages, text)
+
+    def prompt_usage(self, messages):
+        """Measure context with the loaded tokenizer, without generating tokens."""
+        from .tokenizer import encode_prompt
+        capacity = self._manifest["config"]["context_length"]
+        ids, discarded = encode_prompt(messages, self._tokenizer, capacity)
+        return {"tokens": len(ids) + discarded, "capacity": capacity, "discarded": discarded}

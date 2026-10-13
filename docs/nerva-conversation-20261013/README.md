@@ -1,7 +1,8 @@
 # Conexión conversacional de NERVA y caché de generación
 
-Intervención de software del 13 de octubre de 2026 sobre `main`
-`63eede1649f7293bc8bf55cf603367b0bae853b5`. Conserva el avance del currículo de
+Intervención de software del 13 de octubre de 2026 iniciada sobre `main`
+`63eede1649f7293bc8bf55cf603367b0bae853b5` y reconciliada con PR14/PR15 hasta
+`85929202f7eb9c9a069dbaba3acc409c3f2195e3`. Conserva el avance del currículo de
 patrones y todas las evidencias anteriores. No modifica pesos, tokenizador,
 datos, checkpoints ni procesos de entrenamiento.
 
@@ -17,7 +18,10 @@ explícitos sin cambiar de backend. El proceso y sus archivos se cierran al sali
 CLI, Brain/API, GNOSIS y evaluación comparten esta conexión. El anfitrión elige
 el backend y la caché; el diálogo no puede elegir código, ejecutables o rutas.
 Las respuestas registran la ejecución y mantienen la identidad de los pesos.
-Las configuraciones GNOSIS anteriores siguen admitidas.
+Las configuraciones GNOSIS anteriores siguen admitidas. Se conserva el nombre
+SOVENGI, la selección de `reference-wiki1` de 15,77 M, su memoria, su API y el
+bloqueo de inferencia incorporados por PR15. `sovengi chat` y `sovengi ask`
+reciben los mismos controles y semilla por el contrato compartido.
 
 La caché guarda claves y valores de atención dentro de una sola respuesta.
 Reutiliza el prefijo sin volver a calcular cada token anterior. Al desplazarse
@@ -102,7 +106,9 @@ El runner exige salidas nuevas y conserva un recibo parcial si se interrumpe.
 No sobrescribir el benchmark entregado. Las pruebas pertinentes cubren logits
 con y sin copia, desplazamiento de contexto, tokens, RNG, pesos, concurrencia,
 limpieza por fallo/timeout, selección NERVA real y recorrido por Brain/GNOSIS.
-El [recibo de verificación](verification.json) identifica el resultado ejecutado.
+El [recibo de verificación](verification.json) identifica 152 pruebas pertinentes
+aprobadas y una comprobación posterior de 42 pruebas al reconciliar SOVENGI,
+con módulos compartidos entre ambas baterías; no se suman como pruebas únicas.
 
 ## Qué falta para mejorar las respuestas
 

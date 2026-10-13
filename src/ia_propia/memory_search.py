@@ -5,6 +5,7 @@ The workspace owns locking and validation of the event log.
 """
 
 import hashlib
+import json
 import re
 import unicodedata
 
@@ -15,6 +16,8 @@ MAX_SEARCH_LIMIT = 20
 MAX_EXCERPT_CHARS = 160
 _WORDS = re.compile(r"[^\W_]+", re.UNICODE)
 SEARCH_METHOD = "lexical_all_words_nfc_casefold"
+RECALL_METHOD = "lexical_any_content_word_with_complete_task_fields"
+_STOP_WORDS = frozenset("a al algo como cómo con cual cuál cuando cuándo de del el ella en es esta está este esto fue ha hay la las lo los me mi mis no nos o para pero por que qué se si sí sin sobre su sus te tengo tu tus un una unas unos y yo".split())
 
 
 def _words(text):
@@ -112,3 +115,43 @@ def search_snapshot(state, query, limit=DEFAULT_SEARCH_LIMIT):
             "eventCount": len(state["eventIds"]), "queryTerms": list(terms),
             "method": SEARCH_METHOD, "limit": limit,
             "matchCount": count, "truncated": count > limit, "tasks": tasks}
+
+
+def recall_snapshot(state, query, *, limit=3, max_bytes=2048):
+    """Recall whole task fields, including corrections, without cutting facts.
+
+    This is lexical retrieval, not a learned memory model. Only explicit goals,
+    context, latest feedback and currently accepted attempts are eligible.
+    """
+    if type(query) is not str or not query.strip() or len(query.encode("utf-8")) > 16_384:
+        raise ValueError("Recall requires a bounded message")
+    if type(limit) is not int or not 1 <= limit <= 3:
+        raise ValueError("Recall limit must be from 1 to 3")
+    if type(max_bytes) is not int or not 1 <= max_bytes <= 4096:
+        raise ValueError("Recall byte budget must be from 1 to 4096")
+    terms = set(term for term, _, _ in _words(query) if len(term) > 2 and term not in _STOP_WORDS)
+    terms = set(sorted(terms)[:32])
+    candidates, omitted = [], 0
+    for task in state["tasks"].values():
+        fields = [(text, source) for text, source in _fields(task) if text]
+        hits = terms.intersection(term for text, _ in fields for term, _, _ in _words(text))
+        if not hits:
+            continue
+        item = {"taskId": task["id"], "fields": [{"text": text, "source": source} for text, source in fields]}
+        size = len(json.dumps(item, ensure_ascii=False).encode("utf-8"))
+        if size > max_bytes:
+            omitted += 1
+            continue
+        candidates.append((len(hits), task["createdAt"], task["id"], size, item))
+        # Bound retained copies even for very large valid workspaces.
+        candidates.sort(key=lambda row: row[:3], reverse=True)
+        del candidates[limit:]
+    tasks, used = [], 0
+    for _, _, _, size, item in candidates:
+        if used + size <= max_bytes:
+            tasks.append(item)
+            used += size
+        else:
+            omitted += 1
+    return {"method": RECALL_METHOD, "privacy": "PRIVATE", "tasks": tasks,
+            "omittedForBudget": omitted, "automaticLearning": False}

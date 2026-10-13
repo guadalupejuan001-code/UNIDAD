@@ -390,6 +390,16 @@ def search_tasks(path, query, limit=10):
         return search_snapshot(_load(root), query, limit)
 
 
+def recall_tasks(path, query):
+    """Product opt-in recall from the same locked, validated memory log."""
+    from .memory_search import recall_snapshot
+    # Validate before accessing the workspace.
+    recall_snapshot({"tasks": {}}, query)
+    root = _root(path)
+    with _locked(root):
+        return recall_snapshot(_load(root), query)
+
+
 def _write_new(path, content):
     descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0), 0o600)
     try:

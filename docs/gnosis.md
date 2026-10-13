@@ -30,9 +30,10 @@ unidad gnosis chat --project configs/gnosis.json --temperature 0
 ```
 
 `plan` no asigna pesos, no inicia procesos y no entrena. La configuración entregada
-selecciona C7 para conversar y el perfil `50m` para una nueva base; los corpus
+selecciona `reference-wiki1` para conversar y el perfil `15m`; los corpus
 están sin configurar. El informe indica ese bloqueo. El chat sigue siendo
-experimental: C7 no ha superado la aceptación conversacional.
+experimental: esta selección no acredita la aceptación conversacional. C7 se
+conserva como referencia histórica.
 
 `brain.conversation_decoder` conecta el selector `"torch"` o `"nerva"` al mismo
 `ConversationEngine`; `brain.conversation_cache` habilita la caché por respuesta.
@@ -97,11 +98,12 @@ de las corridas y se selecciona explícitamente mediante su identidad.
 | Perfil | Parámetros nominales | Contexto configurado | Comprobación actual |
 | --- | ---: | ---: | --- |
 | `small` | 6.967.296 | 512 | Arquitectura pequeña ya disponible |
+| `15m` | 15.769.344 | 2.048 | Arquitectura propia seleccionada por SOVENGI; conversación aún experimental |
 | `50m` | 48.852.992 | 1.024 | Modelo real, forward/backward de 64 tokens, exportación y carga |
 | `100m` | 99.446.400 | 1.024 | Conteo y validación; no entrenado ni ejecutado aquí |
 | `1b` | 991.586.304 | 2.048 | Conteo y estructura meta; no entrenado ni ejecutado aquí |
 
-Los conteos nominales usan vocabularios de 8.192 y 16.384 tokens. Un tokenizador
+Los conteos nominales usan vocabularios de 2.048, 8.192 y 16.384 tokens. Un tokenizador
 ajustado con poco texto puede tener menos entradas. La admisión de una etapa
 heredada o reanudada usa su configuración real antes de cargar los tensores,
 rechaza arquitecturas ajenas al perfil y fija esa configuración en la carga.
