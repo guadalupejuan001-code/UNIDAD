@@ -181,6 +181,30 @@ La adaptación automática y la autoprogramación forman parte de la visión fut
 necesitan demostraciones específicas y todavía no están implementadas como
 capacidades autónomas del modelo.
 
+## Mapa del repositorio y sus propuestas
+
+Este repositorio también conserva desarrollos fuera de `main`. Al comprobar
+GitHub el 13 de octubre de 2026 UTC había **ocho ramas y seis PR**: PR5 y PR6
+estaban fusionados; PR1–4 seguían abiertos y ya no figuraban como borradores.
+
+| Ubicación | Qué aporta | Situación comprobada |
+| --- | --- | --- |
+| `main` | Cerebro, modelos propios, entrenamiento, evaluación, GNOSIS, NERVA y datos en disco. | GNOSIS/NERVA se integraron por [PR5](https://github.com/guadalupejuan001-code/UNIDAD/pull/5); el cargador mmap, por [PR6](https://github.com/guadalupejuan001-code/UNIDAD/pull/6). |
+| [PR1](https://github.com/guadalupejuan001-code/UNIDAD/pull/1) | Diagnóstico de conversaciones, correcciones del evaluador y evidencia experimental. | Abierto; parte de las correcciones ya llegó a main por otra vía. |
+| [PR2](https://github.com/guadalupejuan001-code/UNIDAD/pull/2) | Proyección de vocabulario sólo en la posición final durante generación. | Optimización propuesta; sus experimentos de conversación no justificaron promover pesos. |
+| [PR3](https://github.com/guadalupejuan001-code/UNIDAD/pull/3) | Reparación de redacción y contraste relacional desde C7. | Candidatos rechazados; conserva respuestas y evaluaciones. |
+| [PR4](https://github.com/guadalupejuan001-code/UNIDAD/pull/4) | Exportador de un paquete de modelo para Android y comprobaciones con ONNX Runtime. | Propuesta abierta; la paridad en CPU no acredita funcionamiento en un teléfono físico. |
+| [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Paquete dividido en seis partes: C7, candidatos relacionales y checkpoints completos. | Conserva experimentos y permite reconstruirlos; no convierte candidatos rechazados en modelos aceptados. |
+
+Los recibos y textos antiguos conservan el estado de su fecha. Para saber si una
+propuesta está integrada o sigue abierta, consulta también su PR.
+
+NERVA incluye además un lenguaje e intérprete con operaciones de tensores,
+diferenciación automática, actualización de parámetros y checkpoints. Es una
+pieza de experimentación que merece describirse por sí misma. Su adaptador actual
+dentro de Unidad sólo realiza inferencia del pequeño modelo de caracteres; no
+entrena C7 ni ejecuta su Transformer.
+
 ## Documentación y antecedentes
 
 - [GNOSIS: configuración, comandos y límites](docs/gnosis.md)
