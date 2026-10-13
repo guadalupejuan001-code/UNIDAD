@@ -1,0 +1,313 @@
+{
+  "allObservedSuccessRevisionsExact": true,
+  "atUtc": "2026-10-13T15:14:00.897831+00:00",
+  "blockingFindings": [],
+  "collectorOrTrainerLaunchedByThisReview": false,
+  "findings": [
+    {
+      "area": "source and coverage",
+      "conclusion": "New responses and cached pages require the same official URL, exact source revision, actual HTTP200, full expected length and contiguous row_idx. No fragment-derived response or status fabrication exists."
+    },
+    {
+      "area": "error evidence",
+      "conclusion": "HTTP error status and body hash/bytes remain distinct failure receipts. Non-transient errors do not retry. Exhausted transient attempts raise before raw cache creation or publication."
+    },
+    {
+      "area": "reserved source content",
+      "conclusion": "metadata_only_document elides raw JSON text before metadata decoding; TRAIN/VAL text decoding occurs only after full revision and coverage validation for new responses. Reserved TEST article text remains blank and not used."
+    },
+    {
+      "area": "resources",
+      "conclusion": "Finite four attempts per page and 320 global requests. Each read reserves maximum_raw+1 against total byte cap; failure bodies bounded65536. Deadline checks occur before requests, after responses, and before retry delays. Global disk check includes output, state, inbox and new receipts."
+    },
+    {
+      "area": "preservation",
+      "conclusion": "Frozen V2 source hash checked before collect. Existing cache bytes are reused and validated without rewriting. Existing exclusive collector lock and publication transaction remain in effect."
+    }
+  ],
+  "frozenSourceStateEditedByThisReview": false,
+  "humanReview": false,
+  "kind": "independent-read-only-recovery-transport-review",
+  "limitsScope": "Counts measure bytes explicitly read by this helper, not HTTP header/TLS traffic. Time/disk checks are cooperative around operations; root external process limits remain responsible for hard termination. This review does not establish the pending collector has completed.",
+  "networkRequestsByThisReview": 0,
+  "requestBytesObserved": 10977749,
+  "requestCountsObserved": {
+    "200": 30
+  },
+  "requestEvidenceObserved": [
+    {
+      "attempt": 1,
+      "bytesRead": 340490,
+      "order": 756,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000001.json",
+      "sha256": "9d012dba0e82858073044703a04fda0ee261915d32722375d4ef9261fceadff8",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 409066,
+      "order": 757,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000002.json",
+      "sha256": "d0caecd6c16c0d98d61dc5cae8f9fe89864b8f478300778d0a43e9db1ab11bb0",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 1241450,
+      "order": 758,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000003.json",
+      "sha256": "fb1a9ca5e464a71ce42bc224c36513e747262122247a6fafd2cac7cd88af03ae",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 260343,
+      "order": 759,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000004.json",
+      "sha256": "f1fbd6b0392555a45cba94491bff017f02e2ca6bbe256c44854291ececb3743f",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 280317,
+      "order": 760,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000005.json",
+      "sha256": "8442dcdf28041c7e965c0596908a40909a4bb252cfc112fd5bcf513500ed8276",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 265428,
+      "order": 761,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000006.json",
+      "sha256": "140e7aac4a754c347bb2fb9d0526dec187dab203784b84e550b0ccd61d571ea6",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 95823,
+      "order": 762,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000007.json",
+      "sha256": "8aa6609afb609f965862186768efb307ff3a1b2e2925c504eb722db18e79797d",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 337437,
+      "order": 763,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000008.json",
+      "sha256": "682802da3dd6585ccb8baabc46a2fa4c17f903bc14938471ab45ad4c9804ee28",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 327534,
+      "order": 764,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000009.json",
+      "sha256": "b3fea86f41cc099c62ef58ec46b23b119de77e451b8804e0e8d238ae9965c189",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 728627,
+      "order": 765,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000010.json",
+      "sha256": "d4f5264c2deb93ab61d30b9474cd0a88f88216556e8832421322eb6429f1d95e",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 283229,
+      "order": 766,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000011.json",
+      "sha256": "9ce830ca1cc7a07a87e89850432c2bd419accc2fac11de5417c5695561f06469",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 367944,
+      "order": 767,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000012.json",
+      "sha256": "659d5d1e9efd8024d069f94e6a358d1c6a10b2802dd0d88d6368c5e4350c422f",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 261510,
+      "order": 768,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000013.json",
+      "sha256": "f29447e368c460cdf75d24f0661c285aa8e6aa39ef4c0a2070ee6895a6a14023",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 247565,
+      "order": 769,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000014.json",
+      "sha256": "e856396110afdeb969a0ea53683c794d707268e3b8a5fc129c03a285ba1854e3",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 315547,
+      "order": 770,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000015.json",
+      "sha256": "5d115ca34a0175f1a2718ad245097162b64789571183f9a0eae933709feb7bf9",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 399211,
+      "order": 771,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000016.json",
+      "sha256": "b2408a155260bf8fab7cdc058b35d70d485d9f41bc2034f2354241637537ff13",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 517978,
+      "order": 772,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000017.json",
+      "sha256": "bf93956ba4476d94bd22cd02d4c82c9ec320ee843a399cea6e23a8b562e0b765",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 291188,
+      "order": 773,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000018.json",
+      "sha256": "1ee7121e9cf696d9907c37fa42f947a994646a37e6bf3faedcdcb919a6fe8b76",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 498804,
+      "order": 774,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000019.json",
+      "sha256": "5816e32a571101d28b0d85d2a00ca15331163e73d6c96574a541da2d765a1701",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 149217,
+      "order": 775,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000020.json",
+      "sha256": "baa5f9934af64d246fea18e4b7da3d41f40dfcc10c2ac246a95c98c68f8a276f",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 244816,
+      "order": 776,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000021.json",
+      "sha256": "984ab06102d141f70b7ef3639a4b85d7fa7696049e7ca4f6b6d2542488bf870b",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 439312,
+      "order": 777,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000022.json",
+      "sha256": "4de6caae8a57644b130c08c2ae3121f7182154416e77aea8510d97c303152505",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 305561,
+      "order": 778,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000023.json",
+      "sha256": "8e83a212f33f4f333c22e5cb58c0a7e90a9268f61e519c6e9c42e1633757f4ca",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 617320,
+      "order": 779,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000024.json",
+      "sha256": "04539cb679411aee0ea8bf15ab36479983467f00f581a0f7ac9a814457d6e834",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 203904,
+      "order": 780,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000025.json",
+      "sha256": "2be8e61146d9448e90edc47b6610fdbcba1fc9ff4e21802bea810e927eb19881",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 462615,
+      "order": 781,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000026.json",
+      "sha256": "7c80e0d724559fa0af858eb4f1cc24cc566c70c10ae6475d218d707ed5746878",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 156275,
+      "order": 782,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000027.json",
+      "sha256": "dec8fd9a1f21f359870d33b0a0caf52143f940d16f7da50de79974dacca6397e",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 216640,
+      "order": 783,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000028.json",
+      "sha256": "791becc27d1200a9f00343f7a94468d4dcae3bb8c3a9039166b5efaea8cc4eac",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 305009,
+      "order": 784,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000029.json",
+      "sha256": "609f98a6b119d6acd686b87090042f6bb09a58528b499a91faae74c66a079c33",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    },
+    {
+      "attempt": 1,
+      "bytesRead": 407589,
+      "order": 785,
+      "path": "private/learning-repair-20261013/download-recovery-20261013/resilient-151201-e0ca9f3a/requests/request-000030.json",
+      "sha256": "55c5082c7ce160aa04112041cf909d5c6521d3b826e1e93eda98e145ce408535",
+      "status": 200,
+      "xRevision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa"
+    }
+  ],
+  "reviewer": "project-AI",
+  "sourceSha256": "9826932edbacfee4150c4fc3831b2da4c2ac81022df142689bae77bb21def221",
+  "testsExecutedByThisReview": false,
+  "testsSha256": "eae0cccd23c831014050b6f11fcfeb92618147b27d6118a3db297076d2427b5e"
+}

@@ -1,6 +1,24 @@
 # Estado actual de Unidad
 
-## Aprendizaje de patrones, 13 de octubre de 2026, 14:25 UTC
+## Descargas completas y entrenamiento activo, 13 de octubre, 15:18:20 UTC
+
+La [recuperación del lote pendiente](learning-repair-20261013/download-recovery/README.md)
+completó 58 páginas, reutilizando 28 de caché. Se incorporaron 2.553 registros
+nuevos de 2.545 artículos de Wikipedia en español, más 2.299 registros conocidos
+de repaso. El corpus tiene 4.325 TRAIN, 527 VALIDATION y ningún TEST.
+
+El supervisor 22557 admitió `wiki-cycle-0003`; el trabajador 33674, nacimiento
+`4777437`, había ejecutado 251 actualizaciones causales en este corte. Continúa
+desde pesos propios, con corpus y configuraciones fijados y presupuestos finitos.
+No se detuvo ni reinició la corrida previa para recuperar las descargas.
+Se entregan el corpus distribuible, su procedencia y un transporte optativo con
+reintentos limitados. El supervisor vivo conserva su recolector original.
+
+Las observaciones siguientes se conservan como historia, incluido el estado de
+espera causado por HTTP 502. La descarga está completa; entrenamiento y evaluación
+posteriores no se presentan como terminados ni como conversación aceptada.
+
+## Historial: aprendizaje de patrones, 13 de octubre, 14:25 UTC
 
 El [control de relaciones conversacionales](learning-repair-20261013/pattern-relations-v2/README.md)
 integró datos contrastantes, evaluación real y una etapa en la cola existente.
