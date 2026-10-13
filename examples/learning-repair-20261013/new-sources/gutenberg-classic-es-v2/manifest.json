@@ -1,0 +1,202 @@
+{
+  "authorFamilyRegistrySha256": "2b1006bb2f7d1cdef73d0f62fcc458c175e7109a3d9d3162e56ac28c048bc53f",
+  "catalogSha256": "a3b211908acdc286bac68935206dc41226efcd4e74b6af5d0cde0f61f0d624eb",
+  "corpusSha256": "96c58c71a5834c3503fe4ed69b25b315ff1cf0b37414c571d7ab5623e66f4ce3",
+  "createdAtUtc": "2026-10-13T05:56:25.940931+00:00",
+  "datasetStatus": "prepared-not-yet-trained",
+  "distribution": {
+    "train": {
+      "authors": 3,
+      "payloadBytes": 2473751,
+      "records": 161,
+      "words": 440178
+    },
+    "validation": {
+      "authors": 1,
+      "payloadBytes": 228817,
+      "records": 16,
+      "words": 41861
+    }
+  },
+  "distributionScope": "TRAIN and development-validation only, original raw texts for those folds, provenance and PG license. Reserved corpus TEST and excluded Lope edition stay outside this distribution.",
+  "evaluationCasesRead": false,
+  "excludedEditorEdition": {
+    "ebookId": 60198,
+    "editor": "Américo Castro",
+    "reason": "Complete edition excluded after inspecting title page. Only its metadata and rejection decision are retained in public catalog; no text or raw source is distributed."
+  },
+  "externalModelOutputsIncluded": false,
+  "familyPolicy": "public-spanish-author:<canonical-slug>; whole author including all works/variants remains one stable assign_split fold",
+  "files": {
+    "train": {
+      "bytes": 2658694,
+      "file": "gutenberg-spanish.train.jsonl",
+      "sha256": "e13045c669203efdeba0f21931fca8250bd92808eaee330016fc01a9b717d429"
+    },
+    "trainValidation": {
+      "bytes": 2904931,
+      "file": "gutenberg-spanish.train-validation.jsonl",
+      "sha256": "96c58c71a5834c3503fe4ed69b25b315ff1cf0b37414c571d7ab5623e66f4ce3"
+    },
+    "validation": {
+      "bytes": 246237,
+      "file": "gutenberg-spanish.validation.jsonl",
+      "sha256": "872f406f91ca3ab25f76582ad04e6af51d68ac0a525636b5a384cd2451c056b3"
+    }
+  },
+  "guards": {
+    "excludedCrossFoldAuthorFamilies": [],
+    "normalizedChunkDuplicatesRemoved": 0
+  },
+  "helperSha256": "0061eaca0729cbf55b2decc43fa6535d5beb9e81fbc1e800e093b2d431ea96af",
+  "limitations": [
+    "A bounded historical selection, not all Spanish or contemporary conversation.",
+    "Stored text is not evidence that a model learned it.",
+    "Archaic style and historical prejudices require modern-language/SFT anchors and real response evaluation.",
+    "Copyright declarations are PG USA status plus old original authors; keep raw PG license and provenance when distributing."
+  ],
+  "limits": {
+    "cpuAffinityCount": 1,
+    "maxCorpusMiB": 10,
+    "maxDiskMiB": 256,
+    "maxNetworkMiB": 64,
+    "maxRSSMiB": 512,
+    "maxSeconds": 600
+  },
+  "originPreparationManifestSha256": "0662cab8ea7f6c59ba05e9256d990e2d77a239228f768e28bff25507ae800112",
+  "preparation": {
+    "elapsedSeconds": 0.587,
+    "networkBytesInThisInvocation": 0,
+    "peakRSSMiB": 37.277
+  },
+  "processing": "UTF-8 strict; PG start/end markers removed; short headings/control-token/boilerplate/low-letter paragraphs removed; record chunks preserve paragraph words; oversized paragraphs split only at whitespace",
+  "reservedTest": {
+    "bytes": 350113,
+    "distributed": false,
+    "file": "gutenberg-spanish.test-reserved.jsonl",
+    "records": 21,
+    "sha256": "596acd63c10cde9905a75f5dd3a6f10c9eacfd8f19f75243b4e00e9f8971b394",
+    "tokenized": false
+  },
+  "reservedTestRecords": 21,
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "author": "Miguel de Cervantes Saavedra",
+      "authorDeathYear": 1616,
+      "authorSlug": "miguel-de-cervantes-saavedra",
+      "bibliographyRetrievedAtUtc": "2026-10-13T05:43:04.204277+00:00",
+      "bibliographySha256": "2c2b59e6c88e3683fbf32decd0b8966d75a8e519e7d0bbe2cfde9216e14d5681",
+      "bibliographyUrl": "https://www.gutenberg.org/ebooks/2000",
+      "bodyBytes": 2168309,
+      "bodySha256": "014a301bb2e4455817bc3629c78aead361c1d9678fa248eb00b4b2fb8a57cc6c",
+      "canonicalWork": "don-quijote-1605-1615",
+      "copyrightTerritoryDeclaredByPG": "USA",
+      "ebookId": 2000,
+      "familyId": "public-spanish-author:miguel-de-cervantes-saavedra",
+      "language": "es",
+      "license": "Original historical public-domain work; PG declares Public domain in the USA; preserve Project Gutenberg License and provenance",
+      "paragraphFilters": {
+        "short_heading_or_fragment": 770
+      },
+      "publicationYear": 1605,
+      "rawReceiptSha256": "25ab252ad136030f641ffc22c9d2c9b87c8a141681c1c0b66429deb22db075c9",
+      "retainedParagraphs": 4564,
+      "split": "train",
+      "syntheticSourceSummaryExcluded": true,
+      "textSha256": "534f41d59f7142163fa0964076ac6351845c006ea6433778be637fac6d5b04d7",
+      "textUrl": "https://www.gutenberg.org/cache/epub/2000/pg2000.txt",
+      "title": "Don Quijote"
+    },
+    {
+      "author": "Francisco de Quevedo",
+      "authorDeathYear": 1645,
+      "authorSlug": "francisco-de-quevedo",
+      "bibliographyRetrievedAtUtc": "2026-10-13T05:43:08.149114+00:00",
+      "bibliographySha256": "2832a5ab37464768e518998227ad1dd3c8dca8c7164450f521e20382905c2acd",
+      "bibliographyUrl": "https://www.gutenberg.org/ebooks/32315",
+      "bodyBytes": 240679,
+      "bodySha256": "3994815bf9b68b7a790ced150c433cc3445f7a4ef14cf796c6bde7d7e1bd463d",
+      "canonicalWork": "historia-de-la-vida-del-buscon",
+      "copyrightTerritoryDeclaredByPG": "USA",
+      "ebookId": 32315,
+      "familyId": "public-spanish-author:francisco-de-quevedo",
+      "language": "es",
+      "license": "Original historical public-domain work; PG declares Public domain in the USA; preserve Project Gutenberg License and provenance",
+      "paragraphFilters": {
+        "short_heading_or_fragment": 157
+      },
+      "publicationYear": 1626,
+      "rawReceiptSha256": "ffad6139e792b523c9db7d58a916f177bedb9f43b8a6eb2a15a5834078e88fa0",
+      "retainedParagraphs": 640,
+      "split": "train",
+      "syntheticSourceSummaryExcluded": true,
+      "textSha256": "837881f437e0771af42379f7c92478f6f614869494fb00bfb5c4d5c60f21bd48",
+      "textUrl": "https://www.gutenberg.org/cache/epub/32315/pg32315.txt",
+      "title": "Historia de la vida del Buscón, llamado Don Pablos, ejemplo de vagabundos y espejo de tacaños"
+    },
+    {
+      "anonymousOriginal": true,
+      "author": "Anónimo",
+      "authorDeathYear": null,
+      "authorSlug": "anonimo-lazarillo-de-tormes",
+      "bibliographyRetrievedAtUtc": "2026-10-13T05:43:08.908689+00:00",
+      "bibliographySha256": "922afe33b571a45e2f76ad725eecbb3017f4b28e10ace63f6713af9009fbf463",
+      "bibliographyUrl": "https://www.gutenberg.org/ebooks/320",
+      "bodyBytes": 109199,
+      "bodySha256": "9632b53d79d48d7ede3994afb428677ee3a251d47a714f0dbb5a756f4fe97768",
+      "canonicalWork": "lazarillo-de-tormes",
+      "copyrightTerritoryDeclaredByPG": "USA",
+      "ebookId": 320,
+      "familyId": "public-spanish-author:anonimo-lazarillo-de-tormes",
+      "language": "es",
+      "license": "Original historical public-domain work; PG declares Public domain in the USA; preserve Project Gutenberg License and provenance",
+      "paragraphFilters": {
+        "short_heading_or_fragment": 62
+      },
+      "publicationYear": 1554,
+      "rawReceiptSha256": "4c5957d31008ae80aff39ac9b1b76360d0c359bec28a36aa0c490900f5d6ffd3",
+      "retainedParagraphs": 301,
+      "split": "train",
+      "syntheticSourceSummaryExcluded": true,
+      "textSha256": "0abbdbd87fa5abb4e570a34deae14a97c291a3229f079087f2fabf391be3cca7",
+      "textUrl": "https://www.gutenberg.org/cache/epub/320/pg320.txt",
+      "title": "Vida de Lazarillo de Tormes y de sus fortunas y adversidades"
+    },
+    {
+      "author": "Fray Luis de León",
+      "authorDeathYear": 1591,
+      "authorSlug": "fray-luis-de-leon",
+      "bibliographyRetrievedAtUtc": "2026-10-13T05:43:47.622277+00:00",
+      "bibliographySha256": "23aa62915fce929914f9953a296b91c5044702f7ba0ba5f726d6df3db9f622ad",
+      "bibliographyUrl": "https://www.gutenberg.org/ebooks/61573",
+      "bodyBytes": 237229,
+      "bodySha256": "cd19ad42e0ceefe1327d0975045d1a269771401a99eb29aa7b1d016573880d2d",
+      "canonicalWork": "la-perfecta-casada",
+      "copyrightTerritoryDeclaredByPG": "USA",
+      "ebookId": 61573,
+      "familyId": "public-spanish-author:fray-luis-de-leon",
+      "language": "es",
+      "license": "Original historical public-domain work; PG declares Public domain in the USA; preserve Project Gutenberg License and provenance",
+      "paragraphFilters": {
+        "initial_transcription_preface": 1,
+        "short_heading_or_fragment": 260
+      },
+      "publicationYear": 1583,
+      "rawReceiptSha256": "fb86567643ad25ba6cc0b9ed64dfdeb872763f1669b16b884610b2e0bd6fb302",
+      "retainedParagraphs": 294,
+      "split": "validation",
+      "syntheticSourceSummaryExcluded": true,
+      "textSha256": "bd5333a6edb66388f91b5a5ab0148f1e48ca72ca102d03b23f500724d837a7f4",
+      "textUrl": "https://www.gutenberg.org/cache/epub/61573/pg61573.txt",
+      "title": "La perfecta casada"
+    }
+  ],
+  "splitCounts": {
+    "test": 0,
+    "train": 161,
+    "validation": 16
+  },
+  "testUsedForTraining": false,
+  "tokenizerFitted": false
+}

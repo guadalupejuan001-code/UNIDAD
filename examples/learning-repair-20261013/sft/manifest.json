@@ -1,0 +1,282 @@
+{
+  "contentSha256": "58554b0b4920bbfc7f82f7adf5e91e8bbeceb5afd5cbf4be327430aa1b00b696",
+  "contextLength": 512,
+  "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+  "file": {
+    "bytes": 24893249,
+    "families": 6052,
+    "file": "sft.train-validation.jsonl",
+    "records": 20292,
+    "sha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+    "splits": {
+      "train": 18588,
+      "validation": 1704
+    }
+  },
+  "guards": {
+    "crossfold": {
+      "fullDialogue": {
+        "classes": 0,
+        "families": 0
+      },
+      "fullPrompt": {
+        "classes": 0,
+        "families": 0
+      }
+    },
+    "duplicateIdsRemoved": 0,
+    "excludedWholeFamilyIds": [],
+    "foldsMoved": 0,
+    "retainedRecords": 20292,
+    "samefoldExactDialoguesRemoved": 5,
+    "sourceRecordsBeforeGuards": 20297,
+    "sourceTextsOrTargetsRewritten": false
+  },
+  "helperSha256": "bce38d29a2c1ff027d14275b0fb9daf71c61a492ae815540b3f799e82d68d360",
+  "humanRecordCounts": {
+    "train": 7676,
+    "validation": 981
+  },
+  "humanRecordRatios": {
+    "train": 0.412954594361954,
+    "validation": 0.5757042253521126
+  },
+  "lengthPolicy": "Components fixed to own BPE2048 before merge; merge never changes message text",
+  "limitations": [
+    "Upstream human review is not exhaustive factual certification",
+    "Synthetic templates repeat task semantics; unique IDs are not proof of unlimited diversity",
+    "Source-author editorial review is by project AI assistants, not independent human evaluation"
+  ],
+  "modelsOrTokenizersLoadedDuringMerge": false,
+  "ownerMessagesIncluded": false,
+  "purpose": "fixed finite SFT union; not acceptance evidence",
+  "sampling": "uniform shuffle without replacement, no weights, resampling or duplicated target IDs",
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "declaredSourceKind": "public-human-reviewed",
+      "license": "Apache-2.0 upstream",
+      "path": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+      "records": 8657,
+      "sha256": "24770f0b2bb1381fd70ab3800235f6d03e72f02128addfc424bcbf8b83d166fd"
+    },
+    {
+      "declaredSourceKind": "authored-synthetic",
+      "license": "Project AI-authored fiction; no independent data license declared",
+      "path": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+      "records": 10880,
+      "sha256": "be4d7d84faaec0afe2cc797f3f0a5fef9b60dbe3b420f4b535daa805f0943394"
+    },
+    {
+      "declaredSourceKind": "authored-synthetic",
+      "license": "Project AI-authored fiction; no independent data license declared",
+      "path": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+      "records": 760,
+      "sha256": "6b1e805992ecca278ebb80b242ebfd46407d567b3a41f952e41953273044d93e"
+    }
+  ],
+  "splitCounts": {
+    "test": 0,
+    "train": 18588,
+    "validation": 1704
+  },
+  "supervision": "assistant_last_reply; only final assistant reply and EOS are positive targets",
+  "targetExclusions": {
+    "policy": "Author-identified erroneous prefixes omitted; unchanged erroneous history retained in later correct prefixes",
+    "receiptPath": "private/learning-repair-20261013/sft-composition/prepared-v3/target-exclusion-receipt.json",
+    "receiptSha256": "17137c69a8f98345cc90a30209a0f5225d064c5730594aed95238664f9b99279",
+    "sourceReceipt": {
+      "contextPreservationChecks": [
+        {
+          "excludedTargetId": "natural-clarity-024:prefix-2",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "natural-clarity-024:prefix-4"
+        },
+        {
+          "excludedTargetId": "natural-clarity-035:prefix-3",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "natural-clarity-035:prefix-4"
+        },
+        {
+          "excludedTargetId": "natural-clarity-037:prefix-2",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "natural-clarity-037:prefix-4"
+        },
+        {
+          "excludedTargetId": "natural-practical-001:prefix-3",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "natural-practical-001:prefix-4"
+        },
+        {
+          "excludedTargetId": "repair-authored-dialogue-014-libros-biblioteca:prefix-2",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "repair-authored-dialogue-014-libros-biblioteca:prefix-4"
+        },
+        {
+          "excludedTargetId": "repair-authored-language-038:prefix-2",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "repair-authored-language-038:prefix-4"
+        },
+        {
+          "excludedTargetId": "repair-authored-language-038:prefix-3",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "repair-authored-language-038:prefix-4"
+        },
+        {
+          "excludedTargetId": "repair-authored-language-046:prefix-3",
+          "historyBytesUnchanged": true,
+          "retainedLaterPrefixId": "repair-authored-language-046:prefix-4"
+        }
+      ],
+      "excludedSplitCounts": {
+        "train": 7,
+        "validation": 1
+      },
+      "excludedTargets": [
+        {
+          "assistantMessageIndexZeroBased": 5,
+          "groupId": "natural-practical-001",
+          "id": "natural-practical-001:prefix-3",
+          "originalRecordBytesSha256": "96ad91f914674939015f662e619ecd49d95e2be9566f1d609e8431230ee48bb2",
+          "prefixPairs": 3,
+          "reason": "library duration is not specified until the following user turn",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-original-target-review.json",
+          "reviewReceiptSha256": "8a0f3e93af791ba6275a7123b9d4efb8955d7d87498953ea53e025da4a416580",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 3,
+          "groupId": "natural-clarity-024",
+          "id": "natural-clarity-024:prefix-2",
+          "originalRecordBytesSha256": "b1fef75233814d5c74e8c02b23f75fdc21da449b5168661307c415f6f54bb5e4",
+          "prefixPairs": 2,
+          "reason": "treats an unconfirmed salt label as the actual jar contents",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-original-validation-target-review.json",
+          "reviewReceiptSha256": "742f67074581f215f32df68ef79b9d14a52162c14f92dc452fb74d535fc3ef22",
+          "split": "validation"
+        },
+        {
+          "assistantMessageIndexZeroBased": 5,
+          "groupId": "natural-clarity-035",
+          "id": "natural-clarity-035:prefix-3",
+          "originalRecordBytesSha256": "df5e934e326b8fad3675e3719e03ae1ca07a981ad306279abfec7e0ff05ee99a",
+          "prefixPairs": 3,
+          "reason": "asserts a loan where ownership and return alone were stated",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-original-target-review.json",
+          "reviewReceiptSha256": "8a0f3e93af791ba6275a7123b9d4efb8955d7d87498953ea53e025da4a416580",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 3,
+          "groupId": "natural-clarity-037",
+          "id": "natural-clarity-037:prefix-2",
+          "originalRecordBytesSha256": "ea0ee3c3fab4e68ff442da78f83f1a990883f9ad9a8f7b2936a3f7a755f9a509",
+          "prefixPairs": 2,
+          "reason": "adds a feeling not stated by the user and explicitly rejected next",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-original-target-review.json",
+          "reviewReceiptSha256": "8a0f3e93af791ba6275a7123b9d4efb8955d7d87498953ea53e025da4a416580",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 3,
+          "groupId": "repair-authored-dialogue-family-014-libros-biblioteca",
+          "id": "repair-authored-dialogue-014-libros-biblioteca:prefix-2",
+          "originalRecordBytesSha256": "f6b2aeb161923164cf17cb62cea997f68db922376349895926dbdaa6cb310bb1",
+          "prefixPairs": 2,
+          "reason": "orders Friday before Monday without a stated week or current day",
+          "reviewReceipt": "private/learning-repair-20261013/audit/dialogues-target-editorial-review.json",
+          "reviewReceiptSha256": "fc268bd13e11299b08ded0aecda350fdd39ddb9945b5985927aafc423fbb937c",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 3,
+          "groupId": "repair-authored-language-038",
+          "id": "repair-authored-language-038:prefix-2",
+          "originalRecordBytesSha256": "6b3b08129338445f41f23cb9924d6c431147028346e7096008205f4e136b9893",
+          "prefixPairs": 2,
+          "reason": "assigns placement of a receipt to an actor not specified by the user",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-language-prefix-target-review.json",
+          "reviewReceiptSha256": "ddbb6468341fedeea33c215ad63e3f8a2a9a5be5d9edd8f2ce699c504f2d7f2d",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 5,
+          "groupId": "repair-authored-language-038",
+          "id": "repair-authored-language-038:prefix-3",
+          "originalRecordBytesSha256": "9d7c7035e3192208ec684e28498f9c864ac43b02689f64a5b13873b094260edc",
+          "prefixPairs": 3,
+          "reason": "assigns placement of a receipt to an actor not specified by the user",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-language-prefix-target-review.json",
+          "reviewReceiptSha256": "ddbb6468341fedeea33c215ad63e3f8a2a9a5be5d9edd8f2ce699c504f2d7f2d",
+          "split": "train"
+        },
+        {
+          "assistantMessageIndexZeroBased": 5,
+          "groupId": "repair-authored-language-046",
+          "id": "repair-authored-language-046:prefix-3",
+          "originalRecordBytesSha256": "0bebdfe0b152ad79b7a162f6cc4add67b01f85654d30bc17806989800f32fc93",
+          "prefixPairs": 3,
+          "reason": "mentions a collected blanket despite the instruction to omit collected items",
+          "reviewReceipt": "private/learning-repair-20261013/audit/manual-language-prefix-target-review.json",
+          "reviewReceiptSha256": "ddbb6468341fedeea33c215ad63e3f8a2a9a5be5d9edd8f2ce699c504f2d7f2d",
+          "split": "train"
+        }
+      ],
+      "humanReview": false,
+      "limitations": [
+        "Project AI editorial review is not independent human review or evidence of model competence.",
+        "Conservative exclusions remove unsupported inferences as targets; subsequent corrective histories are retained.",
+        "Synthetic bank has an 80-target TRAIN editorial sample plus construction guards, not full independent linguistic review."
+      ],
+      "modelsLoaded": false,
+      "policy": "Remove only the erroneous positive prefix; preserve original messages verbatim as history in later corrective prefixes.",
+      "purpose": "Editorial correction of positive SFT targets before training or NLL selection",
+      "reservedEvaluationRead": false,
+      "reviewedManualTrainFamilies": 171,
+      "reviewedManualTrainTargets": 684,
+      "reviewedManualValidationFamilies": 21,
+      "reviewedManualValidationTargets": 84,
+      "reviewerKind": "project-ai-assistants",
+      "reviews": [
+        {
+          "path": "private/learning-repair-20261013/audit/manual-original-target-review.json",
+          "sha256": "8a0f3e93af791ba6275a7123b9d4efb8955d7d87498953ea53e025da4a416580"
+        },
+        {
+          "path": "private/learning-repair-20261013/audit/dialogues-target-editorial-review.json",
+          "sha256": "fc268bd13e11299b08ded0aecda350fdd39ddb9945b5985927aafc423fbb937c"
+        },
+        {
+          "path": "private/learning-repair-20261013/audit/manual-language-prefix-target-review.json",
+          "sha256": "ddbb6468341fedeea33c215ad63e3f8a2a9a5be5d9edd8f2ce699c504f2d7f2d"
+        },
+        {
+          "path": "private/learning-repair-20261013/audit/manual-original-validation-target-review.json",
+          "sha256": "742f67074581f215f32df68ef79b9d14a52162c14f92dc452fb74d535fc3ef22"
+        },
+        {
+          "path": "private/learning-repair-20261013/audit/dialogues-validation-target-editorial-review.json",
+          "sha256": "4ca155d0aea92eb79a7284e227fd8238329e134e446e01c9fd60a44c0774a114"
+        },
+        {
+          "path": "private/learning-repair-20261013/audit/manual-language-validation-target-review.json",
+          "sha256": "91e469ae7c708150f3d9b1cb26b52d0cc7dd77ab9c5a2de9d9cbffabadb19bb0"
+        }
+      ],
+      "schemaVersion": 1,
+      "sourceFilesModified": false,
+      "sourcePreparedManifest": "private/learning-repair-20261013/sft-composition/prepared-v2/manifest.json",
+      "sourcePreparedManifestSha256": "f3dc04ff771a455adc35aff893297d863b02b2ea00a79f9a22302b06d24a8c16",
+      "testContentReviewed": false,
+      "tokenizationPerformed": false,
+      "trainingPerformed": false,
+      "validationQaAuthorization": "Root authorized editorial QA of development validation before any SFT or generation, excluding TEST and reserved evaluation suites."
+    }
+  },
+  "testReadOrTokenizedDuringMerge": false,
+  "testUsedForTraining": false,
+  "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+}

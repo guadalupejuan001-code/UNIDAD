@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-13T05:26:09.087923+00:00",
+  "kind": "append_only_resume_and_sft_queue_observation",
+  "previousObservation": {
+    "path": "docs/learning-repair-20261013/current-observation.json",
+    "sha256": "fa490d8ed3593a083f5263deafd96ccb55fce5ebf6e605839674ed2935e6f6f5",
+    "rewritten": false
+  },
+  "currentTraining": {
+    "status": "running",
+    "step": 5460,
+    "epoch": 2,
+    "elapsedSeconds": 4468.758025223,
+    "bestValidationNll": 3.275226720307805,
+    "bestCheckpoint": "step-000005120-c5119d8e80c5484197c97149f9675f1c",
+    "lastCheckpoint": "step-000005120-c5119d8e80c5484197c97149f9675f1c",
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+    "trainingObjective": "causal_lm",
+    "trainedFrom": "random_weights",
+    "testPartitionPresent": false
+  },
+  "nativeProcess": {
+    "pid": 11176,
+    "expectedBirth": "1165743",
+    "observedBirth": "1165743",
+    "alive": true
+  },
+  "supervisorProcess": {
+    "pid": 11159,
+    "expectedBirth": "1154726",
+    "observedBirth": "1154726",
+    "alive": true
+  },
+  "collectorEnabledAtRead": false,
+  "statusFileSha256AtRead": "ace2c24ecfa304f9119c983fae125ba12249317c7f91380cf5a4a6b50c08e2a5",
+  "validationEvents": [
+    {
+      "at": 1791864839.6572533,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 7.7110481177968,
+        "perplexity": 2232.881354833258,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 0
+    },
+    {
+      "at": 1791865651.9693043,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 4.555926138153229,
+        "perplexity": 95.1948780308741,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 1024
+    },
+    {
+      "at": 1791866467.8938074,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 4.167366460007667,
+        "perplexity": 64.5452455973546,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 2048
+    },
+    {
+      "at": 1791867286.8911088,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 3.7733837676747695,
+        "perplexity": 43.52710152567553,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 3072
+    },
+    {
+      "at": 1791868110.419634,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 3.4665581824610308,
+        "perplexity": 32.02632377042903,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 4096
+    },
+    {
+      "at": 1791868934.8379185,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 3.275226720307805,
+        "perplexity": 26.4492213764531,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 5120
+    }
+  ],
+  "realResumeEvidence": {
+    "path": "docs/learning-repair-20261013/foundation-15m-first-resume.json",
+    "sha256": "ef80cd3e308c74a54b1d3f59970cd876a01657366662b45d249cd04a957127f1",
+    "firstInvocationCompletedStep": 4360,
+    "firstInvocationNativeElapsedSeconds": 3600.900734341001,
+    "firstInvocationReason": "invocation_time_budget",
+    "sourceAndInputsUnchanged": true,
+    "newWorkerPid": 11176,
+    "resumeFlag": true,
+    "optimizerRestarted": false
+  },
+  "queuedSft": {
+    "cycleId": "conversation-v1",
+    "stageId": "conversation-15m",
+    "parentStage": "initial:foundation-15m",
+    "queueManifestSha256": "8747b4cb2671f4ae1a7cbe8192e999d93c8b7c091e569cc8139d98a3348f3421",
+    "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+    "publicCorpusPath": "examples/learning-repair-20261013/sft/sft.train-validation.jsonl",
+    "publicManifestPath": "examples/learning-repair-20261013/sft/manifest.json",
+    "splitCounts": {
+      "test": 0,
+      "train": 18588,
+      "validation": 1704
+    },
+    "humanRecordCounts": {
+      "train": 7676,
+      "validation": 981
+    },
+    "humanRecordRatios": {
+      "train": 0.412954594361954,
+      "validation": 0.5757042253521126
+    },
+    "excludedErroneousTargets": {
+      "train": 7,
+      "validation": 1
+    },
+    "samefoldExactDialoguesRemoved": 5,
+    "started": false,
+    "supervision": "assistant_last_reply; only final assistant reply and EOS are positive targets",
+    "sampling": "uniform shuffle without replacement, no weights, resampling or duplicated target IDs",
+    "testUsedForTraining": false
+  },
+  "intermediateCheckpoint": {
+    "path": "checkpoints/learning-repair-20261013/foundation-15m/step-000003072-fa5cfc2a1cd64cf8b7555da7f7c4af86",
+    "step": 3072,
+    "partCount": 9,
+    "nativeBytes": 182406100,
+    "receiptPath": "docs/learning-repair-20261013/foundation-15m-step-3072-delivery.json",
+    "receiptSha256": "696e0d47a06939b688245e5abb74239e04d35d6262b7a5a387c00e10c5a1ea8a",
+    "localPackagePrepared": true,
+    "gitHubUploadVerified": false,
+    "restoreExecuted": false,
+    "conversationAccepted": false
+  },
+  "distributionReceiptPath": "docs/learning-repair-20261013/distributed-inputs.json",
+  "publicReproductionTemplate": "examples/learning-repair-20261013/continual-template.json",
+  "localBranch": "work/learning-repair-20261013",
+  "newWorkIntegratedToMain": false,
+  "softwareTestsRunForThisObservation": false,
+  "conversationQualityMeasured": false,
+  "environmentLifetimeGuaranteed": false
+}

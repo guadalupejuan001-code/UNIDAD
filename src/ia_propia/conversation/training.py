@@ -117,7 +117,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters", "micro_batch_size", "data_loading"} if result is training else {"copy_head", "parameter_budget"})
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters", "micro_batch_size", "data_loading", "learning_rate_schedule"} if result is training else {"copy_head", "parameter_budget"})
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -129,6 +129,18 @@ def _configs(model_config, training_config):
         value = training[key]
         if type(value) is not int or not low <= value <= high:
             raise ValueError(f"Invalid {key}")
+    if "learning_rate_schedule" in training:
+        schedule = training["learning_rate_schedule"]
+        if (type(schedule) is not dict
+                or set(schedule) != {"type", "decay_steps", "min_lr_ratio"}
+                or type(schedule["type"]) is not str or schedule["type"] != "cosine"
+                or type(schedule["decay_steps"]) is not int
+                or not training["warmup_steps"] < schedule["decay_steps"] <= training["max_steps"]
+                or type(schedule["min_lr_ratio"]) not in (int, float)
+                or not math.isfinite(schedule["min_lr_ratio"])
+                or not 0 <= schedule["min_lr_ratio"] <= 1):
+            raise ValueError("Invalid learning_rate_schedule")
+        training["learning_rate_schedule"] = dict(schedule)
     if "parameter_budget" in model and (type(model["parameter_budget"]) is not int
             or not 20_000_000 <= model["parameter_budget"] <= 1_200_000_000):
         raise ValueError("Invalid parameter_budget")
@@ -186,6 +198,25 @@ def _configs(model_config, training_config):
     if type(model["vocab_size"]) is not int or not 262 <= model["vocab_size"] <= 16384:
         raise ValueError("Invalid vocab_size")
     return model, training
+
+
+def _lr_multiplier(config, step):
+    """LR after ``step`` updates; absent schedule preserves legacy exactly.
+
+    Cosine keeps the historical (step + 1) warmup, decays from warmup_steps,
+    reaches min_lr_ratio at decay_steps and stays there. A lower late LR tests
+    base convergence with a planned horizon (Chinchilla sections 3.1 and 5);
+    it is an experimental choice, not evidence of a legacy scheduler defect.
+    """
+    warmup = config["warmup_steps"]
+    if "learning_rate_schedule" not in config or step < warmup:
+        return min(1.0, (step + 1) / max(1, warmup))
+    schedule = config["learning_rate_schedule"]
+    if step >= schedule["decay_steps"]:
+        return schedule["min_lr_ratio"]
+    progress = (step - warmup) / (schedule["decay_steps"] - warmup)
+    ratio = schedule["min_lr_ratio"]
+    return ratio + (1 - ratio) * 0.5 * (1 + math.cos(math.pi * progress))
 
 
 # Conditional copy integration: these identifiers bind the verified own B1,
@@ -1066,7 +1097,7 @@ def _validate_resume_payload(payload, optimizer, scheduler, model, state):
         raise ValueError("Invalid optimizer group fields")
     for key in reference:
         if key == "lr":
-            expected_lr = state["training_config"]["learning_rate"] * min(1.0, (state["step"] + 1) / max(1, state["training_config"]["warmup_steps"]))
+            expected_lr = state["training_config"]["learning_rate"] * _lr_multiplier(state["training_config"], state["step"])
             if type(group[key]) not in (int, float) or group[key] != expected_lr:
                 raise ValueError("Optimizer learning rate mismatch")
         elif group[key] != reference[key]:
@@ -1291,8 +1322,7 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 state["epoch_cursor"] = 0
         optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"],
                                       weight_decay=config["weight_decay"])
-        warmup = config["warmup_steps"]
-        scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda step: min(1.0, (step + 1) / max(1, warmup)))
+        scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lambda step: _lr_multiplier(config, step))
         if payload is not None:
             _validate_resume_payload(payload, optimizer, scheduler, model, state)
             optimizer.load_state_dict(payload["optimizer"])

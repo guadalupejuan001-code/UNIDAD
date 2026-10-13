@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-causal-training-target-exposure",
+  "preparedBy": "project-AI",
+  "humanReview": false,
+  "computedAtUtc": "2026-10-13 05:00:56 UTC",
+  "checkpoint": {
+    "name": "step-000003072-fa5cfc2a1cd64cf8b7555da7f7c4af86",
+    "stateSha256": "34d8e61b03677fd1cc177ac4f19cdca893bb3b508f98d4f231671d67b4c553e3",
+    "step": 3072,
+    "completedEpochs": 1,
+    "currentEpochCursor": 6576,
+    "elapsedSeconds": 2597.6783138580013,
+    "bestValidationNll": 3.7733837676747695,
+    "intermediate": true,
+    "runFinished": false
+  },
+  "identity": {
+    "contextLength": 512,
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+    "includeTest": false,
+    "objective": "causal_lm",
+    "partitionPolicy": "train_validation_only",
+    "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048,
+    "windowEncoding": "little-endian-int32-inputs-labels-v1",
+    "windowPolicy": "contiguous_nonoverlapping"
+  },
+  "source": {
+    "trainIndexPath": "private/learning-repair-20261013/runs/foundation-15m/tokenized-cache/train.index.bin",
+    "trainIndexSha256": "72a15a92c375fdd9567be59dd7c7b434f5c14915fc9b910ed482e6beb9a13a00",
+    "trainIndexBytesRead": 287920,
+    "cacheManifestSha256": "87b4ef7a39be273d3ee941dc0073f469037bb9017b706598ece5828524ac445d"
+  },
+  "accounting": {
+    "trainWindowsPerEpoch": 17995,
+    "targetsPerCompleteEpoch": 5780408,
+    "completeEpochTargetPositions": 5780408,
+    "partialEpochWindows": 6576,
+    "partialEpochTargetPositions": 2106332,
+    "actualWindowDraws": 24571,
+    "actualTargetPositions": 7886740,
+    "logicalBatchSize": 8,
+    "updatesPerCompleteEpoch": 2250,
+    "nominalDrawsStepTimesBatch": 24576,
+    "shortEpochBatchCorrectionWindows": 5
+  },
+  "method": {
+    "formula": "epoch * sum(window_lengths) + sum(window_lengths[order[i]] for i in range(cursor))",
+    "usesCompleteOptimizerBoundary": true,
+    "sampling": "uniform shuffled permutation without replacement",
+    "windowEncoding": "little-endian-int32-inputs-labels-v1",
+    "objective": "causal_lm",
+    "windowPolicy": "contiguous_nonoverlapping",
+    "labelsPerInput": 1,
+    "weightsLoadedForAccounting": false,
+    "resumePickleLoaded": false,
+    "windowLabelsRead": false,
+    "corpusOrEvaluationRead": false,
+    "testsExecuted": false
+  },
+  "limits": [
+    "Counts prediction positions processed, not unique vocabulary words or acquired knowledge.",
+    "Native status can later show higher steps; this receipt only describes the frozen step3072 checkpoint.",
+    "Validation and TEST positions are excluded from training-target count.",
+    "Loss decrease is not evidence of competent conversation."
+  ]
+}

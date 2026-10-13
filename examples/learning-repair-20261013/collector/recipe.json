@@ -1,0 +1,49 @@
+{
+  "anchors": {
+    "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+    "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+  },
+  "authorization": "Standing owner authorization: public pinned Spanish Wiki and OASST only; no paid services, external weights, owner chats, evaluation labels or source changes guided by model scores.",
+  "baseTrainingConfig": {
+    "path": "examples/learning-repair-20261013/configs/foundation-training.json",
+    "sha256": "f5bab793911b273d1729e118b133957e9eac3937b6abc8382adda1c1d9f84864"
+  },
+  "licenseReceipt": {
+    "path": "examples/learning-repair-20261013/collector/source-license-receipt.json",
+    "sha256": "063b3f578fd89642f7c68beb6eff65106a180d03da0161ebde9cbff6c2421210"
+  },
+  "limits": {
+    "budgetSeconds": 900,
+    "corpusCapMiB": 24,
+    "maxDiskMiB": 2048,
+    "maxNetworkMiB": 512,
+    "maxPages": 80,
+    "targetNovelPayloadMiB": 12
+  },
+  "outputRoot": "private/learning-repair-20261013/wiki-batches",
+  "runRoot": "private/learning-repair-20261013/runs/progressive",
+  "schemaVersion": 1,
+  "seed": {
+    "path": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+    "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+  },
+  "sftCorpus": {
+    "path": "examples/learning-repair-20261013/sft/sft.train-validation.jsonl",
+    "sha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510"
+  },
+  "sftManifest": {
+    "path": "examples/learning-repair-20261013/sft/manifest.json",
+    "sha256": "a506f350df44fe81e34062d51c13a26fe41f874f48ea38363edc7dee9374d147"
+  },
+  "sftTrainingConfig": {
+    "path": "examples/learning-repair-20261013/configs/conversation-training.json",
+    "sha256": "9f72a4b28de75714b6fcd3d1e55c4f8c90984da5aca83a8f743faf82274d7be6"
+  },
+  "source": {
+    "configuration": "20231101.es",
+    "dataset": "wikimedia/wikipedia",
+    "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+    "snapshotDate": "2023-11-01"
+  },
+  "statePath": "private/learning-repair-20261013/wiki-collector/state.json"
+}

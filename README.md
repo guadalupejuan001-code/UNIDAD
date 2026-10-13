@@ -9,14 +9,30 @@ personal que converse en español, realice trabajo útil y pueda adaptarse media
 aprendizaje verificable. La inferencia actual funciona localmente con Python,
 NumPy y PyTorch, sin llamar a una API de otra IA.
 
-**Estado del 13 de octubre de 2026:** se integra el código compatible de las
-ramas y PR1–6: evaluador, generación, exportación ONNX, GNOSIS, NERVA y datos en
-disco. Se ejecutaron **seis ajustes propios y 2.560 actualizaciones reales**;
-se publican pesos y checkpoints. **La conversación fiable sigue pendiente**:
-ningún candidato pasó la aceptación. El núcleo tiene pruebas y admite nuevas
-integraciones, pero todavía no cumple el objetivo de asistente conversacional.
-Los [resultados completos](docs/conversation-integration-20261013/README.md)
-conservan modelos, diálogos, procedencia y límites.
+**Avance observado el 13 de octubre de 2026, 05:26 UTC:** la base propia de
+15,18 M continúa en **5.460 actualizaciones reales**. La primera invocación
+cerró en 4.360 pasos y el supervisor ejecutó una reanudación real, conservando
+el presupuesto acumulado y el estado del optimizador. **SFT está encolado**
+para después de la base: 18.588 registros TRAIN, 1.704 VALIDATION y cero TEST.
+Todavía no hay SFT ejecutado ni conversación nueva aceptada. El
+[recibo de este avance](docs/learning-repair-20261013/observation-20261013-052609-resume-sft-queued.json)
+se añade a la observación anterior sin sobrescribirla.
+
+**Observación del 13 de octubre de 2026, 05:01 UTC:** se está entrenando una
+nueva base propia de **15.179.520 parámetros**, desde pesos aleatorios y con
+texto público en español: **3.610 actualizaciones reales** registradas en esa
+lectura. Un supervisor local adoptó la corrida existente y puede reanudarla
+sin reiniciar Adam ni su presupuesto. El ajuste conversacional posterior está
+en preparación. **La conversación fiable sigue pendiente**; esta etapa todavía
+no tiene una evaluación de respuestas nuevas.
+
+El código compatible de PR1–6 ya está integrado en `main`: evaluador,
+generación, ONNX, GNOSIS, NERVA y datos en disco. La nueva continuación se trabaja
+en `work/learning-repair-20261013`. Los seis ajustes anteriores completaron
+2.560 actualizaciones y ninguno pasó la aceptación; sus
+[resultados](docs/conversation-integration-20261013/README.md) se conservan.
+La [continuación de aprendizaje](docs/learning-repair-20261013/current-delivery.md)
+explica los datos nuevos, límites y estado comprobado de la corrida activa.
 
 ## Qué existe y funciona hoy
 
@@ -26,7 +42,8 @@ conservan modelos, diálogos, procedencia y límites.
 | Modelos propios | Pesos, configuración, tokenizador y procedencia de Transformers entrenados desde pesos aleatorios. | Son modelos experimentales; C7 se conserva como referencia. |
 | GNOSIS | Una configuración reúne cerebro, NERVA, perfiles, recursos y etapas `foundation → conversation → adaptation`. | Las etapas requieren datos y ejecución explícitos; no deciden solas qué aprender. |
 | NERVA 0.2 | Backend del modelo pequeño de caracteres, con generación greedy y temperatura cero. | Usa Node.js; C7 y los Transformers siguen ejecutándose mediante PyTorch. |
-| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Datos separados por documento/familia, hashes y checkpoints; la configuración GNOSIS entregada todavía no fija corpus. |
+| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base propia de 15,18 M en ejecución con corpus fijado; GNOSIS conserva su configuración independiente sin corpus. |
+| Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | Proceso real observado vivo; espera nuevos datos cuando falta una etapa. No garantiza aprendizaje continuo fuera del entorno ni promoción de candidatos. |
 | Memoria local | Registro de encargos, intentos y correcciones, con búsqueda y referencias al texto original. | Guardar memoria no cambia pesos ni incorpora recuerdos automáticamente al diálogo. |
 | Herramientas y flujos | Ejecuta operaciones y herramientas registradas mediante pasos explícitos. | Los pasos los aporta la aplicación; todavía no existe un planificador aprendido. |
 | Especialistas pequeños | Generación por caracteres y predicción de una métrica de atención. | Son demostraciones con errores y límites documentados, no capacidades generales aceptadas. |
@@ -41,6 +58,7 @@ no conecta automáticamente una aplicación Android ni acredita una prueba físi
 | Modelo o perfil | Parámetros | Qué se comprobó |
 | --- | ---: | --- |
 | [C7](models/conversation-reference-c7/README.md) | 6.983.937 | Referencia propia entrenada, con pesos publicados, vocabulario BPE de 8.192 tokens y contexto de 512. Su conversación no pasa la aceptación. |
+| `foundation-15m` | 15.179.520 | Entrenamiento causal propio activo en la observación de 05:01 UTC: BPE de 2.048 tokens, contexto de 512 y todos los parámetros entrenables. Todavía no tiene SFT ni conversación aceptada. |
 | `50m` | 48.852.992 | Un modelo real inicializado aleatoriamente calculó gradientes de 64 tokens, se exportó y se cargó con resultados idénticos. Tuvo **cero actualizaciones de pesos**. |
 | `100m` | 99.446.400 | Perfil validado y conteo exacto. No se ejecutó ni entrenó aquí. |
 | `1b` | 991.586.304 | Perfil validado y estructura meta, sin asignar sus pesos en CPU. No se ejecutó ni entrenó aquí. |
@@ -59,7 +77,57 @@ entrenamiento que necesita. El entrenamiento actual es CPU. El cargador opcional
 GPU sigue pendiente. Los [controles y mediciones del cargador](docs/tokenized-data-20261013.md)
 no acreditan una mejora de las respuestas.
 
-## Qué se entrenó y qué respondieron los modelos
+## La continuación que está entrenando
+
+La nueva base utiliza 10.735 documentos TRAIN y 1.351 VALIDATION de Wikipedia
+en español y OpenAssistant. Wikipedia procede del snapshot de noviembre de
+2023; es texto nuevo para esta corrida, no información actualizada a 2026.
+El tokenizador se ajustó sólo con TRAIN. Se conservaron las familias y
+particiones históricas de OpenAssistant, se eliminaron duplicados exactos y
+familias con texto compartido entre particiones, y TEST quedó fuera del
+entrenador y de la caché.
+
+El límite de la etapa es 12.000 actualizaciones o 7.200 segundos acumulados,
+con cuatro hilos CPU, mmap y microbatches. Cada invocación dispone de hasta una
+hora; el supervisor puede continuar con `--resume` dentro del mismo límite.
+La NLL de validación pasó de 7,7110 en step 0 a 3,7734 en step 3.072 sobre las
+mismas 687.867 posiciones. Eso mide aprendizaje de predicción causal; la
+conversación se comprobará después del ajuste de diálogos.
+
+Para consultar el estado real en el entorno de entrenamiento:
+
+```sh
+python3 examples/continual_training.py status \
+  --config private/learning-repair-20261013/configs/continual.json
+```
+
+El [supervisor](docs/learning-repair-20261013/continual-loop.md) puede esperar
+nuevos corpus indefinidamente mientras él y el entorno sigan vivos. Cada etapa
+tiene límites finitos; repetir datos no se presenta como conocimiento nuevo.
+El colector automático está deshabilitado en esta observación. Los mensajes
+personales del creador no forman parte del corpus. C7 mantiene sus pesos y
+su condición de referencia hasta comprobar otro candidato con diálogos nuevos.
+
+La [reanudación real](docs/learning-repair-20261013/foundation-15m-first-resume.json)
+conserva corpus y código congelados; no reinicia Adam ni el tiempo nativo.
+En el avance de 05:26 UTC, la NLL causal validada llegó a 3,2752 en step 5.120.
+La etapa SFT en cola usa todos los parámetros y supervisa sólo la última
+respuesta y EOS. El 41,295 % de sus registros TRAIN procede de diálogo humano
+público; el resto es ficción sintética identificada. Se excluyeron siete
+objetivos erróneos TRAIN y uno VALIDATION, conservando su texto como historia
+en prefijos correctivos posteriores, y se retiraron cinco diálogos exactos
+repetidos. El ajuste aún debe ejecutarse y evaluarse por sus respuestas.
+
+Los [corpus y configuraciones preparados](examples/learning-repair-20261013/continual-template.json)
+permiten reproducir dos etapas finitas en otro clon. La plantilla requiere
+rellenar `workspaceRoot`; su colector está deshabilitado y después espera
+nuevos datos. Un [checkpoint intermedio de step 3.072](checkpoints/learning-repair-20261013/foundation-15m/README.md)
+se preparó en nueve partes de hasta 32 MiB, con hashes. Los archivos nuevos
+siguen locales en esta lectura: su integración y subida requieren un recibo
+posterior. Tener ese paquete no acredita conversación ni una restauración ya
+ejecutada.
+
+## Qué respondieron los ajustes anteriores
 
 Se entrenaron desde los pesos propios de C7 y V7, con CPU, Adam y todos los
 parámetros, tres experimentos acotados: diálogo humano público en español,
@@ -259,10 +327,12 @@ entrena C7 ni ejecuta su Transformer.
 - [NERVA dentro del cerebro](docs/nerva.md)
 - [Entrenamiento conversacional](docs/conversation.md) y [base lingüística](docs/language-pretraining.md)
 - [Memoria y encargos](docs/workspace.md) y [núcleo para productos](docs/brain.md)
-- [Estado y fuentes](docs/ESTADO_ACTUAL.md) y [estado estructurado](docs/unidad-current-status.json)
+- [Estado y fuentes](docs/ESTADO_ACTUAL.md), [continuación activa observada](docs/learning-repair-20261013/current-observation.json) y [estado estructurado anterior](docs/unidad-current-status.json)
 - [Órdenes del creador](ORDENES_USUARIO.md) e [instrucciones de desarrollo](AGENTS.md)
 - [Antecedentes y comandos del README anterior](docs/historial-readme-20261013.md)
 
 Los pesos y recibos de experimentos descartados se conservan como evidencia.
-Publicarlos no los convierte en modelos aceptados. El nuevo entrenamiento autorizado terminó y conserva su estado. Los presupuestos
-históricos siguen cerrados; esta documentación no inicia corridas.
+Publicarlos no los convierte en modelos aceptados. Los seis ajustes anteriores
+terminaron y conservan su estado; la continuación de base de 15,18 M está activa
+en la observación indicada arriba. Los presupuestos históricos 24+2 horas siguen
+cerrados. Clonar esta documentación no inicia una corrida ni un supervisor.
