@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-causal-stage-exact-target-exposure",
+  "preparedBy": "project-AI",
+  "humanReview": false,
+  "completed": true,
+  "nativeStopReason": "total_time_budget",
+  "roles": {
+    "best": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+    "last": "step-000008914-fbd42a9742a243efa27110956f99aaa7"
+  },
+  "cacheManifestSha256": "87b4ef7a39be273d3ee941dc0073f469037bb9017b706598ece5828524ac445d",
+  "trainIndexSha256": "72a15a92c375fdd9567be59dd7c7b434f5c14915fc9b910ed482e6beb9a13a00",
+  "trainIndexBytesRead": 287920,
+  "identity": {
+    "contextLength": 512,
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+    "includeTest": false,
+    "objective": "causal_lm",
+    "partitionPolicy": "train_validation_only",
+    "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048,
+    "windowEncoding": "little-endian-int32-inputs-labels-v1",
+    "windowPolicy": "contiguous_nonoverlapping"
+  },
+  "checkpoints": {
+    "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365": {
+      "checkpointName": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+      "stateSha256": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+      "step": 8914,
+      "completedEpochs": 3,
+      "currentEpochCursor": 17312,
+      "elapsedSeconds": 7336.963108620997,
+      "trainWindowsPerEpoch": 17995,
+      "targetPositionsPerEpoch": 5780408,
+      "completeEpochTargetPositions": 17341224,
+      "partialEpochTargetPositions": 5565445,
+      "actualWindowDraws": 71297,
+      "actualTargetPositions": 22906669,
+      "bestValidationNll": 2.981873986010036
+    },
+    "step-000008914-fbd42a9742a243efa27110956f99aaa7": {
+      "checkpointName": "step-000008914-fbd42a9742a243efa27110956f99aaa7",
+      "stateSha256": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+      "step": 8914,
+      "completedEpochs": 3,
+      "currentEpochCursor": 17312,
+      "elapsedSeconds": 7337.405566744999,
+      "trainWindowsPerEpoch": 17995,
+      "targetPositionsPerEpoch": 5780408,
+      "completeEpochTargetPositions": 17341224,
+      "partialEpochTargetPositions": 5565445,
+      "actualWindowDraws": 71297,
+      "actualTargetPositions": 22906669,
+      "bestValidationNll": 2.981873986010036
+    }
+  },
+  "formula": "epoch * sum(window_lengths) + sum(window_lengths[order[i]] for i in range(cursor))",
+  "method": {
+    "weightsLoaded": false,
+    "resumePickleLoaded": false,
+    "labelsRead": false,
+    "corpusRead": false,
+    "evaluationRead": false,
+    "testsExecuted": false
+  },
+  "limitation": "Prediction positions processed; not unique words, acquired knowledge, or competent conversation."
+}

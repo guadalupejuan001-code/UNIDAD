@@ -1,4 +1,8 @@
-# Base propia de 15M: respaldo intermedio
+# Base propia de 15M: estados nativos
+
+`final/` conserva BEST y LAST completos al cerrar la etapa causal en step 8.914;
+su [índice](final/README.md) distingue los nombres originales y las identidades.
+El respaldo anterior de step 3.072 permanece intacto como historia intermedia.
 
 `step-000003072-fa5cfc2a1cd64cf8b7555da7f7c4af86` conserva los cinco archivos
 de un checkpoint nativo cerrado de la corrida causal propia iniciada desde

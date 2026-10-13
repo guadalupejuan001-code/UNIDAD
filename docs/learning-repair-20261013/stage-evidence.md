@@ -1,9 +1,10 @@
 # Evidencia de la nueva etapa lingüística
 
-Este documento prepara la contabilidad y la procedencia de
-`private/learning-repair-20261013/runs/foundation-15m`. Es trabajo de una IA
-del proyecto. La corrida sigue abierta; no contiene una aceptación conversacional
-ni reemplaza el resultado final del README.
+Este documento reúne la contabilidad y la procedencia de
+`private/learning-repair-20261013/runs/foundation-15m`, incluidas observaciones
+durante su ejecución y su cierre por tiempo. Es trabajo de una IA del proyecto.
+La etapa causal terminó en step 8.914; no contiene una aceptación conversacional
+ni sustituye la evaluación posterior del ajuste SFT.
 
 ## Identificación del diseño leído
 
@@ -143,3 +144,44 @@ El [procedimiento de transporte y recuperación](checkpoint-packaging.md)
 distingue reponer bytes y reanudar el entrenamiento. Este respaldo intermedio
 no promueve un candidato ni declara conversación competente. Las operaciones
 de entrega no ejecutaron pruebas de software, restauración ni entrenamiento.
+
+## Cierre de la base causal
+
+La lectura cerrada a las **2026-10-13 06:13:54 UTC** registró
+`completed`, motivo `total_time_budget`, step **8.914** y **7.337,687718068
+segundos** acumulados. El worker PID 11176, nacimiento 1165743, ya estaba muerto;
+`stage-latest.json` correspondía al mismo cierre y confirmaba código y entradas
+sin cambios. El máximo configurado de 12.000 updates no se completó. El umbral
+de tiempo de 7.200 segundos provoca una parada cooperativa; validación final y
+guardado explican que el contador cerrado lo exceda.
+
+El último recibo del runner mide máximo RSS de **3.306.389.504 bytes** y
+máximo observado de **661.009.654 bytes** en el directorio nativo. Son medidas
+de esa invocación, incluidas exportaciones, distintas de los techos configurados
+de 6.144 MiB y 2.048 MiB. No describen la RAM ni el disco de todos los servicios
+del entorno.
+
+Se capturaron BEST y LAST después del cierre, con cinco archivos originales
+cada uno, y se copiaron los cuatro archivos de la exportación final. Los
+checkpoints tienen UUID distintos en el mismo step; se conserva cada uno.
+Cada paquete nativo contiene **182.406.109 bytes** en nueve partes. El artefacto
+de inferencia final contiene **60.784.468 bytes** e identifica
+`unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398`.
+El [recibo final de entrega](foundation-15m-final-delivery.json) conserva las
+catorce identidades de archivo original, verificaciones antes/copia/después,
+partes, rutas y hashes. Se añadieron 790.414.254 bytes entre staging, paquetes
+y exportación; la entrega usó buffers de 1 MiB, un hilo y prioridad nice 10.
+
+El [recibo de exposición final](foundation-15m-final-target-exposure.json)
+reconstruye exactamente tres épocas completas, con **17.341.224 posiciones**,
+y el prefijo de 17.312 ventanas de la siguiente, con **5.565.445 posiciones**.
+El total es **22.906.669 posiciones objetivo** y **71.297 ventanas** para BEST
+y LAST. No se interpretaron etiquetas, pesos ni estado Adam para contarlas.
+
+La selección causal final registra NLL **2,981873986010036**. Esa pérdida
+compara el mismo conjunto de validación con la referencia inicial de 7,7110481;
+acredita una reducción de pérdida causal, no conversación competente.
+El modelo sigue experimental. La primera exportación de step 4.096 permanece
+como historia y el ajuste SFT posterior se identifica como otra etapa, con su
+propio optimizador y corpus. No se ejecutaron restauraciones, pruebas de
+software ni generación de conversaciones al capturar esta entrega.

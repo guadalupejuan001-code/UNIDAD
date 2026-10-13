@@ -103,3 +103,28 @@ acumulado y el límite total de 7.200 segundos del checkpoint, además de Adam,
 scheduler, orden de ventanas y RNG. Es una instrucción preparada para
 recuperación, todavía no ejecutada en esta entrega; no se lanza mientras la
 corrida original siga activa.
+
+## Paquetes del cierre de la base
+
+Al cerrar la etapa por tiempo en step 8.914, se preservaron tanto BEST como
+LAST y la exportación final de inferencia. El
+[recibo final](foundation-15m-final-delivery.json) identifica los catorce
+archivos originales: cinco de BEST, cinco de LAST y cuatro del artefacto.
+Los punteros nativos originales se conservan:
+
+- BEST: `step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365`.
+- LAST: `step-000008914-fbd42a9742a243efa27110956f99aaa7`.
+
+Sus paquetes están bajo
+`checkpoints/learning-repair-20261013/foundation-15m/final/`. Cada uno recompone
+182.406.109 bytes a partir de nueve partes de como máximo 32 MiB. Aunque sus
+steps coinciden, no son el mismo checkpoint nativo; el estado conserva ambos
+punteros. Para una recuperación completa se reponen los dos directorios bajo
+el mismo `checkpoints/`, usando el helper `restore` por separado y conservando
+sus nombres originales.
+
+El límite persistente de tiempo de esta etapa ya se consumió. Reponer estos
+bytes conserva su finalización; no autoriza reiniciar el contador ni repetir
+la etapa como una reanudación nueva. Un ajuste SFT desde el artefacto propio
+final es otra etapa y crea un optimizador nuevo de forma explícita. C7 y los
+respaldos intermedios permanecen intactos.

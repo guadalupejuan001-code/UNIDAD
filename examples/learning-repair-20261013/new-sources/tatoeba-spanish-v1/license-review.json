@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "reviewDateUtc": "2026-10-13",
+  "reviewer": "/root/learning_diagnosis/train_audit_review",
+  "reviewKind": "Documentary review of two supplied official Tatoeba HTML samples, one newly downloaded complete official downloads page, and their download receipts",
+  "scope": {
+    "networkRequestsMade": 1,
+    "officialDocumentationBytesDownloaded": 316138,
+    "officialDocumentationDownloadMaxBytes": 1048576,
+    "corpusDownloaded": false,
+    "corpusRecordsRead": false,
+    "modelsLoaded": false,
+    "trainingOrTestsExecuted": false,
+    "rootSourcesModified": false,
+    "validationOrTestTargetsRead": false
+  },
+  "evidence": [
+    {
+      "name": "tatoeba-downloads",
+      "url": "https://tatoeba.org/en/downloads",
+      "samplePath": "private/learning-repair-20261013/spanish-expansion/research/tatoeba-downloads.sample",
+      "sampleSha256": "ae50a4e740a1a883afe548bf8628a8482ac1a32e70365ad3cd623c5399e53696",
+      "sampleBytes": 262144,
+      "receiptPath": "private/learning-repair-20261013/spanish-expansion/research/tatoeba-downloads.receipt.json",
+      "receiptSha256": "85b8502ed3a5a8664c412975b7a827edba40dca5f9f80428bd33210904e03b35",
+      "receiptStatus": 200,
+      "sampleHashMatchesReceipt": true,
+      "completePage": false,
+      "partialPageReason": "The sample ends inside the language-selector options of the Detailed Sentences section, before its field documentation."
+    },
+    {
+      "name": "tatoeba-terms",
+      "url": "https://tatoeba.org/en/terms_of_use",
+      "samplePath": "private/learning-repair-20261013/spanish-expansion/research/tatoeba-terms.sample",
+      "sampleSha256": "f3e46eaac2d25bfacaab4e3cb834bd5252bb3df6367dd9da932bf46ec5ca2c22",
+      "sampleBytes": 88171,
+      "receiptPath": "private/learning-repair-20261013/spanish-expansion/research/tatoeba-terms.receipt.json",
+      "receiptSha256": "efa4af1d71c72c8d65e6d357f15887a2ace9e880f4850e3fdba12e52312670e6",
+      "receiptStatus": 200,
+      "sampleHashMatchesReceipt": true
+    },
+    {
+      "name": "tatoeba-downloads-full",
+      "url": "https://tatoeba.org/en/downloads",
+      "samplePath": "private/learning-repair-20261013/spanish-expansion/tatoeba/downloads-full.html",
+      "sampleSha256": "91f1467b65cb57d3a82c956932077c72c43c98fa8e47eca3233166c51ab7c5ff",
+      "sampleBytes": 316138,
+      "receiptPath": "private/learning-repair-20261013/spanish-expansion/tatoeba/downloads-full.receipt.json",
+      "receiptSha256": "20b5b8548ffa75fb2ae200fb2be54de346b65417f61a3b4fa7a7adaf700bc1a1",
+      "receiptStatus": 200,
+      "sampleHashMatchesReceipt": true,
+      "downloadedAtUtc": "2026-10-13T05:53:42.903580+00:00",
+      "completePage": true
+    }
+  ],
+  "license": {
+    "textDefault": "CC BY 2.0 FR",
+    "defaultTextLicenseVerified": true,
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "attributionRequired": true,
+    "attributionRequirementVerified": "Cite the name of the author when using, reusing, modifying or distributing a sentence under CC BY.",
+    "separateCc0SubsetAvailable": true,
+    "cc0LicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+    "allSentencesAreCc0": false,
+    "audioReviewed": false,
+    "exactQuotes": [
+      {
+        "quote": "These files are released under CC BY 2.0 FR.",
+        "url": "https://tatoeba.org/en/downloads",
+        "sampleLine": 438
+      },
+      {
+        "quote": "France license (CC-BY 2.0 FR) for the use of textual sentences.",
+        "url": "https://tatoeba.org/en/terms_of_use#section-6-2",
+        "sampleLine": 551
+      },
+      {
+        "quote": "using, reusing, modifying and distributing the sentence is only allowed if the name of the author is cited.",
+        "url": "https://tatoeba.org/en/terms_of_use#section-6-2",
+        "sampleLine": 551
+      },
+      {
+        "quote": "in the case of a CC-BY license, it is your responsibility to quote the author of the sentence.",
+        "url": "https://tatoeba.org/en/terms_of_use#section-6-5",
+        "sampleLine": 582
+      },
+      {
+        "quote": "A part of our sentences are also available under CC0 1.0.",
+        "url": "https://tatoeba.org/en/downloads",
+        "sampleLine": 443
+      }
+    ]
+  },
+  "exportFormat": {
+    "name": "Detailed Sentences",
+    "exportExistenceVerified": true,
+    "allLanguagesExportUrl": "https://downloads.tatoeba.org/exports/sentences_detailed.tar.bz2",
+    "expectedFieldsInOrder": [
+      "sentence_id",
+      "language",
+      "text",
+      "username",
+      "date_added",
+      "date_modified"
+    ],
+    "expectedDelimiter": "tab",
+    "sixFieldOrderVerifiedFromOfficialDocumentation": true,
+    "usernameAndDateColumnsVerifiedFromOfficialDocumentation": true,
+    "verifiedFromPath": "private/learning-repair-20261013/spanish-expansion/tatoeba/downloads-full.html",
+    "officialColumnLabelsInOrder": [
+      "Sentence id",
+      "Lang",
+      "Text",
+      "Username",
+      "Date added",
+      "Date last modified"
+    ],
+    "fieldDocumentationLine": 2314,
+    "spanishDetailedExportUrl": "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_detailed.tsv.bz2",
+    "spanishDetailedExportUrlLine": 2153,
+    "verificationLimit": "The initial supplied sample stops before the field documentation. The complete official page verifies the six-column order, but this review did not inspect actual detailed corpus records.",
+    "exactQuotes": [
+      {
+        "quote": "Detailed Sentences",
+        "url": "https://tatoeba.org/en/downloads",
+        "sampleLine": 1431
+      },
+      {
+        "quote": "https://downloads.tatoeba.org/exports/sentences_detailed.tar.bz2",
+        "url": "https://tatoeba.org/en/downloads",
+        "sampleLine": 1434
+      },
+      {
+        "quote": "Contains additional fields for each sentence (owner name, date created/modified).",
+        "url": "https://tatoeba.org/en/downloads",
+        "fullPageLine": 2311
+      },
+      {
+        "quote": "Username",
+        "url": "https://tatoeba.org/en/downloads",
+        "fullPageLine": 2314
+      },
+      {
+        "quote": "Date added",
+        "url": "https://tatoeba.org/en/downloads",
+        "fullPageLine": 2314
+      },
+      {
+        "quote": "Date last modified",
+        "url": "https://tatoeba.org/en/downloads",
+        "fullPageLine": 2314
+      }
+    ]
+  },
+  "cc0ExportFormat": {
+    "name": "Sentences (CC0)",
+    "allLanguagesExportUrl": "https://downloads.tatoeba.org/exports/sentences_CC0.tar.bz2",
+    "spanishExportUrl": "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_CC0.tsv.bz2",
+    "spanishExportUrlLine": 2459,
+    "officialColumnLabelsInOrder": [
+      "Sentence id",
+      "Lang",
+      "Text",
+      "Date last modified"
+    ],
+    "delimiter": "tab",
+    "fourFieldOrderVerifiedFromOfficialDocumentation": true,
+    "fieldDocumentationLine": 2490,
+    "cc0ExportHasUsernameColumn": false,
+    "exactQuote": "Contains all the sentences available under CC0.",
+    "quoteUrl": "https://tatoeba.org/en/downloads",
+    "quoteFullPageLine": 2487,
+    "corpusRecordsInspected": false
+  },
+  "attributionHandling": {
+    "plannedAuthorIdentifier": "Username from the detailed export, documented as the sentence owner name; preserve it as the contributor attribution identifier alongside sentence ID and source URL.",
+    "retainPerSentence": [
+      "sentence_id",
+      "language",
+      "username",
+      "source URL",
+      "source export SHA-256",
+      "license and license URL",
+      "date_added",
+      "date_modified"
+    ],
+    "sentenceSourceUrlPattern": "https://tatoeba.org/en/sentences/show/{sentence_id}",
+    "recommendedPublicationRecord": "Keep a contributor attribution index and per-sentence provenance alongside any redistributed corpus or derived corpus.",
+    "unknownAuthorHandling": "Do not silently invent author names; let the root ingestion record its exclusion or attribution-resolution policy.",
+    "usernameFieldAndOwnerNameDocumented": true,
+    "originalAuthorIdentityCertified": false,
+    "ownerNameLimit": "The export documents owner name. These sources do not certify that the current exported owner is always the original author. An author-family split should be described precisely as a split by exported username/owner."
+  },
+  "limits": [
+    {
+      "finding": "The community platform does not certify the skills of every contributor. These sources do not establish that every exported sentence was written by a human without automation.",
+      "quote": "whose skills we do not check whatsoever.",
+      "url": "https://tatoeba.org/en/terms_of_use#section-5",
+      "sampleLine": 500
+    },
+    {
+      "finding": "Sentence claims are not certified as factual or logically valid.",
+      "quote": "We judge neither the logic nor the veracity of statements.",
+      "url": "https://tatoeba.org/en/terms_of_use#section-5-1",
+      "sampleLine": 512
+    },
+    {
+      "finding": "Professional translation accuracy is not guaranteed.",
+      "quote": "the validity and accuracy of translations are not guaranteed by any professional intervention.",
+      "url": "https://tatoeba.org/en/terms_of_use#section-5-1",
+      "sampleLine": 508
+    },
+    {
+      "finding": "The platform does not guarantee complete license-compliance checking of all contributions.",
+      "quote": "Tatoeba will not always have the means to put in place technical measures to ensure the complete compliance of licenses.",
+      "url": "https://tatoeba.org/en/terms_of_use#section-6",
+      "sampleLine": 532
+    },
+    {
+      "finding": "Only the supplied English terms were reviewed; the site identifies French as the controlling version if translations differ.",
+      "quote": "In case of any differences in meaning between the translations of these Terms of Use, the French version prevails, in its most recent update.",
+      "url": "https://tatoeba.org/en/terms_of_use#section-11",
+      "sampleLine": 709
+    }
+  ],
+  "conclusion": "Official Tatoeba documentation supports CC BY 2.0 FR as the default license for textual sentences and requires author attribution. Detailed Sentences has six tab-separated columns: Sentence id, Lang, Text, Username, Date added, Date last modified. The separate CC0 export has four columns and no Username field. The detailed export describes Username as owner name; preserve it with sentence-level provenance without claiming certification of original authorship, universal human authorship or factual correctness."
+}
