@@ -1,5 +1,12 @@
 # SOVENGI
 
+**SOVENGI: auditoría y nueva etapa de entrenamiento.** El
+[diseño y la revisión de ramas](docs/sovengi-memory-20261013/README.md) fijan el
+modelo actual, los límites de la corrida y la comparación antes/después.
+La rama de archivo histórico conserva checkpoints anteriores; no es código
+pendiente de la integración. El candidato no se promueve automáticamente.
+
+
 **SOVENGI** es el nombre de la IA; **UNIDAD** se conserva como nombre del
 repositorio y del paquete por compatibilidad. Su entrada común une conversación,
 memoria explícita, herramientas del anfitrión, API y planificación de aprendizaje:

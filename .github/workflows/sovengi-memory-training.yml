@@ -1,0 +1,50 @@
+name: Bounded SOVENGI memory training
+on:
+  push:
+    branches: [work/sovengi-memory-training-20261013]
+    paths: [configs/sovengi-memory-stage.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sovengi-memory-training-20261013
+  cancel-in-progress: false
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install '.[conversation]'
+      - name: Verify experiment data isolation
+        run: python -m unittest discover -s tests -p test_sovengi_memory_training.py -v
+      - name: Train the pinned own model and compare real replies
+        run: python -u examples/train_sovengi_memory.py
+      - name: Preserve resumable checkpoints, frozen corpus and raw evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sovengi-memory-training-${{ github.run_id }}
+          retention-days: 90
+          path: |
+            private/sovengi-memory-20261013/
+            examples/sovengi-memory-20261013/
+            docs/sovengi-memory-20261013/
+            models/sovengi-memory-20261013/
+      - name: Publish candidate and evidence on the experiment branch
+        if: success() && github.ref_name == 'work/sovengi-memory-training-20261013'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add examples/sovengi-memory-20261013 docs/sovengi-memory-20261013 models/sovengi-memory-20261013
+          git commit -m 'Guarda entrenamiento SOVENGI, pesos propios y respuestas antes/después'
+          git push origin HEAD:work/sovengi-memory-training-20261013

@@ -1,5 +1,16 @@
 # Órdenes del creador de SOVENGI (repositorio UNIDAD)
 
+## Continuación: auditar ramas y comenzar entrenamiento de SOVENGI
+
+El creador pide comprobar que el estado esté actualizado, revisar borradores y
+ramas no conectadas y comenzar a entrenar. Se verifica la integración y se
+distinguen los archivos históricos del código pendiente. Se autoriza una etapa
+finita sobre el modelo propio actual, con datos ficticios y repaso, comparación
+antes/después y publicación de pesos y evidencia. Se conservan referencias y
+procesos ajenos; no se activa automáticamente un candidato sin evaluar.
+
+> seguro que esta actualizado todo? no hay borradores o ramas no conectadas? ya puedes empezar a entrenarla
+
 ## Continuación del 13 de octubre: unificar SOVENGI
 
 El creador nombra su IA **SOVENGI** y solicita corregir la desconexión entre
