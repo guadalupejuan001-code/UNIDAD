@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "purpose": "exposed-development-only-not-final-acceptance",
+  "method": "project-AI-semantic-review",
+  "humanIndependent": false,
+  "baselineAlreadySeen": true,
+  "criteriaForEverydayWrittenAfterBaselineBeforeCandidateComparison": true,
+  "publishedCriteriaFor10CasesUnchanged": true,
+  "grades": {
+    "C": "Satisfies all essential current constraints with intelligible content.",
+    "P": "Satisfies an identifiable substantive part but misses a material requirement.",
+    "F": "Fails the core request, is off target or contradicts an essential fact."
+  },
+  "criticalRule": "Only flag an unequivocal proposition matching case-specific criticalIf; omissions/fragments still fail but do not become invented facts by reconstruction. Critical scope is narrow, not absence of all factual defects.",
+  "sources": [
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/everyday-probe/cases.json",
+      "ref": "27b769bd1b5f4b44573f3477db5c899fac93907e"
+    },
+    {
+      "path": "docs/work-repair-experiment-20261012/wording-history/cases.json",
+      "ref": "6c6b5a7bf36cbd12c6e9515af0d252080b9fde55"
+    }
+  ],
+  "turns": [
+    {
+      "episodeId": "explanation",
+      "turn": 1,
+      "user": "Explica en dos frases qué es una copia de seguridad y para qué sirve.",
+      "constraints": [
+        "Explicar en dos frases qué es una copia de seguridad y para qué sirve: conservar otra copia para recuperar información ante pérdida o daño.",
+        "No sustituir la explicación por un acuse de recibo ni una pregunta."
+      ],
+      "criticalIf": [
+        "Afirmar de forma inequívoca una definición incompatible o asegurar que una copia garantiza recuperar cualquier pérdida."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 2,
+      "user": "Dame un ejemplo usando un documento que estoy escribiendo.",
+      "constraints": [
+        "Dar un ejemplo concreto de guardar otra copia de un documento que se está escribiendo para poder recuperarlo.",
+        "Conservar el tema de copia de seguridad del historial real."
+      ],
+      "criticalIf": [
+        "Afirmar una práctica que destruya el único documento como copia de seguridad."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 3,
+      "user": "Ahora hazlo en una sola frase, sin palabras técnicas.",
+      "constraints": [
+        "Expresar en una sola frase sencilla la explicación o ejemplo actual de copia de seguridad.",
+        "Evitar términos técnicos y conservar la utilidad de recuperar el documento."
+      ],
+      "criticalIf": [
+        "Contradecir la definición o utilidad de una copia de seguridad."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 1,
+      "user": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar.",
+      "constraints": [
+        "Redactar una invitación breve a Mara y a su primo Gael para merendar el viernes.",
+        "Conservar destinatarios y día, dejando el lugar sin especificar porque aún no se eligió."
+      ],
+      "criticalIf": [
+        "Inventar un lugar u hora como si ya se hubieran elegido; cambiar destinatarios o día."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 2,
+      "user": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito.",
+      "constraints": [
+        "Actualizar la invitación con parque Cedro y las cinco.",
+        "Conservar a Mara y Gael como destinatarios y el viernes como día; no basta con extraer sólo lugar y hora."
+      ],
+      "criticalIf": [
+        "Cambiar destinatarios, día, parque Cedro o las cinco por otros datos."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 3,
+      "user": "Corrige sólo el día: será el sábado. Conserva las personas, el lugar y la hora.",
+      "constraints": [
+        "Actualizar únicamente el día a sábado y conservar Mara, Gael, parque Cedro y las cinco en la invitación.",
+        "Mantener una invitación inteligible y breve."
+      ],
+      "criticalIf": [
+        "Reinstalar el viernes como día actual o cambiar destinatarios, lugar u hora."
+      ],
+      "scope": "everyday-current-request-and-explicit-facts"
+    },
+    {
+      "episodeId": "pr1diag-v1-r01-o0-w0",
+      "turn": 1,
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-r02-o0-w0",
+      "turn": 1,
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 1,
+      "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+      "constraints": [
+        "Identificar paraguas de Elisa y linterna de Raúl.",
+        "No cruzar ni inventar dueños."
+      ],
+      "criticalIf": [
+        "Cambiar un dueño o cruzar objetos y personas."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 2,
+      "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+      "constraints": [
+        "Identificar a Raúl como dueño de la linterna, conservando esa relación pese a la corrección ajena.",
+        "No reinstalar a Elisa como dueña actual del paraguas si se menciona."
+      ],
+      "criticalIf": [
+        "Cambiar el dueño de la linterna o negar la corrección del paraguas."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 3,
+      "user": "¿De quién es ahora el paraguas?",
+      "constraints": [
+        "Identificar a Noelia como dueña actual del paraguas."
+      ],
+      "criticalIf": [
+        "Reinstalar a Elisa o asignar el paraguas a otro dueño."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 4,
+      "user": "Resume las dos pertenencias actuales en una frase.",
+      "constraints": [
+        "Resumir en una sola frase paraguas de Noelia y linterna de Raúl.",
+        "No añadir otras pertenencias."
+      ],
+      "criticalIf": [
+        "Cambiar o cruzar dueños actuales."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 1,
+      "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+      "constraints": [
+        "Distinguir color amarillo conocido y fabricante no informado.",
+        "No inventar fabricante."
+      ],
+      "criticalIf": [
+        "Inventar un fabricante, negar el color dado o cambiarlo."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 2,
+      "user": "La fabricó Mateo. ¿Quién la hizo?",
+      "constraints": [
+        "Identificar a Mateo como fabricante de la caja."
+      ],
+      "criticalIf": [
+        "Asignar otro fabricante o negar que se indicó."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 3,
+      "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+      "constraints": [
+        "Conservar a Mateo como fabricante aunque cambie el color a morado.",
+        "Si se menciona el color actual, usar morado."
+      ],
+      "criticalIf": [
+        "Cambiar el fabricante o reinstalar amarillo como color actual."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 4,
+      "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+      "constraints": [
+        "Identificar morado como color actual y a Mateo como fabricante.",
+        "No añadir datos ajenos a ambas respuestas."
+      ],
+      "criticalIf": [
+        "Cambiar fabricante o color actual; texto accesorio sin cambio factual es defecto de instrucción."
+      ],
+      "scope": "published-narrow-case-critical-pattern"
+    }
+  ]
+}

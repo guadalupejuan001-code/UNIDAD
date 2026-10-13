@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/unidad_eval, project AI agent",
+  "blinded": false,
+  "independentHumanReview": false,
+  "purpose": "exposed-development-not-final-acceptance",
+  "modelId": "unidad-conversation-aa7556e06f9924a02738ce5de379f576f33894dc6a10a3d12e104d73bcedb289",
+  "rawPath": "/workspace/unidad-results/copy-head-retention-20261013/all/development-actual.json",
+  "rawSha256": "a0e4e061d1c7f4f2fdfb770bc39d0e5a2bbbc08e7a3b6dae4fd665ee59fcc71d",
+  "rubricPath": "/workspace/unidad-results/development-review-rubric.json",
+  "rubricSha256": "a3fe500af717fd2f9d4b5579caf3b9b8b9de060d6364e9ba906436e68c4d6448",
+  "criticalScope": "Only flag an unequivocal proposition matching case-specific criticalIf; omissions/fragments still fail but do not become invented facts by reconstruction. Critical scope is narrow, not absence of all factual defects.",
+  "summary": {
+    "turns": 16,
+    "complete": 2,
+    "partial": 1,
+    "failed": 13,
+    "critical": 1,
+    "multiturnDialogues": 4,
+    "completeMultiturnDialogues": 0
+  },
+  "rows": [
+    {
+      "episodeId": "explanation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pide una aclaración innecesaria («¿Qué parte te refieres?») sin definir una copia de seguridad ni explicar su utilidad.",
+      "actualText": "¿Qué parte te refieres?",
+      "actualTextSha256": "939397376822e9eb7db1d45e508f77320712de68415612ce61d892c493c256bc",
+      "user": "Explica en dos frases qué es una copia de seguridad y para qué sirve."
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "Repite la pregunta de aclaración y no da un ejemplo de respaldo de un documento.",
+      "actualText": "¿Qué parte te refieres?",
+      "actualTextSha256": "939397376822e9eb7db1d45e508f77320712de68415612ce61d892c493c256bc",
+      "user": "Dame un ejemplo usando un documento que estoy escribiendo."
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta por otra parte de una idea y no resume la explicación o ejemplo en una frase sencilla.",
+      "actualText": "¿Qué parte te refieres a las una idea breve?",
+      "actualTextSha256": "8dd4fb55583658748b90e1f1d7a0a980e007bee2e6a7b1fbdf8b8592ea3d0745",
+      "user": "Ahora hazlo en una sola frase, sin palabras técnicas."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Primero redactar el lugar para Mara y merendar el viernes» no es una invitación inteligible y omite a Gael.",
+      "actualText": "Primero redactar el lugar para Mara y merendar el viernes.",
+      "actualTextSha256": "829966e35b37a37a931bc9cef872d09bca6403dac2cc9cc930841a949bf8b140",
+      "user": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Primero vas a Mara sinye» no actualiza la invitación con parque Cedro y las cinco ni conserva los dos destinatarios.",
+      "actualText": "Primero vas a Mara sinye.",
+      "actualTextSha256": "1504ca4084664a3158924ca561c18205f118642e62c50311524e5d1a667c14e9",
+      "user": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Primero» no expresa la invitación ni el cambio del día a sábado.",
+      "actualText": "Primero.",
+      "actualTextSha256": "870a72509a6de2e0868e6feb9bfded6eefc8031759ee396b283a960dcfadb6e4",
+      "user": "Corrige sólo el día: será el sábado. Conserva las personas, el lugar y la hora."
+    },
+    {
+      "episodeId": "pr1diag-v1-r01-o0-w0",
+      "turn": 1,
+      "grade": "F",
+      "critical": true,
+      "reason": "Asigna verde a la taza, cuyo color dado es violeta.",
+      "actualText": "La taza es verde.",
+      "actualTextSha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?"
+    },
+    {
+      "episodeId": "pr1diag-v1-r02-o0-w0",
+      "turn": 1,
+      "grade": "C",
+      "critical": false,
+      "reason": "Identifica verde como color de la botella sin cruzar la entidad preguntada.",
+      "actualText": "La botella es verde.",
+      "actualTextSha256": "948bda4b53c404969ce9b7dbf22dc3e528acfba34917cd30b547147e55a8d1e2",
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 1,
+      "grade": "P",
+      "critical": false,
+      "reason": "Identifica correctamente el paraguas de Elisa, pero omite la pertenencia de la linterna a Raúl.",
+      "actualText": "El paraguas es de Elisa.",
+      "actualTextSha256": "64017e32a2aa286a59f0ce24fd06aacf7ef7ba29270f0bd1be13dc767d602e2b",
+      "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "Menciona sólo «La linterna» y no dice quién sigue siendo su dueño; omisión sin dueño falso inequívoco.",
+      "actualText": "La linterna.",
+      "actualTextSha256": "17d69d8600cdb764ac0a6f6ba0153eb5912eab580a2e55be89ad3c77bdd48f90",
+      "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 3,
+      "grade": "C",
+      "critical": false,
+      "reason": "Conserva a Noelia como dueña actual del paraguas tras la corrección.",
+      "actualText": "El paraguas es de Noelia.",
+      "actualTextSha256": "221e356248d951d3753f63e1bb6b59f49a78382ab4dc0dab631a43319d69b547",
+      "user": "¿De quién es ahora el paraguas?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta inconclusa y ajena al resumen pedido; no expresa las dos pertenencias actuales.",
+      "actualText": "¿Cuéntame qué es el para una linterna?",
+      "actualTextSha256": "c292ffd152ce7103710902a7ac8f3a70b05d7cfc709d3d86b3860f27685c6e21",
+      "user": "Resume las dos pertenencias actuales en una frase."
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "No distingue claramente el color conocido y el fabricante no informado; «No. Te leo cómo se llama amarilla» no establece esos hechos.",
+      "actualText": "No. Te leo cómo se llama amarilla.",
+      "actualTextSha256": "89affc5cca96e479ad60590b28ac6202a612f9efe1f91ef841d47345783bfe20",
+      "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«La hizo» no identifica a Mateo como fabricante.",
+      "actualText": "La hizo.",
+      "actualTextSha256": "9c776c39546721f38866fdbbff40f9f92658dec8c56ee9d3e320ff126bb9b60a",
+      "user": "La fabricó Mateo. ¿Quién la hizo?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "«No» no identifica al fabricante conservado; no reconstruyo una negación factual específica desde esta respuesta a quién.",
+      "actualText": "No.",
+      "actualTextSha256": "38178a20b470cfd18299fb1593dd4ba706f1a83321dac051d01086efd8b7a96f",
+      "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Dij fabricó morada» no expresa de forma inteligible color y fabricante actuales.",
+      "actualText": "Dij fabricó morada.",
+      "actualTextSha256": "7a512ad50d82de697385b9cc5eb6ef75e33fb2017861fa038c27ab47070c851e",
+      "user": "Di el color actual y quién la fabricó, sin añadir nada."
+    }
+  ]
+}

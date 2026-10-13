@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "purpose": "technical-compatibility-not-conversational-acceptance",
+  "checks": [
+    {
+      "config": {
+        "d_model": 128,
+        "n_layers": 4,
+        "n_heads": 4,
+        "context_length": 256,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "seed": 42,
+        "vocab_size": 384
+      },
+      "parameterCount": 875264,
+      "tensorCount": 52,
+      "legacyInitialWeightsExactlyEqual": true
+    },
+    {
+      "config": {
+        "d_model": 256,
+        "n_layers": 6,
+        "n_heads": 8,
+        "context_length": 512,
+        "dropout": 0.0,
+        "ffn_multiplier": 4,
+        "seed": 47,
+        "vocab_size": 8192,
+        "copy_head": {
+          "version": 1,
+          "rank": 32,
+          "seed": 47
+        }
+      },
+      "parameterCount": 6983937,
+      "tensorCount": 80,
+      "legacyInitialWeightsExactlyEqual": true
+    },
+    {
+      "referenceId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "referenceWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+      "allArtifactFileDescriptorsPreserved": true,
+      "loadedModelIdentityPreserved": true,
+      "weightsFromStreamingExportByteIdentical": true
+    }
+  ],
+  "modelSourceSha256": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+  "artifactSourceSha256": "bb5967e98cc0e241e57169573b6c0c77e7d1cd96e2a7b0389b30f5f04b2e7fc3"
+}

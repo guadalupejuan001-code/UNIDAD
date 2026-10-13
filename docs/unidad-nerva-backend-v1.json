@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "scope": "Complete greedy inference of the packaged own-weight character RNN in NERVA; not C7 conversation",
+  "modelId": "language-858bad78a84d74bb9f22622f4ec7ca1dd077665157550f94c5ff9462185c79b3",
+  "artifactSha256": "fec9a46063185f2d707bbe168b315cb5b10e8bf06d0afd7bbacb689a407fdab7",
+  "artifactFileSha256": "afd613c7dffe78e368d860880c2ffb86c6622303a242a8a5ed402b003917b3c6",
+  "artifactUnchanged": true,
+  "nervaVersion": "0.2.0",
+  "dtype": "f64",
+  "temperature": 0,
+  "seed": 42,
+  "checkedGeneratedCharacters": 448,
+  "programSha256": "94efa33605e0ab8a18ae4072df2ec1134c4dcfab1a4a35bf4d5919b7452f607c",
+  "canonicalRuntimeSha256": {
+    "parser.mjs": "d25d3a409faef397a60ac70239b9674aa6616a8f1159f28067f2a9fb8178fba6",
+    "tensor.mjs": "1830a22b121c68c0448776a43f1ad891fc1e0cd742c9266be18984e738871fbc",
+    "runtime.mjs": "946a1803fd3e7bab74a22560d789faad64e95b6a186e2c2a756fb7cc8604e467",
+    "nerva.mjs": "83197cafb2594f931dfe963bb57c81e40f9e027a1dc6355697bfb7624ce1d7eb"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "node": "v24.19.0"
+  },
+  "observedEndToEndTimesSeconds": {
+    "numpyCalls": [
+      0.011095107000073767,
+      0.005717489000744536,
+      0.005802818001029664,
+      0.005480331999933696,
+      0.0055739929994160775,
+      0.005547133001527982,
+      0.00590706399998453
+    ],
+    "nervaCalls": [
+      0.07934659599959559,
+      0.06007007399966824,
+      0.06250401900069846,
+      0.05853086600109236,
+      0.05769425599828537,
+      0.059833086999788065,
+      0.06279633899976034
+    ],
+    "numpyMedian": 0.005717489000744536,
+    "nervaMedian": 0.06007007399966824,
+    "includesNervaSubprocessStartup": true,
+    "performanceImprovementEstablished": false
+  },
+  "predictions": [
+    {
+      "prompt": "Una tarea ",
+      "effectivePrompt": "Una tarea ",
+      "continuation": "y a persión. En ens enta le una prede una una prede una una pred",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "Hola",
+      "effectivePrompt": "Hola",
+      "continuation": " pena pequeba para prede una una prede una una prede una una pre",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "Aprender ",
+      "effectivePrompt": "Aprender ",
+      "continuation": "y ana prede una una prede una una prede una una prede una una pr",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "IA",
+      "effectivePrompt": "IA",
+      "continuation": " res le una prede una una prede una una prede una una prede una ",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "El futuro ",
+      "effectivePrompt": "El futuro ",
+      "continuation": "cos enta le una prede una una prede una una prede una una prede ",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "",
+      "effectivePrompt": " ",
+      "continuation": "y ana prede una una prede una una prede una una prede una una pr",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    },
+    {
+      "prompt": "🧠未知",
+      "effectivePrompt": "🧠未知",
+      "continuation": " enta le cunde la pena prede una una prede una una prede una una",
+      "generatedCharacters": 64,
+      "sameOriginalResultFields": true,
+      "executionBackend": "nerva-0.2"
+    }
+  ],
+  "limitations": [
+    "A small character predictor is not an instruction-following or commercially competitive conversational AI.",
+    "Parity is empirical for these prompts; JS accumulation and tanh can differ from NumPy near an argmax tie.",
+    "Sampling and training through this adapter are not implemented; runtime limits and errors remain explicit.",
+    "Timing observations are seven sequential calls on this host, including transfer and startup, not a controlled speed benchmark.",
+    "No own or external model weights were trained, changed or promoted by this verification."
+  ]
+}

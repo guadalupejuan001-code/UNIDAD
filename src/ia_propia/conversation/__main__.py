@@ -100,13 +100,16 @@ def _trim_history(messages):
     return messages
 
 
-def _converse(args):
+def _converse(args, *, engine=None):
     """Keep only actual successful turns in RAM, using the common engine."""
     from .runtime import ConversationEngine, validate_reply_request
     from .tokenizer import validate_messages
     settings = validate_reply_request({"max_new_tokens": args.max_new_tokens,
         "temperature": args.temperature, "seed": args.seed}, partial=True)
-    engine = ConversationEngine(args.model)
+    if engine is None:
+        engine = ConversationEngine(args.model)
+    elif not isinstance(engine, ConversationEngine):
+        raise ValueError("The console must use the common ConversationEngine")
     print(f"[Modelo local: {engine.model_id}; contexto: {engine.manifest['config']['context_length']} tokens.]\n"
           "[Conversación experimental. Historial sólo en esta sesión; no se guarda ni entrena.]\n"
           "[Un mensaje por línea. /salir termina; /reiniciar borra el historial.]", flush=True)

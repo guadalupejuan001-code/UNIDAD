@@ -1,0 +1,631 @@
+{
+  "schemaVersion": 1,
+  "purpose": "exposed-development-only-not-final-acceptance",
+  "method": "project-AI-semantic-cross-review",
+  "humanIndependent": false,
+  "blindedToArmIdentitiesAndPrimaryScoresAtGrading": true,
+  "primaryReviewRead": false,
+  "trainingArtifactsRead": false,
+  "sourceFiles": [
+    "/workspace/unidad-results/development-review-rubric.json",
+    "/workspace/unidad-results/development-cross-anonymized.json"
+  ],
+  "gradingNotes": [
+    "Every grade compares the actual inputMessages, including prior actual assistant outputs, with the current user request and its published constraints.",
+    "Facts receive credit only when an intelligible relation is stated or recoverable through ordinary contextual ellipsis; isolated matching words and repairs to broken syntax receive no credit.",
+    "Critical flags use only the case-specific criticalIf patterns. Off-target answers, omissions and unrelated factual defects do not widen those patterns.",
+    "A multi-turn dialogue is complete only if all of its exposed turns are C. The four multi-turn dialogues per panel are explanation, invitation, h01 and h02."
+  ],
+  "panels": [
+    {
+      "label": "X",
+      "episodes": [
+        {
+          "id": "explanation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "¿Qué parte te refieres?",
+              "grade": "F",
+              "critical": false,
+              "reason": "Asks for clarification instead of giving the requested two-sentence definition and recovery purpose."
+            },
+            {
+              "number": 2,
+              "actualText": "¿Qué parte te refieres?",
+              "grade": "F",
+              "critical": false,
+              "reason": "Repeats a clarification question; gives no concrete example of saving another copy of the document."
+            },
+            {
+              "number": 3,
+              "actualText": "¿Qué parte te refieres a las una idea breve?",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed clarification question gives neither a simple backup explanation nor the recovery benefit required by the actual history."
+            }
+          ]
+        },
+        {
+          "id": "invitation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Primero redactar el lugar para Mara y merendar el viernes.",
+              "grade": "P",
+              "critical": false,
+              "reason": "The phrase about snacking Friday intelligibly preserves the requested activity and day, but the surrounding drafting instruction is not a usable invitation and does not retain Gael. No chosen place or time is asserted."
+            },
+            {
+              "number": 2,
+              "actualText": "Primero vas a Mara sinye.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The broken phrase does not update an invitation with park Cedro and five or preserve the requested recipients and Friday."
+            },
+            {
+              "number": 3,
+              "actualText": "Primero.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The single word performs none of the Saturday correction or preservation requirements and asserts no changed fact."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r01-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La taza es verde.",
+              "grade": "F",
+              "critical": true,
+              "reason": "Explicitly assigns green to the cup, contradicting the given violet cup and matching this case's critical pattern."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r02-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La botella es verde.",
+              "grade": "C",
+              "critical": false,
+              "reason": "Correctly identifies green as the bottle's color in an intelligible, pertinent answer."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h01",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "El paraguas es de Elisa.",
+              "grade": "P",
+              "critical": false,
+              "reason": "Correctly states that the umbrella belongs to Elisa but omits the lantern's owner Raúl."
+            },
+            {
+              "number": 2,
+              "actualText": "La linterna.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Only names the lantern; gives no owner. The omission is not an invented ownership proposition."
+            },
+            {
+              "number": 3,
+              "actualText": "El paraguas es de Noelia.",
+              "grade": "C",
+              "critical": false,
+              "reason": "Correctly assigns the umbrella to Noelia after the user's correction."
+            },
+            {
+              "number": 4,
+              "actualText": "¿Cuéntame qué es el para una linterna?",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed question summarizes neither current ownership relation and asserts no replacement owner."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h02",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "No. Te leo cómo se llama amarilla.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The response does not intelligibly distinguish the known yellow box color from the unspecified maker. Its isolated negative and color word do not establish a denial or an invented maker."
+            },
+            {
+              "number": 2,
+              "actualText": "La hizo.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The verb phrase omits who made the box; it does not identify Mateo or assert another maker."
+            },
+            {
+              "number": 3,
+              "actualText": "No.",
+              "grade": "F",
+              "critical": false,
+              "reason": "A bare negative does not answer the maker question; it is not an unequivocal statement changing Mateo or rejecting the color correction."
+            },
+            {
+              "number": 4,
+              "actualText": "Dij fabricó morada.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The broken phrase identifies neither a grounded current box-color relation nor Mateo as maker. Reading purple as a maker or supplying missing syntax would require reconstruction."
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "complete": 2,
+        "partial": 2,
+        "failed": 12,
+        "critical": 1,
+        "turnCount": 16,
+        "completeMultiturnDialogs": 0,
+        "multiturnDialogCount": 4
+      },
+      "multiturnDialogs": [
+        {
+          "episodeId": "explanation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "F",
+            "F",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "invitation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "P",
+            "F",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h01",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "P",
+            "F",
+            "C",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h02",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Y",
+      "episodes": [
+        {
+          "id": "explanation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Entendido, las frases se llama el dos frases; se llama una copia y el dos frases.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The acknowledgement and garbled references to sentences and a copy explain neither a backup nor its recovery purpose."
+            },
+            {
+              "number": 2,
+              "actualText": "Hola se llama un documento de seguridad.",
+              "grade": "F",
+              "critical": false,
+              "reason": "A greeting and naming phrase about a document do not give a concrete second-copy example or explain recovery."
+            },
+            {
+              "number": 3,
+              "actualText": "¿Qué quieres escribir?",
+              "grade": "F",
+              "critical": false,
+              "reason": "Asks what the user wants to write instead of supplying the requested simple one-sentence backup explanation."
+            }
+          ]
+        },
+        {
+          "id": "invitation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Después vasdame a redactar a redactar una invitación breve; todavía estás a redactar el viernes.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Garbled commentary about drafting Friday is not a usable invitation and does not establish the requested invitation to Mara and Gael."
+            },
+            {
+              "number": 2,
+              "actualText": "El parque es elegame a Mara y a redactar una invitación.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The broken drafting phrase does not intelligibly insert Cedro and five or preserve the recipients and day."
+            },
+            {
+              "number": 3,
+              "actualText": "Primero invitación; el parque es el lugar.",
+              "grade": "F",
+              "critical": false,
+              "reason": "A generic statement that the park is the place does not perform the Saturday correction or preserve the specific invitation with its recipients, named place and time."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r01-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La taza es verde.",
+              "grade": "F",
+              "critical": true,
+              "reason": "Explicitly assigns green to the cup rather than the given violet, matching this case's critical pattern."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r02-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La taza es verde.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Answers about the cup instead of the bottle and contradicts the cup's given color. The narrow critical pattern is a non-green color assigned to the bottle, which is not asserted here."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h01",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Surgió de Elisa.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Saying something arose from Elisa expresses origin, not an intelligible ownership assignment to either named object. The name alone earns no factual credit."
+            },
+            {
+              "number": 2,
+              "actualText": "La linterna es de Raúl.",
+              "grade": "C",
+              "critical": false,
+              "reason": "Correctly keeps Raúl as the lantern's owner despite the unrelated umbrella correction."
+            },
+            {
+              "number": 3,
+              "actualText": "El paraguas: es de Noelia.",
+              "grade": "C",
+              "critical": false,
+              "reason": "Correctly identifies Noelia as the umbrella's current owner."
+            },
+            {
+              "number": 4,
+              "actualText": "¿Qué quieres contar el paraguas.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed question does not summarize either current ownership relation."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h02",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "En amarilla, quién es el cuál es de amarilla. Laún es amarilla.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The garbled repetition of yellow does not intelligibly ground the color in the box or distinguish the unknown maker. No unequivocal invented maker or altered color is asserted."
+            },
+            {
+              "number": 2,
+              "actualText": "La hizo amarilla.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The phrase says it was made yellow, without identifying who made it. It does not answer Mateo, and it does not unequivocally assign another maker."
+            },
+            {
+              "number": 3,
+              "actualText": "Tu fabricó morada.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed phrase does not identify Mateo as the unchanged maker; an altered maker cannot be established without repairing its syntax."
+            },
+            {
+              "number": 4,
+              "actualText": "Tu fabricó morada.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed phrase does not intelligibly state the two requested relations, purple box and Mateo maker. The color word alone does not satisfy either grounded answer or establish a changed fact."
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "complete": 2,
+        "partial": 0,
+        "failed": 14,
+        "critical": 1,
+        "turnCount": 16,
+        "completeMultiturnDialogs": 0,
+        "multiturnDialogCount": 4
+      },
+      "multiturnDialogs": [
+        {
+          "episodeId": "explanation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "F",
+            "F",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "invitation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "F",
+            "F",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h01",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "F",
+            "C",
+            "C",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h02",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Z",
+      "episodes": [
+        {
+          "id": "explanation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Entendido, las frases se llama una copia y su dos frases.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The acknowledgement and broken references to a copy and sentences supply neither the definition nor its recovery purpose."
+            },
+            {
+              "number": 2,
+              "actualText": "Hola, usando un documento.",
+              "grade": "F",
+              "critical": false,
+              "reason": "A greeting and a fragment about using a document give no backup example, second copy or recovery benefit."
+            },
+            {
+              "number": 3,
+              "actualText": "¿Qué quieres escribir?",
+              "grade": "F",
+              "critical": false,
+              "reason": "The writing question does not give the requested simple one-sentence backup explanation from the actual history."
+            }
+          ]
+        },
+        {
+          "id": "invitation",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Después vasdame a redactar a redactar una invitación breve; todavía estás todavía estás a redactar el viernes.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Garbled commentary about drafting Friday is not an intelligible invitation to Mara and Gael; it supplies no chosen place or time."
+            },
+            {
+              "number": 2,
+              "actualText": "El parque se llama el parque Cedro a las cinco.",
+              "grade": "P",
+              "critical": false,
+              "reason": "Despite awkward syntax, the response recognizably identifies the park as Cedro and supplies the time five. It omits the invitation, Mara, Gael and Friday required by the actual history."
+            },
+            {
+              "number": 3,
+              "actualText": "Después vasye a redactar una invitación breve; el parque Cedro a las cinco.",
+              "grade": "P",
+              "critical": false,
+              "reason": "The standalone place-and-time phrase intelligibly preserves park Cedro and five, but no Saturday correction, recipients or usable invitation is supplied."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r01-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La taza es verde.",
+              "grade": "F",
+              "critical": true,
+              "reason": "Explicitly assigns green to the cup, contradicting violet and matching this case's critical pattern."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-r02-o0-w0",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "La taza es verde.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Answers about the cup instead of the bottle and contradicts the given cup color. It does not assign the bottle a non-green color, so the narrow critical pattern is absent."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h01",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "Surgió y la linterna.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The fragment names the lantern but assigns neither object an owner; missing ownership is not reconstructed into a critical claim."
+            },
+            {
+              "number": 2,
+              "actualText": "Queda de Elisa.",
+              "grade": "F",
+              "critical": true,
+              "reason": "In direct response to whose lantern remains, the intelligible elliptical answer assigns it to Elisa rather than Raúl, matching the critical change-of-lantern-owner pattern."
+            },
+            {
+              "number": 3,
+              "actualText": "El paraguas: es de Noelia.",
+              "grade": "C",
+              "critical": false,
+              "reason": "Correctly identifies Noelia as the umbrella's current owner after the user correction."
+            },
+            {
+              "number": 4,
+              "actualText": "¿Qué quieres contar el paraguas.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed question does not provide the requested one-sentence summary of the two current ownership relations."
+            }
+          ]
+        },
+        {
+          "id": "pr1diag-v1-h02",
+          "turns": [
+            {
+              "number": 1,
+              "actualText": "En amarilla, quién falta de amarilla.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The garbled yellow-and-who fragment does not intelligibly establish the box color or distinguish its unspecified maker. No factual invention is inferred from its words."
+            },
+            {
+              "number": 2,
+              "actualText": "La hizo amarilla.",
+              "grade": "F",
+              "critical": false,
+              "reason": "Saying it was made yellow does not identify Mateo as the maker and does not unequivocally name a different maker."
+            },
+            {
+              "number": 3,
+              "actualText": "Tu fabricó morada.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed phrase does not identify Mateo as the continuing maker; no unequivocal replacement maker is established."
+            },
+            {
+              "number": 4,
+              "actualText": "Tu fabricó morada.",
+              "grade": "F",
+              "critical": false,
+              "reason": "The malformed phrase states neither grounded requested relation. Purple occurring in broken syntax is not enough to establish the box's current color, and Mateo is absent."
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "complete": 1,
+        "partial": 2,
+        "failed": 13,
+        "critical": 2,
+        "turnCount": 16,
+        "completeMultiturnDialogs": 0,
+        "multiturnDialogCount": 4
+      },
+      "multiturnDialogs": [
+        {
+          "episodeId": "explanation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "F",
+            "F",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "invitation",
+          "complete": false,
+          "turnCount": 3,
+          "grades": [
+            "F",
+            "P",
+            "P"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h01",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "F",
+            "F",
+            "C",
+            "F"
+          ]
+        },
+        {
+          "episodeId": "pr1diag-v1-h02",
+          "complete": false,
+          "turnCount": 4,
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "complete": 5,
+    "partial": 4,
+    "failed": 39,
+    "critical": 4,
+    "turnCount": 48,
+    "completeMultiturnDialogs": 0,
+    "multiturnDialogCount": 12
+  },
+  "reviewProcess": "Project-AI reviewer graded anonymized actual histories against the rubric. A second project-AI agent received only quoted blinded edge cases for narrow-critical and partial-credit calibration; neither consulted primary scores, arm identities or training artifacts."
+}

@@ -36,6 +36,12 @@ localmente con los pesos del proyecto, sin depender de una API de otra IA.
   de experimentos y documentación de resultados, incluidos los intentos que no
   mejoraron el modelo.
 
+La [configuración GNOSIS](configs/gnosis.json) reúne cerebro, NERVA y etapas de
+aprendizaje. Incluye admisión de recursos, entrenamiento por microbatches y
+soporte explícito de arquitecturas mayores. Se comprobó cálculo y manejo de
+artefactos de 48,85 millones de parámetros aleatorios; esto no demuestra una
+mejora conversacional. [Uso, mediciones y límites](docs/gnosis.md).
+
 Las [órdenes del creador](ORDENES_USUARIO.md) conservan el objetivo del proyecto.
 [AGENTS.md](AGENTS.md) recoge las instrucciones para modificarlo.
 

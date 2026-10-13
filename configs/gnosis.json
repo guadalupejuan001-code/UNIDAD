@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "projectRoot": "..",
+  "brain": {
+    "state_dir": "private/gnosis/brain",
+    "language_backend": "nerva",
+    "conversation_model": "models/conversation-reference-c7",
+    "expected_model_id": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2"
+  },
+  "learning": {
+    "profile": "50m",
+    "memory_budget_gib": 4,
+    "storage_budget_gib": 8,
+    "stages": {
+      "foundation": {
+        "corpus": null,
+        "corpus_sha256": null,
+        "run_dir": "private/gnosis/foundation",
+        "initial_model": null,
+        "training_config": {
+          "objective": "causal_lm",
+          "partition_policy": "train_validation_only",
+          "projection_mode": "supervised",
+          "loss_reduction": "token_mean",
+          "batch_size": 8,
+          "micro_batch_size": 1,
+          "seed": 20261013,
+          "torch_threads": 1,
+          "max_seconds": 3600,
+          "max_steps": 100000,
+          "validation_every": 100,
+          "checkpoint_every": 100
+        }
+      },
+      "conversation": {
+        "corpus": null,
+        "corpus_sha256": null,
+        "run_dir": "private/gnosis/conversation",
+        "initial_model": "private/gnosis/foundation/artifact",
+        "training_config": {
+          "objective": "assistant_last_reply",
+          "partition_policy": "train_validation_only",
+          "projection_mode": "supervised",
+          "loss_reduction": "token_mean",
+          "batch_size": 8,
+          "micro_batch_size": 1,
+          "seed": 20261013,
+          "torch_threads": 1,
+          "max_seconds": 3600,
+          "max_steps": 100000,
+          "validation_every": 100,
+          "checkpoint_every": 100
+        }
+      },
+      "adaptation": {
+        "corpus": null,
+        "corpus_sha256": null,
+        "run_dir": "private/gnosis/adaptation",
+        "initial_model": "private/gnosis/conversation/artifact",
+        "training_config": {
+          "objective": "assistant_last_reply",
+          "partition_policy": "train_validation_only",
+          "projection_mode": "supervised",
+          "loss_reduction": "token_mean",
+          "batch_size": 8,
+          "micro_batch_size": 1,
+          "seed": 20261013,
+          "torch_threads": 1,
+          "max_seconds": 3600,
+          "max_steps": 100000,
+          "validation_every": 100,
+          "checkpoint_every": 100
+        }
+      }
+    }
+  }
+}

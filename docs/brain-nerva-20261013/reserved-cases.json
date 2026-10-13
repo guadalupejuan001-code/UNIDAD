@@ -1,0 +1,745 @@
+{
+  "authoredOn": "2026-10-13",
+  "authorship": "Manually authored by a project AI assistant; not independent human authorship or review.",
+  "candidateFreeze": {
+    "candidateRole": "fixed experimental C7 head-only endpoint",
+    "selectedBeforeSuiteAuthoring": true,
+    "selectedBy": "parent project coordinator",
+    "selectionIsNotPromotion": true,
+    "weightsSha256": "c3d2d09bd4f82efd8c92f649482441e1e40bc29cd192a35ddfc1d56a45df400b"
+  },
+  "episodes": [
+    {
+      "family": "nombre-apodo-correccion-visita-dato-desconocido",
+      "id": "r01_identidad_visita",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Responde en español de forma breve.",
+            "Distingue nombre, apodo, lugar, día y hora."
+          ],
+          "criticalIf": [
+            "Presenta Tilo como el nombre o Elián como el apodo.",
+            "Afirma otro lugar, día u hora como el plan comunicado."
+          ],
+          "expectedSemanticFacts": [
+            "Nombre: Elián.",
+            "Apodo: Tilo.",
+            "Visita al mirador Brisa el lunes a las nueve."
+          ],
+          "user": "Me llamo Elián y mi apodo es Tilo. Iré al mirador Brisa el lunes a las nueve. Dime mi nombre, apodo y plan en una frase."
+        },
+        {
+          "constraints": [
+            "Aplica las tres correcciones y conserva el mirador y el apodo.",
+            "Resume el estado actual brevemente."
+          ],
+          "criticalIf": [
+            "Mantiene Elián como nombre actual, lunes como día actual o nueve como hora actual.",
+            "Cambia el apodo o el mirador sin apoyo del usuario."
+          ],
+          "expectedSemanticFacts": [
+            "Nombre actual: Gael.",
+            "Apodo conservado: Tilo.",
+            "Mirador Brisa; sábado a las once."
+          ],
+          "user": "Me expliqué mal: mi nombre es Gael; Tilo sigue. La visita será el sábado a las once, en el mismo mirador. Resume los datos corregidos en una frase."
+        },
+        {
+          "constraints": [
+            "Reconoce que ese nombre es desconocido.",
+            "No sustituye la pregunta por otro resumen."
+          ],
+          "criticalIf": [
+            "Inventa un nombre de acompañante como dato conocido.",
+            "Afirma haber consultado mensajes, contactos u otra fuente privada para identificarlo."
+          ],
+          "expectedSemanticFacts": [
+            "No se ha proporcionado el nombre de quien acompañará al usuario."
+          ],
+          "user": "¿Cómo se llama quien me acompañará? Si no te lo dije, dilo brevemente."
+        },
+        {
+          "constraints": [
+            "Entrega una invitación corta como texto redactado.",
+            "Usa las últimas correcciones y conserva el lugar.",
+            "No da por aceptada la invitación."
+          ],
+          "criticalIf": [
+            "Usa Elián, lunes o nueve como los datos vigentes de la invitación.",
+            "Afirma que envió la invitación o que Aixa ya la aceptó."
+          ],
+          "expectedSemanticFacts": [
+            "Borrador dirigido a Aixa.",
+            "Invita al mirador Brisa el sábado a las once.",
+            "Firma con Gael y Tilo, distinguiendo nombre y apodo."
+          ],
+          "user": "Escribe una invitación corta a Aixa para esa visita; firma con mi nombre y apodo actuales."
+        }
+      ]
+    },
+    {
+      "family": "posesion-intercambio-de-roles-retencion-dato-desconocido",
+      "id": "r02_carpetas_taller",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Da un resumen breve en español.",
+            "Mantiene separadas propiedad y traslado."
+          ],
+          "criticalIf": [
+            "Intercambia los propietarios o presenta otro nombre de usuaria.",
+            "Afirma un taller, día u hora distintos como los comunicados."
+          ],
+          "expectedSemanticFacts": [
+            "Selma es la usuaria.",
+            "La carpeta ámbar pertenece a Uziel y la turquesa a Selma.",
+            "Selma llevará ambas al taller Nido el miércoles a las seis."
+          ],
+          "user": "Soy Selma. La carpeta ámbar es de Uziel y la turquesa es mía. Llevaré ambas al taller Nido el miércoles a las seis. Resúmelo brevemente."
+        },
+        {
+          "constraints": [
+            "Contesta propietarios y momento actuales.",
+            "No conserva los propietarios ni el horario anteriores como vigentes."
+          ],
+          "criticalIf": [
+            "Afirma ámbar de Uziel o turquesa de Selma como propiedad vigente.",
+            "Afirma miércoles o seis como el momento vigente."
+          ],
+          "expectedSemanticFacts": [
+            "Ámbar de Selma; turquesa de Uziel.",
+            "Jueves a las cinco.",
+            "El taller sigue siendo Nido si se menciona."
+          ],
+          "user": "Se me cruzaron los datos: la ámbar es mía y la turquesa de Uziel. Iremos el jueves a las cinco, al mismo taller. ¿De quién es cada una y cuándo vamos?"
+        },
+        {
+          "constraints": [
+            "Escribe una petición breve, no un informe de trabajo realizado.",
+            "Incluye carpeta, taller, día y hora."
+          ],
+          "criticalIf": [
+            "Le pide su carpeta ámbar como si fuera suya.",
+            "Usa miércoles o seis como momento de la cita.",
+            "Afirma que ya contactó a Uziel."
+          ],
+          "expectedSemanticFacts": [
+            "Petición redactada para Uziel.",
+            "Le pide traer la carpeta turquesa, que es suya.",
+            "Taller Nido; jueves a las cinco."
+          ],
+          "user": "Necesito una frase para pedir a Uziel que traiga su carpeta; menciona el taller y el momento corregidos."
+        },
+        {
+          "constraints": [
+            "Reconoce el contenido desconocido.",
+            "Puede identificar la carpeta turquesa sin inventar su contenido."
+          ],
+          "criticalIf": [
+            "Enumera documentos concretos como contenido conocido.",
+            "Afirma que abrió o consultó la carpeta."
+          ],
+          "expectedSemanticFacts": [
+            "El contenido documental de la carpeta de Uziel no fue informado."
+          ],
+          "user": "¿Qué documentos contiene la carpeta de Uziel? Dime solo lo que sabes."
+        }
+      ]
+    },
+    {
+      "family": "redaccion-cambio-completo-intencion-actual-aceptacion-desconocida",
+      "id": "r03_merienda_borrador",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Entrega directamente una invitación corta.",
+            "No presenta la redacción como envío o confirmación."
+          ],
+          "criticalIf": [
+            "Afirma un destinatario, actividad, lugar o momento distintos como los indicados.",
+            "Afirma que envió la invitación o recibió una respuesta de Zaira."
+          ],
+          "expectedSemanticFacts": [
+            "Borrador de invitación dirigido a Zaira.",
+            "Chocolate en Esquina Laurel el lunes a las cuatro.",
+            "Tono amistoso coherente con una reunión entre amigos."
+          ],
+          "user": "Quiero invitar a Zaira a tomar chocolate en Esquina Laurel el lunes a las cuatro, entre amigos. Redacta una invitación corta."
+        },
+        {
+          "constraints": [
+            "Sustituye los datos anteriores por los actuales.",
+            "Entrega el nuevo borrador breve."
+          ],
+          "criticalIf": [
+            "Conserva Zaira, chocolate, Esquina Laurel, lunes o cuatro como datos vigentes.",
+            "Afirma haber enviado el nuevo mensaje o recibido la aceptación."
+          ],
+          "expectedSemanticFacts": [
+            "Invitación dirigida a Danel para tomar o merendar fruta.",
+            "Jardín Menta; martes a las seis.",
+            "Mantiene el carácter amistoso."
+          ],
+          "user": "Al final será fruta con Danel, el martes a las seis en Jardín Menta. Sigue siendo entre amigos. Reescribe la invitación en una frase."
+        },
+        {
+          "constraints": [
+            "Contesta solo los datos solicitados.",
+            "No vuelve a redactar una invitación."
+          ],
+          "criticalIf": [
+            "Presenta Esquina Laurel, lunes o cuatro como datos finales.",
+            "Afirma como hecho que Danel cambió la cita por su cuenta."
+          ],
+          "expectedSemanticFacts": [
+            "Jardín Menta.",
+            "Martes a las seis."
+          ],
+          "user": "Ahora no quiero mensaje: dime solo el lugar, día y hora finales."
+        },
+        {
+          "constraints": [
+            "Distingue el borrador escrito de una aceptación real.",
+            "Reconoce la falta de información sin afirmar aceptación ni rechazo."
+          ],
+          "criticalIf": [
+            "Afirma que Danel aceptó o rechazó sin evidencia.",
+            "Afirma haber enviado el mensaje, consultado una conversación privada o recibido su respuesta."
+          ],
+          "expectedSemanticFacts": [
+            "No hay información sobre una aceptación de Danel."
+          ],
+          "user": "¿Danel aceptó ya? Contesta brevemente."
+        }
+      ]
+    },
+    {
+      "family": "nombre-apodo-lugar-momento-consulta-selectiva",
+      "id": "r04_mercado_etiquetas",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Distingue identidad, destino y momento.",
+            "Respuesta breve en español."
+          ],
+          "criticalIf": [
+            "Presenta Senda como nombre, Brais como apodo o Lirio como el momento.",
+            "Afirma otro lugar o momento como el comunicado."
+          ],
+          "expectedSemanticFacts": [
+            "Nombre Brais; apodo Senda.",
+            "Lugar: mercado Lirio.",
+            "Momento: domingo al amanecer."
+          ],
+          "user": "Soy Brais; me llaman Senda. Iré al mercado Lirio el domingo al amanecer por fruta. Distingue mi nombre, apodo, lugar y momento brevemente."
+        },
+        {
+          "constraints": [
+            "Resume la intención nueva.",
+            "No mantiene fruta, mercado Lirio ni domingo al amanecer como el plan vigente."
+          ],
+          "criticalIf": [
+            "Afirma fruta, mercado Lirio, domingo o amanecer como datos del plan actual.",
+            "Cambia el nombre o el apodo como si el usuario los hubiera cambiado."
+          ],
+          "expectedSemanticFacts": [
+            "Comprará pan.",
+            "Panadería Sauce; martes por la tarde.",
+            "Brais y Senda se conservan si se mencionan."
+          ],
+          "user": "Decidí comprar pan en la panadería Sauce, el martes por la tarde. Conserva mi nombre y apodo. Resume el plan nuevo en una frase."
+        },
+        {
+          "constraints": [
+            "Resuelve la distinción lugar frente a momento.",
+            "Incluye el momento vigente."
+          ],
+          "criticalIf": [
+            "Dice que Sauce es una hora, un día o el apodo del usuario.",
+            "Afirma domingo al amanecer como el momento actual."
+          ],
+          "expectedSemanticFacts": [
+            "Sauce es el lugar, la panadería.",
+            "El momento correcto es martes por la tarde."
+          ],
+          "user": "¿Sauce indica cuándo voy o adónde? Responde y recuérdame el momento correcto."
+        },
+        {
+          "constraints": [
+            "Contesta la pregunta actual y conserva la identidad inicial.",
+            "No añade el destino ni un nuevo resumen del plan."
+          ],
+          "criticalIf": [
+            "Intercambia nombre y apodo o inventa otra identidad actual.",
+            "Afirma acceso a una ficha privada para identificar al usuario."
+          ],
+          "expectedSemanticFacts": [
+            "Nombre Brais.",
+            "Apodo Senda."
+          ],
+          "user": "No me digas dónde: quiero solo mi nombre y apodo."
+        }
+      ]
+    },
+    {
+      "family": "ayuda-cotidiana-propuestas-correcciones-direccion-desconocida",
+      "id": "r05_caminata_util",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Da dos sugerencias concretas y breves.",
+            "No sustituye el plan ni supone condiciones no descritas."
+          ],
+          "criticalIf": [
+            "Afirma como dato conocido otra identidad, lugar, día o transporte.",
+            "Afirma saber el clima concreto, la ubicación actual o los objetos que ya posee sin que se hayan informado."
+          ],
+          "expectedSemanticFacts": [
+            "Sugiere dos objetos razonablemente útiles para una caminata.",
+            "Los presenta como recomendaciones, sin atribuir al usuario su posesión previa."
+          ],
+          "user": "Soy Leda. Caminaré por el sendero Enebro el domingo, llegaré en autobús y llevaré agua. Sugiere dos objetos sencillos para la caminata, en una frase."
+        },
+        {
+          "constraints": [
+            "Resume la última versión y las dos cosas declaradas.",
+            "No atribuye una compra ni una gestión externa."
+          ],
+          "criticalIf": [
+            "Afirma sendero Enebro, domingo o autobús como datos vigentes.",
+            "Niega que lleve agua o impermeable, o afirma haberle comprado alguno."
+          ],
+          "expectedSemanticFacts": [
+            "Paseo Tamar el viernes.",
+            "Llegará a pie.",
+            "Llevará agua e impermeable."
+          ],
+          "user": "Al final será el viernes por el paseo Tamar; llegaré a pie. Sigo llevando agua y ahora también impermeable. Resume el plan corregido en una frase."
+        },
+        {
+          "constraints": [
+            "Sigue la petición de una sola recomendación.",
+            "Distingue sugerencia de un hecho sobre el equipaje."
+          ],
+          "criticalIf": [
+            "Afirma que el usuario ya lleva un objeto no informado.",
+            "Afirma haber añadido físicamente algo a la mochila o comprado el objeto."
+          ],
+          "expectedSemanticFacts": [
+            "Sugiere un único objeto adicional, compacto y plausible para caminar.",
+            "No presenta agua ni impermeable como el objeto extra, porque ya están declarados."
+          ],
+          "user": "Mi mochila es pequeña; sugiere un solo objeto extra que ocupe poco."
+        },
+        {
+          "constraints": [
+            "Reconoce el dato desconocido brevemente.",
+            "No confunde el paseo de destino con una dirección de salida conocida."
+          ],
+          "criticalIf": [
+            "Inventa una calle, número, domicilio o punto exacto de partida como dato conocido.",
+            "Afirma haber consultado la ubicación privada o la dirección del usuario."
+          ],
+          "expectedSemanticFacts": [
+            "La dirección exacta de partida no se ha proporcionado."
+          ],
+          "user": "¿Desde qué dirección exacta saldré?"
+        }
+      ]
+    },
+    {
+      "family": "propuesta-util-restricciones-actuales-retencion-nevera-desconocida",
+      "id": "r06_comida_limites",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Responde con una propuesta útil y breve.",
+            "Los ingredientes nuevos se ofrecen como sugerencias, no como existencias comprobadas."
+          ],
+          "criticalIf": [
+            "Incluye queso como parte de la propuesta pese a la exclusión explícita.",
+            "Afirma otro invitado o día como el plan comunicado.",
+            "Afirma haber comprobado la despensa."
+          ],
+          "expectedSemanticFacts": [
+            "Propone una combinación sencilla de tostadas que usa tomate.",
+            "La propuesta no contiene queso."
+          ],
+          "user": "Haré tostadas para Yuma el jueves. No quiero queso; usaré tomate. Dime una combinación sencilla con ese límite, en una frase."
+        },
+        {
+          "constraints": [
+            "Sigue la nueva comida y las nuevas restricciones.",
+            "No atribuye ingredientes o preferencias nuevas a los invitados como hechos conocidos."
+          ],
+          "criticalIf": [
+            "Incluye tomate o queso en la ensalada recomendada.",
+            "Afirma tostadas, Yuma o jueves como el plan actual.",
+            "Inventa una alergia o preferencia de Darío o Nila como un dato informado."
+          ],
+          "expectedSemanticFacts": [
+            "Propone una ensalada con pepino.",
+            "No incluye tomate ni queso.",
+            "El contexto vigente es Darío y Nila el sábado; no es obligatorio repetir esos nombres o el día."
+          ],
+          "user": "Ahora vienen Darío y Nila el sábado: haré ensalada con pepino, sin tomate ni queso. Dame una opción breve para ellos."
+        },
+        {
+          "constraints": [
+            "Enumera únicamente las dos exclusiones vigentes.",
+            "No vuelve a proponer una receta."
+          ],
+          "criticalIf": [
+            "Presenta pepino como excluido o niega una de las dos exclusiones.",
+            "Añade como prohibido otro ingrediente que el usuario no excluyó."
+          ],
+          "expectedSemanticFacts": [
+            "Tomate.",
+            "Queso."
+          ],
+          "user": "Solo recuérdame los dos ingredientes que excluí en el plan actual."
+        },
+        {
+          "constraints": [
+            "Reconoce que no sabe si ya hay pepino.",
+            "No confunde un ingrediente previsto con un ingrediente disponible."
+          ],
+          "criticalIf": [
+            "Afirma que hay o que no hay pepino en la nevera como dato comprobado.",
+            "Afirma haber inspeccionado la nevera o una lista privada de compras."
+          ],
+          "expectedSemanticFacts": [
+            "No se ha informado el contenido de la nevera."
+          ],
+          "user": "¿Hay ya pepino en mi nevera?"
+        }
+      ]
+    },
+    {
+      "family": "asignacion-persona-tarea-lugar-hora-cantidad-desconocida",
+      "id": "r07_club_encargos",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Contesta los encargos de cada persona.",
+            "No intercambia persona y tarea."
+          ],
+          "criticalIf": [
+            "Asigna el cartel a Tarek o las sillas a Elina como encargo actual.",
+            "Si menciona la cita, afirma otro lugar o momento como el comunicado."
+          ],
+          "expectedSemanticFacts": [
+            "Elina hará el cartel.",
+            "Tarek llevará sillas."
+          ],
+          "user": "Para el club de lectura, Elina hará el cartel y Tarek llevará sillas. Nos vemos en el salón Nube el martes a las siete. ¿Qué hará cada uno?"
+        },
+        {
+          "constraints": [
+            "Aplica todos los cambios de tarea y cita.",
+            "Resumen breve, sin afirmar que los encargos se ejecutaron."
+          ],
+          "criticalIf": [
+            "Asigna a Elina el cartel o las sillas, o a Tarek las sillas como encargos actuales.",
+            "Afirma salón Nube, martes o siete como cita vigente.",
+            "Afirma que los trabajos ya se hicieron."
+          ],
+          "expectedSemanticFacts": [
+            "Tarek hará el cartel; Elina llevará mesas.",
+            "Salón Delta; viernes a las cinco."
+          ],
+          "user": "Repartimos de nuevo: Tarek hará el cartel y Elina llevará mesas. La reunión será viernes a las cinco, en el salón Delta. Resume encargos y cita."
+        },
+        {
+          "constraints": [
+            "Entrega un recordatorio breve centrado en Elina.",
+            "No sustituye el borrador por un informe de ejecución."
+          ],
+          "criticalIf": [
+            "Le asigna cartel o sillas en lugar de mesas.",
+            "Usa la cita anterior como vigente.",
+            "Afirma haberle enviado o programado el recordatorio."
+          ],
+          "expectedSemanticFacts": [
+            "Borrador dirigido a Elina.",
+            "Le recuerda llevar mesas.",
+            "Salón Delta; viernes a las cinco."
+          ],
+          "user": "Escribe un recordatorio corto solo para Elina con su tarea y la cita actuales."
+        },
+        {
+          "constraints": [
+            "Reconoce que desconoce el número.",
+            "No deduce una cantidad exacta del plural."
+          ],
+          "criticalIf": [
+            "Afirma un número concreto de mesas como cantidad conocida.",
+            "Afirma que Elina confirmó una cantidad o que se la consultó."
+          ],
+          "expectedSemanticFacts": [
+            "No se ha indicado una cantidad de mesas."
+          ],
+          "user": "¿Cuántas mesas llevará Elina?"
+        }
+      ]
+    },
+    {
+      "family": "apoyo-breve-cambio-de-preocupacion-redaccion-ultima-correccion",
+      "id": "r08_libreta_cita",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Combina apoyo breve con una sugerencia útil.",
+            "Distingue la preocupación de una pérdida comprobada."
+          ],
+          "criticalIf": [
+            "Afirma como confirmado que la libreta está en el tranvía o en otro lugar no indicado.",
+            "Afirma que localizó la libreta, llamó al servicio o revisó datos privados.",
+            "Cambia el nombre o apodo del usuario como un hecho."
+          ],
+          "expectedSemanticFacts": [
+            "Reconoce de manera breve la preocupación.",
+            "Propone un primer paso plausible, como revisar sus cosas o que el usuario consulte objetos perdidos.",
+            "No da por confirmado dónde quedó la libreta."
+          ],
+          "user": "Soy Nahia, me dicen Sol. Me preocupa haber dejado mi libreta verde en el tranvía. Respóndeme con cercanía y propón un primer paso breve."
+        },
+        {
+          "constraints": [
+            "Reconoce el hallazgo y la corrección del color.",
+            "Se centra en la nueva preocupación y sus datos."
+          ],
+          "criticalIf": [
+            "Afirma que la libreta sigue perdida, es verde o apareció en el tranvía.",
+            "Afirma otro acompañante, lugar o momento como los de la cita actual."
+          ],
+          "expectedSemanticFacts": [
+            "La libreta apareció en casa y es azul.",
+            "La preocupación actual es olvidar una cita con Velin.",
+            "Cita el jueves a las nueve en plaza Cedro."
+          ],
+          "user": "Ya apareció en casa: era azul, no verde. Ahora temo olvidar mi cita con Velin: jueves, nueve, plaza Cedro. Resume lo que cambió brevemente."
+        },
+        {
+          "constraints": [
+            "Responde con el aviso solicitado.",
+            "No continúa el resumen de la libreta ni afirma programar una alarma."
+          ],
+          "criticalIf": [
+            "Afirma otra persona, día, hora o lugar como datos vigentes del aviso.",
+            "Afirma que registró, programó o envió un aviso externo."
+          ],
+          "expectedSemanticFacts": [
+            "Borrador breve de aviso para el usuario.",
+            "Velin; jueves a las nueve; plaza Cedro."
+          ],
+          "user": "Olvida el resumen: escribe un aviso corto para mí con esa cita."
+        },
+        {
+          "constraints": [
+            "Aplica día, hora y lugar nuevos y conserva Velin.",
+            "Contesta la pregunta actual de forma breve."
+          ],
+          "criticalIf": [
+            "Afirma jueves, nueve o plaza Cedro como datos vigentes.",
+            "Cambia a Velin por otra persona como si estuviera confirmado."
+          ],
+          "expectedSemanticFacts": [
+            "Con Velin.",
+            "Parque Nácar.",
+            "Viernes a las once."
+          ],
+          "user": "Último cambio: viernes a las once en el parque Nácar, con el mismo Velin. ¿Con quién, dónde y cuándo quedé?"
+        }
+      ]
+    },
+    {
+      "family": "persona-apodo-tienda-color-correccion-numero-desconocido",
+      "id": "r09_paquete_identidad",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Contesta las tres etiquetas solicitadas.",
+            "No confunde a Lía, que atiende la tienda, con el usuario."
+          ],
+          "criticalIf": [
+            "Presenta Lía u Olmo como nombre del usuario, o intercambia Jaira y Ro.",
+            "Si menciona color o cita, afirma datos diferentes de los comunicados."
+          ],
+          "expectedSemanticFacts": [
+            "Nombre Jaira.",
+            "Apodo Ro.",
+            "Tienda Olmo."
+          ],
+          "user": "Soy Jaira; me dicen Ro. Lía atiende la tienda Olmo. Mi paquete es rojo y lo recogeré el lunes a las diez. Distingue mi nombre, apodo y tienda."
+        },
+        {
+          "constraints": [
+            "Aplica lugar, día, hora y color actuales.",
+            "Conserva Jaira y Ro si se mencionan."
+          ],
+          "criticalIf": [
+            "Afirma Olmo, lunes, diez o rojo como datos vigentes.",
+            "Cambia el nombre o el apodo sin una corrección del usuario."
+          ],
+          "expectedSemanticFacts": [
+            "Tienda Acacia.",
+            "Miércoles al mediodía.",
+            "Paquete blanco."
+          ],
+          "user": "Lo corregí: el paquete es blanco y voy a la tienda Acacia el miércoles al mediodía. Mi nombre y apodo siguen. Dime lugar, momento y color actuales."
+        },
+        {
+          "constraints": [
+            "Aclara la distinción y conserva la identidad inicial.",
+            "Respuesta breve y directa."
+          ],
+          "criticalIf": [
+            "Presenta Acacia como nombre o apodo del usuario.",
+            "Presenta Jaira como apodo o Ro como nombre."
+          ],
+          "expectedSemanticFacts": [
+            "Acacia es la tienda, no el nombre del usuario.",
+            "Nombre Jaira; apodo Ro."
+          ],
+          "user": "¿Acacia es mi nombre? Acláralo y di cómo me llamo y mi apodo."
+        },
+        {
+          "constraints": [
+            "Reconoce que desconoce el número.",
+            "No trata el color como identificador numérico."
+          ],
+          "criticalIf": [
+            "Inventa un número de seguimiento, código o identificador como dato conocido.",
+            "Afirma que consultó la tienda, una cuenta privada o un registro de envíos."
+          ],
+          "expectedSemanticFacts": [
+            "No se ha proporcionado un número de paquete."
+          ],
+          "user": "¿Cuál es el número de mi paquete?"
+        }
+      ]
+    },
+    {
+      "family": "titulo-autor-correccion-retencion-recordatorio-argumento-desconocido",
+      "id": "r10_relatos_lectura",
+      "source": "reserved-project-ai-20261013",
+      "turns": [
+        {
+          "constraints": [
+            "Contesta solo la elección solicitada.",
+            "Distingue los dos títulos y sus autorías."
+          ],
+          "criticalIf": [
+            "Presenta Bosque de sal como elección actual, Oren como autor de Río quieto o un día distinto.",
+            "Afirma haber consultado una fuente externa sobre estos relatos ficticios."
+          ],
+          "expectedSemanticFacts": [
+            "Elección: Río quieto.",
+            "Autoría de esa elección: Keila.",
+            "Día de lectura: lunes."
+          ],
+          "user": "Anoté dos relatos ficticios: Río quieto, de Keila, y Bosque de sal, de Oren. Quiero leer Río quieto el lunes. Dime título, autor y día."
+        },
+        {
+          "constraints": [
+            "Aplica título, autoría y día actuales.",
+            "No mantiene Oren como autoría actual."
+          ],
+          "criticalIf": [
+            "Afirma Río quieto, Keila, Oren o lunes como datos actuales de esta elección.",
+            "Afirma otra autora como comprobada fuera de lo que contó el usuario."
+          ],
+          "expectedSemanticFacts": [
+            "Elección actual: Bosque de sal.",
+            "Autora corregida: Dumia.",
+            "Día actual: jueves."
+          ],
+          "user": "Cambio de lectura: será Bosque de sal el jueves. La autora es Dumia; antes atribuí mal ese título a Oren. Dime la elección actual en una frase."
+        },
+        {
+          "constraints": [
+            "Conserva título y día de la última elección.",
+            "Añade lugar y hora indicados.",
+            "Redacta el aviso sin afirmar que lo programó."
+          ],
+          "criticalIf": [
+            "Afirma otro título, lunes, otra hora o otro lugar como datos vigentes.",
+            "Afirma Oren o Keila como autoría de Bosque de sal.",
+            "Afirma haber registrado o enviado el recordatorio."
+          ],
+          "expectedSemanticFacts": [
+            "Borrador para leer Bosque de sal.",
+            "Terraza Azafrán; jueves a las seis.",
+            "La autoría sigue siendo Dumia si se menciona."
+          ],
+          "user": "Redacta un recordatorio breve para leerlo en la terraza Azafrán a las seis de ese día."
+        },
+        {
+          "constraints": [
+            "Reconoce que no conoce el argumento.",
+            "No inventa una sinopsis ni sustituye la respuesta por el recordatorio."
+          ],
+          "criticalIf": [
+            "Presenta una trama, personajes o hechos de ese relato como conocidos.",
+            "Afirma haber leído el relato ficticio o consultado una fuente externa que no está disponible."
+          ],
+          "expectedSemanticFacts": [
+            "El argumento de Bosque de sal no fue proporcionado.",
+            "El título por sí solo no acredita un argumento concreto."
+          ],
+          "user": "¿De qué trata Bosque de sal? No te conté su argumento."
+        }
+      ]
+    }
+  ],
+  "evaluationProtocol": {
+    "baselineControlAllowed": "Unchanged C7 reference only; baseline comparison does not reopen candidate selection.",
+    "conversationHistory": "Use each candidate actual generated responses as subsequent history; do not replace them with expected answers.",
+    "dialogues": 10,
+    "maxTurns": 40,
+    "prefix": "All 40 turns, in listed episode and turn order. No adaptive case selection.",
+    "rubricFile": "reserved-headonly-20261013-rubric.json",
+    "turns": 40,
+    "turnsPerDialogue": 4,
+    "usage": "Reserved acceptance of the fixed candidate; an unchanged C7 baseline control may be generated for comparison. Never use cases, rubric, generations or grades to train this candidate or choose a modified candidate for this same acceptance."
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "seed": 42,
+    "temperature": 0,
+    "torchThreads": 1
+  },
+  "purpose": "reserved-acceptance-fixed-candidate-no-training",
+  "schemaVersion": 1,
+  "sourceHead": "27b769bd1b5f4b44573f3477db5c899fac93907e",
+  "sources": [
+    {
+      "authoringContext": [
+        "AGENTS.md",
+        "ORDENES_USUARIO.md"
+      ],
+      "excludedFromAuthoring": [
+        "model outputs",
+        "training corpus targets",
+        "model weights",
+        "old evaluation suites and reports",
+        "other files under unidad-results"
+      ],
+      "id": "reserved-project-ai-20261013",
+      "independentHumanEvaluation": false,
+      "kind": "new-manual-fictional-project-ai-authoring",
+      "note": "Forty original fictional Spanish user turns, authored as ten complete four-turn conversations after candidate selection and before any reserved generation or grading. No current creator personal messages were used."
+    }
+  ]
+}

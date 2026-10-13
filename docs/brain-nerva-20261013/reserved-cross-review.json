@@ -1,0 +1,1710 @@
+{
+  "schemaVersion": 1,
+  "purpose": "blind-project-AI-cross-review-of-sealed-fresh-reserved-acceptance",
+  "reviewedOn": "2026-10-13",
+  "authorship": "Project AI cross-review, with a separate project AI helper checking anonymous Panel B; not an external independent human evaluation.",
+  "identityBlind": true,
+  "primaryGradesWithheld": true,
+  "readScope": [
+    "/workspace/unidad-results/reserved-headonly-20261013-rubric.json",
+    "/workspace/unidad-results/reserved-headonly-20261013/anonymous.actual.json"
+  ],
+  "rubricSha256": "c7534828bad4e5379627dc1a5b19d57ce613e86fb55f734ec9803dc2470dfab6",
+  "anonymousActualSha256": "ef53fe014165e0d942cb9004101f4d8f63a2dc267df39264fbbf947386d29243",
+  "method": {
+    "facts": "Only original user messages through the current turn and explicit corrections ground facts. Earlier generated assistant replies do not authorize invented facts.",
+    "grading": "Predeclared perTurn and common semantic C/P/F definitions applied. Any concrete critical failure receives F. Isolated correct words do not rescue predominantly incoherent replies; a usable correct clause can support P.",
+    "criticality": "Concrete current false claims, unknown facts asserted as known, private inspection claims and completed external action claims are critical. Ambiguous damaged fragments are not treated as concrete fabricated facts. Explicitly old information is not automatically a contradiction.",
+    "preservation": "Raw replies and histories were not edited. No training, case changes, response generation or tuning were performed.",
+    "technicalScope": "Checked visible raw status, stopReason, discardedPromptTokens, nonempty outputs, complete turn coverage, user prompts and exact histories. Model identities and candidate/tokenizer/configuration artifacts were intentionally withheld and were not inspected."
+  },
+  "acceptanceThresholds": {
+    "completeDialogueRule": "All four turns of that dialogue must be C.",
+    "decision": "Accept only when all five conditions hold. This is conversation-basic acceptance under declared conditions, not proof that the full requested private working AI is finished or that conversation is competitive with reference assistants.",
+    "maximumCriticalTurns": 0,
+    "maximumTechnicalFailures": 0,
+    "minimumCompleteDialogues": 8,
+    "minimumCompleteTurns": 36,
+    "totalDialogues": 10,
+    "totalTurns": 40
+  },
+  "panels": [
+    {
+      "label": "A",
+      "turns": [
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 1,
+          "actualText": "Dijiste Elián y mi nombre;.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Menciona Elián de forma comprensible, pero no distingue el apodo ni resume el lugar, día y hora de la visita.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 2,
+          "actualText": "¿Qué quieres contaré al mirador.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fragmento predominantemente incoherente; no comunica los datos corregidos de nombre, apodo y visita.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 3,
+          "actualText": "Turador y mi nombre es mirador y mirador y mirador y mirador y mirador y mirador.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Repetición incoherente; no reconoce que desconoce el nombre del acompañante. Los fragmentos Turador/mirador no constituyen una identificación concreta del acompañante.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 4,
+          "actualText": "Te llamas Gael que te llamas Elián a Aixa para.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Afirma Elián como nombre actual pese a la corrección explícita a Gael; tampoco entrega una invitación válida.",
+          "criticalQuote": "te llamas Elián",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 1,
+          "actualText": "Belma.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Belma es un fragmento aislado y dañado; no entrega un resumen significativo de identidad, propiedad y traslado ni una afirmación inequívoca de otra identidad.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 2,
+          "actualText": "Antesa de Uzi; vamos mía y la ámbar es mía y la ámbar es mía.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Conserva claramente que la carpeta ámbar es de la usuaria, pero no identifica con claridad la turquesa de Uziel y omite jueves a las cinco.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 3,
+          "actualText": "Nel.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Nel no es una petición utilizable para Uziel ni comunica carpeta, taller y momento corregidos.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 4,
+          "actualText": "Nel.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Nel no responde sobre el contenido desconocido de la carpeta.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 1,
+          "actualText": "En Esquina Laurel el lunes a las cuatro, entre amigos.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Da correctamente lugar, día, hora y contexto amistoso, pero omite Zaira, el chocolate y una invitación propiamente redactada.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 2,
+          "actualText": "En una invitar a las cuatro en una invitación Laurel el lunes; las seis en Jardín Menta.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Incluye las cuatro y el lunes en la invitación sin marcarlos como datos anteriores, contradiciendo la corrección a martes a las seis en Jardín Menta.",
+          "criticalQuote": "a las cuatro en una invitación Laurel el lunes",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 3,
+          "actualText": "El martes mensaje se llama Za.",
+          "grade": "F",
+          "critical": false,
+          "reason": "El martes aparece dentro de una respuesta predominantemente incoherente; no da una respuesta utilizable de lugar, día y hora finales. El fragmento mensaje/Za no establece un hecho concreto.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 4,
+          "actualText": "En invitación corta.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No responde si hay información de aceptación de Danel.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 1,
+          "actualText": "Te llamarémanecerémaneceré.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fragmento incoherente que no distingue nombre, apodo, lugar y momento.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 2,
+          "actualText": "Te llamas Brais;. Puedes seguir contánecer por frudí comprar breecer breecer por fruta.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Conserva claramente Brais como nombre, pero no conserva explícitamente Senda ni resume pan, panadería Sauce y martes por la tarde; el resto está muy dañado.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 3,
+          "actualText": "Soy Unidad.",
+          "grade": "F",
+          "critical": false,
+          "reason": "La presentación Soy Unidad es ajena a la distinción entre lugar y momento solicitada.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 4,
+          "actualText": "Te llamas Brais; solo tienes solo te llamas Brais; no has dicho el martes al mercado.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Da correctamente Brais como nombre, pero omite el apodo Senda y añade texto ajeno al alcance solicitado.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 1,
+          "actualText": " Caminaré por el domingo; el domingo, llevaré agua.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Repite fragmentos del plan y el agua ya declarada; no recomienda dos objetos para la caminata.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 2,
+          "actualText": "Antes sencil el domingo, ahora es pie, ahora para la caminata, ahora para la caminata, ahora para la caminata, llevar a pie, llevaré agua.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Se reconocen llegar a pie y llevar agua en el plan actual, pero faltan paseo Tamar, viernes e impermeable. Domingo está señalado con Antes y no se afirma como vigente.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 3,
+          "actualText": "Mi nombre;ablemos para pequeña.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No recomienda ningún objeto adicional compacto.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 4,
+          "actualText": "Antes.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Antes no reconoce que la dirección exacta de salida es desconocida ni responde a la pregunta.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 1,
+          "actualText": "Puedes llamarme una frase,,,, en una frase.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No propone una combinación de tostadas con tomate y sin queso; la respuesta es ajena a la petición.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 2,
+          "actualText": "¿Qué quieres contarmeino?",
+          "grade": "F",
+          "critical": false,
+          "reason": "Pregunta dañada que no ofrece una ensalada con pepino respetando las exclusiones.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 3,
+          "actualText": "Después vas a queso.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No identifica tomate y queso como los dos ingredientes excluidos; el fragmento vas a queso no expresa una exclusión.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 4,
+          "actualText": "No. Ahora es tuérdame ensalada.",
+          "grade": "F",
+          "critical": true,
+          "reason": "La negación directa a la pregunta sobre pepino en la nevera afirma ausencia sin evidencia; no admite que el inventario es desconocido.",
+          "criticalQuote": "No.",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 1,
+          "actualText": "Susco a en el cartel y Tarek.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fragmento predominantemente incoherente que no comunica una asignación significativa a cada persona.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 2,
+          "actualText": "A las cinco, en el cartel es viernes.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Aunque aparece a las cinco, la respuesta es predominantemente incoherente y no resume de forma utilizable encargos ni cita.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 3,
+          "actualText": "En el carta actuales. Entonces el cartel es viará el cartel a las cinco, Elina.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No redacta un recordatorio utilizable con mesas y cita actual. Las menciones dañadas de cartel y Elina no asignan inequívocamente una tarea concreta.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 4,
+          "actualText": "En el cartel y Tarek llevar el cartel y Tarek llevará sillas.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Afirma que Tarek llevará sillas como encargo vigente, contradiciendo que ahora hará el cartel. Además no reconoce que el número de mesas es desconocido.",
+          "criticalQuote": "Tarek llevará sillas",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 1,
+          "actualText": "¿Qué quieres contarme. ¿Qué quieres contarmeónde te a cercanía?",
+          "grade": "F",
+          "critical": false,
+          "reason": "Preguntas genéricas y dañadas sin apoyo significativo ni primer paso práctico.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 2,
+          "actualText": "Después vas a jueves, plaza Cedro.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Se entiende jueves y plaza Cedro como parte de la cita actual, pero omite el hallazgo en casa, el color azul, Velin y las nueve.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 3,
+          "actualText": "En el tranvía. Entonces el tranvía.",
+          "grade": "F",
+          "critical": true,
+          "reason": "El aviso responde con el tranvía como lugar de la cita, sin base y en contradicción con plaza Cedro.",
+          "criticalQuote": "En el tranvía.",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 4,
+          "actualText": "En el tranvía.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Contesta la ubicación de la cita vigente con el tranvía, contradiciendo parque Nácar.",
+          "criticalQuote": "En el tranvía.",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 1,
+          "actualText": "Aoy Unidad y tienda; tu paquete es de Olmo.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Relaciona de forma comprensible el paquete con Olmo, pero no distingue nombre Jaira, apodo Ro y tienda. No se interpreta el fragmento Aoy Unidad como otra identidad concreta de la usuaria.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 2,
+          "actualText": "Elida.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Elida es un fragmento aislado; no da lugar, momento ni color actuales.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 3,
+          "actualText": "Tu nombre es rojo y tienda.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Afirma rojo como nombre de la usuaria, contradiciendo el nombre Jaira que sigue vigente.",
+          "criticalQuote": "Tu nombre es rojo",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 4,
+          "actualText": "El número es blanco y voy es blanco y tien a las diez.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Presenta blanco como el número del paquete pese a que solo se informó su color y no se proporcionó ningún número o identificador.",
+          "criticalQuote": "El número es blanco",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 1,
+          "actualText": "Dijisteté dos relatos.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No responde significativamente con la elección Río quieto, su autoría y el día de lectura.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 2,
+          "actualText": "Antes atribuí Bosque de Kei el lunes.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No da la elección actual, Dumia y jueves. Antes marca el fragmento como información anterior y el título/atribución dañado no es una afirmación inequívoca de datos vigentes.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 3,
+          "actualText": "Antes: antes de Bosque de Bosque de las seis de ese día.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Texto repetitivo y dañado sin recordatorio significativo de Bosque de sal, terraza Azafrán y jueves a las seis.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 4,
+          "actualText": "Antes de sal?",
+          "grade": "F",
+          "critical": false,
+          "reason": "No reconoce que el argumento de Bosque de sal no fue proporcionado; la pregunta fragmentaria no responde a la petición.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        }
+      ],
+      "dialogues": [
+        {
+          "episodeId": "r01_identidad_visita",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "grades": [
+            "F",
+            "P",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "grades": [
+            "F",
+            "P",
+            "F",
+            "P"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 2,
+            "F": 2
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "grades": [
+            "F",
+            "P",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "grades": [
+            "F",
+            "P",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 2,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 2,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        }
+      ],
+      "summary": {
+        "totalTurns": 40,
+        "totalDialogues": 10,
+        "C": 0,
+        "P": 8,
+        "F": 32,
+        "criticalTurns": 8,
+        "technicalFailures": 0,
+        "completeDialogues": 0,
+        "completeTurnsRatio": "0/40",
+        "completeDialoguesRatio": "0/10",
+        "gate": {
+          "completeTurnsAtLeast36Of40": false,
+          "completeDialoguesAtLeast8Of10": false,
+          "zeroCriticalTurns": false,
+          "zeroObservedTechnicalFailures": true,
+          "all40RequiredTurnsPresentWithExactUserPromptsAndRawHistories": true
+        },
+        "accepted": false
+      },
+      "technicalFailureDetails": []
+    },
+    {
+      "label": "B",
+      "turns": [
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 1,
+          "actualText": "Dijiste Elián y mi nombre;.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Menciona Elián de forma comprensible, pero no distingue el apodo ni resume el lugar, día y hora de la visita.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 2,
+          "actualText": "¿Qué quieres contaré al mirador.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Pregunta rota; no resume significativamente los datos corregidos.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 3,
+          "actualText": "Turador y mirador y mirador y mirador y mirador y mirador y mirador y mirador y mirador.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Repetición incoherente sin reconocer que el nombre del acompañante es desconocido; no hay una identificación concreta.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r01_identidad_visita",
+          "turn": 4,
+          "actualText": "Te llamas Elián y el lunes.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Afirma el nombre anterior Elián como actual pese a la corrección a Gael; no redacta la invitación actual.",
+          "criticalQuote": "Te llamas Elián",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 1,
+          "actualText": "Búmelo brevemente.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Eco dañado de la petición de brevedad; no entrega un resumen.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 2,
+          "actualText": "Fa de Uziel.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fa de Uziel no identifica significativamente una carpeta ni informa el momento vigente.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 3,
+          "actualText": "Nido corregidos.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Nido aparece como palabra aislada; no hay una petición utilizable ni la carpeta y la cita corregidas.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "turn": 4,
+          "actualText": "Nido el jue me has dicho su carpeta; vamos suércoles y la carpeta.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Respuesta predominantemente incoherente sin reconocer que los documentos de la carpeta son desconocidos; no enumera contenidos concretos.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 1,
+          "actualText": "En Esquina Laurel el lunes a las cuatro, entre amigos.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Da correctamente lugar, día, hora y contexto amistoso, pero omite Zaira, el chocolate y una invitación propiamente redactada.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 2,
+          "actualText": "En una invitar a las cuatro en una invitación Laurel el lunes; las seis en Jardín Menta.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Incluye las cuatro y el lunes en la invitación sin marcarlos como datos anteriores, contradiciendo la corrección a martes a las seis en Jardín Menta.",
+          "criticalQuote": "a las cuatro en una invitación Laurel el lunes",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 3,
+          "actualText": "El martes mensaje se mensaje.",
+          "grade": "F",
+          "critical": false,
+          "reason": "El día correcto aparece dentro de una respuesta predominantemente incoherente; no da lugar, día y hora finales de forma utilizable.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "turn": 4,
+          "actualText": "En una invitación corta.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No responde si hay información de aceptación de Danel.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 1,
+          "actualText": "Te llamarémanecer por fruta.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No distingue significativamente identidad, lugar y momento.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 2,
+          "actualText": "Te llamas Brais;. Puedes seguir contánecer breecer breecer por frudí comprar.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Conserva claramente Brais como nombre, pero no conserva explícitamente Senda ni resume pan, panadería Sauce y martes por la tarde; el resto está muy dañado.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 3,
+          "actualText": "Soy Unidad.",
+          "grade": "F",
+          "critical": false,
+          "reason": "La presentación Soy Unidad es ajena a la distinción entre lugar y momento solicitada.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "turn": 4,
+          "actualText": "Te llamas Brais; el martes por frud tarde.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Da correctamente Brais como nombre, pero omite Senda y añade información del plan fuera del alcance solicitado.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 1,
+          "actualText": " Caminaré por el domingo, en una frase breve; el domingo, llevar a llevaré agua.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Repite fragmentos del plan existente; no recomienda dos objetos.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 2,
+          "actualText": "Tugigido es el viernes;ablemos para pie.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Viernes aparece en una respuesta predominantemente incoherente; no hay un resumen significativo del plan corregido.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 3,
+          "actualText": "El paseo Tamar; sugiere también es pequeña.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No recomienda ningún objeto adicional compacto.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "turn": 4,
+          "actualText": "En una frase.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No reconoce que la dirección exacta de salida es desconocida.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 1,
+          "actualText": "Puedes llamarme.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Respuesta ajena a la petición; no propone ninguna combinación de tostadas.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 2,
+          "actualText": "¿Qué quieres contarmeino,la el sábado?",
+          "grade": "F",
+          "critical": false,
+          "reason": "Pregunta dañada sin una opción significativa de ensalada.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 3,
+          "actualText": "Puedes contar tos,.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No identifica ninguno de los dos ingredientes excluidos.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "turn": 4,
+          "actualText": "Noe tomate.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Noe tomate es un fragmento ambiguo y dañado; no admite inventario desconocido ni afirma inequívocamente presencia o ausencia de pepino.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 1,
+          "actualText": "Susco de lectura, en el cartel y Tarek llevará sillas.",
+          "grade": "P",
+          "critical": false,
+          "reason": "Conserva claramente que Tarek llevará sillas, pero falta el encargo de Elina.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 2,
+          "actualText": "A las cinco, en el cartel y Tarek.",
+          "grade": "F",
+          "critical": false,
+          "reason": "La hora aparece en un fragmento predominantemente incoherente; no comunica significativamente encargos y cita.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 3,
+          "actualText": "En el carta actuales.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No hay un recordatorio utilizable ni una tarea o cita claras.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "turn": 4,
+          "actualText": "En el carta actuales.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No reconoce que la cantidad de mesas es desconocida.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 1,
+          "actualText": "¿Qué quieres contarme. ¿Qué quieres contarmeónde un tranvía?",
+          "grade": "F",
+          "critical": false,
+          "reason": "Preguntas genéricas y dañadas sin apoyo significativo ni primer paso práctico.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 2,
+          "actualText": "Tu cita verde en el tranvía.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Sitúa la cita actual en el tranvía, contradiciendo plaza Cedro. La palabra verde no se interpreta aparte como una afirmación concreta sobre el color de la libreta.",
+          "criticalQuote": "Tu cita verde en el tranvía.",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 3,
+          "actualText": "¿Qué quieres contarme con Velin: jueves?",
+          "grade": "P",
+          "critical": false,
+          "reason": "Menciona de forma comprensible Velin y jueves, pero no redacta un aviso apropiado ni comunica hora y lugar.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "turn": 4,
+          "actualText": "En el tranvía.",
+          "grade": "F",
+          "critical": true,
+          "reason": "Contesta la ubicación de la cita vigente con el tranvía, contradiciendo parque Nácar.",
+          "criticalQuote": "En el tranvía.",
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 1,
+          "actualText": "Aoy Unidad y tienda; tu paquete es rojo y lo que te llamaré el lunes a las diez.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No distingue nombre, apodo y tienda; los datos del paquete y de recogida no satisfacen la petición actual.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 2,
+          "actualText": "Ahora es actuales.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No comunica significativamente ningún dato actual de lugar, momento o color.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 3,
+          "actualText": "Ahora es tu paquete Acacia.",
+          "grade": "F",
+          "critical": false,
+          "reason": "No aclara que Acacia es la tienda ni da Jaira y Ro. Tu paquete Acacia puede ser una asociación dañada con la tienda y no afirma inequívocamente un identificador nuevo ni otra identidad.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "turn": 4,
+          "actualText": "El paquete es blanco y voy a la tienda Aca Oca Oca Oca Ocacia.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Repite color e información de tienda sin reconocer que el número del paquete es desconocido.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 1,
+          "actualText": "Dijisteté dos relatos el lunes.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fragmento sobre dos relatos sin respuesta significativa de título elegido, autoría y día.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 2,
+          "actualText": "Antesté dos relatos quie; antes de Bosque de Bosque de sal el lunes.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Respuesta predominantemente incoherente; antes deja ambiguo el fragmento del lunes como información anterior y no hay una afirmación inequívoca de un dato vigente.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 3,
+          "actualText": "Antes el jueves.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Antes el jueves no es un recordatorio significativo ni una afirmación clara de la cita actual.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "turn": 4,
+          "actualText": "Antes atribmento.",
+          "grade": "F",
+          "critical": false,
+          "reason": "Fragmento dañado sin reconocer que el argumento es desconocido.",
+          "criticalQuote": null,
+          "technicalFailure": false,
+          "technicalFailureReasons": [],
+          "observedGeneration": {
+            "status": "generated",
+            "stopReason": "eos",
+            "discardedPromptTokens": 0
+          }
+        }
+      ],
+      "dialogues": [
+        {
+          "episodeId": "r01_identidad_visita",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r02_carpetas_taller",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r03_merienda_borrador",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 1,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r04_mercado_etiquetas",
+          "grades": [
+            "F",
+            "P",
+            "F",
+            "P"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 2,
+            "F": 2
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r05_caminata_util",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r06_comida_limites",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r07_club_encargos",
+          "grades": [
+            "P",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r08_libreta_cita",
+          "grades": [
+            "F",
+            "F",
+            "P",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 1,
+            "F": 3
+          },
+          "criticalTurns": 2,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r09_paquete_identidad",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        },
+        {
+          "episodeId": "r10_relatos_lectura",
+          "grades": [
+            "F",
+            "F",
+            "F",
+            "F"
+          ],
+          "counts": {
+            "C": 0,
+            "P": 0,
+            "F": 4
+          },
+          "criticalTurns": 0,
+          "technicalFailures": 0,
+          "complete": false
+        }
+      ],
+      "summary": {
+        "totalTurns": 40,
+        "totalDialogues": 10,
+        "C": 0,
+        "P": 6,
+        "F": 34,
+        "criticalTurns": 4,
+        "technicalFailures": 0,
+        "completeDialogues": 0,
+        "completeTurnsRatio": "0/40",
+        "completeDialoguesRatio": "0/10",
+        "gate": {
+          "completeTurnsAtLeast36Of40": false,
+          "completeDialoguesAtLeast8Of10": false,
+          "zeroCriticalTurns": false,
+          "zeroObservedTechnicalFailures": true,
+          "all40RequiredTurnsPresentWithExactUserPromptsAndRawHistories": true
+        },
+        "accepted": false
+      },
+      "technicalFailureDetails": []
+    }
+  ],
+  "overallConclusion": "Neither anonymous panel meets the predeclared conversation-basic acceptance gate. This project AI review is not proof of full private working AI completion or competitiveness with reference assistants."
+}

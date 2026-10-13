@@ -23,6 +23,8 @@ def parser(prog=None):
         command.add_argument("--state-dir", type=Path, default=Path("private/brain"), help="Directorio privado del cerebro")
         command.add_argument("--memory-scope", help="Memoria compartida explícitamente por configuración, no por petición")
         command.add_argument("--language-model", type=Path, help="Ruta del modelo de lenguaje fijada al iniciar")
+        command.add_argument("--language-backend", choices=("numpy", "nerva"), default="numpy",
+                             help="Motor del char-RNN fijado por el host; NERVA usa greedy y requiere Node.js 18+")
         command.add_argument("--attention-model", type=Path, help="Ruta del modelo de atención fijada al iniciar")
         command.add_argument("--conversation-model", type=Path, help="Directorio local del modelo conversacional fijado al iniciar")
         if name == "call":
@@ -58,7 +60,7 @@ def main(argv=None, *, prog=None):
             token = os.environ.get(args.token_env)
             validate_token(token)  # Fail before creating any private state/listener.
         brain = Brain(args.state_dir, language_model=args.language_model, attention_model=args.attention_model,
-                      conversation_model=args.conversation_model)
+                      conversation_model=args.conversation_model, language_backend=args.language_backend)
         session = brain.connect(args.body, memory_scope=args.memory_scope)
         if args.command == "capabilities":
             _emit(session.capabilities())

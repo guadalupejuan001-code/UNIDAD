@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "purpose": "random-weight-scaling-and-artifact-io-only-not-learned-capability",
+  "profile": {
+    "vocab_size": 8192,
+    "d_model": 512,
+    "n_layers": 14,
+    "n_heads": 8,
+    "context_length": 1024,
+    "dropout": 0.0,
+    "ffn_multiplier": 4,
+    "seed": 42,
+    "parameter_budget": 50000000
+  },
+  "parameterCount": 48852992,
+  "optimizerSteps": 0,
+  "trainingCorpusRead": false,
+  "qualityEvaluationPerformed": false,
+  "conversationAccepted": false,
+  "commercialSubstitutionValidated": false,
+  "sourceSha256": {
+    "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+    "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+    "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+    "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+    "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+  },
+  "legacySourceSha256": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+  "runnerSha256": "0c182cb354786f8a498c061624a11708335f3eb36c8de9677123e0229a3a45dd",
+  "largeOldNewFilesByteExact": {
+    "config.json": true,
+    "tokenizer.json": true,
+    "weights.safetensors": true,
+    "manifest.json": true
+  },
+  "c7OriginalPreserved": true,
+  "largeRandomWeightsLocation": "/workspace/unidad-results/gnosis-scaling-final-20261013/large-stream",
+  "results": {
+    "init_backward": {
+      "phase": "init_backward",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 235806720,
+        "VmRSSBytes": 235806720,
+        "ruMaxRssBytes": 235577344
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "initializationSeconds": 0.4291269059976912,
+      "parameterCount": 48852992,
+      "tensorCount": 172,
+      "initialStateDigest": "77c8698b0b0d513f47b342153dc98429ab1cd49da796002fe7c9a52ae4b103fa",
+      "weightPayloadBytesFloat32": 195411968,
+      "memoryAfterInitialization": {
+        "VmHWMBytes": 447909888,
+        "VmRSSBytes": 447909888,
+        "ruMaxRssBytes": 447660032
+      },
+      "forwardSeconds": 0.1077921169999172,
+      "fixtureLogitsSha256": "7a7f657b8b851136d9a7b09d146c407bb0e530d3ad2b716cc734925c1f3489b3",
+      "backwardSeconds": 0.25951472500310047,
+      "fixtureLoss": 9.097249984741211,
+      "gradientTensors": 172,
+      "allGradientsFinite": true,
+      "globalGradientNorm": 31.068223155743325,
+      "weightsUnchangedByBackward": true,
+      "fixtureTokens": 64,
+      "batchSize": 1,
+      "workerWallSecondsAfterImports": 1.160683001002326,
+      "finalMemory": {
+        "VmHWMBytes": 739012608,
+        "VmRSSBytes": 735043584,
+        "ruMaxRssBytes": 739012608
+      },
+      "sourceUnmodifiedDuringWorker": true
+    },
+    "export_stream": {
+      "phase": "export_stream",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 237658112,
+        "VmRSSBytes": 237658112,
+        "ruMaxRssBytes": 237420544
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "initializationSeconds": 0.44963995199941564,
+      "parameterCount": 48852992,
+      "tensorCount": 172,
+      "initialStateDigest": "77c8698b0b0d513f47b342153dc98429ab1cd49da796002fe7c9a52ae4b103fa",
+      "weightPayloadBytesFloat32": 195411968,
+      "memoryAfterInitialization": {
+        "VmHWMBytes": 448966656,
+        "VmRSSBytes": 448966656,
+        "ruMaxRssBytes": 448708608
+      },
+      "exportSeconds": 0.4019654289986647,
+      "exportPeakRuMaxRssBytes": 650981376,
+      "modelId": "unidad-conversation-186b83621eddc9bd90fd964b3126eb8fb6c6e3418e889fb9ce3cb2d1abcbbca0",
+      "files": {
+        "config.json": {
+          "sha256": "c35d4d32330fcbdf6992b8f2bcae26843a6fb355ed23bad660667febf827ed29",
+          "bytes": 152
+        },
+        "tokenizer.json": {
+          "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+          "bytes": 234592
+        },
+        "weights.safetensors": {
+          "sha256": "cbd89c3d04660a580ec01f9441cf3c49cf64de3b94c1e518edef1621b176bcb2",
+          "bytes": 195429248
+        }
+      },
+      "weightsUnchangedByExport": true,
+      "workerWallSecondsAfterImports": 1.1036370190013258,
+      "finalMemory": {
+        "VmHWMBytes": 650981376,
+        "VmRSSBytes": 470646784,
+        "ruMaxRssBytes": 650981376
+      },
+      "sourceUnmodifiedDuringWorker": true
+    },
+    "export_legacy": {
+      "phase": "export_legacy",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 237654016,
+        "VmRSSBytes": 237654016,
+        "ruMaxRssBytes": 237420544
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "initializationSeconds": 0.42165155000111554,
+      "parameterCount": 48852992,
+      "tensorCount": 172,
+      "initialStateDigest": "77c8698b0b0d513f47b342153dc98429ab1cd49da796002fe7c9a52ae4b103fa",
+      "weightPayloadBytesFloat32": 195411968,
+      "memoryAfterInitialization": {
+        "VmHWMBytes": 448962560,
+        "VmRSSBytes": 448962560,
+        "ruMaxRssBytes": 448708608
+      },
+      "exportSeconds": 0.6461956940001983,
+      "exportPeakRuMaxRssBytes": 1236721664,
+      "modelId": "unidad-conversation-186b83621eddc9bd90fd964b3126eb8fb6c6e3418e889fb9ce3cb2d1abcbbca0",
+      "files": {
+        "config.json": {
+          "sha256": "c35d4d32330fcbdf6992b8f2bcae26843a6fb355ed23bad660667febf827ed29",
+          "bytes": 152
+        },
+        "tokenizer.json": {
+          "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+          "bytes": 234592
+        },
+        "weights.safetensors": {
+          "sha256": "cbd89c3d04660a580ec01f9441cf3c49cf64de3b94c1e518edef1621b176bcb2",
+          "bytes": 195429248
+        }
+      },
+      "weightsUnchangedByExport": true,
+      "workerWallSecondsAfterImports": 1.3133432180002274,
+      "finalMemory": {
+        "VmHWMBytes": 1236721664,
+        "VmRSSBytes": 456163328,
+        "ruMaxRssBytes": 1236721664
+      },
+      "sourceUnmodifiedDuringWorker": true
+    },
+    "load_stream": {
+      "phase": "load_stream",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 237715456,
+        "VmRSSBytes": 237715456,
+        "ruMaxRssBytes": 237481984
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "loadSeconds": 0.8066501140019682,
+      "memoryImmediatelyAfterLoad": {
+        "VmHWMBytes": 709853184,
+        "VmRSSBytes": 514437120,
+        "ruMaxRssBytes": 709853184
+      },
+      "loadPeakRuMaxRssBytes": 709853184,
+      "stateRoundtripExact": true,
+      "fixtureLogitsRoundtripExact": true,
+      "modelId": "unidad-conversation-186b83621eddc9bd90fd964b3126eb8fb6c6e3418e889fb9ce3cb2d1abcbbca0",
+      "parameterCount": 48852992,
+      "workerWallSecondsAfterImports": 1.0125886800014996,
+      "finalMemory": {
+        "VmHWMBytes": 709853184,
+        "VmRSSBytes": 534347776,
+        "ruMaxRssBytes": 709853184
+      },
+      "sourceUnmodifiedDuringWorker": true
+    },
+    "load_legacy": {
+      "phase": "load_legacy",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 237703168,
+        "VmRSSBytes": 237703168,
+        "ruMaxRssBytes": 237477888
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "loadSeconds": 0.8137413500007824,
+      "memoryImmediatelyAfterLoad": {
+        "VmHWMBytes": 875790336,
+        "VmRSSBytes": 482959360,
+        "ruMaxRssBytes": 875790336
+      },
+      "loadPeakRuMaxRssBytes": 875790336,
+      "stateRoundtripExact": true,
+      "fixtureLogitsRoundtripExact": true,
+      "modelId": "unidad-conversation-186b83621eddc9bd90fd964b3126eb8fb6c6e3418e889fb9ce3cb2d1abcbbca0",
+      "parameterCount": 48852992,
+      "workerWallSecondsAfterImports": 1.0250596240002778,
+      "finalMemory": {
+        "VmHWMBytes": 875790336,
+        "VmRSSBytes": 496861184,
+        "ruMaxRssBytes": 875790336
+      },
+      "sourceUnmodifiedDuringWorker": true
+    },
+    "c7_roundtrip": {
+      "phase": "c7_roundtrip",
+      "torchVersion": "2.8.0+cpu",
+      "device": "cpu",
+      "precision": "float32",
+      "torchThreads": 1,
+      "torchInteropThreads": 1,
+      "sourceSha256": {
+        "configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "model.py": "e6b83126e09315e886029d3634d1b8ba364aa69f67be024b70a12e0eb9b8dbb9",
+        "artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+      },
+      "baselineMemoryAfterImports": {
+        "VmHWMBytes": 235810816,
+        "VmRSSBytes": 235810816,
+        "ruMaxRssBytes": 235585536
+      },
+      "optimizerSteps": 0,
+      "trainingCorpusRead": false,
+      "qualityEvaluationPerformed": false,
+      "originalC7AllFourFilesPreserved": true,
+      "roundtripAllFourFilesByteExact": true,
+      "weightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+      "artifactFilesSha256": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242"
+      },
+      "parameterCount": 6983937,
+      "workerWallSecondsAfterImports": 0.6803552109995508,
+      "finalMemory": {
+        "VmHWMBytes": 373579776,
+        "VmRSSBytes": 347287552,
+        "ruMaxRssBytes": 373579776
+      },
+      "sourceUnmodifiedDuringWorker": true
+    }
+  },
+  "limits": [
+    "One observation per phase, fixed order, one CPU thread; no universal performance claim.",
+    "Peak RSS is process memory, not total system memory or file-cache consumption.",
+    "64-token batch-one compute fixture does not measure 1024-token training feasibility.",
+    "Backpropagation without optimizer steps does not teach language or improve C7.",
+    "Random 195MB artifact is local; no upload to GitHub as a >100MB file."
+  ]
+}

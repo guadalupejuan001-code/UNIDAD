@@ -2,6 +2,24 @@
 
 Comprobado el 12 de octubre de 2026. **La conversación básica y la calidad competitiva siguen pendientes. C7 continúa como referencia experimental; no se promovieron candidatos.** Este estado actualiza la presentación del proyecto sin reemplazar pesos, respuestas ni recibos históricos.
 
+Actualización del 13 de octubre: se incorporan un backend NERVA opcional para el
+modelo pequeño de caracteres y una política de entrenamiento parcial comprobada.
+El contraste desde C7 terminó 128 pasos por brazo. El candidato parcial fue
+rechazado en 40 turnos nuevos: 0 completas, ocho críticas y 0/10 diálogos; C7
+obtuvo 0 completas y cuatro críticas en esa prueba, distinta de las históricas.
+No se promovieron pesos ni se renovaron presupuestos cerrados. El
+[informe nuevo](work-brain-nerva-20261013.md) conserva código, condiciones,
+revisiones de IA del proyecto, artefactos y límites.
+
+GNOSIS reúne la configuración del cerebro y las etapas de aprendizaje, incorpora
+microbatches y artefactos con escritura/carga por bloques, y admite perfiles
+mayores de forma explícita. Se comprobó un modelo aleatorio de 48.852.992
+parámetros mediante forward/backward de 64 tokens y exportación/carga; no recibió
+actualizaciones ni evaluación conversacional. Los perfiles de 99M y 991M están
+validados como arquitecturas y no son modelos entrenados. C7 continúa intacto.
+La [guía GNOSIS](gnosis.md) conserva instrucciones, mediciones y límites de CPU,
+datos, adaptación y recursos.
+
 ## Modelo conservado y aceptación
 
 C7 ya estaba publicado en `main`: [pesos](../models/conversation-reference-c7/weights.safetensors), [configuración](../models/conversation-reference-c7/config.json), [tokenizador](../models/conversation-reference-c7/tokenizer.json) y [manifiesto](../models/conversation-reference-c7/manifest.json). Tiene 6.983.937 parámetros con copia v1; su backbone tiene 6.967.296. BPE de 8.192 y contexto de 512 tokens. La [auditoría de once modelos](unidad-github-model-inventory-20261012.json) verificó los 44 archivos contra GitHub y sus manifiestos, sin inconsistencias. No acredita competencia conversacional.
