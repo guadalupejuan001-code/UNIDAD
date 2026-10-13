@@ -22,6 +22,10 @@ def configuration(root):
     value["projectRoot"] = str(root)
     value["brain"].update(conversation_model=None, expected_model_id=None, language_backend="numpy")
     value["learning"]["profile"] = "small"
+    # This fixture exercises a fresh three-stage lifecycle. The product default
+    # instead continues the published current model at its conversation stage.
+    foundation = value["learning"]["stages"]["foundation"]["run_dir"]
+    value["learning"]["stages"]["conversation"]["initial_model"] = foundation + "/artifact"
     return value
 
 

@@ -22,7 +22,7 @@ patrones y las corridas activas no sustituyen automáticamente esos pesos.
 Esta selección permite integrar la línea actual, **no acredita una mejora de
 calidad ni aceptación para producción**.
 
-Unidad es un proyecto de IA propia que se entrena y ejecuta localmente. El
+SOVENGI es un proyecto de IA propia que se entrena y ejecuta localmente. El
 repositorio reúne modelos, datos, entrenamiento, evaluación y un núcleo común
 para conectarlos a distintas aplicaciones mediante Python, consola o API HTTP.
 La inferencia utiliza nuestros pesos; no delega las respuestas en otra IA.
