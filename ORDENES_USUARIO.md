@@ -1,4 +1,17 @@
-# Órdenes del creador de Unidad
+# Órdenes del creador de SOVENGI (repositorio UNIDAD)
+
+## Continuación del 13 de octubre: unificar SOVENGI
+
+El creador nombra su IA **SOVENGI** y solicita corregir la desconexión entre
+componentes, dejar una entrada integrada y preparar las siguientes integraciones.
+Esta petición posterior autoriza cambios y sustituye la revisión previa de sólo
+lectura. Se conectan los servicios existentes, se selecciona un modelo propio
+con identidad comprobada y se conserva el entrenamiento activo. Los modelos
+históricos siguen siendo evidencia y referencias; no se entrenan todos por
+estar presentes ni se borran pesos. Integración técnica y aprendizaje comprobado
+se informan por separado.
+
+> mi ia le nombre SOVENGI, y quiero que ya todo este integrado en uno ya quiero tener la ia para poder seguir con mas integraciones.
 
 El objetivo solicitado es **crear Unidad: una IA propia, privada y de uso personal
 que trabaje por su creador y se adapte a sus cambios de criterio**. Las redes

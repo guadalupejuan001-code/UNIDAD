@@ -1,4 +1,4 @@
-name: Verify Unidad brain and models
+name: Verify SOVENGI brain and models
 on: [push, pull_request]
 permissions:
   contents: read
@@ -31,3 +31,10 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - run: python -m unittest discover -s examples -p 'test_*.py' -v
       - run: unidad conversation --help
+      - run: sovengi --help
+      - name: Verify SOVENGI with the selected published weights
+        run: python examples/verify_sovengi.py --output private/sovengi-verification.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sovengi-verification
+          path: private/sovengi-verification.json
