@@ -4,7 +4,7 @@ import {readFileSync, writeFileSync} from 'node:fs';
 import {cpus} from 'node:os';
 import {performance} from 'node:perf_hooks';
 import {parse} from '../src/ia_propia/assets/nerva/parser.mjs';
-import {runProgram} from '../src/ia_propia/assets/nerva/runtime.mjs';
+import {runProgram, VERSION} from '../src/ia_propia/assets/nerva/runtime.mjs';
 import {prepareTokenSelector, DECODER_SHA256} from '../src/ia_propia/assets/nerva/token_selector.mjs';
 
 const source = readFileSync(new URL('../src/ia_propia/assets/nerva/conversation_decoder.nv', import.meta.url), 'utf8');
@@ -38,7 +38,7 @@ for (const size of [2048, 8192]) for (const temperature of [0, .7]) {
     millisecondsPerDecision: Object.fromEntries(names.map(n => [n, {median: median(samples[n]), samples: samples[n]}]))});
 }
 const report = {schemaVersion: 1, scope: 'in_process_selector_not_complete_generation',
-  runtimeVersion: '0.2.0', decoderSha256: DECODER_SHA256,
+  runtimeVersion: VERSION, decoderSha256: DECODER_SHA256,
   environment: {node: process.version, cpu: cpus()[0]?.model, logicalCPUs: cpus().length}, results};
 const text = JSON.stringify(report, null, 2) + '\n';
 if (process.argv[2]) writeFileSync(process.argv[2], text, {flag: 'wx'});

@@ -39,3 +39,7 @@ Las nuevas métricas incluyen tiempo del conjunto y mediana por respuesta.
 Ejecución reproducible: `.github/workflows/nerva-selector-benchmark.yml`.
 Los JSON medidos se incorporarán aquí al terminar la corrida. No se cambia el
 backend predeterminado por los resultados de un prototipo aislado.
+
+Durante la ejecución, NERVA independiente avanzó a 0.3 (`c2e121d`). La extensión
+se reconcilió con ese avance y conserva los contextos de presupuesto de 0.3;
+UNIDAD sigue usando 0.2. No se traslada automáticamente el runtime nuevo.

@@ -2,13 +2,15 @@
 // The public interpreter, parser, tensor primitives and original worker stay intact.
 import { createHash } from 'node:crypto';
 import { parse, LangError } from './parser.mjs';
-import { runProgram } from './runtime.mjs';
+import { runProgram, VERSION } from './runtime.mjs';
 import * as T from './tensor.mjs';
 
 export const DECODER_SHA256 = '97d5b38f4e3aa0277eec0d37debbfdbba4e6b814eb281b1cbcd05fc9a2bfec4d';
 const KEYS = ['scores', 'excluded', 'generated', 'temperature', 'top_k', 'top_p', 'repetition_penalty', 'draw'];
 
 export function prepareTokenSelector(source) {
+  if (!['0.2.0', '0.3.0'].includes(VERSION))
+    throw new LangError('Unsupported runtime version for fixed decoder specialization');
   // Parsing retains the language source bounds. The hash prevents a changed .nv
   // program from silently running old specialized semantics. No eval/codegen.
   const ast = parse(source);
@@ -18,7 +20,9 @@ export function prepareTokenSelector(source) {
   const count = node => {
     if (!node || typeof node !== 'object') return 0;
     if (Array.isArray(node)) return node.reduce((sum, item) => sum + count(item), 0);
+    // 0.3 additionally charges each invoke() (three builtins in this program).
     return (node.type && node.type !== 'program' ? 1 : 0) +
+      (VERSION === '0.3.0' && node.type === 'call' ? 1 : 0) +
       Object.values(node).reduce((sum, item) => sum + count(item), 0);
   };
   const steps = count(ast);
@@ -30,35 +34,53 @@ export function prepareTokenSelector(source) {
     if (!Number.isSafeInteger(stepLimit) || stepLimit < 1 || stepLimit > 200000)
       throw new LangError('stepLimit debe estar entre 1 y 200000.');
     if (!input || Array.isArray(input) || typeof input !== 'object' ||
-        Object.keys(input).length !== KEYS.length || KEYS.some(key => !Object.hasOwn(input, key)))
+        ![null, Object.prototype].includes(Object.getPrototypeOf(input)) ||
+        Reflect.ownKeys(input).length !== KEYS.length)
       throw new LangError('Invalid decoder fields');
+    const fields = Object.getOwnPropertyDescriptors(input);
+    for (const key of KEYS)
+      if (!Object.hasOwn(fields, key) || !Object.hasOwn(fields[key], 'value') || !fields[key].enumerable)
+        throw new LangError('Decoder fields must be plain JSON values');
     // The fixed flat numeric schema is a strict subset of the interpreter input
     // limits: fewer than 74,000 numbers, depth 1, no strings or executable data.
     for (const [key, maximum] of [['scores', 65536], ['excluded', 4096], ['generated', 4096]]) {
       const values = input[key];
       if (!Array.isArray(values) || values.length > maximum || (key === 'scores' && !values.length))
         throw new LangError('Invalid bounded decoder array: ' + key);
-      for (const value of values)
+      if (Object.getPrototypeOf(values) !== Array.prototype || Reflect.ownKeys(values).length !== values.length + 1)
+        throw new LangError('Decoder arrays must be plain JSON arrays');
+      for (let i = 0; i < values.length; i++) {
+        const field = Object.getOwnPropertyDescriptor(values, i);
+        if (!field || !Object.hasOwn(field, 'value') || !field.enumerable)
+          throw new LangError('Decoder arrays must be dense JSON arrays');
+        const value = field.value;
         if (typeof value !== 'number' || !Number.isFinite(value)) throw new LangError('Decoder numbers must be finite');
+      }
     }
     for (const key of KEYS.slice(3))
       if (typeof input[key] !== 'number' || !Number.isFinite(input[key])) throw new LangError('Decoder controls must be finite');
     // Reduced step budgets fail at precisely the interpreter's original step.
     // This path only throws; there is no backend fallback after a selector error.
     if (stepLimit < steps) return runProgram(source, { inputs: input, stepLimit, operationLimit }).records[0].values[1];
-    T.resetBudget(operationLimit);
     // Keep tensor construction, float64 semantics, validation and operation
     // charging unchanged. In particular do not substitute the unbudgeted fusion
     // prototype or a JS/NumPy implementation of the sampling algorithm.
-    const logits = T.tensor(input.scores, 'f64');
-    const token = T.selectToken(logits, input.excluded, input.generated, input.temperature,
-      input.top_k, input.top_p, input.repetition_penalty, input.draw);
-    // Legacy global export charges serialize(logits) against the tensor budget.
-    // Retain that bounded traversal so even reduced operation limits admit the
-    // exact same valid decisions. Omit the expensive general global exporter,
-    // its repeated number-to-string conversions and copies of all input lists.
-    T.serialize(logits);
-    return token;
+    const execute = () => {
+      const logits = T.tensor(input.scores, 'f64');
+      const token = T.selectToken(logits, input.excluded, input.generated, input.temperature,
+        input.top_k, input.top_p, input.repetition_penalty, input.draw);
+      // Legacy global export charges serialize(logits) against the tensor budget.
+      // Retain that bounded traversal so even reduced operation limits admit the
+      // exact same valid decisions. Omit the expensive general global exporter,
+      // its repeated number-to-string conversions and copies of all input lists.
+      T.serialize(logits);
+      return token;
+    };
+    // NERVA 0.3 introduced caller-local tensor budgets. Preserve them when the
+    // same specialization runs there; UNIDAD 0.2 keeps its original accounting.
+    if (typeof T.withBudget === 'function') return T.withBudget(T.createBudget(operationLimit), execute);
+    T.resetBudget(operationLimit);
+    return execute();
     // Output is one integer <= 65535 (< 100 JSON characters). No globals are
     // exported by this separate API; runProgram/runSource2 keep their contract.
   };
