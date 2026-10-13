@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-autonomy-action-sft-v1",
+  "status": "prepared-not-trained-not-autonomy-accepted",
+  "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+  "contentSha256": "ee4b9796b14d190d83aa544551cb2d8958cc6ae7ba1917f1c19895a278338c8b",
+  "contentSerialization": "sorted compact UTF-8 messages JSON followed by LF, in corpus order",
+  "file": {
+    "path": "autonomy-action-sft.train-validation.jsonl",
+    "bytes": 524696,
+    "sha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396"
+  },
+  "splitCounts": {
+    "train": 192,
+    "validation": 24,
+    "test": 0
+  },
+  "taskCounts": {
+    "train": 64,
+    "validation": 8,
+    "test": 0
+  },
+  "testUsedForTraining": false,
+  "testUsed": false,
+  "sources": [
+    {
+      "dataset": "unidad-autonomy-action-sft-v1",
+      "kind": "authored-synthetic",
+      "description": "project-authored synthetic fixture supervision with actual filesystem measurements",
+      "author_AI": true,
+      "independentHumanReview": false,
+      "license": "CC0-1.0",
+      "licensePath": "LICENSE-DATA.md",
+      "networkUsed": false,
+      "actualFilesystemMeasurements": true,
+      "modelGeneratedLabels": false
+    }
+  ],
+  "objective": "assistant_last_reply",
+  "contextLength": 2048,
+  "tokenizer": {
+    "path": "models/learning-repair-20261013/conversation-15m/intermediate-step004096/tokenizer.json",
+    "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048
+  },
+  "preregisterSha256": "f6fd25a6af5fbc53b51b5f377b1f1bd2fb105c11059a931c5478a82864c75b08",
+  "qaSha256": "50217118f5ce5d8c41f145972382a682048a528be4a86cc1af5280bf20e65ec7",
+  "executionReceiptsSha256": "ce50bd0c08d764a88ec2449448385bc958ad6f9b1f218a3dc7a1772bb7fcd8aa",
+  "helperSha256": "c0f3412b08ec8dcd29be1ffe3813ef151b3525b8f67fc2116bb47d02711cc50f",
+  "sourceSha256": {
+    "src/ia_propia/brain/autonomy_model.py": "fce9c2ff872d1c1d1afff7f9bf7e3385f2336fdc5a7970593eda598389dd544e",
+    "src/ia_propia/brain/autonomy.py": "7caa621471acb9561c340e138a12905100b65a483009094c06e9bba5b68b6faa",
+    "src/ia_propia/brain/file_tools.py": "381649d2d220200b8e81b07559317bbc09061340aa2cf2c1f7adc238925720e6",
+    "src/ia_propia/conversation/tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+    "src/ia_propia/conversation/training.py": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955"
+  },
+  "learnedPlanningProven": false,
+  "modelWeightsLoaded": false,
+  "trainingStarted": false
+}

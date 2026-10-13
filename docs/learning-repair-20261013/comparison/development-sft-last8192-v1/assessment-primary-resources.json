@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T08:34:05.102411+00:00",
+  "command": [
+    "timeout",
+    "60s",
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "private/learning-repair-20261013/evaluation/run_learning_evaluation.py",
+    "--suite-dir",
+    "docs/learning-repair-20261013/development-suite",
+    "assess",
+    "--outputs",
+    "private/learning-repair-20261013/evaluation/development-sft-last8192-v1/outputs.json",
+    "--review",
+    "private/learning-repair-20261013/evaluation/development-sft-last8192-v1/review-primary.json",
+    "--output",
+    "private/learning-repair-20261013/evaluation/development-sft-last8192-v1/assessment-primary.json"
+  ],
+  "childPid": 21131,
+  "childExitCode": 0,
+  "startedAtUnix": 1791880445.0708396,
+  "finishedAtUnix": 1791880445.1024253,
+  "childTotalWallSecondsIncludingStartup": 0.031548479997582035,
+  "childUserCPUSeconds": 0.026444,
+  "childSystemCPUSeconds": 0.0,
+  "childMaximumRSSRaw": 12688,
+  "childMaximumRSSBytes": 12992512,
+  "platform": "Linux",
+  "peakRSSMeasured": true,
+  "method": "os.wait4 for the exact evaluation child PID; ru_maxrss is actual kernel peak, including Python imports, model construction, generation and final output serialization. It is not isolated model RAM and not a later RSS sample.",
+  "commandSourceSha256": {
+    "private/learning-repair-20261013/evaluation/run_learning_evaluation.py": "361920d6c3e6ad2e5dc72185377e940a1a840e22c308212dff346062f275d614"
+  }
+}

@@ -39,3 +39,15 @@ Este dato acredita exposición al entrenamiento, no adquisición de conocimiento
 generalización ni conversación competente. El recibo es una auditoría de IA del
 proyecto, sin revisión humana independiente. Los pesos finales y las respuestas
 generadas se entregan y evalúan por separado después del cierre de la etapa.
+
+## Selección intermedia de la primera invocación
+
+El [recibo del paso 4096](sft-exposure-step004096.json), preparado después de la
+primera pausa y con la corrida ya reanudada, cuenta **2.638.841 objetivos** y
+32.764 ventanas: una época completa y 14.176 ventanas de la siguiente. Las
+entradas sin padding suman 7.841.381 posiciones y se conservan separadas de los
+objetivos. Sus hashes de TRAIN y del checkpoint no cambiaron durante la
+auditoría. Este es el checkpoint BEST seleccionado para la primera exportación
+intermedia, mientras LAST de la pausa quedó en el paso 5.073 para reanudar.
+La auditoría de este recibo tardó 5,237 segundos según el ejecutor, sin
+interrumpir el entrenamiento ni cargar el modelo.

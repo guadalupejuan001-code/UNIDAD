@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "workspaceRoot": "/workspace/UNIDAD",
+  "stateDir": "private/learning-repair-20261013/continual",
+  "inboxDir": "private/learning-repair-20261013/loop-inbox",
+  "pollSeconds": 10,
+  "maxCycles": null,
+  "maxCrashRestartsPerStage": 2,
+  "approvedAgents": [
+    "project-agent-with-owner-standing-authorization"
+  ],
+  "initialCycle": {
+    "cycleId": "initial",
+    "stages": [
+      {
+        "id": "foundation-15m",
+        "kind": "base",
+        "runDir": "private/learning-repair-20261013/runs/foundation-15m",
+        "corpusPath": "private/learning-repair-20261013/corpus/causal-spanish-v1/causal-spanish.train-validation.jsonl",
+        "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+        "trainingConfigPath": "private/learning-repair-20261013/configs/foundation-training.json",
+        "trainingConfigSha256": "f5bab793911b273d1729e118b133957e9eac3937b6abc8382adda1c1d9f84864",
+        "modelConfigPath": "private/learning-repair-20261013/configs/foundation-model.json",
+        "modelConfigSha256": "b9e03368f5043fba22baa71ff2cbb815312758cd124b899f32c5cce29d5484fa",
+        "stopAfterStep": 12000,
+        "invocationBudgetSeconds": 3600,
+        "maxRSSMiB": 6144,
+        "maxDiskMiB": 2048,
+        "adoptExisting": true,
+        "adoptPid": 9540,
+        "adoptProcessBirth": "805298"
+      }
+    ]
+  },
+  "collector": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "examples/collect_learning_wiki_v2.py",
+      "collect",
+      "--recipe",
+      "examples/learning-repair-20261013/collector-v2/recipe.json",
+      "--inbox-dir",
+      "{inbox_dir}",
+      "--supervisor-state",
+      "private/learning-repair-20261013/continual/state.json"
+    ],
+    "enabled": true,
+    "everySeconds": 3600,
+    "maxDiskMiB": 2048,
+    "sourceSha256": {
+      "examples/collect_learning_wiki.py": "feee09834049f1f163e7e98badcb2dfaf9a0c00f2bde65cef6191ef1199619c9",
+      "examples/prepare_public_spanish_language.py": "5f7d2cae709b6e68770eb80827dc0c1be67d390d635ed56e98a22225c65b3ce4",
+      "examples/prepare_spanish_causal_base.py": "9d7741d84bdd2bec1738e67648dcc867261e3c787fa9a73d33464c3577a92550",
+      "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+      "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+      "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+      "examples/collect_learning_wiki_v2.py": "0ba9290196f5689710a1988a0fa8e18b481962a1e1324816243df31c5eecbf95",
+      "examples/learning-repair-20261013/collector-v2/recipe.json": "35a2ae25aae264cc80072a2e50bb180f0a74e24e587d354f15c240f66da16bb8"
+    },
+    "timeoutSeconds": 1200
+  },
+  "limits": "Finite native stages; indefinite local polling while environment and supervisor remain alive. No guaranteed improvement or autopromotion.",
+  "postStage": {
+    "enabled": true,
+    "purpose": "development_generation",
+    "torchThreads": 1,
+    "timeoutSeconds": 300,
+    "maxRSSMiB": 6144,
+    "maxDiskMiB": 512,
+    "suiteDir": "docs/learning-repair-20261013/development-suite",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "examples/run_learning_evaluation.py",
+      "--suite-dir",
+      "docs/learning-repair-20261013/development-suite",
+      "generate",
+      "--model-dir",
+      "{snapshot}",
+      "--output-dir",
+      "{output_dir}",
+      "--torch-threads",
+      "1"
+    ],
+    "sourceSha256": {
+      "examples/run_learning_evaluation.py": "f9023f7a956abd98fb451bb7372c01affb554952e29ee00a77aa8684c1afb7fe",
+      "docs/learning-repair-20261013/development-suite/cases.json": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+      "docs/learning-repair-20261013/development-suite/rubric.json": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+      "docs/learning-repair-20261013/development-suite/freeze.json": "93f19c921cb6022eb2dba5bb5e734849cafad331693478b5ca606b690f311026"
+    }
+  }
+}

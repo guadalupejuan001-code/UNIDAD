@@ -30,6 +30,30 @@ con procedencia, condiciones de uso, particiones y límites; se conservan los
 corpus congelados y se encolan etapas posteriores sin detener la corrida actual.
 No se interpreta «todo el español» como una cobertura completa ya demostrada.
 
+La actualización siguiente vuelve a pedir el ciclo **entrenar, integrar,
+evaluar, corregir y entrenar**, sin interrumpir la corrida activa. Autoriza las
+pruebas pertinentes del ciclo y amplía los datos al español de Latinoamérica:
+regionalismos, significados según país y distintas formas de expresión. Se
+incorporan lotes con procedencia y condiciones de uso, conservando diferencias
+regionales y particiones. No se declara un catálogo completo por haber reunido
+una muestra ni se cuentan los datos en cola como aprendizaje ejecutado.
+
+> continua no te detengas, ahora prioriza asi: entrena,integra,testea,corrige-entrena hazlo bucle. agrega todo el catálogo de el español de LATINO AMERICA a los datos que vayas entrenando pero incorporalos
+
+La petición posterior amplía expresamente el alcance a **autonomía operativa**
+en la arquitectura y API existentes. El modelo propio propone acciones
+estructuradas; un controlador comprueba herramientas y permisos, ejecuta,
+observa resultados reales y verifica el avance antes de continuar o detenerse.
+Se exige progreso persistente, recuperación segura, límites, cancelación y
+registro, con aprobación para destrucción, publicación de información o gastos.
+La demostración analiza archivos y guarda un informe sin cambiar los originales.
+Las pruebas del controlador no se presentan como planificación aprendida: se
+conservan los intentos reales del modelo y sus limitaciones, sin respuestas
+prefabricadas ni confundir memoria de experiencias con reentrenamiento.
+Esta ampliación no cancela el entrenamiento conversacional ni autoriza sustituir
+los pesos propios. Las restricciones históricas de no ampliar herramientas
+quedan como historia anterior a esta solicitud expresa.
+
 El creador pidió integrar el código, reconciliar las ramas, entrenar y modificar
 Unidad conjuntamente para lograr conversación, actualizar el README al terminar
 y no dejar entregas en borrador. Esta petición autoriza un nuevo entrenamiento

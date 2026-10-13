@@ -1,0 +1,4047 @@
+{
+  "train": {
+    "recordCount": 192,
+    "contextLength": 2048,
+    "maxSequenceInputs": 1265,
+    "maxPromptTokens": 1179,
+    "targetTokensIncludingEos": 13625,
+    "supervisedEos": 192,
+    "eachFinalReplyTargetExactlyOnce": true,
+    "historicalAssistantTargetsIgnored": true,
+    "promptAndTargetFit": true,
+    "nativeEncoderPoliciesChecked": [
+      "contiguous_nonoverlapping",
+      "sliding_context"
+    ],
+    "torchLoaded": false,
+    "modelWeightsLoaded": false,
+    "testRowsRead": 0,
+    "stepTokenDistributions": {
+      "1": {
+        "promptTokens": {
+          "count": 64,
+          "min": 729,
+          "max": 739,
+          "median": 735,
+          "sum": 47009
+        },
+        "trainingInputTokens": {
+          "count": 64,
+          "min": 791,
+          "max": 802,
+          "median": 797,
+          "sum": 50983
+        }
+      },
+      "2": {
+        "promptTokens": {
+          "count": 64,
+          "min": 930,
+          "max": 976,
+          "median": 938,
+          "sum": 60498
+        },
+        "trainingInputTokens": {
+          "count": 64,
+          "min": 992,
+          "max": 1039,
+          "median": 1000,
+          "sum": 64479
+        }
+      },
+      "3": {
+        "promptTokens": {
+          "count": 64,
+          "min": 1133,
+          "max": 1179,
+          "median": 1165,
+          "sum": 74015
+        },
+        "trainingInputTokens": {
+          "count": 64,
+          "min": 1217,
+          "max": 1265,
+          "median": 1249,
+          "sum": 79493
+        }
+      }
+    },
+    "smallerContextControlAudit": [
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 965,
+        "discardedPromptTokens": 453,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 965,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 656,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 144,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 665,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 153,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 731,
+        "discardedPromptTokens": 219,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 731,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 624,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 112,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 630,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 118,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 969,
+        "discardedPromptTokens": 457,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 969,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 661,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 149,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 627,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 115,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1143,
+        "discardedPromptTokens": 631,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:dralvi7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1143,
+        "discardedPromptTokens": 119,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 973,
+        "discardedPromptTokens": 461,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 973,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1176,
+        "discardedPromptTokens": 664,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1176,
+        "discardedPromptTokens": 152,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 731,
+        "discardedPromptTokens": 219,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 731,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 624,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 112,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1138,
+        "discardedPromptTokens": 626,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1138,
+        "discardedPromptTokens": 114,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 970,
+        "discardedPromptTokens": 458,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 970,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 661,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 149,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 737,
+        "discardedPromptTokens": 225,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 737,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 944,
+        "discardedPromptTokens": 432,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 944,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1179,
+        "discardedPromptTokens": 667,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1179,
+        "discardedPromptTokens": 155,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1144,
+        "discardedPromptTokens": 632,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1144,
+        "discardedPromptTokens": 120,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 739,
+        "discardedPromptTokens": 227,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 739,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 944,
+        "discardedPromptTokens": 432,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 944,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1149,
+        "discardedPromptTokens": 637,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:senzuk7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1149,
+        "discardedPromptTokens": 125,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 738,
+        "discardedPromptTokens": 226,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 738,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 965,
+        "discardedPromptTokens": 453,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 965,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1165,
+        "discardedPromptTokens": 653,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1165,
+        "discardedPromptTokens": 141,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 629,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 117,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 739,
+        "discardedPromptTokens": 227,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 739,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 941,
+        "discardedPromptTokens": 429,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 941,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1147,
+        "discardedPromptTokens": 635,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1147,
+        "discardedPromptTokens": 123,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 738,
+        "discardedPromptTokens": 226,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 738,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 972,
+        "discardedPromptTokens": 460,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 972,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 737,
+        "discardedPromptTokens": 225,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 737,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 941,
+        "discardedPromptTokens": 429,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 941,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1176,
+        "discardedPromptTokens": 664,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1176,
+        "discardedPromptTokens": 152,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 627,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 115,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 739,
+        "discardedPromptTokens": 227,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 739,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1143,
+        "discardedPromptTokens": 631,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:belxor7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1143,
+        "discardedPromptTokens": 119,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 738,
+        "discardedPromptTokens": 226,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 738,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 976,
+        "discardedPromptTokens": 464,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 976,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1178,
+        "discardedPromptTokens": 666,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1178,
+        "discardedPromptTokens": 154,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 737,
+        "discardedPromptTokens": 225,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 737,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 665,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 153,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 731,
+        "discardedPromptTokens": 219,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 731,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 932,
+        "discardedPromptTokens": 420,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 932,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 624,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 112,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 627,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 115,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 973,
+        "discardedPromptTokens": 461,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 973,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 625,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 113,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 939,
+        "discardedPromptTokens": 427,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 939,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1145,
+        "discardedPromptTokens": 633,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:nuvrek7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1145,
+        "discardedPromptTokens": 121,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 970,
+        "discardedPromptTokens": 458,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 970,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 732,
+        "discardedPromptTokens": 220,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 732,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 934,
+        "discardedPromptTokens": 422,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 934,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 627,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 115,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1144,
+        "discardedPromptTokens": 632,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1144,
+        "discardedPromptTokens": 120,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 970,
+        "discardedPromptTokens": 458,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 970,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 629,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 117,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 732,
+        "discardedPromptTokens": 220,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 732,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 934,
+        "discardedPromptTokens": 422,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 934,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 625,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:kelzir7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 113,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 972,
+        "discardedPromptTokens": 460,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 972,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 665,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 153,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 730,
+        "discardedPromptTokens": 218,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 730,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 932,
+        "discardedPromptTokens": 420,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 932,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 656,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 144,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1135,
+        "discardedPromptTokens": 623,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1135,
+        "discardedPromptTokens": 111,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 732,
+        "discardedPromptTokens": 220,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 732,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 930,
+        "discardedPromptTokens": 418,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 930,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1133,
+        "discardedPromptTokens": 621,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1133,
+        "discardedPromptTokens": 109,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 972,
+        "discardedPromptTokens": 460,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 972,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1175,
+        "discardedPromptTokens": 663,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1175,
+        "discardedPromptTokens": 151,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 661,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 149,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 729,
+        "discardedPromptTokens": 217,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 729,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 931,
+        "discardedPromptTokens": 419,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 931,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1135,
+        "discardedPromptTokens": 623,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1135,
+        "discardedPromptTokens": 111,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 630,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:femdul7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 118,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 970,
+        "discardedPromptTokens": 458,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 970,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 661,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1173,
+        "discardedPromptTokens": 149,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 938,
+        "discardedPromptTokens": 426,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 938,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 665,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 153,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1140,
+        "discardedPromptTokens": 628,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1140,
+        "discardedPromptTokens": 116,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 940,
+        "discardedPromptTokens": 428,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 940,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1146,
+        "discardedPromptTokens": 634,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1146,
+        "discardedPromptTokens": 122,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 967,
+        "discardedPromptTokens": 455,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 967,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1165,
+        "discardedPromptTokens": 653,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1165,
+        "discardedPromptTokens": 141,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 939,
+        "discardedPromptTokens": 427,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 939,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 665,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1177,
+        "discardedPromptTokens": 153,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 731,
+        "discardedPromptTokens": 219,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 731,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 932,
+        "discardedPromptTokens": 420,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 932,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1133,
+        "discardedPromptTokens": 621,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1133,
+        "discardedPromptTokens": 109,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 625,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:ravnit7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1137,
+        "discardedPromptTokens": 113,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 969,
+        "discardedPromptTokens": 457,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 969,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1170,
+        "discardedPromptTokens": 658,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel0:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1170,
+        "discardedPromptTokens": 146,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 939,
+        "discardedPromptTokens": 427,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 939,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 660,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel1:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1172,
+        "discardedPromptTokens": 148,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 629,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel2:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1141,
+        "discardedPromptTokens": 117,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 937,
+        "discardedPromptTokens": 425,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 937,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 627,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel3:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1139,
+        "discardedPromptTokens": 115,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 735,
+        "discardedPromptTokens": 223,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 735,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 970,
+        "discardedPromptTokens": 458,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 970,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 662,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel4:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1174,
+        "discardedPromptTokens": 150,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 734,
+        "discardedPromptTokens": 222,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 734,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 935,
+        "discardedPromptTokens": 423,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 935,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 656,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel5:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1168,
+        "discardedPromptTokens": 144,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 733,
+        "discardedPromptTokens": 221,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 733,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 934,
+        "discardedPromptTokens": 422,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 934,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 624,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel6:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1136,
+        "discardedPromptTokens": 112,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 736,
+        "discardedPromptTokens": 224,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 736,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 936,
+        "discardedPromptTokens": 424,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 936,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 630,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:train:zophel7:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1142,
+        "discardedPromptTokens": 118,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      }
+    ]
+  },
+  "validation": {
+    "recordCount": 24,
+    "contextLength": 2048,
+    "maxSequenceInputs": 1268,
+    "maxPromptTokens": 1182,
+    "targetTokensIncludingEos": 1708,
+    "supervisedEos": 24,
+    "eachFinalReplyTargetExactlyOnce": true,
+    "historicalAssistantTargetsIgnored": true,
+    "promptAndTargetFit": true,
+    "nativeEncoderPoliciesChecked": [
+      "contiguous_nonoverlapping",
+      "sliding_context"
+    ],
+    "torchLoaded": false,
+    "modelWeightsLoaded": false,
+    "testRowsRead": 0,
+    "stepTokenDistributions": {
+      "1": {
+        "promptTokens": {
+          "count": 8,
+          "min": 739,
+          "max": 743,
+          "median": 742,
+          "sum": 5932
+        },
+        "trainingInputTokens": {
+          "count": 8,
+          "min": 802,
+          "max": 806,
+          "median": 805,
+          "sum": 6430
+        }
+      },
+      "2": {
+        "promptTokens": {
+          "count": 8,
+          "min": 943,
+          "max": 976,
+          "median": 947,
+          "sum": 7625
+        },
+        "trainingInputTokens": {
+          "count": 8,
+          "min": 1004,
+          "max": 1039,
+          "median": 1010,
+          "sum": 8123
+        }
+      },
+      "3": {
+        "promptTokens": {
+          "count": 8,
+          "min": 1147,
+          "max": 1182,
+          "median": 1178,
+          "sum": 9321
+        },
+        "trainingInputTokens": {
+          "count": 8,
+          "min": 1233,
+          "max": 1268,
+          "median": 1264,
+          "sum": 10009
+        }
+      }
+    },
+    "smallerContextControlAudit": [
+      {
+        "id": "autonomy-fixture:validation:qutema:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 742,
+        "discardedPromptTokens": 230,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:qutema:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 742,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:qutema:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 975,
+        "discardedPromptTokens": 463,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:qutema:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 975,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:qutema:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1178,
+        "discardedPromptTokens": 666,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:qutema:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1178,
+        "discardedPromptTokens": 154,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 742,
+        "discardedPromptTokens": 230,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 742,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 944,
+        "discardedPromptTokens": 432,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 944,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1182,
+        "discardedPromptTokens": 670,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:yobrin:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1182,
+        "discardedPromptTokens": 158,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 739,
+        "discardedPromptTokens": 227,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 739,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 943,
+        "discardedPromptTokens": 431,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 943,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1147,
+        "discardedPromptTokens": 635,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:wexal:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1147,
+        "discardedPromptTokens": 123,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 743,
+        "discardedPromptTokens": 231,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 743,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 949,
+        "discardedPromptTokens": 437,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 949,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1152,
+        "discardedPromptTokens": 640,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:husvek:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1152,
+        "discardedPromptTokens": 128,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 742,
+        "discardedPromptTokens": 230,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 742,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 976,
+        "discardedPromptTokens": 464,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 976,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1181,
+        "discardedPromptTokens": 669,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:tazmur:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1181,
+        "discardedPromptTokens": 157,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 742,
+        "discardedPromptTokens": 230,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 742,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 947,
+        "discardedPromptTokens": 435,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 947,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1180,
+        "discardedPromptTokens": 668,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:pildor:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1180,
+        "discardedPromptTokens": 156,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 739,
+        "discardedPromptTokens": 227,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 739,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 944,
+        "discardedPromptTokens": 432,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 944,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1149,
+        "discardedPromptTokens": 637,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:cazfen:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1149,
+        "discardedPromptTokens": 125,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:1",
+        "step": "1",
+        "contextLength": 512,
+        "promptTokens": 743,
+        "discardedPromptTokens": 231,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:1",
+        "step": "1",
+        "contextLength": 1024,
+        "promptTokens": 743,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:2",
+        "step": "2",
+        "contextLength": 512,
+        "promptTokens": 947,
+        "discardedPromptTokens": 435,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:2",
+        "step": "2",
+        "contextLength": 1024,
+        "promptTokens": 947,
+        "discardedPromptTokens": 0,
+        "adapterWouldBlockBeforeGeneration": false,
+        "fullTrainingPromptAndTargetFit": true
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:3",
+        "step": "3",
+        "contextLength": 512,
+        "promptTokens": 1152,
+        "discardedPromptTokens": 640,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      },
+      {
+        "id": "autonomy-fixture:validation:gomsel:step:3",
+        "step": "3",
+        "contextLength": 1024,
+        "promptTokens": 1152,
+        "discardedPromptTokens": 128,
+        "adapterWouldBlockBeforeGeneration": true,
+        "fullTrainingPromptAndTargetFit": false
+      }
+    ]
+  },
+  "schemaVersion": 1,
+  "fixtureTasksActuallyExecuted": 72,
+  "tasksCompleted": 72,
+  "originalsUnchanged": true,
+  "actualToolResults": 216,
+  "actualAdapter1024Rejections": 72,
+  "splitCounts": {
+    "train": 192,
+    "validation": 24
+  },
+  "wholeFamilySplitsDisjoint": true,
+  "learnedPlanningProven": false,
+  "elapsedSeconds": 2.992935325997678,
+  "peakRssMiB": 48.328125,
+  "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+  "executionReceiptsSha256": "ce50bd0c08d764a88ec2449448385bc958ad6f9b1f218a3dc7a1772bb7fcd8aa",
+  "review": "Project AI/code measurements, not independent human evaluation"
+}

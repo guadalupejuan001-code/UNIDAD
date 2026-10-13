@@ -1,0 +1,180 @@
+{
+  "budget": {
+    "addressSpaceMiB": 512,
+    "cpuCount": 1,
+    "maxCpuSeconds": 120,
+    "maxDiskMiB": 512,
+    "maxWallSeconds": 120
+  },
+  "cacheManifestSha256": "2ed15f66cca5b48625a69630051c31eae1889bfc242a7628964503ac21458ff4",
+  "checkpoints": {
+    "best": {
+      "actual": {
+        "supervisedEosPositions": 32764,
+        "supervisedPayloadPositionsExcludingEos": 2606077,
+        "supervisedTargetPositionsIncludingEos": 2638841,
+        "unpaddedInputPositions": 7841381,
+        "windowDraws": 32764
+      },
+      "bestValidationNll": 1.7110848086831454,
+      "checkpointElapsedSeconds": 2985.746329980999,
+      "checkpointName": "step-000004096-37b0b60acf4546d398078b3c407e600d",
+      "checkpointStateSha256": "6760a75cb5947fd2b614f07bc181b5ca986fa172e09ae670292c76b31cc7b9be",
+      "checkpointStep": 4096,
+      "completedEpochLogicalUpdates": 2324,
+      "completedEpochShortBatches": 1,
+      "completedEpochs": 1,
+      "consumedPrefixUint32LeSha256": "bb3f0c2d0a268dc83291cac7f3109c624fba0313dd67c95719c06bc72016594d",
+      "currentEpochCursor": 14176,
+      "currentEpochLogicalUpdates": 1772,
+      "currentOrderUint32LeSha256": "692cf08ee50b706e57e37f39e992e98faff94f68c08aa69d0315172b7cb341c7",
+      "currentPrefix": {
+        "supervisedEosPositions": 14176,
+        "supervisedTargetPositionsIncludingEos": 1138820,
+        "unpaddedInputPositions": 3391926,
+        "windowDraws": 14176
+      },
+      "drawCountDistribution": {
+        "1": 4412,
+        "2": 14176
+      },
+      "epochFinalBatchWindows": 4,
+      "fullEpoch": {
+        "supervisedEosPositions": 18588,
+        "supervisedTargetPositionsIncludingEos": 1500021,
+        "unpaddedInputPositions": 4449455,
+        "windowDraws": 18588
+      },
+      "logicalBatchSize": 8,
+      "maxMicroBatchSize": 4,
+      "naiveStepTimesBatchOvercount": 4,
+      "naiveStepTimesBatchWindows": 32768,
+      "optimizerLogicalUpdates": 4096,
+      "samplerOrderAndPythonRngReplayed": true
+    },
+    "last": {
+      "actual": {
+        "supervisedEosPositions": 65524,
+        "supervisedPayloadPositionsExcludingEos": 5220654,
+        "supervisedTargetPositionsIncludingEos": 5286178,
+        "unpaddedInputPositions": 15681293,
+        "windowDraws": 65524
+      },
+      "bestValidationNll": 1.7110848086831454,
+      "checkpointElapsedSeconds": 5941.166302599002,
+      "checkpointName": "step-000008192-82822b3e01a7488dbb1141a1174ebb94",
+      "checkpointStateSha256": "dfa9046a932ada1444e9676ef9689c6cccdb318173e50eeb516619bc40fe8da9",
+      "checkpointStep": 8192,
+      "completedEpochLogicalUpdates": 6972,
+      "completedEpochShortBatches": 3,
+      "completedEpochs": 3,
+      "consumedPrefixUint32LeSha256": "19f7b6804204a191f2d4f8ff2a13d8c51c45320d88935142ddd8c64a833b443f",
+      "currentEpochCursor": 9760,
+      "currentEpochLogicalUpdates": 1220,
+      "currentOrderUint32LeSha256": "50bfbe564ee496df4ed40d42ccf21f81eeef70ffd58060c96343476013f45cdd",
+      "currentPrefix": {
+        "supervisedEosPositions": 9760,
+        "supervisedTargetPositionsIncludingEos": 786115,
+        "unpaddedInputPositions": 2332928,
+        "windowDraws": 9760
+      },
+      "drawCountDistribution": {
+        "3": 8828,
+        "4": 9760
+      },
+      "epochFinalBatchWindows": 4,
+      "fullEpoch": {
+        "supervisedEosPositions": 18588,
+        "supervisedTargetPositionsIncludingEos": 1500021,
+        "unpaddedInputPositions": 4449455,
+        "windowDraws": 18588
+      },
+      "logicalBatchSize": 8,
+      "maxMicroBatchSize": 4,
+      "naiveStepTimesBatchOvercount": 12,
+      "naiveStepTimesBatchWindows": 65536,
+      "optimizerLogicalUpdates": 8192,
+      "samplerOrderAndPythonRngReplayed": true
+    }
+  },
+  "eosTokenId": 2,
+  "formula": "completed_epochs * sum(TRAIN window count) + sum(count[order[i]] for i in range(cursor))",
+  "fullEpochSamplerOrderUint32LeSha256": {
+    "0": "160145006fc84fc56e25f2788350c727a98dabf290602fd7f879f5c249ccd9c9",
+    "1": "692cf08ee50b706e57e37f39e992e98faff94f68c08aa69d0315172b7cb341c7",
+    "2": "1cea9c5342e8c5d86e86b819a2bf2e1890e776a2bb4741700ab99c173f5e670e",
+    "3": "50bfbe564ee496df4ed40d42ccf21f81eeef70ffd58060c96343476013f45cdd"
+  },
+  "humanReview": false,
+  "identity": {
+    "contextLength": 512,
+    "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+    "includeTest": false,
+    "objective": "assistant_last_reply",
+    "partitionPolicy": "train_validation_only",
+    "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048,
+    "windowEncoding": "little-endian-int32-inputs-labels-v1",
+    "windowPolicy": "sliding_context"
+  },
+  "ignoredLabelValue": -100,
+  "kind": "closed-sft-exact-supervised-train-exposure",
+  "labelsCriterion": "label >= 0",
+  "limitation": "Real unpadded input positions and supervised last-reply labels processed in this SFT run, including EOS. They exclude inherited foundation exposure, tensor padding, and loss weighting; they do not measure unique words, acquired knowledge, or conversation acceptance. BEST and LAST exposures are reported separately.",
+  "measurement": {
+    "elapsedWallSeconds": 0.4147362130024703,
+    "peakRssBytes": 21241856
+  },
+  "method": {
+    "allReadInputHashesUnchanged": true,
+    "corpusRead": false,
+    "reservedEvaluationRead": false,
+    "resumePickleLoaded": false,
+    "samplerRngReplayedWithStdlib": true,
+    "testWindowsRead": false,
+    "testsExecuted": false,
+    "torchImported": false,
+    "trainInputsDecoded": false,
+    "trainLabelsRead": true,
+    "trainWindowDataHashed": true,
+    "trainingExecuted": false,
+    "validationWindowsRead": false,
+    "weightsLoaded": false
+  },
+  "nativeStatus": {
+    "elapsedSeconds": 5941.433658156999,
+    "reason": "signal",
+    "status": "stopped"
+  },
+  "observedAtUtc": "2026-10-13T08:16:27.347543+00:00",
+  "optimizerFormula": "completed_epochs * ceil(train_windows / logical_batch_size) + ceil(cursor / logical_batch_size)",
+  "perWindowLedger": {
+    "bytes": 346762,
+    "path": "docs/learning-repair-20261013/conversation-15m-final-window-exposure.csv",
+    "rows": 18588,
+    "sha256": "11b45a2bfacdbacadd07919fdaa4fcbe480b3575b707a17248478b81ed424c86"
+  },
+  "preparedBy": "project-AI",
+  "sampler": {
+    "nativeOrderAndPythonRngMatched": true,
+    "orderCreation": "new list(range(train_windows)) before each shuffle",
+    "orderHashEncoding": "concatenated little-endian uint32 window indices",
+    "policy": "uniform shuffle without replacement per epoch",
+    "seed": 20261013
+  },
+  "schemaVersion": 1,
+  "selectedBestStep": 4096,
+  "source": {
+    "diskDataPath": "src/ia_propia/conversation/disk_data.py",
+    "diskDataSha256": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71",
+    "matchesFrozenDesign": true,
+    "trainingPath": "src/ia_propia/conversation/training.py",
+    "trainingSha256": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955"
+  },
+  "terminalTrainingStep": 8192,
+  "trainDataBytesRead": 35595640,
+  "trainDataSha256": "6f336c7e2e2eea1a1e9e66143c90773ec2c12008a6f80d593e53964ccaedddbb",
+  "trainIndexBytesRead": 297408,
+  "trainIndexSha256": "ad6967deb75207c181855d5c376d3fd4cd047c54cd20612510eeec434faca9f1",
+  "windowCount": 18588
+}

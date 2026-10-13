@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "cycleId": "wide-spanish-v1",
+  "registeredBeforeExecution": true,
+  "hypothesis": "Causal adaptation to new public Spanish prose, grammar, community sentences and lexical descriptions, followed by the unchanged conversational SFT, improves language and actual-history conversation over the completed conversation-v1 parent.",
+  "parentStage": "conversation-v1:conversation-15m",
+  "parentNotYetCompletedAtRegistration": true,
+  "corpusSha256": "d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6",
+  "corpusManifestSha256": "4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488",
+  "frozenCycleManifestSha256": "7051a2fcc3bdac43012d9aa374e1cd7974a82135cbe8b52ce3798032e18b0099",
+  "newRecordCount": 2406,
+  "retentionRecordCount": 2299,
+  "changes": [
+    "New causal text corpus, with unchanged own architecture/tokenizer and causal training configuration",
+    "Additional finite causal training followed by unchanged SFT rehearsal, each with a new optimizer"
+  ],
+  "attributionLimit": "This sequential comparison changes data and adds training compute. It measures the resulting candidate versus its parent, not a causal effect uniquely attributable to source diversity. A matched-compute old-corpus control has not been run or queued.",
+  "budgetsPerStage": {
+    "baseMaxSteps": 12000,
+    "sftMaxSteps": 8192,
+    "nativeSecondsThreshold": 7200,
+    "invocationSecondsThreshold": 3600,
+    "cpuThreads": 4,
+    "cooperativeRSSMiB": 6144,
+    "cooperativeRunDiskMiB": 2048,
+    "thresholdOvershoot": "Closing validation and atomic checkpointing may finish after cooperative thresholds; record measured duration."
+  },
+  "developmentComparison": {
+    "suiteDir": "docs/learning-repair-20261013/development-suite",
+    "casesSha256": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+    "engine": "ConversationEngine",
+    "history": "Only actual assistant replies, never ideal history",
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "maxNewTokens": 160,
+      "torchThreads": 1
+    },
+    "promisingCriterion": "At least four more complete turns out of 40 than the parent, at least as many complete dialogs, no increase in critical or technical failures, and no deterioration in the independently recorded Spanish judgments.",
+    "secondaryMeasurements": [
+      "relevance",
+      "context grounding",
+      "correction handling",
+      "speaker identity",
+      "repetition",
+      "empty replies",
+      "truncation",
+      "process RSS",
+      "generation latency"
+    ],
+    "latencyCaveat": "Record concurrent workload; identical generation settings do not guarantee identical available CPU during measurements.",
+    "review": "Project AI judgments with an independent project-AI review and disagreements retained; no independent human review claimed."
+  },
+  "finalAcceptance": {
+    "freshReservedSuiteAfterCandidateFreeze": true,
+    "completeReplies": 36,
+    "totalReplies": 40,
+    "completeDialogs": 8,
+    "totalDialogs": 10,
+    "criticalFailures": 0,
+    "technicalFailures": 0
+  },
+  "failureAction": "Keep parent, intermediate snapshots and negative evidence; do not promote by loss. Diagnose the observed responses and change the hypothesis instead of counting repeated SFT as new information.",
+  "sourceLimit": "Finite licensed subsets, not all Spanish and not a guarantee of current factual knowledge.",
+  "noExternalModelInference": true,
+  "softwareTestsExecutedForThisDesign": false,
+  "registeredAtUtc": "2026-10-13T06:53:05.756194+00:00"
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "status": "source-target-qa-cleared-for-bounded-experimental-training",
+  "reviewer": "Project AI agent latin_american_spanish; independent of SFTauthor within same project, not independent human review",
+  "recordsReviewed": 463,
+  "familiesReviewed": 89,
+  "splitCounts": {
+    "train": 408,
+    "validation": 55
+  },
+  "behaviorCounts": {
+    "country-meaning": 89,
+    "requested-format": 89,
+    "recover-from-wrong-task": 89,
+    "genuine-ambiguity": 42,
+    "resolve-ambiguity": 42,
+    "missing-information": 42,
+    "follow-country-correction": 35,
+    "distinguish-speakers": 35
+  },
+  "inputHashesBefore": {
+    "private/learning-repair-20261013/corpus/natural-latam-sft-v4/regional-sft.train-validation.jsonl": "520510f77e26626b66af6c1e7ee0c8492f50c381518a4877e2696841bb70138f",
+    "private/learning-repair-20261013/corpus/natural-latam-sft-v3/regional-sft.train-validation.jsonl": "aea0316e1fa6985b079f91a2104e9d3ba3889931c8d57162dcfaf463fd135b36",
+    "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/definitions/latin-american-wiktionary.train-validation.jsonl": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19"
+  },
+  "inputHashesAfter": {
+    "private/learning-repair-20261013/corpus/natural-latam-sft-v4/regional-sft.train-validation.jsonl": "520510f77e26626b66af6c1e7ee0c8492f50c381518a4877e2696841bb70138f",
+    "private/learning-repair-20261013/corpus/natural-latam-sft-v3/regional-sft.train-validation.jsonl": "aea0316e1fa6985b079f91a2104e9d3ba3889931c8d57162dcfaf463fd135b36",
+    "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/definitions/latin-american-wiktionary.train-validation.jsonl": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19"
+  },
+  "inputsUnmodified": true,
+  "v4StrictByteSubsetOfReviewedV3": true,
+  "removedRows": {
+    "count": 6,
+    "ids": [
+      "wiktionary:es:regional:1005730:6394036:natural-latam-v3:direct",
+      "wiktionary:es:regional:1005730:6394036:natural-latam-v3:format",
+      "wiktionary:es:regional:1005730:6394036:natural-latam-v3:repair",
+      "wiktionary:es:regional:935839:6383121:natural-latam-v3:direct",
+      "wiktionary:es:regional:935839:6383121:natural-latam-v3:format",
+      "wiktionary:es:regional:935839:6383121:natural-latam-v3:repair"
+    ],
+    "families": [
+      "caraota",
+      "algarrobilla"
+    ],
+    "reason": "Malformed botanical source grammar/standalone answers, in addition to earlier nine rejected senses"
+  },
+  "earlierReviews": [
+    {
+      "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v2/qa/latin-agent-semantic-review-v2.json",
+      "status": "not approved"
+    },
+    {
+      "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v3/qa/latin-agent-semantic-review-v3.json",
+      "status": "not approved"
+    }
+  ],
+  "mechanicalDiscrepancies": [],
+  "survivingRecordByteDifferences": [],
+  "previouslyRejectedSourceSensesRetained": 0,
+  "opaqueUseCodesRetained": 0,
+  "targetLedger": {
+    "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/qa/latin-agent-full-target-ledger-v4.jsonl",
+    "sha256": "d5c3cf945bd8bf9a55eba620e8c84f6eedffc51ecc4cf7669baa058b863f8501"
+  },
+  "semanticMethod": "All98uniquev2families direct/format/correction answers and all behavior templates read; v3 delta42changed rows across10parents read; all463v4remaining targets checked against source and byte-identical reviewedv3 rows, with only6rejectedrowsremoved. Earlier repair/resolution/speaker repetitions verified against reviewed unique targets.",
+  "countryInterpretation": "Country scopes are explicit source annotations. Qualifiers remain in questions/answers. Generic America/ConoSur scopes not expanded. One-sense requests do not imply universal or exclusive meaning. Multiple meanings within one country remain possible.",
+  "wrongAssistantContext": "89 earlier incorrect wrong-task responses are context only; last-reply policy mandatory.",
+  "authoredWrongContexts": 89,
+  "noModelOrTokenizerLoaded": true,
+  "noEvaluationTestSuiteOpened": true,
+  "independentFactualCertification": false,
+  "limitations": [
+    "Source-target QA is distinct from weights trained or conversation acceptance",
+    "Collaborative lexical statements can still contain unknown errors; this review removed concrete encountered defects but is not exhaustive independent fact certification",
+    "Source-grounded dictionary variants cover narrow lexical behaviors and limited conversational style",
+    "Actual native windows, labels, loss, optimizer updates and generated conversations must be observed in the later training/evaluation stage"
+  ]
+}

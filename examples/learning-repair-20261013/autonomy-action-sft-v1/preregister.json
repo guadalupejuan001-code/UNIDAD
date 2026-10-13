@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-autonomy-action-sft-v1",
+  "status": "preregistered-before-fixture-executions",
+  "hypothesis": "Own weights lack structured-action supervision; full three-tool context also exceeds 512.",
+  "author_AI": true,
+  "independentHumanReview": false,
+  "source": "project-authored synthetic fixture supervision with actual filesystem measurements",
+  "labelOrigin": "declared-test-fixture-not-model-output",
+  "modelWeightsLoaded": false,
+  "testUsedForTraining": false,
+  "splitUnit": "whole task / fictional world / family / filename / goal phrase template",
+  "registry": "Untouched three-tool SafeFileTools registry and schemas; actual handlers/verifiers",
+  "genericRegistryLimit": "Untouched three-tool schemas with real observations exceed1024; future2048 extension required and not trained in preparation",
+  "taskCounts": {
+    "train": 64,
+    "validation": 8,
+    "test": 0
+  },
+  "trainingObjective": "assistant_last_reply",
+  "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+  "futureExperiment": {
+    "status": "proposed-not-executed",
+    "ownParentModelIdPrefix": "072eedd2",
+    "contextLength": 2048,
+    "preserveParentWeights": true,
+    "first": "Tiny overfit control first; no generalization claim from memorization",
+    "second": "Separate unseen filenames/tasks/groups DEV; measure raw JSON validity and actual tools with no fixture fallback",
+    "trainingUpdates": [
+      256
+    ],
+    "wallSecondsMaximum": 600,
+    "matchedControl": "same own parent, unextended 512 single-tool contexts; separate identical budget",
+    "success": "Actual raw model JSON plus completed current-task verified report and unchanged originals",
+    "failure": "Block malformed actions, loss without action improvement, context overflow; retain raw evidence"
+  },
+  "budgets": {
+    "wallSeconds": 120,
+    "cpuThreads": 1,
+    "rssMiB": 256,
+    "diskMiB": 128,
+    "networkUsed": false,
+    "trainingStarted": false
+  },
+  "taskSpecSha256": "2fbf0375c02a19f88d67e27e62ec89bcf9e36dd47855a25a1c11cfa8bb963731"
+}

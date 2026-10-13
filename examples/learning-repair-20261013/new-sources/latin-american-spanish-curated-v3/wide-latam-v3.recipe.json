@@ -1,0 +1,206 @@
+{
+  "derivedFrom": {
+    "derivedHelperSha256": "ec78e2add1a9c10b20d4c9b863374079344889bc324b569d07f6c6cf763a0e39",
+    "oldWideCorporaConsideredAlreadyTrained": false,
+    "originalHelperSha256": "3325d02b789e3fa7ef2a7e18a2b2799e608e9bb54f44b8b400df3dcf97791efc",
+    "tatoebaNextShardIncluded": false,
+    "wideRecipe": {
+      "path": "examples/learning-repair-20261013/wide-spanish-v1/recipe.json",
+      "sha256": "53eac10b90e901eb955f337145955bcfc07988f91ab2baf4845d6d7f0121ad2b"
+    }
+  },
+  "familyRegistries": [
+    {
+      "path": "examples/learning-repair-20261013/new-sources/wiktionary-spanish-v1/lexical-family-registry.json",
+      "sha256": "d96d43af5df1f7a0c2cdd1b8eb200a1e2199c341a92565b95486cd8a7cc5ca94"
+    },
+    {
+      "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/definitions/lexical-family-registry.json",
+      "sha256": "82b36c37c8453eb68d775a25cfa224794efe138085b464ca4282ca2d770dd8fd"
+    },
+    {
+      "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/catalogue/lexical-family-registry.json",
+      "sha256": "7cfe77959bf2b0b36d60a471b5913f9043166ea14be0deb07201715d8ed08a89"
+    }
+  ],
+  "humanV3": {
+    "path": "examples/human-short-es-v3/human-short-es.train-validation.jsonl",
+    "sha256": "7016322d12f49b8de53abbaee57826c2a0cbbb50164a109cf94b4edfb51d7a3c"
+  },
+  "initialSeed": {
+    "path": "examples/learning-repair-20261013/wide-latam-v2/initial-seed.json",
+    "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+  },
+  "limitations": [
+    "Finite source subsets and complete direct namespace-zero membership of nineteen current Wikcionario country categories only; no subcategory recursion or full-Latin-American-Spanish claim.",
+    "The country catalogue teaches lexical inventory/country-membership metadata, not the meaning of all10130terms. Regional definitions cover a reviewed subset96entries/211senses and explanatory prose20sourcepages.",
+    "Initial historical seed is unchanged and only has raw whole-record hashes, plus normalized paragraphs. HumanV3 and within-mixture whole-text guards compare raw and whitespace-normalized text; blank-line blocks and original individual lines use>=12Unicodewords. No semantic paraphrase or exhaustive cross-TEST leak claim.",
+    "Original wide-v1 data have not been trained, so no wide-history seed marks them as already learned. All old source packages and folds remain preserved.",
+    "All three lexical family registries agree on aliases, canonical groupIDs and folds. Registry metadata includes reserved family IDs but no TEST record text is emitted or tokenized. Conflicts would stop preparation rather than move an older family.",
+    "Any detected crossfold duplicate removes its entire new family, preserving original source files. Samefold partial known paragraphs may remain and are reported.",
+    "Historical original works contain old spelling/science/social views. Tatoeba v1 first100000-row shard is mainly2007-2012 and is independent sentences, not verified continuous conversations or current2026 facts.",
+    "Each shard repeats the same frozen OASST anchors only for retention; they do not count as new diversity. Mixed source licenses and attribution remain unchanged perrecord.",
+    "Wikipedia dialect prose uses preserved macro families; Mexican prose remains VALIDATION. Regional sense labels can be editorial or incomplete and do not certify every person in a country uses a term the same way.",
+    "Prepared or queued data are not trained weights, semantic understanding, conversational acceptance or competitive-quality evidence."
+  ],
+  "limits": {
+    "corpusCapMiB": 24,
+    "cpuCores": 1,
+    "maxShards": 2,
+    "memoryMiB": 512,
+    "seconds": 600,
+    "totalReadWriteMiB": 128
+  },
+  "mixHelper": {
+    "path": "examples/mix_wide_latam_spanish.py",
+    "sha256": "69bfaf2a89ebd8b05a3792194625fa7f62863ed91a11f966043a2d4092531e89"
+  },
+  "outputPrefix": "wide-latam",
+  "rehearsal": {
+    "corpus": {
+      "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+      "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+    },
+    "dataset": "OpenAssistant/oasst1+oasst2",
+    "genre": "public-reviewed-conversation-rehearsal",
+    "key": "oasst-rehearsal",
+    "license": "Apache-2.0",
+    "provenance": {
+      "path": "examples/learning-repair-20261013/causal-base/manifest.json",
+      "sha256": "4ae23d3cecb4627a0e2b66ae7f1481f88c68ed2d029a97c2fecfec07d76d48bf"
+    },
+    "sourceUrls": [
+      "https://huggingface.co/datasets/OpenAssistant/oasst1",
+      "https://huggingface.co/datasets/OpenAssistant/oasst2"
+    ]
+  },
+  "schemaVersion": 3,
+  "sources": [
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/gutenberg-classic-es-v2/gutenberg-spanish.train-validation.jsonl",
+        "sha256": "96c58c71a5834c3503fe4ed69b25b315ff1cf0b37414c571d7ab5623e66f4ce3"
+      },
+      "dataset": "Project Gutenberg/classic-Spanish",
+      "genre": "historical-fiction-prose-poetry",
+      "key": "gutenberg",
+      "license": "Original historical public-domain works; PG declares public domain in USA, preserve PG License/provenance",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/gutenberg-classic-es-v2/manifest.json",
+        "sha256": "643e5da76ebbc0c86cdd087e013d29ec2766a7ef2a96ecbcaece6547792725c7"
+      },
+      "sourceUrls": [
+        "https://www.gutenberg.org/ebooks/2000",
+        "https://www.gutenberg.org/policy/license.html"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/wikisource-essays-v1/wikisource-essays.train-validation.jsonl",
+        "sha256": "1abfb826d884ea40760b0e5f16f6230ff344dd1168b250a2f0ae440f64b45797"
+      },
+      "dataset": "Wikisource/es-original-essays-v1",
+      "genre": "historical-essay-and-grammar",
+      "key": "wikisource",
+      "license": "CC-BY-SA-4.0 transcription; original authors died over100years ago",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/wikisource-essays-v1/manifest.json",
+        "sha256": "8775a2d448de889ec526ed97c292767543aea9d5cbe4dd5c3f3bda889c8a3d4d"
+      },
+      "sourceUrls": [
+        "https://es.wikisource.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/deed.es"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/tatoeba-spa.train-validation.jsonl",
+        "sha256": "5b4c7e6f46b667fc41c0088f0265f09a0d81aa0ff5d178f7401f276bc6014e79"
+      },
+      "dataset": "Tatoeba/spa-detailed",
+      "genre": "community-sentences-and-translations",
+      "key": "tatoeba",
+      "license": "CC-BY-2.0-FR default; documented matching sentenceIDs/text CC0-1.0 subset",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/manifest.json",
+        "sha256": "ac62add0f0e386678236f61b4f3bb7677968ac7de720f5d56be9493a3b171d28"
+      },
+      "sourceUrls": [
+        "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_detailed.tsv.bz2",
+        "https://creativecommons.org/licenses/by/2.0/fr/"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-curated-v3/definitions/wiktionary-es.train-validation.jsonl",
+        "sha256": "ea0c44aec988e22ba4495cb059b7ea558c63a10d7ac8cf2c83946194646fd5f3"
+      },
+      "dataset": "Wikcionario/es",
+      "genre": "lexicographic-glosses-forms-examples",
+      "key": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-curated-v3/definitions/generic-manifest.json",
+        "sha256": "d629692578c88b9de977782ce65c23cfd9dce931b15e6c5f89626b27b686a1b4"
+      },
+      "sourceUrls": [
+        "https://es.wiktionary.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-prose-v1/latin-american-prose.train-validation.jsonl",
+        "sha256": "7fee355119358f89b2f4d3a7a7e5b51adcbc47135f36b9fa8c836305678ca5cf"
+      },
+      "dataset": "Wikipedia/es-Latin-American-dialects",
+      "genre": "regional-dialect-explanatory-prose",
+      "key": "latin-american-prose",
+      "license": "CC-BY-SA-4.0; revision and author history perrecord",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-prose-v1/manifest.json",
+        "sha256": "1d2f1be94e0acae2044b7d79b14144a98e00b7c02cfde59c3068fb7754524004"
+      },
+      "sourceUrls": [
+        "https://es.wikipedia.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-curated-v3/definitions/latin-american-wiktionary.train-validation.jsonl",
+        "sha256": "9c0057f5dc5d00007d971605615bbb1a01c592a6b585e5937a4af62c0f29199b"
+      },
+      "dataset": "Wikcionario/es-Latin-American-senses",
+      "genre": "regional-word-definitions-country-senses",
+      "key": "latin-american-definitions",
+      "license": "CC-BY-SA-4.0; fixed revision/history URLs and Wikcionario contributors perrecord",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-curated-v3/definitions/manifest.json",
+        "sha256": "f692622e950073dfe9647dc3366973225d1afef8c29d8df218bcf53d8fb5af4f"
+      },
+      "sourceUrls": [
+        "https://es.wiktionary.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/catalogue/latin-american-catalogue.train-validation.jsonl",
+        "sha256": "c7a4315d9cc652cd123c3c25fef190fd89a1750165541487ac6ab5577fb20ee5"
+      },
+      "dataset": "Wikcionario/es-Latin-American-direct-category-catalogue",
+      "genre": "regional-lexical-inventory-country-metadata",
+      "key": "latin-american-catalogue",
+      "license": "CC-BY-SA-4.0 category metadata, project-authored deterministic framing; retain Wikcionario contributors and perpage history URLs",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/latin-american-spanish-v1/catalogue/manifest.json",
+        "sha256": "5bcd580a97c470b25a9147583e695aa21a664f4c1a2d436fe5639303184db583"
+      },
+      "sourceUrls": [
+        "https://es.wiktionary.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ]
+    }
+  ]
+}

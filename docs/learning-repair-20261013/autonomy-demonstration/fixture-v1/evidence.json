@@ -1,0 +1,1051 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T08:19:51.900085+00:00",
+  "scope": "Local authenticated API, real files, declared fixtures and optional raw own-model attempt",
+  "originalHashesBefore": {
+    "dos.txt": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+    "uno.txt": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830"
+  },
+  "experiencesRetrainModel": false,
+  "controllerExecution": {
+    "learnedPlanningProven": false,
+    "transcript": [
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-0",
+          "operation": "autonomy.start",
+          "input": {
+            "goal": "Analizar dos archivos y guardar un informe verificable.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "informe.json"
+            }
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-0",
+          "bodyId": "declared-fixture",
+          "operation": "autonomy.start",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_ecd3ddc0675c4500b3232eec5c0f66a1",
+            "goal": "Analizar dos archivos y guardar un informe verificable.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "informe.json"
+            },
+            "status": "ready",
+            "steps": 0,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9135516,
+            "updated_at": 1791879591.9135516,
+            "cancel_requested": false,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9135716,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-1",
+          "operation": "autonomy.run",
+          "input": {
+            "task_id": "task_ecd3ddc0675c4500b3232eec5c0f66a1"
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-1",
+          "bodyId": "declared-fixture",
+          "operation": "autonomy.run",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_ecd3ddc0675c4500b3232eec5c0f66a1",
+            "goal": "Analizar dos archivos y guardar un informe verificable.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "informe.json"
+            },
+            "status": "completed",
+            "steps": 3,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9135516,
+            "updated_at": 1791879591.9616272,
+            "cancel_requested": false,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9135716,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              },
+              {
+                "index": 1,
+                "time": 1791879591.9167907,
+                "kind": "proposal_requested",
+                "step": 1
+              },
+              {
+                "index": 2,
+                "time": 1791879591.9176295,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"inspect_file\", \"arguments\": {\"filename\": \"uno.txt\"}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 3,
+                "time": 1791879591.9193344,
+                "kind": "effect_started",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "effect": "read",
+                "effect_fingerprint": "24ed85f5081c6b3d02bfba64cce2ac16e65f6fdd2f3e25a7da0c1f03b891668c"
+              },
+              {
+                "index": 4,
+                "time": 1791879591.9213212,
+                "kind": "handler_returned",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                }
+              },
+              {
+                "index": 5,
+                "time": 1791879591.922322,
+                "kind": "tool_result",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "uno.txt",
+                    "size_bytes": 55,
+                    "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                    "statistics": {
+                      "lines": 2,
+                      "utf8": true,
+                      "characters": 52,
+                      "words": 9
+                    }
+                  }
+                }
+              },
+              {
+                "index": 6,
+                "time": 1791879591.9253078,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": false
+                }
+              },
+              {
+                "index": 7,
+                "time": 1791879591.9273415,
+                "kind": "proposal_requested",
+                "step": 2
+              },
+              {
+                "index": 8,
+                "time": 1791879591.9283273,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"read_file\", \"arguments\": {\"filename\": \"dos.txt\"}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 9,
+                "time": 1791879591.9353728,
+                "kind": "effect_started",
+                "tool": "read_file",
+                "arguments": {
+                  "filename": "dos.txt"
+                },
+                "effect": "read",
+                "effect_fingerprint": "258dbea46ed791d0e1f0f33dde13ad0a03d6468fb0d0cdfa6b858cb268b9fbdb"
+              },
+              {
+                "index": 10,
+                "time": 1791879591.9393425,
+                "kind": "handler_returned",
+                "tool": "read_file",
+                "arguments": {
+                  "filename": "dos.txt"
+                },
+                "result": {
+                  "filename": "dos.txt",
+                  "size_bytes": 69,
+                  "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 68,
+                    "words": 10
+                  },
+                  "encoding": "utf-8",
+                  "content": "El informe sólo analiza estos archivos.\nNo modifica los originales.\n"
+                }
+              },
+              {
+                "index": 11,
+                "time": 1791879591.9404378,
+                "kind": "tool_result",
+                "tool": "read_file",
+                "arguments": {
+                  "filename": "dos.txt"
+                },
+                "result": {
+                  "filename": "dos.txt",
+                  "size_bytes": 69,
+                  "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 68,
+                    "words": 10
+                  },
+                  "encoding": "utf-8",
+                  "content": "El informe sólo analiza estos archivos.\nNo modifica los originales.\n"
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "dos.txt",
+                    "size_bytes": 69,
+                    "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                    "statistics": {
+                      "lines": 2,
+                      "utf8": true,
+                      "characters": 68,
+                      "words": 10
+                    },
+                    "encoding": "utf-8",
+                    "content": "El informe sólo analiza estos archivos.\nNo modifica los originales.\n"
+                  }
+                }
+              },
+              {
+                "index": 12,
+                "time": 1791879591.9462335,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": false
+                }
+              },
+              {
+                "index": 13,
+                "time": 1791879591.948931,
+                "kind": "proposal_requested",
+                "step": 3
+              },
+              {
+                "index": 14,
+                "time": 1791879591.9508543,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"save_report\", \"arguments\": {\"filename\": \"informe.json\", \"files\": [\"dos.txt\", \"uno.txt\"]}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 15,
+                "time": 1791879591.9539497,
+                "kind": "effect_started",
+                "tool": "save_report",
+                "arguments": {
+                  "filename": "informe.json",
+                  "files": [
+                    "dos.txt",
+                    "uno.txt"
+                  ]
+                },
+                "effect": "write",
+                "effect_fingerprint": "30545d8a34240f4a51eafc3aa8595e82da1e2f04814c1d9d242e8b1d98afc774"
+              },
+              {
+                "index": 16,
+                "time": 1791879591.9571645,
+                "kind": "handler_returned",
+                "tool": "save_report",
+                "arguments": {
+                  "filename": "informe.json",
+                  "files": [
+                    "dos.txt",
+                    "uno.txt"
+                  ]
+                },
+                "result": {
+                  "filename": "informe.json",
+                  "size_bytes": 409,
+                  "sha256": "a9bda80cedc291f05a4c0f43c6d2c8244b443511a054e2d551ad8850acbe4cea",
+                  "files": [
+                    {
+                      "filename": "dos.txt",
+                      "size_bytes": 69,
+                      "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                      "statistics": {
+                        "lines": 2,
+                        "utf8": true,
+                        "characters": 68,
+                        "words": 10
+                      }
+                    },
+                    {
+                      "filename": "uno.txt",
+                      "size_bytes": 55,
+                      "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                      "statistics": {
+                        "lines": 2,
+                        "utf8": true,
+                        "characters": 52,
+                        "words": 9
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "index": 17,
+                "time": 1791879591.9585383,
+                "kind": "tool_result",
+                "tool": "save_report",
+                "arguments": {
+                  "filename": "informe.json",
+                  "files": [
+                    "dos.txt",
+                    "uno.txt"
+                  ]
+                },
+                "result": {
+                  "filename": "informe.json",
+                  "size_bytes": 409,
+                  "sha256": "a9bda80cedc291f05a4c0f43c6d2c8244b443511a054e2d551ad8850acbe4cea",
+                  "files": [
+                    {
+                      "filename": "dos.txt",
+                      "size_bytes": 69,
+                      "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                      "statistics": {
+                        "lines": 2,
+                        "utf8": true,
+                        "characters": 68,
+                        "words": 10
+                      }
+                    },
+                    {
+                      "filename": "uno.txt",
+                      "size_bytes": 55,
+                      "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                      "statistics": {
+                        "lines": 2,
+                        "utf8": true,
+                        "characters": 52,
+                        "words": 9
+                      }
+                    }
+                  ]
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "informe.json",
+                    "size_bytes": 409,
+                    "sha256": "a9bda80cedc291f05a4c0f43c6d2c8244b443511a054e2d551ad8850acbe4cea",
+                    "files": [
+                      {
+                        "filename": "dos.txt",
+                        "size_bytes": 69,
+                        "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                        "statistics": {
+                          "lines": 2,
+                          "utf8": true,
+                          "characters": 68,
+                          "words": 10
+                        }
+                      },
+                      {
+                        "filename": "uno.txt",
+                        "size_bytes": 55,
+                        "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                        "statistics": {
+                          "lines": 2,
+                          "utf8": true,
+                          "characters": 52,
+                          "words": 9
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "index": 18,
+                "time": 1791879591.9615545,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": true,
+                  "result": {
+                    "filename": "informe.json",
+                    "size_bytes": 409,
+                    "sha256": "a9bda80cedc291f05a4c0f43c6d2c8244b443511a054e2d551ad8850acbe4cea",
+                    "files": [
+                      {
+                        "filename": "dos.txt",
+                        "size_bytes": 69,
+                        "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+                        "statistics": {
+                          "lines": 2,
+                          "utf8": true,
+                          "characters": 68,
+                          "words": 10
+                        }
+                      },
+                      {
+                        "filename": "uno.txt",
+                        "size_bytes": 55,
+                        "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                        "statistics": {
+                          "lines": 2,
+                          "utf8": true,
+                          "characters": 52,
+                          "words": 9
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "safeCancellation": {
+    "reportAbsent": true,
+    "transcript": [
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-0",
+          "operation": "autonomy.start",
+          "input": {
+            "goal": "Demostrar cancelación antes de guardar.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "cancelado.json"
+            }
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-0",
+          "bodyId": "cancel-fixture",
+          "operation": "autonomy.start",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c",
+            "goal": "Demostrar cancelación antes de guardar.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "cancelado.json"
+            },
+            "status": "ready",
+            "steps": 0,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9698107,
+            "updated_at": 1791879591.9698107,
+            "cancel_requested": false,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9698348,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-1",
+          "operation": "autonomy.step",
+          "input": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c"
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-1",
+          "bodyId": "cancel-fixture",
+          "operation": "autonomy.step",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c",
+            "goal": "Demostrar cancelación antes de guardar.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "cancelado.json"
+            },
+            "status": "ready",
+            "steps": 1,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9698107,
+            "updated_at": 1791879591.9807134,
+            "cancel_requested": false,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9698348,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              },
+              {
+                "index": 1,
+                "time": 1791879591.973426,
+                "kind": "proposal_requested",
+                "step": 1
+              },
+              {
+                "index": 2,
+                "time": 1791879591.9743044,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"inspect_file\", \"arguments\": {\"filename\": \"uno.txt\"}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 3,
+                "time": 1791879591.9761055,
+                "kind": "effect_started",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "effect": "read",
+                "effect_fingerprint": "24ed85f5081c6b3d02bfba64cce2ac16e65f6fdd2f3e25a7da0c1f03b891668c"
+              },
+              {
+                "index": 4,
+                "time": 1791879591.977793,
+                "kind": "handler_returned",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                }
+              },
+              {
+                "index": 5,
+                "time": 1791879591.9787724,
+                "kind": "tool_result",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "uno.txt",
+                    "size_bytes": 55,
+                    "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                    "statistics": {
+                      "lines": 2,
+                      "utf8": true,
+                      "characters": 52,
+                      "words": 9
+                    }
+                  }
+                }
+              },
+              {
+                "index": 6,
+                "time": 1791879591.9806836,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": false
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-2",
+          "operation": "autonomy.cancel",
+          "input": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c"
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-2",
+          "bodyId": "cancel-fixture",
+          "operation": "autonomy.cancel",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c",
+            "goal": "Demostrar cancelación antes de guardar.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "cancelado.json"
+            },
+            "status": "cancelled",
+            "steps": 1,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9698107,
+            "updated_at": 1791879591.9826384,
+            "cancel_requested": true,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9698348,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              },
+              {
+                "index": 1,
+                "time": 1791879591.973426,
+                "kind": "proposal_requested",
+                "step": 1
+              },
+              {
+                "index": 2,
+                "time": 1791879591.9743044,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"inspect_file\", \"arguments\": {\"filename\": \"uno.txt\"}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 3,
+                "time": 1791879591.9761055,
+                "kind": "effect_started",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "effect": "read",
+                "effect_fingerprint": "24ed85f5081c6b3d02bfba64cce2ac16e65f6fdd2f3e25a7da0c1f03b891668c"
+              },
+              {
+                "index": 4,
+                "time": 1791879591.977793,
+                "kind": "handler_returned",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                }
+              },
+              {
+                "index": 5,
+                "time": 1791879591.9787724,
+                "kind": "tool_result",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "uno.txt",
+                    "size_bytes": 55,
+                    "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                    "statistics": {
+                      "lines": 2,
+                      "utf8": true,
+                      "characters": 52,
+                      "words": 9
+                    }
+                  }
+                }
+              },
+              {
+                "index": 6,
+                "time": 1791879591.9806836,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": false
+                }
+              },
+              {
+                "index": 7,
+                "time": 1791879591.9826376,
+                "kind": "cancelled",
+                "effects_rolled_back": false
+              }
+            ]
+          }
+        }
+      },
+      {
+        "request": {
+          "schemaVersion": 1,
+          "requestId": "demo-3",
+          "operation": "autonomy.run",
+          "input": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c"
+          }
+        },
+        "httpStatus": 200,
+        "response": {
+          "schemaVersion": 1,
+          "requestId": "demo-3",
+          "bodyId": "cancel-fixture",
+          "operation": "autonomy.run",
+          "status": "ok",
+          "workerCapabilityValidated": false,
+          "result": {
+            "task_id": "task_bd41ed064fb34696935e43383a10fb6c",
+            "goal": "Demostrar cancelación antes de guardar.",
+            "task_inputs": {
+              "files": [
+                "dos.txt",
+                "uno.txt"
+              ],
+              "report": "cancelado.json"
+            },
+            "status": "cancelled",
+            "steps": 1,
+            "failures": 0,
+            "source": "test_fixture",
+            "proposer_id": "demonstration-software-fixture-not-learned",
+            "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef",
+            "limits": {
+              "max_steps": 8,
+              "max_failures": 2,
+              "max_seconds": 60,
+              "max_goal_bytes": 8192,
+              "max_proposal_bytes": 65536,
+              "max_result_bytes": 131072,
+              "max_state_bytes": 1048576
+            },
+            "created_at": 1791879591.9698107,
+            "updated_at": 1791879591.9826384,
+            "cancel_requested": true,
+            "pending_approval": null,
+            "current": null,
+            "journal": [
+              {
+                "index": 0,
+                "time": 1791879591.9698348,
+                "kind": "started",
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "policy": "8e6c58ffaebb07a53393b6c61df430b8d48f1c1592d6efaa02aae5cc90f208ef"
+              },
+              {
+                "index": 1,
+                "time": 1791879591.973426,
+                "kind": "proposal_requested",
+                "step": 1
+              },
+              {
+                "index": 2,
+                "time": 1791879591.9743044,
+                "kind": "proposal",
+                "raw": "{\"action\": \"tool\", \"tool\": \"inspect_file\", \"arguments\": {\"filename\": \"uno.txt\"}, \"reason\": \"Paso explícito de la prueba del controlador, no decisión aprendida\"}",
+                "metadata": null,
+                "source": "test_fixture",
+                "proposer_id": "demonstration-software-fixture-not-learned",
+                "valid": true
+              },
+              {
+                "index": 3,
+                "time": 1791879591.9761055,
+                "kind": "effect_started",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "effect": "read",
+                "effect_fingerprint": "24ed85f5081c6b3d02bfba64cce2ac16e65f6fdd2f3e25a7da0c1f03b891668c"
+              },
+              {
+                "index": 4,
+                "time": 1791879591.977793,
+                "kind": "handler_returned",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                }
+              },
+              {
+                "index": 5,
+                "time": 1791879591.9787724,
+                "kind": "tool_result",
+                "tool": "inspect_file",
+                "arguments": {
+                  "filename": "uno.txt"
+                },
+                "result": {
+                  "filename": "uno.txt",
+                  "size_bytes": 55,
+                  "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                  "statistics": {
+                    "lines": 2,
+                    "utf8": true,
+                    "characters": 52,
+                    "words": 9
+                  }
+                },
+                "verification": {
+                  "verified": true,
+                  "result": {
+                    "filename": "uno.txt",
+                    "size_bytes": 55,
+                    "sha256": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830",
+                    "statistics": {
+                      "lines": 2,
+                      "utf8": true,
+                      "characters": 52,
+                      "words": 9
+                    }
+                  }
+                }
+              },
+              {
+                "index": 6,
+                "time": 1791879591.9806836,
+                "kind": "completion_verification",
+                "observation": {
+                  "verified": false
+                }
+              },
+              {
+                "index": 7,
+                "time": 1791879591.9826376,
+                "kind": "cancelled",
+                "effects_rolled_back": false
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "originalHashesAfter": {
+    "dos.txt": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+    "uno.txt": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830"
+  },
+  "reportHashes": {
+    "informe.json": "a9bda80cedc291f05a4c0f43c6d2c8244b443511a054e2d551ad8850acbe4cea"
+  },
+  "originalsUnchanged": true,
+  "elapsedSeconds": 0.09470910800155252,
+  "peakRSSKiB": 30836
+}

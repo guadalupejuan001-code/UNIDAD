@@ -1,9 +1,13 @@
 """Portable brain services with explicit operations and product-bound tools."""
 
+from copy import deepcopy
 from dataclasses import dataclass
 import hashlib
+import hmac
+import json
 from pathlib import Path
 import re
+import threading
 from typing import Callable
 
 from .. import workspace
@@ -17,7 +21,9 @@ from .workflow import has_references, is_reference, run_plan, validate_plan
 MODEL_OPERATIONS = {"language.generate", "attention.forecast", "conversation.reply"}
 MEMORY_OPERATIONS = {"memory.task.add", "memory.task.list", "memory.task.search", "memory.task.show", "memory.task.attempt",
                      "memory.task.feedback", "memory.task.status"}
-OPERATIONS = MODEL_OPERATIONS | MEMORY_OPERATIONS | {"tool.call", "workflow.run"}
+AUTONOMY_OPERATIONS = {"autonomy.start", "autonomy.status", "autonomy.step", "autonomy.run",
+                       "autonomy.cancel", "autonomy.approve", "autonomy.resume"}
+OPERATIONS = MODEL_OPERATIONS | MEMORY_OPERATIONS | AUTONOMY_OPERATIONS | {"tool.call", "workflow.run"}
 
 
 def _label(value, name):
@@ -55,8 +61,12 @@ class Brain:
         # One model runtime for all sessions. No per-body weight loading or chat cache.
         self.models = ModelRuntime(language_model=language_model, attention_model=attention_model,
                                    conversation_model=conversation_model, language_backend=language_backend)
+        self._autonomy_bindings = {}
+        self._connection_lock = threading.Lock()
 
-    def connect(self, body_id, tools=(), memory_scope=None):
+    def connect(self, body_id, tools=(), memory_scope=None, *, autonomy_tools=None,
+                autonomy_proposer=None, autonomy_limits=None, autonomy_completion_verifier=None,
+                autonomy_input_validator=None, autonomy_operator_token=None):
         _label(body_id, "body id")
         if memory_scope is not None:
             _label(memory_scope, "memory scope")
@@ -68,12 +78,70 @@ class Brain:
             raise BrainError("invalid_input", "Tool bindings must be Tool instances with unique names")
         namespace = "body\0" + body_id if memory_scope is None else "shared\0" + memory_scope
         directory = self._state_dir / "memory" / hashlib.sha256(namespace.encode("utf-8")).hexdigest()
+        autonomy = self._bind_autonomy(body_id, autonomy_tools, autonomy_proposer, autonomy_limits,
+                                      autonomy_completion_verifier, autonomy_input_validator,
+                                      autonomy_operator_token)
         workspace.init_workspace(directory)
-        return BodySession(self, body_id, {tool.name: tool for tool in bound}, directory, memory_scope is not None)
+        return BodySession(self, body_id, {tool.name: tool for tool in bound}, directory,
+                           memory_scope is not None, autonomy)
+
+    def _bind_autonomy(self, body_id, tools, proposer, limits, verifier, input_validator, operator_token):
+        # This method is called only by the hosting application. Request input
+        # cannot provide a registry, roots, model, proposer, or resource policy.
+        if tools is None:
+            if any(value is not None for value in (proposer, limits, verifier, input_validator, operator_token)):
+                raise BrainError("invalid_input", "Autonomy requires explicit host tool bindings")
+            return None
+        from .autonomy import AutonomyController, AutonomyLimits, AutonomyTool
+        from .autonomy_model import ModelActionProposer
+        try:
+            tools = tuple(tools)
+        except TypeError as error:
+            raise BrainError("invalid_input", "Autonomy tools must be explicit host bindings") from error
+        if any(not isinstance(tool, AutonomyTool) for tool in tools) or len({tool.name for tool in tools}) != len(tools):
+            raise BrainError("invalid_input", "Autonomy bindings must be unique AutonomyTool instances")
+        if input_validator is not None and not callable(input_validator):
+            raise BrainError("invalid_input", "Autonomy task input validator must be host callable")
+        credential = None
+        if operator_token is not None:
+            from .http import validate_token
+            credential = validate_token(operator_token)
+        configured_limits = AutonomyLimits() if limits is None else limits
+        validator_identity = None
+        if input_validator is not None:
+            validator_policy = getattr(input_validator, "policy_id", "")
+            if type(validator_policy) is not str or len(validator_policy.encode("utf-8")) > 4096:
+                raise BrainError("invalid_input", "Task input validator policy identity must be bounded host text")
+            validator_identity = {"module": getattr(input_validator, "__module__", type(input_validator).__module__),
+                                  "qualname": getattr(input_validator, "__qualname__", type(input_validator).__qualname__),
+                                  "policy_id": validator_policy}
+        host_policy_id = hashlib.sha256(json.dumps(validator_identity, ensure_ascii=False,
+                                                   sort_keys=True).encode("utf-8")).hexdigest()
+        signature = (tuple(id(tool) for tool in tools), id(proposer) if proposer is not None else None,
+                     configured_limits, verifier, input_validator, credential)
+        with self._connection_lock:
+            existing = self._autonomy_bindings.get(body_id)
+            if existing is not None:
+                if existing[0] != signature:
+                    raise BrainError("invalid_input", "Autonomy policy is already bound for this body")
+                return existing[1]
+            try:
+                selected_proposer = ModelActionProposer(self.models) if proposer is None else proposer
+            except ModelUnavailableError as error:
+                raise BrainError("capability_unavailable", "Autonomy requires a host-selected local conversation model") from error
+            namespace = "autonomy-body\0" + body_id
+            state = self._state_dir / "autonomy" / hashlib.sha256(namespace.encode("utf-8")).hexdigest()
+            controller = AutonomyController(state, selected_proposer, tools, limits=configured_limits,
+                                            completion_verifier=verifier, policy_id=host_policy_id)
+            binding = {"controller": controller, "tools": tools, "proposer": selected_proposer,
+                       "limits": configured_limits, "input_validator": input_validator,
+                       "operator_credential": credential}
+            self._autonomy_bindings[body_id] = (signature, binding)
+            return binding
 
     def capabilities(self):
         model_capabilities = self.models.capabilities()
-        available = (OPERATIONS - MODEL_OPERATIONS) | set(model_capabilities["operations"])
+        available = (OPERATIONS - MODEL_OPERATIONS - AUTONOMY_OPERATIONS) | set(model_capabilities["operations"])
         result = {"schemaVersion": 1, "operations": sorted(available), "models": model_capabilities,
                   "workerCapabilityValidated": False, "instructionFollowingValidated": False,
                   "naturalLanguagePlanner": False, "automaticLearning": False,
@@ -83,6 +151,9 @@ class Brain:
                                            "queryTerms": MAX_QUERY_TERMS, "defaultResults": DEFAULT_SEARCH_LIMIT,
                                            "maxResults": MAX_SEARCH_LIMIT, "excerptCharacters": MAX_EXCERPT_CHARS}},
                   "tools": "explicit bindings on each body session",
+                  "autonomy": {"enabled": False, "experimental": True,
+                               "modelProposalValidated": False, "naturalLanguagePlanner": False,
+                               "isolatedByBody": True, "configuration": "explicit host bindings only"},
                   "workflow": {"maxSteps": MAX_WORKFLOW_STEPS, "planning": "explicit application-provided steps",
                                "referenceTraversal": "JSON dictionaries and lists only", "rollback": False},
                   "requestContext": "request-local metadata; model prompts must be explicit input",
@@ -91,12 +162,13 @@ class Brain:
 
 
 class BodySession:
-    def __init__(self, brain, body_id, tools, memory_directory, shared_memory):
+    def __init__(self, brain, body_id, tools, memory_directory, shared_memory, autonomy=None):
         self.brain = brain
         self.body_id = body_id
         self._tools = tools
         self._memory_directory = memory_directory
         self._shared_memory = shared_memory
+        self._autonomy = autonomy
 
     @property
     def models(self):
@@ -108,7 +180,18 @@ class BodySession:
         result["tools"] = [{"name": tool.name, "description": tool.description} for tool in self._tools.values()]
         result["memory"]["sharedScopeConfigured"] = self._shared_memory
         result["memory"]["isolatedByBody"] = not self._shared_memory
-        return result
+        if self._autonomy is not None:
+            binding = self._autonomy
+            result["operations"] = sorted(set(result["operations"]) | AUTONOMY_OPERATIONS)
+            limits = binding["limits"]
+            result["autonomy"].update({"enabled": True, "source": binding["proposer"].origin,
+                                       "proposerId": binding["proposer"].proposer_id,
+                                       "operatorApprovalConfigured": binding["operator_credential"] is not None,
+                                       "limits": {"maxSteps": limits.max_steps,
+                                                  "maxFailures": limits.max_failures,
+                                                  "maxSeconds": limits.max_seconds},
+                                       "tools": [tool.metadata() for tool in binding["tools"]]})
+        return validate_json(result, max_bytes=MAX_RESPONSE_BYTES)
 
     def request(self, payload):
         request_id, operation = request_identity(payload)
@@ -155,6 +238,11 @@ class BodySession:
             raise BrainError("unsupported_operation", "Operation is not an available explicit brain service")
         if type(input_data) is not dict:
             raise BrainError("invalid_input", "Operation input must be an object")
+        if operation in AUTONOMY_OPERATIONS:
+            if allow_refs:
+                raise BrainError("invalid_input", "Autonomy is dispatched directly, outside explicit workflows")
+            self._validate_autonomy(operation, input_data)
+            return
         if operation in MODEL_OPERATIONS:
             try:
                 self.models.validate_input(operation, input_data, allow_refs=allow_refs)
@@ -177,6 +265,74 @@ class BodySession:
                 self._tool_validator(tool, input_data["arguments"])
             return
         self._validate_memory(operation, input_data, allow_refs)
+
+    def _validate_autonomy(self, operation, values):
+        if self._autonomy is None:
+            raise BrainError("capability_unavailable", "Autonomy was not configured by the host for this body")
+        required = {"goal"} if operation == "autonomy.start" else {"task_id"}
+        optional = {"task_inputs"} if operation == "autonomy.start" else set()
+        if operation == "autonomy.approve":
+            required |= {"approval_id", "approved", "operator_token"}
+        if not required <= values.keys() or not values.keys() <= required | optional:
+            raise BrainError("invalid_input", "Autonomy operation has unsupported or missing fields")
+        if operation == "autonomy.start":
+            if type(values["goal"]) is not str or not values["goal"].strip():
+                raise BrainError("invalid_input", "Autonomy requires an explicit goal")
+            task_inputs = values.get("task_inputs", {})
+            if type(task_inputs) is not dict:
+                raise BrainError("invalid_input", "Autonomy task inputs must be an object")
+            validator = self._autonomy["input_validator"]
+            if validator is None:
+                if task_inputs:
+                    raise BrainError("invalid_input", "This host accepts no additional autonomy task inputs")
+            else:
+                try:
+                    if validator(task_inputs) is False:
+                        raise ValueError("Rejected task input")
+                except BrainError:
+                    raise
+                except Exception as error:
+                    raise BrainError("invalid_input", "Host rejected autonomy task inputs") from error
+        else:
+            identifier(values["task_id"], "autonomy task id")
+        if operation == "autonomy.approve":
+            if type(values["approval_id"]) is not str or re.fullmatch(r"[A-Za-z0-9_-]{1,128}", values["approval_id"]) is None:
+                raise BrainError("invalid_input", "Approval id must be the bounded nonce for the pending action")
+            if type(values["approved"]) is not bool:
+                raise BrainError("invalid_input", "Approval requires an explicit boolean")
+            token = values["operator_token"]
+            credential = self._autonomy["operator_credential"]
+            try:
+                candidate = token.encode("ascii") if type(token) is str else b""
+            except UnicodeEncodeError:
+                candidate = b""
+            if credential is None or not hmac.compare_digest(candidate, credential):
+                raise BrainError("tool_denied", "A separately configured operator credential is required")
+
+    def _execute_autonomy(self, operation, values):
+        controller = self._autonomy["controller"]
+        if operation == "autonomy.start":
+            result = controller.start(values["goal"], task_inputs=values.get("task_inputs", {}))
+        elif operation == "autonomy.approve":
+            result = controller.approve(values["task_id"], values["approval_id"], values["approved"],
+                                        operator_authorized=True)
+        else:
+            result = getattr(controller, operation.split(".", 1)[1])(values["task_id"])
+        try:
+            return validate_json(result, max_bytes=MAX_RESPONSE_BYTES - 8192, max_depth=14)
+        except BrainError:
+            # Host persistence limits may exceed transport limits. Preserve a
+            # truthful task receipt while retaining the full journal locally.
+            receipt = {key: deepcopy(result[key]) for key in
+                       ("task_id", "status", "steps", "failures", "source", "proposer_id", "limits",
+                        "created_at", "updated_at", "cancel_requested") if key in result}
+            receipt.update(snapshotOmitted=True, journalEntries=len(result.get("journal", [])))
+            pending = result.get("pending_approval")
+            try:
+                receipt["pending_approval"] = deepcopy(validate_json(pending, max_bytes=262144, max_depth=12))
+            except BrainError:
+                receipt["pendingApprovalOmitted"] = True
+            return validate_json(receipt, max_bytes=MAX_RESPONSE_BYTES - 8192, max_depth=14)
 
     def _validate_memory(self, operation, values, allow_refs):
         shapes = {
@@ -233,6 +389,8 @@ class BodySession:
         try:
             if operation in MODEL_OPERATIONS:
                 result = self.models.execute(operation, input_data)
+            elif operation in AUTONOMY_OPERATIONS:
+                result = self._execute_autonomy(operation, input_data)
             elif operation == "tool.call":
                 result = self._tools[input_data["name"]].handler(input_data["arguments"])
             elif operation == "memory.task.add":

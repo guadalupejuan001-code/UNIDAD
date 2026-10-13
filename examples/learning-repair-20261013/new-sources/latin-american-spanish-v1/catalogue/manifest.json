@@ -1,0 +1,136 @@
+{
+  "allInventoryFamilies": 10826,
+  "attribution": "Wikcionario contributors; frozen country catalogue and retained individual page histories",
+  "catalogueDirectCountryMemberships": 22555,
+  "catalogueSha256": "520d88ae9a92ca1ace6130dd1a48f103608047d555a7fdfc163511c40f2a95c6",
+  "catalogueUniquePageIds": 11241,
+  "contentOnlyHashMethod": "sha256 of newline-joined lexicographically sorted exact text fields, no trailing newline",
+  "contentOnlySha256": "662d33249e0f44ee794a90bf1757ee2fafe088b3d7df9ae9aac30551c8781e79",
+  "corpusSha256": "c7a4315d9cc652cd123c3c25fef190fd89a1750165541487ac6ab5577fb20ee5",
+  "countryMembershipsBySplit": {
+    "test": {
+      "Argentina": 358,
+      "Bolivia": 75,
+      "Chile": 304,
+      "Colombia": 155,
+      "Costa Rica": 38,
+      "Cuba": 107,
+      "Ecuador": 65,
+      "El Salvador": 71,
+      "Guatemala": 41,
+      "Honduras": 86,
+      "México": 210,
+      "Nicaragua": 73,
+      "Panamá": 19,
+      "Paraguay": 48,
+      "Perú": 77,
+      "Puerto Rico": 50,
+      "República Dominicana": 53,
+      "Uruguay": 176,
+      "Venezuela": 196
+    },
+    "train": {
+      "Argentina": 2797,
+      "Bolivia": 672,
+      "Chile": 2462,
+      "Colombia": 1261,
+      "Costa Rica": 452,
+      "Cuba": 731,
+      "Ecuador": 610,
+      "El Salvador": 696,
+      "Guatemala": 388,
+      "Honduras": 786,
+      "México": 1763,
+      "Nicaragua": 596,
+      "Panamá": 263,
+      "Paraguay": 360,
+      "Perú": 749,
+      "Puerto Rico": 427,
+      "República Dominicana": 340,
+      "Uruguay": 1367,
+      "Venezuela": 1357
+    },
+    "validation": {
+      "Argentina": 360,
+      "Bolivia": 97,
+      "Chile": 320,
+      "Colombia": 156,
+      "Costa Rica": 51,
+      "Cuba": 92,
+      "Ecuador": 76,
+      "El Salvador": 84,
+      "Guatemala": 57,
+      "Honduras": 104,
+      "México": 218,
+      "Nicaragua": 66,
+      "Panamá": 25,
+      "Paraguay": 43,
+      "Perú": 99,
+      "Puerto Rico": 43,
+      "República Dominicana": 43,
+      "Uruguay": 171,
+      "Venezuela": 171
+    }
+  },
+  "dataset": "unidad-latin-american-catalogue-v1",
+  "elapsedSeconds": 3.6209485740000673,
+  "files": {
+    "trainValidation": {
+      "bytes": 7823002,
+      "path": "private/learning-repair-20261013/latin-american-spanish-research/catalogue-causal-v2/latin-american-catalogue.train-validation.jsonl",
+      "records": 10130,
+      "sha256": "c7a4315d9cc652cd123c3c25fef190fd89a1750165541487ac6ab5577fb20ee5"
+    }
+  },
+  "lexicalInventorySplitCounts": {
+    "test": 1111,
+    "train": 9005,
+    "validation": 1125
+  },
+  "license": "CC-BY-SA-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.es",
+  "limitations": [
+    "Country category membership is source classification, not a definition or proof of universal/exclusive geographic use",
+    "One deterministic sentence format adds catalogue facts, not natural dialogue diversity",
+    "Catalogue completeness is limited to direct namespace-zero entries in 19 acquired categories; no subcategory recursion",
+    "Unregistered lemma/form relations are not inferred from word endings beyond conservative reflexive normalization",
+    "Catalogue metadata were acquired live, not an atomic global historical snapshot; definition samples have separate fixed revisions",
+    "Preparation alone does not establish that these facts were trained or learned"
+  ],
+  "limits": {
+    "addressSpaceBytes": 536870912,
+    "corpusBytes": 8388608,
+    "cpuAffinityCount": 1,
+    "networkBytes": 0,
+    "outputDiskBytes": 16777216,
+    "wallSeconds": 120
+  },
+  "modelLoaded": false,
+  "objective": "causal_lm",
+  "partitionMethod": "Whole normalized accent/case/reflexive and explicitly registered prior lemma/variant components; prior folds preserved; deterministic assign_split only for new families",
+  "peakRssKiB": 60548,
+  "preparationScriptSha256": "e69de91417531c7352602557dc05d3908fbf8fe9dca36f4b615ebd06bbb5c90e",
+  "priorFamilyRegistries": [
+    {
+      "path": "examples/learning-repair-20261013/new-sources/wiktionary-spanish-v1/lexical-family-registry.json",
+      "sha256": "d96d43af5df1f7a0c2cdd1b8eb200a1e2199c341a92565b95486cd8a7cc5ca94"
+    },
+    {
+      "path": "private/learning-repair-20261013/latin-american-spanish-research/acquisition-v1/lexical-family-registry.json",
+      "sha256": "82b36c37c8453eb68d775a25cfa224794efe138085b464ca4282ca2d770dd8fd"
+    }
+  ],
+  "quarantinedFamilies": 0,
+  "schemaVersion": 1,
+  "syntheticFormatting": "Deterministic project-authored sentence around original category metadata; no model generation",
+  "testBodiesEmitted": false,
+  "testTokenized": false,
+  "tokenizerFitted": false,
+  "trainingFamilies": 9758,
+  "trainingFileSplitCounts": {
+    "train": 9005,
+    "validation": 1125
+  },
+  "trainingRecords": 10130,
+  "words": 268661
+}

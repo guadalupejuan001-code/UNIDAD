@@ -1,0 +1,1399 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-natural-latam-sft-v3",
+  "status": "prepared-not-trained-not-accepted",
+  "seed": "unidad-natural-latam-v2-20261013",
+  "priorCorpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+  "regionalCorpusSha256": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19",
+  "helperSha256": "5f06f05403b27dba2f9b000241765224183b6e67e258c00ea22ee6a8bcfe8db1",
+  "designSha256": "87adb082db75712f8fd8fc9e32bde3b2c8ed8a022068271182118efcb22c9d86",
+  "targetExclusionReceiptSha256": "cb069c9f439211027887eac5bc873dba9f10170a4e50ce5cb6dc70c16e02ef77",
+  "files": {
+    "natural-control.train-validation.jsonl": {
+      "bytes": 13775983,
+      "sha256": "48cc11848568c03a32727660968e47695d8eeb43c3302cbf7055eefe2e449491"
+    },
+    "regional-sft.train-validation.jsonl": {
+      "bytes": 1018726,
+      "sha256": "aea0316e1fa6985b079f91a2104e9d3ba3889931c8d57162dcfaf463fd135b36"
+    },
+    "natural-latam-sft.train-validation.jsonl": {
+      "bytes": 14794709,
+      "sha256": "04469cfd03f575718b58bb58e9a878b5f8766e4f3ce5f0127800a296ba6e29ca"
+    },
+    "prospective-design.json": {
+      "bytes": 3968,
+      "sha256": "87adb082db75712f8fd8fc9e32bde3b2c8ed8a022068271182118efcb22c9d86"
+    },
+    "target-exclusions.json": {
+      "bytes": 8629,
+      "sha256": "cb069c9f439211027887eac5bc873dba9f10170a4e50ce5cb6dc70c16e02ef77"
+    }
+  },
+  "arms": {
+    "natural-control": {
+      "path": "natural-control.manifest.json",
+      "sha256": "51d825ddc29c303a506520bcbe8146da1cfb3d15fffe06078a15e93983f38a87",
+      "corpusSha256": "48cc11848568c03a32727660968e47695d8eeb43c3302cbf7055eefe2e449491",
+      "contentSha256": "a6510a45b3a922c35ef6f07eb89d60181993dc0bec49060204cb5819484b7d8b",
+      "splitCounts": {
+        "train": 9951,
+        "validation": 1704,
+        "test": 0
+      }
+    },
+    "natural-latam": {
+      "path": "natural-latam.manifest.json",
+      "sha256": "c6d36e21d09714953841a085ac59f1222818bb6993aa88a4df93ed1ecfc9a785",
+      "corpusSha256": "04469cfd03f575718b58bb58e9a878b5f8766e4f3ce5f0127800a296ba6e29ca",
+      "contentSha256": "3162af7dd34107fb6c3ef4e1862948f6efb2b081983d27af83eb8e42dbac49b4",
+      "splitCounts": {
+        "train": 10365,
+        "validation": 1759,
+        "test": 0
+      }
+    }
+  },
+  "retainedOldRows": 11655,
+  "originalRows": 20292,
+  "priorValidationRowsPreservedByteExactly": 1704,
+  "oldNonProceduralRowsPreservedByteExactly": 9417,
+  "selectedProceduralTrainFamilies": 400,
+  "selectedProceduralTrainRows": 1598,
+  "selectionByTemplate": [
+    {
+      "templateId": "composition-train-00",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-00-011",
+        "unidad-composition-v1-train-00-042",
+        "unidad-composition-v1-train-00-025",
+        "unidad-composition-v1-train-00-015",
+        "unidad-composition-v1-train-00-035",
+        "unidad-composition-v1-train-00-051",
+        "unidad-composition-v1-train-00-030",
+        "unidad-composition-v1-train-00-043",
+        "unidad-composition-v1-train-00-050",
+        "unidad-composition-v1-train-00-060"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-01",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-01-038",
+        "unidad-composition-v1-train-01-033",
+        "unidad-composition-v1-train-01-000",
+        "unidad-composition-v1-train-01-061",
+        "unidad-composition-v1-train-01-012",
+        "unidad-composition-v1-train-01-026",
+        "unidad-composition-v1-train-01-029",
+        "unidad-composition-v1-train-01-015",
+        "unidad-composition-v1-train-01-054",
+        "unidad-composition-v1-train-01-007"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-02",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-02-035",
+        "unidad-composition-v1-train-02-017",
+        "unidad-composition-v1-train-02-036",
+        "unidad-composition-v1-train-02-060",
+        "unidad-composition-v1-train-02-029",
+        "unidad-composition-v1-train-02-048",
+        "unidad-composition-v1-train-02-018",
+        "unidad-composition-v1-train-02-012",
+        "unidad-composition-v1-train-02-049",
+        "unidad-composition-v1-train-02-030"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-03",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-03-063",
+        "unidad-composition-v1-train-03-016",
+        "unidad-composition-v1-train-03-051",
+        "unidad-composition-v1-train-03-028",
+        "unidad-composition-v1-train-03-027",
+        "unidad-composition-v1-train-03-042",
+        "unidad-composition-v1-train-03-023",
+        "unidad-composition-v1-train-03-010",
+        "unidad-composition-v1-train-03-011",
+        "unidad-composition-v1-train-03-038"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-04",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-04-022",
+        "unidad-composition-v1-train-04-035",
+        "unidad-composition-v1-train-04-062",
+        "unidad-composition-v1-train-04-001",
+        "unidad-composition-v1-train-04-056",
+        "unidad-composition-v1-train-04-000",
+        "unidad-composition-v1-train-04-054",
+        "unidad-composition-v1-train-04-034",
+        "unidad-composition-v1-train-04-057",
+        "unidad-composition-v1-train-04-029"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-05",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-05-018",
+        "unidad-composition-v1-train-05-045",
+        "unidad-composition-v1-train-05-006",
+        "unidad-composition-v1-train-05-012",
+        "unidad-composition-v1-train-05-002",
+        "unidad-composition-v1-train-05-035",
+        "unidad-composition-v1-train-05-008",
+        "unidad-composition-v1-train-05-004",
+        "unidad-composition-v1-train-05-046",
+        "unidad-composition-v1-train-05-003"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-06",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-06-046",
+        "unidad-composition-v1-train-06-062",
+        "unidad-composition-v1-train-06-037",
+        "unidad-composition-v1-train-06-021",
+        "unidad-composition-v1-train-06-048",
+        "unidad-composition-v1-train-06-034",
+        "unidad-composition-v1-train-06-011",
+        "unidad-composition-v1-train-06-060",
+        "unidad-composition-v1-train-06-041",
+        "unidad-composition-v1-train-06-049"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-07",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-07-033",
+        "unidad-composition-v1-train-07-060",
+        "unidad-composition-v1-train-07-037",
+        "unidad-composition-v1-train-07-008",
+        "unidad-composition-v1-train-07-005",
+        "unidad-composition-v1-train-07-035",
+        "unidad-composition-v1-train-07-012",
+        "unidad-composition-v1-train-07-015",
+        "unidad-composition-v1-train-07-031",
+        "unidad-composition-v1-train-07-025"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-08",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-08-001",
+        "unidad-composition-v1-train-08-002",
+        "unidad-composition-v1-train-08-040",
+        "unidad-composition-v1-train-08-044",
+        "unidad-composition-v1-train-08-051",
+        "unidad-composition-v1-train-08-046",
+        "unidad-composition-v1-train-08-063",
+        "unidad-composition-v1-train-08-015",
+        "unidad-composition-v1-train-08-025",
+        "unidad-composition-v1-train-08-020"
+      ],
+      "selectedRows": 39
+    },
+    {
+      "templateId": "composition-train-09",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-09-051",
+        "unidad-composition-v1-train-09-002",
+        "unidad-composition-v1-train-09-062",
+        "unidad-composition-v1-train-09-044",
+        "unidad-composition-v1-train-09-034",
+        "unidad-composition-v1-train-09-030",
+        "unidad-composition-v1-train-09-061",
+        "unidad-composition-v1-train-09-021",
+        "unidad-composition-v1-train-09-008",
+        "unidad-composition-v1-train-09-011"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-10",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-10-017",
+        "unidad-composition-v1-train-10-049",
+        "unidad-composition-v1-train-10-018",
+        "unidad-composition-v1-train-10-045",
+        "unidad-composition-v1-train-10-034",
+        "unidad-composition-v1-train-10-009",
+        "unidad-composition-v1-train-10-062",
+        "unidad-composition-v1-train-10-005",
+        "unidad-composition-v1-train-10-058",
+        "unidad-composition-v1-train-10-055"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-11",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-11-061",
+        "unidad-composition-v1-train-11-013",
+        "unidad-composition-v1-train-11-002",
+        "unidad-composition-v1-train-11-038",
+        "unidad-composition-v1-train-11-043",
+        "unidad-composition-v1-train-11-033",
+        "unidad-composition-v1-train-11-007",
+        "unidad-composition-v1-train-11-052",
+        "unidad-composition-v1-train-11-005",
+        "unidad-composition-v1-train-11-010"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-12",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-12-006",
+        "unidad-composition-v1-train-12-019",
+        "unidad-composition-v1-train-12-023",
+        "unidad-composition-v1-train-12-011",
+        "unidad-composition-v1-train-12-016",
+        "unidad-composition-v1-train-12-040",
+        "unidad-composition-v1-train-12-038",
+        "unidad-composition-v1-train-12-055",
+        "unidad-composition-v1-train-12-005",
+        "unidad-composition-v1-train-12-022"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-13",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-13-054",
+        "unidad-composition-v1-train-13-024",
+        "unidad-composition-v1-train-13-003",
+        "unidad-composition-v1-train-13-014",
+        "unidad-composition-v1-train-13-002",
+        "unidad-composition-v1-train-13-028",
+        "unidad-composition-v1-train-13-012",
+        "unidad-composition-v1-train-13-032",
+        "unidad-composition-v1-train-13-018",
+        "unidad-composition-v1-train-13-052"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-14",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-14-051",
+        "unidad-composition-v1-train-14-030",
+        "unidad-composition-v1-train-14-000",
+        "unidad-composition-v1-train-14-018",
+        "unidad-composition-v1-train-14-044",
+        "unidad-composition-v1-train-14-028",
+        "unidad-composition-v1-train-14-063",
+        "unidad-composition-v1-train-14-006",
+        "unidad-composition-v1-train-14-047",
+        "unidad-composition-v1-train-14-005"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-15",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-15-002",
+        "unidad-composition-v1-train-15-017",
+        "unidad-composition-v1-train-15-021",
+        "unidad-composition-v1-train-15-033",
+        "unidad-composition-v1-train-15-038",
+        "unidad-composition-v1-train-15-050",
+        "unidad-composition-v1-train-15-036",
+        "unidad-composition-v1-train-15-062",
+        "unidad-composition-v1-train-15-027",
+        "unidad-composition-v1-train-15-047"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-16",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-16-042",
+        "unidad-composition-v1-train-16-059",
+        "unidad-composition-v1-train-16-038",
+        "unidad-composition-v1-train-16-018",
+        "unidad-composition-v1-train-16-045",
+        "unidad-composition-v1-train-16-062",
+        "unidad-composition-v1-train-16-019",
+        "unidad-composition-v1-train-16-000",
+        "unidad-composition-v1-train-16-057",
+        "unidad-composition-v1-train-16-061"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-17",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-17-059",
+        "unidad-composition-v1-train-17-036",
+        "unidad-composition-v1-train-17-052",
+        "unidad-composition-v1-train-17-054",
+        "unidad-composition-v1-train-17-014",
+        "unidad-composition-v1-train-17-048",
+        "unidad-composition-v1-train-17-012",
+        "unidad-composition-v1-train-17-042",
+        "unidad-composition-v1-train-17-011",
+        "unidad-composition-v1-train-17-063"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-18",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-18-002",
+        "unidad-composition-v1-train-18-060",
+        "unidad-composition-v1-train-18-058",
+        "unidad-composition-v1-train-18-044",
+        "unidad-composition-v1-train-18-027",
+        "unidad-composition-v1-train-18-013",
+        "unidad-composition-v1-train-18-034",
+        "unidad-composition-v1-train-18-045",
+        "unidad-composition-v1-train-18-046",
+        "unidad-composition-v1-train-18-025"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-19",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-19-055",
+        "unidad-composition-v1-train-19-036",
+        "unidad-composition-v1-train-19-042",
+        "unidad-composition-v1-train-19-041",
+        "unidad-composition-v1-train-19-003",
+        "unidad-composition-v1-train-19-011",
+        "unidad-composition-v1-train-19-051",
+        "unidad-composition-v1-train-19-044",
+        "unidad-composition-v1-train-19-006",
+        "unidad-composition-v1-train-19-009"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-20",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-20-055",
+        "unidad-composition-v1-train-20-002",
+        "unidad-composition-v1-train-20-046",
+        "unidad-composition-v1-train-20-016",
+        "unidad-composition-v1-train-20-009",
+        "unidad-composition-v1-train-20-010",
+        "unidad-composition-v1-train-20-047",
+        "unidad-composition-v1-train-20-037",
+        "unidad-composition-v1-train-20-027",
+        "unidad-composition-v1-train-20-024"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-21",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-21-029",
+        "unidad-composition-v1-train-21-021",
+        "unidad-composition-v1-train-21-056",
+        "unidad-composition-v1-train-21-007",
+        "unidad-composition-v1-train-21-036",
+        "unidad-composition-v1-train-21-006",
+        "unidad-composition-v1-train-21-054",
+        "unidad-composition-v1-train-21-016",
+        "unidad-composition-v1-train-21-003",
+        "unidad-composition-v1-train-21-040"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-22",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-22-025",
+        "unidad-composition-v1-train-22-061",
+        "unidad-composition-v1-train-22-036",
+        "unidad-composition-v1-train-22-040",
+        "unidad-composition-v1-train-22-008",
+        "unidad-composition-v1-train-22-022",
+        "unidad-composition-v1-train-22-011",
+        "unidad-composition-v1-train-22-007",
+        "unidad-composition-v1-train-22-038",
+        "unidad-composition-v1-train-22-033"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-23",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-23-007",
+        "unidad-composition-v1-train-23-012",
+        "unidad-composition-v1-train-23-023",
+        "unidad-composition-v1-train-23-002",
+        "unidad-composition-v1-train-23-048",
+        "unidad-composition-v1-train-23-024",
+        "unidad-composition-v1-train-23-030",
+        "unidad-composition-v1-train-23-031",
+        "unidad-composition-v1-train-23-021",
+        "unidad-composition-v1-train-23-026"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-24",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-24-007",
+        "unidad-composition-v1-train-24-013",
+        "unidad-composition-v1-train-24-062",
+        "unidad-composition-v1-train-24-041",
+        "unidad-composition-v1-train-24-044",
+        "unidad-composition-v1-train-24-000",
+        "unidad-composition-v1-train-24-030",
+        "unidad-composition-v1-train-24-026",
+        "unidad-composition-v1-train-24-008",
+        "unidad-composition-v1-train-24-048"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-25",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-25-011",
+        "unidad-composition-v1-train-25-060",
+        "unidad-composition-v1-train-25-030",
+        "unidad-composition-v1-train-25-018",
+        "unidad-composition-v1-train-25-032",
+        "unidad-composition-v1-train-25-028",
+        "unidad-composition-v1-train-25-043",
+        "unidad-composition-v1-train-25-050",
+        "unidad-composition-v1-train-25-061",
+        "unidad-composition-v1-train-25-052"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-26",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-26-028",
+        "unidad-composition-v1-train-26-045",
+        "unidad-composition-v1-train-26-057",
+        "unidad-composition-v1-train-26-051",
+        "unidad-composition-v1-train-26-061",
+        "unidad-composition-v1-train-26-018",
+        "unidad-composition-v1-train-26-052",
+        "unidad-composition-v1-train-26-044",
+        "unidad-composition-v1-train-26-053",
+        "unidad-composition-v1-train-26-024"
+      ],
+      "selectedRows": 39
+    },
+    {
+      "templateId": "composition-train-27",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-27-004",
+        "unidad-composition-v1-train-27-023",
+        "unidad-composition-v1-train-27-049",
+        "unidad-composition-v1-train-27-017",
+        "unidad-composition-v1-train-27-035",
+        "unidad-composition-v1-train-27-038",
+        "unidad-composition-v1-train-27-029",
+        "unidad-composition-v1-train-27-034",
+        "unidad-composition-v1-train-27-051",
+        "unidad-composition-v1-train-27-012"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-28",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-28-012",
+        "unidad-composition-v1-train-28-021",
+        "unidad-composition-v1-train-28-055",
+        "unidad-composition-v1-train-28-005",
+        "unidad-composition-v1-train-28-041",
+        "unidad-composition-v1-train-28-027",
+        "unidad-composition-v1-train-28-032",
+        "unidad-composition-v1-train-28-015",
+        "unidad-composition-v1-train-28-063",
+        "unidad-composition-v1-train-28-017"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-29",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-29-017",
+        "unidad-composition-v1-train-29-041",
+        "unidad-composition-v1-train-29-027",
+        "unidad-composition-v1-train-29-000",
+        "unidad-composition-v1-train-29-015",
+        "unidad-composition-v1-train-29-030",
+        "unidad-composition-v1-train-29-043",
+        "unidad-composition-v1-train-29-004",
+        "unidad-composition-v1-train-29-026",
+        "unidad-composition-v1-train-29-058"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-30",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-30-043",
+        "unidad-composition-v1-train-30-012",
+        "unidad-composition-v1-train-30-009",
+        "unidad-composition-v1-train-30-011",
+        "unidad-composition-v1-train-30-039",
+        "unidad-composition-v1-train-30-058",
+        "unidad-composition-v1-train-30-031",
+        "unidad-composition-v1-train-30-040",
+        "unidad-composition-v1-train-30-061",
+        "unidad-composition-v1-train-30-052"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-31",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-31-055",
+        "unidad-composition-v1-train-31-038",
+        "unidad-composition-v1-train-31-007",
+        "unidad-composition-v1-train-31-003",
+        "unidad-composition-v1-train-31-063",
+        "unidad-composition-v1-train-31-052",
+        "unidad-composition-v1-train-31-058",
+        "unidad-composition-v1-train-31-019",
+        "unidad-composition-v1-train-31-008",
+        "unidad-composition-v1-train-31-060"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-32",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-32-015",
+        "unidad-composition-v1-train-32-011",
+        "unidad-composition-v1-train-32-063",
+        "unidad-composition-v1-train-32-005",
+        "unidad-composition-v1-train-32-060",
+        "unidad-composition-v1-train-32-044",
+        "unidad-composition-v1-train-32-032",
+        "unidad-composition-v1-train-32-053",
+        "unidad-composition-v1-train-32-046",
+        "unidad-composition-v1-train-32-017"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-33",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-33-005",
+        "unidad-composition-v1-train-33-021",
+        "unidad-composition-v1-train-33-053",
+        "unidad-composition-v1-train-33-009",
+        "unidad-composition-v1-train-33-056",
+        "unidad-composition-v1-train-33-036",
+        "unidad-composition-v1-train-33-015",
+        "unidad-composition-v1-train-33-055",
+        "unidad-composition-v1-train-33-063",
+        "unidad-composition-v1-train-33-020"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-34",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-34-041",
+        "unidad-composition-v1-train-34-010",
+        "unidad-composition-v1-train-34-056",
+        "unidad-composition-v1-train-34-049",
+        "unidad-composition-v1-train-34-017",
+        "unidad-composition-v1-train-34-005",
+        "unidad-composition-v1-train-34-030",
+        "unidad-composition-v1-train-34-063",
+        "unidad-composition-v1-train-34-042",
+        "unidad-composition-v1-train-34-055"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-35",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-35-041",
+        "unidad-composition-v1-train-35-023",
+        "unidad-composition-v1-train-35-056",
+        "unidad-composition-v1-train-35-058",
+        "unidad-composition-v1-train-35-030",
+        "unidad-composition-v1-train-35-013",
+        "unidad-composition-v1-train-35-014",
+        "unidad-composition-v1-train-35-019",
+        "unidad-composition-v1-train-35-008",
+        "unidad-composition-v1-train-35-048"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-36",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-36-000",
+        "unidad-composition-v1-train-36-041",
+        "unidad-composition-v1-train-36-003",
+        "unidad-composition-v1-train-36-036",
+        "unidad-composition-v1-train-36-004",
+        "unidad-composition-v1-train-36-033",
+        "unidad-composition-v1-train-36-018",
+        "unidad-composition-v1-train-36-029",
+        "unidad-composition-v1-train-36-052",
+        "unidad-composition-v1-train-36-012"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-37",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-37-000",
+        "unidad-composition-v1-train-37-017",
+        "unidad-composition-v1-train-37-043",
+        "unidad-composition-v1-train-37-024",
+        "unidad-composition-v1-train-37-031",
+        "unidad-composition-v1-train-37-061",
+        "unidad-composition-v1-train-37-015",
+        "unidad-composition-v1-train-37-060",
+        "unidad-composition-v1-train-37-054",
+        "unidad-composition-v1-train-37-056"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-38",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-38-048",
+        "unidad-composition-v1-train-38-037",
+        "unidad-composition-v1-train-38-050",
+        "unidad-composition-v1-train-38-053",
+        "unidad-composition-v1-train-38-038",
+        "unidad-composition-v1-train-38-001",
+        "unidad-composition-v1-train-38-010",
+        "unidad-composition-v1-train-38-013",
+        "unidad-composition-v1-train-38-011",
+        "unidad-composition-v1-train-38-055"
+      ],
+      "selectedRows": 40
+    },
+    {
+      "templateId": "composition-train-39",
+      "availableFamilies": 64,
+      "selectedFamilies": [
+        "unidad-composition-v1-train-39-036",
+        "unidad-composition-v1-train-39-024",
+        "unidad-composition-v1-train-39-018",
+        "unidad-composition-v1-train-39-019",
+        "unidad-composition-v1-train-39-045",
+        "unidad-composition-v1-train-39-031",
+        "unidad-composition-v1-train-39-004",
+        "unidad-composition-v1-train-39-028",
+        "unidad-composition-v1-train-39-015",
+        "unidad-composition-v1-train-39-012"
+      ],
+      "selectedRows": 40
+    }
+  ],
+  "regionalSyntheticRows": 469,
+  "regionalFamilyCount": 91,
+  "regionalCountryScopesUsed": [
+    "Argentina",
+    "Bolivia",
+    "Chile",
+    "Colombia",
+    "Costa Rica",
+    "Cuba",
+    "Ecuador",
+    "El Salvador",
+    "Guatemala",
+    "Honduras",
+    "México",
+    "Nicaragua",
+    "Panamá",
+    "Paraguay",
+    "Perú",
+    "Puerto Rico",
+    "República Dominicana",
+    "Uruguay",
+    "Venezuela"
+  ],
+  "rowCounts": [
+    {
+      "split": "train",
+      "dataset": "OpenAssistant/oasst1",
+      "rows": 7044
+    },
+    {
+      "split": "train",
+      "dataset": "OpenAssistant/oasst2",
+      "rows": 632
+    },
+    {
+      "split": "train",
+      "dataset": "unidad-composition-v1",
+      "rows": 1598
+    },
+    {
+      "split": "train",
+      "dataset": "unidad-learning-repair-dialogues-v1",
+      "rows": 167
+    },
+    {
+      "split": "train",
+      "dataset": "unidad-learning-repair-language-v1",
+      "rows": 153
+    },
+    {
+      "split": "train",
+      "dataset": "unidad-natural-latam-sft-v3",
+      "rows": 414
+    },
+    {
+      "split": "train",
+      "dataset": "unidad-natural-multiturn-v1",
+      "rows": 357
+    },
+    {
+      "split": "validation",
+      "dataset": "OpenAssistant/oasst1",
+      "rows": 892
+    },
+    {
+      "split": "validation",
+      "dataset": "OpenAssistant/oasst2",
+      "rows": 89
+    },
+    {
+      "split": "validation",
+      "dataset": "unidad-composition-v1",
+      "rows": 640
+    },
+    {
+      "split": "validation",
+      "dataset": "unidad-learning-repair-dialogues-v1",
+      "rows": 8
+    },
+    {
+      "split": "validation",
+      "dataset": "unidad-learning-repair-language-v1",
+      "rows": 16
+    },
+    {
+      "split": "validation",
+      "dataset": "unidad-natural-latam-sft-v3",
+      "rows": 55
+    },
+    {
+      "split": "validation",
+      "dataset": "unidad-natural-multiturn-v1",
+      "rows": 59
+    }
+  ],
+  "regionalBehaviorCounts": {
+    "country-meaning": 91,
+    "requested-format": 91,
+    "recover-from-wrong-task": 91,
+    "genuine-ambiguity": 42,
+    "resolve-ambiguity": 42,
+    "missing-information": 42,
+    "follow-country-correction": 35,
+    "distinguish-speakers": 35
+  },
+  "exclusions": [
+    {
+      "id": "wiktionary:es:regional:1039270:5798262",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:12076:6021556",
+      "reason": "Source spelling riveras and unresolved usage abbreviation; preserve raw but do not supervise this target",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "1",
+        "partOfSpeech": "adjetivo",
+        "definition": "Nativo o residente de las tierras bajas (como las costas y riveras).",
+        "scope": [
+          {
+            "label": "Argentina",
+            "qualifier": ""
+          },
+          {
+            "label": "Bolivia",
+            "qualifier": ""
+          },
+          {
+            "label": "Colombia",
+            "qualifier": ""
+          },
+          {
+            "label": "Ecuador",
+            "qualifier": ""
+          },
+          {
+            "label": "Honduras",
+            "qualifier": ""
+          },
+          {
+            "label": "México",
+            "qualifier": ""
+          },
+          {
+            "label": "Nicaragua",
+            "qualifier": ""
+          },
+          {
+            "label": "Perú",
+            "qualifier": ""
+          },
+          {
+            "label": "Puerto Rico",
+            "qualifier": ""
+          },
+          {
+            "label": "República Dominicana",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "utcs",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:12076:6021556",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:11731:5728703",
+      "reason": "malformed-source-lexical-family-preserved-not-reassigned"
+    },
+    {
+      "id": "wiktionary:es:regional:169813:5975505",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:875147:6121500",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 3,
+        "senseNumber": "2",
+        "partOfSpeech": "verbo transitivo",
+        "definition": "Causar embole.",
+        "scope": [
+          {
+            "label": "Río de la Plata",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "vulgar",
+            "qualifier": ""
+          },
+          {
+            "label": "umcp",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:875147:6121500",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:44114:6375855",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 2,
+        "senseNumber": "1",
+        "partOfSpeech": "adjetivo",
+        "definition": "Persona originaria o habitante de Guatemala",
+        "scope": [
+          {
+            "label": "Centroamérica",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "utcsma",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:8832:6412670",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 4,
+        "senseNumber": "1",
+        "partOfSpeech": "verbo transitivo",
+        "definition": "darse cuenta, notar, advertir o percatarse del sentido o propósito de un dicho o hecho.",
+        "scope": [
+          {
+            "label": "Argentina",
+            "qualifier": ""
+          },
+          {
+            "label": "Bolivia",
+            "qualifier": ""
+          },
+          {
+            "label": "Chile",
+            "qualifier": ""
+          },
+          {
+            "label": "Ecuador",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          },
+          {
+            "label": "utci",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:1005730:6394036",
+      "reason": "Unresolved numbered source-sense reference; standalone target lacks plant identity",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "4",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "fruto de la algarrobilla(3).",
+        "scope": [
+          {
+            "label": "Argentina",
+            "qualifier": ""
+          },
+          {
+            "label": "Bolivia",
+            "qualifier": ""
+          },
+          {
+            "label": "Chile",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:31167:6352592",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:935839:6383121",
+      "reason": "Deictic this plant lacks an antecedent in standalone answer",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "2",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "La semilla comestible de esta planta, con dos grandes cotiledones de forma arriñonada y color muy variable.",
+        "scope": [
+          {
+            "label": "Venezuela",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:29059:6345015",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:14616:6094997",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:67898:6348579",
+      "reason": "Source typo imperativoón makes positive target defective",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "2",
+        "partOfSpeech": "interjección",
+        "definition": "Sirve como invitación o imperativoón a hacer algo.",
+        "scope": [
+          {
+            "label": "El Salvador",
+            "qualifier": ""
+          },
+          {
+            "label": "Guatemala",
+            "qualifier": ""
+          },
+          {
+            "label": "Honduras",
+            "qualifier": ""
+          },
+          {
+            "label": "México",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:67898:6348579",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:21976:6422912",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "7",
+        "partOfSpeech": "adjetivo",
+        "definition": "Dicho de una persona, que ostentosamente pertenece o simula pertenecer a una clase social pudiente.",
+        "scope": [
+          {
+            "label": "Argentina",
+            "qualifier": ""
+          },
+          {
+            "label": "Uruguay",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "utcs",
+            "qualifier": ""
+          },
+          {
+            "label": "lunfardismo",
+            "qualifier": ""
+          },
+          {
+            "label": "despectivo",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:910471:6392576",
+      "reason": "Circular definition Fruto del aguaje does not explain the referent",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "15",
+        "partOfSpeech": "sustantivo masculino",
+        "definition": "Fruto del aguaje.",
+        "scope": [
+          {
+            "label": "Colombia",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:910471:6392576",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:29593:6376346",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:37145:6327658",
+      "reason": "sense-over-90-words",
+      "sense": {
+        "etymology": 0,
+        "senseNumber": "1",
+        "partOfSpeech": "locución",
+        "definition": "estafa que consiste en general por hacerse pasar por un sobrino y con algún pretexto le pide dinero a la víctima. Esta acepta y el estafador recibe el dinero por causa del engaño. Otra modalidad consiste en dejar caer un rollo de papeles que tiene en su exterior semejanza con un fajo de billetes. Cuando un transeúnte se acerca a recogerlo, el estafador (paquetero) finge hacer lo mismo y luego, en vez de repartirse el supuesto dinero, usa algún pretexto para convencer a la víctima de que esta le entregue algo de valor y se quede con el fajo.",
+        "scope": [
+          {
+            "label": "Chile",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:983864:6394077",
+      "reason": "Source treats named bird as genus; factual description needs independent correction before positive supervision",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "1",
+        "partOfSpeech": "locución sustantiva",
+        "definition": "Género de ave de la familia de los loros (Psittacidae) de color rojo, del orden de las Psittaciformes, habitando desde las selvas de México hasta el noreste de Argentina, aproximadamente. Se alimentan de insectos y bayas y viven en los árboles.",
+        "scope": [
+          {
+            "label": "Centroamérica",
+            "qualifier": ""
+          },
+          {
+            "label": "Colombia",
+            "qualifier": ""
+          },
+          {
+            "label": "México",
+            "qualifier": ""
+          },
+          {
+            "label": "Venezuela",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:983864:6394077",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:1040938:5821254",
+      "reason": "Circular/unexplained derivative falopea in standalone target",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "1",
+        "partOfSpeech": "adjetivo",
+        "definition": "Que se falopea.",
+        "scope": [
+          {
+            "label": "Argentina",
+            "qualifier": ""
+          },
+          {
+            "label": "Uruguay",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:1040938:5821254",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:880563:5804784",
+      "reason": "Source grammar and referent incoherent in standalone target",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "4",
+        "partOfSpeech": "verbo pronominal",
+        "definition": "Comprar un artículo que no pudo salirse de él al no venderse por estar pasado de moda.",
+        "scope": [
+          {
+            "label": "Venezuela",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:1053661:5817920",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "2",
+        "partOfSpeech": "verbo pronominal",
+        "definition": "Tomar varios tragos sucesivos de una bebida.",
+        "scope": [
+          {
+            "label": "República Dominicana",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "utct",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:1053661:5817920",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:10246:6357606",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "2",
+        "partOfSpeech": "verbo transitivo",
+        "definition": "malograr el funcionamiento o propósito de algo.",
+        "scope": [
+          {
+            "label": "México",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "utcp",
+            "qualifier": ""
+          },
+          {
+            "label": "malsonante",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:129042:6342791",
+      "reason": "Suspect animal length five centimetres; no factual correction invented",
+      "sense": {
+        "etymology": 1,
+        "senseNumber": "1",
+        "partOfSpeech": "sustantivo femenino",
+        "definition": "mamífero carnívoro de unos cinco centímetros de largo y pelaje bicolor (negro con rayas blancas) cuyo rasgo característico es el fuerte y fétido olor que segregan sus glándulas anales.",
+        "scope": [
+          {
+            "label": "Ecuador",
+            "qualifier": ""
+          },
+          {
+            "label": "Perú",
+            "qualifier": ""
+          }
+        ],
+        "usage": [],
+        "examples": []
+      }
+    },
+    {
+      "id": "wiktionary:es:regional:129042:6342791",
+      "reason": "no-explicit-supported-country-sense"
+    },
+    {
+      "id": "wiktionary:es:regional:63779:6329370",
+      "reason": "unexpanded-source-usage-abbreviation",
+      "sense": {
+        "etymology": 2,
+        "senseNumber": "2",
+        "partOfSpeech": "verbo transitivo",
+        "definition": "acariciar y besar apasionadamente a otra persona sin llegar a realizar el coito.",
+        "scope": [
+          {
+            "label": "Rioplatense",
+            "qualifier": ""
+          }
+        ],
+        "usage": [
+          {
+            "label": "lunfardismo",
+            "qualifier": ""
+          },
+          {
+            "label": "utcp",
+            "qualifier": ""
+          }
+        ],
+        "examples": []
+      }
+    }
+  ],
+  "testRowsLoaded": 0,
+  "guardLimits": {
+    "fullPromptFoldCheck": true,
+    "familyFoldCheck": true,
+    "semanticParaphraseLeakageCheck": false,
+    "tokenizerOrModelLoaded": false
+  },
+  "elapsedSeconds": 0.6294049239986634,
+  "peakRssMiB": 191.91796875,
+  "comparison": "Natural control separates prepared data intervention; no matched control model was trained by this helper."
+}

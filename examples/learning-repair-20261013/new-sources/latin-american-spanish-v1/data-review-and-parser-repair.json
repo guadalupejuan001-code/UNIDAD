@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "status": "regional-data-checked",
+  "publicDefinitionsVerifiedPrimaryRevisionCount": 106,
+  "testsCommand": "python3 -m unittest discover -s tests -p test_prepare_latin_american_wiktionary.py -v",
+  "testsBefore": {
+    "methods": 6,
+    "failureAssertions": 3,
+    "logSha256": "e2c6107d5d11400b272294124ac72082f18f5ee75175599c0ea34eadd5a04974"
+  },
+  "testsAfter": {
+    "methods": 6,
+    "failed": 0,
+    "returnCode": 0,
+    "reportedRuntimeSeconds": 0.001,
+    "testFileSha256": "7e7fe3a38962f9deb6f109fb6c87eb9886b53115050d2e59b48e6d43b11e71ff"
+  },
+  "parserFix": "Normalize nota1 to the first scope/usage argument; reject orphan notes and conflicting nota/nota1. Real source chinaTRAIN restored uso=despectivo qualifier=antaño no lo era. Country scopes of current guagua/chamba unchanged.",
+  "correctedRecords": 1,
+  "realSourceCorrectionsManifestSha256": "c4ff341d6feff2927cc5e8632330b77e7866590f84eedcbf8869ebb3986fe588",
+  "foldsMoved": false,
+  "testBodiesUsedForChecks": false,
+  "commonDefinitionCatalogueGroupsChecked": 9759,
+  "crossFoldGroups": 0,
+  "privateAndPublicCorporaExactCopies": [
+    {
+      "path": "definitions/latin-american-wiktionary.train-validation.jsonl",
+      "bytes": 210116,
+      "sha256": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19",
+      "privateFrozenInputVerifiedExact": true
+    },
+    {
+      "path": "catalogue/latin-american-catalogue.train-validation.jsonl",
+      "bytes": 7823002,
+      "sha256": "c7a4315d9cc652cd123c3c25fef190fd89a1750165541487ac6ab5577fb20ee5",
+      "privateFrozenInputVerifiedExact": true
+    },
+    {
+      "path": "country-catalog.json",
+      "bytes": 3844321,
+      "sha256": "520d88ae9a92ca1ace6130dd1a48f103608047d555a7fdfc163511c40f2a95c6",
+      "privateFrozenInputVerifiedExact": true
+    }
+  ],
+  "portableReplay": {
+    "records": 106,
+    "sha256": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19",
+    "originalSha256": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19",
+    "exact": true,
+    "elapsedSeconds": 0.01080297600128688,
+    "peakRssKiB": 38172,
+    "networkBytes": 0,
+    "primaryRevisionsRead": 0,
+    "sourceKind": "clean structured public TRAIN/VALIDATION adaptation"
+  },
+  "reviewer": "Project AI agents; no independent human review",
+  "trainExamplesReviewed": [
+    "guagua",
+    "chamba",
+    "pibe",
+    "chido",
+    "chamaco",
+    "ustedes",
+    "china"
+  ],
+  "limitsOfReview": "Checks correspondence to retained source, not independent proof that every collaborative definition is correct; examined no conversation evaluation suites."
+}

@@ -1,0 +1,49 @@
+{
+  "anchors": {
+    "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+    "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+  },
+  "authorization": "Standing owner authorization: public pinned Spanish Wiki and OASST only; no paid services, external weights, owner chats, evaluation labels or source changes guided by model scores.",
+  "baseTrainingConfig": {
+    "path": "examples/learning-repair-20261013/configs/foundation-training.json",
+    "sha256": "f5bab793911b273d1729e118b133957e9eac3937b6abc8382adda1c1d9f84864"
+  },
+  "licenseReceipt": {
+    "path": "examples/learning-repair-20261013/collector/source-license-receipt.json",
+    "sha256": "063b3f578fd89642f7c68beb6eff65106a180d03da0161ebde9cbff6c2421210"
+  },
+  "limits": {
+    "budgetSeconds": 60,
+    "corpusCapMiB": 4,
+    "maxDiskMiB": 64,
+    "maxNetworkMiB": 64,
+    "maxPages": 3,
+    "targetNovelPayloadMiB": 1
+  },
+  "outputRoot": "private/learning-repair-20261013/collector-v2-preview/batches",
+  "runRoot": "private/learning-repair-20261013/runs/progressive",
+  "schemaVersion": 1,
+  "seed": {
+    "path": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+    "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+  },
+  "sftCorpus": {
+    "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/natural-latam-sft.train-validation.jsonl",
+    "sha256": "cf52daaaa0bfbd6dd539977ebaabb1b4b265d0ad192d9d6cea6c49e18da5515f"
+  },
+  "sftManifest": {
+    "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/natural-latam.manifest.admission-v1.json",
+    "sha256": "abb3dcc357cf9463384ec2693a71ec3260f44f4a164417944ccd32a0a5490809"
+  },
+  "sftTrainingConfig": {
+    "path": "private/learning-repair-20261013/configs/natural-latam-matched-4096.json",
+    "sha256": "12be83d8d792ecf9fb6758aa895bec82c48fd33fe462957ab464b7916eeea844"
+  },
+  "source": {
+    "configuration": "20231101.es",
+    "dataset": "wikimedia/wikipedia",
+    "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+    "snapshotDate": "2023-11-01"
+  },
+  "statePath": "private/learning-repair-20261013/collector-v2-preview/state.json"
+}
