@@ -118,9 +118,12 @@ class SovengiTests(unittest.TestCase):
         self.assertEqual(result["memoryContext"]["status"], "included")
         long = [{"role": "user", "content": "taller " * 2000}]
         with patch.object(engine, "reply", wraps=engine.reply) as generation:
-            result = self.request(session, "conversation.reply", {"messages": long, "max_new_tokens": 1})
-            self.assertEqual(generation.call_args.kwargs["messages"][-1], long[-1])
-        self.assertEqual(result["memoryContext"]["status"], "context_budget")
+            response = session.request({"schemaVersion": 1, "operation": "conversation.reply",
+                "input": {"messages": long, "max_new_tokens": 1}})
+        self.assertEqual(response["status"], "error")
+        self.assertEqual(response["error"]["code"], "context_budget")
+        self.assertEqual(response["result"]["conversationContext"]["status"], "current_message_exceeds_budget")
+        generation.assert_not_called()
 
     def test_file_autonomy_is_explicit_and_shares_the_conversation_engine(self):
         plain = self.app.connect("plain")

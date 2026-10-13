@@ -1,5 +1,18 @@
 # Órdenes del creador de SOVENGI (repositorio UNIDAD)
 
+## Continuación: modelo de contexto escalable e integración en SOVENGI
+
+El creador autoriza implementar, escalar y optimizar el modelo de contexto
+independiente y conectarlo a SOVENGI. Esta petición sustituye la revisión previa
+de sólo lectura. El selector conserva sus propios pesos y entrega fuentes
+originales al motor común; el historial privado no se convierte automáticamente
+en entrenamiento. Se comprueban selección, integración y rendimiento por
+separado de las respuestas del generador, conservando también resultados
+negativos. Las pruebas y artefactos nuevos se entregan integrados, sin intervenir
+sobre corridas ajenas ni sustituir los modelos propios por otra IA.
+
+> programalo y escalalo optimizalo para grandes procesos y integralo a sovengi
+
 ## Continuación: auditar ramas y comenzar entrenamiento de SOVENGI
 
 El creador pide comprobar que el estado esté actualizado, revisar borradores y

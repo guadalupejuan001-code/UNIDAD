@@ -1,5 +1,18 @@
 # SOVENGI
 
+**Modelo de contexto integrado:** SOVENGI incorpora un selector independiente
+entrenado desde pesos aleatorios propios. Recupera fragmentos originales,
+conserva turnos recientes y prepara una entrada que respeta el presupuesto del
+modelo conversacional. SQLite con índices mantiene el historial incremental
+por producto y conversación; `/nuevo` lo reinicia y conserva las notas guardadas.
+
+El selector obtuvo **48/48 fuentes correctas frente a 28/48** de la referencia
+léxica en plantillas ficticias con entidades reservadas. En **100.000 fuentes**,
+la búsqueda, ranking y selección tardaron **2,70 ms de mediana** en la CPU medida.
+Estas cifras evalúan recuperación y rendimiento; las respuestas reales de
+SOVENGI siguen necesitando mejora. El [informe de contexto](docs/context-model-20261013/README.md)
+conserva pesos, corpus, pruebas, comparación de generación y límites.
+
 **Entrenamiento completado el 13 de octubre:** 27 actualizaciones de los pesos
 propios; el control de desarrollo pasó de **1/25 a 22/25 respuestas exactas**.
 Las consultas de notas guardadas pasaron de **0/20 a 20/20**. Son variantes de
@@ -29,6 +42,9 @@ sovengi chat
 Dentro del chat: `/recordar El taller abre el jueves.` guarda una nota,
 `/memoria taller` la busca y `/nuevo` reinicia sólo la conversación. Las respuestas
 recuperan notas relevantes de esa misma memoria si caben en el contexto.
+El gestor de contexto está habilitado en esa entrada y en sus peticiones HTTP.
+`--context-session nombre` permite continuar el contexto local de una sesión;
+`--no-context` permite comparar el mismo generador sin el selector.
 `sovengi serve` ofrece el mismo producto por HTTP con token. La
 [guía de SOVENGI](docs/SOVENGI.md) explica herramientas, configuración y límites.
 
