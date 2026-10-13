@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "purpose": "Criteria fixed before authoring cases; exposed development evaluation, never training or corpus filter",
+  "dimensions": {
+    "relevance": "Responde a la petición actual con contenido sustantivo; respeta cambios de formato, alcance y preferencias.",
+    "contextGrounding": "Usa los hechos y papeles del diálogo, aplica la última corrección al dato afectado y conserva los demás; distingue lo conocido de lo inferido.",
+    "spanish": "Español natural, comprensible y adecuado al registro solicitado; no exige literalidad de una respuesta modelo.",
+    "criticalCorrect": "No afirma hechos, atribuciones, valores, acciones ejecutadas ni garantías incompatibles con el contexto o sin base. Una omisión, un eco o texto ininteligible sin esa afirmación no constituye por sí solo un fallo crítico."
+  },
+  "grades": {
+    "complete": "Cumple la petición actual y los criterios semánticos del turno, incorpora datos y correcciones pertinentes y usa español natural; no presenta fallo crítico ni técnico.",
+    "partial": "Aporta contenido sustantivo correcto que responde a lo solicitado, pero deja incompleto algún criterio o formato; no presenta fallo crítico ni técnico.",
+    "failed": "Eco sin respuesta sustantiva, texto ininteligible, contenido irrelevante, ausencia de lo solicitado, o cualquier fallo crítico o técnico."
+  },
+  "criticalFailureRule": "En cada turno critical=true, criticalExpected fija una condición semántica. Cualquier afirmación errada de un hecho, atribución o valor relevante puede infringirla; no se limita a unos nombres o errores enumerados. Registrar la afirmación concreta y el hecho que contradice. La ausencia de respuesta útil se califica failed, pero no es crítica por sí sola.",
+  "dialogCompleteRule": "Un diálogo está completamente correcto sólo si sus cuatro turnos reciben complete, sin fallos críticos ni técnicos.",
+  "acceptance": {
+    "expectedTurns": 40,
+    "minimumFullyMetTurns": 36,
+    "minimumFullyMetDialogs": 8,
+    "maximumCriticalFailures": 0,
+    "maximumTechnicalFailures": 0
+  },
+  "technicalFailures": {
+    "exception": "Excepción que impide obtener la respuesta real.",
+    "empty": "Respuesta vacía o sin contenido tras retirar sólo marcadores técnicos.",
+    "blocked": "La ejecución o generación quedó bloqueada y no produjo una respuesta evaluable.",
+    "discarded_context": "El evaluador, el motor o el límite de contexto descartó parte del historial necesario del diálogo.",
+    "token_budget": "Agotamiento del presupuesto de tokens o truncamiento que impide conservar una respuesta completa evaluable."
+  },
+  "evaluationProtocol": [
+    "Generar respuestas reales con el candidato identificado y el motor conversacional común, conservando sus respuestas previas en la historia.",
+    "Evaluar semánticamente; no exigir una frase literal ni comparar con texto ideal de entrenamiento.",
+    "Registrar por turno grado, evidencia breve, fallo crítico si corresponde y cualquier fallo técnico.",
+    "Conservar las respuestas originales y los desacuerdos entre revisores sin corregir la evidencia generada.",
+    "Esta suite queda expuesta para desarrollo; no usarla como corpus, objetivos de entrenamiento, filtro de corpus ni test reservado."
+  ],
+  "allowedClaimIfAccepted": "El candidato superó esta prueba básica expuesta de conversación en español bajo las condiciones registradas; no acredita calidad competitiva general ni aceptación final en una evaluación reservada.",
+  "limits": [
+    "Autoría y revisión de IA del proyecto, no panel humano independiente.",
+    "Diez diálogos cotidianos y cuarenta turnos; cobertura limitada, sin garantía de generalización fuera de esta prueba.",
+    "No acredita habilidades autónomas, herramientas ejecutadas, memoria persistente, entrenamiento provocado por una charla ni trabajo real fuera de la conversación.",
+    "No contiene datos personales del creador; las situaciones son originales y ficticias."
+  ]
+}

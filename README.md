@@ -1,79 +1,68 @@
 # Unidad
 
-**Proyecto de IA propia, local y experimental, con modelos entrenados desde cero
-y un cerebro compartido para distintas aplicaciones.**
+Unidad es un proyecto de IA propia que se entrena y ejecuta localmente. El
+repositorio reúne modelos, datos, entrenamiento, evaluación y un núcleo común
+para conectarlos a distintas aplicaciones mediante Python, consola o API HTTP.
+La inferencia utiliza nuestros pesos; no delega las respuestas en otra IA.
 
-Unidad reúne pesos propios, entrenamiento, evaluación, memoria persistente y
-herramientas configuradas por la aplicación. La visión es desarrollar una IA
-personal que converse en español, realice trabajo útil y pueda adaptarse mediante
-aprendizaje verificable. La inferencia actual funciona localmente con Python,
-NumPy y PyTorch, sin llamar a una API de otra IA.
+**Tenemos una plataforma de desarrollo funcional y modelos experimentales
+entrenados. La conversación y el trabajo autónomo fiables siguen pendientes.**
+Podemos entrenar, recuperar una corrida, generar respuestas y ejecutar herramientas
+con permisos y resultados verificables. Guardar memoria, aprobar pruebas de
+software o acumular actualizaciones no demuestra que el modelo haya aprendido a
+conversar bien.
 
-**Estado observado el 13 de octubre de 2026, 11:41:18 UTC:** la base propia de
-**15.179.520 parámetros** terminó con **8.914 actualizaciones** y **22.906.669
-posiciones objetivo procesadas**. Su ajuste conversacional terminó en
-**8.192 actualizaciones**, con **5.286.178 posiciones supervisadas incluido EOS**.
-BEST sigue en el paso **4.096**, con NLL de validación **1,7110848086831454**.
-**No se comprobó mejora conversacional**: C7 y ese BEST obtuvieron **0/40
-respuestas completas y 0/10 diálogos completos** en la misma batería de
-desarrollo. El nuevo modelo tuvo doce fallos críticos y seis técnicos, frente
-a seis críticos y cero técnicos de C7. Las dos revisiones de IA del proyecto
-conservan sus discrepancias y las [respuestas reales](docs/learning-repair-20261013/comparison/README.md).
-La conversación fiable sigue pendiente; C7 conserva su condición de referencia
-propia, también sin aceptación.
+[Qué tenemos y cómo encaja cada pieza](docs/QUE_TENEMOS.md) explica el proyecto
+con palabras sencillas: los modelos propios, Brain, GNOSIS, NERVA, memoria,
+herramientas, datos, checkpoints y lo que falta demostrar.
 
-La [evaluación posterior de español LATAM v3 + retención](docs/learning-repair-20261013/comparison/development-wide-latam-retention1024-v1/README.md)
-obtuvo **1/40 respuesta completa** y **0/10 diálogos**, frente a cero completas
-en [ACTION 256 antes de esas etapas](docs/learning-repair-20261013/comparison/development-action2048-best256-v1/README.md),
-con la misma rúbrica, contexto 2.048 y generación. Primaria posterior: cuatro
-parciales/35 fallidas; cruzada: una parcial/38 fallidas. Ambas registran seis
-críticas y dos técnicas, frente a cinco y seis antes. Es un resultado limitado
-en DEV expuesto con discrepancias conservadas: no cumple aceptación ni aísla
-el efecto de una sola etapa, corpus o pérdida.
+## Avance comprobado del 13 de octubre de 2026
 
-Tratamiento y control natural terminaron con **4.096 actualizaciones cada uno**.
-BEST del tratamiento sigue en 1.024; BEST del control es el padre heredado en
-**paso 0**, sin aprendizaje nuevo del control. El
-[probe regional de cuatro modelos](docs/learning-repair-20261013/comparison/latam-knowledge-development-probe-v1/README.md)
-obtuvo **0/12 significados y 0/6 familias correctas en todos**, según ambos
-revisores de IA del proyecto. La conversación fiable sigue sin aceptar.
-La siguiente etapa de acciones con contexto 2.048 **ya terminó 256 updates**,
-187,049678 segundos, con todos los 15.769.344 parámetros entrenables. Su NLL de
-validación fue 0,038118744; mide ajuste al corpus de acciones, todavía sin
-aceptación de planificación o trabajo fiable. Su primera propuesta con tres
-herramientas ya fue JSON válido, pero inventó `k.txt` y se bloqueó antes del
-handler; la tarea mínima siguió dando JSON inválido. La [evidencia real](docs/learning-repair-20261013/autonomy-demonstration/action256-own-v1/README.md)
-conserva esa mejora parcial de formato y el trabajo fallido, sin reescribirla.
-La **base causal de español + LATAM v3 terminó sus dos etapas de 2.048
-updates**, seguidas de 1.024 de retención natural + acciones. [LANG1](docs/learning-repair-20261013/wide-latam-v3-language-1-final-delivery.md)
-conserva 1.931,192552 segundos y un [artefacto propio de inferencia completo](docs/learning-repair-20261013/wide-latam-v3-language-1-inference-export.json),
-`a8c25b01…`. LANG2 cerró en 486,665383 segundos; retención, en 638,604964.
-Sus NLL pertenecen a corpus y objetivos distintos y no acreditan conversación.
-Tratamiento V2 y control V1 también cerraron en 256 updates cada uno.
-El supervisor inició Tatoeba causal: PID 28222, `step=0`, 3,6537 segundos
-en esta lectura; todavía no confirma nuevas actualizaciones del optimizador.
-Su [intento propio real](docs/learning-repair-20261013/autonomy-demonstration/action-copy-v2-treatment-own-v1/evidence.json)
-copió `dos.txt` y ejecutó una lectura verificada; la segunda propuesta fue
-JSON inválido y terminó `blocked_model`, sin informe y con originales intactos.
-Es una mejora parcial de copia en un caso expuesto. El control pidió `v.txt`,
-bloqueado antes del handler; ninguno completó el informe del modelo.
+El [recibo de esta actualización](docs/learning-repair-20261013/progress-20261013-1304.md)
+conserva la hora exacta de observación, procesos, fuentes, límites y hashes.
+El código y la entrega de pesos del [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11)
+se fusionaron en `a948c0fd358b250c7137978e3077ac70cdc51d83`, con los cuatro
+checks de CI aprobados. Después se verificaron 45 archivos obtenidos de
+`origin/main`, incluidos cinco pesos BEST completos. Esa comprobación valida
+los archivos entregados; la capacidad del modelo se mide por sus respuestas.
 
-La [continuación](docs/learning-repair-20261013/current-progress.md) conserva
-artefactos, exposición exacta, fuentes y autonomía experimental. Código, datos,
-pesos y documentos de PR10 se integraron en
-`62cf4d43780204f8d09dce6715cefcb6110aa310`, con los cuatro checks CI aprobados.
-El [recibo](docs/learning-repair-20261013/pr10-publication-verification.json)
-verifica esos bytes remotos en su fecha. La entrega de esta continuación se
-publica mediante [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11);
-su enlace conserva el estado y CI. El head `68b6af16…` aprobó cuatro checks,
-observación histórica que no verifica los heads posteriores ni acepta modelos.
+La base de 15.179.520 parámetros terminó 8.914 actualizaciones y su primer ajuste
+conversacional, 8.192. Sus continuaciones propias de 15.769.344 parámetros y
+contexto 2.048 completaron entrenamiento de acciones, dos etapas de español
+LATAM y retención. Los brazos de copia V2/V1 también terminaron 256
+actualizaciones cada uno. Se conservan las referencias, pesos descartados y
+[conversaciones anteriores](docs/learning-repair-20261013/comparison/README.md).
 
-El código compatible de PR1–8 y la entrega del
-[PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) están integrados sin
-borrador. PR9 conserva el SFT intermedio y datos preparados; su integración no
-acepta las respuestas. Los seis ajustes anteriores completaron 2.560
-actualizaciones y ninguno pasó la aceptación; sus
-[resultados](docs/conversation-integration-20261013/README.md) se conservan.
+Desde la entrega anterior, Tatoeba completó **2.048 actualizaciones causales y
+1.024 de retención**. El colector incorporó otro lote de Wikipedia:
+**2.651 registros nuevos de 2.648 artículos**, más 2.299 anclas conocidas que
+se cuentan como repaso. El lote procede del snapshot de noviembre de 2023;
+son datos nuevos para esta continuación, no noticias actualizadas a 2026.
+Su etapa causal cerró en **1.772 actualizaciones** por tiempo, seguida de
+**1.024 de ajuste**. Son pasos ejecutados, no cantidades de hechos aprendidos.
+
+El supervisor permanece disponible y espera el siguiente lote y su intervalo
+de colección. Cada etapa tiene límites finitos de tiempo, RAM y disco; el
+entorno debe seguir disponible. Los checkpoints de estas etapas posteriores
+están guardados localmente: esta actualización documenta su existencia y sus
+hashes, sin presentarlos como nuevos pesos ya publicados en GitHub.
+
+La [última evaluación revisada, posterior a Tatoeba](docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/README.md)
+obtuvo **0/40 respuestas completas y 0/10 diálogos** en ambos juicios de IA.
+Registraron nueve y diez fallos críticos, respectivamente, y cinco técnicos.
+El [candidato anterior a Tatoeba](docs/learning-repair-20261013/comparison/development-wide-latam-retention1024-v1/README.md)
+había obtenido 1/40 completa, seis críticos y dos técnicos. Conservamos el
+retroceso y las discrepancias; más entrenamiento no garantiza una mejora.
+La generación posterior al lote nuevo de Wikipedia aún no tiene revisión
+semántica en este corte. Ninguno de estos resultados acredita aceptación.
+
+En autonomía, el modelo consiguió una inspección real en una tarea expuesta y
+falló después. Tratamiento y control completaron **0/2 tareas nuevas** cada uno.
+El controlador sí comprobó permisos, resultados, conservación de originales y
+parada; sus demostraciones con fixtures se identifican aparte. El criterio
+conversacional sigue siendo 36/40 respuestas, ocho de diez diálogos y cero fallos
+críticos o técnicos en una prueba nueva tras fijar candidato y generación.
+La reserva final permanece cerrada y C7 conserva su papel de referencia propia.
 
 ## Qué existe y funciona hoy
 
@@ -83,8 +72,8 @@ actualizaciones y ninguno pasó la aceptación; sus
 | Modelos propios | Pesos, configuración, tokenizador y procedencia de Transformers entrenados desde pesos aleatorios. | Son modelos experimentales; C7 se conserva como referencia. |
 | GNOSIS | Una configuración reúne cerebro, NERVA, perfiles, recursos y etapas `foundation → conversation → adaptation`. | Las etapas requieren datos y ejecución explícitos; no deciden solas qué aprender. |
 | NERVA 0.2 | Backend del modelo pequeño de caracteres, con generación greedy y temperatura cero. | Usa Node.js; C7 y los Transformers siguen ejecutándose mediante PyTorch. |
-| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base y primer SFT terminados; natural/control cerraron 4.096 y acciones, 256. V3 completó dos etapas de 2.048 y retención de 1.024. Copia V2/V1 cerró ambos brazos 256; Tatoeba está iniciado en paso 0. GNOSIS conserva su configuración independiente sin corpus. |
-| Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | En esta lectura inició Tatoeba PID 28222, paso 0. Cada etapa conserva límites finitos y depende del entorno activo; no promueve candidatos automáticamente. |
+| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base y primer SFT terminados; acciones y contrastes conservados. Tatoeba cerró 2.048 + 1.024; el primer lote automático de Wikipedia, 1.772 + 1.024. Las etapas posteriores tienen checkpoints locales; no están aceptadas por conversación. GNOSIS conserva su configuración independiente sin corpus. |
+| Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | En el último corte espera datos tras el primer lote automático de Wikipedia. Conserva límites, procedencia y estados; depende del entorno activo y no promueve candidatos automáticamente. |
 | Memoria local | Registro de encargos, intentos y correcciones, con búsqueda y referencias al texto original. | Guardar memoria no cambia pesos ni incorpora recuerdos automáticamente al diálogo. |
 | Herramientas y autonomía operativa | Controlador experimental recibe propuestas estructuradas del modelo propio, comprueba permisos, ejecuta herramientas registradas y observa/verifica resultados. | Incluye límites, progreso persistente, recuperación, cancelación y aprobaciones para efectos sensibles. Su implementación no demuestra planificación aprendida fiable. |
 | Especialistas pequeños | Generación por caracteres y predicción de una métrica de atención. | Son demostraciones con errores y límites documentados, no capacidades generales aceptadas. |
@@ -220,9 +209,9 @@ supervisadas en 4.096 ventanas y dejó 6.110 ventanas TRAIN sin consumir.
 Su umbral cooperativo de 1.800 segundos se sobrepasó en 131,19 segundos;
 el motivo nativo conserva `signal`, el del runner `absolute_step_boundary`.
 V2 tratamiento cerró en 256, 157,475977 segundos; control V1 también en 256,
-131,484277. El supervisor 22557 inició el siguiente ciclo Tatoeba causal,
-PID 28222, `status=running`, paso 0 y 3,6537 segundos en la lectura de 11:41:18 UTC.
-No se confunden esa inicialización y sus validaciones con updates nuevos. El estado
+131,484277. La lectura histórica de las 11:41:18 UTC registró Tatoeba
+recién iniciado en paso 0. El cierre posterior de 2.048 + 1.024 y el siguiente
+lote de Wikipedia constan en el recibo actual enlazado al principio. El estado
 se puede consultar dentro del entorno:
 
 ```sh
@@ -259,7 +248,8 @@ La [mezcla causal v3 corregida](docs/learning-repair-20261013/wide-latam-v3-enqu
 ya cerró ambos shards en 2.048 updates cada uno y retención en 1.024.
 La primera fuente conserva SHA `81c41448…` y [entrega verificable](docs/learning-repair-20261013/wide-latam-v3-language-1-final-delivery.md).
 [Tatoeba posterior](docs/learning-repair-20261013/tatoeba-next-v1-enqueue.json)
-inició su etapa causal en paso 0; la retención posterior sigue en cola.
+terminó su etapa causal en 2.048 actualizaciones y la retención en 1.024;
+los recibos actuales distinguen esa ejecución de la preparación anterior.
 Descargar o mezclar datos no significa que los pesos los aprendieron;
 las anclas de retención repetidas no se cuentan como diversidad nueva.
 
@@ -555,6 +545,7 @@ entregas en borrador. Se conservan las ramas originales como historia.
 | [PR8](https://github.com/guadalupejuan001-code/UNIDAD/pull/8) | Reparación del registro de transición del supervisor, pesos y BEST/LAST finales de la base, fuentes públicas nuevas y mezcla de español en cola. El SFT estaba ejecutándose en la observación de PR8; ahora su primera etapa está cerrada. Integrar archivos no acepta sus respuestas. |
 | [PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) | SFT intermedio y fuentes/colas posteriores, conservados sin aceptar la conversación. La entrega posterior de PR10 añade cierres, evaluaciones y autonomía experimental; ya está integrada en main con CI aprobado. |
 | [PR10](https://github.com/guadalupejuan001-code/UNIDAD/pull/10) | Fusionado sin borrador en `62cf4d4`, con cuatro checks CI aprobados. Conserva las correcciones, cierres, datos, pesos propios y autonomía experimental; conversación y planificación aprendida siguen sin aceptar. |
+| [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11) | Fusionado sin borrador en `a948c0f`, con cuatro checks CI aprobados. Añade reintentos limitados de lectura, observaciones JSON sin pérdida, entrenamiento propio, checkpoints recuperables y resultados reales, incluidos fallos en tareas nuevas. |
 | [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Archivo de paquetes históricos descargables, conservado en su rama. |
 
 La [matriz de reconciliación](docs/conversation-integration-20261013/branch-reconciliation.json)
@@ -571,6 +562,7 @@ entrena C7 ni ejecuta su Transformer.
 
 ## Documentación y antecedentes
 
+- [Qué tenemos en Unidad](docs/QUE_TENEMOS.md) y [último avance comprobado](docs/learning-repair-20261013/progress-20261013-1304.md)
 - [GNOSIS: configuración, comandos y límites](docs/gnosis.md)
 - [NERVA dentro del cerebro](docs/nerva.md)
 - [Entrenamiento conversacional](docs/conversation.md) y [base lingüística](docs/language-pretraining.md)
@@ -586,6 +578,6 @@ Publicarlos no los convierte en modelos aceptados. Los seis ajustes anteriores
 terminaron y conservan su estado; la base de 15,18 M y su primer SFT también
 terminaron. Tratamiento y control regionales terminaron en 4.096 cada uno;
 acciones terminó en 256; v3 cerró ambos shards en 2.048 y retención en 1.024.
-Copia V2/V1 cerró ambos brazos en 256 y Tatoeba está iniciado en paso 0
-en la lectura indicada. Los presupuestos
+Copia V2/V1 cerró ambos brazos en 256; Tatoeba, en 2.048 + 1.024, y
+el primer lote automático de Wikipedia, en 1.772 + 1.024. Los presupuestos
 históricos 24+2 horas siguen cerrados. Clonar esta documentación no inicia una corrida ni un supervisor.

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "modelId": "unidad-conversation-60d942338eb5936f1936093b88f5645ac3466847d07906ce81da5adc6eadddd7",
+  "parameterCount": 15769344,
+  "outputsSha256": "14b6260dbb0b4ebf147634acc3b3ebddf3da0a1a4c108d1512f16bf5278cf591",
+  "reviewType": "Two separately authored project AI reviews, not independent human reviews",
+  "primary": {
+    "complete": 0,
+    "partial": 0,
+    "failed": 40,
+    "criticalIds": [
+      "library_day_correction",
+      "library_delegate_change",
+      "library_late_collection",
+      "tap_flow_correction",
+      "meeting_friendly_notice",
+      "meeting_time_revision",
+      "outing_activity_revision",
+      "outing_one_sentence_final",
+      "droplets_simple_cause"
+    ],
+    "technicalIds": [
+      "library_initial_deadline",
+      "library_day_correction",
+      "outing_initial_invitation",
+      "outing_day_revision",
+      "note_context_not_training"
+    ],
+    "dialogs": 0
+  },
+  "cross": {
+    "complete": 0,
+    "partial": 0,
+    "failed": 40,
+    "criticalIds": [
+      "library_day_correction",
+      "library_delegate_change",
+      "library_late_collection",
+      "cinema_age_correction",
+      "tap_flow_correction",
+      "meeting_friendly_notice",
+      "meeting_time_revision",
+      "outing_activity_revision",
+      "outing_one_sentence_final",
+      "droplets_simple_cause"
+    ],
+    "technicalIds": [
+      "library_initial_deadline",
+      "library_day_correction",
+      "outing_initial_invitation",
+      "outing_day_revision",
+      "note_context_not_training"
+    ],
+    "dialogs": 0
+  },
+  "disagreements": [
+    {
+      "id": "library_initial_deadline",
+      "disagreements": {
+        "relevance": {
+          "primary": false,
+          "cross": true
+        }
+      }
+    },
+    {
+      "id": "cinema_age_correction",
+      "disagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "tap_visit_delegate",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "tap_receiver_correction",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        },
+        "spanish": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "parcel_van_observation",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    }
+  ],
+  "crossCriticalInterpretationUncertainIds": [
+    "cinema_age_correction",
+    "tap_flow_correction",
+    "meeting_remote_revision",
+    "meeting_direct_final_notice",
+    "outing_activity_revision",
+    "outing_one_sentence_final",
+    "droplets_empty_cold_glass",
+    "parcel_courier_confirmation",
+    "quiet_sound_preference_revision",
+    "quiet_current_preference_recall",
+    "note_copy_and_persistence"
+  ],
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 160,
+    "torchThreads": 1
+  },
+  "contextLength": 2048,
+  "accepted": false,
+  "lineage": {
+    "origin": "own random-weight lineage",
+    "comparisonParentModelId": "unidad-conversation-3ccd6deb69d32443f41096f06a9c2bacb2fe67e54a257de35a44d8f78aa4ef5b",
+    "immediateTatoebaBaseModelId": "unidad-conversation-22c1debc59efd635e89a22ed59b04c715c2927eb66d7f1c2f672e93f63140a84",
+    "baseSelectedAndFinalStep": 2048,
+    "retentionSelectedAndFinalStep": 1024,
+    "retentionCorpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+    "partitionPolicy": "train_validation_only; TEST absent/unevaluated"
+  },
+  "archiveAvailability": {
+    "sourceInferenceArtifact": "/workspace/UNIDAD/private/learning-repair-20261013/runs/tatoeba-next-v1/natural-action-retention/snapshots/best-step001024",
+    "sourceInferenceArtifactPrivate": true,
+    "nativeCheckpointPrivate": true,
+    "nativeCheckpointIncludedInPacket": false,
+    "weightsIncludedInPacket": false,
+    "publicPacketContent": "Evaluation outputs and reviews, frozen development suite and three artifact metadata JSON; no native checkpoint or full weights"
+  },
+  "previousWideLatamEndpoint": {
+    "modelId": "unidad-conversation-3ccd6deb69d32443f41096f06a9c2bacb2fe67e54a257de35a44d8f78aa4ef5b",
+    "outputsSha256": "b488893ecdc3771d587a4a974d916aa0e3a10d29fa2a0b3b9cfd9315c91789bc",
+    "complete": 1,
+    "dialogs": 0,
+    "critical": 6,
+    "technical": 2,
+    "reference": "../development-wide-latam-retention1024-v1/comparison-summary.json"
+  },
+  "limits": [
+    "Exposed DEV40; no reserved acceptance or model promotion",
+    "Same original rubric,2048context/temperature0/seed42/160newtokens, actual generated histories",
+    "Observed zero complete responses after Tatoeba causal stage and retention versus prior one; changed multiple phases/corpora/weights, no single-variable causal attribution",
+    "Validation losses from different corpora/objectives not compared",
+    "Critical disagreements and uncertain interpretations preserved, not merged into consensus"
+  ]
+}
