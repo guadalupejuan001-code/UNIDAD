@@ -98,7 +98,8 @@ class AutonomyActionSftTests(unittest.TestCase):
             return {"text": '{"action":"stop","reason":"Prueba declarada."}'}
 
         engine = SimpleNamespace(model_id="test-engine-without-weights", reply=reply,
-                                 _tokenizer=self.tokenizer, _model=SimpleNamespace(config={"context_length": 2048}))
+                                 _tokenizer=self.tokenizer, _model=SimpleNamespace(config={"context_length": 2048}),
+                                 prompt_usage=lambda messages: helper.measure_prompt(self.tokenizer, messages, 2048))
         proposer = ModelActionProposer(SimpleNamespace(conversation_engine=engine), max_new_tokens=128)
         proposer(context)
         messages = helper.compact_projection(context)

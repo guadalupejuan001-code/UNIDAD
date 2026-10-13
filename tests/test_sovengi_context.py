@@ -49,6 +49,7 @@ class SovengiContextTests(unittest.TestCase):
         self.addCleanup(self.local.cleanup)
         self.directory = Path(self.local.name)
         config = json.loads((ROOT / "configs/gnosis.json").read_text())
+        config["brain"].pop("conversation_ensemble", None)
         config["projectRoot"] = self.local.name
         config["brain"].update(conversation_model=str(self.root / "model"),
             expected_model_id=self.manifest["modelId"], language_backend="numpy")

@@ -7,7 +7,20 @@
     "conversation_decoder": "torch",
     "conversation_cache": true,
     "conversation_model": "models/learning-repair-20261013/pattern-relations-v1/reference-wiki1",
-    "expected_model_id": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4"
+    "expected_model_id": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+    "conversation_ensemble": {
+      "catalog": "configs/conversation-models.json",
+      "primary": "reference-wiki1",
+      "max_candidates": 4,
+      "min_candidates": 2,
+      "max_resident": 4,
+      "max_seconds": 60,
+      "total_new_tokens": 256,
+      "max_score_calls": 8,
+      "critic_count": 2,
+      "max_scoring_tokens": 256,
+      "max_sliding_score_tokens": 0
+    }
   },
   "learning": {
     "profile": "15m",

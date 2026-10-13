@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "auditKind": "static_component_connectivity_and_bounded_auxiliary_measurement",
+  "baselineCommit": "e6a7b7c",
+  "scope": "UNIDAD core, model runtimes, SOVENGI, GNOSIS, CLI, HTTP, memory, tools and training",
+  "personalConversationUsedAsTraining": false,
+  "externalModelServiceUsed": false,
+  "classification": {
+    "conversation": "executes or supplies evidence in the conversation path",
+    "explicit_service": "available through an explicit operation or host configuration",
+    "manual_learning": "host-selected corpus and finite execution; not triggered by chat",
+    "development_adapter": "lower-level access to the same core for experiments"
+  },
+  "baseline": [
+    {
+      "component": "Brain and ModelRuntime",
+      "classification": "conversation",
+      "connection": "SOVENGI, GNOSIS and HTTP dispatch model operations through the same Brain and host-selected runtime.",
+      "gap": "One conversational Transformer is loaded; character RNN and metric MLP are separate explicit operations.",
+      "codeRefs": ["src/ia_propia/brain/core.py", "src/ia_propia/brain/models.py"]
+    },
+    {
+      "component": "Conversational Transformers",
+      "classification": "conversation",
+      "connection": "ConversationEngine owns generation and tokenizer-based prompt measurement; the selected reference is reference-wiki1.",
+      "gap": "Other trained artifacts can be selected by host configuration but do not participate together in a reply.",
+      "codeRefs": ["src/ia_propia/conversation/runtime.py", "src/ia_propia/conversation/scoring.py", "configs/gnosis.json"],
+      "localArtifactNamesAtBaseline": ["conversation-basics-v4", "conversation-language-v7", "conversation-reference-c7", "reference-wiki1", "sovengi-memory-candidate-best"],
+      "inventoryNote": "This local availability snapshot differs from the larger Git catalog; manifest aliases are not additional distinct weights."
+    },
+    {
+      "component": "Character language RNN",
+      "classification": "explicit_service",
+      "connection": "ModelRuntime loads its verified packaged weights and exposes language.generate, using the configured NumPy or NERVA backend.",
+      "parameterCount": 2903,
+      "gap": "It does not evaluate generated conversational candidates at baseline.",
+      "usefulConnection": "Bounded next-character likelihood of original candidates, with unknown-character coverage and explicit absence of factual validation.",
+      "codeRefs": ["src/ia_propia/language/model.py", "src/ia_propia/language/nerva_backend.py", "src/ia_propia/brain/models.py"]
+    },
+    {
+      "component": "Metric forecast MLP",
+      "classification": "explicit_service",
+      "connection": "attention.forecast validates supplied observations against the loaded model's source, metric, privacy and cadence.",
+      "parameterCount": 49,
+      "source": "wikimedia:en.wikipedia.org",
+      "metric": "views",
+      "gap": "Its predictions are not conversational evidence unless a host deliberately provides them to the conversation.",
+      "usefulConnection": "An explicit forecast-to-conversation bridge for valid supplied observations; no fabricated observations or general quality score.",
+      "codeRefs": ["src/ia_propia/trend/data.py", "src/ia_propia/trend/model.py", "src/ia_propia/brain/models.py"]
+    },
+    {
+      "component": "Context model and dialogue store",
+      "classification": "conversation",
+      "connection": "SOVENGI restores actual dialogue roles, selects original user sources and fits complete sources to the active engine's token budget.",
+      "parameterCount": 21,
+      "storage": "SQLite WAL with FTS5 when available",
+      "limits": "Lexical ranking is not semantic understanding; assistant text remains dialogue and is not promoted to user facts.",
+      "codeRefs": ["src/ia_propia/context/manager.py", "src/ia_propia/context/model.py", "src/ia_propia/context/store.py"]
+    },
+    {
+      "component": "Explicit task memory",
+      "classification": "conversation",
+      "connection": "SOVENGI recalls bounded original saved task fields through workspace.recall_tasks and includes fitting evidence in conversation replies.",
+      "limits": "Saving memory neither updates parameters nor makes an unverified attempt factual.",
+      "codeRefs": ["src/ia_propia/workspace.py", "src/ia_propia/memory_search.py", "src/ia_propia/sovengi/application.py"]
+    },
+    {
+      "component": "NERVA",
+      "classification": "explicit_service",
+      "connection": "It executes the configured character RNN and optional token selection from real Transformer logits through nerva or nerva-fast.",
+      "conversationDefault": "torch",
+      "limits": "Transformer neural computation and training remain PyTorch; activating a slower backend is not an optimization by itself.",
+      "codeRefs": ["src/ia_propia/language/nerva_backend.py", "src/ia_propia/conversation/nerva_decoder.py", "src/ia_propia/assets/nerva/conversation_worker_fast.mjs"]
+    },
+    {
+      "component": "GNOSIS learning lifecycle",
+      "classification": "manual_learning",
+      "connection": "plan, train, status and export delegate to the shared trainer and jobs with artifact identities, corpus hashes and finite budgets.",
+      "gap": "SOVENGI exposes plan/train while learning status/export require the lower-level GNOSIS entry point at baseline.",
+      "limits": "The supplied default configuration has no learning corpus; model profiles are not trained weights.",
+      "codeRefs": ["src/ia_propia/gnosis/project.py", "src/ia_propia/gnosis/__main__.py", "src/ia_propia/conversation/jobs.py", "src/ia_propia/conversation/training.py", "src/ia_propia/sovengi/__main__.py"]
+    },
+    {
+      "component": "Continual supervisor and public-data collectors",
+      "classification": "manual_learning",
+      "connection": "The supervisor already launches bounded jobs, observes real process state, records post-stage evaluation and coordinates the configured collector.",
+      "limits": "These are explicit application scripts, not an autonomous learning process started by ordinary chat. Process activity was not inferred from file presence.",
+      "codeRefs": ["examples/continual_training.py", "examples/collect_learning_wiki_v2.py", "src/ia_propia/conversation/jobs.py"]
+    },
+    {
+      "component": "Autonomy and file tools",
+      "classification": "explicit_service",
+      "connection": "ModelActionProposer shares the selected conversation engine; the controller validates generated proposals and retains actual task evidence.",
+      "limits": "Host-configured file roots and tools remain authoritative; task observations have their own journal instead of importing another chat's memory.",
+      "codeRefs": ["src/ia_propia/brain/autonomy_model.py", "src/ia_propia/brain/autonomy.py", "src/ia_propia/brain/file_tools.py", "src/ia_propia/sovengi/application.py"]
+    },
+    {
+      "component": "CLI, HTTP and workflows",
+      "classification": "conversation",
+      "connection": "SOVENGI CLI and its authenticated HTTP server use the same SovengiSession; explicit workflows dispatch the same bounded operations.",
+      "limits": "One HTTP server hosts a fixed body session; incoming text cannot choose models, roots or new tools.",
+      "developmentAdapters": "brain, gnosis and conversation CLIs retain lower-level access to the same core; SOVENGI adds product memory and context policy.",
+      "codeRefs": ["src/ia_propia/sovengi/__main__.py", "src/ia_propia/brain/http.py", "src/ia_propia/brain/workflow.py", "src/ia_propia/cli.py"]
+    },
+    {
+      "component": "Inference and training optimizations",
+      "classification": "explicit_service",
+      "connection": "Generation uses the existing KV cache when configured. The trainer already connects mmap, supervised projection, microbatches, optional CPU BF16 and optional adaptive sampling.",
+      "limits": "Incompatible loader/sampling settings are rejected; enabling every optimization together is not valid. Technical throughput does not establish language quality.",
+      "codeRefs": ["src/ia_propia/conversation/generation_cache.py", "src/ia_propia/conversation/disk_data.py", "src/ia_propia/conversation/adaptive.py", "src/ia_propia/conversation/training.py"]
+    }
+  ],
+  "duplicationAssessment": {
+    "packagedRnnAndMlp": "Portable verified copies of public own-weight artifacts, not additional experts.",
+    "multipleClis": "Adapters for different levels of the same core, not independent neural implementations.",
+    "historicalCheckpoints": "Experimental evidence and alternative host-selectable weights; file presence alone does not justify activation.",
+    "disconnectedCoreModuleProven": false
+  },
+  "implementedConnections": [
+    {
+      "connection": "Own Transformer catalog to shared conversation runtime",
+      "state": "implemented",
+      "behavior": "GNOSIS accepts a pinned host-selected catalog and passes ModelSpec descriptors through Brain and ModelRuntime to ConversationEnsemble. Models coordinate through original generated text, including different tokenizers.",
+      "catalogReceipt": "docs/sovengi-ensemble-20261013/model-catalog.json",
+      "catalogArtifactsVerified": 35,
+      "uniqueTokenizers": 3,
+      "defaultBudget": {"maxCandidates": 4, "minCandidates": 2, "maxResident": 4, "maxSeconds": 60, "totalNewTokens": 256, "maxScoreCalls": 8},
+      "limits": "Time limits are cooperative between operations. Configured roles do not prove trained specialization. The selected reply remains one original generated candidate.",
+      "codeRefs": ["configs/conversation-models.json", "configs/gnosis.json", "src/ia_propia/conversation/catalog.py", "src/ia_propia/conversation/ensemble.py", "src/ia_propia/brain/models.py", "src/ia_propia/gnosis/project.py"]
+    },
+    {
+      "connection": "Character RNN to generated-candidate diagnostics",
+      "state": "implemented",
+      "behavior": "ModelRuntime supplies the verified own RNN scorer as the ensemble auxiliary callback; candidate text is scored without replacement or completion. The protocol also exposes language.score and SOVENGI exposes score.",
+      "selectionUse": "diagnostic and tie breaker only",
+      "limits": "Character likelihood and vocabulary coverage do not verify facts, grammar or intent; a one-character candidate has no next-character target and abstains.",
+      "codeRefs": ["src/ia_propia/language/scoring.py", "src/ia_propia/brain/models.py", "src/ia_propia/conversation/ensemble.py", "src/ia_propia/sovengi/__main__.py"]
+    },
+    {
+      "connection": "Metric MLP predictions to conversation evidence",
+      "state": "implemented",
+      "behavior": "conversation.forecast takes explicit observations, validates their trained source and metric, computes actual forecasts and attaches bounded prediction evidence to the shared conversation path. SOVENGI applies its usual context and saved-memory policy to that path. Preparation errors preserve completed explicit workflow effect receipts.",
+      "cli": "sovengi forecast TEXT --observations OBSERVATIONS_JSON",
+      "limits": "Observations are neither fetched nor invented. Predictions remain experimental predictions, not observed or accepted facts. The MLP does not evaluate ordinary dialogue.",
+      "codeRefs": ["src/ia_propia/brain/models.py", "src/ia_propia/sovengi/application.py", "src/ia_propia/sovengi/__main__.py", "src/ia_propia/trend/model.py"]
+    },
+    {
+      "connection": "Host-selected auxiliary artifacts to GNOSIS",
+      "state": "implemented",
+      "behavior": "GNOSIS accepts optional language_model and attention_model artifact paths selected by the host instead of restricting product composition to the packaged demonstrations.",
+      "limits": "Conversation input cannot replace models or choose artifact paths. Learning runs cannot overwrite selected auxiliary artifacts. Forecast source and metric still come from the selected model's verified artifact.",
+      "codeRefs": ["src/ia_propia/gnosis/project.py", "src/ia_propia/brain/core.py", "src/ia_propia/brain/models.py"]
+    },
+    {
+      "connection": "Shared engine to autonomy preflight",
+      "state": "implemented",
+      "behavior": "ModelActionProposer measures prompts through engine.prompt_usage rather than accessing a single Transformer's private model/tokenizer fields, preserving compatibility with the ensemble facade.",
+      "limits": "Task tools, roots and evidence journals retain their existing host policy. This repair does not establish reliable learned planning.",
+      "codeRefs": ["src/ia_propia/brain/autonomy_model.py", "src/ia_propia/brain/autonomy.py"]
+    },
+    {
+      "connection": "Learning status and export to the SOVENGI entry point",
+      "state": "implemented",
+      "behavior": "SOVENGI now exposes learning-status and export alongside the existing GNOSIS plan/train commands; these call the same explicit stage lifecycle.",
+      "limits": "No private dialogue is automatically converted into a corpus, no training starts from ordinary chat, and exported candidates are not automatically accepted.",
+      "codeRefs": ["src/ia_propia/sovengi/__main__.py", "src/ia_propia/gnosis/project.py"]
+    },
+    {
+      "connection": "NERVA conversation configuration and reported capability",
+      "state": "implemented_and_description_corrected",
+      "behavior": "The existing optional real-logit conversation selector remains host-configurable; GNOSIS no longer incorrectly describes NERVA as limited to the character RNN.",
+      "limits": "The supplied default remains Torch with its KV cache; the transformer forward pass and training continue in PyTorch.",
+      "codeRefs": ["src/ia_propia/conversation/nerva_decoder.py", "src/ia_propia/gnosis/project.py", "configs/gnosis.json"]
+    }
+  ],
+  "implementedAuxiliaryScorer": {
+    "api": "ia_propia.language.scoring.score_text(artifact, text, max_chars=512)",
+    "state": "runtime_available_and_ensemble_callback_wired",
+    "runtimeOperation": "language.score",
+    "conversationUse": "Configured ensembles score original generated candidates as a diagnostic and tie breaker when budget remains.",
+    "integrationRefs": ["src/ia_propia/brain/models.py", "src/ia_propia/conversation/ensemble.py"],
+    "maxInputBytes": 16384,
+    "maxScoredCharacters": 512,
+    "maxTargets": 511,
+    "singleCharacter": "explicit abstention: meanNll=null, targetChars=0, scoreable=false",
+    "unknownRatioBasis": "all scored prefix characters including initial input",
+    "candidateModified": false,
+    "parametersUpdated": false,
+    "executionBackend": "numpy",
+    "tests": {"command": "python -m unittest tests.test_language_scoring -v", "passed": 5, "failed": 0},
+    "measurement": {
+      "scope": "RNN scoring only; no conversation generation or quality measurement",
+      "modelId": "language-858bad78a84d74bb9f22622f4ec7ca1dd077665157550f94c5ff9462185c79b3",
+      "torchImported": false,
+      "samples": [
+        {"characters": 32, "targetChars": 31, "calls": 30, "p50Milliseconds": 4.619631999503326, "p95Milliseconds": 6.101054999817279},
+        {"characters": 128, "targetChars": 127, "calls": 30, "p50Milliseconds": 5.702258999917831, "p95Milliseconds": 6.5158199995494215},
+        {"characters": 512, "targetChars": 511, "calls": 30, "p50Milliseconds": 10.430525000174384, "p95Milliseconds": 13.035646000389534}
+      ],
+      "limitations": "Single CPU process, one warmup per length, authored fictional candidate text; no concurrent-service throughput claim."
+    },
+    "codeRefs": ["src/ia_propia/language/scoring.py", "tests/test_language_scoring.py"]
+  },
+  "connectionVerification": {
+    "command": "python -m unittest tests.test_language_scoring tests.test_model_connections tests.test_autonomy_action_sft -q",
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "newConnectionTests": 8,
+    "coverage": [
+      "Actual loaded RNN scoring, stable weights and request-path rejection.",
+      "Optional host-selected auxiliary artifacts through GNOSIS without automatic learning.",
+      "Learning-run overlap rejection for selected RNN and MLP artifacts.",
+      "Actual MLP predictions become bounded evidence without changing the original current user message.",
+      "Wrong domain and private observations reject before conversational generation.",
+      "Explicit workflow observation references resolve before forecasting.",
+      "Autonomy accepts a facade with prompt_usage and without private model/tokenizer fields.",
+      "SOVENGI reports completed workflow effects when forecast preparation fails.",
+      "Existing action-SFT fixtures retain exact prompt projection, real file effects and oversized-context rejection."
+    ],
+    "fixtureLimits": "Conversational transport fixtures are explicitly declared and do not load conversational weights or prove learned language/planning. Auxiliary RNN and MLP computations use actual existing own weights.",
+    "newTrainingExecutedByThisAudit": false,
+    "codeRefs": ["tests/test_model_connections.py", "tests/test_language_scoring.py", "tests/test_autonomy_action_sft.py", "examples/prepare_autonomy_action_sft.py"]
+  },
+  "preservedSeparation": [
+    "Private dialogue and saved task history are not automatically exported as a training corpus.",
+    "An RNN likelihood signal is not a factual, grammatical or semantic judge.",
+    "Metric forecasts require valid observations from the loaded model's trained domain.",
+    "Training needs explicit data provenance and finite host-configured budgets.",
+    "Available backends and historical model artifacts are not all activated merely to increase component usage."
+  ]
+}

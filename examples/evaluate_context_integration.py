@@ -157,6 +157,8 @@ def run(config_path, output_path):
             # GNOSIS resolves both model and memory relative to its project root.
             # The selected artifact is read-only; all runtime state stays temporary.
             config = deepcopy(original_config)
+            # Preserve this context-only comparison of one pinned generator.
+            config["brain"].pop("conversation_ensemble", None)
             config["projectRoot"] = temporary
             config["brain"]["conversation_model"] = str(model_path)
             local_config = Path(temporary) / "config.json"

@@ -118,15 +118,14 @@ class ModelActionProposer:
         self.last_metadata = {"modelId": self.engine.model_id, "request": deepcopy(request),
                               "contextSha256": hashlib.sha256(raw_context.encode("utf-8")).hexdigest(),
                               "experimental": True, "modelProposalValidated": False}
-        from ..conversation.tokenizer import encode_prompt
-        limit = self.engine._model.config["context_length"]
-        encoded, discarded = encode_prompt(request["messages"], self.engine._tokenizer, limit)
-        self.last_metadata.update(promptTokens=len(encoded) + discarded,
-                                  contextTokens=limit, discardedPromptTokens=discarded)
-        if discarded:
+        usage = self.engine.prompt_usage(request["messages"])
+        self.last_metadata.update(promptTokens=usage["tokens"],
+                                  contextTokens=usage["capacity"], discardedPromptTokens=usage["discarded"])
+        if usage["discarded"]:
             self.last_metadata["contextRejected"] = "model_token_limit"
             raise BrainError("context_too_large", "Autonomy context would discard prompt tokens; generation was not called")
         reply = self.engine.reply(**request)
+        self.last_metadata["modelId"] = reply.get("modelId", self.engine.model_id)
         self.last_metadata["replyMetadata"] = deepcopy({key: value for key, value in reply.items() if key != "text"})
         self.last_metadata["rawReply"] = reply.get("text")
         if type(reply.get("text")) is not str:

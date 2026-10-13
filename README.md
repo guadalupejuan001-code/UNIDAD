@@ -1,5 +1,33 @@
 # SOVENGI
 
+**SOVENGI 0.8: 35 Transformers propios coordinados.** La configuración habitual conecta
+todos los artefactos distintos del [catálogo](configs/conversation-models.json).
+En cada respuesta intenta hasta cuatro generaciones: dos referencias estables
+(`reference-wiki1` y `memory-candidate`) y dos participantes que rotan por el
+resto. Conserva hasta cuatro modelos residentes y exige al menos dos generaciones
+válidas; devuelve exactamente la respuesta elegida de uno de ellos.
+La selección combina puntuaciones cruzadas y coincidencias con las fuentes;
+es una regla explícita, con resultados y límites en la traza `ensemble`.
+
+Los 35 tienen pesos completos disponibles sin red, incluidos los **27.943.524
+bytes** reconstruidos del delta propio de C7. El [recibo de catálogo](docs/sovengi-ensemble-20261013/model-catalog.json)
+verifica identidades y **1.417.104.076 bytes** de pesos; el
+[recibo de reconstrucción](docs/sovengi-ensemble-20261013/delta-reconstruction.json)
+conserva padre, delta y SHA del resultado. La
+[guía de coordinación](docs/sovengi-ensemble-20261013/README.md), el
+[benchmark técnico](docs/sovengi-ensemble-20261013/benchmark.json) y la
+[evaluación con pesos publicados](docs/sovengi-ensemble-20261013/real-evaluation.json)
+separan integridad, ejecución y calidad. Todos los modelos siguen siendo
+experimentales, con `productionAccepted: false`.
+
+La comprobación de ejecución recorrió los **35 modelos en 17 peticiones**,
+con dos tokens por candidato y un máximo observado de cuatro residentes.
+La comparación conversacional conserva 16 respuestas reales con tope de
+24 tokens; su calidad sigue sin aceptación. El benchmark separado con cuatro
+modelos aleatorios pequeños pasó de **47,14 a 24,31 ms** de mediana al conservar
+cuatro residentes en vez de uno, manteniendo ganador y evaluadores. Esa medición
+no representa el rendimiento del catálogo completo.
+
 **Modelo de contexto integrado:** SOVENGI incorpora un selector independiente
 entrenado desde pesos aleatorios propios. Recupera fragmentos originales,
 conserva turnos recientes y prepara una entrada que respeta el presupuesto del
@@ -26,8 +54,9 @@ El candidato se puede usar en la misma entrada de SOVENGI:
 sovengi --config configs/sovengi-memory-candidate.json chat
 ```
 
-Es una selección experimental explícita. `sovengi chat` conserva `reference-wiki1`
-como comparación; no se ha aceptado todavía ningún candidato para producción.
+Ese comando elige `memory-candidate` como referencia primaria de la coordinación.
+`sovengi chat` usa `reference-wiki1` como primaria y también incorpora el candidato
+de memoria. No se ha aceptado todavía ningún candidato para producción.
 La corrida terminó por presupuesto y no sigue ejecutándose en segundo plano.
 
 **SOVENGI** es el nombre de la IA; **UNIDAD** se conserva como nombre del
@@ -36,6 +65,7 @@ memoria explícita, herramientas del anfitrión, API y planificación de aprendi
 
 ```bash
 python -m pip install -e '.[conversation]'
+sovengi models
 sovengi chat
 ```
 
@@ -44,16 +74,31 @@ Dentro del chat: `/recordar El taller abre el jueves.` guarda una nota,
 recuperan notas relevantes de esa misma memoria si caben en el contexto.
 El gestor de contexto está habilitado en esa entrada y en sus peticiones HTTP.
 `--context-session nombre` permite continuar el contexto local de una sesión;
-`--no-context` permite comparar el mismo generador sin el selector.
+`--no-context` permite comparar la misma coordinación sin el selector.
 `sovengi serve` ofrece el mismo producto por HTTP con token. La
 [guía de SOVENGI](docs/SOVENGI.md) explica herramientas, configuración y límites.
 
-La configuración compartida `configs/gnosis.json` selecciona ahora el modelo
-general publicado de **15.769.344 parámetros y contexto 2.048**, identificado
-como `reference-wiki1`; C7 queda como referencia histórica. Los candidatos de
-patrones y memoria no sustituyen automáticamente esos pesos.
-Esta selección permite integrar la línea actual, **no acredita una mejora de
-calidad ni aceptación para producción**.
+La configuración compartida `configs/gnosis.json` fija el catálogo, las
+identidades y el presupuesto de coordinación. La referencia primaria
+`reference-wiki1` tiene **15.769.344 parámetros y contexto 2.048**; cada miembro
+conserva sus propios pesos, tokenizador y ventana. C7, V7 y los demás candidatos
+participan según la rotación y su disponibilidad. Coordinar sus respuestas
+todavía no acredita conversación fiable ni aceptación para producción.
+
+La RNN auxiliar de **2.903 parámetros** puntúa caracteres de los candidatos como
+diagnóstico y desempate; `sovengi score 'Texto'` expone esa medición. El MLP de
+**49 parámetros** pronostica la métrica `views` de `wikimedia:en.wikipedia.org`
+con observaciones suministradas explícitamente. `sovengi forecast` puede entregar
+esa predicción a la conversación, conservándola como pronóstico. La
+[auditoría de conexiones](docs/sovengi-connectivity-20261013/audit.json) distingue
+estos servicios del entrenamiento, la memoria y las herramientas.
+
+`sovengi models` informa los 35 miembros, sus identidades, disponibilidad y
+estado de carga. Un checkout parcial de CI puede tener menos pesos: los ausentes
+siguen en el catálogo y se registran como omitidos. La carga ocurre al usar un
+miembro, con verificación de hashes; las peticiones no descargan artefactos.
+El límite habitual de 60 segundos se comprueba entre operaciones. Una carga o
+inferencia iniciada puede terminar después; su exceso queda en la traza.
 
 SOVENGI es un proyecto de IA propia que se entrena y ejecuta localmente. El
 repositorio reúne modelos, datos, entrenamiento, evaluación y un núcleo común
@@ -182,15 +227,15 @@ La reserva final permanece cerrada y C7 conserva su papel de referencia propia.
 
 | Componente | Capacidad implementada | Alcance actual |
 | --- | --- | --- |
-| Cerebro compartido | `Brain` y `ConversationEngine` sirven los mismos modelos desde Python, CLI y HTTP. | Cada producto configura herramientas y memoria; el modelo no recibe acceso automático a cuentas. |
-| Modelos propios | Pesos, configuración, tokenizador y procedencia de Transformers entrenados desde pesos aleatorios. | Son modelos experimentales; C7 se conserva como referencia. |
+| Cerebro compartido | `Brain`, `ConversationEnsemble` y `ConversationEngine` coordinan los mismos modelos desde Python, CLI y HTTP. | Cada producto configura herramientas y memoria; el modelo no recibe acceso automático a cuentas. |
+| Modelos propios | Catálogo de 35 Transformers con pesos completos, configuración, tokenizador y procedencia desde pesos aleatorios. | Hasta cuatro participantes por respuesta y cuatro residentes; sus capacidades siguen siendo experimentales. |
 | GNOSIS | Una configuración reúne cerebro, NERVA, perfiles, recursos y etapas `foundation → conversation → adaptation`. | Las etapas requieren datos y ejecución explícitos; no deciden solas qué aprender. |
 | NERVA 0.2 | Ejecuta el modelo de caracteres y, opcionalmente, la selección de tokens del Transformer conversacional. | Necesita Node.js 18+. El cálculo neuronal del Transformer sigue en PyTorch; el selector Torch con caché es más rápido en la medición conservada. |
 | Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base y primer SFT terminados; acciones y contrastes conservados. Tatoeba cerró 2.048 + 1.024; el primer lote automático de Wikipedia, 1.772 + 1.024. Las etapas posteriores tienen checkpoints locales; no están aceptadas por conversación. GNOSIS conserva su configuración independiente sin corpus. |
 | Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | En el último corte espera datos tras el primer lote automático de Wikipedia. Conserva límites, procedencia y estados; depende del entorno activo y no promueve candidatos automáticamente. |
 | Memoria local | Registro de encargos, intentos y correcciones, con búsqueda y referencias al texto original. | SOVENGI recupera texto guardado relevante para sus respuestas; el núcleo base sigue siendo explícito. Guardar memoria no cambia pesos ni garantiza que el modelo interprete bien el recuerdo. |
 | Herramientas y autonomía operativa | Controlador experimental recibe propuestas estructuradas del modelo propio, comprueba permisos, ejecuta herramientas registradas y observa/verifica resultados. | Incluye límites, progreso persistente, recuperación, cancelación y aprobaciones para efectos sensibles. Su implementación no demuestra planificación aprendida fiable. |
-| Especialistas pequeños | Generación por caracteres y predicción de una métrica de atención. | Son demostraciones con errores y límites documentados, no capacidades generales aceptadas. |
+| RNN y MLP auxiliares | Puntuación y generación por caracteres; pronóstico de vistas de Wikipedia con observaciones explícitas. | El diagnóstico y las predicciones tienen dominios acotados; no acreditan comprensión ni verificación de hechos. |
 
 Las rutas privadas se excluyen de Git. La selección de modelos, herramientas,
 backends y recursos corresponde al anfitrión; las peticiones no pueden cambiarlos.
@@ -493,7 +538,8 @@ calidad conversacional. La carpeta `final-treatment-best-step001024` contiene
 la referencia y metadatos finales; el comando carga el artefacto completo
 `intermediate-step001024`, con los mismos pesos finales seleccionados.
 
-El chat GNOSIS carga C7. `plan` calcula recursos sin crear pesos ni iniciar entrenamiento;
+El chat GNOSIS usa la coordinación de la configuración común, con
+`reference-wiki1` como primaria. `plan` calcula recursos sin crear pesos ni iniciar entrenamiento;
 la configuración entregada informa que los corpus están sin configurar. Clonar
 pesos y checkpoints no inicia un proceso que siga aprendiendo.
 

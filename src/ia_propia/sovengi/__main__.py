@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import sys
+from pathlib import Path
 
 from .application import Sovengi
 from ..conversation.contract import DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED
@@ -73,10 +74,14 @@ def parser(prog="sovengi"):
     root.add_argument("--input-root", help="Carpeta existente de archivos autorizados")
     root.add_argument("--report-root", help="Carpeta existente de informes")
     commands = root.add_subparsers(dest="command", required=True)
-    for name in ("chat", "ask"):
+    for name in ("chat", "ask", "forecast"):
         command = commands.add_parser(name, help="Conversar" if name == "chat" else "Hacer una pregunta")
-        if name == "ask":
+        if name in ("ask", "forecast"):
             command.add_argument("text")
+        if name == "forecast":
+            command.add_argument("--observations", type=Path, required=True,
+                                 help="JSON de observaciones explícitas del dominio del modelo de métricas")
+            command.add_argument("--signal-id", help="Señal concreta para pronosticar y explicar")
         command.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
         command.add_argument("--temperature", type=float, default=0)
         command.add_argument("--seed", type=int, default=DEFAULT_SEED)
@@ -84,6 +89,10 @@ def parser(prog="sovengi"):
         command.add_argument("--top-p", type=float, default=1.0)
         command.add_argument("--repetition-penalty", type=float, default=1.0)
     commands.add_parser("status", help="Ver identidad, servicios y límites reales")
+    commands.add_parser("models", help="Ver modelos coordinados, disponibilidad y estado de carga")
+    score = commands.add_parser("score", help="Evaluar texto con el modelo auxiliar de caracteres")
+    score.add_argument("text")
+    score.add_argument("--max-chars", type=int, default=512)
     remember = commands.add_parser("remember", help="Guardar texto explícitamente en memoria")
     remember.add_argument("text")
     memory = commands.add_parser("memory", help="Buscar en la memoria guardada")
@@ -104,6 +113,9 @@ def parser(prog="sovengi"):
         command.add_argument("--resume", action="store_true")
         if name == "train":
             command.add_argument("--budget-seconds", type=float, required=True)
+    for name in ("learning-status", "export"):
+        command = commands.add_parser(name, help="Consultar o exportar una etapa explícita de aprendizaje")
+        command.add_argument("--stage", choices=("foundation", "conversation", "adaptation"), default="conversation")
     return root
 
 
@@ -111,13 +123,16 @@ def main(argv=None, *, prog="sovengi"):
     args = parser(prog).parse_args(argv)
     application = None
     try:
-        settings = _generation_settings(args) if args.command in ("chat", "ask") else {}
+        settings = _generation_settings(args) if args.command in ("chat", "ask", "forecast") else {}
         application = Sovengi(args.config)
         if args.command in ("plan", "train"):
             kwargs = {"resume": args.resume}
             if args.command == "train":
                 kwargs["budget_seconds"] = args.budget_seconds
             _print(getattr(application.project, args.command)(args.stage, **kwargs))
+            return 0
+        if args.command in ("learning-status", "export"):
+            _print(getattr(application.project, "status" if args.command == "learning-status" else "export")(args.stage))
             return 0
         session = application.connect(args.body, input_root=args.input_root, report_root=args.report_root,
             operator_token=os.environ.get("SOVENGI_OPERATOR_TOKEN") if args.input_root else None,
@@ -126,6 +141,19 @@ def main(argv=None, *, prog="sovengi"):
             return _chat(session, settings)
         if args.command == "status":
             _print(session.capabilities())
+        elif args.command == "models":
+            _print(session.capabilities()["models"]["models"]["conversation"])
+        elif args.command == "score":
+            _print(_request(session, "language.score", {"text": args.text, "max_chars": args.max_chars}))
+        elif args.command == "forecast":
+            from ..brain.protocol import decode_json
+            with args.observations.open("rb") as stream:
+                observations = decode_json(stream.read(262145))
+            request = {"messages": [{"role": "user", "content": args.text}],
+                       "forecast": {"observations": observations}, **settings}
+            if args.signal_id is not None:
+                request["forecast"]["signal_id"] = args.signal_id
+            _print(_request(session, "conversation.forecast", request))
         elif args.command == "ask":
             _print(_request(session, "conversation.reply", {"messages": [{"role": "user", "content": args.text}],
                 **settings}))

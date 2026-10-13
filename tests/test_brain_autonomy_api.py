@@ -31,6 +31,13 @@ def prepare_mock_context(engine, context_length=4096):
         {"role": "user", "content": "Contrato de una prueba técnica declarada."},
         {"role": "assistant", "content": "Este fixture no acredita planificación aprendida."}]}], vocab_size=384)
     engine._model = SimpleNamespace(config={"context_length": context_length})
+    def prompt_usage(messages):
+        from ia_propia.conversation.tokenizer import encode_prompt
+        capacity = engine._model.config["context_length"]
+        ids, discarded = encode_prompt(messages, engine._tokenizer, capacity)
+        return {"tokens": len(ids) + discarded, "capacity": capacity,
+                "discarded": discarded}
+    engine.prompt_usage = prompt_usage
     return engine
 
 

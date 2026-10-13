@@ -126,5 +126,28 @@
   "historicalEvidence": {
     "previousStatus": "docs/sovengi-memory-20261013/previous-status-0344.json",
     "oldSuitesNotComparableToNewSuites": true
+  },
+  "conversationCoordination": {
+    "version": "0.8.0",
+    "configuration": "configs/gnosis.json",
+    "catalog": "configs/conversation-models.json",
+    "distinctTransformers": 35,
+    "maxCandidates": 4,
+    "minimumSuccessfulCandidates": 2,
+    "maxResident": 4,
+    "cohortPolicy": "two_fixed_available_anchors_then_round_robin",
+    "primaryName": "reference-wiki1",
+    "supportName": "memory-candidate",
+    "totalNewTokens": 256,
+    "maxScoreCalls": 8,
+    "criticCount": 2,
+    "timeLimit": "60 seconds; cooperative between operations",
+    "characterRnn": "bounded diagnostic and tie-break; not semantic acceptance",
+    "metricMlp": "explicit observations; original public Wikimedia view metric",
+    "learningExecutedByThisIntegration": false,
+    "productionAccepted": false,
+    "conversationQualityValidated": false,
+    "evidenceDirectory": "docs/sovengi-ensemble-20261013",
+    "connectivityAudit": "docs/sovengi-connectivity-20261013/audit.json"
   }
 }

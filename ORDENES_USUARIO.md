@@ -1,5 +1,21 @@
 # Órdenes del creador de SOVENGI (repositorio UNIDAD)
 
+## Continuación: conectar y coordinar los componentes existentes
+
+El creador pide adaptar el código para que los modelos y servicios existentes
+participen en SOVENGI, con conexiones comprobadas y ejecución optimizada. Esta
+orden amplía la integración de contexto y sustituye la revisión inicial de sólo
+lectura. Se coordina el catálogo de Transformers con carga bajo demanda y
+presupuestos explícitos; la RNN aporta un diagnóstico de caracteres y el MLP
+pronostica únicamente su dominio con observaciones suministradas. Conectar
+pesos históricos no acredita nuevas capacidades ni calidad conversacional.
+Se conservan artefactos, datos privados y resultados reales; la entrega se
+publica integrada, sin dejarla en borrador.
+
+> pz hazlo hijo de la vrga xD, se supone que todo esta siendo integrado en que momento te ordene que no usaras ninguno? adapta el codigo ya
+
+> y seguro hay mas cosas que no estan siendo usadas cuando ya hay mucho trabajo detras, arma las conexiones y hazlo optimizado lo mjor posible, continua
+
 ## Continuación: modelo de contexto escalable e integración en SOVENGI
 
 El creador autoriza implementar, escalar y optimizar el modelo de contexto

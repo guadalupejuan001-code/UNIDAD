@@ -167,6 +167,8 @@ def evaluate(model_path, probes):
     from ia_propia.sovengi.__main__ import _request
     manifest = json.loads((model_path / "manifest.json").read_text())
     config = json.loads((ROOT / "configs/gnosis.json").read_text())
+    # This historical paired protocol evaluates one pinned candidate at a time.
+    config["brain"].pop("conversation_ensemble", None)
     config["projectRoot"] = str(ROOT)
     config["brain"].update(conversation_model=str(model_path), expected_model_id=manifest["modelId"])
     outputs = []

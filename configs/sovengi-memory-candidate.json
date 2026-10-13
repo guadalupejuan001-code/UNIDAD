@@ -7,7 +7,20 @@
     "conversation_decoder": "torch",
     "conversation_cache": true,
     "conversation_model": "models/sovengi-memory-20261013/candidate-best",
-    "expected_model_id": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c"
+    "expected_model_id": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+    "conversation_ensemble": {
+      "catalog": "configs/conversation-models.json",
+      "primary": "memory-candidate",
+      "max_candidates": 4,
+      "min_candidates": 2,
+      "max_resident": 4,
+      "max_seconds": 60,
+      "total_new_tokens": 256,
+      "max_score_calls": 8,
+      "critic_count": 2,
+      "max_scoring_tokens": 256,
+      "max_sliding_score_tokens": 0
+    }
   },
   "learning": {
     "profile": "15m",

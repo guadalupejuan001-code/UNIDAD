@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-13T21:47:52.733556+00:00",
+  "method": "existing verified reconstruir.py; four trained copy-head tensors replace own C7 tensors",
+  "scriptPath": "models/conversation-copy-head-20261013/reconstruir.py",
+  "scriptSha256": "ff319a34ae9b2348aa7e3d3f60278a327fe20ecceed037989c03635cd18ab562",
+  "base": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "path": "models/conversation-reference-c7",
+    "weightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+  },
+  "delta": {
+    "path": "models/conversation-copy-head-20261013/head_delta.safetensors",
+    "sha256": "e99fe7f8f73725d25c700191a680885171361adc0139853d9d2cfe69533dc28a",
+    "tensorNames": [
+      "copy_query.weight",
+      "copy_key.weight",
+      "copy_gate.weight",
+      "copy_gate.bias"
+    ]
+  },
+  "result": {
+    "name": "conversation-copy-head-20261013",
+    "path": "models/conversation-copy-head-20261013/weights.safetensors",
+    "modelId": "unidad-conversation-20009f454b06bcb223c3d83bcbe4070f03383989776454d48b57f39af54654df",
+    "bytes": 27943524,
+    "sha256": "c3d2d09bd4f82efd8c92f649482441e1e40bc29cd192a35ddfc1d56a45df400b",
+    "matchesManifest": true,
+    "architectureHeaderValidated": true
+  },
+  "artifactKind": "complete_reconstructed",
+  "newTraining": false,
+  "runtimeRequiresReconstruction": false,
+  "productionAccepted": false,
+  "generalConversationValidated": false
+}

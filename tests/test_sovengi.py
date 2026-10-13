@@ -70,6 +70,7 @@ class SovengiTests(unittest.TestCase):
         self.addCleanup(self.local.cleanup)
         self.directory = Path(self.local.name)
         config = json.loads((ROOT / "configs/gnosis.json").read_text())
+        config["brain"].pop("conversation_ensemble", None)
         config["projectRoot"] = self.local.name
         config["brain"].update(conversation_model=str(self.root / "model"),
             expected_model_id=self.manifest["modelId"], language_backend="numpy")
@@ -159,6 +160,12 @@ class SovengiTests(unittest.TestCase):
         worker.start()
         self.addCleanup(worker.join, 2)
         self.addCleanup(server.shutdown)
+        capabilities_request = Request(f"http://127.0.0.1:{server.server_address[1]}/v1/capabilities",
+            headers={"Authorization": "Bearer " + token})
+        with urlopen(capabilities_request, timeout=10) as response:
+            capabilities = json.load(response)
+        self.assertEqual(capabilities["models"]["models"]["conversation"]["modelId"], self.manifest["modelId"])
+        self.assertEqual(capabilities["connections"]["characterModel"], "language_operations")
         payload = {"schemaVersion": 1, "operation": "conversation.reply", "input": {"messages": [{"role": "user", "content": "taller"}], "max_new_tokens": 1}}
         request = Request(f"http://127.0.0.1:{server.server_address[1]}/v1/requests", data=json.dumps(payload).encode(),
                           headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
@@ -194,6 +201,19 @@ class SovengiTests(unittest.TestCase):
         with patch("ia_propia.sovengi.__main__.Sovengi", side_effect=AssertionError("invalid settings must not load weights")):
             with patch("sys.stderr", io.StringIO()):
                 self.assertEqual(main(["ask", "Hola", "--top-p", "0"]), 2)
+
+    def test_cli_models_and_capabilities_expose_the_same_host_selected_model(self):
+        from ia_propia.sovengi.__main__ import main
+
+        session = self.app.connect()
+        capabilities = session.capabilities()
+        descriptor = capabilities["models"]["models"]["conversation"]
+        self.assertEqual(descriptor["modelId"], self.manifest["modelId"])
+        self.assertEqual(capabilities["connections"]["characterModel"], "language_operations")
+        output = io.StringIO()
+        with patch("sys.stdout", output):
+            self.assertEqual(main(["--config", str(self.config_path), "models"]), 0)
+        self.assertEqual(json.loads(output.getvalue()), descriptor)
 
     def test_explicit_workflow_retrieves_memory_through_the_same_reply_path(self):
         session = self.app.connect()

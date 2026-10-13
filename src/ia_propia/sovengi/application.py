@@ -40,9 +40,14 @@ class SovengiSession(BodySession):
         result = super().capabilities()
         result["product"] = "SOVENGI"
         result["memory"]["retrieval"].update(automaticContextInjection=True,
-            contextOperations=["conversation.reply"], maxContextBytes=2048,
+            contextOperations=["conversation.reply", "conversation.forecast"], maxContextBytes=2048,
             policy="explicit saved tasks and feedback; complete fields; omit if context is full")
         result["auxiliaryModels"] = ["language", "attention"]
+        result["connections"] = {"conversation": "shared_engine",
+            "characterModel": ("candidate_scoring_and_language_operations"
+                if result["models"]["models"]["language"].get("conversationCandidateScoring") else "language_operations"),
+            "metricModel": "explicit_observations_forecast_and_conversation_forecast",
+            "decoder": "host_configured_torch_or_nerva", "learning": "explicit_gnosis_stages"}
         result["contextModel"] = {"enabled": self._context is not None,
             "task": "source_selection", "execution": "local_cpu",
             "automaticLearning": False, "generalConversationValidated": False}
@@ -55,6 +60,23 @@ class SovengiSession(BodySession):
         return result
 
     def _execute(self, operation, input_data):
+        if operation == "conversation.forecast":
+            self._validate_operation(operation, input_data)
+            with self._context_lock:
+                try:
+                    values = deepcopy(input_data)
+                    if values["messages"][0]["role"] != "system":
+                        values["messages"].insert(0, {"role": "system", "content": SYSTEM_PROMPT})
+                    reply, evidence = self.models.prepare_forecast_reply(values)
+                    result = self._conversation_reply(reply)
+                    return {**result, "metricEvidence": evidence,
+                            "pipeline": ["attention.forecast", "context.prepare", "conversation.reply"]}
+                except BrainError:
+                    raise
+                except Exception as error:
+                    # Workflow runners retain completed effects for BrainError.
+                    raise BrainError("operation_failed",
+                        "Explicit forecast conversation failed; completed effects were not rolled back") from error
         if operation != "conversation.reply":
             # The same engine is used by autonomy, with its own evidence journal.
             return super()._execute(operation, input_data)
@@ -117,7 +139,7 @@ class SovengiSession(BodySession):
 
 
 class Sovengi:
-    """One GNOSIS configuration and one loaded conversation model per application."""
+    """One GNOSIS configuration and shared model runtime per application."""
 
     def __init__(self, config="configs/gnosis.json"):
         self.project = load_project(config)
@@ -179,3 +201,5 @@ class Sovengi:
         for adapter in self._files.values():
             adapter.close()
         self._files.clear()
+        if self._sessions:
+            self.project.brain.models.close()
