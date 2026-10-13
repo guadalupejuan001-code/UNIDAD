@@ -1,0 +1,985 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T00:15:23.298760+00:00",
+  "purpose": "exposed-development-baseline-nevertrain-notfinalacceptance",
+  "caseSha256": "3013525c42e036e39a0e14a36852bafb9494c8c4d0835e48df7ed012d2e5611d",
+  "sourceHead": "27b769bd1b5f4b44573f3477db5c899fac93907e",
+  "sources": [
+    {
+      "path": "docs/unidad-conversation-supplement-e2-e3-evidence/everyday-probe/cases.json",
+      "ref": "27b769bd1b5f4b44573f3477db5c899fac93907e"
+    },
+    {
+      "path": "docs/work-repair-experiment-20261012/wording-history/cases.json",
+      "ref": "6c6b5a7bf36cbd12c6e9515af0d252080b9fde55"
+    }
+  ],
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "conversationSourceSha256": {
+    "assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+    "data.py": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b",
+    "__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+    "scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+    "jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+    "__main__.py": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2",
+    "contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+    "training.py": "d7420378791f9325f598fd1388439ebd48147c21dc84a1e8e934326dc79789b5",
+    "adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "tokenizer.py": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+    "language_data.py": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0",
+    "artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+    "model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf"
+  },
+  "parameterCount": 6983937,
+  "artifactSha256": {
+    "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+    "manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+    "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+  },
+  "loadSeconds": 0.14763128499907907,
+  "episodes": [
+    {
+      "id": "explanation",
+      "source": "everyday-probe",
+      "turns": [
+        {
+          "number": 1,
+          "user": "Explica en dos frases qué es una copia de seguridad y para qué sirve.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Explica en dos frases qué es una copia de seguridad y para qué sirve."
+            }
+          ],
+          "actual": {
+            "text": "Entendido, las frases se llama una copia y su dos frases.",
+            "generatedTokenIds": [
+              512,
+              459,
+              1637,
+              17,
+              362,
+              6946,
+              313,
+              4004,
+              337,
+              801,
+              5114,
+              292,
+              330,
+              709,
+              6946,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 68,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.42355264000070747,
+          "actualUtf8Sha256": "2802f277e20aa4928893370b3f6b07414483e185d5d574a4d2c92f0a69bc05d0",
+          "constraints": null,
+          "criticalIf": null
+        },
+        {
+          "number": 2,
+          "user": "Dame un ejemplo usando un documento que estoy escribiendo.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Explica en dos frases qué es una copia de seguridad y para qué sirve."
+            },
+            {
+              "role": "assistant",
+              "content": "Entendido, las frases se llama una copia y su dos frases."
+            },
+            {
+              "role": "user",
+              "content": "Dame un ejemplo usando un documento que estoy escribiendo."
+            }
+          ],
+          "actual": {
+            "text": "Hola, usando un documento.",
+            "generatedTokenIds": [
+              2780,
+              17,
+              4024,
+              297,
+              6595,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 100,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.21819358300126623,
+          "actualUtf8Sha256": "251363e5ba5f9300677601674eec833fceb6d8d20432113758472077b4540452",
+          "constraints": null,
+          "criticalIf": null
+        },
+        {
+          "number": 3,
+          "user": "Ahora hazlo en una sola frase, sin palabras técnicas.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Explica en dos frases qué es una copia de seguridad y para qué sirve."
+            },
+            {
+              "role": "assistant",
+              "content": "Entendido, las frases se llama una copia y su dos frases."
+            },
+            {
+              "role": "user",
+              "content": "Dame un ejemplo usando un documento que estoy escribiendo."
+            },
+            {
+              "role": "assistant",
+              "content": "Hola, usando un documento."
+            },
+            {
+              "role": "user",
+              "content": "Ahora hazlo en una sola frase, sin palabras técnicas."
+            }
+          ],
+          "actual": {
+            "text": "¿Qué quieres escribir?",
+            "generatedTokenIds": [
+              1020,
+              2345,
+              3073,
+              2845,
+              36,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 123,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.22447037399979308,
+          "actualUtf8Sha256": "33ca9b5e0a6a03f73f2b7b01bdd574762610e772b439911c1e2f4675ba634f2a",
+          "constraints": null,
+          "criticalIf": null
+        }
+      ]
+    },
+    {
+      "id": "invitation",
+      "source": "everyday-probe",
+      "turns": [
+        {
+          "number": 1,
+          "user": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar."
+            }
+          ],
+          "actual": {
+            "text": "Después vasdame a redactar a redactar una invitación breve; todavía estás todavía estás a redactar el viernes.",
+            "generatedTokenIds": [
+              4779,
+              4247,
+              73,
+              1424,
+              275,
+              6381,
+              72,
+              471,
+              275,
+              6381,
+              72,
+              471,
+              337,
+              4492,
+              1049,
+              5811,
+              32,
+              4233,
+              3259,
+              4233,
+              3259,
+              275,
+              6381,
+              72,
+              471,
+              293,
+              494,
+              1315,
+              272,
+              19,
+              2
+            ],
+            "generatedTokens": 31,
+            "stopReason": "eos",
+            "promptTokens": 94,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 1.0338350850015559,
+          "actualUtf8Sha256": "d5186a6e306e1cac021f2d6868219152cff9d5b636bc903d33de8477b229e9cb",
+          "constraints": null,
+          "criticalIf": null
+        },
+        {
+          "number": 2,
+          "user": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar."
+            },
+            {
+              "role": "assistant",
+              "content": "Después vasdame a redactar a redactar una invitación breve; todavía estás todavía estás a redactar el viernes."
+            },
+            {
+              "role": "user",
+              "content": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito."
+            }
+          ],
+          "actual": {
+            "text": "El parque se llama el parque Cedro a las cinco.",
+            "generatedTokenIds": [
+              569,
+              4655,
+              313,
+              4004,
+              293,
+              4655,
+              324,
+              2983,
+              275,
+              362,
+              2632,
+              19,
+              2
+            ],
+            "generatedTokens": 13,
+            "stopReason": "eos",
+            "promptTokens": 151,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.6494527209997614,
+          "actualUtf8Sha256": "caf7be2600e7d23a710516f9526bb52f3b79732cfff9faaf2ece524043e1281c",
+          "constraints": null,
+          "criticalIf": null
+        },
+        {
+          "number": 3,
+          "user": "Corrige sólo el día: será el sábado. Conserva las personas, el lugar y la hora.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar."
+            },
+            {
+              "role": "assistant",
+              "content": "Después vasdame a redactar a redactar una invitación breve; todavía estás todavía estás a redactar el viernes."
+            },
+            {
+              "role": "user",
+              "content": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito."
+            },
+            {
+              "role": "assistant",
+              "content": "El parque se llama el parque Cedro a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "Corrige sólo el día: será el sábado. Conserva las personas, el lugar y la hora."
+            }
+          ],
+          "actual": {
+            "text": "Después vasye a redactar una invitación breve; el parque Cedro a las cinco.",
+            "generatedTokenIds": [
+              4779,
+              4247,
+              3196,
+              275,
+              6381,
+              72,
+              471,
+              337,
+              4492,
+              1049,
+              5811,
+              32,
+              293,
+              4655,
+              324,
+              2983,
+              275,
+              362,
+              2632,
+              19,
+              2
+            ],
+            "generatedTokens": 21,
+            "stopReason": "eos",
+            "promptTokens": 192,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 1.225670950998392,
+          "actualUtf8Sha256": "bd996ada7aef615814a43398823486569b9f2c924116f4ba009be32c1c1d02b3",
+          "constraints": null,
+          "criticalIf": null
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o0-w0",
+      "source": "wording-history",
+      "turns": [
+        {
+          "number": 1,
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?"
+            }
+          ],
+          "actual": {
+            "text": "La taza es verde.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              4878,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 73,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.14997999200022605,
+          "actualUtf8Sha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+          "constraints": [
+            "Identificar violeta como color de la taza.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la taza por la botella ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la taza un color distinto de violeta."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w0",
+      "source": "wording-history",
+      "turns": [
+        {
+          "number": 1,
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?"
+            }
+          ],
+          "actual": {
+            "text": "La taza es verde.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              4878,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 75,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.15697975100010808,
+          "actualUtf8Sha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+          "constraints": [
+            "Identificar verde como color de la botella.",
+            "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+            "No sustituir la botella por la taza ni añadir datos inventados."
+          ],
+          "criticalIf": [
+            "Atribuir a la botella un color distinto de verde."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h01",
+      "source": "wording-history",
+      "turns": [
+        {
+          "number": 1,
+          "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            }
+          ],
+          "actual": {
+            "text": "Surgió y la linterna.",
+            "generatedTokenIds": [
+              56,
+              509,
+              4642,
+              292,
+              283,
+              6291,
+              368,
+              541,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.26287873500041314,
+          "actualUtf8Sha256": "2c6be93ec4ba0001abc68be78dde88ff9f92d20b4930fee8ce43e477d50e65ec",
+          "constraints": [
+            "Identificar paraguas de Elisa y linterna de Raúl.",
+            "No cruzar ni inventar dueños."
+          ],
+          "criticalIf": [
+            "Cambiar un dueño o cruzar objetos y personas."
+          ]
+        },
+        {
+          "number": 2,
+          "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "Surgió y la linterna."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            }
+          ],
+          "actual": {
+            "text": "Queda de Elisa.",
+            "generatedTokenIds": [
+              4551,
+              338,
+              264,
+              6851,
+              911,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 111,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.2388099269992381,
+          "actualUtf8Sha256": "a571eef825921865cfc6a7bbe967e717b41cd5176d2b6c37fabfad7d66741a55",
+          "constraints": [
+            "Identificar a Raúl como dueño de la linterna, conservando esa relación pese a la corrección ajena.",
+            "No reinstalar a Elisa como dueña actual del paraguas si se menciona."
+          ],
+          "criticalIf": [
+            "Cambiar el dueño de la linterna o negar la corrección del paraguas."
+          ]
+        },
+        {
+          "number": 3,
+          "user": "¿De quién es ahora el paraguas?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "Surgió y la linterna."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "Queda de Elisa."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            }
+          ],
+          "actual": {
+            "text": "El paraguas: es de Noelia.",
+            "generatedTokenIds": [
+              569,
+              356,
+              7134,
+              31,
+              315,
+              264,
+              1191,
+              74,
+              1041,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 130,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.4363887950003118,
+          "actualUtf8Sha256": "e946a8e66edd72df041fed8b4d10f76f8f4384f7de99bb14047088bc7d4b231d",
+          "constraints": [
+            "Identificar a Noelia como dueña actual del paraguas."
+          ],
+          "criticalIf": [
+            "Reinstalar a Elisa o asignar el paraguas a otro dueño."
+          ]
+        },
+        {
+          "number": 4,
+          "user": "Resume las dos pertenencias actuales en una frase.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "Surgió y la linterna."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "Queda de Elisa."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas: es de Noelia."
+            },
+            {
+              "role": "user",
+              "content": "Resume las dos pertenencias actuales en una frase."
+            }
+          ],
+          "actual": {
+            "text": "¿Qué quieres contar el paraguas.",
+            "generatedTokenIds": [
+              1020,
+              2345,
+              3073,
+              4481,
+              293,
+              356,
+              7134,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 155,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.40679299399926094,
+          "actualUtf8Sha256": "1b662b43ab6d407b50e4ef954af455af03168a1a2d8c2983707bd427194d5cef",
+          "constraints": [
+            "Resumir en una sola frase paraguas de Noelia y linterna de Raúl.",
+            "No añadir otras pertenencias."
+          ],
+          "criticalIf": [
+            "Cambiar o cruzar dueños actuales."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h02",
+      "source": "wording-history",
+      "turns": [
+        {
+          "number": 1,
+          "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            }
+          ],
+          "actual": {
+            "text": "En amarilla, quién falta de amarilla.",
+            "generatedTokenIds": [
+              512,
+              5438,
+              1871,
+              17,
+              6055,
+              3428,
+              264,
+              5438,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.28417501900003117,
+          "actualUtf8Sha256": "4b986d46e04b0746fdb60e8c0c1e78bb310cb73c7250c7aea06aa063324e84cc",
+          "constraints": [
+            "Distinguir color amarillo conocido y fabricante no informado.",
+            "No inventar fabricante."
+          ],
+          "criticalIf": [
+            "Inventar un fabricante, negar el color dado o cambiarlo."
+          ]
+        },
+        {
+          "number": 2,
+          "user": "La fabricó Mateo. ¿Quién la hizo?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "En amarilla, quién falta de amarilla."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            }
+          ],
+          "actual": {
+            "text": "La hizo amarilla.",
+            "generatedTokenIds": [
+              607,
+              2353,
+              5438,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 102,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.18421431699971436,
+          "actualUtf8Sha256": "af6f64f8e240423bd6e73d7089b26cd8125db1e7331a6a483e365444f2559d8c",
+          "constraints": [
+            "Identificar a Mateo como fabricante de la caja."
+          ],
+          "criticalIf": [
+            "Asignar otro fabricante o negar que se indicó."
+          ]
+        },
+        {
+          "number": 3,
+          "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "En amarilla, quién falta de amarilla."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo amarilla."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            }
+          ],
+          "actual": {
+            "text": "Tu fabricó morada.",
+            "generatedTokenIds": [
+              8092,
+              5324,
+              282,
+              2657,
+              381,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 131,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.3001079330006178,
+          "actualUtf8Sha256": "10231b747f1d6157bb52fb188c74a18ad2209c060d246da1fb538b4f4d701729",
+          "constraints": [
+            "Conservar a Mateo como fabricante aunque cambie el color a morado.",
+            "Si se menciona el color actual, usar morado."
+          ],
+          "criticalIf": [
+            "Cambiar el fabricante o reinstalar amarillo como color actual."
+          ]
+        },
+        {
+          "number": 4,
+          "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+          "status": "generated",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "En amarilla, quién falta de amarilla."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo amarilla."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu fabricó morada."
+            },
+            {
+              "role": "user",
+              "content": "Di el color actual y quién la fabricó, sin añadir nada."
+            }
+          ],
+          "actual": {
+            "text": "Tu fabricó morada.",
+            "generatedTokenIds": [
+              8092,
+              5324,
+              282,
+              2657,
+              381,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 155,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+            "workerCapabilityValidated": false
+          },
+          "seconds": 0.3219125659998099,
+          "actualUtf8Sha256": "10231b747f1d6157bb52fb188c74a18ad2209c060d246da1fb538b4f4d701729",
+          "constraints": [
+            "Identificar morado como color actual y a Mateo como fabricante.",
+            "No añadir datos ajenos a ambas respuestas."
+          ],
+          "criticalIf": [
+            "Cambiar fabricante o color actual; texto accesorio sin cambio factual es defecto de instrucción."
+          ]
+        }
+      ]
+    }
+  ],
+  "trainingPerformed": false,
+  "testEvaluated": false,
+  "rawOutputsEdited": false,
+  "gradesAssigned": false,
+  "historyUsesActualGeneratedReplies": true,
+  "projectAIReview": true,
+  "independentHumanReview": false,
+  "productionAccepted": false,
+  "summary": {
+    "turns": 16,
+    "generationSeconds": 6.517415383001207,
+    "errors": 0,
+    "blockedTurns": 0,
+    "emptyReplies": 0,
+    "budgetStops": 0,
+    "truncatedPrompts": 0
+  },
+  "artifactUnmodified": true
+}

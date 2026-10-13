@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/unidad_eval, project AI agent",
+  "blinded": false,
+  "independentHumanReview": false,
+  "purpose": "exposed-development-not-final-acceptance",
+  "rawPath": "/workspace/unidad-results/c7-current-baseline.json",
+  "rubricPath": "/workspace/unidad-results/development-review-rubric.json",
+  "historicalSubsetVerifiedExact": true,
+  "summary": {
+    "turns": 16,
+    "complete": 1,
+    "partial": 1,
+    "failed": 14,
+    "critical": 2,
+    "completeMultiturnDialogues": 0,
+    "multiturnDialogues": 4,
+    "completeEpisodes": 0,
+    "episodes": 6
+  },
+  "criticalScope": "Case-specific frozen narrow patterns; no critical flag does not imply factual correctness.",
+  "rows": [
+    {
+      "episodeId": "pr1diag-v1-r01-o0-w0",
+      "turn": 1,
+      "grade": "F",
+      "critical": true,
+      "reason": "Asigna verde a la taza, cuyo color dado es violeta.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-r02-o0-w0",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Responde sobre la taza y le asigna verde: hecho falso y target omitido. No afirma otro color para la botella, que es el patrón crítico específico congelado.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "No da dueños: sólo un fragmento con linterna.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 2,
+      "grade": "F",
+      "critical": true,
+      "reason": "Atribuye Elisa a la linterna por respuesta directa a su dueño; el dueño conservado es Raúl.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 3,
+      "grade": "C",
+      "critical": false,
+      "reason": "Da correctamente Noelia como dueña actual del paraguas.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta inconclusa sobre el paraguas; no resume ninguna pareja objeto-dueño.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 1,
+      "grade": "P",
+      "critical": false,
+      "reason": "«amarilla» conserva el color conocido y «quién falta» apunta a la persona faltante, pero la construcción no distingue claramente el fabricante no informado.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«La hizo amarilla» contesta con una acción/color y no identifica al fabricante Mateo; no infiero un fabricante llamado Amarilla.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Fragmento «Tu fabricó morada» sin fabricante identificado; no convierto «Tu» en una afirmación inequívoca de otro fabricante.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "El fragmento no establece quién fabricó la caja ni una pareja color-fabricante inteligible.",
+      "source": "published-case-criteria-applied-to-exactly-reproduced-output"
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "No explica qué es una copia ni su utilidad; la frase mezcla palabras de la petición sin contenido inteligible.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "Saluda y repite «usando un documento» sin dar un ejemplo de respaldo o recuperación.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta qué se quiere escribir y abandona la instrucción de resumir la explicación en una frase.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "No produce una invitación inteligible ni conserva a Mara y Gael; repite fragmentos de la petición.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "Extrae parque Cedro y las cinco pero no actualiza una invitación, ni mantiene a Mara, Gael y el viernes.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Repite fragmentos sobre la invitación y parque/hora, sin destinatarios ni la corrección a sábado.",
+      "source": "current-project-AI-review-under-declared-everyday-rubric"
+    }
+  ],
+  "rawSha256": "1094ec3fe2ee281047cda63c6f8117b0522f940ed287592ca8b18ac0cc1ed625",
+  "rubricSha256": "a3fe500af717fd2f9d4b5579caf3b9b8b9de060d6364e9ba906436e68c4d6448",
+  "exactBaselineReproductionReceipt": "/workspace/unidad-results/c7-baseline-byte-normalization-reproduction.json"
+}

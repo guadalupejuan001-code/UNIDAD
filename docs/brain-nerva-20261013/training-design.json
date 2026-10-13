@@ -1,0 +1,87 @@
+{
+  "armsInOrder": [
+    "all",
+    "copy_head"
+  ],
+  "commonTrainingConfig": {
+    "batch_size": 4,
+    "checkpoint_every": 64,
+    "copy_supervision": {
+      "alignment_weight": 0.2,
+      "gate_weight": 0.2
+    },
+    "grad_clip": 1.0,
+    "learning_rate": 0.0001,
+    "loss_reduction": "token_mean",
+    "max_epochs": 100,
+    "max_seconds": 600,
+    "max_steps": 128,
+    "min_delta": 0.0001,
+    "objective": "assistant_last_reply",
+    "partition_policy": "train_validation_only",
+    "patience": 100,
+    "projection_mode": "supervised",
+    "seed": 20261013,
+    "torch_threads": 1,
+    "validation_every": 64,
+    "warmup_steps": 16,
+    "weight_decay": 0.01,
+    "window_policy": "sliding_context"
+  },
+  "corpus": "/workspace/unidad-results/copy-head-retention-20261013/focused-train-validation.jsonl",
+  "corpusSha256": "7aad5655446aa4afb4adc61b6bc65cd437de33218cb572eea39086832fef2f6e",
+  "createdAtUtc": "2026-10-13T00:09:59.733420+00:00",
+  "developmentCasesSha256": "3013525c42e036e39a0e14a36852bafb9494c8c4d0835e48df7ed012d2e5611d",
+  "endpointSelectedBeforeGeneration": true,
+  "endpointStep": 128,
+  "exactDevelopmentUserMessageCollisions": [],
+  "externalModelWeightsUsed": false,
+  "familySplits": {
+    "train": 144,
+    "validation": 14
+  },
+  "generation": {
+    "actualHistory": true,
+    "maxNewTokens": 160,
+    "seed": 42,
+    "temperature": 0,
+    "torchThreads": 1
+  },
+  "hypothesis": "Updating only learned copy tensors may preserve C7 backbone knowledge better than full fine tuning.",
+  "maximumInputTokens": 114,
+  "maximumReplyTargetsIncludingEos": 23,
+  "model": "/workspace/unidad-work/models/conversation-reference-c7",
+  "modelFiles": {
+    "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+    "manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242",
+    "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+  },
+  "originalIdsGroupsPartitionsTargetsPreserved": true,
+  "originalKeptLinesByteExact": true,
+  "paidServicesUsed": false,
+  "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "personalMessagesUsed": false,
+  "priorClosedBudgetsRenewed": false,
+  "purpose": "development-frozen-backbone-retention-hypothesis-not-commercial-acceptance",
+  "recordSplits": {
+    "train": 432,
+    "validation": 42
+  },
+  "runnerSha256": "f1252593e33f57c137a98f89db7cc217a59a5920f9c6e26b56ea45f12731eb18",
+  "sameInitialWeightsTokenizerAndBatchSeed": true,
+  "schemaVersion": 1,
+  "selection": "Compare fixed endpoints to original C7 on exposed development; reject increased critical failures or lost prior correct replies. No promotion without fresh reserved evaluation.",
+  "singleDifference": "trainable_parameters",
+  "sourceCorpus": "/workspace/unidad-work/examples/conversation-focus-curriculum.jsonl",
+  "sourceCorpusSha256": "04f64d84e6dd94c08bb40dc77ed2e25b427462eb11aa1fba0a2869098c333a4a",
+  "sourceKind": "existing-project-authored-synthetic",
+  "sourceSha256AtPreparation": {
+    "artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+    "model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+    "tokenizer.py": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+    "training.py": "d7420378791f9325f598fd1388439ebd48147c21dc84a1e8e934326dc79789b5"
+  },
+  "testEvaluated": false,
+  "testRecordsExcluded": 66
+}

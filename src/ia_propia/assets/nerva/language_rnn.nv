@@ -1,0 +1,34 @@
+nerva 0.2
+# Inferencia del char-RNN propio de UNIDAD, con los pesos seleccionados por el host.
+# No es el Transformer conversacional C7. No entrena ni usa otro modelo.
+# El host conserva el tokenizador original y excluye UNK de Why y by.
+# Toda la recurrencia, proyeccion y decision greedy se ejecutan aqui en f64.
+
+const embedding = transpose(tensor64(Wxh))
+const recurrent = tensor64(Whh)
+const projection = tensor64(Why)
+const hidden_bias = tensor64(bh)
+const output_bias = tensor64(by)
+const excluded_projection = tensor64(unknown_projection)
+let hidden = zeros([len(bh)], "f64")
+let continuation = ""
+
+fn advance(token, state) {
+    return tanh(embedding[token] + recurrent @ state + hidden_bias)
+}
+
+for token in tokens {
+    hidden = advance(token, hidden)
+}
+
+for iteration in range(count) {
+    # El generador original comprueba tambien el logit UNK antes de descartarlo.
+    # Su calculo debe fallar si desborda, aunque UNK nunca se pueda emitir.
+    let excluded_logit = value(excluded_projection @ hidden) + unknown_bias
+    let logits = projection @ hidden + output_bias
+    let token = argmax(logits) + 1
+    continuation = continuation + character_tokens[token]
+    hidden = advance(token, hidden)
+}
+
+print("continuation", continuation)

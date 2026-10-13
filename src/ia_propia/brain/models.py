@@ -94,7 +94,14 @@ def _is_reference(value, allow_refs):
 class ModelRuntime:
     """Loads host-selected models once; operations cannot replace their weights."""
 
-    def __init__(self, language_model=None, attention_model=None, conversation_model=None):
+    def __init__(self, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy"):
+        if language_backend not in ("numpy", "nerva"):
+            raise ModelRuntimeError("The host must choose language_backend='numpy' or 'nerva'")
+        self._language_backend = language_backend
+        self._language_generate = language.generate
+        if language_backend == "nerva":
+            from ..language.nerva_backend import generate_nerva
+            self._language_generate = generate_nerva
         defaults = [name for name, selected in (("language", language_model), ("attention", attention_model)) if selected is None]
         packaged = _packaged_models(defaults) if defaults else {}
         self._language = packaged["language"] if language_model is None else language.load_artifact(Path(language_model))
@@ -103,7 +110,7 @@ class ModelRuntime:
         self._capabilities = {
             "schemaVersion": 1, "execution": "local_cpu", "networkRequired": False,
             "experimental": True, "productionAccepted": False, "workerCapabilityValidated": False,
-            "operations": list(INPUT_SCHEMAS), "inputSchemas": INPUT_SCHEMAS,
+            "operations": list(INPUT_SCHEMAS), "inputSchemas": deepcopy(INPUT_SCHEMAS),
             "models": {
                 "language": {"available": True, "modelId": self._language["modelId"],
                     "parameterCount": _parameter_count(self._language, "language"), "task": "next_character_generation",
@@ -112,6 +119,12 @@ class ModelRuntime:
                     "parameterCount": _parameter_count(self._attention, "attention"), "task": "scoped_metric_point_forecast",
                     "source": self._attention["source"], "metric": self._attention["metric"],
                     "privacy": "PUBLIC", "liveForecastValidated": False}}}
+        if language_backend == "nerva":
+            descriptor = self._capabilities["models"]["language"]
+            descriptor.update({"executionBackend": "nerva-0.2", "hostRuntimeRequired": "Node.js 18+",
+                               "greedyOnly": True, "performanceImprovementValidated": False})
+            temperature_schema = self._capabilities["inputSchemas"]["language.generate"]["properties"]["temperature"]
+            temperature_schema.update({"const": 0, "default": 0, "maximum": 0})
         if conversation_model is not None:
             if not isinstance(conversation_model, (str, Path)):
                 raise ModelRuntimeError("The conversation artifact must be a host-configured local path")
@@ -120,7 +133,6 @@ class ModelRuntime:
             from ..conversation.runtime import ConversationEngine, REPLY_INPUT_SCHEMA
             self._conversation = ConversationEngine(conversation_model)
             self._capabilities["operations"].append("conversation.reply")
-            self._capabilities["inputSchemas"] = deepcopy(INPUT_SCHEMAS)
             self._capabilities["inputSchemas"]["conversation.reply"] = deepcopy(REPLY_INPUT_SCHEMA)
             self._capabilities["models"]["conversation"] = {
                 "available": True, "modelId": self._conversation.model_id,
@@ -163,6 +175,8 @@ class ModelRuntime:
                 else:
                     if not 0 <= language.number(value, "temperature") <= 2:
                         raise ModelRuntimeError("temperature must be in [0, 2]")
+                    if self._language_backend == "nerva" and value != 0:
+                        raise ModelRuntimeError("NERVA language backend requires temperature=0; sampling is not implemented")
         else:
             if set(inputdict) - ATTENTION_KEYS or "observations" not in inputdict:
                 raise ModelRuntimeError("attention requires observations and only known input fields")
@@ -204,7 +218,7 @@ class ModelRuntime:
         if operation == "conversation.reply":
             return self._conversation.reply(**request)
         if operation == "language.generate":
-            return language.generate(self._language, **request)
+            return self._language_generate(self._language, **request)
         signal_id = request.get("signal_id")
         if signal_id is not None:
             observations = [row for row in observations if row.signal_id == signal_id]

@@ -112,7 +112,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision"} if result is training else {"copy_head"})
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters"} if result is training else {"copy_head"})
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -142,6 +142,9 @@ def _configs(model_config, training_config):
         raise ValueError("partition_policy requires train_validation_only")
     if "objective" in training and training["objective"] not in ("assistant_last_reply", "causal_lm"):
         raise ValueError("Invalid training objective")
+    if "trainable_parameters" in training and (type(training["trainable_parameters"]) is not str
+            or training["trainable_parameters"] not in ("all", "copy_head")):
+        raise ValueError("trainable_parameters requires all or copy_head")
     if "sampling_weights" in training:
         _validate_sampling_rules(training["sampling_weights"])
         training["sampling_weights"] = copy.deepcopy(training["sampling_weights"])
@@ -172,6 +175,66 @@ _COPY_B1_ID = "unidad-conversation-737364a8c6f3a798aa4352fffed85ad7bec109ff26b03
 _COPY_B1_WEIGHTS = "67a77ccc76bb51ad0b62828b8e557b4ed0a1a1a8fe45383e3c4334430d409155"
 _COPY_B1_TOKENIZER = "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
 _COPY_NEW_KEYS = {"copy_query.weight", "copy_key.weight", "copy_gate.weight", "copy_gate.bias"}
+
+
+def _frozen_parameters_sha256(model, names):
+    """Bind frozen tensor names, shape, dtype and exact bytes in sorted order."""
+    tensors = dict(model.named_parameters())
+    digest = hashlib.sha256(b"unidad-frozen-parameters-v1\0")
+    for name in sorted(names):
+        tensor = tensors[name].detach().cpu().contiguous()
+        header = _json_bytes({"name": name, "shape": list(tensor.shape), "dtype": str(tensor.dtype)})
+        raw = tensor.reshape(-1).view(_torch().uint8).numpy().tobytes()
+        digest.update(len(header).to_bytes(8, "big"))
+        digest.update(header)
+        digest.update(len(raw).to_bytes(8, "big"))
+        digest.update(raw)
+    return digest.hexdigest()
+
+
+def _apply_trainable_parameters(model, config):
+    """Choose trainable tensors after artifact load, without changing inference.
+
+    Absence remains the historical all-parameter path and adds no metadata to
+    old runs. AdamW retains the full parameter ordering; frozen parameters have
+    no gradients or optimizer moments and therefore receive no weight decay.
+    """
+    policy = config.get("trainable_parameters", "all")
+    if policy not in ("all", "copy_head"):
+        raise ValueError("Invalid trainable parameter policy")
+    parameters = dict(model.named_parameters())
+    if policy == "copy_head" and ("copy_head" not in model.config or not _COPY_NEW_KEYS <= set(parameters)):
+        raise ValueError("copy_head training requires an existing model copy head")
+    trainable = set(parameters) if policy == "all" else _COPY_NEW_KEYS
+    for name, parameter in parameters.items():
+        parameter.requires_grad_(name in trainable)
+        parameter.grad = None
+    if "trainable_parameters" not in config:
+        return None
+    frozen = set(parameters) - trainable
+    proof = {"policy": policy, "trainableTensorNames": sorted(trainable),
+             "trainableParameterCount": sum(parameters[name].numel() for name in trainable),
+             "frozenTensorNames": sorted(frozen),
+             "frozenParameterCount": sum(parameters[name].numel() for name in frozen)}
+    if frozen:
+        proof["frozenBackboneSha256"] = _frozen_parameters_sha256(model, frozen)
+    return proof
+
+
+def _validate_parameter_policy(model, state):
+    """Reapply the saved policy and verify its frozen-byte proof on every load."""
+    config = state["training_config"]
+    explicit = "trainable_parameters" in config
+    if ("parameter_policy" in state) != explicit:
+        raise ValueError("Checkpoint trainable parameter policy mismatch")
+    actual = _apply_trainable_parameters(model, config)
+    if explicit and state["parameter_policy"] != actual:
+        raise ValueError("Checkpoint frozen/trainable parameter proof mismatch")
+
+
+def _parameter_metadata(state):
+    return ({"trainableParameters": copy.deepcopy(state["parameter_policy"])}
+            if "parameter_policy" in state else {})
 
 
 def _validate_copy_head(value):
@@ -586,6 +649,7 @@ def _evaluate_configured_fp32(model, examples, config):
 def _checkpoint(run_dir, model, tokenizer, optimizer, scheduler, state, *, selected=False):
     from safetensors.torch import save_file
     torch = _torch()
+    _validate_parameter_policy(model, state)
     if state["training_config"].get("train_precision") == "cpu_bfloat16":
         _precision_storage_guard(model, optimizer)
     checkpoints = Path(run_dir) / "checkpoints"
@@ -660,6 +724,7 @@ def _load_checkpoint(run_dir, name):
     if set(weights) != set(reference) or any(weights[key].shape != reference[key].shape or weights[key].dtype != reference[key].dtype for key in reference):
         raise ValueError("Checkpoint tensor keys/shapes/dtypes mismatch")
     model.load_state_dict(weights, strict=True)
+    _validate_parameter_policy(model, state)
     if "copy_bootstrap" in state:
         _validate_copy_bootstrap(state["copy_bootstrap"], state["model_config"], state.get("lineage", {}),
                                  expected_base_keys=set(model.state_dict()) - _COPY_NEW_KEYS)
@@ -763,7 +828,7 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime", "copy_bootstrap"}
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime", "copy_bootstrap", "parameter_policy"}
             or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
@@ -771,6 +836,8 @@ def _validate_resume_state(state, examples):
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    if ("parameter_policy" in state) != ("trainable_parameters" in config):
+        raise ValueError("Checkpoint trainable parameter policy mismatch")
     copy_from_b1 = ("copy_head" in requested and state.get("lineage", {}).get("parentModelId") == _COPY_B1_ID)
     if ("copy_bootstrap" in state) != copy_from_b1:
         raise ValueError("Checkpoint copy bootstrap policy mismatch")
@@ -869,7 +936,7 @@ def _validate_resume_payload(payload, optimizer, scheduler, model, state):
         elif group[key] != reference[key]:
             raise ValueError("Optimizer configuration mismatch")
     parameters = list(model.parameters())
-    wanted = set(range(len(parameters))) if state["step"] else set()
+    wanted = {index for index, parameter in enumerate(parameters) if parameter.requires_grad} if state["step"] else set()
     if set(saved["state"]) != wanted:
         raise ValueError("Optimizer parameter state mismatch")
     for index, moments in saved["state"].items():
@@ -901,6 +968,7 @@ def _status_write(run_dir, state, status, reason=None, **extra):
              "corpusSha256": state.get("corpus_sha256"), "experimental": True,
              "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False,
              **_origin_metadata(state), **_loss_metadata(state.get("training_config", {})),
+             **_parameter_metadata(state),
              **_sampling_metadata(state), **extra}
     _atomic_json(Path(run_dir) / "status.json", value)
     return value
@@ -996,6 +1064,12 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 state["copy_bootstrap"] = copy.deepcopy(model._copy_bootstrap_proof)
             payload = None
         torch.set_num_threads(config["torch_threads"])
+        if payload is None:
+            policy = _apply_trainable_parameters(model, config)
+            if policy is not None:
+                state["parameter_policy"] = policy
+        else:
+            _validate_parameter_policy(model, state)
         if config.get("train_precision") == "cpu_bfloat16":
             runtime = _precision_runtime(config)
             if payload is not None:
@@ -1285,7 +1359,8 @@ def export_best(run_dir, export_dir):
             if attempt == 2:
                 raise RuntimeError("Selected checkpoint changed during export; retry")
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
-                **_origin_metadata(state), **_loss_metadata(state["training_config"]), **_sampling_metadata(state), "selectionSplit": "validation",
+                **_origin_metadata(state), **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
+                **_parameter_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
                 "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
@@ -1317,6 +1392,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
                       **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
+                      **_parameter_metadata(state),
                       "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                       "train": _evaluate_configured(model, examples["train"], state["training_config"]),
                       "validation": _evaluate_configured(model, examples["validation"], state["training_config"]),
@@ -1328,7 +1404,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
             save_artifact(export_dir, model, tokenizer,
                           training={"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                                     **_origin_metadata(state), **_loss_metadata(state["training_config"]),
-                                    **_sampling_metadata(state),
+                                    **_sampling_metadata(state), **_parameter_metadata(state),
                                     "selectionSplit": "validation",
                                     "config": state["training_config"]}, evaluation=evaluation)
         _log(run_dir, {"event": "explicit_finalization", "selectedStep": state["step"],

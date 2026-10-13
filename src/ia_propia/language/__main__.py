@@ -29,6 +29,8 @@ def main(argv=None, *, prog=None):
     generation.add_argument("--length", type=int, default=200)
     generation.add_argument("--temperature", type=float, default=0.8)
     generation.add_argument("--seed", type=int, default=42)
+    generation.add_argument("--backend", choices=("numpy", "nerva"), default="numpy",
+                            help="Motor local; NERVA requiere Node.js 18+ y --temperature 0")
     try:
         args = parser.parse_args(argv)
         if args.command == "train":
@@ -45,7 +47,11 @@ def main(argv=None, *, prog=None):
                               "bestEpoch": artifact["training"]["bestEpoch"], "evaluation": artifact["evaluation"],
                               "experimental": True}, ensure_ascii=False, allow_nan=False))
         else:
-            print(json.dumps(generate(load_artifact(args.model), args.prompt, length=args.length,
+            selected_generate = generate
+            if args.backend == "nerva":
+                from .nerva_backend import generate_nerva
+                selected_generate = generate_nerva
+            print(json.dumps(selected_generate(load_artifact(args.model), args.prompt, length=args.length,
                                       temperature=args.temperature, seed=args.seed), ensure_ascii=False, allow_nan=False))
         return 0
     except (LanguageError, OSError) as error:

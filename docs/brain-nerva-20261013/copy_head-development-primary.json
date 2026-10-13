@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/unidad_eval, project AI agent",
+  "blinded": false,
+  "independentHumanReview": false,
+  "purpose": "exposed-development-not-final-acceptance",
+  "modelId": "unidad-conversation-20009f454b06bcb223c3d83bcbe4070f03383989776454d48b57f39af54654df",
+  "rawPath": "/workspace/unidad-results/copy-head-retention-20261013/copy_head/development-actual.json",
+  "rawSha256": "22d595ec2cca9e23c802105211e201baa01aeda46c224a6b2d8aaa0a3c056d59",
+  "rubricPath": "/workspace/unidad-results/development-review-rubric.json",
+  "rubricSha256": "a3fe500af717fd2f9d4b5579caf3b9b8b9de060d6364e9ba906436e68c4d6448",
+  "criticalScope": "Only flag an unequivocal proposition matching case-specific criticalIf; omissions/fragments still fail but do not become invented facts by reconstruction. Critical scope is narrow, not absence of all factual defects.",
+  "summary": {
+    "turns": 16,
+    "complete": 2,
+    "partial": 0,
+    "failed": 14,
+    "critical": 1,
+    "multiturnDialogues": 4,
+    "completeMultiturnDialogues": 0
+  },
+  "rows": [
+    {
+      "episodeId": "explanation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Repite fragmentos de la petición con sintaxis rota, sin explicar qué es una copia de seguridad ni para qué sirve.",
+      "actualText": "Entendido, las frases se llama el dos frases; se llama una copia y el dos frases.",
+      "actualTextSha256": "e1de4d8aadc3b41508664b1ac48a46102dd0127484f64b7c26809e7451a9f83f",
+      "user": "Explica en dos frases qué es una copia de seguridad y para qué sirve."
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Hola se llama un documento de seguridad» no ofrece un ejemplo de guardar otra copia para recuperar un documento.",
+      "actualText": "Hola se llama un documento de seguridad.",
+      "actualTextSha256": "94bdfbe3233d08379a279f0d78e647b1d099e45a0b34241c43eb08bf67fc746a",
+      "user": "Dame un ejemplo usando un documento que estoy escribiendo."
+    },
+    {
+      "episodeId": "explanation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta qué se quiere escribir y no resume la explicación anterior en una frase sencilla.",
+      "actualText": "¿Qué quieres escribir?",
+      "actualTextSha256": "33ca9b5e0a6a03f73f2b7b01bdd574762610e772b439911c1e2f4675ba634f2a",
+      "user": "Ahora hazlo en una sola frase, sin palabras técnicas."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Repite fragmentos sobre redactar y el viernes sin producir una invitación inteligible ni conservar a Mara y Gael.",
+      "actualText": "Después vasdame a redactar a redactar una invitación breve; todavía estás a redactar el viernes.",
+      "actualTextSha256": "ad30448167ea03b1c56af1564832347c35720d54d5927d435f021913638819da",
+      "user": "Quiero invitar a Mara y a su primo Gael a merendar el viernes. Ayúdame a redactar una invitación breve; todavía no elegí el lugar."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«El parque es elegame a Mara y a redactar una invitación» no incorpora parque Cedro y las cinco ni conserva todos los destinatarios.",
+      "actualText": "El parque es elegame a Mara y a redactar una invitación.",
+      "actualTextSha256": "e292b473ecd9cf986be51b43c37026052f3d6759725d11231c7cba8a7ea5bac4",
+      "user": "El lugar será el parque Cedro a las cinco. Inclúyelo sin cambiar a quién invito."
+    },
+    {
+      "episodeId": "invitation",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "La frase sobre invitación y parque no aplica el sábado ni conserva personas y hora.",
+      "actualText": "Primero invitación; el parque es el lugar.",
+      "actualTextSha256": "1f3621614ab2d1bc264586dfbb5ef249b5f6414ac8d4f73b35e565513eb7cc96",
+      "user": "Corrige sólo el día: será el sábado. Conserva las personas, el lugar y la hora."
+    },
+    {
+      "episodeId": "pr1diag-v1-r01-o0-w0",
+      "turn": 1,
+      "grade": "F",
+      "critical": true,
+      "reason": "Asigna verde a la taza, cuyo color dado es violeta.",
+      "actualText": "La taza es verde.",
+      "actualTextSha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?"
+    },
+    {
+      "episodeId": "pr1diag-v1-r02-o0-w0",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Responde sobre la taza y le asigna un color falso, omitiendo la botella. El patrón crítico congelado sólo cubre otro color atribuido a la botella preguntada.",
+      "actualText": "La taza es verde.",
+      "actualTextSha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "«Surgió de Elisa» no identifica ninguna pareja objeto-dueño de forma inequívoca.",
+      "actualText": "Surgió de Elisa.",
+      "actualTextSha256": "5bd9ef68fb20af4255c70dcf6d7fde6dd6a7d1b3636df12502fad94ea953c62d",
+      "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 2,
+      "grade": "C",
+      "critical": false,
+      "reason": "Conserva correctamente a Raúl como dueño de la linterna al corregirse sólo el paraguas.",
+      "actualText": "La linterna es de Raúl.",
+      "actualTextSha256": "01a9ce6d83ff2b21f5f3a108f6ff11240a37a39e6baad270237ae2f8ad4192cf",
+      "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 3,
+      "grade": "C",
+      "critical": false,
+      "reason": "Identifica correctamente a Noelia como dueña actual del paraguas; conserva el acierto anterior de C7.",
+      "actualText": "El paraguas: es de Noelia.",
+      "actualTextSha256": "e946a8e66edd72df041fed8b4d10f76f8f4384f7de99bb14047088bc7d4b231d",
+      "user": "¿De quién es ahora el paraguas?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "Pregunta inconclusa sobre el paraguas y no resume las dos pertenencias.",
+      "actualText": "¿Qué quieres contar el paraguas.",
+      "actualTextSha256": "1b662b43ab6d407b50e4ef954af455af03168a1a2d8c2983707bd427194d5cef",
+      "user": "Resume las dos pertenencias actuales en una frase."
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 1,
+      "grade": "F",
+      "critical": false,
+      "reason": "Las repeticiones de «amarilla» y la construcción «quién es el cuál» no distinguen claramente el dato conocido y el fabricante no informado.",
+      "actualText": "En amarilla, quién es el cuál es de amarilla. Laún es amarilla.",
+      "actualTextSha256": "5d416dc3693b5bcc54ac3b895f16b8481783b1d21a812f12805f6aebbc11dfcb",
+      "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 2,
+      "grade": "F",
+      "critical": false,
+      "reason": "«La hizo amarilla» no identifica a Mateo; no invento un fabricante llamado Amarilla a partir de una construcción de acción/color.",
+      "actualText": "La hizo amarilla.",
+      "actualTextSha256": "af6f64f8e240423bd6e73d7089b26cd8125db1e7331a6a483e365444f2559d8c",
+      "user": "La fabricó Mateo. ¿Quién la hizo?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 3,
+      "grade": "F",
+      "critical": false,
+      "reason": "Fragmento «Tu fabricó morada» sin fabricante identificado; no reconstruyo una afirmación inequívoca de otro fabricante.",
+      "actualText": "Tu fabricó morada.",
+      "actualTextSha256": "10231b747f1d6157bb52fb188c74a18ad2209c060d246da1fb538b4f4d701729",
+      "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "turn": 4,
+      "grade": "F",
+      "critical": false,
+      "reason": "El fragmento no establece una pareja color-fabricante inteligible.",
+      "actualText": "Tu fabricó morada.",
+      "actualTextSha256": "10231b747f1d6157bb52fb188c74a18ad2209c060d246da1fb538b4f4d701729",
+      "user": "Di el color actual y quién la fabricó, sin añadir nada."
+    }
+  ]
+}
