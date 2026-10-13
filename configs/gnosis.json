@@ -19,6 +19,7 @@
         "initial_model": null,
         "training_config": {
           "objective": "causal_lm",
+          "data_loading": "mmap",
           "partition_policy": "train_validation_only",
           "projection_mode": "supervised",
           "loss_reduction": "token_mean",
@@ -39,6 +40,7 @@
         "initial_model": "private/gnosis/foundation/artifact",
         "training_config": {
           "objective": "assistant_last_reply",
+          "data_loading": "mmap",
           "partition_policy": "train_validation_only",
           "projection_mode": "supervised",
           "loss_reduction": "token_mean",
@@ -59,6 +61,7 @@
         "initial_model": "private/gnosis/conversation/artifact",
         "training_config": {
           "objective": "assistant_last_reply",
+          "data_loading": "mmap",
           "partition_policy": "train_validation_only",
           "projection_mode": "supervised",
           "loss_reduction": "token_mean",

@@ -333,9 +333,26 @@
     "explicitCorpusAndArchitecturePins": true,
     "microBatchTraining": true,
     "gpuTrainingImplemented": false,
-    "corpusStillMaterializedInMemory": true,
+    "corpusStillMaterializedInMemory": false,
+    "defaultLearningDataLoading": "mmap",
+    "legacyInMemoryLoaderRetained": true,
     "referencePromoted": false,
     "automaticLearning": false,
     "documentation": "docs/gnosis.md"
+  },
+  "tokenizedData20261013": {
+    "mode": "optional-mmap-uniform-sampling",
+    "objectives": ["causal_lm", "assistant_last_reply"],
+    "sameWindowEncoder": true,
+    "testTokenizedDuringTraining": false,
+    "exactResumeValidated": true,
+    "constantMemoryClaimed": false,
+    "newConversationModelTrained": false,
+    "referenceWeightsChanged": false,
+    "conversationQualityImproved": false,
+    "oldBudgetsRenewed": false,
+    "documentation": "docs/tokenized-data-20261013.md",
+    "benchmark": "docs/tokenized-data-20261013/benchmark.json",
+    "referenceRegression": "docs/tokenized-data-20261013/reference-regression.json"
   }
 }

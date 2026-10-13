@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-13T02:12:16.729895+00:00",
+  "purpose": "tokenized-data-software-verification-not-conversation-acceptance",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -v",
+      "tests": 462,
+      "seconds": 28.402,
+      "result": "passed",
+      "log": "docs/tokenized-data-20261013/project-tests.log",
+      "logSha256": "96c457f180ab9b6150b94cc8d94ded9b2e6b33a6607d0c65546040bc75ac4219"
+    },
+    {
+      "command": "python3 -m unittest discover -s examples -p 'test_*.py' -v",
+      "tests": 12,
+      "seconds": 3.848,
+      "result": "passed",
+      "log": "docs/tokenized-data-20261013/examples-tests.log",
+      "logSha256": "0000cc7048b324a08c1b95964edb07b5b027de667078d2c69b4501b2743b8e9e"
+    }
+  ],
+  "sourceSha256": {
+    "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+    "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+    "src/ia_propia/conversation/disk_data.py": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71",
+    "src/ia_propia/conversation/training.py": "aca8add22a8b71145a70551a303f6b72c725228ad8f5cc0d2bb4be84bbacff3a",
+    "src/ia_propia/gnosis/project.py": "339d07e437f766f2fb7877632869e369be34c36556d5b6d98e022c820ac03a9e",
+    "configs/gnosis.json": "d3cf5676c207050ebab3898572b0798ae9625e0997af14d6786d9b41e011335e",
+    "tests/test_conversation_disk_data.py": "a17e2d28d7b545322782824780e45d4613b19be7d2c18e175bca2f7b7b1f2900",
+    "examples/benchmark_tokenized_data.py": "d9a286da43b00923937e4fe63c78b0b59a6722ba272600df89e493baa086ea24"
+  },
+  "benchmarkSourceHashesMatch": true,
+  "referenceArchivedRepliesReproduced": 4,
+  "referenceArtifactUnmodified": true,
+  "newConversationModelTrained": false,
+  "conversationQualityImproved": false,
+  "diffWhitespaceCheck": "passed",
+  "review": "project AI agents; not independent external audit"
+}

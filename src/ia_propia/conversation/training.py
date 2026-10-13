@@ -79,7 +79,11 @@ def _atomic_json(path, value):
 
 
 def _sha(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        while block := stream.read(1_048_576):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def _birth(pid):
@@ -113,7 +117,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters", "micro_batch_size"} if result is training else {"copy_head", "parameter_budget"})
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters", "micro_batch_size", "data_loading"} if result is training else {"copy_head", "parameter_budget"})
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -134,6 +138,11 @@ def _configs(model_config, training_config):
             raise ValueError("micro_batch_size must be an integer within the logical batch_size")
         if "copy_supervision" in training or "adaptive_sampling" in training:
             raise ValueError("micro_batch_size cannot combine with copy_supervision or adaptive_sampling")
+    if "data_loading" in training:
+        if type(training["data_loading"]) is not str or training["data_loading"] != "mmap":
+            raise ValueError("data_loading requires mmap")
+        if "sampling_weights" in training or "adaptive_sampling" in training:
+            raise ValueError("mmap data_loading cannot combine with sampling_weights or adaptive_sampling")
     for key, low, high in (("learning_rate", 0, 1), ("weight_decay", -1e-30, 10),
                            ("grad_clip", 0, 1000000), ("max_seconds", 0, 86400),
                            ("min_delta", -1e-30, 100)):
@@ -385,6 +394,9 @@ def _supervision_policy(config):
 
 
 def _load_training_corpus(path, config):
+    if config.get("data_loading") == "mmap":
+        from .disk_data import StreamingCorpus
+        return StreamingCorpus(path, config)
     if config.get("objective") == "causal_lm":
         from .language_data import load_text_corpus
         records = load_text_corpus(path)
@@ -405,9 +417,32 @@ def _encoded(records, tokenizer, context_length, window_policy="contiguous_nonov
     return _encoded_data(records, tokenizer, context_length, window_policy, objective=objective)[0]
 
 
+def _record_windows(record, tokenizer, context_length, window_policy, objective=None):
+    """Yield the same causal windows for in-memory and disk-backed training."""
+    from .tokenizer import ASSISTANT_ID, dialogue_tokens
+    if objective not in (None, "assistant_last_reply", "causal_lm"):
+        raise ValueError("Invalid encoding objective")
+    if objective == "causal_lm":
+        from .tokenizer import text_tokens
+        tokens = text_tokens(record["text"], tokenizer)
+        inputs, labels = tokens[:-1], tokens[1:]
+    else:
+        tokens, supervised = dialogue_tokens(record["messages"], tokenizer)
+        inputs = tokens[:-1]
+        labels = [token if teach else -100 for token, teach in zip(tokens[1:], supervised[1:])]
+        last_assistant = max(index for index, token in enumerate(inputs) if token == ASSISTANT_ID)
+        labels[:last_assistant] = [-100] * last_assistant
+    for start, end, previous_end in _window_ranges(len(inputs), context_length, window_policy):
+        chunk_inputs = inputs[start:end]
+        chunk_labels = labels[start:end]
+        overlap = max(0, previous_end - start)
+        chunk_labels[:overlap] = [-100] * overlap
+        if any(label != -100 for label in chunk_labels):
+            yield chunk_inputs, chunk_labels
+
+
 def _encoded_data(records, tokenizer, context_length, window_policy, sampling_rules=None, *, objective=None, partition_policy=None):
     """Retain causal overlap; supervise each objective's target exactly once."""
-    from .tokenizer import ASSISTANT_ID, dialogue_tokens
     if objective not in (None, "assistant_last_reply", "causal_lm"):
         raise ValueError("Invalid encoding objective")
     if partition_policy is not None and (type(partition_policy) is not str or partition_policy != "train_validation_only"):
@@ -418,36 +453,21 @@ def _encoded_data(records, tokenizer, context_length, window_policy, sampling_ru
     weights, record_ids, strata = [], [], {}
     rule_matches = [0] * len(sampling_rules or [])
     for record in records:
-        if objective == "causal_lm":
-            from .tokenizer import text_tokens
-            tokens = text_tokens(record["text"], tokenizer)
-            inputs, labels = tokens[:-1], tokens[1:]
-        else:
-            tokens, supervised = dialogue_tokens(record["messages"], tokenizer)
-            inputs = tokens[:-1]
-            labels = [token if teach else -100 for token, teach in zip(tokens[1:], supervised[1:])]
-            last_assistant = max(index for index, token in enumerate(inputs) if token == ASSISTANT_ID)
-            labels[:last_assistant] = [-100] * last_assistant
-        for start, end, previous_end in _window_ranges(len(inputs), context_length, window_policy):
-            chunk_inputs = inputs[start:end]
-            chunk_labels = labels[start:end]
-            overlap = max(0, previous_end - start)
-            chunk_labels[:overlap] = [-100] * overlap
-            if any(label != -100 for label in chunk_labels):
-                result[record["split"]].append((chunk_inputs, chunk_labels))
-                if sampling_rules is not None and record["split"] == "train":
-                    source = record["source"]
-                    weight, matched = _source_weight(source, sampling_rules)
-                    weights.append(weight)
-                    record_ids.append(record["id"])
-                    for index in matched:
-                        rule_matches[index] += 1
-                    prefix = source.get("prefixPairs") if type(source.get("prefixPairs")) is int else None
-                    key = (source["dataset"], prefix)
-                    value = strata.setdefault(key, {"windows": 0, "ids": set(), "totalWeight": 0.0})
-                    value["windows"] += 1
-                    value["ids"].add(record["id"])
-                    value["totalWeight"] += weight
+        for chunk_inputs, chunk_labels in _record_windows(record, tokenizer, context_length, window_policy, objective):
+            result[record["split"]].append((chunk_inputs, chunk_labels))
+            if sampling_rules is not None and record["split"] == "train":
+                source = record["source"]
+                weight, matched = _source_weight(source, sampling_rules)
+                weights.append(weight)
+                record_ids.append(record["id"])
+                for index in matched:
+                    rule_matches[index] += 1
+                prefix = source.get("prefixPairs") if type(source.get("prefixPairs")) is int else None
+                key = (source["dataset"], prefix)
+                value = strata.setdefault(key, {"windows": 0, "ids": set(), "totalWeight": 0.0})
+                value["windows"] += 1
+                value["ids"].add(record["id"])
+                value["totalWeight"] += weight
     required = ("train", "validation") if partition_policy == "train_validation_only" else result
     if any(not result[split] for split in required):
         raise ValueError("Each split needs at least one encoded text target" if objective == "causal_lm"
@@ -484,6 +504,12 @@ def _sampling_metadata(state):
             "maxDrawsBeforeRefresh": config["batch_size"] * config["adaptive_sampling"]["refresh_every_steps"],
         }
     return result
+
+
+def _data_loading_metadata(state):
+    if state.get("training_config", {}).get("data_loading") != "mmap":
+        return {}
+    return {"dataLoading": copy.deepcopy(state["data_loading"])}
 
 
 def _batch(examples, indices, torch):
@@ -613,14 +639,33 @@ def _baseline(examples, vocab_size):
 def _baseline_score(examples, losses, loss_reduction="token_mean"):
     if loss_reduction not in ("token_mean", "sequence_mean"):
         raise ValueError("Invalid loss_reduction")
-    values = [losses[token] for _, labels in examples for token in labels if token != -100]
-    token_nll = sum(values) / len(values)
+    count = 0
+
+    def target_losses():
+        nonlocal count
+        for _, labels in examples:
+            for token in labels:
+                if token != -100:
+                    count += 1
+                    yield losses[token]
+
+    # Keep builtin sum's floating-point algorithm and target order, including
+    # compensated summation on newer Python versions, without a corpus-sized list.
+    token_nll = sum(target_losses()) / count
     if loss_reduction == "token_mean":
-        return {"nll": token_nll, "targetTokens": len(values)}
-    per_sequence = [[losses[token] for token in labels if token != -100] for _, labels in examples]
-    per_sequence = [sum(values) / len(values) for values in per_sequence if values]
-    sequence_nll = sum(per_sequence) / len(per_sequence)
-    return {"nll": sequence_nll, "targetTokens": len(values),
+        return {"nll": token_nll, "targetTokens": count}
+    sequences = 0
+
+    def sequence_means():
+        nonlocal sequences
+        for _, labels in examples:
+            targets = sum(token != -100 for token in labels)
+            if targets:
+                sequences += 1
+                yield sum(losses[token] for token in labels if token != -100) / targets
+
+    sequence_nll = sum(sequence_means()) / sequences
+    return {"nll": sequence_nll, "targetTokens": count,
             "tokenWeightedNll": token_nll, "sequenceMeanNll": sequence_nll,
             "lossReduction": "sequence_mean", "sequenceUnit": "encoded_window"}
 
@@ -917,7 +962,7 @@ def _validate_resume_state(state, examples):
                 "elapsed_seconds", "best_validation_nll", "bad_validations", "last_validation_step",
                 "last_checkpoint", "best_checkpoint", "created_at", "assistant_targets", "window_policy",
                 "python_rng"}
-    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime", "copy_bootstrap", "parameter_policy"}
+    if (not isinstance(state, dict) or not expected <= set(state) or set(state) - expected - {"lineage", "sampling", "adaptive_sampling", "epoch_cursor", "train_precision_runtime", "copy_bootstrap", "parameter_policy", "data_loading"}
             or type(state["schemaVersion"]) is not int or state["schemaVersion"] != 1):
         raise ValueError("Invalid checkpoint state schema")
     if "lineage" in state:
@@ -925,6 +970,8 @@ def _validate_resume_state(state, examples):
     requested, config = _configs(state["requested_model_config"], state["training_config"])
     if requested != state["requested_model_config"] or config != state["training_config"]:
         raise ValueError("Incomplete checkpoint configuration")
+    if ("data_loading" in state) != (config.get("data_loading") == "mmap"):
+        raise ValueError("Checkpoint data loading policy mismatch")
     if ("parameter_policy" in state) != ("trainable_parameters" in config):
         raise ValueError("Checkpoint trainable parameter policy mismatch")
     copy_from_b1 = ("copy_head" in requested and state.get("lineage", {}).get("parentModelId") == _COPY_B1_ID)
@@ -1058,7 +1105,7 @@ def _status_write(run_dir, state, status, reason=None, **extra):
              "environmentLifetimeGuaranteed": False, "cooperativeSignalInstalled": False,
              **_origin_metadata(state), **_loss_metadata(state.get("training_config", {})),
              **_parameter_metadata(state),
-             **_sampling_metadata(state), **extra}
+             **_sampling_metadata(state), **_data_loading_metadata(state), **extra}
     _atomic_json(Path(run_dir) / "status.json", value)
     return value
 
@@ -1106,7 +1153,7 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
     from .tokenizer import fit_tokenizer
     if initial_model is None and not resume:
         validate_config(requested_model)
-    with _run_lock(run_dir):
+    with _run_lock(run_dir), contextlib.ExitStack() as data_resources:
         if resume:
             if (run_dir / "evaluation.json").exists():
                 raise ValueError("Finalized runs cannot resume; start a new run")
@@ -1157,7 +1204,10 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 if config.get("objective") == "causal_lm":
                     from .tokenizer import fit_text_tokenizer
                     fit = fit_text_tokenizer
-                tokenizer = fit([record for record in records if record["split"] == "train"],
+                train_records = (record for record in records if record["split"] == "train")
+                if config.get("data_loading") != "mmap":
+                    train_records = list(train_records)
+                tokenizer = fit(train_records,
                                 vocab_size=requested_model["vocab_size"])
                 actual_model = dict(requested_model, vocab_size=tokenizer.get_vocab_size())
                 if expected_model_config is not None:
@@ -1193,7 +1243,21 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     raise ValueError("Resume precision runtime mismatch")
             if payload is None:
                 state["train_precision_runtime"] = runtime
-        if "sampling_weights" in config:
+        if config.get("data_loading") == "mmap":
+            from .disk_data import build_or_load_windows, close_windows
+            examples = build_or_load_windows(
+                run_dir / "tokenized-cache", records, tokenizer,
+                state["model_config"]["context_length"], state["window_policy"],
+                corpus_sha256=corpus_hash, **_encoding_kwargs(config))
+            data_resources.callback(close_windows, examples)
+            loading = {"mode": "mmap", "cache": copy.deepcopy(examples.cache_metadata)}
+            if payload is not None:
+                if state.get("data_loading") != loading:
+                    raise ValueError("Checkpoint tokenized cache differs from its corpus/configuration")
+            else:
+                state["data_loading"] = loading
+            sampling_weights, sampling_ids = None, None
+        elif "sampling_weights" in config:
             examples, sampling_weights, sampling_ids, sampling_summary = _encoded_data(
                 records, tokenizer, state["model_config"]["context_length"], state["window_policy"], config["sampling_weights"], **_encoding_kwargs(config))
             if payload is not None:
@@ -1208,6 +1272,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             else:
                 examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"], **_encoding_kwargs(config))
                 sampling_weights, sampling_ids = None, None
+        if _sha(corpus_path) != corpus_hash:
+            raise ValueError("Corpus changed during tokenization or preparation")
         if payload is not None:
             _validate_resume_state(state, examples)
         adaptive_sampler = None
@@ -1476,7 +1542,7 @@ def export_best(run_dir, export_dir):
                 raise RuntimeError("Selected checkpoint changed during export; retry")
     metadata = {"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                 **_origin_metadata(state), **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
-                **_parameter_metadata(state), "selectionSplit": "validation",
+                **_parameter_metadata(state), **_data_loading_metadata(state), "selectionSplit": "validation",
                 "selectedCheckpoint": name, "validationNll": state["best_validation_nll"],
                 "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                 "testEvaluated": False, "config": state["training_config"]}
@@ -1487,7 +1553,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
     """Evaluate the validation-selected snapshot on test, explicitly and outside the loop."""
     from .artifacts import save_artifact
     run_dir = Path(run_dir).resolve()
-    with _run_lock(run_dir):
+    with _run_lock(run_dir), contextlib.ExitStack() as data_resources:
         status = _json_read(run_dir / "status.json")
         if not status.get("bestCheckpoint"):
             raise ValueError("No validation-selected checkpoint")
@@ -1500,7 +1566,20 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
         records = _load_training_corpus(path, state["training_config"])
         if _sha(path) != state["corpus_sha256"]:
             raise ValueError("Corpus changed while loading")
-        examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"], **_encoding_kwargs(state["training_config"]))
+        if state["training_config"].get("data_loading") == "mmap":
+            from .disk_data import build_or_load_windows, close_windows
+            examples = build_or_load_windows(
+                run_dir / "tokenized-cache-finalize", records, tokenizer,
+                state["model_config"]["context_length"], state["window_policy"],
+                corpus_sha256=state["corpus_sha256"], include_test=True,
+                **_encoding_kwargs(state["training_config"]))
+            data_resources.callback(close_windows, examples)
+            loading_metadata = {"dataLoading": {"mode": "mmap", "cache": copy.deepcopy(examples.cache_metadata)}}
+        else:
+            examples = _encoded(records, tokenizer, state["model_config"]["context_length"], state["window_policy"], **_encoding_kwargs(state["training_config"]))
+            loading_metadata = {}
+        if _sha(path) != state["corpus_sha256"]:
+            raise ValueError("Corpus changed during tokenization or preparation")
         _torch().set_num_threads(state["training_config"]["torch_threads"])
         losses = _baseline(examples["train"], tokenizer.get_vocab_size())
         loss_reduction = state["training_config"].get("loss_reduction", "token_mean")
@@ -1508,7 +1587,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
                       "selectedCheckpoint": status["bestCheckpoint"], "selectedStep": state["step"],
                       "selectionSplit": "validation", "testUsedForSelection": False, **_origin_metadata(state),
                       **_loss_metadata(state["training_config"]), **_sampling_metadata(state),
-                      **_parameter_metadata(state),
+                      **_parameter_metadata(state), **loading_metadata,
                       "assistantTargets": state["assistant_targets"], "windowPolicy": state["window_policy"],
                       "train": _evaluate_configured(model, examples["train"], state["training_config"]),
                       "validation": _evaluate_configured(model, examples["validation"], state["training_config"]),
@@ -1520,7 +1599,7 @@ def finalize(run_dir, *, corpus_path=None, export_dir=None):
             save_artifact(export_dir, model, tokenizer,
                           training={"corpusSha256": state["corpus_sha256"], "selectedStep": state["step"],
                                     **_origin_metadata(state), **_loss_metadata(state["training_config"]),
-                                    **_sampling_metadata(state), **_parameter_metadata(state),
+                                    **_sampling_metadata(state), **_parameter_metadata(state), **_data_loading_metadata(state),
                                     "selectionSplit": "validation",
                                     "config": state["training_config"]}, evaluation=evaluation)
         _log(run_dir, {"event": "explicit_finalization", "selectedStep": state["step"],
