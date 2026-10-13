@@ -1,0 +1,121 @@
+{
+  "humanV3": {
+    "path": "examples/human-short-es-v3/human-short-es.train-validation.jsonl",
+    "sha256": "7016322d12f49b8de53abbaee57826c2a0cbbb50164a109cf94b4edfb51d7a3c"
+  },
+  "initialSeed": {
+    "path": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+    "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+  },
+  "limitations": [
+    "Finite public-source subsets, not the complete Spanish language, proof of conversation or exhaustive factual/rights certification.",
+    "Original historical works include old spelling/science/social views; Tatoeba is a first100000-row source shard, mainly sentences dated2007-2012, not guaranteed current2026 facts.",
+    "Exact UTF8 whole-record and whitespace-normalized paragraph guards do not detect semantic paraphrases. Initial seed has raw full-record digests and normalized paragraph digests, not normalized full-record digests across changed multi-paragraph separators.",
+    "Paragraph checks cover original blank-line blocks and individual lines of at least12 Unicode words; shorter packed sentences are not compared as substrings.",
+    "No historical TEST text is read; individual reserved TEST paragraphs/chunks are not exhaustively checked. IDs/folds already assigned remain preserved.",
+    "Samefold known paragraph content may remain in a different new record and is reported; it is not proof that every word or sentence is new.",
+    "OASST rehearsal is repeated only for retention and is never counted as new diversity; source contributors/attribution/licenses remain perrecord.",
+    "Mixed source licenses are not relabeled to a single blanket data license; see the exact pinned source manifests."
+  ],
+  "limits": {
+    "corpusCapMiB": 24,
+    "cpuCores": 1,
+    "maxShards": 2,
+    "memoryMiB": 512,
+    "seconds": 600,
+    "totalReadWriteMiB": 64
+  },
+  "rehearsal": {
+    "corpus": {
+      "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+      "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+    },
+    "dataset": "OpenAssistant/oasst1+oasst2",
+    "genre": "public-reviewed-conversation-rehearsal",
+    "key": "oasst-rehearsal",
+    "license": "Apache-2.0",
+    "provenance": {
+      "path": "examples/learning-repair-20261013/causal-base/manifest.json",
+      "sha256": "4ae23d3cecb4627a0e2b66ae7f1481f88c68ed2d029a97c2fecfec07d76d48bf"
+    },
+    "sourceUrls": [
+      "https://huggingface.co/datasets/OpenAssistant/oasst1",
+      "https://huggingface.co/datasets/OpenAssistant/oasst2"
+    ]
+  },
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/gutenberg-classic-es-v2/gutenberg-spanish.train-validation.jsonl",
+        "sha256": "96c58c71a5834c3503fe4ed69b25b315ff1cf0b37414c571d7ab5623e66f4ce3"
+      },
+      "dataset": "Project Gutenberg/classic-Spanish",
+      "genre": "historical-fiction-prose-poetry",
+      "key": "gutenberg",
+      "license": "Original historical public-domain works; PG declares public domain in USA, preserve PG License/provenance",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/gutenberg-classic-es-v2/manifest.json",
+        "sha256": "643e5da76ebbc0c86cdd087e013d29ec2766a7ef2a96ecbcaece6547792725c7"
+      },
+      "sourceUrls": [
+        "https://www.gutenberg.org/ebooks/2000",
+        "https://www.gutenberg.org/policy/license.html"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/wikisource-essays-v1/wikisource-essays.train-validation.jsonl",
+        "sha256": "1abfb826d884ea40760b0e5f16f6230ff344dd1168b250a2f0ae440f64b45797"
+      },
+      "dataset": "Wikisource/es-original-essays-v1",
+      "genre": "historical-essay-and-grammar",
+      "key": "wikisource",
+      "license": "CC-BY-SA-4.0 transcription; original authors died over100years ago",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/wikisource-essays-v1/manifest.json",
+        "sha256": "8775a2d448de889ec526ed97c292767543aea9d5cbe4dd5c3f3bda889c8a3d4d"
+      },
+      "sourceUrls": [
+        "https://es.wikisource.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/deed.es"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/tatoeba-spa.train-validation.jsonl",
+        "sha256": "5b4c7e6f46b667fc41c0088f0265f09a0d81aa0ff5d178f7401f276bc6014e79"
+      },
+      "dataset": "Tatoeba/spa-detailed",
+      "genre": "community-sentences-and-translations",
+      "key": "tatoeba",
+      "license": "CC-BY-2.0-FR default; documented matching sentenceIDs/text CC0-1.0 subset",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/manifest.json",
+        "sha256": "ac62add0f0e386678236f61b4f3bb7677968ac7de720f5d56be9493a3b171d28"
+      },
+      "sourceUrls": [
+        "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_detailed.tsv.bz2",
+        "https://creativecommons.org/licenses/by/2.0/fr/"
+      ]
+    },
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/wiktionary-spanish-v1/wiktionary-es.train-validation.jsonl",
+        "sha256": "8dd844e98d0a2d1147f962cbe7ed2eeb54fecb0d1b906d8b22a4bfbca531c519"
+      },
+      "dataset": "Wikcionario/es",
+      "genre": "lexicographic-glosses-forms-examples",
+      "key": "wiktionary",
+      "license": "CC-BY-SA-4.0",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/wiktionary-spanish-v1/manifest.json",
+        "sha256": "610a84a5c45ddb57043f13fff564ebd54d54dc2d9d1a91ec84fa8703bb96c38b"
+      },
+      "sourceUrls": [
+        "https://es.wiktionary.org/w/api.php",
+        "https://creativecommons.org/licenses/by-sa/4.0/"
+      ]
+    }
+  ]
+}

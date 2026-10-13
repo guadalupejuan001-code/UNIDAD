@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-own-foundation-stage-delivery",
+  "preparedBy": "project-AI",
+  "humanReview": false,
+  "createdAtUtc": "2026-10-13 06:14:03 UTC",
+  "status": {
+    "assistantTargets": "all_text_tokens",
+    "bestCheckpoint": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+    "bestValidationNll": 2.981873986010036,
+    "cooperativeSignalInstalled": false,
+    "corpusFormat": "text",
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+    "dataLoading": {
+      "cache": {
+        "identity": {
+          "contextLength": 512,
+          "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+          "includeTest": false,
+          "objective": "causal_lm",
+          "partitionPolicy": "train_validation_only",
+          "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "vocabSize": 2048,
+          "windowEncoding": "little-endian-int32-inputs-labels-v1",
+          "windowPolicy": "contiguous_nonoverlapping"
+        },
+        "schemaVersion": 1,
+        "splits": {
+          "test": {
+            "count": 0,
+            "data": {
+              "bytes": 0,
+              "name": "test.windows.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "index": {
+              "bytes": 0,
+              "name": "test.index.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "train": {
+            "count": 17995,
+            "data": {
+              "bytes": 46243264,
+              "name": "train.windows.bin",
+              "sha256": "7161d9f290032aa141c3eb0e5eaedd206eaf675a641f8bc2831f014e0fe7ba14"
+            },
+            "index": {
+              "bytes": 287920,
+              "name": "train.index.bin",
+              "sha256": "72a15a92c375fdd9567be59dd7c7b434f5c14915fc9b910ed482e6beb9a13a00"
+            }
+          },
+          "validation": {
+            "count": 2189,
+            "data": {
+              "bytes": 5502936,
+              "name": "validation.windows.bin",
+              "sha256": "68add184ae95f71ef8a6233b7eb9d83d671ed953a13b9844331b211ce12219f1"
+            },
+            "index": {
+              "bytes": 35024,
+              "name": "validation.index.bin",
+              "sha256": "024698fbdbec7944f1caea31e94b50bf97730da925611a478613df47fae601af"
+            }
+          }
+        }
+      },
+      "mode": "mmap"
+    },
+    "elapsedSeconds": 7337.687718068,
+    "environmentLifetimeGuaranteed": false,
+    "epoch": 3,
+    "experimental": true,
+    "heartbeatAt": 1791872031.2272913,
+    "lastCheckpoint": "step-000008914-fbd42a9742a243efa27110956f99aaa7",
+    "lossReduction": "token_mean",
+    "partitionPolicy": "train_validation_only",
+    "pid": 11176,
+    "processBirth": "1165743",
+    "projectionMode": "supervised",
+    "reason": "total_time_budget",
+    "schemaVersion": 1,
+    "status": "completed",
+    "step": 8914,
+    "testPartitionPresent": false,
+    "trainPrecision": "cpu_bfloat16",
+    "trainableParameters": {
+      "frozenParameterCount": 0,
+      "frozenTensorNames": [],
+      "policy": "all",
+      "trainableParameterCount": 15179520,
+      "trainableTensorNames": [
+        "blocks.0.attention.projection.bias",
+        "blocks.0.attention.projection.weight",
+        "blocks.0.attention.qkv.bias",
+        "blocks.0.attention.qkv.weight",
+        "blocks.0.attention_norm.bias",
+        "blocks.0.attention_norm.weight",
+        "blocks.0.feedforward.0.bias",
+        "blocks.0.feedforward.0.weight",
+        "blocks.0.feedforward.2.bias",
+        "blocks.0.feedforward.2.weight",
+        "blocks.0.feedforward_norm.bias",
+        "blocks.0.feedforward_norm.weight",
+        "blocks.1.attention.projection.bias",
+        "blocks.1.attention.projection.weight",
+        "blocks.1.attention.qkv.bias",
+        "blocks.1.attention.qkv.weight",
+        "blocks.1.attention_norm.bias",
+        "blocks.1.attention_norm.weight",
+        "blocks.1.feedforward.0.bias",
+        "blocks.1.feedforward.0.weight",
+        "blocks.1.feedforward.2.bias",
+        "blocks.1.feedforward.2.weight",
+        "blocks.1.feedforward_norm.bias",
+        "blocks.1.feedforward_norm.weight",
+        "blocks.2.attention.projection.bias",
+        "blocks.2.attention.projection.weight",
+        "blocks.2.attention.qkv.bias",
+        "blocks.2.attention.qkv.weight",
+        "blocks.2.attention_norm.bias",
+        "blocks.2.attention_norm.weight",
+        "blocks.2.feedforward.0.bias",
+        "blocks.2.feedforward.0.weight",
+        "blocks.2.feedforward.2.bias",
+        "blocks.2.feedforward.2.weight",
+        "blocks.2.feedforward_norm.bias",
+        "blocks.2.feedforward_norm.weight",
+        "blocks.3.attention.projection.bias",
+        "blocks.3.attention.projection.weight",
+        "blocks.3.attention.qkv.bias",
+        "blocks.3.attention.qkv.weight",
+        "blocks.3.attention_norm.bias",
+        "blocks.3.attention_norm.weight",
+        "blocks.3.feedforward.0.bias",
+        "blocks.3.feedforward.0.weight",
+        "blocks.3.feedforward.2.bias",
+        "blocks.3.feedforward.2.weight",
+        "blocks.3.feedforward_norm.bias",
+        "blocks.3.feedforward_norm.weight",
+        "blocks.4.attention.projection.bias",
+        "blocks.4.attention.projection.weight",
+        "blocks.4.attention.qkv.bias",
+        "blocks.4.attention.qkv.weight",
+        "blocks.4.attention_norm.bias",
+        "blocks.4.attention_norm.weight",
+        "blocks.4.feedforward.0.bias",
+        "blocks.4.feedforward.0.weight",
+        "blocks.4.feedforward.2.bias",
+        "blocks.4.feedforward.2.weight",
+        "blocks.4.feedforward_norm.bias",
+        "blocks.4.feedforward_norm.weight",
+        "blocks.5.attention.projection.bias",
+        "blocks.5.attention.projection.weight",
+        "blocks.5.attention.qkv.bias",
+        "blocks.5.attention.qkv.weight",
+        "blocks.5.attention_norm.bias",
+        "blocks.5.attention_norm.weight",
+        "blocks.5.feedforward.0.bias",
+        "blocks.5.feedforward.0.weight",
+        "blocks.5.feedforward.2.bias",
+        "blocks.5.feedforward.2.weight",
+        "blocks.5.feedforward_norm.bias",
+        "blocks.5.feedforward_norm.weight",
+        "blocks.6.attention.projection.bias",
+        "blocks.6.attention.projection.weight",
+        "blocks.6.attention.qkv.bias",
+        "blocks.6.attention.qkv.weight",
+        "blocks.6.attention_norm.bias",
+        "blocks.6.attention_norm.weight",
+        "blocks.6.feedforward.0.bias",
+        "blocks.6.feedforward.0.weight",
+        "blocks.6.feedforward.2.bias",
+        "blocks.6.feedforward.2.weight",
+        "blocks.6.feedforward_norm.bias",
+        "blocks.6.feedforward_norm.weight",
+        "blocks.7.attention.projection.bias",
+        "blocks.7.attention.projection.weight",
+        "blocks.7.attention.qkv.bias",
+        "blocks.7.attention.qkv.weight",
+        "blocks.7.attention_norm.bias",
+        "blocks.7.attention_norm.weight",
+        "blocks.7.feedforward.0.bias",
+        "blocks.7.feedforward.0.weight",
+        "blocks.7.feedforward.2.bias",
+        "blocks.7.feedforward.2.weight",
+        "blocks.7.feedforward_norm.bias",
+        "blocks.7.feedforward_norm.weight",
+        "final_norm.bias",
+        "final_norm.weight",
+        "position_embedding.weight",
+        "token_embedding.weight"
+      ]
+    },
+    "trainedFrom": "random_weights",
+    "trainingMicrobatch": {
+      "checkpointBoundary": "completed_logical_batch",
+      "gradientClipping": "once_after_all_microbatches",
+      "logicalBatchSize": 8,
+      "lossReduction": "token_mean",
+      "maxMicroBatchSize": 4,
+      "optimizerStepsUnit": "logical_batch"
+    },
+    "trainingObjective": "causal_lm"
+  },
+  "statusSha256": "570cd7755105188cff4e08d080f0c56b88b850b7a914e0208d398d0890d0760e",
+  "stageLatestSha256": "a8e51f9a96b955fadc5eb0162c4ce3caa84dccce5acf5d49bcafeb93ad910dd3",
+  "sourceAndInputsUnchanged": true,
+  "testEvaluated": false,
+  "conversationAccepted": false,
+  "checkpointRoles": {
+    "best": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+    "last": "step-000008914-fbd42a9742a243efa27110956f99aaa7"
+  },
+  "uniqueNativeCheckpoints": 2,
+  "nativePackages": {
+    "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365": {
+      "roles": [
+        "best"
+      ],
+      "capture": {
+        "sourcePath": "private/learning-repair-20261013/runs/foundation-15m/checkpoints/step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+        "copyPath": "private/learning-repair-20261013/checkpoint-staging/foundation-final/step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+        "hashesBefore": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+          "manifest.json": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+        },
+        "hashesCopied": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+          "manifest.json": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+        },
+        "hashesAfter": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+          "manifest.json": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+        },
+        "files": {
+          "weights.safetensors": {
+            "bytes": 60727960,
+            "sha256": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d"
+          },
+          "resume.pt": {
+            "bytes": 121517938,
+            "sha256": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb"
+          },
+          "tokenizer.json": {
+            "bytes": 49502,
+            "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+          },
+          "state.json": {
+            "bytes": 110348,
+            "sha256": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e"
+          },
+          "manifest.json": {
+            "bytes": 361,
+            "sha256": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+          }
+        }
+      },
+      "packageResult": {
+        "operation": "pack",
+        "directory": "/workspace/UNIDAD/checkpoints/learning-repair-20261013/foundation-15m/final/step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+        "checkpointName": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+        "manifestSha256": "219c2af67b0d39b2a2e24e53d8610ec71c0d1fb85e4fd8bbb36c88443728659b",
+        "nativeFileHashes": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+          "manifest.json": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+        },
+        "parts": 9
+      },
+      "totalNativeBytes": 182406109,
+      "stagingHashesAfterPackaging": {
+        "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+        "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "state.json": "0cd2ff6d6700f886383e999d841e48d3f2493740244ade9301d0ee847aa4642e",
+        "manifest.json": "a9c8e09d9971a2df94dfa57a3552cde0a58e9e1e96a4bd649560be2c8190733c"
+      }
+    },
+    "step-000008914-fbd42a9742a243efa27110956f99aaa7": {
+      "roles": [
+        "last"
+      ],
+      "capture": {
+        "sourcePath": "private/learning-repair-20261013/runs/foundation-15m/checkpoints/step-000008914-fbd42a9742a243efa27110956f99aaa7",
+        "copyPath": "private/learning-repair-20261013/checkpoint-staging/foundation-final/step-000008914-fbd42a9742a243efa27110956f99aaa7",
+        "hashesBefore": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+          "manifest.json": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+        },
+        "hashesCopied": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+          "manifest.json": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+        },
+        "hashesAfter": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+          "manifest.json": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+        },
+        "files": {
+          "weights.safetensors": {
+            "bytes": 60727960,
+            "sha256": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d"
+          },
+          "resume.pt": {
+            "bytes": 121517938,
+            "sha256": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb"
+          },
+          "tokenizer.json": {
+            "bytes": 49502,
+            "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+          },
+          "state.json": {
+            "bytes": 110348,
+            "sha256": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054"
+          },
+          "manifest.json": {
+            "bytes": 361,
+            "sha256": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+          }
+        }
+      },
+      "packageResult": {
+        "operation": "pack",
+        "directory": "/workspace/UNIDAD/checkpoints/learning-repair-20261013/foundation-15m/final/step-000008914-fbd42a9742a243efa27110956f99aaa7",
+        "checkpointName": "step-000008914-fbd42a9742a243efa27110956f99aaa7",
+        "manifestSha256": "92fc7ecfe9f207c4a5c17a3d9313d8b15eb9ca5bda791e21142249431b32fbba",
+        "nativeFileHashes": {
+          "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+          "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+          "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "state.json": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+          "manifest.json": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+        },
+        "parts": 9
+      },
+      "totalNativeBytes": 182406109,
+      "stagingHashesAfterPackaging": {
+        "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+        "resume.pt": "78334a9362ec306c65131df4695fb90f7c0c2a6ef95180806b965af624e44feb",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "state.json": "1841f4adaa4a2f3cfbcfbe40379a5f7f91e813ea3ceffda301484eb20c7c7054",
+        "manifest.json": "fbdf9d98a6e2d152caf152b8bf18ce45e71e91c31dadb9dfc7226ae4fe554c13"
+      }
+    }
+  },
+  "inferenceArtifact": {
+    "sourcePath": "private/learning-repair-20261013/runs/foundation-15m/snapshots/best-step008914",
+    "copyPath": "models/learning-repair-20261013/foundation-15m/final",
+    "hashesBefore": {
+      "config.json": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc",
+      "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+      "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+      "manifest.json": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88"
+    },
+    "hashesCopied": {
+      "config.json": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc",
+      "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+      "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+      "manifest.json": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88"
+    },
+    "hashesAfter": {
+      "config.json": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc",
+      "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+      "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+      "manifest.json": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88"
+    },
+    "files": {
+      "config.json": {
+        "bytes": 128,
+        "sha256": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 60727960,
+        "sha256": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d"
+      },
+      "manifest.json": {
+        "bytes": 6878,
+        "sha256": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88"
+      }
+    }
+  },
+  "modelId": "unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398",
+  "targetExposureReceiptSha256": "824d701dae28bae8f7103a4179b3bfbf4a2ed39bcf936655e66e42e0ff5ab3c8",
+  "helperSha256": "2123c4350eac3ec35ce1e6581fd495e47d69b52b579c1478aae3fc812c063304",
+  "integrity": {
+    "sourceCopiesByteExact": true,
+    "partsRehashed": true,
+    "restorationExecuted": false,
+    "trainingExecuted": false,
+    "softwareTestsExecuted": false
+  },
+  "localDeliveryBytes": 790414254,
+  "publication": {
+    "gitHubUploadVerified": false,
+    "localFilesPrepared": true
+  },
+  "interpretation": "Completed finite own causal base. Experimental; acceptance requires actual conversational responses after SFT."
+}

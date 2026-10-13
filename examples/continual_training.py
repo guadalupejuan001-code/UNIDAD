@@ -144,7 +144,8 @@ def load_config(path):
             if type(hook.get(field, maximum)) is not int or not 1 <= hook.get(field, maximum) <= maximum:
                 raise ValueError('Invalid finite post-stage resource ceiling: ' + field)
         argv = hook.get('argv')
-        if not isinstance(argv, list) or len(argv) < 2 or any(type(x) is not str for x in argv) or argv[0] != sys.executable:
+        if (not isinstance(argv, list) or len(argv) < 2 or any(type(x) is not str for x in argv)
+                or Path(argv[0]).resolve() != Path(sys.executable).resolve()):
             raise ValueError('Post-stage hook requires a pinned local Python argv, without a shell')
         script = path_for(config, argv[1])
         pins = hook.get('sourceSha256', {})
@@ -183,8 +184,8 @@ class Supervisor:
         self.directory.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.inbox.mkdir(parents=True, exist_ok=True, mode=0o700)
 
-    def event(self, kind, **values):
-        record = {'atUtc': now(), 'event': kind, **values}
+    def event(self, event_name, **values):
+        record = {'atUtc': now(), 'event': event_name, **values}
         with (self.directory / 'journal.jsonl').open('a', encoding='utf8') as stream:
             stream.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
             stream.flush()
@@ -198,6 +199,8 @@ class Supervisor:
         values['trainingActive'] = bool(worker.get('processAlive') and worker.get('status') == 'running')
         generation = self.state.get('postStageChild', {})
         values['generationChildAlive'] = jobs._alive(generation.get('pid'), generation.get('processBirth'))
+        if 'reason' not in values:
+            self.state.pop('reason', None)
         self.state.update({'operationalState': status, 'heartbeatAtUnix': time.time(),
             'supervisorPid': os.getpid(), 'supervisorBirth': jobs._birth(os.getpid()),
             'environmentLifetimeGuaranteed': False, **values})
