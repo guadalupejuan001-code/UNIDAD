@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "2d989a56f92af6a8c9d4a686bef77a173b1f602b",
+  "initialModel": "models/learning-repair-20261013/pattern-relations-v1/reference-wiki1",
+  "expectedModelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+  "expectedWeightsSha256": "a1b52c676927c2dbebc76a0550c545310760f130e479ba2e29ee946b00fdc671",
+  "retentionCorpus": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+  "retentionSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+  "training": {
+    "objective": "assistant_last_reply",
+    "partition_policy": "train_validation_only",
+    "data_loading": "mmap",
+    "projection_mode": "supervised",
+    "loss_reduction": "sequence_mean",
+    "trainable_parameters": "all",
+    "train_precision": "cpu_bfloat16",
+    "batch_size": 4,
+    "micro_batch_size": 1,
+    "learning_rate": 0.00015,
+    "learning_rate_schedule": {"type": "cosine", "decay_steps": 512, "min_lr_ratio": 0.1},
+    "warmup_steps": 16,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "max_steps": 512,
+    "max_epochs": 12,
+    "max_seconds": 900,
+    "validation_every": 128,
+    "checkpoint_every": 64,
+    "patience": 4,
+    "seed": 20261013,
+    "torch_threads": 2
+  }
+}

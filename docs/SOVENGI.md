@@ -39,6 +39,20 @@ publicado seleccionado es `models/learning-repair-20261013/pattern-relations-v1/
 SOVENGI es el nombre del producto en el prompt y la interfaz, no un nuevo modelo
 entrenado por cambiar una etiqueta.
 
+La [etapa de memoria del 13 de octubre](sovengi-memory-20261013/README.md) sí
+entrenó pesos nuevos de esa línea. Para probar el candidato con la misma consola,
+memoria, API y motor:
+
+```bash
+sovengi --config configs/sovengi-memory-candidate.json chat
+```
+
+Su identidad está fijada en esa configuración y su estado privado está separado
+del de la referencia. El control pasó de 1/25 a 22/25 respuestas exactas, pero
+la conversación general sigue sin aceptación. `configs/gnosis.json` conserva la
+referencia anterior para comparar. Ninguna de estas configuraciones inicia
+entrenamiento al abrir el chat.
+
 | Pieza | Función en SOVENGI |
 | --- | --- |
 | Brain + ConversationEngine | Una implementación de generación y protocolo para consola, Python y HTTP. |
@@ -118,9 +132,10 @@ No hay que entrenar todos los modelos: se continúa un candidato propio y se
 compara contra las referencias con datos nuevos separados de entrenamiento.
 `sovengi plan` muestra recursos y bloqueos; `sovengi train --budget-seconds 60`
 delega al entrenador reanudable de GNOSIS. Los corpus continúan sin configurarse
-en esta receta: no se asignan datos personales ni se inicia otra corrida en
-paralelo con el supervisor activo. La etapa `conversation` continúa desde el
-modelo general seleccionado cuando se le proporciona corpus y hash aprobados.
+en las recetas de uso: no se asignan datos personales. El experimento terminado
+conserva su corpus y configuración propios; su presupuesto ya se consumió.
+Una continuación requiere otra etapa finita declarada. La existencia de recibos
+anteriores del supervisor no acredita que siga activo en otro entorno.
 
 Una corrida nueva no cambia el modelo servido hasta evaluar sus respuestas y
 actualizar explícitamente ruta e identidad. La conversación general, el uso

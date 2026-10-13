@@ -1,5 +1,31 @@
 # Estado actual de Unidad
 
+## SOVENGI: integración vigente y entrenamiento cerrado el 13 de octubre
+
+El código verificado en `main` `2d989a5` reúne SOVENGI, memoria recuperada,
+herramientas, API y NERVA conversacional. `configs/gnosis.json` carga el modelo
+propio `reference-wiki1` de 15.769.344 parámetros y contexto 2.048, con Torch y
+caché. C7 permanece como referencia histórica.
+
+La [auditoría y etapa nueva](sovengi-memory-20261013/README.md) comprueban las
+ramas y documentan el entrenamiento de memoria y correcciones. La ejecución
+[38433132860](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38433132860)
+terminó: 27 actualizaciones, 921,32 segundos dentro del entrenador y parada por
+presupuesto de tiempo. Su control de desarrollo pasó de 1/25 a 22/25 respuestas
+exactas; las 20 consultas de memoria fueron correctas. La revisión conserva
+respuestas aún deficientes y no equivale al test de aceptación general.
+
+Los pesos nuevos están en `models/sovengi-memory-20261013/candidate-best`, y
+`configs/sovengi-memory-candidate.json` los conecta al mismo SOVENGI para prueba
+explícita. La referencia predeterminada y sus hashes se conservan. Esta corrida
+está cerrada; no se anuncia entrenamiento continuo ni promoción automática.
+
+Las observaciones de PID, colas y entrenamientos que siguen tienen la fecha de
+su encabezado. No acreditan que esos procesos sigan vivos en otro entorno.
+El [estado estructurado](unidad-current-status.json) identifica la configuración
+actual y conserva el estado anterior como evidencia histórica.
+
+
 ## Integración conversacional de NERVA, 13 de octubre de 2026
 
 La [entrega y medición](nerva-conversation-20261013/README.md) conecta NERVA a

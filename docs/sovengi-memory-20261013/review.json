@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex (AI review; no independent human review)",
+  "sourceCommit": "9dd39f55be335b924881d10445cfc78a288e483e",
+  "resultsCommit": "ef1e7499e0f117bb2f2e6fd57fd44fb6f47deeed",
+  "parentModelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+  "candidateModelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+  "workflowRunId": 38433132860,
+  "workflowConclusion": "success",
+  "training": {
+    "updates": 27,
+    "parameterCount": 15769344,
+    "elapsedSeconds": 921.319274683,
+    "requestedSeconds": 900,
+    "stopReason": "total_time_budget",
+    "initialValidationNll": 1.3208847457125525,
+    "finalValidationNll": 0.8083383327928083,
+    "referenceWeightsUnchanged": true
+  },
+  "data": {
+    "corpusSha256": "3831eb33c462ebceb671badf8301e258b6be75d5f0bdc7600ecbc3f7e49d0bff",
+    "trainRecords": 482,
+    "validationRecords": 58,
+    "testRecords": 0,
+    "syntheticRecords": 352,
+    "retainedRecords": 188,
+    "developmentEntityGroups": 10,
+    "sameTaskFamilyAcrossPartitions": true,
+    "heldOutWorkshopFactsExcludedFromStageCorpus": true,
+    "entireHistoricalTrainingExposureAudit": false,
+    "personalMessagesUsed": false
+  },
+  "evaluation": {
+    "turns": 25,
+    "exactTextAndEosBefore": 1,
+    "exactTextAndEosAfter": 22,
+    "memoryExactBefore": 0,
+    "memoryExactAfter": 20,
+    "memoryTurns": 20,
+    "otherExactBefore": 1,
+    "otherExactAfter": 2,
+    "otherTurns": 5,
+    "finalAcceptanceTest": false,
+    "scope": "Small development control: same family of opening-day facts with reserved entities and five retention turns; not open conversation.",
+    "allAfterRepliesEndedWithEos": true,
+    "allAfterDiscardedPromptTokens": 0
+  },
+  "semanticNotes": [
+    {
+      "caseId": "retention/correction",
+      "turn": 0,
+      "output": "La cita es una cita con un lunes.",
+      "assessment": "Mentions the correct day but is unnatural and redundant; not counted as a fully natural response."
+    },
+    {
+      "caseId": "retention/correction",
+      "turn": 1,
+      "output": "El viernes.",
+      "assessment": "Semantically correct for the new date; strict exact-wording metric intentionally marks false."
+    },
+    {
+      "caseId": "retention/unknown",
+      "turn": 0,
+      "output": "¿Cuál es tu vecino?",
+      "assessment": "Does not clearly acknowledge the missing name; the information-absent objective is not met."
+    }
+  ],
+  "decision": {
+    "candidatePublished": true,
+    "candidateConfiguration": "configs/sovengi-memory-candidate.json",
+    "defaultModelChanged": false,
+    "productionAccepted": false,
+    "conversationGeneralizationEstablished": false,
+    "nextNeed": "Broader retention and missing-information development cases, then a fresh reserved acceptance evaluation for a frozen candidate."
+  },
+  "checkpointArtifact": {
+    "id": 11833021538,
+    "sizeBytes": 402092625,
+    "sha256": "ec793511e204cdd81506ebe067485d2f2de6d87f54bb0fe7a76052ddb474b508",
+    "expiresAt": "2027-01-11T16:45:39Z",
+    "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38433132860/artifacts/11833021538"
+  },
+  "processState": {
+    "thisRun": "completed",
+    "otherEnvironmentLivenessVerified": false,
+    "otherProcessesInterrupted": false
+  }
+}

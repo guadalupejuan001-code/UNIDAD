@@ -1,5 +1,16 @@
 # Órdenes del creador de SOVENGI (repositorio UNIDAD)
 
+## Continuación: auditar ramas y comenzar entrenamiento de SOVENGI
+
+El creador pide comprobar que el estado esté actualizado, revisar borradores y
+ramas no conectadas y comenzar a entrenar. Se verifica la integración y se
+distinguen los archivos históricos del código pendiente. Se autoriza una etapa
+finita sobre el modelo propio actual, con datos ficticios y repaso, comparación
+antes/después y publicación de pesos y evidencia. Se conservan referencias y
+procesos ajenos; no se activa automáticamente un candidato sin evaluar.
+
+> seguro que esta actualizado todo? no hay borradores o ramas no conectadas? ya puedes empezar a entrenarla
+
 ## Continuación del 13 de octubre: unificar SOVENGI
 
 El creador nombra su IA **SOVENGI** y solicita corregir la desconexión entre
@@ -307,7 +318,12 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > verifica que todo en github sea coherente con lo que tenemos corrige todo y actualiza cualquier dato
 
-## Qué está hecho y qué falta
+## Historial: estado registrado antes de la línea actual de SOVENGI
+
+Esta tabla conserva observaciones anteriores. No describe los procesos ni la
+configuración actuales: véanse [el estado vigente](docs/ESTADO_ACTUAL.md) y la
+[guía de SOVENGI](docs/SOVENGI.md). Las ampliaciones expresas del inicio de este
+documento y las instrucciones nuevas del creador tienen prioridad.
 
 | Petición | Estado comprobado |
 | --- | --- |

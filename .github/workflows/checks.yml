@@ -34,7 +34,11 @@ jobs:
       - run: sovengi --help
       - name: Verify SOVENGI with the selected published weights
         run: python examples/verify_sovengi.py --output private/sovengi-verification.json
+      - name: Verify the trained memory candidate in the same SOVENGI entry
+        run: python examples/verify_sovengi.py --config configs/sovengi-memory-candidate.json --output private/sovengi-memory-candidate-verification.json
       - uses: actions/upload-artifact@v4
         with:
           name: sovengi-verification
-          path: private/sovengi-verification.json
+          path: |
+            private/sovengi-verification.json
+            private/sovengi-memory-candidate-verification.json
