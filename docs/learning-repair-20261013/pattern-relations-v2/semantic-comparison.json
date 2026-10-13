@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T14:20:00.198788+00:00",
+  "reviewer": {
+    "agent": "/root/pattern_architecture_audit",
+    "kind": "project_AI_engineering_agent",
+    "human": false,
+    "independentHumanReview": false,
+    "authoredCurriculum": false,
+    "reviewBlindedToExpectedAnswers": false,
+    "reviewComparedCandidate": true
+  },
+  "referenceReview": {
+    "path": "private/learning-repair-20261013/pattern-experiment-v2/reference-semantic-review.json",
+    "sha256": "3bf1f2951133c3ac41bf6c7bc30a591ab687baadc58d1faa7095c8c3d6d5cefb"
+  },
+  "candidateReview": {
+    "path": "private/learning-repair-20261013/pattern-experiment-v2/candidate-semantic-review.json",
+    "sha256": "150b80638d5c7dc734c0bac5f1f63808abff2544eca8cce907be7284cb2f0da8"
+  },
+  "referenceSummary": {
+    "train-prefix": {
+      "turns": 12,
+      "complete": 0,
+      "partial": 1,
+      "fail": 11,
+      "criticalFailures": 4,
+      "technicalFailures": 2,
+      "interpretationUncertain": 4,
+      "fullyCorrectDialogs": null
+    },
+    "validation-prefix": {
+      "turns": 12,
+      "complete": 0,
+      "partial": 0,
+      "fail": 12,
+      "criticalFailures": 4,
+      "technicalFailures": 3,
+      "interpretationUncertain": 3,
+      "fullyCorrectDialogs": null
+    },
+    "validation-history": {
+      "turns": 4,
+      "complete": 0,
+      "partial": 0,
+      "fail": 4,
+      "criticalFailures": 2,
+      "technicalFailures": 0,
+      "interpretationUncertain": 1,
+      "fullyCorrectDialogs": 0
+    }
+  },
+  "candidateSummary": {
+    "train-prefix": {
+      "turns": 12,
+      "complete": 11,
+      "partial": 0,
+      "fail": 1,
+      "criticalFailures": 1,
+      "technicalFailures": 0,
+      "interpretationUncertain": 0,
+      "fullyCorrectDialogs": null
+    },
+    "validation-prefix": {
+      "turns": 12,
+      "complete": 1,
+      "partial": 1,
+      "fail": 10,
+      "criticalFailures": 3,
+      "technicalFailures": 0,
+      "interpretationUncertain": 4,
+      "fullyCorrectDialogs": null
+    },
+    "validation-history": {
+      "turns": 4,
+      "complete": 0,
+      "partial": 0,
+      "fail": 4,
+      "criticalFailures": 0,
+      "technicalFailures": 0,
+      "interpretationUncertain": 4,
+      "fullyCorrectDialogs": 0
+    }
+  },
+  "matchedTurns": [
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:current_request_format:0:branch:0:turn:1",
+      "referenceGrade": "partial",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:current_request_format:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:explicit_correction:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:explicit_correction:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:known_vs_unknown:0:branch:0:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:known_vs_unknown:0:branch:1:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": true,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:negation:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:negation:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": true,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:relevant_context:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:relevant_context:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:role_binding:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "train-prefix",
+      "id": "pattern-v1:train:role_binding:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": true,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:current_request_format:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "partial",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:explicit_correction:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:known_vs_unknown:0:branch:0:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": true,
+      "referenceTechnical": true,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:known_vs_unknown:0:branch:1:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "complete",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:negation:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:negation:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:relevant_context:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": true,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:relevant_context:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": true,
+      "referenceTechnical": true,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:role_binding:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-prefix",
+      "id": "pattern-v1:validation:role_binding:0:branch:1:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": true,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same canonical ideal-prefix prompt"
+    },
+    {
+      "mode": "validation-history",
+      "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same fixed initial context/user sequence; subsequent actual assistant replies intentionally differ"
+    },
+    {
+      "mode": "validation-history",
+      "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": false,
+      "promptComparisonScope": "Same fixed initial context/user sequence; subsequent actual assistant replies intentionally differ"
+    },
+    {
+      "mode": "validation-history",
+      "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:0",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": false,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": true,
+      "promptComparisonScope": "Same fixed initial context/user sequence; subsequent actual assistant replies intentionally differ"
+    },
+    {
+      "mode": "validation-history",
+      "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:1",
+      "referenceGrade": "fail",
+      "candidateGrade": "fail",
+      "referenceCritical": true,
+      "candidateCritical": false,
+      "referenceTechnical": false,
+      "candidateTechnical": false,
+      "samePromptSha256": false,
+      "promptComparisonScope": "Same fixed initial context/user sequence; subsequent actual assistant replies intentionally differ"
+    }
+  ],
+  "literalTrainingLexemeCheck": {
+    "method": "Casefolded literal substring membership of declared TRAIN names and complete two-part values in the 16 candidate development raw outputs; no semantic/copy causal claim. Common single words are not searched.",
+    "anyTrainNamesPresent": false,
+    "anyTrainWholeValuesPresent": false,
+    "turns": [
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:current_request_format:0:branch:1:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:explicit_correction:0:branch:1:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:known_vs_unknown:0:branch:0:turn:0",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:known_vs_unknown:0:branch:1:turn:0",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:negation:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:negation:0:branch:1:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:relevant_context:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:relevant_context:0:branch:1:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:role_binding:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-prefix",
+        "id": "pattern-v1:validation:role_binding:0:branch:1:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-history",
+        "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:0",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-history",
+        "id": "pattern-v1:validation:current_request_format:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-history",
+        "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:0",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      },
+      {
+        "mode": "validation-history",
+        "id": "pattern-v1:validation:explicit_correction:0:branch:0:turn:1",
+        "literalTrainNamesPresent": [],
+        "literalTrainWholeValuesPresent": []
+      }
+    ]
+  },
+  "observations": [
+    "The candidate learns the sampled exposed TRAIN prefixes: 11/12 complete against 0/12, with five of six contrasted pairs correct on both branches. The remaining negation pair repeats sendero rojo in both branches.",
+    "Exact development matching is 0/12, but semantic reading finds one acceptable uncertainty paraphrase and one partial corrected schedule. There is therefore limited observed transfer, below the fixed criterion.",
+    "The two actual-history development dialogues remain wholly incorrect; successful ideal TRAIN prefixes do not demonstrate free conversational competence.",
+    "No declared whole TRAIN names or full values occur literally in the candidate development outputs. It is inaccurate to describe these responses as observed copies of TRAIN names/values.",
+    "Several wrong development answers select values supplied for another development person: Caelun’s Thursday schedule for Zumira, Ulmera’s bottle for Dovian, and Osvira’s sheet for Leimar. This suggests binding and wording transfer problems beyond simple unknown-token coverage.",
+    "Shorter outputs and zero token-budget stops improve technical behavior but do not resolve semantic failures. Malformed names and missing required values persist."
+  ],
+  "hypothesisStatus": "Training/memorization control learns; proposed broad generalization criterion fails. No model promotion. The one semantic transfer case has explicit reviewer uncertainty.",
+  "nextMinimalDiagnostic": {
+    "purpose": "Separate unseen lexical binding from unseen request wording and reliance on ideal history before changing architecture or repeating broad training.",
+    "design": "Freeze new development-only factorial cases for the same fixed parent/candidate: (A) TRAIN wording and names with new values; (B) TRAIN wording/values with new names; (C) new wording with TRAIN names/values; (D) reverse mention order while preserving facts and requests. Keep related variants together, preserve these exposed cases as development, and compare raw generation plus context-swap likelihood. Do not use the reserved final.",
+    "interpretation": "A/B failure isolates lexical/value binding; C-only failure isolates linguistic formulation; mention-order failure exposes a positional shortcut. Successful teacher-forced prefixes but failed generated history identify recovery/continuity failure. These are hypotheses until the new control is executed.",
+    "executed": false
+  },
+  "conversationAccepted": false,
+  "reservedFinalRead": false,
+  "trainingOrInferencePerformedByReviewer": false
+}

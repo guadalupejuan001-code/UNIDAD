@@ -16,7 +16,34 @@ conversar bien.
 con palabras sencillas: los modelos propios, Brain, GNOSIS, NERVA, memoria,
 herramientas, datos, checkpoints y lo que falta demostrar.
 
-## Avance comprobado del 13 de octubre de 2026
+**UNIDAD es el nombre de tu IA; C7 es la etiqueta de un candidato anterior de
+sus modelos propios**, con 6.983.937 parámetros, que conservamos para comparar.
+La línea actual comenzó también con pesos aleatorios propios: su base de
+15.179.520 parámetros se entrenó con español, recibió ajuste conversacional y
+se amplió a contexto 2.048, con 15.769.344 parámetros. Sus continuaciones
+reutilizan esos pesos. La línea actual no procede de pesos externos ni de
+redimensionar automáticamente C7. Cada etiqueta permite identificar exactamente
+qué configuración y pesos se entrenaron y evaluaron.
+
+## Aprendizaje de relaciones: avance posterior del 13 de octubre
+
+Se integró un [currículo y control de patrones conversacionales](docs/learning-repair-20261013/pattern-relations-v2/README.md)
+en el entrenador y la cola existentes: personas, correcciones, negaciones,
+información ausente y petición actual. La atención ya estaba implementada;
+esta intervención entrena sus pesos propios con relaciones contrastantes.
+Ejecutó **512 actualizaciones en 72,283 segundos** y entregó el checkpoint
+seleccionado por validación del paso 128, sus pesos, tokenizador y respuestas.
+
+El control pasó de **0/12 a 11/12 respuestas completas en ejemplos entrenados**.
+En doce prefijos nuevos pasó de cero completas a **una completa y una parcial**,
+según revisión de IA con ambigüedades conservadas; no hubo coincidencias exactas.
+Los dos diálogos con historia generada siguieron fallando. Esto demuestra
+aprendizaje de ejemplos conocidos y transferencia muy limitada; no conversación
+fiable. Las 21 pruebas nuevas validan el software y su parada segura. El candidato
+permanece experimental, fuera del padre automático del colector, y la reserva
+final sigue cerrada. La entrega incluye instrucciones y evidencia antes/después.
+
+## Historial: corte anterior del 13 de octubre, 13:21 UTC
 
 El [recibo de esta actualización](docs/learning-repair-20261013/progress-20261013-1304.md)
 conserva la hora exacta de observación, procesos, fuentes, límites y hashes.
