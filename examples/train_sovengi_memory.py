@@ -250,7 +250,7 @@ def run(config):
         "automaticPromotion": False, "productionAccepted": False, "finalAcceptanceTest": False,
         "referenceWeightsUnchanged": sha(parent / "weights.safetensors") == config["expectedWeightsSha256"]}
     write_json(REPORT / "summary.json", summary)
-    for filename in ("status.json", "metrics.jsonl"):
+    for filename in ("status.json", "events.jsonl"):
         if (RUN / filename).exists():
             (REPORT / filename).write_bytes((RUN / filename).read_bytes())
     print(encoded(summary), flush=True)

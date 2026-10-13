@@ -9,7 +9,14 @@ con un núcleo para conectarlo a distintas aplicaciones. Hay código funcional,
 pesos entrenados, datos con procedencia y pruebas conservadas. La misión de
 conseguir un asistente personal que converse y trabaje con fiabilidad sigue pendiente.
 
-El [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11) se fusionó el
+El [entrenamiento de memoria más reciente](sovengi-memory-20261013/README.md)
+completó 27 actualizaciones y mejoró un control acotado de 1/25 a 22/25 respuestas
+exactas. Los pesos nuevos pueden elegirse en SOVENGI con
+`--config configs/sovengi-memory-candidate.json`. El ejercicio de notas guardadas
+mejoró; la conversación abierta y el reconocimiento de información desconocida
+todavía requieren trabajo. El informe conserva las respuestas anteriores y nuevas.
+
+Como antecedente, el [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11) se fusionó el
 13 de octubre de 2026 a las 12:10:20 UTC en `a948c0fd…`, con cuatro checks
 aprobados. Eso verifica la entrega de software de ese momento; la calidad del
 modelo se comprueba aparte con sus respuestas y trabajos reales.
@@ -18,8 +25,8 @@ Los modelos de conversación son Transformers propios: su origen son pesos
 aleatorios, y las continuaciones parten de checkpoints de esa misma familia.
 C7 se conserva como referencia propia; también hay una base de **15.179.520
 parámetros** y variantes de **15.769.344** con contexto de **2.048 tokens**.
-C7 es una etiqueta del candidato anterior, no otra IA externa: el proyecto se
-llama UNIDAD. La base de quince millones comenzó con nuevos pesos aleatorios
+C7 es una etiqueta del candidato anterior; la IA se llama SOVENGI y el repositorio
+se llama UNIDAD. La base de quince millones comenzó con nuevos pesos aleatorios
 propios; sus continuaciones reutilizan esa línea y no redimensionan C7.
 No se usan los pesos de otro asistente para reemplazarlos. Un parámetro es un
 número que el entrenamiento ajusta; tener más no garantiza mejores respuestas.
@@ -61,7 +68,8 @@ pero añadió tiempo; queda como opción del anfitrión y la ruta más rápida s
 siendo la predeterminada. Estas opciones no cambian lo aprendido por el modelo.
 
 La [memoria local](workspace.md) registra encargos, intentos y correcciones y
-permite buscarlos. **Guardar una nota no modifica los pesos** ni garantiza que
+permite buscarlos. SOVENGI añade al contexto notas relevantes de la misma
+memoria, si caben, y devuelve sus fuentes. **Guardar una nota no modifica los pesos** ni garantiza que
 el modelo la recuerde en otro diálogo. Exportar ejemplos aceptados para un
 entrenamiento posterior es una operación distinta. Los datos personales y las
 credenciales permanecen en rutas privadas excluidas de la publicación.
@@ -99,11 +107,11 @@ cada charla en entrenamiento; clonar el repositorio tampoco inicia el bucle.
 
 Podemos instalar el paquete, abrir la consola del modelo propio, integrar Brain
 en Python o servir su API. Desde la raíz, después de instalar las
-[dependencias CPU](conversation.md#instalar-para-cpu), se puede abrir C7 así:
+[dependencias CPU](conversation.md#instalar-para-cpu), se abre SOVENGI con el
+modelo seleccionado en `configs/gnosis.json`:
 
 ```sh
-unidad conversation converse --model models/conversation-reference-c7 \
-  --max-new-tokens 160 --temperature 0 --seed 42
+sovengi chat --max-new-tokens 96 --temperature 0 --seed 42
 ```
 
 También se pueden consultar planes GNOSIS, registrar memoria, ejecutar flujos

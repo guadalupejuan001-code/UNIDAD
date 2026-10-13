@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 2,
+  "checkedAtUtc": "2026-10-13T03:44:57.091500+00:00",
+  "repository": "guadalupejuan001-code/UNIDAD",
+  "goal": "Competent everyday conversation in Spanish from own weights",
+  "conversationAccepted": false,
+  "competitiveQualityEstablished": false,
+  "acceptance": {
+    "responses": 40,
+    "completeMinimum": 36,
+    "dialogs": 10,
+    "completeDialogsMinimum": 8,
+    "criticalMaximum": 0,
+    "technicalMaximum": 0,
+    "freshReservedEvaluationRequired": true
+  },
+  "selectedReference": {
+    "directory": "models/conversation-reference-c7",
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "parameterCount": 6983937,
+    "backboneParameterCount": 6967296,
+    "contextTokens": 512,
+    "bpeVocabulary": 8192,
+    "copyHeadVersion": 1,
+    "status": "REFERENCE_EXPERIMENTAL_NOT_ACCEPTED",
+    "fourFilesAlreadyTrackedInMainBeforeNewArchiveUpload": true,
+    "filesSha256": {
+      "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+      "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+      "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+      "manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242"
+    }
+  },
+  "integration": {
+    "targetBranch": "main",
+    "originalRemoteBranchesInspected": 8,
+    "originalBaseHead": "75e216f67afc94b96e5d604edea2ff7230337655",
+    "laterMainUpdatePreserved": "7990c4562852fda6ca366c058aacb1f781dda551",
+    "compatiblePRs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "allDeliveriesNonDraft": true,
+    "branchMatrix": "docs/conversation-integration-20261013/branch-reconciliation.json",
+    "historicalDocsPreservedByteForByte": 324,
+    "sourcePointerV2Applied": false,
+    "historicalArtifactBranchPreserved": "artifacts/unidad-contraste-relacional-20261012"
+  },
+  "newTraining": {
+    "authorized": true,
+    "completed": true,
+    "ownRandomOriginLineage": true,
+    "allParametersTrainable": true,
+    "runs": 6,
+    "actualOptimizerUpdates": 2560,
+    "summedNativeElapsedSeconds": 704.8741469669999,
+    "modelsDirectory": "models/conversation-integration-20261013",
+    "checkpointDirectory": "checkpoints/conversation-integration-20261013",
+    "candidateModelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+    "candidateFiles": {
+      "manifest.json": "31d507b96ebcbabd055afd781cd5cec7fa5c410a1929eaf6a0463e0dfd933f96",
+      "weights.safetensors": "3ed2338eb15533d8f1eb401426fa8775955a2c03061bf167756bdac2686c7a78",
+      "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+      "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+    },
+    "candidateSelectedStep": 384,
+    "candidatePromoted": false,
+    "referenceFilesChanged": false,
+    "summary": "docs/conversation-integration-20261013/training-summary.json"
+  },
+  "freshReservedEvaluation": {
+    "suiteId": "conversation-ready-20261013-reserved-v1",
+    "casesSha256": "a8e1010f10a37ad4f0e0ff98b803e026ca9ab84c073617d34b152b49ce4cbbff",
+    "generation": {
+      "maxNewTokens": 160,
+      "temperature": 0,
+      "seed": 42,
+      "torchThreads": 1,
+      "actualGeneratedHistory": true
+    },
+    "models": {
+      "reference": {
+        "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "complete": 0,
+        "partial": 4,
+        "failed": 36,
+        "completeDialogs": 0,
+        "criticalFailures": 2,
+        "technicalFailures": 0,
+        "tokenBudgetStops": 0,
+        "emptyReplies": 0,
+        "contextTruncationTurns": 0,
+        "accepted": false,
+        "outputsSha256": "63a74d74280d4c9af646f7abbf9320f183f9499514c5a053a262aaf9d099b7e7",
+        "generationLoopSeconds": 9.075408220291138
+      },
+      "candidate": {
+        "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+        "complete": 0,
+        "partial": 1,
+        "failed": 39,
+        "completeDialogs": 0,
+        "criticalFailures": 2,
+        "technicalFailures": 0,
+        "tokenBudgetStops": 0,
+        "emptyReplies": 0,
+        "contextTruncationTurns": 0,
+        "accepted": false,
+        "outputsSha256": "225b29ffa65eeaed51173501e3c433db92a7ef960e406e3520bffd604a1fc862",
+        "generationLoopSeconds": 8.415441513061523
+      }
+    },
+    "comparison": "docs/conversation-integration-20261013/evaluation/reserved-comparison.json",
+    "projectAIReviews": true,
+    "independentHumanReview": false,
+    "rawOutputsEdited": false,
+    "trainingOnReserved": false,
+    "candidateChangedAfterReserved": false
+  },
+  "softwareVerification": {
+    "testsPassed": 494,
+    "exampleTestsPassed": 12,
+    "receipt": "docs/conversation-integration-20261013/software/verification.json",
+    "detachedPlannedStopRegression": "passed unchanged; historical stale failure not reproduced",
+    "checkpointRestoration": "validated best model, Adam and RNG for three packages without training",
+    "conversationProvedByTechnicalTests": false
+  },
+  "trainingState": {
+    "observedLocalEnvironmentOnly": true,
+    "activeTrainingCount": 0,
+    "activeGenerationCount": 0,
+    "newRunsCompleted": true,
+    "automaticLearning": false,
+    "previous24HourBudgetClosed": true,
+    "previousAdditional2HourBudgetClosed": true,
+    "oldBudgetsRenewed": false,
+    "remoteEnvironmentsIndependentlyObserved": false
+  },
+  "blocker": {
+    "observed": "Training memorizes and lowers loss but does not generalize factual recovery, speaker relations and corrections to new dialogue formulations. Six bounded adjustments failed to improve complete replies.",
+    "linguisticBaseInsufficiency": "supported hypothesis; not fully isolated cause",
+    "specificParameterTokenOrHourRequirementEstablished": false
+  },
+  "historicalEvidence": {
+    "previousStatus": "docs/conversation-integration-20261013/previous-status-20261013-0036.json",
+    "previousReadableState": "docs/historial-estado-20261013-0036.md",
+    "artifactPackage": {
+      "branch": "artifacts/unidad-contraste-relacional-20261012",
+      "firstVerifiedUploadCommit": "9747b207a078a4c0c51cc2d3492b9179f050a900",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012",
+      "archiveName": "Unidad-Contraste-Relacional-Experimental.zip",
+      "archiveBytes": 339107857,
+      "archiveSha256": "5978cf805f005ed3692117d9584ca7b515dc369458292289eaf42cb768619e88",
+      "parts": 6,
+      "partsMaximumBytes": 67108864,
+      "portableDistinctModelIds": 3,
+      "logicalPortableModelAliases": 5,
+      "logicalFiles": 370,
+      "uniqueObjects": 290,
+      "nativeCheckpoints": 8,
+      "allRemoteGitBlobHashesAndSizesVerified": true,
+      "localZipReconstructionVerified": true,
+      "restoredC7ConsoleVerified": true,
+      "automaticTraining": false,
+      "releaseAssetsPublished": false,
+      "releaseUploadFallback": "Authenticated Git branch; temporary empty release was removed."
+    },
+    "oldSuitesNotComparableToNewSuites": true
+  },
+  "report": "docs/conversation-integration-20261013/README.md"
+}

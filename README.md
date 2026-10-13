@@ -1,11 +1,21 @@
 # SOVENGI
 
-**SOVENGI: auditoría y nueva etapa de entrenamiento.** El
-[diseño y la revisión de ramas](docs/sovengi-memory-20261013/README.md) fijan el
-modelo actual, los límites de la corrida y la comparación antes/después.
-La rama de archivo histórico conserva checkpoints anteriores; no es código
-pendiente de la integración. El candidato no se promueve automáticamente.
+**Entrenamiento completado el 13 de octubre:** 27 actualizaciones de los pesos
+propios; el control de desarrollo pasó de **1/25 a 22/25 respuestas exactas**.
+Las consultas de notas guardadas pasaron de **0/20 a 20/20**. Son variantes de
+un ejercicio acotado, con entidades reservadas en esta etapa; no acreditan
+conversación general. El [informe con respuestas reales](docs/sovengi-memory-20261013/README.md)
+incluye fallos, corpus, pesos, límites y auditoría de ramas.
 
+El candidato se puede usar en la misma entrada de SOVENGI:
+
+```bash
+sovengi --config configs/sovengi-memory-candidate.json chat
+```
+
+Es una selección experimental explícita. `sovengi chat` conserva `reference-wiki1`
+como comparación; no se ha aceptado todavía ningún candidato para producción.
+La corrida terminó por presupuesto y no sigue ejecutándose en segundo plano.
 
 **SOVENGI** es el nombre de la IA; **UNIDAD** se conserva como nombre del
 repositorio y del paquete por compatibilidad. Su entrada común une conversación,
@@ -24,8 +34,8 @@ recuperan notas relevantes de esa misma memoria si caben en el contexto.
 
 La configuración compartida `configs/gnosis.json` selecciona ahora el modelo
 general publicado de **15.769.344 parámetros y contexto 2.048**, identificado
-como `reference-wiki1`; C7 queda como referencia histórica. El candidato de
-patrones y las corridas activas no sustituyen automáticamente esos pesos.
+como `reference-wiki1`; C7 queda como referencia histórica. Los candidatos de
+patrones y memoria no sustituyen automáticamente esos pesos.
 Esta selección permite integrar la línea actual, **no acredita una mejora de
 calidad ni aceptación para producción**.
 
@@ -620,8 +630,10 @@ que haya aprendido a planificar.
 
 ## Integración de las ramas
 
-Los cambios compatibles y la evidencia de PR1–10 se reúnen en `main`, sin
-entregas en borrador. Se conservan las ramas originales como historia.
+Los cambios de ejecución y la evidencia de PR1–16 se reúnen en `main`.
+La auditoría anterior a esta corrida encontró cero PR abiertos y trece ramas
+contenidas en `main`. La rama de artefactos conserva un paquete histórico; su
+contenido y propósito están identificados en la [auditoría](docs/sovengi-memory-20261013/README.md#ramas-revisadas).
 
 | Origen | Resultado integrado |
 | --- | --- |
@@ -634,6 +646,11 @@ entregas en borrador. Se conservan las ramas originales como historia.
 | [PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) | SFT intermedio y fuentes/colas posteriores, conservados sin aceptar la conversación. La entrega posterior de PR10 añade cierres, evaluaciones y autonomía experimental; ya está integrada en main con CI aprobado. |
 | [PR10](https://github.com/guadalupejuan001-code/UNIDAD/pull/10) | Fusionado sin borrador en `62cf4d4`, con cuatro checks CI aprobados. Conserva las correcciones, cierres, datos, pesos propios y autonomía experimental; conversación y planificación aprendida siguen sin aceptar. |
 | [PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11) | Fusionado sin borrador en `a948c0f`, con cuatro checks CI aprobados. Añade reintentos limitados de lectura, observaciones JSON sin pérdida, entrenamiento propio, checkpoints recuperables y resultados reales, incluidos fallos en tareas nuevas. |
+| [PR12](https://github.com/guadalupejuan001-code/UNIDAD/pull/12) | Actualización del avance y explicación del proyecto, fusionada. |
+| [PR13](https://github.com/guadalupejuan001-code/UNIDAD/pull/13) | Currículo de patrones, pesos y comparación que separa memorización y generalización. |
+| [PR14](https://github.com/guadalupejuan001-code/UNIDAD/pull/14) | Recuperación verificada de las descargas de español y continuidad del supervisor. |
+| [PR15](https://github.com/guadalupejuan001-code/UNIDAD/pull/15) | Entrada SOVENGI: modelo publicado de 15,77 millones, memoria recuperada, herramientas y API. |
+| [PR16](https://github.com/guadalupejuan001-code/UNIDAD/pull/16) | NERVA conversacional y caché; Torch con caché conserva la selección predeterminada. |
 | [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Archivo de paquetes históricos descargables, conservado en su rama. |
 
 La [matriz de reconciliación](docs/conversation-integration-20261013/branch-reconciliation.json)
@@ -645,8 +662,9 @@ promueve modelos fallidos ni modifica sus respuestas.
 NERVA incluye además un lenguaje e intérprete con operaciones de tensores,
 diferenciación automática, actualización de parámetros y checkpoints. Es una
 pieza de experimentación que merece describirse por sí misma. Su adaptador actual
-dentro de Unidad sólo realiza inferencia del pequeño modelo de caracteres; no
-entrena C7 ni ejecuta su Transformer.
+dentro de SOVENGI ejecuta el modelo de caracteres y puede seleccionar los tokens
+del Transformer. El cálculo neuronal y el entrenamiento de sus pesos continúan
+en PyTorch; la ruta Torch con caché es la predeterminada medida.
 
 ## Documentación y antecedentes
 
@@ -657,7 +675,7 @@ entrena C7 ni ejecuta su Transformer.
 - [Fuentes y licencias de esta continuación](examples/learning-repair-20261013/DATASOURCES.md) y [ampliación preparada](examples/learning-repair-20261013/wide-spanish-v1/README.md)
 - [Memoria y encargos](docs/workspace.md) y [núcleo para productos](docs/brain.md)
 - [Estado de esta entrega](docs/learning-repair-20261013/current-progress.md), [comparación real nueva](docs/learning-repair-20261013/comparison/README.md) y [cierre SFT](docs/learning-repair-20261013/conversation-15m-final-delivery.md)
-- [Estado y fuentes anterior](docs/ESTADO_ACTUAL.md), [observación histórica 06:44](docs/learning-repair-20261013/observation-20261013-064409-sft-active-pr8-merged.json) y [estado estructurado anterior](docs/unidad-current-status.json)
+- [Estado y fuentes](docs/ESTADO_ACTUAL.md), [observación histórica 06:44](docs/learning-repair-20261013/observation-20261013-064409-sft-active-pr8-merged.json) y [estado estructurado](docs/unidad-current-status.json)
 - [Órdenes del creador](ORDENES_USUARIO.md) e [instrucciones de desarrollo](AGENTS.md)
 - [Antecedentes y comandos del README anterior](docs/historial-readme-20261013.md)
 

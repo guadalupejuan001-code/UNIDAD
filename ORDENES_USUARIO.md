@@ -318,7 +318,12 @@ Estos fragmentos conservan la escritura de los mensajes originales:
 
 > verifica que todo en github sea coherente con lo que tenemos corrige todo y actualiza cualquier dato
 
-## Qué está hecho y qué falta
+## Historial: estado registrado antes de la línea actual de SOVENGI
+
+Esta tabla conserva observaciones anteriores. No describe los procesos ni la
+configuración actuales: véanse [el estado vigente](docs/ESTADO_ACTUAL.md) y la
+[guía de SOVENGI](docs/SOVENGI.md). Las ampliaciones expresas del inicio de este
+documento y las instrucciones nuevas del creador tienen prioridad.
 
 | Petición | Estado comprobado |
 | --- | --- |

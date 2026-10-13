@@ -1,11 +1,8 @@
-name: Bounded SOVENGI memory training
+name: Reproduce bounded SOVENGI memory training
 on:
-  push:
-    branches: [work/sovengi-memory-training-20261013]
-    paths: [configs/sovengi-memory-stage.json]
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: sovengi-memory-training-20261013
   cancel-in-progress: false
@@ -16,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          # Clean, frozen preparation revision; the current tree already has the corpus.
+          ref: 9dd39f55be335b924881d10445cfc78a288e483e
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -40,11 +38,3 @@ jobs:
             examples/sovengi-memory-20261013/
             docs/sovengi-memory-20261013/
             models/sovengi-memory-20261013/
-      - name: Publish candidate and evidence on the experiment branch
-        if: success() && github.ref_name == 'work/sovengi-memory-training-20261013'
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add examples/sovengi-memory-20261013 docs/sovengi-memory-20261013 models/sovengi-memory-20261013
-          git commit -m 'Guarda entrenamiento SOVENGI, pesos propios y respuestas antes/después'
-          git push origin HEAD:work/sovengi-memory-training-20261013
