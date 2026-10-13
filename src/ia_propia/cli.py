@@ -51,7 +51,8 @@ def parser():
     for name, help_text in (("language", "Entrenar o generar con el modelo de lenguaje propio"),
                             ("trend", "Entrenar o predecir con el especialista de atención"),
                             ("conversation", "Entrenar y conversar con un modelo propio"),
-                            ("brain", "Conectar el núcleo desde CLI o HTTP")):
+                            ("brain", "Conectar el núcleo desde CLI o HTTP"),
+                            ("gnosis", "Unificar cerebro y etapas de aprendizaje en un proyecto")):
         command = commands.add_parser(name, help=help_text, add_help=False)
         command.add_argument("arguments", nargs=argparse.REMAINDER)
     return root
@@ -59,13 +60,15 @@ def parser():
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
-    if argv and argv[0] in ("language", "trend", "brain", "conversation"):
+    if argv and argv[0] in ("language", "trend", "brain", "conversation", "gnosis"):
         if argv[0] == "language":
             from .language.__main__ import main as model_main
         elif argv[0] == "trend":
             from .trend.__main__ import main as model_main
         elif argv[0] == "conversation":
             from .conversation.__main__ import main as model_main
+        elif argv[0] == "gnosis":
+            from .gnosis.__main__ import main as model_main
         else:
             from .brain.__main__ import main as model_main
         return model_main(argv[1:], prog=f"unidad {argv[0]}")

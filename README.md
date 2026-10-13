@@ -6,6 +6,12 @@ Unidad funciona localmente con Python. El núcleo usa NumPy; el nuevo modelo
 conversacional usa PyTorch y un tokenizador propio. No requiere Hormiga-X,
 una API de IA ni pesos preentrenados.
 
+La [configuración GNOSIS](configs/gnosis.json) reúne cerebro, NERVA y etapas de
+aprendizaje. Incluye admisión de recursos, entrenamiento por microbatches y
+soporte explícito de arquitecturas mayores. Se comprobó cálculo y manejo de
+artefactos de 48,85 millones de parámetros aleatorios; esto no demuestra una
+mejora conversacional. [Uso, mediciones y límites](docs/gnosis.md).
+
 Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Definen
 el objetivo de Unidad y distinguen lo realizado de lo pendiente. Las instrucciones
 para quienes modifiquen el código están en [AGENTS.md](AGENTS.md).

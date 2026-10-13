@@ -306,5 +306,36 @@
     "independentHumanReview": false,
     "oldBudgetsRenewed": false,
     "commercialReplacementValidated": false
+  },
+  "gnosis20261013": {
+    "projectConfiguration": "configs/gnosis.json",
+    "sameBrainAndConversationEngine": true,
+    "nervaScope": "char-RNN-only",
+    "nominalProfiles": {
+      "small": 6967296,
+      "50m": 48852992,
+      "100m": 99446400,
+      "1b": 991586304
+    },
+    "actualLargeComputation": {
+      "parameterCount": 48852992,
+      "fixtureTokens": 64,
+      "optimizerSteps": 0,
+      "randomWeights": true,
+      "conversationAccepted": false,
+      "evidence": "docs/gnosis-scaling-20261013.json"
+    },
+    "learningStages": [
+      "foundation",
+      "conversation",
+      "adaptation"
+    ],
+    "explicitCorpusAndArchitecturePins": true,
+    "microBatchTraining": true,
+    "gpuTrainingImplemented": false,
+    "corpusStillMaterializedInMemory": true,
+    "referencePromoted": false,
+    "automaticLearning": false,
+    "documentation": "docs/gnosis.md"
   }
 }

@@ -8,6 +8,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+from .configuration import (DEFAULT_CONFIG, MAX_MODEL_PARAMETERS, MAX_PARAMETER_BUDGET,
+                            MAX_SCALE_PARAMETERS, count_config_parameters, validate_config)
 from .contract import (ASSISTANT_ID, BOS_ID, DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED,
                        DEFAULT_TEMPERATURE, EOS_ID, IGNORE_INDEX, MAX_NEW_TOKENS, PAD_ID,
                        SYSTEM_ID, USER_ID)
@@ -16,51 +18,17 @@ from .tokenizer import (ConversationError, MAX_CONTEXT_LENGTH, MAX_VOCAB_SIZE,
 
 
 MODEL_TYPE = "unidad-conversation-transformer"
-DEFAULT_CONFIG = {"d_model": 128, "n_layers": 4, "n_heads": 4, "context_length": 256,
-                  "dropout": 0.0, "ffn_multiplier": 4, "seed": 42}
-MAX_MODEL_PARAMETERS = 20_000_000
-
-
-def validate_config(config):
-    if type(config) is not dict or "vocab_size" not in config or set(config) - (set(DEFAULT_CONFIG) | {"vocab_size", "copy_head"}):
-        raise ConversationError("Model configuration requires vocabulary size and known Transformer fields")
-    result = {**DEFAULT_CONFIG, **config}
-    integer(result["vocab_size"], "vocab_size", 262, MAX_VOCAB_SIZE)
-    d = integer(result["d_model"], "d_model", 8, 1024)
-    layers = integer(result["n_layers"], "n_layers", 1, 24)
-    heads = integer(result["n_heads"], "n_heads", 1, 16)
-    context = integer(result["context_length"], "context_length", 2, MAX_CONTEXT_LENGTH)
-    multiplier = integer(result["ffn_multiplier"], "ffn_multiplier", 1, 8)
-    integer(result["seed"], "seed")
-    result["dropout"] = number(result["dropout"], "dropout", 0, 0.5)
-    if d % heads:
-        raise ConversationError("d_model must be divisible by n_heads")
-    # Count exactly before constructing tensors; tied output has no second copy.
-    parameter_count = result["vocab_size"] * d + context * d + 2 * d
-    parameter_count += layers * (4 * d * d + 2 * multiplier * d * d + (9 + multiplier) * d)
-    if "copy_head" in result:
-        head = result["copy_head"]
-        if type(head) is not dict or set(head) != {"version", "rank", "seed"}:
-            raise ConversationError("copy_head requires version, rank and seed")
-        integer(head["version"], "copy_head.version", 1, 1)
-        integer(head["rank"], "copy_head.rank", 32, 32)
-        integer(head["seed"], "copy_head.seed", 0, 2**32 - 1)
-        result["copy_head"] = dict(head)
-        parameter_count += 2 * d * head["rank"] + d + 1
-    if parameter_count > MAX_MODEL_PARAMETERS:
-        raise ConversationError("Transformer exceeds the configured parameter budget")
-    return result
 
 
 class _CausalAttention(nn.Module):
-    def __init__(self, config):
+    def __init__(self, config, *, device="cpu"):
         super().__init__()
         d = config["d_model"]
         self.n_heads = config["n_heads"]
         self.head_size = d // self.n_heads
         self.dropout = config["dropout"]
-        self.qkv = nn.Linear(d, 3 * d, device="cpu", dtype=torch.float32)
-        self.projection = nn.Linear(d, d, device="cpu", dtype=torch.float32)
+        self.qkv = nn.Linear(d, 3 * d, device=device, dtype=torch.float32)
+        self.projection = nn.Linear(d, d, device=device, dtype=torch.float32)
         self.residual_dropout = nn.Dropout(self.dropout)
 
     def forward(self, value):
@@ -73,14 +41,14 @@ class _CausalAttention(nn.Module):
 
 
 class _DecoderBlock(nn.Module):
-    def __init__(self, config):
+    def __init__(self, config, *, device="cpu"):
         super().__init__()
         d = config["d_model"]
-        self.attention_norm = nn.LayerNorm(d, device="cpu", dtype=torch.float32)
-        self.attention = _CausalAttention(config)
-        self.feedforward_norm = nn.LayerNorm(d, device="cpu", dtype=torch.float32)
-        self.feedforward = nn.Sequential(nn.Linear(d, config["ffn_multiplier"] * d, device="cpu", dtype=torch.float32), nn.GELU(),
-                                         nn.Linear(config["ffn_multiplier"] * d, d, device="cpu", dtype=torch.float32), nn.Dropout(config["dropout"]))
+        self.attention_norm = nn.LayerNorm(d, device=device, dtype=torch.float32)
+        self.attention = _CausalAttention(config, device=device)
+        self.feedforward_norm = nn.LayerNorm(d, device=device, dtype=torch.float32)
+        self.feedforward = nn.Sequential(nn.Linear(d, config["ffn_multiplier"] * d, device=device, dtype=torch.float32), nn.GELU(),
+                                         nn.Linear(config["ffn_multiplier"] * d, d, device=device, dtype=torch.float32), nn.Dropout(config["dropout"]))
 
     def forward(self, value):
         value = value + self.attention(self.attention_norm(value))
@@ -88,37 +56,46 @@ class _DecoderBlock(nn.Module):
 
 
 class ConversationModel(nn.Module):
-    def __init__(self, config):
+    def __init__(self, config, *, _device="cpu"):
         super().__init__()
+        if _device not in ("cpu", "meta"):
+            raise ConversationError("Model construction requires CPU parameters or a private loading skeleton")
         self._config = validate_config(config)
         config = self._config
         self._generation_lock = threading.RLock()
         # Preserve caller RNG state. The trainer owns its dropout/shuffle seeds.
         with torch.random.fork_rng(devices=[]):
             torch.manual_seed(config["seed"])
-            self.token_embedding = nn.Embedding(config["vocab_size"], config["d_model"], device="cpu", dtype=torch.float32)
-            self.position_embedding = nn.Embedding(config["context_length"], config["d_model"], device="cpu", dtype=torch.float32)
+            self.token_embedding = nn.Embedding(config["vocab_size"], config["d_model"], device=_device, dtype=torch.float32)
+            self.position_embedding = nn.Embedding(config["context_length"], config["d_model"], device=_device, dtype=torch.float32)
             self.embedding_dropout = nn.Dropout(config["dropout"])
-            self.blocks = nn.ModuleList(_DecoderBlock(config) for _ in range(config["n_layers"]))
-            self.final_norm = nn.LayerNorm(config["d_model"], device="cpu", dtype=torch.float32)
-            self.apply(self._initialize)
-            residual_std = 0.02 / math.sqrt(2 * config["n_layers"])
-            for block in self.blocks:
-                nn.init.normal_(block.attention.projection.weight, std=residual_std)
-                nn.init.normal_(block.feedforward[2].weight, std=residual_std)
+            self.blocks = nn.ModuleList(_DecoderBlock(config, device=_device) for _ in range(config["n_layers"]))
+            self.final_norm = nn.LayerNorm(config["d_model"], device=_device, dtype=torch.float32)
+            if _device == "cpu":
+                self.apply(self._initialize)
+                residual_std = 0.02 / math.sqrt(2 * config["n_layers"])
+                for block in self.blocks:
+                    nn.init.normal_(block.attention.projection.weight, std=residual_std)
+                    nn.init.normal_(block.feedforward[2].weight, std=residual_std)
         # Optional random head uses its own seed; the existing backbone and
         # caller RNG remain untouched. Absent config adds no modules or fields.
         if "copy_head" in config:
             with torch.random.fork_rng(devices=[]):
                 torch.manual_seed(config["copy_head"]["seed"])
                 rank, dimensions = config["copy_head"]["rank"], config["d_model"]
-                self.copy_query = nn.Linear(dimensions, rank, bias=False, device="cpu", dtype=torch.float32)
-                self.copy_key = nn.Linear(dimensions, rank, bias=False, device="cpu", dtype=torch.float32)
-                self.copy_gate = nn.Linear(dimensions, 1, device="cpu", dtype=torch.float32)
-                nn.init.xavier_uniform_(self.copy_query.weight)
-                nn.init.xavier_uniform_(self.copy_key.weight)
-                nn.init.normal_(self.copy_gate.weight, std=0.02)
-                nn.init.constant_(self.copy_gate.bias, -4.6)
+                self.copy_query = nn.Linear(dimensions, rank, bias=False, device=_device, dtype=torch.float32)
+                self.copy_key = nn.Linear(dimensions, rank, bias=False, device=_device, dtype=torch.float32)
+                self.copy_gate = nn.Linear(dimensions, 1, device=_device, dtype=torch.float32)
+                if _device == "cpu":
+                    nn.init.xavier_uniform_(self.copy_query.weight)
+                    nn.init.xavier_uniform_(self.copy_key.weight)
+                    nn.init.normal_(self.copy_gate.weight, std=0.02)
+                    nn.init.constant_(self.copy_gate.bias, -4.6)
+
+    @classmethod
+    def _loading_skeleton(cls, config):
+        """Validate tensor structure on meta without a second full random model."""
+        return cls(config, _device="meta")
 
     @property
     def config(self):

@@ -11,6 +11,7 @@ import math
 import os
 from pathlib import Path
 import random
+import re
 import signal
 import tempfile
 import time
@@ -112,7 +113,7 @@ def _configs(model_config, training_config):
     for supplied, defaults, result in ((model_config, MODEL_DEFAULTS, model),
                                        (training_config, TRAIN_DEFAULTS, training)):
         if supplied is not None:
-            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters"} if result is training else {"copy_head"})
+            allowed = set(defaults) | ({"window_policy", "loss_reduction", "sampling_weights", "projection_mode", "adaptive_sampling", "objective", "train_precision", "partition_policy", "copy_supervision", "trainable_parameters", "micro_batch_size"} if result is training else {"copy_head", "parameter_budget"})
             if not isinstance(supplied, dict) or set(supplied) - allowed:
                 raise ValueError("Unknown configuration fields")
             result.update(supplied)
@@ -124,6 +125,15 @@ def _configs(model_config, training_config):
         value = training[key]
         if type(value) is not int or not low <= value <= high:
             raise ValueError(f"Invalid {key}")
+    if "parameter_budget" in model and (type(model["parameter_budget"]) is not int
+            or not 20_000_000 <= model["parameter_budget"] <= 1_200_000_000):
+        raise ValueError("Invalid parameter_budget")
+    if "micro_batch_size" in training:
+        size = training["micro_batch_size"]
+        if type(size) is not int or not 1 <= size <= training["batch_size"]:
+            raise ValueError("micro_batch_size must be an integer within the logical batch_size")
+        if "copy_supervision" in training or "adaptive_sampling" in training:
+            raise ValueError("micro_batch_size cannot combine with copy_supervision or adaptive_sampling")
     for key, low, high in (("learning_rate", 0, 1), ("weight_decay", -1e-30, 10),
                            ("grad_clip", 0, 1000000), ("max_seconds", 0, 86400),
                            ("min_delta", -1e-30, 100)):
@@ -487,6 +497,56 @@ def _batch(examples, indices, torch):
     return inputs, labels
 
 
+def _microbatch_backward(model, inputs, labels, config):
+    """Backpropagate one logical loss while releasing each microbatch graph.
+
+    The logical batch retains its original right padding and global target
+    denominator. Optimizer, clipping, sampling and checkpoint counters remain
+    outside this function and advance once per completed logical batch.
+    """
+    torch = _torch()
+    from .model import assistant_token_losses
+    selected = labels != -100
+    counts = selected.sum(dim=1)
+    targets = int(counts.sum())
+    windows = int((counts > 0).sum())
+    if not targets:
+        raise ValueError("A supervised logical batch must contain targets")
+    reduction = config.get("loss_reduction", "token_mean")
+    projection = config.get("projection_mode", "full")
+    if reduction not in ("token_mean", "sequence_mean"):
+        raise ValueError("Invalid microbatch loss reduction")
+    total = torch.zeros((), dtype=torch.float32, device=inputs.device)
+    size = config["micro_batch_size"]
+    for start in range(0, inputs.shape[0], size):
+        end = min(start + size, inputs.shape[0])
+        mask = selected[start:end]
+        if not torch.any(mask):
+            continue
+        micro_inputs, micro_labels = inputs[start:end], labels[start:end]
+        if config.get("train_precision") == "cpu_bfloat16":
+            logits = _bf16_train_forward(model, micro_inputs, mask if projection == "supervised" else None)
+        else:
+            logits = model.selected_logits(micro_inputs, mask) if projection == "supervised" else model(micro_inputs)
+        token_losses = assistant_token_losses(logits, micro_labels, projection_mode=projection)
+        if reduction == "token_mean":
+            loss = token_losses.sum() / targets
+        else:
+            rows = mask.nonzero(as_tuple=False)[:, 0]
+            sums = token_losses.new_zeros(end - start).scatter_add(0, rows, token_losses)
+            micro_counts = counts[start:end]
+            valid = micro_counts > 0
+            loss = (sums[valid] / micro_counts[valid]).sum() / windows
+            del rows, sums, micro_counts, valid
+        if not torch.isfinite(loss):
+            raise ValueError("Nonfinite microbatch training loss")
+        loss.backward()
+        total += loss.detach()
+        # Do not hold the preceding output allocation during the next forward.
+        del logits, token_losses, loss, micro_inputs, micro_labels, mask
+    return total
+
+
 def _evaluate(model, examples, batch_size, loss_reduction="token_mean", projection_mode="full"):
     if loss_reduction not in ("token_mean", "sequence_mean"):
         raise ValueError("Invalid loss_reduction")
@@ -568,6 +628,12 @@ def _baseline_score(examples, losses, loss_reduction="token_mean"):
 def _loss_metadata(config):
     # Missing fields remain missing for legacy checkpoints and artifact schemas.
     result = {}
+    if "micro_batch_size" in config:
+        result["trainingMicrobatch"] = {"logicalBatchSize": config["batch_size"],
+            "maxMicroBatchSize": config["micro_batch_size"], "optimizerStepsUnit": "logical_batch",
+            "lossReduction": config.get("loss_reduction", "token_mean"),
+            "gradientClipping": "once_after_all_microbatches",
+            "checkpointBoundary": "completed_logical_batch"}
     if "copy_supervision" in config:
         result["copySupervision"] = copy.deepcopy(config["copy_supervision"])
         result["auxiliaryLossSplit"] = "train_only"
@@ -709,13 +775,30 @@ def _tuple_tree(value):
     return tuple(_tuple_tree(item) for item in value) if isinstance(value, list) else value
 
 
-def _load_checkpoint(run_dir, name):
+def _check_expected_model_config(actual, expected):
+    from .configuration import validate_config
+    if validate_config(actual) != validate_config(expected):
+        raise ValueError("Model configuration differs from the expected declared architecture")
+
+
+def _bounded_initial_config(path):
+    with (Path(path) / "config.json").open("rb") as stream:
+        raw = stream.read(4_194_305)
+    if len(raw) > 4_194_304:
+        raise ValueError("Initial model configuration exceeds its byte limit")
+    return json.loads(raw.decode("utf-8"), object_pairs_hook=_reject_pairs,
+                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError("Nonfinite JSON")))
+
+
+def _load_checkpoint(run_dir, name, *, expected_model_config=None):
+    directory = _checkpoint_files(run_dir, name)
+    state = _json_read(directory / "state.json")
+    if expected_model_config is not None:
+        _check_expected_model_config(state["model_config"], expected_model_config)
     from safetensors.torch import load_file
     from tokenizers import Tokenizer
     from .model import ConversationModel
     torch = _torch()
-    directory = _checkpoint_files(run_dir, name)
-    state = _json_read(directory / "state.json")
     model = ConversationModel(state["model_config"])
     weights = load_file(str(directory / "weights.safetensors"), device="cpu")
     if any(not torch.isfinite(value).all() for value in weights.values()):
@@ -752,10 +835,16 @@ def _validate_lineage(lineage):
             raise ValueError("Invalid lineage SHA-256")
 
 
-def _initial_own_model(path, model_config):
+def _initial_own_model(path, model_config, *, expected_model_config=None):
+    if expected_model_config is not None:
+        _check_expected_model_config(_bounded_initial_config(path), expected_model_config)
     from .artifacts import load_artifact
     from .model import ConversationModel, validate_config
-    model, tokenizer, manifest = load_artifact(path)
+    if expected_model_config is None:
+        model, tokenizer, manifest = load_artifact(path)
+    else:
+        model, tokenizer, manifest = load_artifact(path, expected_model_config=expected_model_config)
+        _check_expected_model_config(model.config, expected_model_config)
     config = model.config
     requested = validate_config({**config, **model_config}) if model_config is not None else config
     expand_copy = "copy_head" not in config and "copy_head" in requested
@@ -984,9 +1073,21 @@ def _log(run_dir, event):
 
 
 def train(corpus_path, run_dir, *, model_config=None, training_config=None,
-          resume=False, budget_seconds=None, initial_model=None):
-    """Train a local run; budget_seconds limits this invocation, not the persistent total budget."""
+          resume=False, budget_seconds=None, initial_model=None, expected_corpus_sha256=None,
+          expected_model_config=None):
+    """Train locally; optional expected SHA pins the caller's declared corpus.
+
+    budget_seconds limits this invocation, not the persistent total budget.
+    """
     invocation_start = time.monotonic()
+    if expected_model_config is not None:
+        from .configuration import validate_config as validate_expected_config
+        expected_model_config = validate_expected_config(expected_model_config)
+    if expected_corpus_sha256 is not None:
+        if (type(expected_corpus_sha256) is not str
+                or re.fullmatch(r"[0-9a-fA-F]{64}", expected_corpus_sha256) is None):
+            raise ValueError("expected_corpus_sha256 must be a 64-character hexadecimal SHA-256")
+        expected_corpus_sha256 = expected_corpus_sha256.lower()
     if type(resume) is not bool:
         raise ValueError("resume must be boolean")
     if resume and initial_model is not None:
@@ -995,12 +1096,14 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             not math.isfinite(budget_seconds) or not 0 < budget_seconds <= 86400):
         raise ValueError("Invalid invocation time budget")
     requested_model, requested_training = _configs(model_config, training_config)
-    torch = _torch()
-    from .model import ConversationModel, assistant_token_loss, validate_config
-    from .tokenizer import fit_tokenizer
     corpus_path = Path(corpus_path).resolve()
     run_dir = Path(run_dir).resolve()
     corpus_hash = _sha(corpus_path)
+    if expected_corpus_sha256 is not None and corpus_hash != expected_corpus_sha256:
+        raise ValueError("Corpus SHA-256 differs from the expected declared identity")
+    torch = _torch()
+    from .model import ConversationModel, assistant_token_loss, validate_config
+    from .tokenizer import fit_tokenizer
     if initial_model is None and not resume:
         validate_config(requested_model)
     with _run_lock(run_dir):
@@ -1012,7 +1115,11 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 raise RuntimeError("This run is reserved for its planned worker")
             if not prior.get("lastCheckpoint"):
                 raise ValueError("Run has no resumable checkpoint")
-            model, tokenizer, state, payload = _load_checkpoint(run_dir, prior["lastCheckpoint"])
+            if expected_model_config is None:
+                model, tokenizer, state, payload = _load_checkpoint(run_dir, prior["lastCheckpoint"])
+            else:
+                model, tokenizer, state, payload = _load_checkpoint(run_dir, prior["lastCheckpoint"],
+                    expected_model_config=expected_model_config)
             if corpus_hash != state["corpus_sha256"]:
                 raise ValueError("Resume corpus hash mismatch")
             if model_config is not None:
@@ -1039,7 +1146,11 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
             torch.manual_seed(config["seed"])
             lineage = None
             if initial_model is not None:
-                model, tokenizer, actual_model, lineage = _initial_own_model(initial_model, model_config)
+                if expected_model_config is None:
+                    model, tokenizer, actual_model, lineage = _initial_own_model(initial_model, model_config)
+                else:
+                    model, tokenizer, actual_model, lineage = _initial_own_model(initial_model, model_config,
+                        expected_model_config=expected_model_config)
                 requested_model = dict(actual_model)
             else:
                 fit = fit_tokenizer
@@ -1049,6 +1160,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 tokenizer = fit([record for record in records if record["split"] == "train"],
                                 vocab_size=requested_model["vocab_size"])
                 actual_model = dict(requested_model, vocab_size=tokenizer.get_vocab_size())
+                if expected_model_config is not None:
+                    _check_expected_model_config(actual_model, expected_model_config)
                 model = ConversationModel(actual_model)
             state = {"schemaVersion": 1, "corpus_path": str(corpus_path), "corpus_sha256": corpus_hash,
                      "requested_model_config": requested_model, "model_config": actual_model,
@@ -1236,7 +1349,9 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                 batch_indices = state["order"][state["cursor"]:end]
                 inputs, labels = _batch(examples["train"], batch_indices, torch)
                 optimizer.zero_grad(set_to_none=True)
-                if "copy_supervision" in config:
+                if "micro_batch_size" in config:
+                    loss = _microbatch_backward(model, inputs, labels, config)
+                elif "copy_supervision" in config:
                     from .model import assistant_token_losses
                     logits, alignment_loss, gate_loss, copy_stats = _copy_train_forward(model, inputs, labels, config)
                     token_losses = assistant_token_losses(logits, labels, projection_mode="supervised")
@@ -1287,7 +1402,8 @@ def train(corpus_path, run_dir, *, model_config=None, training_config=None,
                     loss = assistant_token_loss(logits, labels, loss_reduction="sequence_mean")
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite training loss")
-                loss.backward()
+                if "micro_batch_size" not in config:
+                    loss.backward()
                 norm = torch.nn.utils.clip_grad_norm_(model.parameters(), config["grad_clip"], error_if_nonfinite=True)
                 optimizer.step()
                 scheduler.step()
@@ -1419,7 +1535,7 @@ def _main():
     worker.add_argument("--request", required=True)
     args = parser.parse_args()
     request = _json_read(args.request)
-    allowed = {"corpus_path", "run_dir", "model_config", "training_config", "resume", "budget_seconds", "initial_model"}
+    allowed = {"corpus_path", "run_dir", "model_config", "training_config", "resume", "budget_seconds", "initial_model", "expected_corpus_sha256", "expected_model_config"}
     if not isinstance(request, dict) or set(request) - allowed:
         raise ValueError("Invalid worker request")
     deadline = time.monotonic() + 5

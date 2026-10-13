@@ -5,16 +5,13 @@ import math
 
 from tokenizers import Tokenizer, decoders, models, pre_tokenizers, trainers
 
+from .configuration import ConversationError
 from .contract import (ASSISTANT_ID, BOS_ID, DEFAULT_SYSTEM_PROMPT, EOS_ID, IGNORE_INDEX,
                        MAX_DIALOGUE_BYTES, MAX_MESSAGE_BYTES, MAX_MESSAGES, PAD_ID, ROLE_IDS,
                        SPECIAL_TOKENS, SYSTEM_ID, USER_ID)
 
 MAX_CONTEXT_LENGTH = 4096
 MAX_VOCAB_SIZE = 16_384
-
-
-class ConversationError(ValueError):
-    """Invalid conversational configuration, input, or portable artifact."""
 
 
 def integer(value, name, minimum=0, maximum=2**63 - 1):

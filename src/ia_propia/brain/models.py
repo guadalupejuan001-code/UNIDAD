@@ -140,6 +140,13 @@ class ModelRuntime:
                 "task": "conversation_token_generation", "instructionFollowingValidated": False,
                 "generalLanguageUnderstandingValidated": False, "workerCapabilityValidated": False}
 
+    @property
+    def conversation_engine(self):
+        """The host-owned engine also used by the common interactive console."""
+        if self._conversation is None:
+            raise ModelUnavailableError("A conversation model was not configured by the host")
+        return self._conversation
+
     def capabilities(self):
         """A detached JSON description, never mutable model parameters."""
         return deepcopy(self._capabilities)
