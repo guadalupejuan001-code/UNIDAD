@@ -162,12 +162,23 @@ python3 examples/demo_operational_autonomy.py \
 
 Separa la fixture explícita de las propuestas `own_model`. Repite las mismas
 tareas, herramientas, schemas, límites, temperatura cero y semilla 42 con
-el snapshot del control cuando exista, siempre en otra carpeta nueva.
+el artefacto completo `models/learning-repair-20261013/autonomy/action-copy-v2-control-final-best256`,
+siempre en otra carpeta nueva.
 Conserva respuestas crudas y estado persistido, argumentos autorizados,
 efectos/verificación, hashes originales e informe creado por el modelo.
 Evalúa aparte la opción READ repair con el mismo valor para ambos brazos;
 `examples/demo_autonomy_argument_repair.py` utiliza una reparación explícita.
 Estos comandos son instrucciones, no nuevas ejecuciones registradas aquí.
+
+La [comprobación adicional con dos tareas nuevas](action-copy-v2-development-tasks-v1/summary.json)
+fijó candidatos, nombres y objetivos antes de la primera generación. Los cuatro
+intentos reales pasaron por la API y el controlador, con reparaciones desactivadas:
+ninguno ejecutó herramientas o creó su informe. Tratamiento y control obtuvieron
+0/2 tareas completas. Los argumentos fuera de la lista del host y una propuesta
+mal formada explican los bloqueos; conservar los originales no se cuenta como éxito.
+El [helper congelado](../../examples/compare_action_copy_candidates.py) registra
+propuestas literales, estado persistido y hashes. Su receta se reproduce en un
+workspace nuevo, conservando las evidencias publicadas y sus exclusiones de TRAIN.
 
 El [contraste operativo posterior](autonomy-action-copy-v2-real-matched-development.json),
 de las 11:37:03 UTC, SHA `69f99163a165ae820f2f0c689b7aa2902e51727b4c62b5ea0368b6b0a046aae5`,

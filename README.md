@@ -505,6 +505,13 @@ y falló después por JSON inválido. Ninguno creó su informe; originales igual
 sin sustitución de respuestas ni planificación aceptada. Es una sola tarea DEV
 expuesta, insuficiente para generalización; las NLL de corpus distintos no se comparan.
 
+La [comparación con dos tareas nuevas](docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/summary.json)
+congeló nombres, objetivos y ambos candidatos antes de generar. Tratamiento y
+control completaron **0/2 tareas**, sin ejecutar herramientas ni crear informes;
+los originales permanecieron intactos. Los argumentos inventados y el JSON
+inválido siguen bloqueando la autonomía aprendida. Estos casos pasan a desarrollo
+y quedan excluidos del entrenamiento futuro; no acreditan la aceptación conversacional.
+
 ## Potencial y prioridades
 
 El potencial de Unidad está en poder controlar sus datos, pesos y evolución:

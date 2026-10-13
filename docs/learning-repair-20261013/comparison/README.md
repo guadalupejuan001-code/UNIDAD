@@ -1,12 +1,12 @@
-# Comparación real de desarrollo: C7 y SFT propio de 15 M
+# Comparación real de desarrollo de los modelos propios
 
 Comparación inicial publicada el 13 de octubre de 2026, 08:23 UTC;
 LAST y su revisión cruzada se añaden a las 08:40 UTC, y el tratamiento 1.024
-a las 09:14 UTC. **No se comprobó mejora
-conversacional**: ninguno de los snapshots evaluados aquí ha obtenido respuestas completas ni
-diálogos completos. C7 sigue siendo la referencia propia, también rechazada por
-el criterio de conversación. La pérdida de entrenamiento y la existencia de
-pesos no cambian esta conclusión.
+a las09:14 UTC. Los endpoints iniciales dieron0/40 completas y0/10 diálogos.
+La continuación español LATAM v3 + retención obtuvo **1/40 completa**,
+manteniendo **0/10 diálogos, seis críticas/dos técnicas**. No cumple aceptación.
+C7 sigue siendo la referencia propia, también rechazada por conversación.
+La pérdida de entrenamiento y los archivos de pesos no aceptan modelos.
 
 | Modelo | Revisión | Completas | Parciales | Fallidas | Diálogos completos | Críticas | Técnicas |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -22,6 +22,10 @@ pesos no cambian esta conclusión.
 | Natural + LATAM, LAST 4.096 | Cruzada | 0/40 | 1 | 39 | 0/10 | 14 | 1 |
 | Control natural, LAST 4.096 | Primaria | 0/40 | 1 | 39 | 0/10 | 2 | 7 |
 | Control natural, LAST 4.096 | Cruzada | 0/40 | 1 | 39 | 0/10 | 2 | 7 |
+| ACTION2048 BEST256, antes de base v3 | Primaria | 0/40 | 1 | 39 | 0/10 | 5 | 6 |
+| ACTION2048 BEST256, mismos pesos | Cruzada | 0/40 | 3 | 37 | 0/10 | 5 | 6 |
+| Español LATAM v3 + retención 1.024 | Primaria | 1/40 | 4 | 35 | 0/10 | 6 | 2 |
+| Retención1.024, mismos pesos | Cruzada | 1/40 | 1 | 38 | 0/10 | 6 | 2 |
 
 La aceptación exige 36/40 respuestas completas, 8/10 diálogos completos y cero
 fallos críticos o técnicos. Son dos revisiones de **IA del proyecto**, realizadas
@@ -39,6 +43,22 @@ permaneció BEST por validación. Las salidas conservan el campo original
 `reviewStatus=pending`; los juicios posteriores están en archivos separados.
 
 ## Evidencia conservada sin editar
+
+El [endpoint ACTION 256 anterior](development-action2048-best256-v1/README.md)
+y el [endpoint tras dos etapas causales y retención](development-wide-latam-retention1024-v1/README.md)
+conservan 52 copias byteexact cada uno: 40 turnos, outputs/template, ambos juicios y
+assessments,freeze y metadatos del artefacto. Cada manifiesto identifica todos
+los SHA; los proofs verifican historias realmente generadas, sin descartes,
+excepciones ni corrección de respuestas. Comparan la misma rúbrica,
+contexto 2.048 y generación 160 tokens/temperatura 0/semilla 42. Primaria y cruzada
+se hicieron por separado como IA del proyecto, no panel humano.
+
+La completa posterior es `library_initial_deadline`. Las tres diferencias de
+grado posterior son `library_delegate_change`,`library_late_collection` y
+`cinema_current_plan`; antes, la cruzada añade dos parciales de invitación.
+Los summaries conservan también todas las discrepancias de dimensiones.
+Cambian pesos y varias etapas/corpus; no hay atribución causal a una sola
+variable ni comparación de pérdidas entre objetivos/corpus distintos.
 
 | Evidencia | C7 | SFT BEST 4.096 |
 | --- | --- | --- |
