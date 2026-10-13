@@ -64,6 +64,12 @@ def parser(prog=None):
     converse.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
     converse.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
     converse.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    for command in (chatting, converse, assessment):
+        command.add_argument("--decoder-backend", choices=("torch", "nerva"), default="torch")
+        command.add_argument("--no-cache", action="store_true", help="Recalcular contexto para comparar con la referencia")
+        command.add_argument("--top-k", type=int, default=0)
+        command.add_argument("--top-p", type=float, default=1.0)
+        command.add_argument("--repetition-penalty", type=float, default=1.0)
     return root
 
 
@@ -105,9 +111,12 @@ def _converse(args, *, engine=None):
     from .runtime import ConversationEngine, validate_reply_request
     from .tokenizer import validate_messages
     settings = validate_reply_request({"max_new_tokens": args.max_new_tokens,
-        "temperature": args.temperature, "seed": args.seed}, partial=True)
+        "temperature": args.temperature, "seed": args.seed,
+        "top_k": getattr(args, "top_k", 0), "top_p": getattr(args, "top_p", 1.0),
+        "repetition_penalty": getattr(args, "repetition_penalty", 1.0)}, partial=True)
     if engine is None:
-        engine = ConversationEngine(args.model)
+        engine = ConversationEngine(args.model, decoder_backend=getattr(args, "decoder_backend", "torch"),
+                                    use_cache=not getattr(args, "no_cache", False))
     elif not isinstance(engine, ConversationEngine):
         raise ValueError("The console must use the common ConversationEngine")
     print(f"[Modelo local: {engine.model_id}; contexto: {engine.manifest['config']['context_length']} tokens.]\n"
@@ -202,16 +211,18 @@ def main(argv=None, *, prog=None):
             from .assessment import assess
             result = assess(args.model, args.cases, output=args.output,
                 max_new_tokens=args.max_new_tokens, temperature=args.temperature,
-                seed=args.seed, torch_threads=args.torch_threads)
+                seed=args.seed, torch_threads=args.torch_threads, decoder_backend=args.decoder_backend,
+                use_cache=not args.no_cache, top_k=args.top_k, top_p=args.top_p, repetition_penalty=args.repetition_penalty)
         elif args.command == "converse":
             return _converse(args)
         else:
             messages = [{"role": "user", "content": args.message}] if args.message is not None else _read_json(args.messages)
             from .runtime import ConversationEngine, validate_reply_request
             values = {"messages": messages, "max_new_tokens": args.max_new_tokens,
-                      "temperature": args.temperature, "seed": args.seed}
+                      "temperature": args.temperature, "seed": args.seed,
+                      "top_k": args.top_k, "top_p": args.top_p, "repetition_penalty": args.repetition_penalty}
             validate_reply_request(values)
-            result = ConversationEngine(args.model).reply(**values)
+            result = ConversationEngine(args.model, decoder_backend=args.decoder_backend, use_cache=not args.no_cache).reply(**values)
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
         return 0
     except ImportError:

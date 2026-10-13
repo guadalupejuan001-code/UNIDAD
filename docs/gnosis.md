@@ -34,6 +34,15 @@ selecciona C7 para conversar y el perfil `50m` para una nueva base; los corpus
 están sin configurar. El informe indica ese bloqueo. El chat sigue siendo
 experimental: C7 no ha superado la aceptación conversacional.
 
+`brain.conversation_decoder` conecta el selector `"torch"` o `"nerva"` al mismo
+`ConversationEngine`; `brain.conversation_cache` habilita la caché por respuesta.
+Las configuraciones anteriores que omiten estos campos conservan Torch y usan
+caché. La configuración entregada elige Torch con caché por su
+[mejor tiempo medido](nerva-conversation-20261013/README.md); NERVA está disponible
+como selector real con Node.js 18+. `chat` admite `--top-k`, `--top-p` y
+`--repetition-penalty`, con valores neutrales por defecto. Cambiar esos controles
+no entrena los pesos ni demuestra mejor conversación.
+
 Desde Python, todos los productos pueden utilizar el mismo objeto:
 
 ```python
@@ -154,8 +163,9 @@ PYTHONPATH=src python examples/verify_gnosis_scaling.py \
 
 El modelo de 49 millones de la prueba tiene pesos aleatorios y cero actualizaciones;
 no ha aprendido conversación. El contexto completo de 1.024 tokens y el optimizador
-de ese modelo tampoco se probaron en ese benchmark. NERVA ejecuta el char-RNN;
-PyTorch ejecuta el Transformer. GNOSIS coordina ambos, no traduce C7 a NERVA.
+de ese modelo tampoco se probaron en ese benchmark. NERVA ejecuta el char-RNN y
+ahora puede seleccionar los tokens del Transformer. PyTorch conserva el cálculo
+neuronal del Transformer; no se ha traducido ese cálculo a NERVA.
 
 La siguiente prioridad es ampliar y diversificar la base lingüística de español,
 con entrenamiento verificable y diálogos nuevos que midan conservación de hechos
@@ -166,3 +176,4 @@ el [contraste de preparación](tokenized-data-20261013.md) documenta su efecto.
 Continúan pendientes entrenamiento con GPU y aprendizaje conversacional aceptado.
 No hay autoaprendizaje,
 autoprogramación ni conversación competitiva demostrados por esta entrega.
+

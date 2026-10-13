@@ -94,7 +94,8 @@ def _is_reference(value, allow_refs):
 class ModelRuntime:
     """Loads host-selected models once; operations cannot replace their weights."""
 
-    def __init__(self, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy"):
+    def __init__(self, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy",
+                 conversation_decoder="torch", conversation_cache=True):
         if language_backend not in ("numpy", "nerva"):
             raise ModelRuntimeError("The host must choose language_backend='numpy' or 'nerva'")
         self._language_backend = language_backend
@@ -131,7 +132,8 @@ class ModelRuntime:
             # Optional dependencies and scratch-trained weights are loaded only
             # when explicitly selected. Legacy bodies never import torch here.
             from ..conversation.runtime import ConversationEngine, REPLY_INPUT_SCHEMA
-            self._conversation = ConversationEngine(conversation_model)
+            self._conversation = ConversationEngine(conversation_model, decoder_backend=conversation_decoder,
+                                                     use_cache=conversation_cache)
             self._capabilities["operations"].append("conversation.reply")
             self._capabilities["inputSchemas"]["conversation.reply"] = deepcopy(REPLY_INPUT_SCHEMA)
             self._capabilities["models"]["conversation"] = {
@@ -139,6 +141,7 @@ class ModelRuntime:
                 "parameterCount": self._conversation.parameter_count,
                 "task": "conversation_token_generation", "instructionFollowingValidated": False,
                 "generalLanguageUnderstandingValidated": False, "workerCapabilityValidated": False}
+            self._capabilities["models"]["conversation"].update(self._conversation.execution)
 
     @property
     def conversation_engine(self):

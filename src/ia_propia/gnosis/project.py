@@ -115,11 +115,21 @@ class GnosisProject:
         if type(config["schemaVersion"]) is not int or config["schemaVersion"] != 1:
             raise ValueError("Unsupported GNOSIS schema")
         self._root = (Path(config_dir) / _text(config["projectRoot"], "projectRoot")).resolve()
-        _keys(config["brain"], ("state_dir", "language_backend", "conversation_model", "expected_model_id"))
+        # Older host configs retain Torch decoding. NERVA is an explicit host
+        # option; the measured faster Torch path remains the supplied default.
+        config = deepcopy(config)
+        if type(config["brain"]) is dict:
+            config["brain"].setdefault("conversation_decoder", "torch")
+            config["brain"].setdefault("conversation_cache", True)
+        _keys(config["brain"], ("state_dir", "language_backend", "conversation_model", "expected_model_id",
+                                "conversation_decoder", "conversation_cache"))
         brain = config["brain"]
         _text(brain["state_dir"], "state_dir")
         if type(brain["language_backend"]) is not str or brain["language_backend"] not in ("numpy", "nerva"):
             raise ValueError("The host must select the language backend")
+        if (type(brain["conversation_decoder"]) is not str or brain["conversation_decoder"] not in ("torch", "nerva")
+                or type(brain["conversation_cache"]) is not bool):
+            raise ValueError("The host must select the conversation decoder and boolean cache")
         if brain["conversation_model"] is None:
             if brain["expected_model_id"] is not None:
                 raise ValueError("A model identity requires a selected conversation artifact")
@@ -190,7 +200,8 @@ class GnosisProject:
                 if metadata.get("modelId") != config["expected_model_id"]:
                     raise ValueError("Selected conversation model differs from the GNOSIS identity")
             brain = Brain(self.path(config["state_dir"]), conversation_model=selected,
-                          language_backend=config["language_backend"])
+                          language_backend=config["language_backend"], conversation_decoder=config["conversation_decoder"],
+                          conversation_cache=config["conversation_cache"])
             if selected is not None and brain.models.capabilities()["models"]["conversation"]["modelId"] != config["expected_model_id"]:
                 raise ValueError("Loaded model identity differs from the GNOSIS identity")
             self._brain = brain

@@ -41,13 +41,20 @@ Entregar estos pesos experimentales no significa que UNIDAD converse bien.
 | CLI, Python y API HTTP | Tres formas de usar el mismo núcleo. El servidor recibe peticiones autenticadas; cada producto conserva sus recursos y permisos. |
 | `ConversationEngine` | Motor común que genera respuestas con los pesos seleccionados. Lo utilizan consola, Brain y evaluación. |
 | [GNOSIS](gnosis.md) | Configura modelos, recursos y etapas de base, conversación y adaptación. Es coordinación del proyecto; consultar su plan no entrena. |
-| [NERVA](nerva.md) | Ejecuta el pequeño modelo propio de caracteres con Node.js. C7 y los Transformers de conversación siguen usando PyTorch. |
+| [NERVA](nerva.md) | Ejecuta el modelo de caracteres y puede elegir tokens del Transformer. Los pesos calculan sus probabilidades en PyTorch; NERVA aplica la política de selección. |
 
 Esta separación permite conectar un editor, un panel u otro producto sin copiar
 el modelo para cada uno. Los clientes existentes conservan su contrato de
 operaciones; añadir autonomía ofrece operaciones nuevas sin obligarlos a usarlas.
 La aplicación decide qué modelo, herramientas y memoria conecta. Una petición
 del usuario o una respuesta del modelo no concede permisos nuevos.
+
+La [integración conversacional de NERVA](nerva-conversation-20261013/README.md)
+también añade una caché: reutiliza cálculos del contexto mientras la respuesta
+crece. En diez consultas C7, tres repeticiones y temperatura cero, la ruta Torch
+con caché fue 2,91 veces más rápida y conservó los mismos tokens. NERVA funcionó,
+pero añadió tiempo; queda como opción del anfitrión y la ruta más rápida sigue
+siendo la predeterminada. Estas opciones no cambian lo aprendido por el modelo.
 
 La [memoria local](workspace.md) registra encargos, intentos y correcciones y
 permite buscarlos. **Guardar una nota no modifica los pesos** ni garantiza que
@@ -116,3 +123,4 @@ se revisan aparte; guardar más pesos no garantiza mejora. La aceptación exige
 36/40, 8/10 y cero fallos críticos o técnicos en una prueba final nueva tras fijar
 candidato y generación. Tenemos la infraestructura para seguir entrenando y
 comprobar el resultado; falta demostrar conversación y trabajo fiables.
+

@@ -25,6 +25,26 @@ reutilizan esos pesos. La línea actual no procede de pesos externos ni de
 redimensionar automáticamente C7. Cada etiqueta permite identificar exactamente
 qué configuración y pesos se entrenaron y evaluaron.
 
+## NERVA conectado a conversación y generación más rápida
+
+El mismo `ConversationEngine` incorpora una caché de atención por respuesta y
+un selector NERVA real, además del selector Torch. CLI, Brain/API, GNOSIS y
+evaluación usan esa conexión. El Transformer conserva sus pesos y calcula las
+probabilidades en PyTorch; NERVA puede elegir el siguiente token con un programa
+fijo y controles de variedad y repetición opcionales.
+
+En [diez consultas conocidas con C7, repetidas tres veces](docs/nerva-conversation-20261013/README.md),
+Torch con caché tardó **4,37 s** frente a **12,72 s** sin caché: **2,91 veces
+más rápido**, usando la mediana del conjunto. NERVA con caché tardó **27,13 s**.
+Los tres caminos conservaron exactamente los tokens, con temperatura cero y
+controles neutrales; los hashes de los artefactos tampoco cambiaron. Por esa
+medición, Torch con caché queda como predeterminado y NERVA como opción explícita
+del anfitrión. Los tiempos corresponden a esta CPU, no a otros equipos.
+
+Esto mejora la ejecución y permite comparar políticas de generación. La calidad
+conversacional sigue pendiente: se conservan también las respuestas erróneas,
+y no se entrenaron ni promovieron pesos por esta integración.
+
 ## Descargas recuperadas y entrenamiento reanudado
 
 El [lote pendiente de español](docs/learning-repair-20261013/download-recovery/README.md)
@@ -110,7 +130,7 @@ La reserva final permanece cerrada y C7 conserva su papel de referencia propia.
 | Cerebro compartido | `Brain` y `ConversationEngine` sirven los mismos modelos desde Python, CLI y HTTP. | Cada producto configura herramientas y memoria; el modelo no recibe acceso automático a cuentas. |
 | Modelos propios | Pesos, configuración, tokenizador y procedencia de Transformers entrenados desde pesos aleatorios. | Son modelos experimentales; C7 se conserva como referencia. |
 | GNOSIS | Una configuración reúne cerebro, NERVA, perfiles, recursos y etapas `foundation → conversation → adaptation`. | Las etapas requieren datos y ejecución explícitos; no deciden solas qué aprender. |
-| NERVA 0.2 | Backend del modelo pequeño de caracteres, con generación greedy y temperatura cero. | Usa Node.js; C7 y los Transformers siguen ejecutándose mediante PyTorch. |
+| NERVA 0.2 | Ejecuta el modelo de caracteres y, opcionalmente, la selección de tokens del Transformer conversacional. | Necesita Node.js 18+. El cálculo neuronal del Transformer sigue en PyTorch; el selector Torch con caché es más rápido en la medición conservada. |
 | Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base y primer SFT terminados; acciones y contrastes conservados. Tatoeba cerró 2.048 + 1.024; el primer lote automático de Wikipedia, 1.772 + 1.024. Las etapas posteriores tienen checkpoints locales; no están aceptadas por conversación. GNOSIS conserva su configuración independiente sin corpus. |
 | Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | En el último corte espera datos tras el primer lote automático de Wikipedia. Conserva límites, procedencia y estados; depende del entorno activo y no promueve candidatos automáticamente. |
 | Memoria local | Registro de encargos, intentos y correcciones, con búsqueda y referencias al texto original. | Guardar memoria no cambia pesos ni incorpora recuerdos automáticamente al diálogo. |

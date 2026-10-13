@@ -1,6 +1,7 @@
 """A small decoder Transformer built from random parameters, without pretrained weights."""
 
 from copy import deepcopy
+from contextlib import nullcontext
 import math
 import threading
 
@@ -32,12 +33,22 @@ class _CausalAttention(nn.Module):
         self.residual_dropout = nn.Dropout(self.dropout)
 
     def forward(self, value):
+        return self._attend(value)[0]
+
+    def _attend(self, value, past=None):
+        """A single new query attends to the entire cached prefix, including itself."""
         batch, length, dimensions = value.shape
         q, k, v = self.qkv(value).chunk(3, dim=-1)
         q, k, v = (item.reshape(batch, length, self.n_heads, self.head_size).transpose(1, 2) for item in (q, k, v))
-        attended = F.scaled_dot_product_attention(q, k, v, dropout_p=self.dropout if self.training else 0.0, is_causal=True)
+        if past is not None:
+            if self.training or length != 1:
+                raise ConversationError("Cached attention requires one token in evaluation mode")
+            k, v = (torch.cat((old, new), dim=2) for old, new in zip(past, (k, v)))
+        # is_causal=True with a 1 x N attention matrix would expose only key 0.
+        attended = F.scaled_dot_product_attention(q, k, v, dropout_p=self.dropout if self.training else 0.0,
+                                                  is_causal=past is None)
         merged = attended.transpose(1, 2).contiguous().reshape(batch, length, dimensions)
-        return self.residual_dropout(self.projection(merged))
+        return self.residual_dropout(self.projection(merged)), (k, v)
 
 
 class _DecoderBlock(nn.Module):
@@ -186,7 +197,10 @@ class ConversationModel(nn.Module):
                 raise ConversationError("Projection requires tensor inputs and mask")
             if mask.dtype != torch.bool or mask.shape != input_ids.shape or mask.device != input_ids.device or not torch.any(mask):
                 raise ConversationError("Projection requires a nonempty matching boolean mask")
-        hidden = self._hidden(input_ids)
+        return self._copy_project_hidden(input_ids, self._hidden(input_ids), mask, details=details)
+
+    def _copy_project_hidden(self, input_ids, hidden, mask=None, *, details=False):
+        """Shared projection for training and request-local cached inference."""
         if mask is None:
             mask = torch.ones_like(input_ids, dtype=torch.bool)
         selected = mask.nonzero(as_tuple=False)
@@ -380,49 +394,63 @@ def assistant_token_loss(logits, labels, loss_reduction="token_mean", *, project
 
 
 def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
-         temperature=DEFAULT_TEMPERATURE, seed=DEFAULT_SEED):
+         temperature=DEFAULT_TEMPERATURE, seed=DEFAULT_SEED, *, decoder_backend="torch",
+         use_cache=True, top_k=0, top_p=1.0, repetition_penalty=1.0):
     """Generate an assistant continuation with local RNG and an explicit budget.
 
-    This first implementation recomputes a sliding causal context. It makes no
-    claims of instruction-following competence or calibrated confidence.
+    The request-local cache reuses an unchanged prefix; sliding the context
+    rebuilds it. Host configuration selects the decoder, never message text.
+    These execution controls make no claim of learned conversation quality.
     """
     if not isinstance(model, ConversationModel):
         raise ConversationError("Expected a configured ConversationModel")
     validate_tokenizer(tokenizer)
-    if tokenizer.get_vocab_size() != model.config["vocab_size"]:
+    config = model.config
+    if tokenizer.get_vocab_size() != config["vocab_size"]:
         raise ConversationError("Tokenizer vocabulary differs from the model")
+    if type(decoder_backend) is not str or decoder_backend not in ("torch", "nerva") or type(use_cache) is not bool:
+        raise ConversationError("Host must select a known decoder backend and boolean use_cache")
+    from .decoding import torch_token, validate_controls
+    controls = validate_controls(top_k, top_p, repetition_penalty)
     integer(max_new_tokens, "max_new_tokens", 1, MAX_NEW_TOKENS)
     temperature = number(temperature, "temperature", 0, 2)
     integer(seed, "seed")
-    context, discarded = encode_prompt(messages, tokenizer, model.config["context_length"])
+    context, discarded = encode_prompt(messages, tokenizer, config["context_length"])
+    prompt_tokens = len(context)
     device = model.token_embedding.weight.device
     generator = torch.Generator(device=device)
     generator.manual_seed(seed)
     generated = []
     stop_reason = "token_budget"
     forbidden = [PAD_ID, BOS_ID, SYSTEM_ID, USER_ID, ASSISTANT_ID]
-    with model._generation_lock:
+    decoder = nullcontext(None)
+    if decoder_backend == "nerva":
+        from .nerva_decoder import NervaDecoder
+        decoder = NervaDecoder(seed)
+    cache = None
+    if use_cache:
+        from .generation_cache import GenerationCache
+        cache = GenerationCache(model)
+    with model._generation_lock, decoder as selector:
         was_training = model.training
         model.eval()
         try:
             with torch.inference_mode():
                 for _ in range(max_new_tokens):
-                    inputs = torch.tensor([context[-model.config["context_length"]:]], dtype=torch.long, device=device)
-                    # Every token still reaches the Transformer and copy head;
-                    # decoding only needs the final position's distribution.
-                    selected = torch.zeros_like(inputs, dtype=torch.bool)
-                    selected[:, -1] = True
-                    logits = model.selected_logits(inputs, selected)[0].float()
+                    inputs = torch.tensor([context[-config["context_length"]:]], dtype=torch.long, device=device)
+                    if cache is None:
+                        selected = torch.zeros_like(inputs, dtype=torch.bool)
+                        selected[:, -1] = True
+                        logits = model.selected_logits(inputs, selected)[0].float()
+                    else:
+                        logits = cache.last_logits(inputs).float()
                     if not torch.all(torch.isfinite(logits)):
                         raise ConversationError("Generation produced nonfinite logits")
-                    logits[forbidden] = -torch.inf
-                    if temperature == 0:
-                        token = int(torch.argmax(logits).item())
+                    if selector is not None:
+                        token = selector.select(logits, forbidden, generated, temperature=temperature, **controls)
                     else:
-                        probabilities = torch.softmax(logits / temperature, dim=-1)
-                        if not torch.all(torch.isfinite(probabilities)):
-                            raise ConversationError("Generation produced nonfinite probabilities")
-                        token = int(torch.multinomial(probabilities, 1, generator=generator).item())
+                        token = torch_token(logits, forbidden, generated, temperature=temperature,
+                                            generator=generator, **controls)
                     generated.append(token)
                     if token == EOS_ID:
                         stop_reason = "eos"
@@ -432,7 +460,8 @@ def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
             model.train(was_training)
     return {"text": tokenizer.decode(generated, skip_special_tokens=True), "generatedTokenIds": generated,
             "generatedTokens": len(generated), "stopReason": stop_reason,
-            "promptTokens": len(context) - len([token for token in generated if token != EOS_ID]),
+            "promptTokens": prompt_tokens,
             "discardedPromptTokens": discarded, "seed": seed, "temperature": temperature,
+            "decoding": {"backend": decoder_backend, "kvCache": use_cache, **controls},
             "modelType": MODEL_TYPE, "experimental": True,
             "instructionFollowingValidated": False, "generalConversationValidated": False}

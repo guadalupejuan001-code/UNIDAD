@@ -27,6 +27,9 @@ def parser(prog=None):
                              help="Motor del char-RNN fijado por el host; NERVA usa greedy y requiere Node.js 18+")
         command.add_argument("--attention-model", type=Path, help="Ruta del modelo de atención fijada al iniciar")
         command.add_argument("--conversation-model", type=Path, help="Directorio local del modelo conversacional fijado al iniciar")
+        command.add_argument("--conversation-decoder", choices=("torch", "nerva"), default="torch",
+                             help="Selector del Transformer; NERVA requiere Node.js 18+")
+        command.add_argument("--no-conversation-cache", action="store_true", help="Recalcular el contexto para comparación de referencia")
         command.add_argument("--autonomy-input-root", type=Path,
                              help="Activar autonomía experimental sobre archivos de este directorio existente")
         command.add_argument("--autonomy-report-root", type=Path,
@@ -100,7 +103,8 @@ def main(argv=None, *, prog=None):
         elif args.autonomy_operator_token_env is not None:
             raise ValueError("Operator approval requires configured autonomy roots")
         brain = Brain(args.state_dir, language_model=args.language_model, attention_model=args.attention_model,
-                      conversation_model=args.conversation_model, language_backend=args.language_backend)
+                      conversation_model=args.conversation_model, language_backend=args.language_backend,
+                      conversation_decoder=args.conversation_decoder, conversation_cache=not args.no_conversation_cache)
         session = brain.connect(args.body, memory_scope=args.memory_scope, **autonomy_options)
         if args.command == "capabilities":
             _emit(session.capabilities())

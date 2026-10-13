@@ -28,6 +28,16 @@ artefacto local una vez y ofrece generación y puntuación sobre los mismos peso
 CLI, `Brain` y evaluación llaman a ese motor; sus adaptadores no implementan
 generadores alternativos ni cambian el modelo a partir de una petición.
 
+La [integración NERVA y caché](nerva-conversation-20261013/README.md) añade
+`--decoder-backend torch|nerva`, `--no-cache`, `--top-k`, `--top-p` y
+`--repetition-penalty` a `chat`, `converse` y `assess`. El cálculo neuronal conserva
+PyTorch y los pesos seleccionados. Torch con caché es el predeterminado medido;
+NERVA requiere Node.js 18+. Para reproducir el recorrido anterior, usa
+`--decoder-backend torch --no-cache --top-k 0 --top-p 1 --repetition-penalty 1`
+junto con la temperatura, semilla y presupuesto históricos. Las respuestas
+identifican su backend, caché y controles en `decoding`; las evaluaciones también
+registran la ejecución. Muestreo Torch y NERVA usan RNG distintos.
+
 ```mermaid
 flowchart LR
     D[Conversaciones con procedencia y particiones] --> T[Entrenador propio]
@@ -828,3 +838,4 @@ continuidad y calidad con casos independientes, y después preparar tareas de
 programación con evaluación específica. Proponer cambios a su propio código
 y ejecutarlos con resultados comprobados son capacidades futuras. Ni esta
 pérdida de lenguaje ni conectar herramientas al cerebro las acredita.
+

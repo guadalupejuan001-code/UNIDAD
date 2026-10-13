@@ -7,6 +7,16 @@ que el trabajador digital solicitado ya esté terminado.
 
 ## Encargo actual del 13 de octubre: integrar y entrenar
 
+La petición posterior de esta sesión autoriza optimizar el sistema y conectar
+NERVA al modelo conversacional para que aporte trabajo real. Sustituye la
+restricción de sólo lectura del diagnóstico previo. Esta integración conserva
+los pesos, corpus, evaluaciones e historiales existentes y no interviene sobre
+entrenamientos activos. Las mejoras de ejecución y selección de tokens se
+medirán por separado de la capacidad aprendida para conversar; aprobar pruebas
+de software o acelerar respuestas no acredita superar la evaluación semántica.
+
+> se supone que debias hacer eso por naturalidad, optimiza todo el sistema de mi ia todo lo que tenga, nerva se supone que la cree para que estuviera conectada y ayudara a mi ia
+
 El creador prioriza después completar las descargas pendientes tras HTTP 502.
 Se recupera la caché verificada y se completan lotes finitos con la misma fuente,
 revisión, procedencia y particiones; se conservan procesos y checkpoints. Sus
