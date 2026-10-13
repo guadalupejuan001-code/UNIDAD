@@ -1,10 +1,40 @@
 # Unidad
 
-IA privada de uso personal. Núcleo independiente para conectarlo a productos e
-interfaces distintos, conservar contexto y avanzar hacia un trabajador digital.
-Unidad funciona localmente con Python. El núcleo usa NumPy; el nuevo modelo
-conversacional usa PyTorch y un tokenizador propio. No requiere Hormiga-X,
-una API de IA ni pesos preentrenados.
+**Un núcleo de IA local, experimental y conectable a distintas aplicaciones.**
+
+Unidad es un proyecto de inteligencia artificial en Python que reúne modelos
+entrenados desde cero, memoria persistente y herramientas para entrenar, evaluar
+y ejecutar tareas definidas por una aplicación. Su objetivo es construir una IA
+personal que pueda trabajar con su creador y ampliar sus capacidades a partir de
+resultados comprobables.
+
+La idea es tener **un mismo cerebro para distintos cuerpos**: el núcleo y los
+modelos se pueden utilizar desde Python, una consola o una API HTTP. Cada producto
+aporta sus herramientas y configura su memoria. El núcleo usa NumPy; los modelos
+conversacionales usan PyTorch y un tokenizador propio. La generación funciona
+localmente con los pesos del proyecto, sin depender de una API de otra IA.
+
+## Qué encontrarás aquí
+
+- **Modelos propios y sus pesos.** Transformers experimentales orientados a la
+  conversación en español, un modelo de lenguaje pequeño y un especialista que
+  predice una métrica numérica de atención. Se conservan sus etapas y procedencia.
+- **Entrenamiento y evaluación.** Preparación de datos, preentrenamiento de
+  lenguaje, ajuste conversacional, checkpoints y reanudación, junto con métricas
+  y conversaciones realmente generadas para revisar los resultados.
+- **Memoria local.** Registro persistente de encargos, intentos y correcciones
+  en texto libre, con búsqueda y referencias al contenido original. Guardar un
+  recuerdo no entrena el modelo ni lo incorpora automáticamente al diálogo.
+- **Integración con aplicaciones.** Un motor conversacional común para la
+  consola, el núcleo y la evaluación, con acceso desde Python y HTTP. Las
+  herramientas y la memoria se configuran por producto; compartir memoria es
+  una decisión explícita.
+- **Ejecución de tareas definidas.** Flujos que encadenan operaciones del modelo
+  y herramientas registradas por la aplicación. Los pasos los proporciona quien
+  integra el núcleo; la planificación autónoma sigue pendiente.
+- **Pruebas y evidencia.** Pruebas del código, ejemplos de integración, informes
+  de experimentos y documentación de resultados, incluidos los intentos que no
+  mejoraron el modelo.
 
 La [configuración GNOSIS](configs/gnosis.json) reúne cerebro, NERVA y etapas de
 aprendizaje. Incluye admisión de recursos, entrenamiento por microbatches y
@@ -12,9 +42,17 @@ soporte explícito de arquitecturas mayores. Se comprobó cálculo y manejo de
 artefactos de 48,85 millones de parámetros aleatorios; esto no demuestra una
 mejora conversacional. [Uso, mediciones y límites](docs/gnosis.md).
 
-Las [órdenes del creador](ORDENES_USUARIO.md) están adjuntas al proyecto. Definen
-el objetivo de Unidad y distinguen lo realizado de lo pendiente. Las instrucciones
-para quienes modifiquen el código están en [AGENTS.md](AGENTS.md).
+Las [órdenes del creador](ORDENES_USUARIO.md) conservan el objetivo del proyecto.
+[AGENTS.md](AGENTS.md) recoge las instrucciones para modificarlo.
+
+## Estado actual
+
+El núcleo ya permite cargar modelos, generar texto, consultar registros y
+ejecutar flujos explícitos. El principal trabajo pendiente es conseguir
+conversación fiable en español: mantener los hechos, seguir correcciones y
+responder con coherencia durante varios turnos. La programación autónoma también
+sigue pendiente. Las pruebas del software y las métricas de entrenamiento se
+comprueban por separado de la calidad de las respuestas.
 
 **Estado verificado el 12 de octubre de 2026: la conversación competente sigue
 pendiente; no hay entrenamiento activo comprobado en este entorno.** C7 se conserva
@@ -31,13 +69,7 @@ está publicado en la rama de artefactos. Esa publicación conserva experimentos
 no declara aceptado ningún modelo. C7 tiene **6.983.937 parámetros**, incluidos
 los de copia v1; la base anterior sin esa cabeza tiene 6.967.296.
 
-**Núcleo conectable con modelos experimentales.**
-Ya puede ejecutar operaciones y flujos definidos por el producto, usando las
-herramientas que ese producto le proporciona. Los modelos actuales todavía no
-comprenden encargos abiertos ni planifican el trabajo de forma competente.
-Una red pequeña aprende una tarea concreta; una inteligencia que resuelva encargos
-abiertos necesita capacidades y pruebas adicionales. No hemos replicado a una
-persona ni su forma completa de pensar.
+## Antecedentes y mediciones
 
 Los antecedentes siguientes conservan los resultados de sus etapas; no describen
 procesos activos ni presupuestos disponibles actualmente.
@@ -83,28 +115,6 @@ El [informe de memoria](docs/unidad-memory-optimization-v1.json) y la
 [guía reproducible](docs/workspace.md#medir-la-memoria-local) conservan alcance,
 pruebas y límites. Estas operaciones no entrenan pesos ni añaden recuerdos
 automáticamente a las conversaciones.
-
-## Qué contiene
-
-- Un especialista de atención, entrenado desde pesos aleatorios y separado de
-  Hormiga-X con su evidencia original. Predice una métrica numérica, no creatividad.
-- Un modelo de lenguaje pequeño con entrenamiento propio. Su demostración sirve
-  para comprobar que cambian los pesos y se puede generar texto; no demuestra
-  comprensión ni calidad conversacional.
-- Transformers conversacionales propios desde pesos aleatorios: se conservan
-  las etapas pequeñas de 1.088.256 parámetros y el sucesor de 6.967.296.
-  Aprenden español con textos públicos y ejemplos ficticios identificados.
-  Permiten entrenamiento en segundo plano, checkpoints y reanudación; su
-  calidad debe comprobarse por separado de las pruebas del código.
-- Un registro local de encargos, intentos y correcciones en texto libre. No impone
-  categorías de personalidad. Permite preparar ejemplos aprobados para entrenar,
-  sin confundir memoria con aprendizaje de parámetros.
-- Un núcleo Python común para CLI y HTTP, con los pesos incluidos en el paquete.
-  Cada «cuerpo» conecta sus herramientas y su memoria; varios cuerpos pueden
-  compartir memoria si su configuración lo solicita expresamente.
-- Ejecución de flujos explícitos: por ejemplo, generar con un modelo y pasar el
-  resultado a una herramienta del producto. Esto comprueba la conexión y la
-  ejecución; la calidad del texto sigue siendo la del modelo experimental.
 
 ## Instalar
 
