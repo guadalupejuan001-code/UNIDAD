@@ -17,7 +17,10 @@ from .tokenizer import ConversationError, number
 
 
 class NervaDecoder:
-    def __init__(self, seed, *, node="node", timeout=10):
+    def __init__(self, seed, *, node="node", timeout=10, optimized=False):
+        if type(optimized) is not bool:
+            raise ConversationError("NERVA optimized must be boolean")
+        self.optimized = optimized
         self.rng = random.Random(seed)  # local 63-bit seed, unaffected by global RNGs
         self.timeout = number(timeout, "NERVA timeout", 0.001, 60)
         self.node = node
@@ -32,9 +35,13 @@ class NervaDecoder:
             self.directory = tempfile.TemporaryDirectory(prefix="unidad-nerva-decoder-")
             root = Path(self.directory.name)
             packaged = resources.files("ia_propia").joinpath("assets", "nerva")
-            for filename in ("parser.mjs", "tensor.mjs", "runtime.mjs", "conversation_decoder.nv", "conversation_worker.mjs"):
+            filenames = ["parser.mjs", "tensor.mjs", "runtime.mjs", "conversation_decoder.nv", "conversation_worker.mjs"]
+            if self.optimized:
+                filenames += ["token_selector.mjs", "conversation_worker_fast.mjs"]
+            for filename in filenames:
                 (root / filename).write_bytes(packaged.joinpath(filename).read_bytes())
-            self.process = subprocess.Popen([self.node, str(root / "conversation_worker.mjs")],
+            worker = "conversation_worker_fast.mjs" if self.optimized else "conversation_worker.mjs"
+            self.process = subprocess.Popen([self.node, str(root / worker)],
                 stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
             self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="nerva-decoder")
             return self

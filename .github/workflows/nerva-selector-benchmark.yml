@@ -1,0 +1,75 @@
+name: Measure optional NERVA selector without training
+on:
+  push:
+    branches: [work/nerva-selector-performance-20261013]
+    paths:
+      - 'src/**'
+      - 'examples/benchmark_conversation_decoding.py'
+      - 'examples/benchmark_nerva_selector.py'
+      - 'examples/benchmark_nerva_kernel.mjs'
+      - 'docs/nerva-selector-20261013/cases.json'
+      - '.github/workflows/nerva-selector-benchmark.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /tests/
+            /examples/
+            /configs/
+            /pyproject.toml
+            /README.md
+            /docs/nerva-selector-20261013/cases.json
+            /models/conversation-reference-c7/
+            /models/learning-repair-20261013/pattern-relations-v1/reference-wiki1/
+            /models/sovengi-memory-20261013/candidate-best/
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install '.[conversation]'
+      - name: Check optional selector before timing
+        run: PYTHONPATH=src:tests python -m unittest test_nerva_fast test_conversation_cache_decoder -v
+      - name: Measure isolated selector on the same runner
+        run: |
+          mkdir -p private/nerva-selector
+          node examples/benchmark_nerva_kernel.mjs private/nerva-selector/selector-kernel.json
+      - name: Profile Python serialization and real Node IPC
+        run: python -u examples/benchmark_nerva_selector.py --output private/nerva-selector/selector-ipc.json
+      - name: Compare exact greedy continuations on three frozen own-weight artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          model_paths=(models/conversation-reference-c7 models/learning-repair-20261013/pattern-relations-v1/reference-wiki1 models/sovengi-memory-20261013/candidate-best)
+          model_names=(c7 sovengi-current sovengi-candidate)
+          for i in 0 1 2; do
+            python -u examples/benchmark_conversation_decoding.py --model "${model_paths[$i]}" --cases docs/nerva-selector-20261013/cases.json --output "private/nerva-selector/${model_names[$i]}-greedy.json" --include-fast --repeats 3 --max-new-tokens 160 --torch-threads 1
+          done
+      - name: Compare original and optimized NERVA with stochastic controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -c 'import json; from pathlib import Path; p=Path("docs/nerva-selector-20261013/cases.json"); Path("private/nerva-selector/sampling-cases.json").write_text(json.dumps(json.loads(p.read_text())[:3]))'
+          model_paths=(models/conversation-reference-c7 models/learning-repair-20261013/pattern-relations-v1/reference-wiki1 models/sovengi-memory-20261013/candidate-best)
+          model_names=(c7 sovengi-current sovengi-candidate)
+          for i in 0 1 2; do
+            python -u examples/benchmark_conversation_decoding.py --model "${model_paths[$i]}" --cases private/nerva-selector/sampling-cases.json --output "private/nerva-selector/${model_names[$i]}-sampling.json" --include-fast --repeats 3 --max-new-tokens 64 --torch-threads 1 --temperature 0.7 --top-k 40 --top-p 0.9 --repetition-penalty 1.1
+          done
+      - name: Retain raw timings, outputs and immutable weight hashes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nerva-selector-${{ github.run_id }}
+          path: private/nerva-selector/
+          retention-days: 90

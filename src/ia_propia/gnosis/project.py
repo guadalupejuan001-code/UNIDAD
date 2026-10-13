@@ -129,7 +129,7 @@ class GnosisProject:
         _text(brain["state_dir"], "state_dir")
         if type(brain["language_backend"]) is not str or brain["language_backend"] not in ("numpy", "nerva"):
             raise ValueError("The host must select the language backend")
-        if (type(brain["conversation_decoder"]) is not str or brain["conversation_decoder"] not in ("torch", "nerva")
+        if (type(brain["conversation_decoder"]) is not str or brain["conversation_decoder"] not in ("torch", "nerva", "nerva-fast")
                 or type(brain["conversation_cache"]) is not bool):
             raise ValueError("The host must select the conversation decoder and boolean cache")
         if brain["conversation_model"] is None:

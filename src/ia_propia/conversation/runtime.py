@@ -62,7 +62,7 @@ class ConversationEngine:
     def __init__(self, model_dir, *, decoder_backend="torch", use_cache=True):
         if not isinstance(model_dir, (str, Path)):
             raise ValueError("Conversation model must be a host-configured local artifact directory")
-        if type(decoder_backend) is not str or decoder_backend not in ("torch", "nerva") or type(use_cache) is not bool:
+        if type(decoder_backend) is not str or decoder_backend not in ("torch", "nerva", "nerva-fast") or type(use_cache) is not bool:
             raise ValueError("Host must select a known conversation decoder and boolean use_cache")
         self._decoder_backend = decoder_backend
         self._use_cache = use_cache
@@ -85,7 +85,7 @@ class ConversationEngine:
     @property
     def execution(self):
         return {"neuralBackend": "torch", "decoderBackend": self._decoder_backend,
-                "kvCache": self._use_cache, "hostRuntimeRequired": "Node.js 18+" if self._decoder_backend == "nerva" else None}
+                "kvCache": self._use_cache, "hostRuntimeRequired": "Node.js 18+" if self._decoder_backend in ("nerva", "nerva-fast") else None}
 
     def reply(self, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
               temperature=DEFAULT_TEMPERATURE, seed=DEFAULT_SEED, *,

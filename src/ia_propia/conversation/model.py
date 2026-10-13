@@ -408,7 +408,7 @@ def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
     config = model.config
     if tokenizer.get_vocab_size() != config["vocab_size"]:
         raise ConversationError("Tokenizer vocabulary differs from the model")
-    if type(decoder_backend) is not str or decoder_backend not in ("torch", "nerva") or type(use_cache) is not bool:
+    if type(decoder_backend) is not str or decoder_backend not in ("torch", "nerva", "nerva-fast") or type(use_cache) is not bool:
         raise ConversationError("Host must select a known decoder backend and boolean use_cache")
     from .decoding import torch_token, validate_controls
     controls = validate_controls(top_k, top_p, repetition_penalty)
@@ -424,9 +424,9 @@ def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
     stop_reason = "token_budget"
     forbidden = [PAD_ID, BOS_ID, SYSTEM_ID, USER_ID, ASSISTANT_ID]
     decoder = nullcontext(None)
-    if decoder_backend == "nerva":
+    if decoder_backend in ("nerva", "nerva-fast"):
         from .nerva_decoder import NervaDecoder
-        decoder = NervaDecoder(seed)
+        decoder = NervaDecoder(seed, optimized=decoder_backend == "nerva-fast")
     cache = None
     if use_cache:
         from .generation_cache import GenerationCache
