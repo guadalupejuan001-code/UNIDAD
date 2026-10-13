@@ -215,11 +215,11 @@ class Supervisor:
     def cycle_key(self, stage):
         return safe_id(self.state['cycle']['cycleId']) + ':' + safe_id(stage['id'])
 
-    def parent(self, stage):
+    def parent(self, stage, *, cycle_id=None):
         if stage.get('parentStage'):
             key = stage['parentStage']
             if ':' not in key:
-                key = self.state['cycle']['cycleId'] + ':' + key
+                key = (cycle_id or self.state['cycle']['cycleId']) + ':' + key
             result = self.state['stageResults'].get(key)
             if not result:
                 raise FileNotFoundError('Parent stage receipt not available: ' + key)
@@ -238,12 +238,18 @@ class Supervisor:
             return parent
         return None
 
-    def validate_stage(self, stage):
+    def validate_stage(self, stage, *, cycle_id=None, pending_parents=None, preflight=False):
+        if type(stage) is not dict:
+            raise ValueError('Stage must be an object')
         safe_id(stage['id'])
         run_dir = path_for(self.config, stage['runDir'])
+        if run_dir.exists() and not run_dir.is_dir():
+            raise ValueError('Stage run directory is not a directory')
         corpus = checked_file(self.config, stage, 'corpusPath', 'corpusSha256')
         config_path = checked_file(self.config, stage, 'trainingConfigPath', 'trainingConfigSha256')
         training = read(config_path)
+        if type(training) is not dict:
+            raise ValueError('Training configuration must be an object')
         if (training.get('objective') not in ('causal_lm', 'assistant_last_reply')
             or training.get('partition_policy') != 'train_validation_only'
             or training.get('data_loading') != 'mmap' or training.get('trainable_parameters') != 'all'):
@@ -254,7 +260,7 @@ class Supervisor:
             raise ValueError('Persistent stage limit is at most two hours and four CPU threads')
         if type(training['max_steps']) is not int or not 1 <= training['max_steps'] <= 12000:
             raise ValueError('Persistent step limit must be finite')
-        if stage['stopAfterStep'] != training['max_steps']:
+        if type(stage['stopAfterStep']) is not int or stage['stopAfterStep'] != training['max_steps']:
             raise ValueError('Supervisor does not reset or extend persistent step limits')
         budget = stage.get('invocationBudgetSeconds', 3600)
         if type(budget) not in (int, float) or not math.isfinite(budget) or not 0 < budget <= 3600:
@@ -264,21 +270,92 @@ class Supervisor:
             raise ValueError('Stage resource ceilings exceed 6GiB RSS / 2GiB run disk')
         if stage.get('provenanceManifestPath'):
             provenance = read(checked_file(self.config, stage, 'provenanceManifestPath', 'provenanceManifestSha256'))
+            if type(provenance) is not dict:
+                raise ValueError('Corpus provenance must be an object')
             splits = provenance.get('splitCounts', provenance.get('recordSplits', provenance.get('counts', {})))
+            if type(splits) is not dict:
+                raise ValueError('Corpus provenance split counts must be an object')
             if (provenance.get('corpusSha256') != stage['corpusSha256'] or provenance.get('testUsedForTraining') is not False
                 or type(splits.get('train')) is not int or splits['train'] < 1
                 or type(splits.get('validation')) is not int or splits['validation'] < 1 or splits.get('test', 0) != 0
                 or not provenance.get('sources')):
                 raise ValueError('Provenance must identify this corpus, human/public source records, TRAIN/validation and explicitly unused TEST')
         model = checked_file(self.config, stage, 'modelConfigPath', 'modelConfigSha256') if stage.get('modelConfigPath') else None
-        parent = self.parent(stage)
-        if (model is None) == (parent is None):
+        if sum(bool(stage.get(field)) for field in ('modelConfigPath', 'parentModelPath', 'parentStage')) != 1:
             raise ValueError('Stage requires exactly one random model config or own parent stage/artifact')
+        deferred = None
+        if stage.get('parentStage'):
+            reference = stage['parentStage']
+            if type(reference) is not str:
+                raise ValueError('Parent stage must be a bounded stage reference')
+            parts = reference.split(':')
+            if len(parts) > 2:
+                raise ValueError('Parent stage requires stageId or cycleId:stageId')
+            for part in parts:
+                safe_id(part)
+            key = reference if len(parts) == 2 else (cycle_id or self.state['cycle']['cycleId']) + ':' + reference
+            if key not in self.state['stageResults'] and pending_parents and key in pending_parents:
+                deferred = pending_parents[key]
+        parent = None if deferred is not None else self.parent(stage, cycle_id=cycle_id)
+        if deferred is not None and (run_dir == deferred or run_dir.is_relative_to(deferred) or deferred.is_relative_to(run_dir)):
+            raise ValueError('Stage directory overlaps its pending own parent stage')
         if parent and (run_dir == parent or run_dir.is_relative_to(parent) or parent.is_relative_to(run_dir)):
             raise ValueError('Stage directory overlaps own parent artifact')
         if parent and read(parent / 'manifest.json').get('training', {}).get('trainedFrom') not in ('random_weights', 'own_checkpoint'):
             raise ValueError('Only recorded own-model lineage is allowed')
+        if preflight:
+            if not stage.get('provenanceManifestPath'):
+                raise ValueError('Preflight requires pinned corpus provenance')
+            from ia_propia.conversation import training as native_training
+            from ia_propia.conversation.configuration import validate_config
+            from ia_propia.conversation.disk_data import StreamingCorpus
+            requested, validated_training = native_training._configs(read(model) if model else None, training)
+            validate_config(requested)
+            counts = StreamingCorpus(corpus, validated_training).counts
+            if not counts['train'] or not counts['validation'] or counts['test']:
+                raise ValueError('Stage corpus requires actual TRAIN/validation records and no TEST')
+            if any(splits.get(name, 0) != counts[name] for name in ('train', 'validation', 'test')):
+                raise ValueError('Provenance split counts differ from the actual corpus')
         return run_dir, corpus, config_path, model, parent, training
+
+    def preflight_cycle(self, cycle):
+        """Validate every pinned stage before admission, without launching work.
+
+        A prior stage in this proposed cycle may supply a future own artifact;
+        launch still validates that materialized parent's receipt and hashes.
+        """
+        if type(cycle) is not dict:
+            raise ValueError('Approved cycle must be an object')
+        if type(cycle.get('schemaVersion')) is not int or cycle['schemaVersion'] != 1:
+            raise ValueError('Approved cycle requires schemaVersion 1')
+        cycle_id = safe_id(cycle['cycleId'])
+        stages = cycle.get('stages')
+        if type(stages) is not list or not stages:
+            raise ValueError('Approved cycle has no stages')
+        pending = {}
+        for stage in stages:
+            if type(stage) is not dict:
+                raise ValueError('Stage must be an object')
+            stage_id = safe_id(stage['id'])
+            key = cycle_id + ':' + stage_id
+            if key in pending:
+                raise ValueError('Cycle stage IDs must be unique')
+            if not stage.get('provenanceManifestPath') or not stage.get('provenanceManifestSha256'):
+                raise ValueError('New cycles require pinned corpus provenance manifests')
+            try:
+                run_dir, *_ = self.validate_stage(stage, cycle_id=cycle_id, pending_parents=pending, preflight=True)
+            except (ValueError, KeyError, TypeError, OSError) as error:
+                raise ValueError('Stage ' + stage_id + ' preflight failed: ' + str(error)) from error
+            pending[key] = run_dir
+        return stages
+
+    def reject_cycle(self, manifest, digest, approval_digest, error):
+        record = {'manifest': str(manifest), 'manifestSha256': digest,
+                  'approvalSha256': approval_digest, 'reason': type(error).__name__ + ': ' + str(error),
+                  'rejectedAtUtc': now()}
+        self.state.setdefault('rejectedCycleHashes', {})[digest] = record
+        self.event('cycle_rejected_preflight', **record)
+        atomic(self.state_path, self.state)
 
     def guard_existing(self, stage, run_dir, training):
         design = read(run_dir / 'stage-design.json')
@@ -703,34 +780,39 @@ class Supervisor:
             digest = sha(manifest)
             if digest in self.state['seenCycleHashes']:
                 continue
-            approval = read(approval_path)
-            if approval.get('approved') is not True or approval.get('manifestSha256') != digest or approval.get('approvedBy') not in self.config['approvedAgents']:
+            approval_digest = sha(approval_path)
+            previous = self.state.get('rejectedCycleHashes', {}).get(digest)
+            if previous and previous.get('approvalSha256') == approval_digest:
                 continue
-            cycle = read(manifest)
-            safe_id(cycle['cycleId'])
-            stages = cycle.get('stages')
-            if not isinstance(stages, list) or not stages:
-                raise ValueError('Approved cycle has no stages')
+            try:
+                approval = read(approval_path)
+                if type(approval) is not dict or type(approval.get('approved')) is not bool:
+                    raise ValueError('Approval requires an explicit approved boolean')
+                if approval['approved'] is False:
+                    continue
+                if approval.get('manifestSha256') != digest or approval.get('approvedBy') not in self.config['approvedAgents']:
+                    raise ValueError('Approval must pin this manifest and identify a trusted approved agent')
+                cycle = read(manifest)
+                stages = self.preflight_cycle(cycle)
+                novel = False
+                for stage in stages:
+                    provenance = read(checked_file(self.config, stage, 'provenanceManifestPath', 'provenanceManifestSha256'))
+                    content = provenance.get('contentSha256')
+                    if type(content) is not str or re.fullmatch(r'[0-9a-f]{64}', content) is None:
+                        raise ValueError('New-cycle provenance requires a content-only SHA distinct from metadata')
+                    if stage['corpusSha256'] not in self.state['seenCorpora'] and content not in self.state.get('seenContentHashes', []):
+                        novel = True
+            except (ValueError, KeyError, TypeError, OSError) as error:
+                self.reject_cycle(manifest, digest, approval_digest, error)
+                continue
             if not any(s['corpusSha256'] not in self.state['seenCorpora'] for s in stages):
                 self.event('cycle_refused_repeated_inputs', manifest=str(manifest), manifestSha256=digest)
                 self.state['seenCycleHashes'].append(digest)
                 continue
-            novel = False
-            for stage in stages:
-                if stage.get('corpusSha256') in self.state['seenCorpora']:
-                    continue
-                provenance = read(checked_file(self.config, stage, 'provenanceManifestPath', 'provenanceManifestSha256'))
-                content = provenance.get('contentSha256')
-                if type(content) is not str or re.fullmatch(r'[0-9a-f]{64}', content) is None:
-                    raise ValueError('New-cycle provenance requires a content-only SHA distinct from metadata')
-                if content not in self.state.get('seenContentHashes', []):
-                    novel = True
             if not novel:
                 self.event('cycle_refused_no_new_content', manifestSha256=digest)
                 self.state['seenCycleHashes'].append(digest)
                 continue
-            if not all(s.get('provenanceManifestPath') and s.get('provenanceManifestSha256') for s in stages):
-                raise ValueError('New cycles require pinned corpus provenance manifests')
             self.state['seenCycleHashes'].append(digest)
             self.state.update({'cycle': cycle, 'stageIndex': 0, 'conversationCertification': 'awaiting_review'})
             self.event('cycle_admitted', cycleId=cycle['cycleId'], manifestSha256=digest,

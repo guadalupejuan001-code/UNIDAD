@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-13T07:35:54.738939+00:00",
+  "status": "specified-before-data-generation",
+  "hypothesis": "The repeated state/location fiction is an excessive response prior in the current SFT; reducing its TRAIN-only contribution while retaining every human/curated original row and adding source-grounded Latin American conversation may improve current-request following. This is a curriculum bundle, not an isolated causal attribution.",
+  "observedDevelopmentFailure": "Snapshot4096 gives location-pattern answers (e.g. El cine se encuentra en la ocho...) across unrelated requests/corrections; these exposed cases remain development.",
+  "priorCorpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+  "selection": {
+    "proceduralTrainDataset": "unidad-composition-v1",
+    "wholeFamiliesPerTrainTemplate": 10,
+    "templateCount": 40,
+    "maximumProceduralTrainRows": 1600,
+    "ranking": "SHA256 of fixed seed + templateId + groupId",
+    "allOtherPriorRows": "retained byte-for-byte and in original order",
+    "priorValidation": "all 1704 rows retained byte-for-byte with original folds"
+  },
+  "regional": {
+    "maximumRecords": 600,
+    "explicitCountryScopeOnly": true,
+    "sourceFamilyFolds": "preserved; no TEST loaded",
+    "targets": "deterministic project-programmatic synthetic; source senses and usage; not human or UNIDAD output",
+    "guard": "only genuinely polysemic/context-dependent terms request clarification; no generic geography-to-meaning mapping; qualifying regional/usage notes retained"
+  },
+  "control": "natural-control output shares old TRAIN selection and old complete VAL; LATAM variant adds only source-grounded regional SFT",
+  "successCriteria": {
+    "development": "Actual-history same ConversationEngine generation; reduce inappropriate location-pattern responses and improve request/correction/role handling against current own checkpoint; preserve old evidence. No acceptance from NLL.",
+    "finalAcceptance": "Fixed candidate/config on fresh reserved suite: >=36/40 complete, >=8/10 fully correct dialogs, 0 critical/technical failures. Test not used for selection.",
+    "comparisonLimit": "Training stage and new data jointly change; do not claim isolated proportional effect without matched control training."
+  },
+  "resources": {
+    "cpuThreads": 1,
+    "maximumRssMiB": 512,
+    "maximumSeconds": 600,
+    "maximumOutputMiB": 64,
+    "imports": "stdlib only; no model/tokenizer imports"
+  },
+  "activeTraining": "No modification to active run corpus/config/model/core sources. Future stages only.",
+  "amendedAt": "2026-10-13T07:57:55.229509+00:00",
+  "precedingDesignSha256": "87adb082db75712f8fd8fc9e32bde3b2c8ed8a022068271182118efcb22c9d86",
+  "arms": {
+    "order": [
+      "natural-latam",
+      "natural-control"
+    ],
+    "sameParent": "selected own SFT-v1 best; neither arm uses the other arm as parent",
+    "logicalUpdatesPerArm": 4096,
+    "sameConfig": {
+      "seed": 20261013,
+      "batchSize": 8,
+      "learningRate": 0.00015,
+      "warmupSteps": 128,
+      "cosineDecaySteps": 4096,
+      "maximumSeconds": 7200
+    },
+    "validation": "control keeps old1704; treatment adds regional VAL. Internal NLLs across arms not comparable. Compare same frozen external development40 actual-history cases.",
+    "contentOnlyHash": "sorted compact UTF8 JSON messages followed by LF, across exact retained order",
+    "sourceLexicalFamilyGuard": "Malformed pronunciation/citation-derived family excluded from synthetic only, not reassigned; frozen source remains immutable."
+  },
+  "curriculumVersion": "v4",
+  "targetExclusionReceiptSha256": "cb069c9f439211027887eac5bc873dba9f10170a4e50ce5cb6dc70c16e02ef77",
+  "reasonForAmendment": "Full source-grounded v2 positive-target QA found factual/circular/reference/grammar defects; v2 not accepted for training. V3 removes exact defective senses; all prior human/manual targets unchanged.",
+  "finalDelta": "Remove all six v3 derived rows for algarrobilla/caraota; all remaining regional rows retain exact bytes. Do not regenerate/resample after this final review."
+}

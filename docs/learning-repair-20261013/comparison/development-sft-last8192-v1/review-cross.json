@@ -1,0 +1,1598 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-f06b96e6c4c5149979b4846f9d03a4dd43dc8521dd13e3d5733bb164f90268f5",
+  "outputsSha256": "31ba2a5e74002fe10407ad540a07e0290d9acc91512c442c760011bff0077282",
+  "reviewer": "Codex project AI cross-review agent /root/last_response_cross_review; not an independent human reviewer",
+  "method": "Independent semantic cross review of all forty original replies and actual generated dialogue histories against the frozen exposed development cases/rubric. No ideal assistant injection; no other target reviews, reserved suite or model inference used. Boolean dimensions mark only score 1; additional dimensionScores and criterionScores preserve 0/0.5/1 judgments. criticalError records only concrete assertions judged incompatible with frozen facts or lacking basis; omissions and unintelligible text alone are not critical. Technical failures are recorded separately. Assessor also mechanically flags every positive discarded-token count; small system-only discards are distinguished from necessary dialogue-history loss.",
+  "reviewedAtUtc": "2026-10-13T08:37:56.764378+00:00",
+  "criterionIdConvention": "Rubric dimensions use their frozen IDs; per-turn semantic and critical IDs append .expected or .criticalExpected to the frozen case ID and refer to those exact source fields.",
+  "scoreScale": {
+    "0": "not met",
+    "0.5": "partly met",
+    "1": "fully met"
+  },
+  "semanticGradeCounts": {
+    "complete": 0,
+    "partial": 3,
+    "failed": 37
+  },
+  "acceptanceThresholds": {
+    "minimumFullyMetTurns": 36,
+    "minimumFullyMetDialogs": 8,
+    "maximumCriticalFailures": 0,
+    "maximumTechnicalFailures": 0
+  },
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "scenarioId": "library_collection_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "library_initial_deadline.expected",
+          "source": "cases.json: library_initial_deadline.expected",
+          "score": 0.5,
+          "rationale": "Da el viernes, pero omite las seis; la primera cláusula es poco natural."
+        }
+      ],
+      "grade": "partial",
+      "note": "Da el viernes, pero omite las seis; la primera cláusula es poco natural. Evidencia: «El plazo queda en la biblioteca, para el viernes.».",
+      "evidence": {
+        "text": "El plazo queda en la biblioteca, para el viernes.",
+        "perTurnFile": "library_initial_deadline.json",
+        "perTurnSha256": "9312a183d0e0fe5964d26cb852c416263c1e8c2ea924a5781a46dbad74e9c86c"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "library_day_correction",
+      "scenarioId": "library_collection_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "library_day_correction.expected",
+          "source": "cases.json: library_day_correction.expected",
+          "score": 0.5,
+          "rationale": "Conserva jueves a las seis, pero no explica el cambio de día ni que sigue la hermana."
+        }
+      ],
+      "grade": "partial",
+      "note": "Conserva jueves a las seis, pero no explica el cambio de día ni que sigue la hermana. Evidencia: «Falta el jueves a las seis.».",
+      "evidence": {
+        "text": "Falta el jueves a las seis.",
+        "perTurnFile": "library_day_correction.json",
+        "perTurnSha256": "86951c6e17868df8e8ebf4c13ac48507ab0719b2dbd9b0a3986bc53b0478c591"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "library_delegate_change",
+      "scenarioId": "library_collection_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "library_delegate_change.expected",
+          "source": "cases.json: library_delegate_change.expected",
+          "score": 0.5,
+          "rationale": "Da las seis, pero omite el jueves y no proporciona un plazo completo para el padre."
+        }
+      ],
+      "grade": "partial",
+      "note": "Da las seis, pero omite el jueves y no proporciona un plazo completo para el padre. Evidencia: «Falta el aviso: a las seis.».",
+      "evidence": {
+        "text": "Falta el aviso: a las seis.",
+        "perTurnFile": "library_delegate_change.json",
+        "perTurnSha256": "7a94d8a3c33ddd526cb0424ae9f25e29fb4d6afeb95f6c0c5cbe3be2d74edd7c"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "library_late_collection",
+      "scenarioId": "library_collection_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "library_late_collection.expected",
+          "source": "cases.json: library_late_collection.expected",
+          "score": 0,
+          "rationale": "Menciona jueves y las seis, pero no contesta si el viernes por la mañana queda fuera de plazo."
+        }
+      ],
+      "grade": "failed",
+      "note": "Menciona jueves y las seis, pero no contesta si el viernes por la mañana queda fuera de plazo. Evidencia: «Falta el jueves por la novela, a las seis.».",
+      "evidence": {
+        "text": "Falta el jueves por la novela, a las seis.",
+        "perTurnFile": "library_late_collection.json",
+        "perTurnSha256": "bf94aa5d8d85799d24ea368d13f6606f6364ecb3b705f0ad064f33fbdec106c7"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "cinema_initial_total",
+      "scenarioId": "cinema_ticket_recalculation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "cinema_initial_total.expected",
+          "source": "cases.json: cinema_initial_total.expected",
+          "score": 0,
+          "rationale": "Repite una función del cine sin calcular dieciocho euros; acaba truncado."
+        }
+      ],
+      "grade": "failed",
+      "note": "Repite una función del cine sin calcular dieciocho euros; acaba truncado. Evidencia: «Para el cine, puedes usar la función para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, puedes usar la funció…».",
+      "evidence": {
+        "text": "Para el cine, puedes usar la función para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el cine.\n\nPara el cine, se puede usar la función para el cine para el cine para el cine.\n\nPara el cine, puedes usar la función para el cine para el",
+        "perTurnFile": "cinema_initial_total.json",
+        "perTurnSha256": "b6026fe6ce66289d4ac8c6627ab4376feb8610dd761d55bf629ce24ae10d820f"
+      },
+      "criticalError": [],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "cinema_age_correction",
+      "scenarioId": "cinema_ticket_recalculation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "cinema_age_correction.expected",
+          "source": "cases.json: cinema_age_correction.expected",
+          "score": 0,
+          "rationale": "Menciona las ocho y media y repite adulto, sin recalcular veintiún euros."
+        }
+      ],
+      "grade": "failed",
+      "note": "Menciona las ocho y media y repite adulto, sin recalcular veintiún euros. Evidencia: «El cinema se puede usar el cinemato de las ocho y media en la cinematología, como un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un …».",
+      "evidence": {
+        "text": "El cinema se puede usar el cinemato de las ocho y media en la cinematología, como un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un",
+        "perTurnFile": "cinema_age_correction.json",
+        "perTurnSha256": "96d0f2fc052169727f6589fbf3be19747fa729a326c837ce2689bbcdd355fc06"
+      },
+      "criticalError": [],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "scenarioId": "cinema_ticket_recalculation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "cinema_attendee_reduction.expected",
+          "source": "cases.json: cinema_attendee_reduction.expected",
+          "score": 0,
+          "rationale": "Repite adulto y expresiones inconexas; no da dos entradas ni catorce euros."
+        }
+      ],
+      "grade": "failed",
+      "note": "Repite adulto y expresiones inconexas; no da dos entradas ni catorce euros. Evidencia: «No, cuál es el cinema set, el cinema set, el adulto set, el adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adu…».",
+      "evidence": {
+        "text": "No, cuál es el cinema set, el cinema set, el adulto set, el adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adul",
+        "perTurnFile": "cinema_attendee_reduction.json",
+        "perTurnSha256": "808635fbe10e311567e041b0fdd189c31bdc17637195d2081d053a062bd2c1d2"
+      },
+      "criticalError": [],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 34,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "cinema_current_plan",
+      "scenarioId": "cinema_ticket_recalculation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "cinema_current_plan.expected",
+          "source": "cases.json: cinema_current_plan.expected",
+          "score": 0,
+          "rationale": "No recupera día, hora ni total; continúa una repetición truncada."
+        }
+      ],
+      "grade": "failed",
+      "note": "No recupera día, hora ni total; continúa una repetición truncada. Evidencia: «No, cuál este es el cinema set, el adulto set, el adulto set, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, u…».",
+      "evidence": {
+        "text": "No, cuál este es el cinema set, el adulto set, el adulto set, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un adulto, un",
+        "perTurnFile": "cinema_current_plan.json",
+        "perTurnSha256": "588e28b716692fc988c81ba9428bf021e8b162d211ed36d12f4581b7022fef88"
+      },
+      "criticalError": [],
+      "technicalFailures": [
+        "token_budget",
+        "discarded_context"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 226,
+        "discardedNecessaryHistory": true
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "tap_initial_location",
+      "scenarioId": "kitchen_tap_service",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "tap_initial_location.expected",
+          "source": "cases.json: tap_initial_location.expected",
+          "score": 0,
+          "rationale": "No sitúa la avería y afirma que la caliente sale bien, contrario al poco caudal descrito."
+        }
+      ],
+      "grade": "failed",
+      "note": "No sitúa la avería y afirma que la caliente sale bien, contrario al poco caudal descrito. Evidencia: «No, la caliente puede ser que se ha demostrado que el calor sale bien.».",
+      "evidence": {
+        "text": "No, la caliente puede ser que se ha demostrado que el calor sale bien.",
+        "perTurnFile": "tap_initial_location.json",
+        "perTurnSha256": "e7d8a382bf447a97e3d8e3fd61362a7f7e7111dbb725e27615dd9d11c1632415"
+      },
+      "criticalError": [
+        {
+          "criterionId": "tap_initial_location.criticalExpected",
+          "claim": "se ha demostrado que el calor sale bien",
+          "contradiction": "Sólo la salida caliente de cocina tiene poco caudal; no hay un buen caudal caliente comprobado."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "tap_flow_correction",
+      "scenarioId": "kitchen_tap_service",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "tap_flow_correction.expected",
+          "source": "cases.json: tap_flow_correction.expected",
+          "score": 0,
+          "rationale": "No aplica la corrección y vuelve a describir buen funcionamiento de la caliente."
+        }
+      ],
+      "grade": "failed",
+      "note": "No aplica la corrección y vuelve a describir buen funcionamiento de la caliente. Evidencia: «La calma sale bien, ya que es importante que el calor sale bien.».",
+      "evidence": {
+        "text": "La calma sale bien, ya que es importante que el calor sale bien.",
+        "perTurnFile": "tap_flow_correction.json",
+        "perTurnSha256": "66a8ef045d2172431b2b8f19b47c124622e422252095a0dd751a123164f12d50"
+      },
+      "criticalError": [
+        {
+          "criterionId": "tap_flow_correction.criticalExpected",
+          "claim": "el calor sale bien",
+          "contradiction": "La caliente de cocina sigue floja y ahora también la fría; no hay buen funcionamiento caliente indicado."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "tap_visit_delegate",
+      "scenarioId": "kitchen_tap_service",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "tap_visit_delegate.expected",
+          "source": "cases.json: tap_visit_delegate.expected",
+          "score": 0,
+          "rationale": "Afirma que la cocina sale bien; omite al vecino y el horario de la visita."
+        }
+      ],
+      "grade": "failed",
+      "note": "Afirma que la cocina sale bien; omite al vecino y el horario de la visita. Evidencia: «La calma sale bien es que se calienta bien. La cocina sale bien. La cocina sale bien es que se calienta bien y no se calienta mal.».",
+      "evidence": {
+        "text": "La calma sale bien es que se calienta bien. La cocina sale bien. La cocina sale bien es que se calienta bien y no se calienta mal.",
+        "perTurnFile": "tap_visit_delegate.json",
+        "perTurnSha256": "c02933ee7668ad82db83763ff400eead42130b63ce8af6211f920ce4ff08eca0"
+      },
+      "criticalError": [
+        {
+          "criterionId": "tap_visit_delegate.criticalExpected",
+          "claim": "La cocina sale bien",
+          "contradiction": "Ambas salidas del grifo de cocina tienen poco caudal."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "tap_receiver_correction",
+      "scenarioId": "kitchen_tap_service",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "tap_receiver_correction.expected",
+          "source": "cases.json: tap_receiver_correction.expected",
+          "score": 0,
+          "rationale": "Afirma que la cocina sale bien y no identifica madre, lunes ni ambas salidas flojas."
+        }
+      ],
+      "grade": "failed",
+      "note": "Afirma que la cocina sale bien y no identifica madre, lunes ni ambas salidas flojas. Evidencia: «La calma sale bien es que se cocina sale bien.».",
+      "evidence": {
+        "text": "La calma sale bien es que se cocina sale bien.",
+        "perTurnFile": "tap_receiver_correction.json",
+        "perTurnSha256": "388878554267ccea6e903c5f50ad684468b040176128ac4808fc1b39a1c1da27"
+      },
+      "criticalError": [
+        {
+          "criterionId": "tap_receiver_correction.criticalExpected",
+          "claim": "se cocina sale bien",
+          "contradiction": "El problema del grifo de cocina con ambas salidas flojas sigue igual."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "scenarioId": "staff_meeting_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "meeting_friendly_notice.expected",
+          "source": "cases.json: meeting_friendly_notice.expected",
+          "score": 0,
+          "rationale": "Repite las diez, sin formar un aviso comprensible con mañana y sala grande."
+        }
+      ],
+      "grade": "failed",
+      "note": "Repite las diez, sin formar un aviso comprensible con mañana y sala grande. Evidencia: «Divide la reunión empieza a las diez y yo lleva a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y qu…».",
+      "evidence": {
+        "text": "Divide la reunión empieza a las diez y yo lleva a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y quedarán a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a",
+        "perTurnFile": "meeting_friendly_notice.json",
+        "perTurnSha256": "0d99b7c54a6e55b231f2db2d3e776e825625f82cd36c99a5c2ed37345b43ef52"
+      },
+      "criticalError": [],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "meeting_time_revision",
+      "scenarioId": "staff_meeting_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "meeting_time_revision.expected",
+          "source": "cases.json: meeting_time_revision.expected",
+          "score": 0,
+          "rationale": "Mantiene repetidamente las diez cuando la hora vigente es las once."
+        }
+      ],
+      "grade": "failed",
+      "note": "Mantiene repetidamente las diez cuando la hora vigente es las once. Evidencia: «Dos diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez …».",
+      "evidence": {
+        "text": "Dos diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y a las diez y",
+        "perTurnFile": "meeting_time_revision.json",
+        "perTurnSha256": "0b46303160217a23de29af819f2cc41eac80e1036127182f66dd937e378222a5"
+      },
+      "criticalError": [
+        {
+          "criterionId": "meeting_time_revision.criticalExpected",
+          "claim": "a las diez",
+          "contradiction": "La hora fue corregida a las once; las diez quedó sustituido."
+        }
+      ],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "meeting_remote_revision",
+      "scenarioId": "staff_meeting_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "meeting_remote_revision.expected",
+          "source": "cases.json: meeting_remote_revision.expected",
+          "score": 0,
+          "rationale": "Mantiene las diez; no actualiza a las once por videollamada ni incluye el envío futuro del usuario."
+        }
+      ],
+      "grade": "failed",
+      "note": "Mantiene las diez; no actualiza a las once por videollamada ni incluye el envío futuro del usuario. Evidencia: «Dos diez y a diez y a diez y a diez y a diez a las diez y a diez y a las diez y a las diez y a diez y a diez de diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a la…».",
+      "evidence": {
+        "text": "Dos diez y a diez y a diez y a diez y a diez a las diez y a diez y a las diez y a las diez y a diez y a diez de diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las diez y a diez a las diez y a diez y a diez a las diez y a diez y a diez a las di",
+        "perTurnFile": "meeting_remote_revision.json",
+        "perTurnSha256": "850989a99c3dc1e6130dabb63903866d6547ecc947ebc4fb65631cd8240cfe14"
+      },
+      "criticalError": [
+        {
+          "criterionId": "meeting_remote_revision.criticalExpected",
+          "claim": "a las diez",
+          "contradiction": "La hora corregida de las once se conserva al cambiar a videollamada."
+        }
+      ],
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 9,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "scenarioId": "staff_meeting_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "meeting_direct_final_notice.expected",
+          "source": "cases.json: meeting_direct_final_notice.expected",
+          "score": 0,
+          "rationale": "Sigue repitiendo las diez, sin redactar el aviso final para mañana a las once por videollamada."
+        }
+      ],
+      "grade": "failed",
+      "note": "Sigue repitiendo las diez, sin redactar el aviso final para mañana a las once por videollamada. Evidencia: «Dos diez a diez y a diez y a diez a las diez y a diez y a diez a diez y a diez a las diez y a diez a diez y a diez a las diez y a diez a diez y a diez a diez y a diez a diez y a diez a los diez a diez y a diez a diez …».",
+      "evidence": {
+        "text": "Dos diez a diez y a diez y a diez a las diez y a diez y a diez a diez y a diez a las diez y a diez a diez y a diez a las diez y a diez a diez y a diez a diez y a diez a diez y a diez a los diez a diez y a diez a diez y a diez a los diez a diez y a diez a diez y a diez a diez y a diez a diez y a diez a diez y a diez a diez y a diez a diez y a diez a diez y a diez a diez y",
+        "perTurnFile": "meeting_direct_final_notice.json",
+        "perTurnSha256": "d445f5f96c6b8d535af35673ff715ca6295b109b04def967d28a61f64e8eee2d"
+      },
+      "criticalError": [
+        {
+          "criterionId": "meeting_direct_final_notice.criticalExpected",
+          "claim": "a las diez",
+          "contradiction": "El aviso vigente debe conservar mañana a las once por videollamada."
+        }
+      ],
+      "technicalFailures": [
+        "token_budget",
+        "discarded_context"
+      ],
+      "technicalObservations": {
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 209,
+        "discardedNecessaryHistory": true
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "outing_initial_invitation",
+      "scenarioId": "weekend_walk_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "outing_initial_invitation.expected",
+          "source": "cases.json: outing_initial_invitation.expected",
+          "score": 0,
+          "rationale": "Dos preguntas repetidas sobre el número de frases no constituyen la invitación solicitada."
+        }
+      ],
+      "grade": "failed",
+      "note": "Dos preguntas repetidas sobre el número de frases no constituyen la invitación solicitada. Evidencia: «¿Qué le dijo el número de frases? ¿Qué le dijo el número de frases?».",
+      "evidence": {
+        "text": "¿Qué le dijo el número de frases? ¿Qué le dijo el número de frases?",
+        "perTurnFile": "outing_initial_invitation.json",
+        "perTurnSha256": "ab7ec0a8b95138d6749a77adf0ca828f1c0ba1a743bd0eb45e49f4b39837914e"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "outing_day_revision",
+      "scenarioId": "weekend_walk_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "outing_day_revision.expected",
+          "source": "cases.json: outing_day_revision.expected",
+          "score": 0,
+          "rationale": "El fragmento sobre hora, frases y armario no revisa la invitación ni conserva sus datos."
+        }
+      ],
+      "grade": "failed",
+      "note": "El fragmento sobre hora, frases y armario no revisa la invitación ni conserva sus datos. Evidencia: «La hora y el número de frases que se le conoce como armario.».",
+      "evidence": {
+        "text": "La hora y el número de frases que se le conoce como armario.",
+        "perTurnFile": "outing_day_revision.json",
+        "perTurnSha256": "bddc7ffb832b760913ffd274efbcb71d2f8f56c116501b8882483f8d4a079d52"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "outing_activity_revision",
+      "scenarioId": "weekend_walk_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "outing_activity_revision.expected",
+          "source": "cases.json: outing_activity_revision.expected",
+          "score": 0,
+          "rationale": "La frase contradictoria sobre balcón no invita al paseo ni utiliza sábado, hora o salida."
+        }
+      ],
+      "grade": "failed",
+      "note": "La frase contradictoria sobre balcón no invita al paseo ni utiliza sábado, hora o salida. Evidencia: «El número de frases es balcón, ya que no es balcón.».",
+      "evidence": {
+        "text": "El número de frases es balcón, ya que no es balcón.",
+        "perTurnFile": "outing_activity_revision.json",
+        "perTurnSha256": "2cd7eb4b5ca596fd3d4c52b458ec9ac5f79825b529d2c63c7941184ee41cc994"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "scenarioId": "weekend_walk_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "outing_one_sentence_final.expected",
+          "source": "cases.json: outing_one_sentence_final.expected",
+          "score": 0,
+          "rationale": "No incluye quien se anime ni el paseo vigente; ofrece una frase sin sentido sobre balcón."
+        }
+      ],
+      "grade": "failed",
+      "note": "No incluye quien se anime ni el paseo vigente; ofrece una frase sin sentido sobre balcón. Evidencia: «El número de frases es balcón, que significa que el número de frases no es balcón.».",
+      "evidence": {
+        "text": "El número de frases es balcón, que significa que el número de frases no es balcón.",
+        "perTurnFile": "outing_one_sentence_final.json",
+        "perTurnSha256": "51a712ff299eedcd2502b54d1703f86c7b7bc3112997cbea4cc32766178cb9b4"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "consultation_initial_roles",
+      "scenarioId": "medical_appointment_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "consultation_initial_roles.expected",
+          "source": "cases.json: consultation_initial_roles.expected",
+          "score": 0,
+          "rationale": "Sólo repite consulta y dolor; no distingue abuelo y usuario ni la lista."
+        }
+      ],
+      "grade": "failed",
+      "note": "Sólo repite consulta y dolor; no distingue abuelo y usuario ni la lista. Evidencia: «La consulta y el dolor y el dolor.».",
+      "evidence": {
+        "text": "La consulta y el dolor y el dolor.",
+        "perTurnFile": "consultation_initial_roles.json",
+        "perTurnSha256": "c5ee9008673053e6bcd9e6b0b67b411d39cf0010cafd7d3c2abb77f253416c4a"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "consultation_driver_added",
+      "scenarioId": "medical_appointment_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "consultation_driver_added.expected",
+          "source": "cases.json: consultation_driver_added.expected",
+          "score": 0,
+          "rationale": "Menciona la lista del usuario, pero no contesta quién entra ni quién conduce y espera fuera."
+        }
+      ],
+      "grade": "failed",
+      "note": "Menciona la lista del usuario, pero no contesta quién entra ni quién conduce y espera fuera. Evidencia: «La consulta yo llevo la lista de medicamentos.».",
+      "evidence": {
+        "text": "La consulta yo llevo la lista de medicamentos.",
+        "perTurnFile": "consultation_driver_added.json",
+        "perTurnSha256": "c93c61d6a103dbaee45b15f5fac0981f104670c3b94d2833bd9ca0a4a37639b4"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "consultation_private_entry",
+      "scenarioId": "medical_appointment_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "consultation_private_entry.expected",
+          "source": "cases.json: consultation_private_entry.expected",
+          "score": 0,
+          "rationale": "La definición circular de consulta omite los tres papeles y la entrada del abuelo solo."
+        }
+      ],
+      "grade": "failed",
+      "note": "La definición circular de consulta omite los tres papeles y la entrada del abuelo solo. Evidencia: «La consulta es un lugar para calcular la consulta.».",
+      "evidence": {
+        "text": "La consulta es un lugar para calcular la consulta.",
+        "perTurnFile": "consultation_private_entry.json",
+        "perTurnSha256": "cf8f223630f4ee64e3ce5f9cf935d4058caa0663568f8d82d6299712ab988ecb"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "consultation_role_check",
+      "scenarioId": "medical_appointment_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "consultation_role_check.expected",
+          "source": "cases.json: consultation_role_check.expected",
+          "score": 0,
+          "rationale": "Empieza negando la coincidencia, pero atribuye a la hermana un dicho diferente que no consta."
+        }
+      ],
+      "grade": "failed",
+      "note": "Empieza negando la coincidencia, pero atribuye a la hermana un dicho diferente que no consta. Evidencia: «No; solo dice que no llevas la lista de medicamentos.».",
+      "evidence": {
+        "text": "No; solo dice que no llevas la lista de medicamentos.",
+        "perTurnFile": "consultation_role_check.json",
+        "perTurnSha256": "0fe9c5d98f23dd219bc6a4ef199bf95b8d377bc99dc11d5ae8efa4798adca235"
+      },
+      "criticalError": [
+        {
+          "criterionId": "consultation_role_check.criticalExpected",
+          "claim": "solo dice que no llevas la lista de medicamentos",
+          "contradiction": "No consta que la hermana haya dicho eso; la hipótesis era que ella decía llevar la lista y el usuario la aportó escrita."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "droplets_simple_cause",
+      "scenarioId": "cold_glass_droplets",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "droplets_simple_cause.expected",
+          "source": "cases.json: droplets_simple_cause.expected",
+          "score": 0,
+          "rationale": "La referencia a la luna del vaso no explica el enfriamiento de la humedad del aire."
+        }
+      ],
+      "grade": "failed",
+      "note": "La referencia a la luna del vaso no explica el enfriamiento de la humedad del aire. Evidencia: «Se llena de gotas de agua fría, que es la luna del vaso con agua fría.».",
+      "evidence": {
+        "text": "Se llena de gotas de agua fría, que es la luna del vaso con agua fría.",
+        "perTurnFile": "droplets_simple_cause.json",
+        "perTurnSha256": "9c411224f658cd50bbdf1828f5c87fc1f1df69098e90f929e2869b2efe68f09f"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "scenarioId": "cold_glass_droplets",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "droplets_glass_misconception.expected",
+          "source": "cases.json: droplets_glass_misconception.expected",
+          "score": 0,
+          "rationale": "Texto inconexo sobre agua fría; no corrige la inferencia de agua atravesando el cristal."
+        }
+      ],
+      "grade": "failed",
+      "note": "Texto inconexo sobre agua fría; no corrige la inferencia de agua atravesando el cristal. Evidencia: «La luna del vaso con agua fría. Esto es que el agua fría de agua fría de la superficie de agua fría.».",
+      "evidence": {
+        "text": "La luna del vaso con agua fría. Esto es que el agua fría de agua fría de la superficie de agua fría.",
+        "perTurnFile": "droplets_glass_misconception.json",
+        "perTurnSha256": "4fdcdacfd14643670c490011f5484d426846ad34fbaf78299d661764f1885098"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "scenarioId": "cold_glass_droplets",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "droplets_empty_cold_glass.expected",
+          "source": "cases.json: droplets_empty_cold_glass.expected",
+          "score": 0,
+          "rationale": "Inventa una medida de 250 km para la luna del vaso; no responde sobre gotas con el vaso vacío."
+        }
+      ],
+      "grade": "failed",
+      "note": "Inventa una medida de 250 km para la luna del vaso; no responde sobre gotas con el vaso vacío. Evidencia: «La luna del vaso es de alrededor de 250 km.».",
+      "evidence": {
+        "text": "La luna del vaso es de alrededor de 250 km.",
+        "perTurnFile": "droplets_empty_cold_glass.json",
+        "perTurnSha256": "d79e04064a4273ef51fa797e1e1b6331d7b74230cf01b6e9333dbaf2d841e14e"
+      },
+      "criticalError": [
+        {
+          "criterionId": "droplets_empty_cold_glass.criticalExpected",
+          "claim": "La luna del vaso es de alrededor de 250 km.",
+          "contradiction": "No hay una luna del vaso ni una medida de 250 km en los hechos; se preguntó por formación de gotas en una superficie fría."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "droplets_child_summary",
+      "scenarioId": "cold_glass_droplets",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "droplets_child_summary.expected",
+          "source": "cases.json: droplets_child_summary.expected",
+          "score": 0,
+          "rationale": "Una frase sobre la luna del vaso no relaciona humedad del aire, frío y gotas exteriores."
+        }
+      ],
+      "grade": "failed",
+      "note": "Una frase sobre la luna del vaso no relaciona humedad del aire, frío y gotas exteriores. Evidencia: «La luna del vaso es de gotas de agua fría y fría, que es la luna del vaso.».",
+      "evidence": {
+        "text": "La luna del vaso es de gotas de agua fría y fría, que es la luna del vaso.",
+        "perTurnFile": "droplets_child_summary.json",
+        "perTurnSha256": "e061fd52d4489972edfbe87b6124e5fd6e0847020cb0557fab312ef4e3a7d7b5"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "scenarioId": "missing_delivery_evidence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "parcel_theft_uncertainty.expected",
+          "source": "cases.json: parcel_theft_uncertainty.expected",
+          "score": 0,
+          "rationale": "La frase de evidencia y ausencia en el portal no distingue seguimiento, entrega comprobada y robo."
+        }
+      ],
+      "grade": "failed",
+      "note": "La frase de evidencia y ausencia en el portal no distingue seguimiento, entrega comprobada y robo. Evidencia: «No hay evidencia que no hay nada en el portal.».",
+      "evidence": {
+        "text": "No hay evidencia que no hay nada en el portal.",
+        "perTurnFile": "parcel_theft_uncertainty.json",
+        "perTurnSha256": "eb5bc813e38ad91e2b76149723a1cf76674ec647219aaa66142cac629f90ff89"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "parcel_van_observation",
+      "scenarioId": "missing_delivery_evidence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "parcel_van_observation.expected",
+          "source": "cases.json: parcel_van_observation.expected",
+          "score": 0,
+          "rationale": "No incorpora la furgoneta observada ni explica lo que sigue desconocido."
+        }
+      ],
+      "grade": "failed",
+      "note": "No incorpora la furgoneta observada ni explica lo que sigue desconocido. Evidencia: «No hay evidencia que vas a ser un poco más.».",
+      "evidence": {
+        "text": "No hay evidencia que vas a ser un poco más.",
+        "perTurnFile": "parcel_van_observation.json",
+        "perTurnSha256": "655c0951b502cf6abca817a3129c59244afa8a9c4b2c4c7f8220d0387e6c99ee"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "parcel_door_photo",
+      "scenarioId": "missing_delivery_evidence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "parcel_door_photo.expected",
+          "source": "cases.json: parcel_door_photo.expected",
+          "score": 0,
+          "rationale": "Atribuye al paquete el color verde sin base; no compara puerta azul fotografiada y puerta verde del usuario."
+        }
+      ],
+      "grade": "failed",
+      "note": "Atribuye al paquete el color verde sin base; no compara puerta azul fotografiada y puerta verde del usuario. Evidencia: «El paquete figura es verde y no dejuestra puerta; la puerta es verde y no dejuestra puerta.».",
+      "evidence": {
+        "text": "El paquete figura es verde y no dejuestra puerta; la puerta es verde y no dejuestra puerta.",
+        "perTurnFile": "parcel_door_photo.json",
+        "perTurnSha256": "4790da670f17b025d6818664217eae9fd20de89c4d67cc41bcb5f7dfff98874f"
+      },
+      "criticalError": [
+        {
+          "criterionId": "parcel_door_photo.criticalExpected",
+          "claim": "El paquete figura es verde",
+          "contradiction": "No se conoce el color del paquete; verde es la puerta del usuario y azul la fotografiada."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "scenarioId": "missing_delivery_evidence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "parcel_courier_confirmation.expected",
+          "source": "cases.json: parcel_courier_confirmation.expected",
+          "score": 0,
+          "rationale": "Vuelve a atribuir verde al paquete; omite la entrega al número de al lado y la recuperación pendiente."
+        }
+      ],
+      "grade": "failed",
+      "note": "Vuelve a atribuir verde al paquete; omite la entrega al número de al lado y la recuperación pendiente. Evidencia: «El reparto figura es verde y el paquete verde es verde y no se puede ajustar el paquete.».",
+      "evidence": {
+        "text": "El reparto figura es verde y el paquete verde es verde y no se puede ajustar el paquete.",
+        "perTurnFile": "parcel_courier_confirmation.json",
+        "perTurnSha256": "7483d570e2dad519d8192bfbdb5857d0c4139bbcf861b4b8c540a044571449ec"
+      },
+      "criticalError": [
+        {
+          "criterionId": "parcel_courier_confirmation.criticalExpected",
+          "claim": "el paquete verde es verde",
+          "contradiction": "No se ha dado un color del paquete; sólo consta la entrega al número de al lado según el repartidor."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "quiet_scene_preference",
+      "scenarioId": "quiet_sound_conversation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "quiet_scene_preference.expected",
+          "source": "cases.json: quiet_scene_preference.expected",
+          "score": 0,
+          "rationale": "Pide un tema ya dado y dice no tener acceso a él; no conversa sobre lluvia y calma."
+        }
+      ],
+      "grade": "failed",
+      "note": "Pide un tema ya dado y dice no tener acceso a él; no conversa sobre lluvia y calma. Evidencia: «Hoy me gustaría hablar sobre tu temática, pero no tengo acceso a tu temática. ¿Qué te gustaría hablar?».",
+      "evidence": {
+        "text": "Hoy me gustaría hablar sobre tu temática, pero no tengo acceso a tu temática. ¿Qué te gustaría hablar?",
+        "perTurnFile": "quiet_scene_preference.json",
+        "perTurnSha256": "b7bd228ed9f83d134f3286679477d194e158817659efded91d76dd107ef067f3"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": false
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "scenarioId": "quiet_sound_conversation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "quiet_mood_no_advice.expected",
+          "source": "cases.json: quiet_mood_no_advice.expected",
+          "score": 0,
+          "rationale": "Repite una pregunta genérica de tema, sin acompañar la sensación de calma."
+        }
+      ],
+      "grade": "failed",
+      "note": "Repite una pregunta genérica de tema, sin acompañar la sensación de calma. Evidencia: «Hola, ¿qué te gustaría hablar de tu temática?».",
+      "evidence": {
+        "text": "Hola, ¿qué te gustaría hablar de tu temática?",
+        "perTurnFile": "quiet_mood_no_advice.json",
+        "perTurnSha256": "38306e40eb33b33a53bd4b8cbafc00441879ea49bd377eea13cfe08d07022c1c"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": false
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "scenarioId": "quiet_sound_conversation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 0
+      },
+      "criterionScores": [
+        {
+          "id": "quiet_sound_preference_revision.expected",
+          "source": "cases.json: quiet_sound_preference_revision.expected",
+          "score": 0,
+          "rationale": "No compara los ambientes y atribuye falta de ayuda al usuario sin que la haya expresado."
+        }
+      ],
+      "grade": "failed",
+      "note": "No compara los ambientes y atribuye falta de ayuda al usuario sin que la haya expresado. Evidencia: «No. Entiendo que no te haya servido de ayuda.».",
+      "evidence": {
+        "text": "No. Entiendo que no te haya servido de ayuda.",
+        "perTurnFile": "quiet_sound_preference_revision.json",
+        "perTurnSha256": "2039572465cc95be28a2b6db7d81433084c22618975cfb696c18d144a8a9fe85"
+      },
+      "criticalError": [
+        {
+          "criterionId": "quiet_sound_preference_revision.criticalExpected",
+          "claim": "Entiendo que no te haya servido de ayuda.",
+          "contradiction": "El usuario no contó que la respuesta anterior no le sirviera; sólo corrigió su preferencia de sonido y pidió una comparación."
+        }
+      ],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "scenarioId": "quiet_sound_conversation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "quiet_current_preference_recall.expected",
+          "source": "cases.json: quiet_current_preference_recall.expected",
+          "score": 0,
+          "rationale": "Un saludo genérico no recuerda la cafetería casi vacía ni continúa esa imagen."
+        }
+      ],
+      "grade": "failed",
+      "note": "Un saludo genérico no recuerda la cafetería casi vacía ni continúa esa imagen. Evidencia: «Hola, estoy aquí para ayudarte.».",
+      "evidence": {
+        "text": "Hola, estoy aquí para ayudarte.",
+        "perTurnFile": "quiet_current_preference_recall.json",
+        "perTurnSha256": "625eadddf1abbaf3e8b2a28d9e46aac1bffa6b9f9805624cd091d550a3157d56"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "note_context_not_training",
+      "scenarioId": "chat_note_limits",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "note_context_not_training.expected",
+          "source": "cases.json: note_context_not_training.expected",
+          "score": 0,
+          "rationale": "Menciona el taller, pero no distingue uso del contexto, entrenamiento y persistencia."
+        }
+      ],
+      "grade": "failed",
+      "note": "Menciona el taller, pero no distingue uso del contexto, entrenamiento y persistencia. Evidencia: «No tengo acceso a tu taller de cerámica.».",
+      "evidence": {
+        "text": "No tengo acceso a tu taller de cerámica.",
+        "perTurnFile": "note_context_not_training.json",
+        "perTurnSha256": "eab35bd89f21cb958ddad421202d6c0e980524d044fcfa57d2578889ae025099"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "note_day_correction",
+      "scenarioId": "chat_note_limits",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "note_day_correction.expected",
+          "source": "cases.json: note_day_correction.expected",
+          "score": 0,
+          "rationale": "Fragmento ininteligible; no redacta la nota del taller de cerámica los martes."
+        }
+      ],
+      "grade": "failed",
+      "note": "Fragmento ininteligible; no redacta la nota del taller de cerámica los martes. Evidencia: «Aprender a mi entrenamiento: será el día para mí.».",
+      "evidence": {
+        "text": "Aprender a mi entrenamiento: será el día para mí.",
+        "perTurnFile": "note_day_correction.json",
+        "perTurnSha256": "57caeadb25a511ace5b3a4162cc228157c1e792f873474188daadc7ef6ab8e43"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "scenarioId": "chat_note_limits",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "note_unavailable_message_action.expected",
+          "source": "cases.json: note_unavailable_message_action.expected",
+          "score": 0,
+          "rationale": "Habla de entrenamiento del usuario, sin contestar sobre la imposibilidad de afirmar un envío."
+        }
+      ],
+      "grade": "failed",
+      "note": "Habla de entrenamiento del usuario, sin contestar sobre la imposibilidad de afirmar un envío. Evidencia: «No necesito que te entrenes con tu taller de cerámica.».",
+      "evidence": {
+        "text": "No necesito que te entrenes con tu taller de cerámica.",
+        "perTurnFile": "note_unavailable_message_action.json",
+        "perTurnSha256": "44c5bba42d03c95c35cc4b90da8a6b9351401973085796f07aabb66dd605ef29"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "scenarioId": "chat_note_limits",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "criterionScores": [
+        {
+          "id": "note_copy_and_persistence.expected",
+          "source": "cases.json: note_copy_and_persistence.expected",
+          "score": 0,
+          "rationale": "No ofrece texto para copiar ni aclara la ausencia de garantía de recuerdo en otra conversación."
+        }
+      ],
+      "grade": "failed",
+      "note": "No ofrece texto para copiar ni aclara la ausencia de garantía de recuerdo en otra conversación. Evidencia: «No necesito más información sobre el tema.».",
+      "evidence": {
+        "text": "No necesito más información sobre el tema.",
+        "perTurnFile": "note_copy_and_persistence.json",
+        "perTurnSha256": "5ff78dba28557f42bda4326eb53b31a864ede03b070967c52680e8c7faea43a0"
+      },
+      "criticalError": [],
+      "technicalFailures": [],
+      "technicalObservations": {
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "discardedNecessaryHistory": false
+      },
+      "criticalCriterionApplicable": true
+    }
+  ]
+}

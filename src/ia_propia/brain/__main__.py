@@ -27,6 +27,16 @@ def parser(prog=None):
                              help="Motor del char-RNN fijado por el host; NERVA usa greedy y requiere Node.js 18+")
         command.add_argument("--attention-model", type=Path, help="Ruta del modelo de atención fijada al iniciar")
         command.add_argument("--conversation-model", type=Path, help="Directorio local del modelo conversacional fijado al iniciar")
+        command.add_argument("--autonomy-input-root", type=Path,
+                             help="Activar autonomía experimental sobre archivos de este directorio existente")
+        command.add_argument("--autonomy-report-root", type=Path,
+                             help="Directorio existente y separado para informes nuevos; requiere input-root")
+        command.add_argument("--autonomy-max-steps", type=int, default=16,
+                             help="Máximo de pasos autónomos fijado por el host (1 a 64)")
+        command.add_argument("--autonomy-max-seconds", type=int, default=120,
+                             help="Presupuesto finito de autonomía fijado por el host (1 a 3600 segundos)")
+        command.add_argument("--autonomy-operator-token-env",
+                             help="Variable con una credencial separada para aprobar efectos sensibles")
         if name == "call":
             command.add_argument("--input", required=True, help="Archivo JSON de petición, o - para la entrada estándar")
         if name == "serve":
@@ -59,9 +69,34 @@ def main(argv=None, *, prog=None):
                 raise ValueError("Configure a valid API token environment variable name")
             token = os.environ.get(args.token_env)
             validate_token(token)  # Fail before creating any private state/listener.
+        autonomy_options = {}
+        if args.autonomy_input_root is not None or args.autonomy_report_root is not None:
+            if args.autonomy_input_root is None or args.autonomy_report_root is None:
+                raise ValueError("Autonomy requires both host-configured input-root and report-root")
+            if args.conversation_model is None:
+                raise ValueError("Autonomy requires a host-configured local conversation model")
+            if not 1 <= args.autonomy_max_steps <= 64 or not 1 <= args.autonomy_max_seconds <= 3600:
+                raise ValueError("Autonomy requires bounded host step and time limits")
+            operator_token = None
+            if args.autonomy_operator_token_env is not None:
+                if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", args.autonomy_operator_token_env) is None:
+                    raise ValueError("Configure a valid operator token environment variable name")
+                operator_token = os.environ.get(args.autonomy_operator_token_env)
+                validate_token(operator_token)
+            from .autonomy import AutonomyLimits
+            from .file_tools import SafeFileTools
+            files = SafeFileTools(args.autonomy_input_root, args.autonomy_report_root)
+            autonomy_options = {"autonomy_tools": files.tools,
+                                "autonomy_limits": AutonomyLimits(max_steps=args.autonomy_max_steps,
+                                                                   max_seconds=args.autonomy_max_seconds),
+                                "autonomy_completion_verifier": files.completion_verifier,
+                                "autonomy_input_validator": files.validate_task_inputs,
+                                "autonomy_operator_token": operator_token}
+        elif args.autonomy_operator_token_env is not None:
+            raise ValueError("Operator approval requires configured autonomy roots")
         brain = Brain(args.state_dir, language_model=args.language_model, attention_model=args.attention_model,
                       conversation_model=args.conversation_model, language_backend=args.language_backend)
-        session = brain.connect(args.body, memory_scope=args.memory_scope)
+        session = brain.connect(args.body, memory_scope=args.memory_scope, **autonomy_options)
         if args.command == "capabilities":
             _emit(session.capabilities())
             return 0

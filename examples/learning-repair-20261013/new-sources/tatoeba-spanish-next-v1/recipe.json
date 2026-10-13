@@ -1,0 +1,48 @@
+{
+  "automaticFurtherExpansionImplemented": false,
+  "commandFromRepositoryRoot": [
+    "python",
+    "examples/prepare_tatoeba_next_spanish.py",
+    "--repo-root",
+    ".",
+    "--raw-dir",
+    "PATH_TO_PINNED_TATOEBA_RAW",
+    "--previous-corpus",
+    "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/tatoeba-spa.train-validation.jsonl",
+    "--previous-manifest",
+    "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/manifest.json",
+    "--license-review",
+    "examples/learning-repair-20261013/new-sources/tatoeba-spanish-v1/license-review.json",
+    "--output-dir",
+    "NEW_OUTPUT_DIRECTORY",
+    "--row-count",
+    "150000"
+  ],
+  "expectedCorpusSha256": "16f64e542dd8214f9d69d62e7f82b22a54d288f1280cf4aa22e3665d89e9b006",
+  "modelLoadRequired": false,
+  "nextDetailedRowOffset": 249963,
+  "preparedCorpusDirectlyUsable": true,
+  "privateSourceArchiveDistributed": false,
+  "purpose": "Recreate frozen next150000-row shard only from the pinned historical exports; no download of changing current URLs. Does not enqueue or train.",
+  "schemaVersion": 1,
+  "sourcePins": {
+    "spa_sentences_CC0.tsv.bz2": {
+      "bytes": 2266,
+      "contentType": "application/octet-stream",
+      "etag": "\"6ac9db9b-8da\"",
+      "lastModified": "Sat, 10 Oct 2026 06:30:51 GMT",
+      "sha256": "e8cecab4e084fa4d9843f66c1dab90c5747057e0bc63a758c406235297b636c7",
+      "status": 200,
+      "url": "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_CC0.tsv.bz2"
+    },
+    "spa_sentences_detailed.tsv.bz2": {
+      "bytes": 9502065,
+      "contentType": "application/octet-stream",
+      "etag": "\"6ac9db4c-90fd71\"",
+      "lastModified": "Sat, 10 Oct 2026 06:29:32 GMT",
+      "sha256": "3141acd2354ecbb65199268ec222f680a232ca494129ba77b53a16b3890a11e0",
+      "status": 200,
+      "url": "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_detailed.tsv.bz2"
+    }
+  }
+}

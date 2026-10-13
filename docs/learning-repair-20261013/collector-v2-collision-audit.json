@@ -1,0 +1,791 @@
+{
+  "auditScope": {
+    "datasetsOrConfigurationModified": false,
+    "modelCalls": 0,
+    "networkCalls": 0,
+    "onlyCreatedFile": "docs/learning-repair-20261013/collector-v2-collision-audit.json",
+    "testTextRead": false,
+    "tokenizerCalls": 0,
+    "trainingStateOrProcessesModified": false
+  },
+  "auditedAtUtc": "2026-10-13T08:39:07.535064+00:00",
+  "cause": {
+    "actualNovelWikiCollisionEstablished": false,
+    "collectorGuard": "prepare_cycle hashes each rehearsal record fragment split on double newlines, combines it with novel Wiki paragraphs, excludes every family in any crossfold digest class, then raises if excluded contains any OpenAssistant record.",
+    "existingNoveltyGuard": "All rehearsal normalized paragraph digests exist in the seed; collector rejects novel whole Wiki families sharing any known paragraph or exact chunk before the mixed guard.",
+    "falseAttribution": "All five crossfold paragraph classes preexist in frozen rehearsal, so clean Wiki candidates still trigger new source collides crossfold with fixed rehearsal. This introduces a stricter retroactive paragraph guard than the initial whole-message check.",
+    "initialGuard": "prepare_spanish_causal_base.clone_families hashes entire OASST message; selected source paragraph arrays apply only to Wiki. Historical OASST folds stay fixed."
+  },
+  "failedAcquisition": {
+    "all69FailedAttemptRawResponsesAbsentFromCollectorStorage": true,
+    "cleanupExplanation": "collect finally removes unpublished staging; prepare_cycle retains only raw response digests in local pages until successful manifest publication. Failure occurs before manifest writing.",
+    "collectorStorageEntries": [],
+    "cycleId": "wiki-cycle-0001",
+    "downloadedPages": 69,
+    "firstProgress": {
+      "cycleId": "wiki-cycle-0001",
+      "line": 1,
+      "networkMiB": 0.13256263732910156,
+      "nextPageOrder": 594,
+      "novelPayloadMiB": 0.024400711059570312,
+      "pages": 1,
+      "stage": "collect"
+    },
+    "lastProgress": {
+      "cycleId": "wiki-cycle-0001",
+      "line": 69,
+      "networkMiB": 20.168740272521973,
+      "nextPageOrder": 662,
+      "novelPayloadMiB": 12.072158813476562,
+      "pages": 69,
+      "stage": "collect"
+    },
+    "limitation": "Failed-attempt Wiki source IDs or actual Wiki collision participants cannot be reconstructed from local progress log. No network was used.",
+    "logProgressRecords": 69,
+    "nextPageOrderWouldHaveBeen": 662,
+    "pageOrderEndInclusive": 661,
+    "pageOrderStart": 593,
+    "persistentCursorPresent": false,
+    "publicationManifestPresent": false,
+    "sourceRawResponsesRetained": false
+  },
+  "frozenRehearsal": {
+    "allParagraphDigestsPresentInSeed": true,
+    "collisions": [
+      {
+        "folds": [
+          "train",
+          "validation"
+        ],
+        "groups": [
+          "oasst:2f240fbb-5f4f-43bd-9cc0-f1721f8ba3e7",
+          "oasst:5dc8e858-eb85-4788-a1c7-962c9b68ffe6",
+          "oasst:ea24d3fc-ae17-4167-af59-907015668634"
+        ],
+        "normalizedParagraphSha256": "40acb80535e03e8ba720900d673e46a2c01de485b22184786a0c03154face195",
+        "normalizedText": "Preparación:",
+        "records": [
+          {
+            "groupId": "oasst:5dc8e858-eb85-4788-a1c7-962c9b68ffe6",
+            "line": 1880,
+            "recordId": "oasst-text:17b3e0d4-145d-4b21-88e2-007a8b9917a9",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "17b3e0d4-145d-4b21-88e2-007a8b9917a9",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:ea24d3fc-ae17-4167-af59-907015668634",
+            "line": 2032,
+            "recordId": "oasst-text:b1a07faa-02eb-4214-84f3-6332597f5671",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "b1a07faa-02eb-4214-84f3-6332597f5671",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:2f240fbb-5f4f-43bd-9cc0-f1721f8ba3e7",
+            "line": 2289,
+            "recordId": "oasst-text:d107d723-4e01-43fa-92db-f37692f13423",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "d107d723-4e01-43fa-92db-f37692f13423",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "validation"
+          }
+        ],
+        "seedFolds": [
+          "train",
+          "validation"
+        ]
+      },
+      {
+        "folds": [
+          "train",
+          "validation"
+        ],
+        "groups": [
+          "oasst:aba7e1e8-6891-45be-b57d-7ee0e16b0ac1",
+          "oasst:d6d56831-043d-4bba-b5e9-1d72bbb03888"
+        ],
+        "normalizedParagraphSha256": "58a45783170c8cf440eff46b127bbf406ebe2167565b0d0fba58b0d93b16df12",
+        "normalizedText": "// Cerrar conexión $conn->close(); ?>",
+        "records": [
+          {
+            "groupId": "oasst:aba7e1e8-6891-45be-b57d-7ee0e16b0ac1",
+            "line": 1550,
+            "recordId": "oasst-text:091050dd-ccd1-487e-a6cb-df9a6abddc00",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "091050dd-ccd1-487e-a6cb-df9a6abddc00",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:d6d56831-043d-4bba-b5e9-1d72bbb03888",
+            "line": 2142,
+            "recordId": "oasst-text:27fe6bbb-1b7c-4518-9b86-6b581d1ce5aa",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "27fe6bbb-1b7c-4518-9b86-6b581d1ce5aa",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "validation"
+          }
+        ],
+        "seedFolds": [
+          "train",
+          "validation"
+        ]
+      },
+      {
+        "folds": [
+          "train",
+          "validation"
+        ],
+        "groups": [
+          "oasst:17211395-32d7-4b40-89cc-d80b8e42af31",
+          "oasst:31c11a96-00e6-4a0d-8ed5-2d76e1e0b330"
+        ],
+        "normalizedParagraphSha256": "d4d4ddfd492a7caffcb7f0571e6e00d672ec66e5822e1b4124d65c1286da048d",
+        "normalizedText": "Espero que esta información te sea útil.",
+        "records": [
+          {
+            "groupId": "oasst:31c11a96-00e6-4a0d-8ed5-2d76e1e0b330",
+            "line": 1721,
+            "recordId": "oasst-text:eb813cba-1486-4006-aa5f-bdf85cb780db",
+            "source": {
+              "canonicalCorpusSha256": "161b8c4bda185889d1e77b1581eccd6b24810f37292e30db05edc9a1ef07b5b9",
+              "dataset": "OpenAssistant/oasst2",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "eb813cba-1486-4006-aa5f-bdf85cb780db",
+              "revision": "179dd21fc55192153d94adb0e0ce8f69e222bf75",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:17211395-32d7-4b40-89cc-d80b8e42af31",
+            "line": 2096,
+            "recordId": "oasst-text:05785bf2-9b5f-4c01-a6a2-096cc98a5d98",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "05785bf2-9b5f-4c01-a6a2-096cc98a5d98",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "validation"
+          }
+        ],
+        "seedFolds": [
+          "train",
+          "validation"
+        ]
+      },
+      {
+        "folds": [
+          "train",
+          "validation"
+        ],
+        "groups": [
+          "oasst:0883a680-a9b1-444d-8453-3d49389d1de8",
+          "oasst:11f53bda-f4af-475f-9e29-3cb828c676aa",
+          "oasst:1c55004a-dd02-4f72-9d26-bb20a2da1511",
+          "oasst:aba7e1e8-6891-45be-b57d-7ee0e16b0ac1",
+          "oasst:b9c30dc7-0b5d-4266-80db-cb1246b929da",
+          "oasst:c78e7de0-32dd-43e1-8072-b828537ce8fb",
+          "oasst:eac65c9b-fda2-489d-9fda-cd04b02c71d1"
+        ],
+        "normalizedParagraphSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "normalizedText": "",
+        "records": [
+          {
+            "groupId": "oasst:1c55004a-dd02-4f72-9d26-bb20a2da1511",
+            "line": 43,
+            "recordId": "oasst-text:30f3b097-4a2c-42b9-bff4-21e02bbe9c28",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "30f3b097-4a2c-42b9-bff4-21e02bbe9c28",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:11f53bda-f4af-475f-9e29-3cb828c676aa",
+            "line": 343,
+            "recordId": "oasst-text:3e9e951e-7484-4595-a987-6773f04e4d21",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "3e9e951e-7484-4595-a987-6773f04e4d21",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:b9c30dc7-0b5d-4266-80db-cb1246b929da",
+            "line": 784,
+            "recordId": "oasst-text:94769258-c1fb-488e-9b4e-5dbe6ae08fe5",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "94769258-c1fb-488e-9b4e-5dbe6ae08fe5",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:c78e7de0-32dd-43e1-8072-b828537ce8fb",
+            "line": 1183,
+            "recordId": "oasst-text:bda221de-3a3f-48a9-8519-8aad54ae2164",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "bda221de-3a3f-48a9-8519-8aad54ae2164",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:aba7e1e8-6891-45be-b57d-7ee0e16b0ac1",
+            "line": 1552,
+            "recordId": "oasst-text:51062ddb-cffa-4118-824f-38e087777ff0",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "51062ddb-cffa-4118-824f-38e087777ff0",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:0883a680-a9b1-444d-8453-3d49389d1de8",
+            "line": 1822,
+            "recordId": "oasst-text:e09cffb7-a13b-456a-868f-2d803a690c9d",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "e09cffb7-a13b-456a-868f-2d803a690c9d",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:eac65c9b-fda2-489d-9fda-cd04b02c71d1",
+            "line": 2116,
+            "recordId": "oasst-text:cca62008-0665-4afc-b365-eae62da5e0c2",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "cca62008-0665-4afc-b365-eae62da5e0c2",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "validation"
+          }
+        ],
+        "seedFolds": [
+          "train",
+          "validation"
+        ]
+      },
+      {
+        "folds": [
+          "train",
+          "validation"
+        ],
+        "groups": [
+          "oasst:287d20b4-169a-47c3-bb75-4b27a87aefa7",
+          "oasst:2f240fbb-5f4f-43bd-9cc0-f1721f8ba3e7",
+          "oasst:5dc8e858-eb85-4788-a1c7-962c9b68ffe6",
+          "oasst:6bf30b6a-91ba-4cd7-b267-26672beaac57",
+          "oasst:8e0d7922-5416-47c5-b1df-80919200a4d1",
+          "oasst:ea24d3fc-ae17-4167-af59-907015668634"
+        ],
+        "normalizedParagraphSha256": "f2f9525c335e68f37298e613e58dabc98e2522cd332d5ad448f9441aff3b4a7a",
+        "normalizedText": "Ingredientes:",
+        "records": [
+          {
+            "groupId": "oasst:6bf30b6a-91ba-4cd7-b267-26672beaac57",
+            "line": 879,
+            "recordId": "oasst-text:69dfeff5-a3ac-4912-b84d-c20bd790321e",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "69dfeff5-a3ac-4912-b84d-c20bd790321e",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:5dc8e858-eb85-4788-a1c7-962c9b68ffe6",
+            "line": 1880,
+            "recordId": "oasst-text:17b3e0d4-145d-4b21-88e2-007a8b9917a9",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "17b3e0d4-145d-4b21-88e2-007a8b9917a9",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:287d20b4-169a-47c3-bb75-4b27a87aefa7",
+            "line": 1931,
+            "recordId": "oasst-text:8f8262b1-b602-48f8-99ae-dee14d0931b3",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "8f8262b1-b602-48f8-99ae-dee14d0931b3",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:ea24d3fc-ae17-4167-af59-907015668634",
+            "line": 2031,
+            "recordId": "oasst-text:6a5c39de-539b-4c7b-a891-fe3acff0d2d4",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "6a5c39de-539b-4c7b-a891-fe3acff0d2d4",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:ea24d3fc-ae17-4167-af59-907015668634",
+            "line": 2032,
+            "recordId": "oasst-text:b1a07faa-02eb-4214-84f3-6332597f5671",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "b1a07faa-02eb-4214-84f3-6332597f5671",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:ea24d3fc-ae17-4167-af59-907015668634",
+            "line": 2033,
+            "recordId": "oasst-text:b2562b96-7cd6-416a-95fb-3cf9dec01886",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "b2562b96-7cd6-416a-95fb-3cf9dec01886",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:8e0d7922-5416-47c5-b1df-80919200a4d1",
+            "line": 2040,
+            "recordId": "oasst-text:d5a75186-bd3e-4191-bbf5-685a3d2c29ab",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "d5a75186-bd3e-4191-bbf5-685a3d2c29ab",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "train"
+          },
+          {
+            "groupId": "oasst:2f240fbb-5f4f-43bd-9cc0-f1721f8ba3e7",
+            "line": 2289,
+            "recordId": "oasst-text:d107d723-4e01-43fa-92db-f37692f13423",
+            "source": {
+              "canonicalCorpusSha256": "96dc38a0aa4434516840c67b75c5ddabbfb4c0daf1e4b46cca274bc1c1e36825",
+              "dataset": "OpenAssistant/oasst1",
+              "externalSyntheticExcluded": true,
+              "extraction": "one original reviewed message, content only; no role wrapper",
+              "kind": "public-human-reviewed",
+              "language": "es",
+              "license": "Apache-2.0",
+              "messageId": "d107d723-4e01-43fa-92db-f37692f13423",
+              "revision": "fdf72ae0827c1cda404aff25b6603abec9e3399b",
+              "role": "assistant"
+            },
+            "split": "validation"
+          }
+        ],
+        "seedFolds": [
+          "train",
+          "validation"
+        ]
+      }
+    ],
+    "exactRecordCrossfoldClasses": 0,
+    "groups": 451,
+    "normalizedParagraphCrossfoldClasses": 5,
+    "records": 2299,
+    "splitCounts": {
+      "train": 2059,
+      "validation": 240
+    },
+    "uniqueNormalizedParagraphDigests": 7252
+  },
+  "initialSeed": {
+    "initialManifestIdentityVerified": true,
+    "initialManifestSha256": "4ae23d3cecb4627a0e2b66ae7f1481f88c68ed2d029a97c2fecfec07d76d48bf",
+    "lastPublishedCycle": 0,
+    "nextPageOrder": 593,
+    "normalizedParagraphCrossfoldClasses": 27,
+    "testSeedFields": "source identifiers and metadata digests only; no text decoded"
+  },
+  "inputs": [
+    {
+      "bytes": 3145431,
+      "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+      "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+    },
+    {
+      "bytes": 5557092,
+      "path": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+      "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+    },
+    {
+      "bytes": 38059,
+      "path": "private/learning-repair-20261013/corpus/causal-spanish-v1/manifest.json",
+      "sha256": "4ae23d3cecb4627a0e2b66ae7f1481f88c68ed2d029a97c2fecfec07d76d48bf"
+    },
+    {
+      "bytes": 2111,
+      "path": "examples/learning-repair-20261013/collector/recipe.json",
+      "sha256": "b68d7d1b7a542362198297d8f11a5b0133f3e2d843cc4ab2be171ff6df7eaa72"
+    },
+    {
+      "bytes": 33101,
+      "path": "examples/collect_learning_wiki.py",
+      "sha256": "feee09834049f1f163e7e98badcb2dfaf9a0c00f2bde65cef6191ef1199619c9"
+    },
+    {
+      "bytes": 17603,
+      "path": "examples/prepare_spanish_causal_base.py",
+      "sha256": "9d7741d84bdd2bec1738e67648dcc867261e3c787fa9a73d33464c3577a92550"
+    },
+    {
+      "bytes": 11821,
+      "path": "private/learning-repair-20261013/continual/collector.log",
+      "sha256": "aa6775436e4b6f951d364a6064f3057e802742eaaa2d54adc09fa0783b06ce19"
+    }
+  ],
+  "offlineProbeCache": {
+    "bytes": 2059413,
+    "diagnosticSamples": [
+      {
+        "articleTextSha256": "0f21f0d25cb47ba2505216571dab3497b0255e560bd9e7395e83925e463fa0fd",
+        "chunkCount": 1,
+        "chunkSha256": [
+          "f32002ee78726143bf840824edb670192f999c36487c6ba7399b8c9a4413a49d"
+        ],
+        "groupId": "wikipedia:es:8512",
+        "normalizedParagraphSha256": [
+          "09982c9e63a94fcb5bf73fb4b04bd30b1066253517e936835edec44c515f840f",
+          "0f0944b4a0c721bf63661f5439299d58f29f3864caed4f549ea612fa66c252b0",
+          "1200abe62101884002281d13368347c64bb19f5c3f1de1b10e62e5974e802919",
+          "13578f4c5857d9b95172cc695535a15b3efc98e47bfa68b3f2c743ba17fc5e14",
+          "150abd490b5fd5623051560bfb96e35b03e5442eccf2cee84224519615b82632",
+          "181e32e4429781824cc333fe34ca13e4afd3819620c6f156e3a84d544432cee0",
+          "323d35c1caa7bb4e0444e34e1cecd206fbd31ad3b5d8072a466c02c2d5902bf3",
+          "4239de71baece1344cb9b315fd616fd94c682941202c8597c02851e68e78a05e",
+          "486c77e2a76afeff1d09c80f4fd26556fa6e5ae01448a7d24b4f85c823c6d21e",
+          "513e038f09c2ed29f3281737aec1e0f25e6451feb1a568e24aeba5f013f67ab2",
+          "514ead74bf869ccccc5658bc6703c9b92d406eba8f2456506add00af9d3ecad4",
+          "57f3f3373c8f2568fa20c24a32bf90ad2b06e11fe74da4e54b5d092208ac4c91",
+          "5c6c7aef2db1785c83c2257a2eb55dca6f6be53b0a0d27fdf048efd809fd845a",
+          "5e8d01fb5c6696a51236c6dddcac1d968869ce32957132ef22059ded0bb38a68",
+          "5f16345037a07cca667c698343ebead25bf21f12e8634962f055fb4f1d81b417",
+          "71589a93e9680f0806fabe8a9ef255feb2fdfc4a4d9b71926bff3841efbebe3e",
+          "71f83b58c7311bd38132fc82ec0a4c8882eaea5bf49d06e35f0eab49eaa2ceed",
+          "749b0eab1304c747d8679ee498aa1d25c88315bde78777a5865944895df992cf",
+          "756975ae1660378ff215683792f12370eddc57bd81eadaa2546c35af28040f57",
+          "83b7267023f526a6658dc276a51c59e76eaa26aad57bf39ee44378779596619c",
+          "84281d6229207a92ed407593989573583bb8b0280f4b5ac598ec7e73f524748a",
+          "84e5d8b96264e0da1afcbcdd99ec052cde8e3362e8ff99848100f7811da0a449",
+          "86318bb94f44f683936ebc8b4aa3acf39cab0ec8bdeaebfdbbad0713f47f82bc",
+          "954cee9e16427e73497207f159f74b409f99665de570cc4f26b36f50e3f0a7c1",
+          "a1c61ac10d8c91419d8476704cf7a03f5ad98eba5f503951103c7e855bfd6a6a",
+          "afd0c71a851a543c3cebb1ad5ebc15fa05d7e8426779178efe8d75f5f6b29f0b",
+          "b58adb4e91d4cde6e79df0fa62d468ed3f547a949e2d85a67af8f1f9814ef0f3",
+          "b6212aa3016db28a68cc4343e361fdbc9c22e15baeda6027c83039d7a9825ae4",
+          "ba47db12219a22869fb73392d80e7c7318958bb21c7cc4e76eca7911d7da2d0c",
+          "bbfd9afb821d58bc0bfc6843c1e4e73e6fa7ce0f17953e286bb50d6b413da0d8",
+          "be685f14d157eff853c60549288d5e11c4a7225637999bb43c1b331a6828956c",
+          "beeaf6a4bcac91ee49e73dd1cc88a4f826c100b5b6894a9a50e8fd0518707379",
+          "ca64df4eb7c7806269c8be0da206387936de1687c7aecde952a95e4b2d05ba2b",
+          "cd3bd0f9884add85d6e156e2ff6e22666ca985415211abc1eee2239e3a0f2706",
+          "da679a6886a2e0f82dcc127c2a5762b6a4cfd1b1846be1b762736f1f1844600d",
+          "e13487aaa3a08cfff5629c945c5e006c15063c8ea36a0c5799d186629092b1ba",
+          "ecd3d7bbf8b299f53e7e3fed6c9832d4fe96f943de89fb2bdeb4f0f40cc55f5f",
+          "edc824eed05a17bf2476d48dd364ad395c4c023a7ce306159162ba506180444a",
+          "ef4e6b3032384138845fdac299538ec4a42a8a831ed1ec82512c7f4c91a3ffe0",
+          "ff663facad2f7fa79796ab3e916ea53ec60656ba35128c2e124055d3254f70e7"
+        ],
+        "novelAgainstSeedMetadataAndDigests": true,
+        "pageId": "8512",
+        "rowIndex": 3702,
+        "rowPageOffset": 3700,
+        "selectedProseSha256": "f32002ee78726143bf840824edb670192f999c36487c6ba7399b8c9a4413a49d",
+        "split": "train",
+        "title": "Pedro Almodóvar",
+        "url": "https://es.wikipedia.org/wiki/Pedro%20Almod%C3%B3var"
+      },
+      {
+        "articleTextSha256": "2de4995a994e2d73b90850a687489a9496665d8ba6280a8ca8a4525440fad089",
+        "chunkCount": 1,
+        "chunkSha256": [
+          "692813087c4526e57e1129fc534f0f54b6a9bd65621541f25bd3cab06260394a"
+        ],
+        "groupId": "wikipedia:es:8529",
+        "normalizedParagraphSha256": [
+          "04e65624bf27c9febdcd74246e9d7c6e40b8e50ef6ea4247ba43c6b9e21f89ae",
+          "09a2f06b0035677d655906e43d9e93e5383a693db164645d566c5e383efac998",
+          "0e72e8d4a7a158e31054af63ac86c681998fda48ca07d4bd94ec1af2b9246905",
+          "10649446d44a8e40933d758624ffa154e79ab78a3f69b0893bc9a1f7b47b00c3",
+          "136c8dc87b7f93363faccecff6807eb472e3da2253f87940c8e5a7b6791d66a6",
+          "13f9d7d7a01b5656da99e87d1fc2fad3b0cb11020f348d44c6f479b761632cc8",
+          "14516c2ba6a9689e948dce95655ab45a418457fb8e268301b84782ea76aea37c",
+          "16ec11c73aff2877794ab66ec30f4dfdadf1a3e754f86b74d730aa09b3097a4f",
+          "19436439068f59172f2f137aae378ef6d9a7e7972bf557cd57f8cc063791bcc8",
+          "1a46c86701cf8b05ee74744b067911c5fc151b2c11722de34704ef57d1fe8d93",
+          "1a560f584a0a0ab17271794c4d81447b0fece1cb55e72535963888b4b845fcc4",
+          "26a5ede4b3d294c0a516244807a55c2ed3ef3e33c489069ddbe4aac7725aa4d4",
+          "28c2ebe1f046c494f1b3d26737dd78aa4ef3c497c4c55125610b459ed7305ea9",
+          "2a5720a72cfbfccb00e1c38fd1edf27c3d4911e8e2c45e4bfc539a5988bfcebb",
+          "2b4fa9f6bfdcd4cfda13720f1224f749125e709608860679e4a05a80528a937e",
+          "309a71cf349cb8c61bef1b0c9b5dda434d545c00b25854c3a40f1a5348b4c607",
+          "32fc0f01307052a59eb18d2241f92b97f2fa47bc2ae4c95f63c19474288cb82e",
+          "338dd6505179d60b1d5e89691bce820531718887e9cf845b8418af9967c17790",
+          "36cbb17aaae551533db131bfba1650522e9e5ae063dff980ad1a24fe4dab8ff0",
+          "37aa254b215b4f836bd032e55325af5a19217095fb4daa2843243c532bdd6127",
+          "39c27722c056bed6d020a32c0c729fbebb307073e810bd470422a10fe21bddf5",
+          "454782e40d9c46743f449de0a74801275ab82fba947144b48d27f66cfc53ef95",
+          "4a236dbca8a2be0f795fa93551c8ac8a7631bf195ef44c66fc833cba570e9da2",
+          "4abf1328edebfd267a9a1806d6882ab1f0a6713139f600da714bb37249921362",
+          "505d499ae462f2d5d670e8418a11de670baa4594a2b96fa49789f9bc3cfa1e9d",
+          "535e0909080ee247ee32d609790d95691daea0cd8329eca1302edafcd2dd7a57",
+          "57810d71eecf900ea9f11589f45857181791dee8c3e33dad85fc40f83f660e58",
+          "5d7b34e6b2deb8f99e271e516bf7274802f924ef4ebb2dbee8892e9f25e3349b",
+          "600940d11822e44a50be5eb3aed3c9fdc7bd94028d4e164db1795f4034c523f4",
+          "6682c62d8cb2becad2754b75105fd0fa56d3d10289b97b777dec7f55a12464bb",
+          "6805a632c3506899e6d91be087fae2cfd3a2d71876f343d9661e13b4e7f8df56",
+          "6d9e090cfc4ad347263bc4f514baea6136044973546648d888d89f5dd928f070",
+          "72046b03add55f850971fd12fd1a1fa2cd93de281c18060eca68ed8275fe36d7",
+          "721e741baf43a1f0cb0a210328def29ddb1579684269458cad800dd66853d097",
+          "7302fb1f8f7a82b865b3b3c90cd652469f170c9261a3606cb5d1f3dc30e6c7fb",
+          "731423e38bd56c5cbbd343faf97aa529360a52e71e29b8da47eeaaff5cd6daec",
+          "73d64bbf81c7b5426669272030b95131ec06425c080f53d46634b9618a3c9cea",
+          "75ab9ffa67146c7bdfe97a6bf004e681b2d88501a5434d5fd08448942914afcd",
+          "777e12c1e9a9580b7f2657c5e9d23a83fb3b987cb33dd1d1c59848e7082615d2",
+          "791a5065115368eb1fd4be95471d92b0ee3d10297c9cfa20ae768b005b508a0f",
+          "792f016e429416e6b83a553702e60f05789769efcf91c42d17a6d71fee02bf66",
+          "7b1213723715234fdf7c8544489a3a0cbf6fe0c989c4f9c1aca4de93d73e7e86",
+          "803833a276df07824e93f89c0528bd3bb16a1d291225109ec9078d6ee6397de0",
+          "80ebfbfdd33459f066ca032b3eb5fa0af24137343a660637376ff47978179da2",
+          "825782f4588ab06f5a6c4e143ad836d4232c4045119d7e4de287a5a1e0171922",
+          "8980e6da24253283f5091e77deb9c3592701ec9f79ce46c8512dfc1c34c86a03",
+          "8f4daf0f1da4bdf2280c10fe607fb9e0d531026399ca539610f812c5f6196065",
+          "9136beb108c6b6375293d761b0f30547681e8ff13b2e775fc2de5ec00ee68ea8",
+          "935288e3a91b80df9073ac26adc1f894686180515a139feb606c2c4f28c7389a",
+          "93862a942994e63f8947639e3d5ab4adaa83e3192c0353e057c76c4d82245b93",
+          "9ced06b4909d2fb79b0535cc4b6ba7de00a7b76e2bd6ff3e8782185f71dbdcf2",
+          "9d68e2c9325a32ab43ed0c65e5a3c12c45d7f11c93b16213bee150f126b29575",
+          "9f2fc5c5aa03dc12e408d72250891196d2a747cd1cd117a4a413561c40012f22",
+          "a01b3a56d01fd144e364681cede1ec97bc3a364e3b762ea01bdc7614b9a9586e",
+          "a1c961523b62f384e6cd4b2f8e5c585b1cae04ed8d4209c9ed843f1f846f1746",
+          "a4344fb14f0ae968e16631b06151ef973596c7e2cb854f83c4f03de29eddf797",
+          "a50207c75cdab4a7978d152d422f3ef75decf15c51c0055c89ba6f9783324ef0",
+          "a67e9cab8bc3e5bfeae7e2283742e285e02bf6bc4aea975baae9ee2670229d68",
+          "a9f3b58629db4ff9a7feeb5b2280af98c31926c511b06a8b633401880cb4829a",
+          "aebd249f329aa5b0759db9bf7acf9235c29a4d190ae53a069e8f13927a091104",
+          "b1e1edfcd01cd9971a5f6f8de9f08ff506edc3ab1ccddea5925ba48ca8b3e20c",
+          "b25c6ff2e8da3af2b959bc8c82dc954949b0bdffd6e27af81aef919a5b8a85b6",
+          "b4087515f33ca282cc088d63907375e2a3d5de4032282628c968e0449f927a0f",
+          "b61f48220886845885928027d6ea8a54bc38e50e5764798bf4cd3aff975cd33b",
+          "b67438fecd487223592ef507549e1d92827f22009662557dc90d68ed6a4dd6a5",
+          "bf5a09a9bafb8c0ed979835ff209d7be5d555c931aaeafd0e07c728a240c946d",
+          "c54418ec47972dec02a889732f7661b9f975754fa44ca6453504d768ab6c7829",
+          "c5f385fb76267a097ec45cec6bcb44972389ea5cccf52bbba2e6e6bd52231392",
+          "ca3f5f53a61f1d841a184d1cb9fa0660d721e82fe35c77cdd2e9e3647fd657fe",
+          "d6cfc27e94ffcd019fda48421c6adee63acba5ea9c9cace59f2c84ef0ed7c070",
+          "da287757cf6e1c6e7510a8935feeb83f9551192641c17cd572c28eeb896012a1",
+          "db8db9ea6d38c1d5d67ee0ea94543f78439b504ae1f5c4a4a98667e3e9939861",
+          "dd2edbb9afafa4cf3e7f7e9f6b0f57fa9a561a455131c0b94886fc7f01041caa",
+          "dd816e9b73dd561f29521f4ac29a1377e0433929333a2e8fa8ef5e2cc70127c5",
+          "e0eb07acd43482be092a0c08ecbab45476a5ec8df6e6e67997ca019230ba9dad",
+          "f252027229ed077534a14226369e135f56cc817ca394e1fea3d4b5990fba3637",
+          "f294800222c643326c232b8e3fd49d5596c2ab930272ac4e0a2df1a273b67e52",
+          "f893b744495bd6abd291bd1e130b0c5b49141f7afa414f963d9d6c0e4e8de96a",
+          "fe7df49b2f5dae9abca8633147402ed567282c585dbf6d4c9eac400747474396"
+        ],
+        "novelAgainstSeedMetadataAndDigests": true,
+        "pageId": "8529",
+        "rowIndex": 3718,
+        "rowPageOffset": 3700,
+        "selectedProseSha256": "692813087c4526e57e1129fc534f0f54b6a9bd65621541f25bd3cab06260394a",
+        "split": "validation",
+        "title": "Álvaro de Bazán",
+        "url": "https://es.wikipedia.org/wiki/%C3%81lvaro%20de%20Baz%C3%A1n"
+      }
+    ],
+    "firstRowIndex": 3700,
+    "metadataRows": 100,
+    "numRowsTotal": 1841155,
+    "path": "private/learning-repair-20261013/corpus/wiki-probe/page-0000.json",
+    "pinVerification": "Raw has no revision/configuration fields; no response header sidecar or independent acquisition receipt was found. Row offset3700 and corpus size agree with pinned public.fetch_page(0), but that does not independently verify the pin. Use only as local diagnostic fixture, not an authenticated ingestion publication.",
+    "reservedTextDecoded": false,
+    "rowIdsUnseenAgainstInitialSeed": 100,
+    "sha256": "05d88b68090e6fc30d7a939e3d6ecb976fbf416b51b23c85e00a1f0a28d9647d"
+  },
+  "purpose": "Diagnose frozen rehearsal-only crossfold paragraph collision falsely attributed to novel Wiki acquisition; no deployment or training action",
+  "recommendedInvariant": {
+    "exactDuplicatePolicy": "Reserve fixed rehearsal record digests first; exclude novel whole families with any matching chunk",
+    "frozenOnlyParagraphCollisions": "Retain unchanged and disclose baseline hashes/folds/group IDs; do not claim zero global paragraph overlap",
+    "frozenRowsAndFoldsPreserved": true,
+    "novelNovelCollisionPolicy": "Exclude both whole novel families across folds",
+    "onlyNovelParticipantFamiliesExcluded": true,
+    "postFilterValidation": "No novel family participates in crossfold exact/normalized paragraph collisions; every original rehearsal row and fold retained unchanged"
+  },
+  "schemaVersion": 1,
+  "source": {
+    "configuration": "20231101.es",
+    "dataset": "wikimedia/wikipedia",
+    "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+    "snapshotDate": "2023-11-01"
+  }
+}

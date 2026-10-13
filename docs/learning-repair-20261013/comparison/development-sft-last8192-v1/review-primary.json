@@ -1,0 +1,651 @@
+{
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-f06b96e6c4c5149979b4846f9d03a4dd43dc8521dd13e3d5733bb164f90268f5",
+  "outputsSha256": "31ba2a5e74002fe10407ad540a07e0290d9acc91512c442c760011bff0077282",
+  "reviewer": "project-AI /root/current_evidence_docs, primary LAST8192 review; not independent human",
+  "method": "Revisión semántica primaria de IA del proyecto de los cuarenta turnos de LAST8192. Se leyeron sólo sus replies e inputMessages/historia real, los casos y la rúbrica DEV congelados, y metadatos de contexto/técnicos de estas salidas; no se leyeron juicios primarios o cruzados de otros modelos ni del LAST, ni una suite reservada. No se ejecutó inferencia ni se editó respuesta alguna. dimensionScores conserva 0 (no cumple), 0.5 (cumplimiento parcial) o 1 (cumple); las cuatro claves booleanas nativas son true sólo para 1. criticalCorrect se juzga por una afirmación errada/sin base identificable, no automáticamente por omisión, eco, incomprensibilidad o un fallo técnico. rubricGrade aplica el contenido sustantivo y los fallos técnicos por separado; el assess nativo calcula dimensiones completas, no los grados partial/failed.",
+  "independentHumanReview": false,
+  "createdAtUtc": "2026-10-13T08:33:54.329632+00:00",
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": true,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 1,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "partial",
+      "note": "«para el viernes» aporta el día correcto, pero omite las seis; «El plazo queda en la biblioteca» resulta extraño. No da otro plazo ni destinatario.",
+      "criticalError": null
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "partial",
+      "note": "«el jueves a las seis» conserva correctamente el plazo revisado, pero «Falta» no explica qué cambió ni que siguen hora y hermana. No afirma otro valor.",
+      "criticalError": null
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "partial",
+      "note": "«a las seis» aporta la hora correcta del plazo solicitado, pero falta jueves y la referencia al padre; «Falta el aviso» no completa la nota. No atribuye otro día o receptor.",
+      "criticalError": null
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«jueves… a las seis» repite datos correctos dentro de un fragmento mal formado; no concluye si viernes por la mañana queda fuera. No afirma que cumpla ni una prórroga.",
+      "criticalError": null
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Repite «puedes usar la función para el cine» sin calcular dieciocho ni aportar un dato sustantivo del total; acaba cortado por token_budget. No identifica otra tarifa, total o sesión.",
+      "criticalError": null
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Contiene «ocho y media» y «como un adulto», pero repite «un adulto» en un texto roto y no calcula veintiuno. No ofrece una cifra alternativa identificable; token_budget.",
+      "criticalError": null
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«cuál es el cinema set» y la repetición de «un adulto» no indican dos entradas/catorce euros; no se interpreta cada repetición como un participante añadido. Token_budget y descarte de 34 tokens.",
+      "criticalError": null
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«cinema set, el adulto set» repetido no recupera día, hora ni total vigente; no afirma un número alternativo interpretable. Token_budget y descarte de 226 tokens.",
+      "criticalError": null
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«la caliente… se ha demostrado que el calor sale bien» no sitúa el poco caudal; añade una comprobación de buen funcionamiento sin base. La expresión restante no identifica cocina frente a baño.",
+      "criticalError": "Afirma «se ha demostrado que el calor sale bien» al hablar de la caliente, pese a que sólo se describió salida floja y no una comprobación que la declare bien."
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«La calma sale bien» y «es importante que el calor sale bien» no identifican la fría de cocina ni ambas salidas flojas. Calma/calor no permiten afirmar un caudal o una ubicación alternativa inequívocos.",
+      "criticalError": null
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«La cocina sale bien» contradice el poco caudal de ambas salidas. Omite vecino y horario; la repetición sobre calentarse no resume el problema.",
+      "criticalError": "Declara «La cocina sale bien» cuando fría y caliente de cocina salen flojas."
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«cocina sale bien» mantiene buen funcionamiento de cocina, incompatible con ambas salidas flojas. No da madre, lunes de nueve a once ni qué enseñar; la frase es mal formada.",
+      "criticalError": "Mantiene «cocina sale bien» tras la descripción de poco caudal en ambas salidas; el cambio era sólo a madre como receptora."
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«la reunión empieza a las diez» conserva la hora, pero no redacta un aviso breve/amable con mañana y sala grande. La repetición acaba cortada; «yo lleva» no identifica una acción ejecutada.",
+      "criticalError": null
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "Repite «a las diez» tras corregirse la hora a once, sin una frase de aviso ni sala. El texto agota tokens.",
+      "criticalError": "Mantiene «a las diez» como hora tras sustituirse por las once."
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "Repite «a las diez» en lugar de once; omite videollamada y la intención futura del usuario sobre el enlace. Token_budget y descarte de nueve tokens del sistema.",
+      "criticalError": "Afirma repetidamente «a las diez» aunque la hora vigente sigue siendo once."
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«a las diez» reaparece en un fragmento repetitivo sin mañana, once o videollamada; no hay aviso directo. Token_budget y descarte de 209 tokens.",
+      "criticalError": "Recupera «a las diez», una hora ya sustituida por once, como parte del supuesto aviso final."
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Dos preguntas iguales sobre «el número de frases» no redactan la invitación informal ni incluyen plan, domingo, cinco o pista. No afirman un plan alternativo ni envío.",
+      "criticalError": null
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«La hora y el número de frases que se le conoce como armario» es un fragmento sin invitación o datos vigentes. No contiene un día, hora, lugar o acción alternativos inteligibles.",
+      "criticalError": null
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«El número de frases es balcón, ya que no es balcón» es una relación incoherente; no invita al paseo ni conserva sábado/cinco/pista. No se inventa un hecho crítico a partir del fragmento.",
+      "criticalError": null
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Repite la relación incoherente entre «número de frases» y «balcón»; omite quien se anime, paseo y datos vigentes. No afirma envío ni un plan alternativo inteligible.",
+      "criticalError": null
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«La consulta y el dolor y el dolor» sólo yuxtapone palabras; no distingue abuelo/paciente y usuario/lista. No atribuye explícitamente esos papeles a otra persona.",
+      "criticalError": null
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«yo llevo la lista de medicamentos» conserva el papel original del usuario si se lee como eco, pero no responde quién entra ni quién conduce. El sujeto narrativo queda ambiguo y no identifica a la hermana.",
+      "criticalError": null
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«un lugar para calcular la consulta» no resume a las tres personas ni el cambio a abuelo solo; es una definición circular sin atribución de lista, trayecto o entrada identificable.",
+      "criticalError": null
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«No» rechaza la coincidencia, pero «solo dice que no llevas la lista» altera la afirmación hipotética de la hermana y no aclara que el usuario dejó la lista.",
+      "criticalError": "Atribuye a la hermana decir «que no llevas la lista», contenido que no aparece en la hipótesis; lo contado asigna la lista al usuario."
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«la luna del vaso» no explica vapor del aire/enfriamiento ni un mecanismo comprensible. No identifica que el agua atraviese el cristal u otra causa concreta.",
+      "criticalError": null
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«La luna del vaso» y las repeticiones de «agua fría» no corrigen el paso del agua por el cristal ni explican humedad exterior. No confirman una fuga o una garantía de ausencia de defectos.",
+      "criticalError": null
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«La luna del vaso es de alrededor de 250 km» inventa una magnitud para el vaso y no responde a la posibilidad de gotas con vaso vacío/frío y humedad.",
+      "criticalError": "Atribuye «alrededor de 250 km» a la supuesta luna del vaso, una magnitud/entidad sin base en el fenómeno descrito."
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Una frase sin el término prohibido, pero «la luna del vaso» y «agua fría y fría» no conectan humedad del aire y superficie fría; no hay un origen físico alternativo inteligible.",
+      "criticalError": null
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«No hay evidencia que no hay nada en el portal» no dice si puede asegurarse robo ni distingue seguimiento/entrega; recoge parte del vocabulario con doble negación confusa, sin afirmar robo o receptor.",
+      "criticalError": null
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«No hay evidencia que vas a ser un poco más» no incorpora el testimonio ni enumera incertidumbres; es una oración incompleta sin afirmar que la vecina vio/recibió el paquete.",
+      "criticalError": null
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0.5,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«la puerta es verde» puede conservar la puerta del usuario, pero «El paquete… es verde» añade un color no dado. No distingue puerta azul fotografiada/verde propia ni los límites de la prueba.",
+      "criticalError": "Atribuye color verde al paquete («El paquete figura es verde»), dato no contado; lo verde es la puerta del usuario, y la puerta de la foto es azul."
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "«el paquete verde es verde» repite un color no aportado; no resume entrega según repartidor en el número de al lado ni recuperación pendiente. No acusa robo.",
+      "criticalError": "Mantiene que el paquete es verde, color inventado en vez de los datos de ubicación y recuperación realmente confirmados."
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "Español comprensible y sin lista/recomendación, pero pregunta qué quiere hablar pese al tema ya dado y alega no tener acceso a la temática; no conversa sobre calma/lluvia. Turno no crítico.",
+      "criticalError": null
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«Hola, ¿qué te gustaría hablar de tu temática?» reinicia la consulta y no acompaña el silencio/calma ya expresados. La pregunta resulta mal construida. Turno no crítico.",
+      "criticalError": null
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 0
+      },
+      "rubricGrade": "failed",
+      "note": "Respuesta natural, pero «Entiendo que no te haya servido de ayuda» supone una experiencia de ayuda insatisfactoria no contada y no compara cafetería/lluvia.",
+      "criticalError": "Atribuye al usuario que una ayuda anterior no le sirvió, reacción/vivencia no expresada; el cambio comunicado era preferencia de sonido."
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«Hola, estoy aquí para ayudarte» es natural pero omite la cafetería casi vacía y su atmósfera. No afirma una preferencia o vivencia alternativa.",
+      "criticalError": null
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«No tengo acceso a tu taller de cerámica» es comprensible pero habla de acceso al taller, no de contexto frente a actualización de parámetros. No reclama entrenamiento, memoria o persistencia.",
+      "criticalError": null
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«Aprender a mi entrenamiento: será el día para mí» no redacta una nota ni da martes; fragmento sin afirmación inteligible de que se haya entrenado/guardado el dato.",
+      "criticalError": null
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«No necesito que te entrenes con tu taller de cerámica» es comprensible pero no responde a envío sin herramienta/contacto ni deja texto para copiar. No declara envío u otra acción externa.",
+      "criticalError": null
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "dimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "rubricGrade": "failed",
+      "note": "«No necesito más información sobre el tema» es natural pero omite texto de martes y límites del recuerdo entre chats; no afirma garantía, guardado o envío.",
+      "criticalError": null
+    }
+  ]
+}

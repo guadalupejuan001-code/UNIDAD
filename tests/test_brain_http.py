@@ -58,13 +58,13 @@ def running_server(session, token=TOKEN):
             raise AssertionError("Local HTTP server did not stop")
 
 
-def exchange(server, method="POST", path="/v1/requests", payload=None, headers=None):
+def exchange(server, method="POST", path="/v1/requests", payload=None, headers=None, *, timeout=3):
     body = b"" if payload is None else (payload if isinstance(payload, bytes) else json.dumps(payload).encode())
     request_headers = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
     if headers is not None:
         request_headers.update(headers)
         request_headers = {name: value for name, value in request_headers.items() if value is not None}
-    connection = http.client.HTTPConnection(*server.server_address, timeout=3)
+    connection = http.client.HTTPConnection(*server.server_address, timeout=timeout)
     try:
         connection.request(method, path, body=body if method == "POST" else None, headers=request_headers)
         response = connection.getresponse()

@@ -1,0 +1,93 @@
+{
+  "historySeedPreparation": {
+    "initialSeed": {
+      "path": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+      "sha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963"
+    },
+    "wideCorpus": {
+      "path": "examples/learning-repair-20261013/wide-spanish-v1/wide-spanish.shard-001.train-validation.jsonl",
+      "sha256": "d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6"
+    },
+    "wideManifest": {
+      "path": "examples/learning-repair-20261013/wide-spanish-v1/wide-spanish.shard-001.manifest.json",
+      "sha256": "4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488"
+    }
+  },
+  "humanV3": {
+    "path": "examples/human-short-es-v3/human-short-es.train-validation.jsonl",
+    "sha256": "7016322d12f49b8de53abbaee57826c2a0cbbb50164a109cf94b4edfb51d7a3c"
+  },
+  "initialSeed": {
+    "path": "examples/learning-repair-20261013/tatoeba-next-mix-v1/wide-history-seed.json",
+    "sha256": "5a5dcc226311b08f9fddd9c931b151033cbb29a347ea1ec7cb3326f80976aa87"
+  },
+  "limitations": [
+    "Finite later Tatoeba export shard, not all Spanish, verified continuous conversation or factual freshness. Retained source sentences date2012-2016 although export snapshot is October2026.",
+    "Initial historical seed is preserved with its original keys and exact-byte copy; its normalized whole-record hashes are unavailable. Wide-spanish-v1 extension adds raw and whitespace-normalized whole-record hashes and >=12-word blank-line block/line hashes with all observed folds retained.",
+    "The source preparation removes earlier Tatoeba ID/mechanical variants. The mixture adds mechanical exact/whitespace guards against the initial corpus, humanV3 and the frozen wide corpus; these do not detect semantic paraphrases or every substituted name/template.",
+    "Whole author families retain their existing split, but their later sentences may extend the same family. Historical TEST text and evaluation suites are never opened or tokenized; no exhaustive cross-TEST semantic leak claim is made.",
+    "Samefold known paragraph content may remain inside a different retained record and is reported. Short individual sentences are not compared as paragraph substrings unless source preparation already detects their variants.",
+    "OASST anchor records are repeated only for retention, not counted as new diversity. Retention of their bytes does not make a dialog out of independently packed Tatoeba sentences.",
+    "Perrecord attribution and licenses remain unchanged; Tatoeba contributor usernames do not independently certify original authorship, exclusively human origin or factual accuracy.",
+    "Preparing or queuing a corpus does not show that the active model has learned it or that conversation acceptance is reached."
+  ],
+  "limits": {
+    "corpusCapMiB": 24,
+    "cpuCores": 1,
+    "maxShards": 2,
+    "memoryMiB": 512,
+    "seconds": 600,
+    "totalReadWriteMiB": 128
+  },
+  "mixHelper": {
+    "parentPath": "examples/mix_spanish_public_sources.py",
+    "parentSha256": "3325d02b789e3fa7ef2a7e18a2b2799e608e9bb54f44b8b400df3dcf97791efc",
+    "path": "examples/mix_spanish_public_sources_v2.py",
+    "sha256": "ec78e2add1a9c10b20d4c9b863374079344889bc324b569d07f6c6cf763a0e39"
+  },
+  "outputPrefix": "tatoeba-next",
+  "rehearsal": {
+    "corpus": {
+      "path": "examples/learning-repair-20261013/collector/oasst-rehearsal.train-validation.jsonl",
+      "sha256": "9d162aa67ab93bdd22229ad2a599cab3569ae723e139876143365681df291ac7"
+    },
+    "dataset": "OpenAssistant/oasst1+oasst2",
+    "genre": "public-reviewed-conversation-rehearsal",
+    "key": "oasst-rehearsal",
+    "license": "Apache-2.0",
+    "provenance": {
+      "path": "examples/learning-repair-20261013/causal-base/manifest.json",
+      "sha256": "4ae23d3cecb4627a0e2b66ae7f1481f88c68ed2d029a97c2fecfec07d76d48bf"
+    },
+    "sourceUrls": [
+      "https://huggingface.co/datasets/OpenAssistant/oasst1",
+      "https://huggingface.co/datasets/OpenAssistant/oasst2"
+    ]
+  },
+  "schemaVersion": 2,
+  "seedHelper": {
+    "path": "examples/extend_spanish_history_seed.py",
+    "sha256": "600dd3a235c494584064b12cb813d8a184ea6d10ef8559474a6ddc2c9b9aa009"
+  },
+  "sources": [
+    {
+      "corpus": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-next-v1/tatoeba-spa-next.train-validation.jsonl",
+        "sha256": "16f64e542dd8214f9d69d62e7f82b22a54d288f1280cf4aa22e3665d89e9b006"
+      },
+      "dataset": "Tatoeba/spa-detailed",
+      "genre": "community-independent-sentences-and-translations",
+      "key": "tatoeba-next",
+      "license": "CC-BY-2.0-FR default; documented matching sentenceIDs/text CC0-1.0 subset",
+      "provenance": {
+        "path": "examples/learning-repair-20261013/new-sources/tatoeba-spanish-next-v1/manifest.json",
+        "sha256": "e1d4164a981e0f53a1669ddf7161dbb2262a5e21a73a7214f5a26af2fe6bd044"
+      },
+      "sourceUrls": [
+        "https://downloads.tatoeba.org/exports/per_language/spa/spa_sentences_detailed.tsv.bz2",
+        "https://tatoeba.org/en/terms_of_use",
+        "https://creativecommons.org/licenses/by/2.0/fr/"
+      ]
+    }
+  ]
+}

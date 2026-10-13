@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "status": "prepared-not-trained-not-accepted",
+  "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+  "contentSha256": "dde8dc582036a5a7fe62cd928a5bb94e46f18c3e9054afbc3831d11f6f084363",
+  "file": {
+    "path": "natural-action-retention.train-validation.jsonl",
+    "bytes": 15304332
+  },
+  "splitCounts": {
+    "validation": 1783,
+    "train": 10551,
+    "test": 0
+  },
+  "testUsedForTraining": false,
+  "sources": [
+    {
+      "path": "examples/learning-repair-20261013/natural-latam-sft-v4/natural-latam-sft.train-validation.jsonl",
+      "sha256": "cf52daaaa0bfbd6dd539977ebaabb1b4b265d0ad192d9d6cea6c49e18da5515f",
+      "manifestPath": "examples/learning-repair-20261013/natural-latam-sft-v4/natural-latam.manifest.admission-v1.json",
+      "manifestSha256": "abb3dcc357cf9463384ec2693a71ec3260f44f4a164417944ccd32a0a5490809",
+      "sources": [
+        {
+          "declaredSourceKind": "public-human-reviewed",
+          "license": "Apache-2.0 upstream",
+          "path": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+          "receipt": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+          "records": 8657,
+          "sha256": "24770f0b2bb1381fd70ab3800235f6d03e72f02128addfc424bcbf8b83d166fd"
+        },
+        {
+          "declaredSourceKind": "authored-synthetic",
+          "license": "Project AI-authored fiction; no independent data license declared",
+          "path": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+          "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+          "records": 10880,
+          "sha256": "be4d7d84faaec0afe2cc797f3f0a5fef9b60dbe3b420f4b535daa805f0943394"
+        },
+        {
+          "declaredSourceKind": "authored-synthetic",
+          "license": "Project AI-authored fiction; no independent data license declared",
+          "path": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+          "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+          "records": 760,
+          "sha256": "6b1e805992ecca278ebb80b242ebfd46407d567b3a41f952e41953273044d93e"
+        },
+        {
+          "declaredSourceKind": "authored-procedural-synthetic-grounded-in-primary-country-senses",
+          "license": "CC-BY-SA-4.0 regional adaptations; upstream history/revision attribution per record",
+          "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/latin-american-sft.train-validation.jsonl",
+          "records": 463,
+          "corpusSha256": "520510f77e26626b66af6c1e7ee0c8492f50c381518a4877e2696841bb70138f",
+          "reviewPath": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/qa/latin-agent-semantic-review-v4.json",
+          "reviewSha256": "9ef493f806d52c66373feb7fbb41c800f84b8496a048912ed1283469a41ac462"
+        }
+      ],
+      "role": "rehearsal_not_new_knowledge"
+    },
+    {
+      "path": "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl",
+      "sha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+      "manifestPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/manifest.json",
+      "manifestSha256": "b8d76767db360f73d7eebaa494bb346d1cdc2a2f27c555bfea2d4445db9398e4",
+      "sources": [
+        {
+          "dataset": "unidad-autonomy-action-sft-v1",
+          "kind": "authored-synthetic",
+          "description": "project-authored synthetic fixture supervision with actual filesystem measurements",
+          "author_AI": true,
+          "independentHumanReview": false,
+          "license": "CC0-1.0",
+          "licensePath": "LICENSE-DATA.md",
+          "networkUsed": false,
+          "actualFilesystemMeasurements": true,
+          "modelGeneratedLabels": false
+        }
+      ],
+      "role": "rehearsal_not_new_knowledge"
+    }
+  ],
+  "originalRowsByteExact": true,
+  "contextLength": 2048,
+  "objective": "assistant_last_reply",
+  "newKnowledgeClaim": false,
+  "weightsProduced": false,
+  "helperSha256": "963cb2535d1e0e8314322d6fc6653600d27c8096be87150eafe9dabbe9c6639e"
+}

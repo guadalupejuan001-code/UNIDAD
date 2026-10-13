@@ -1,0 +1,329 @@
+{
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "outputsSha256": "a6bc6376ff1fd1b5b6282abd59c8e747e23a9ed62ea10d23be65824dea40752d",
+  "reviewer": "project-AI cross reviewer; revisión de IA del proyecto, no evaluación humana independiente",
+  "method": "Revisión semántica independiente realizada por el agente cross del proyecto. La evidencia semántica se limitó a la rúbrica y los casos del DEV congelado learning-repair-20261013-development-v2 y, para cada juicio, sólo sus inputMessages y el texto real de reply en el archivo de salidas identificado. No se leyó review-primary.json ni evaluaciones de otros revisores para estas salidas, ni se solicitaron sus juicios; no se abrió ninguna suite reservada. No se sustituyó historia real por historia ideal ni se ejecutó inferencia. Se aplicó criticalExpected individualmente: omisiones, ecos o texto roto sin afirmación identificable no son por sí solos críticos; una atribución, cantidad, fecha o lugar erróneos reconocibles sí se registran aunque la gramática restante falle. Relevance exige contenido sustantivo para la petición actual; contextGrounding exige los hechos, papeles y correcciones pertinentes; spanish exige texto natural y comprensible. Los fallos técnicos se comprobaron por separado en error, effectiveContext, discardedPromptTokens y stopReason; ninguna dimensión se cambió automáticamente por metadatos técnicos. Las 40 salidas son no vacías, terminaron por eos y no descartaron contexto. Los hashes SHA-256 de outputs.json, cases.json y rubric.json se conservaron antes y después.",
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El plazo seCuál es el plazo ... en la biblioteca» repite la pregunta y el lugar sin dar viernes a las seis. La repetición y la unión «seCuál» impiden una respuesta natural; no afirma otro plazo ni otra condición."
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Se llama: vence el plazo» no distingue viernes→jueves ni conserva las seis y la hermana en una respuesta. La frase queda desconectada; no contiene un dato contrario al aviso corregido."
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Primero que te llamaré mi hermana» no da al padre el plazo del jueves a las seis. La construcción es anómala y no establece una afirmación inteligible sobre quién recoge o cuándo; la omisión no se cuenta como crítica."
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«recogerá mi hermana» recupera a la hermana como quien recoge, aunque el turno previo del usuario cambió esa función al padre. El resto («Primero es lasendo ... qué es las seis») es texto roto y no responde si viernes está dentro del plazo; la atribución reconocible también infringe la condición crítica."
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En el cine del jueves; dos?» conserva una palabra correcta del día, pero no calcula las tres entradas ni dieciocho euros. Es un fragmento sin respuesta comprensible; no afirma un total erróneo."
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El total se equivoqué siete e siete e siete e dos adultos» enumera fragmentos de las tarifas y personas, sin formular el total corregido de veintiuno ni una respuesta coherente. No identifica inequívocamente un total distinto, por lo que el fallo no es crítico."
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«paga siete entradas» afirma siete entradas cuando, tras retirarse un adulto, quedan dos (un adulto y el chico) por catorce euros. No responde correctamente a las dos preguntas y «Antes ...; como un adulto» queda fragmentado."
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Antes de y día y día ...» es repetición sin recuperar jueves, ocho y media ni catorce euros. No hay una afirmación inteligible de un dato vigente incompatible; falla la respuesta y el español."
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Es el problema que se llama?» no sitúa el problema en la salida caliente de cocina ni conserva las salidas normales en una respuesta. Es una pregunta incompleta, sin diagnóstico ni ubicación falsa afirmados."
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": true,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«En la cocina también apenas corre» aporta el bajo caudal añadido en cocina, de forma comprensible. No identifica explícitamente que hay que corregir la fría, ni resume ambas salidas frente al baño normal; es una respuesta sustantiva pero incompleta, sin contradicción."
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«yo abrirá fuera» atribuye abrir a la primera persona del usuario, que dijo que estará fuera y que abrirá su vecino. La discordancia verbal y «El problema: el problema» impiden el resumen de ambas salidas; la atribución reconocible no conserva los papeles."
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En el material: lo que te a once floja ... abrirá» no identifica a la madre, el lunes de nueve a once ni qué grifo mostrar. Son fragmentos ininteligibles, sin un receptor u horario alternativo claramente afirmado."
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Puedes llamaré en la sala grande» conserva la sala, pero no redacta el aviso con mañana y las diez. «Puedes llamaré» combina formas incompatibles; no afirma una fecha, hora o acción ya ejecutada erróneas."
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En la hora cambia a las once; conspito la sala grande» menciona la hora y sala compatibles, pero no produce un aviso comprensible con mañana; «conspito» no comunica la conservación de la sala de forma natural. No recupera las diez ni introduce un dato contrario."
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entonces: las once; elada» sólo retiene la hora; no avisa de mañana por videollamada ni de la intención futura del usuario de enviar el enlace. «elada» rompe la frase; no afirma envío ejecutado ni modalidad presencial."
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«en la sala grande» recupera el lugar presencial que el usuario sustituyó por videollamada. «El a las» deja el aviso roto, sin mañana ni once; la ubicación reconocible contradice el cambio vigente."
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Primero vasdías el domingo a las cinco en la pista del barrio;.» conserva día, hora y lugar, pero no construye una invitación al baloncesto en dos frases. «vasdías» y el cierre «;.» rompen el español; no afirma datos incompatibles ni un envío."
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«para jugar el domingo ... el domingo ... a las cinco» mantiene repetidamente domingo como fecha del plan pese a la corrección a sábado. No produce dos frases informales ni aplica el cambio; la repetición y «vasdías las WhatsApp» deterioran el español."
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Después de las pista» no invita al paseo del sábado a las cinco ni indica claramente la salida. La discordancia «las pista» y el fragmento sin acción hacen fallar el español; no afirma baloncesto u otro plan incompatible."
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Antes el domingo cualquierguen» no incluye «quien se anime», paseo, hora ni salida, y «cualquierguen» es ininteligible. Menciona domingo precedido de «Antes», sin establecer con claridad una fecha vigente; no se convierte esa mención fragmentaria del dato anterior en una afirmación crítica."
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El dolor y el el el ... material» repite artículos sin distinguir al abuelo explicando el dolor y al usuario aportando la lista. No hay atribución de papeles inteligible, por lo que la ausencia de respuesta no se cuenta como crítica."
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entrole la rodilla se llama, la consulta: la consulta ...» no identifica a quienes entran ni a la hermana como conductora que espera fuera. Es texto roto sin una atribución identificable a una persona equivocada."
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Ahora se llama entrar en» omite los tres papeles y deja una frase incompleta. No afirma que el usuario siga entrando ni asigna lista o trayecto a otra persona; falla por falta de respuesta sustantiva."
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entro la rodilla y espera que la rodidad: o la rodidad» no responde si la hipótesis de la hermana mezcla papeles. «rodidad» y la construcción son ininteligibles; no confirma de forma identificable que la hermana llevase la lista ni transforma la hipótesis en hecho."
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En a las el exterior de física ... se llama a alguien?» repite partes de la pregunta sin explicar vapor del aire que se enfría sobre el vaso. La frase es ininteligible; no afirma una causa incompatible."
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entonces, física es el cristal?» devuelve una pregunta incoherente sin aclarar el origen de las gotas ni corregir el temor. No confirma que el agua atraviese el cristal ni garantiza la ausencia de defectos."
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En a alguien física: aún frío» retiene «frío», pero no responde a la posibilidad de gotas en el vaso vacío ni explica la humedad y temperatura. El fragmento no afirma que sea necesario tener agua dentro ni una producción incondicional."
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entiendo física: mi a mi sobrino ... sobr ahora» es repetición corrupta sin una explicación para el sobrino. Evitar el término prohibido no basta: omite humedad, frío y gotas; no comunica una explicación causal falsa identificable."
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«No me has dicho el material» es una frase comprensible, pero pide un dato ajeno a si puede asegurarse el robo. No distingue seguimiento y entrega comprobada ni responde sobre la incertidumbre; tampoco acusa o inventa receptor o causa."
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«Antes tenías una furgoneta» atribuye al usuario tener una furgoneta sin base: la vecina sólo vio una y no vio el paquete. El resto («se el qué ... de el qué») es texto roto y no separa lo sabido de lo pendiente."
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Antes mencionado el qué no no ... es verde» no distingue la puerta azul fotografiada de la verde del usuario ni explica el indicio y sus límites. No identifica a qué puerta atribuye la negación, por lo que no se infiere una inversión de colores a partir del fragmento roto."
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entiendo el sigue una puerta» no resume el número de al lado confirmado por el repartidor y la recuperación pendiente. La frase no es comprensible como situación del paquete; no afirma recuperación, robo ni otra ubicación."
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Te escucho. ¿Qué quieres contarme sobrece hablar de películas?» invita genéricamente a hablar, pero no aporta contenido sobre la calma de las escenas con lluvia ya descritas. «sobrece hablar» rompe la pregunta; no satisface una continuación sustantiva del tema."
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Te escucho. Puedes seguir contándome ni consejos» no desarrolla la sensación de calma que el usuario quiere comentar. La unión «contándome ni consejos» es anómala; ausencia de consejos o listas no convierte la invitación genérica en una respuesta sustantiva."
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El sonido, sin embargo: la lluvia» no comenta la diferencia con la cafetería casi vacía ni atiende sustantivamente a la preferencia corregida. Es un fragmento; mencionar lluvia aquí no atribuye explícitamente al usuario preferirla hoy ni añade una vivencia, por lo que no se marca crítico."
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«¿Qué te gustaría contar sobre a la lluvia» devuelve una pregunta sobre el sonido anterior, sin recordar la cafetería ni continuar su atmósfera. «sobre a» y el interrogativo sin cierre son anómalos; la pregunta no afirma que el usuario prefiera lluvia, así que falla sin atribución crítica."
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Anteserte presente ... buscart el taller es los miércoles» conserva el día inicial en un fragmento, pero no distingue contexto de entrenamiento, parámetros o persistencia. Las palabras corruptas impiden una respuesta natural; no afirma entrenamiento ni recuerdo futuro."
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Anteserte presente que te gustaría contarlo» no redacta una nota con el taller de cerámica los martes. «Anteserte» rompe el texto; no mantiene miércoles ni afirma guardado externo o entrenamiento."
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«NecesClares de aquí para ti?» no aclara que no puede afirmar haber enviado la nota sin herramienta y contacto ni deja el texto disponible. La palabra corrupta hace ininteligible la pregunta; no insinúa una acción externa ejecutada."
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Necesito que te sientes con el día» pide algo ajeno e incomprensible en este contexto; no proporciona la nota de martes ni aclara el límite de recuerdo en otro chat. No afirma otro día, envío, guardado, entrenamiento o garantía de memoria."
+    }
+  ]
+}

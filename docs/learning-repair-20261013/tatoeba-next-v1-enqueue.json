@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T09:08:27.667828+00:00",
+  "queued": true,
+  "trainingStarted": false,
+  "cycleManifestSha256": "df7ae03dcff370c6f6fd40c2ce7d266b6d10c6180106090561ec778f92bf57b7",
+  "approvalSha256": "b12089935b9e37d0b48effba8ba3c10765e14dea91023853c0148005d829bfbe",
+  "stages": [
+    {
+      "id": "language",
+      "kind": "base",
+      "runDir": "private/learning-repair-20261013/runs/tatoeba-next-v1/language",
+      "corpusPath": "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.train-validation.jsonl",
+      "corpusSha256": "93b87039b64c24d4a32cef6f5199fb6fc7c2d16dc6c402bb61fe15320e36a96e",
+      "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+      "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+      "parentStage": "language-wide-latam-v3:natural-action-retention",
+      "provenanceManifestPath": "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.manifest.json",
+      "provenanceManifestSha256": "3da147ecfbbd6741e32f5114da203bd0cbfec484c78573cf7a70503a12220bd1",
+      "stopAfterStep": 2048,
+      "invocationBudgetSeconds": 1800,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048
+    },
+    {
+      "id": "natural-action-retention",
+      "kind": "sft",
+      "runDir": "private/learning-repair-20261013/runs/tatoeba-next-v1/natural-action-retention",
+      "corpusPath": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+      "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+      "trainingConfigPath": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+      "trainingConfigSha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3",
+      "parentStage": "language",
+      "provenanceManifestPath": "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json",
+      "provenanceManifestSha256": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c",
+      "stopAfterStep": 1024,
+      "invocationBudgetSeconds": 1800,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048
+    }
+  ],
+  "limits": "causal2epochs/2048logicalupdates/1800nativecumulativeseconds;SFT1024updates/1800seconds;RAM6GiB/runDisk2GiB,CPU4,batch2/micro1, no newpaid resources"
+}

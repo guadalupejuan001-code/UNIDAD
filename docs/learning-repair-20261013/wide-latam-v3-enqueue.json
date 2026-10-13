@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T09:02:08.757590+00:00",
+  "queued": true,
+  "trainingStarted": false,
+  "manifestSha256": "87d1af05cb11beed9a8424623bd07e5566aa2c774d2b463207e9fa5effe2fd31",
+  "approvalSha256": "46cfaeb6d8a9f170f0d82a2960fb0b81abc2cda53f2872ed87066be10918eec5",
+  "stages": [
+    {
+      "id": "language-1",
+      "kind": "base",
+      "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/language-1",
+      "corpusPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.train-validation.jsonl",
+      "corpusSha256": "81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81",
+      "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+      "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+      "parentStage": "autonomy-action-v1:action2048",
+      "provenanceManifestPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.manifest.json",
+      "provenanceManifestSha256": "7a828a22f97f83c7925f0d10e2dfdc8ee3e789a40e9be458b00538a2358a44a2",
+      "stopAfterStep": 2048,
+      "invocationBudgetSeconds": 1800,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048
+    },
+    {
+      "id": "language-2",
+      "kind": "base",
+      "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/language-2",
+      "corpusPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.train-validation.jsonl",
+      "corpusSha256": "411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca",
+      "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+      "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+      "parentStage": "language-1",
+      "provenanceManifestPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.manifest.json",
+      "provenanceManifestSha256": "203591f9563f62926d4cb251ae66dc54de8f725214e20101f38132e5deec8940",
+      "stopAfterStep": 2048,
+      "invocationBudgetSeconds": 1800,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048
+    },
+    {
+      "id": "natural-action-retention",
+      "kind": "sft",
+      "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/natural-action-retention",
+      "corpusPath": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+      "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+      "trainingConfigPath": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+      "trainingConfigSha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3",
+      "parentStage": "language-2",
+      "provenanceManifestPath": "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json",
+      "provenanceManifestSha256": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c",
+      "stopAfterStep": 1024,
+      "invocationBudgetSeconds": 1800,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048
+    }
+  ],
+  "limits": "Each language stage ≤2epochs/2048updates/1800cumulative native seconds; SFT ≤1024updates/1800seconds;RAM6GiB/runDisk2GiB perstage,4CPU,micro1logical2; sourcecatalog repetitions not new meanings.",
+  "newKnowledgeClaim": "Novel documents and lexical country classification metadata, not all Spanish knowledge; rehearsal explicitly repeats known data"
+}

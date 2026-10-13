@@ -1,0 +1,73 @@
+test_a_page_country_category_does_not_assign_scope_to_all_definitions (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_a_page_country_category_does_not_assign_scope_to_all_definitions) ... ok
+test_etymologies_disambiguate_repeated_sense_numbers_and_scope_notes (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_etymologies_disambiguate_repeated_sense_numbers_and_scope_notes) ... ok
+test_explicit_first_note_alias_is_not_silently_lost (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_explicit_first_note_alias_is_not_silently_lost) ... FAIL
+test_external_quotations_and_referenced_definitions_are_excluded (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_external_quotations_and_referenced_definitions_are_excluded) ... ok
+test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope) ... 
+  test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope) (scope='{{ámbito|Argentina|nota3=Cuyo}}') ... FAIL
+  test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope) (scope='{{ámbito|Argentina|nota=Cuyo|nota1=Mendoza}}') ... FAIL
+test_scope_and_usage_do_not_leak_to_following_sense_or_etymology (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_scope_and_usage_do_not_leak_to_following_sense_or_etymology) ... ok
+
+======================================================================
+FAIL: test_explicit_first_note_alias_is_not_silently_lost (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_explicit_first_note_alias_is_not_silently_lost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/UNIDAD/tests/test_prepare_latin_american_wiktionary.py", line 111, in test_explicit_first_note_alias_is_not_silently_lost
+    self.assertEqual(senses[0]["scope"], [
+AssertionError: Lists differ: [{'la[22 chars]alifier': ''}, {'label': 'Bolivia', 'qualifier': 'Tarija'}] != [{'la[22 chars]alifier': 'Cuyo'}, {'label': 'Bolivia', 'qualifier': 'Tarija'}]
+
+First differing element 0:
+{'label': 'Argentina', 'qualifier': ''}
+{'label': 'Argentina', 'qualifier': 'Cuyo'}
+
+- [{'label': 'Argentina', 'qualifier': ''},
++ [{'label': 'Argentina', 'qualifier': 'Cuyo'},
+?                                       ++++
+
+   {'label': 'Bolivia', 'qualifier': 'Tarija'}]
+
+======================================================================
+FAIL: test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope) (scope='{{ámbito|Argentina|nota3=Cuyo}}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/UNIDAD/tests/test_prepare_latin_american_wiktionary.py", line 122, in test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope
+    self.assertEqual(helper.regional_senses(source), [])
+AssertionError: Lists differ: [{'etymology': 0, 'senseNumber': '1', 'par[151 chars] []}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'etymology': 0, 'senseNumber': '1', 'partOfSpeech': 'sustantivo femenino', 'definition': 'Persona de corta edad.', 'scope': [{'label': 'Argentina', 'qualifier': ''}], 'usage': [], 'examples': []}
+
++ []
+- [{'definition': 'Persona de corta edad.',
+-   'etymology': 0,
+-   'examples': [],
+-   'partOfSpeech': 'sustantivo femenino',
+-   'scope': [{'label': 'Argentina', 'qualifier': ''}],
+-   'senseNumber': '1',
+-   'usage': []}]
+
+======================================================================
+FAIL: test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope (test_prepare_latin_american_wiktionary.LatinAmericanSenseParserTests.test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope) (scope='{{ámbito|Argentina|nota=Cuyo|nota1=Mendoza}}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/UNIDAD/tests/test_prepare_latin_american_wiktionary.py", line 122, in test_orphan_or_conflicting_notes_do_not_broaden_a_qualified_scope
+    self.assertEqual(helper.regional_senses(source), [])
+AssertionError: Lists differ: [{'etymology': 0, 'senseNumber': '1', 'par[155 chars] []}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'etymology': 0, 'senseNumber': '1', 'partOfSpeech': 'sustantivo femenino', 'definition': 'Persona de corta edad.', 'scope': [{'label': 'Argentina', 'qualifier': 'Cuyo'}], 'usage': [], 'examples': []}
+
++ []
+- [{'definition': 'Persona de corta edad.',
+-   'etymology': 0,
+-   'examples': [],
+-   'partOfSpeech': 'sustantivo femenino',
+-   'scope': [{'label': 'Argentina', 'qualifier': 'Cuyo'}],
+-   'senseNumber': '1',
+-   'usage': []}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+FAILED (failures=3)

@@ -1,0 +1,30 @@
+{
+  "batch_size": 8,
+  "checkpoint_every": 512,
+  "data_loading": "mmap",
+  "grad_clip": 1.0,
+  "learning_rate": 0.00015,
+  "learning_rate_schedule": {
+    "decay_steps": 8192,
+    "min_lr_ratio": 0.1,
+    "type": "cosine"
+  },
+  "loss_reduction": "sequence_mean",
+  "max_epochs": 1000,
+  "max_seconds": 7200,
+  "max_steps": 8192,
+  "micro_batch_size": 4,
+  "min_delta": 0.0001,
+  "objective": "assistant_last_reply",
+  "partition_policy": "train_validation_only",
+  "patience": 12,
+  "projection_mode": "supervised",
+  "seed": 20261013,
+  "torch_threads": 4,
+  "train_precision": "cpu_bfloat16",
+  "trainable_parameters": "all",
+  "validation_every": 1024,
+  "warmup_steps": 128,
+  "weight_decay": 0.01,
+  "window_policy": "sliding_context"
+}

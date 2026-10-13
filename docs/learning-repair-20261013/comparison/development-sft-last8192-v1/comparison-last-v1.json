@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T08:41:32.313374+00:00",
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-f06b96e6c4c5149979b4846f9d03a4dd43dc8521dd13e3d5733bb164f90268f5",
+  "outputsSha256": "31ba2a5e74002fe10407ad540a07e0290d9acc91512c442c760011bff0077282",
+  "scope": "Exposed fictitious DEV; own LAST8192, not validation-selected; two project AI reviews, not human or reserved acceptance. No consensus imposed.",
+  "reviews": {
+    "primary": {
+      "grades": {
+        "complete": 0,
+        "partial": 3,
+        "failed": 37
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": [
+        "tap_initial_location",
+        "tap_visit_delegate",
+        "tap_receiver_correction",
+        "meeting_time_revision",
+        "meeting_remote_revision",
+        "meeting_direct_final_notice",
+        "consultation_role_check",
+        "droplets_empty_cold_glass",
+        "parcel_door_photo",
+        "parcel_courier_confirmation",
+        "quiet_sound_preference_revision"
+      ],
+      "technicalFailures": [
+        "cinema_initial_total",
+        "cinema_age_correction",
+        "cinema_attendee_reduction",
+        "cinema_current_plan",
+        "meeting_friendly_notice",
+        "meeting_time_revision",
+        "meeting_remote_revision",
+        "meeting_direct_final_notice"
+      ],
+      "accepted": false,
+      "reviewSha256": "dd40776a7cbda4fd1a3fbcf7d0a3b6d17ae725b174685bf3e9622556ebe1063c",
+      "assessmentSha256": "f51b75cd0463c5626920d0a8182d555039a835c4ce06533b616dbdf029909b83"
+    },
+    "cross": {
+      "grades": {
+        "complete": 0,
+        "partial": 3,
+        "failed": 37
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": [
+        "tap_initial_location",
+        "tap_flow_correction",
+        "tap_visit_delegate",
+        "tap_receiver_correction",
+        "meeting_time_revision",
+        "meeting_remote_revision",
+        "meeting_direct_final_notice",
+        "consultation_role_check",
+        "droplets_empty_cold_glass",
+        "parcel_door_photo",
+        "parcel_courier_confirmation",
+        "quiet_sound_preference_revision"
+      ],
+      "technicalFailures": [
+        "cinema_initial_total",
+        "cinema_age_correction",
+        "cinema_attendee_reduction",
+        "cinema_current_plan",
+        "meeting_friendly_notice",
+        "meeting_time_revision",
+        "meeting_remote_revision",
+        "meeting_direct_final_notice"
+      ],
+      "accepted": false,
+      "reviewSha256": "6a3e7d7239c97b83cd5da5705b41be5c2144540e288ba748ab2763a369f930a9",
+      "assessmentSha256": "02be5ec724af5b84b14448563dfaada943c83e8ffef2b37fea15dc75ae59e23a"
+    }
+  },
+  "criticalDisagreement": {
+    "primaryOnly": [],
+    "crossOnly": [
+      "tap_flow_correction"
+    ]
+  },
+  "reviewDisagreements": [
+    {
+      "id": "library_initial_deadline",
+      "booleanDimensionDisagreements": {
+        "relevance": {
+          "primary": true,
+          "cross": false
+        }
+      },
+      "primaryDimensionScores": {
+        "relevance": 1,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "crossDimensionScores": {
+        "relevance": 0.5,
+        "contextGrounding": 0.5,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "primaryNote": "«para el viernes» aporta el día correcto, pero omite las seis; «El plazo queda en la biblioteca» resulta extraño. No da otro plazo ni destinatario.",
+      "crossNote": "Da el viernes, pero omite las seis; la primera cláusula es poco natural. Evidencia: «El plazo queda en la biblioteca, para el viernes.»."
+    },
+    {
+      "id": "tap_flow_correction",
+      "booleanDimensionDisagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": false
+        }
+      },
+      "primaryDimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0,
+        "criticalCorrect": 1
+      },
+      "crossDimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 0
+      },
+      "primaryNote": "«La calma sale bien» y «es importante que el calor sale bien» no identifican la fría de cocina ni ambas salidas flojas. Calma/calor no permiten afirmar un caudal o una ubicación alternativa inequívocos.",
+      "crossNote": "No aplica la corrección y vuelve a describir buen funcionamiento de la caliente. Evidencia: «La calma sale bien, ya que es importante que el calor sale bien.»."
+    },
+    {
+      "id": "quiet_scene_preference",
+      "booleanDimensionDisagreements": {
+        "spanish": {
+          "primary": true,
+          "cross": false
+        }
+      },
+      "primaryDimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 1,
+        "criticalCorrect": 1
+      },
+      "crossDimensionScores": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 0.5,
+        "criticalCorrect": 1
+      },
+      "primaryNote": "Español comprensible y sin lista/recomendación, pero pregunta qué quiere hablar pese al tema ya dado y alega no tener acceso a la temática; no conversa sobre calma/lluvia. Turno no crítico.",
+      "crossNote": "Pide un tema ya dado y dice no tener acceso a él; no conversa sobre lluvia y calma. Evidencia: «Hoy me gustaría hablar sobre tu temática, pero no tengo acceso a tu temática. ¿Qué te gustaría hablar?»."
+    }
+  ],
+  "technicalCounts": {
+    "tokenBudgetTurns": 8,
+    "contextDiscardTurns": 4,
+    "unionTurns": 8
+  },
+  "interpretation": "Both reviewers see zero complete turns and dialogs. Three partials do not demonstrate accepted reliable conversation. Compared with C7 and BEST4096 already exposed DEV evidence, LAST does not change that conclusion. Keep every review and disagreement."
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "status": "not_yet_enabled",
+  "collectorSourceSha256": "0ba9290196f5689710a1988a0fa8e18b481962a1e1324816243df31c5eecbf95",
+  "originalCollectorSha256": "feee09834049f1f163e7e98badcb2dfaf9a0c00f2bde65cef6191ef1199619c9",
+  "sourcePath": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+  "originalStateExisted": false,
+  "sourceSha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963",
+  "productionStatePath": "private/learning-repair-20261013/wiki-collector-v2/state.json",
+  "productionStateSha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963",
+  "stateByteIdentical": true,
+  "cursorPreserved": 593,
+  "lastPublishedCyclePreserved": 0,
+  "seenCounts": {
+    "seenArticleIds": 5200,
+    "seenArticleTextSha256": 2584,
+    "seenSelectedProseSha256": 2584,
+    "seenRecordTextSha256": 12086,
+    "seenNormalizedParagraphSha256": 54671,
+    "published": 0
+  },
+  "pendingApproval": false,
+  "sourcePin": {
+    "configuration": "20231101.es",
+    "dataset": "wikimedia/wikipedia",
+    "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+    "snapshotDate": "2023-11-01"
+  },
+  "rawCacheCopies": [
+    {
+      "order": 593,
+      "offset": 94400,
+      "rawSha256": "c282224b55a086361ed952a05b171b1f9dc109c1972a0cbc0512935ddc9cd398",
+      "receiptSha256": "f64f1ea4856f62d35c399dbf500c46605a7f744e5e729cf6d5c995b5a915514f",
+      "bytes": 139002,
+      "destination": "private/learning-repair-20261013/wiki-batches-v2/raw-cache-v2/page-000593.json"
+    },
+    {
+      "order": 594,
+      "offset": 886300,
+      "rawSha256": "ffe57ec87f4cc295853c47100cbaf8bffe4098faff183aef4841e9242ef65adf",
+      "receiptSha256": "70bb3f811979e1f3dc9eb95291a28e60fd19ba33695963b2b6a16ef76a865f2b",
+      "bytes": 285179,
+      "destination": "private/learning-repair-20261013/wiki-batches-v2/raw-cache-v2/page-000594.json"
+    },
+    {
+      "order": 595,
+      "offset": 1678200,
+      "rawSha256": "c4cdc16a58eed8b0dc1b218e7e3c42678a72cab1104e7623f9fde6a13e8d59aa",
+      "receiptSha256": "9726d828eb3bce69a51c1af6ccc64f7c57f26c6fab687aac66a4bae21913df0a",
+      "bytes": 307393,
+      "destination": "private/learning-repair-20261013/wiki-batches-v2/raw-cache-v2/page-000595.json"
+    }
+  ],
+  "downloadedBytes": 0,
+  "sourceRawBytesChanged": false,
+  "recipePath": "examples/learning-repair-20261013/collector-v2/recipe.json",
+  "recipeSha256": "35a2ae25aae264cc80072a2e50bb180f0a74e24e587d354f15c240f66da16bb8",
+  "baseTrainingConfig": {
+    "path": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+    "sha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8"
+  },
+  "sftCorpus": {
+    "path": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+    "sha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7"
+  },
+  "sftManifest": {
+    "path": "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json",
+    "sha256": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c"
+  },
+  "sftTrainingConfig": {
+    "path": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+    "sha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3"
+  },
+  "activeSupervisorConfigurationChanged": false,
+  "nativeProcessSignalled": false,
+  "cycleAdmitted": false,
+  "approvalWritten": false,
+  "cumulativeNativeBudgetsReset": false,
+  "note": "Original production state never existed after failed V1; exact historical seed clone used, not preview proposed cursor596. Root owns installation/reload and native adoption.",
+  "retentionCounts": {
+    "train": 10551,
+    "validation": 1783,
+    "test": 0
+  },
+  "retentionIsKnownRehearsal": true,
+  "newKnowledgeClaimed": false,
+  "productionStageBudgets": {
+    "base": {
+      "maxSteps": 2048,
+      "maxEpochs": 2,
+      "maxSeconds": 1800,
+      "microBatch": 1,
+      "logicalBatch": 2
+    },
+    "sft": {
+      "maxSteps": 1024,
+      "maxEpochs": 20,
+      "maxSeconds": 1800,
+      "microBatch": 1,
+      "logicalBatch": 2
+    }
+  }
+}

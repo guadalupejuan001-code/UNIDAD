@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+  "outputsSha256": "ab8b1e2cf97389e5f985abd038702326c9a9efaff7ea8a6a2608ac7f65e52665",
+  "reviewSha256": "b694429c8e095f5b886c6dca912de365579507f1612b0c6ebdfd3032ce2b9796",
+  "reviewer": "project-AI independent cross reviewer (independent turn-level review; not human)",
+  "reviewMethod": "Revisión semántica independiente de IA del proyecto de los 40 turnos: en cada turno se usaron sólo inputMessages con las respuestas previas reales, la reply real y expected/criticalExpected del caso congelado, aplicando rubric.json. No se consultaron review-primary, juicios de otros revisores, salidas de baselines ni reserved-suite. La generación registrada fue temperature=0, seed=42, maxNewTokens=160, torchThreads=1; no se generó ni corrigió ninguna respuesta. Las dimensiones describen el contenido observado y no se fuerzan a false por token_budget; los fallos técnicos se contabilizan aparte por assess. criticalCorrect=false requiere una afirmación errada concreta; una omisión, eco o fragmento ininteligible no basta. Cada nota identifica también el grado complete/partial/failed según la rúbrica; assess calcula dimensiones completas, no el reparto partial/failed. Suite de desarrollo ya expuesta por generación y revisión, útil para hipótesis futuras, sin aceptación final ni fijación de candidato mientras continúa el entrenamiento.",
+  "fullyMetTurns": 0,
+  "totalTurns": 40,
+  "fullyMetFraction": 0.0,
+  "fullyMetDialogs": 0,
+  "totalDialogs": 10,
+  "dialogs": [
+    {
+      "id": "library_collection_deadline",
+      "fullyMet": false
+    },
+    {
+      "id": "cinema_ticket_recalculation",
+      "fullyMet": false
+    },
+    {
+      "id": "kitchen_tap_service",
+      "fullyMet": false
+    },
+    {
+      "id": "staff_meeting_notice",
+      "fullyMet": false
+    },
+    {
+      "id": "weekend_walk_invitation",
+      "fullyMet": false
+    },
+    {
+      "id": "medical_appointment_roles",
+      "fullyMet": false
+    },
+    {
+      "id": "cold_glass_droplets",
+      "fullyMet": false
+    },
+    {
+      "id": "missing_delivery_evidence",
+      "fullyMet": false
+    },
+    {
+      "id": "quiet_sound_conversation",
+      "fullyMet": false
+    },
+    {
+      "id": "chat_note_limits",
+      "fullyMet": false
+    }
+  ],
+  "acceptanceThresholds": {
+    "minimumFullyMetTurns": 36,
+    "minimumFullyMetDialogs": 8
+  },
+  "criticalFailures": [
+    "library_day_correction",
+    "library_delegate_change",
+    "library_late_collection",
+    "cinema_initial_total",
+    "cinema_age_correction",
+    "cinema_attendee_reduction",
+    "cinema_current_plan",
+    "tap_flow_correction",
+    "tap_visit_delegate",
+    "tap_receiver_correction",
+    "outing_initial_invitation",
+    "outing_day_revision"
+  ],
+  "technicalFailures": [
+    "outing_initial_invitation",
+    "outing_day_revision",
+    "outing_activity_revision",
+    "outing_one_sentence_final",
+    "quiet_mood_no_advice",
+    "quiet_current_preference_recall"
+  ],
+  "accepted": false,
+  "allowedClaim": null,
+  "limits": [
+    "Autoría y revisión de IA del proyecto, no panel humano independiente.",
+    "Diez diálogos cotidianos y cuarenta turnos; cobertura limitada, sin garantía de generalización fuera de esta prueba.",
+    "No acredita habilidades autónomas, herramientas ejecutadas, memoria persistente, entrenamiento provocado por una charla ni trabajo real fuera de la conversación.",
+    "No contiene datos personales del creador; las situaciones son originales y ficticias."
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T09:13:15.575776+00:00",
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-ec9ab262aaaa5761dfe77e51232ca9fcf78bea93b7af97ec17d971557f0166df",
+  "outputsSha256": "0d8a6bfef6d9c35b98afb94c480bf565236c0652db03034d2eb4daafedb3d46b",
+  "scope": "Intermediate snapshot of ongoing treatment; exposed fictitious DEV with actual generated history, not final reserved acceptance or promotion. Project AI reviews, not independent human.",
+  "reviews": {
+    "primary": {
+      "complete": 0,
+      "partial": 0,
+      "failed": 40,
+      "fullyMetDialogs": 0,
+      "criticalFailures": [
+        "cinema_initial_total"
+      ],
+      "technicalFailures": [
+        "cinema_age_correction",
+        "cinema_attendee_reduction",
+        "cinema_current_plan",
+        "outing_initial_invitation",
+        "outing_day_revision",
+        "outing_activity_revision",
+        "outing_one_sentence_final",
+        "quiet_scene_preference",
+        "quiet_mood_no_advice",
+        "quiet_sound_preference_revision",
+        "quiet_current_preference_recall"
+      ],
+      "accepted": false
+    },
+    "cross": {
+      "complete": 0,
+      "partial": 0,
+      "failed": 40,
+      "fullyMetDialogs": 0,
+      "criticalFailures": [],
+      "technicalFailures": [
+        "cinema_age_correction",
+        "cinema_attendee_reduction",
+        "cinema_current_plan",
+        "outing_initial_invitation",
+        "outing_day_revision",
+        "outing_activity_revision",
+        "outing_one_sentence_final",
+        "quiet_scene_preference",
+        "quiet_mood_no_advice",
+        "quiet_sound_preference_revision",
+        "quiet_current_preference_recall"
+      ],
+      "accepted": false
+    }
+  },
+  "reviewDisagreements": [
+    {
+      "id": "cinema_initial_total",
+      "dimensions": {
+        "criticalCorrect": {
+          "primary": false,
+          "cross": true
+        }
+      },
+      "primaryNote": "«Tus entradas en dos entradas.» no calcula el total y presenta dos entradas cuando son tres.",
+      "crossNote": "«Tus entradas en dos entradas.» no calcula dieciocho euros para las tres entradas. La construcción fragmentaria con «en» carece de una relación cuantitativa interpretable; no se transforma sólo la aparición de «dos entradas» en una afirmación inequívoca de un total de dos."
+    }
+  ],
+  "noncriticalRepresentationDifferences": [
+    {
+      "id": "quiet_scene_preference",
+      "field": "criticalCorrect",
+      "primary": null,
+      "cross": true,
+      "meaning": "Noncritical case; representation difference, no critical judgment applied"
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "field": "criticalCorrect",
+      "primary": null,
+      "cross": true,
+      "meaning": "Noncritical case; representation difference, no critical judgment applied"
+    }
+  ],
+  "technicalCounts": {
+    "tokenBudget": 7,
+    "contextDiscard": 5,
+    "union": 11,
+    "eos": 33,
+    "exceptions": 0,
+    "empty": 0
+  },
+  "interpretation": "No verified improvement in complete answers or dialogs. Lower critical counts also reflect omission, echoes and broken text, not accepted knowledge. Training continues; no candidate promoted."
+}

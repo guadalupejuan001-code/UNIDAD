@@ -1,0 +1,329 @@
+{
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+  "outputsSha256": "ab8b1e2cf97389e5f985abd038702326c9a9efaff7ea8a6a2608ac7f65e52665",
+  "reviewer": "project-AI independent cross reviewer (independent turn-level review; not human)",
+  "method": "Revisión semántica independiente de IA del proyecto de los 40 turnos: en cada turno se usaron sólo inputMessages con las respuestas previas reales, la reply real y expected/criticalExpected del caso congelado, aplicando rubric.json. No se consultaron review-primary, juicios de otros revisores, salidas de baselines ni reserved-suite. La generación registrada fue temperature=0, seed=42, maxNewTokens=160, torchThreads=1; no se generó ni corrigió ninguna respuesta. Las dimensiones describen el contenido observado y no se fuerzan a false por token_budget; los fallos técnicos se contabilizan aparte por assess. criticalCorrect=false requiere una afirmación errada concreta; una omisión, eco o fragmento ininteligible no basta. Cada nota identifica también el grado complete/partial/failed según la rúbrica; assess calcula dimensiones completas, no el reparto partial/failed. Suite de desarrollo ya expuesta por generación y revisión, útil para hipótesis futuras, sin aceptación final ni fijación de candidato mientras continúa el entrenamiento.",
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: partial. «El viernes a las seis» identifica correctamente el plazo; la repetición «pero el viernes a las seis» introduce un contraste sin sentido y no resulta natural. No añade otro plazo ni condición."
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «aqui tienes que recogerla» impone la recogida al interlocutor aunque sigue yendo su hermana; no distingue jueves frente a viernes ni conserva explícitamente las seis."
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «aqui tienes que recogerla» vuelve a atribuir la recogida al interlocutor, pese a que ahora la hará el padre. No da el jueves a las seis solicitado."
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": true,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «No» rechaza correctamente el viernes, pero «tienes que recoger el jueves por la mañana» inventa una obligación de recogida matinal que no consta: el plazo es jueves a las seis y recoge el padre."
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «vamos a las ocho» cambia la hora de ocho y media a ocho; no calcula los dieciocho euros. «Las entradas están en la ocho y media» es una construcción confusa."
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «vamos a la ocho» vuelve a indicar las ocho, incompatibles con las ocho y media conservadas. No da veintiuno ni aplica la tarifa del chico; «El cine se encuentra en la ocho y media» no es una respuesta comprensible al total."
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «vamos en la ocho» vuelve a sitúar la asistencia a las ocho, sin respetar las ocho y media. No aporta dos entradas ni catorce euros y mantiene la frase incoherente «El cine se encuentra en la ocho y media»."
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «vamos a la ocho» es incompatible con la hora vigente de ocho y media. Omite jueves y catorce euros; el fragmento «El cine se encuentra en la ocho y media» no recupera el plan de forma comprensible."
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La caliente sale bien, la caliente que está en el baño» conserva un hecho verdadero sobre el baño, pero no identifica la salida caliente de cocina con poco caudal. No afirma expresamente que el baño esté averiado; la omisión no se marca crítica."
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «La caliente sale bien de la cocina» contradice que la caliente de cocina ya salía floja y que ahora ambas salidas tienen poco caudal. La repetición causal «ya que» no explica el cambio de la fría."
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «La caliente sale bien» vuelve a negar el poco caudal de la caliente de cocina. No dice que recibe el vecino ni resume ambas salidas; «sale bien es la cocina» es ininteligible."
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «La caliente sale bien» contradice el problema vigente de cocina. «es la cocina saleada» es ininteligible; faltan madre, lunes de nueve a once y ambas salidas flojas."
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «Tendrás que la reunión empieza a la reunión» no constituye un aviso ni contiene mañana, las diez o sala grande. No se identifica una fecha u hora alternativa concreta: fallo de utilidad y español, sin afirmación crítica verificable."
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La reunión empieza a la reunión» omite mañana, las once y la sala grande y es semánticamente incoherente. No afirma otra hora concreta; la omisión no es crítica."
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «que es viva y queda sala» no aporta un aviso comprensible con mañana, once, videollamada y futuro envío del usuario. No hay una afirmación inteligible de presencialidad ni de enlace ya enviado; no se infiere una crítica del texto incoherente."
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La reunión empieza a la reunión empieza a la reunión» es repetición incoherente sin mañana, once ni videollamada. No afirma una hora, sala o envío alternativos."
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «invitación de WhatsApp para la creación de un sistema operativo» atribuye otra actividad a la invitación solicitada al baloncesto. El contenido deriva a software, repite «seguridad» y acaba incompleto; el token_budget es técnico aparte y no explica que ya se desvíe antes del recorte."
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Grado: failed. «La invitación de WhatsApp es una herramienta de seguridad ... garantizar» inventa una función y garantía de seguridad para la invitación al baloncesto. No revisa sábado, cinco ni pista y repite «seguridad» hasta quedar incompleta. token_budget aparte, sin descarte de contexto."
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La inversión de WhatsApp es una herramienta de seguridad que se apague» es un desvío incoherente sin invitación al paseo, sábado, cinco o pista. No expresa un plan, fecha, lugar o acción ejecutada alternativos de modo suficientemente inteligible para una crítica. Repetición y token_budget aparte; los 13 tokens descartados afectan al inicio del sistema, conservándose los datos del usuario."
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «Necesitas para que tengo acces dudado» es ininteligible, omite «quien se anime» y no redacta la invitación. No contiene una afirmación crítica concreta. Se descartaron 212 tokens, incluido el primer mensaje del usuario con las cinco y la pista del barrio; ese límite coexiste con fallos previos sin descarte."
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La consulta y el dolor y el dolor» repite palabras sin distinguir abuelo que cuenta su dolor y usuario que aporta la lista. No atribuye de forma inteligible el dolor o la lista a otra persona."
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La consulta y la consulta y la consulta» no responde quién entra ni quién conduce. No aparece una atribución alternativa concreta; es ausencia de respuesta útil, sin crítica."
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La consulta y el dolor, entra en la consulta» no identifica al abuelo entrando solo, al usuario dejando la lista o a la hermana conduciendo. Al no señalar quién entra, no se interpreta como afirmación de que entra el usuario."
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «la consulta contiene los papeles de la consulta» no aclara la atribución de la lista ni contrasta la hipótesis sobre la hermana. No confirma expresamente que la hermana la llevaba; eco confuso, sin afirmación crítica concreta."
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La llena de gotas es de gotas de gotas de gotas de agua fría» no explica humedad del aire enfriada sobre el vaso y no es español comprensible. No afirma de forma concreta que el agua atraviese el cristal ni otra causa identificable."
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La llena de gotas es de gotas de agua fría» no corrige la inferencia de agua atravesando el cristal ni explica humedad del aire. No confirma el paso a través del cristal ni garantiza ausencia de defectos; no se convierte la omisión en crítica."
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La llena de gotas es de gotas de agua fría» no responde a la posibilidad con vaso vacío, humedad y superficie fría. No afirma expresamente que se requiera agua dentro o que ocurra siempre."
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «La llena de gotas es de gotas de agua fría» cumple sólo la ausencia de la palabra prohibida; no ofrece una frase comprensible sobre frío y humedad del aire. No identifica un origen incompatible concreto."
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «No tengo foto, no tengo fotografías» hace eco de la ausencia de foto; «ni sé quién esa fotografia» es ininteligible. No contesta si se puede asegurar robo, pero tampoco afirma un robo, receptor o entrega comprobados."
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «No, no tengo la fotografia» conserva la ausencia de foto todavía vigente, pero sólo repite ese dato anterior: no incorpora que la vecina vio una furgoneta sin paquete ni distingue lo conocido de receptor, lugar y robo aún desconocidos. No atribuye a la vecina haber visto el paquete."
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El paquete se llama contigo» es ininteligible y no compara puerta azul de la foto con puerta verde del usuario. No afirma una dirección, receptor, robo o inversión de colores identificables."
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El paquete se llama contigo, pero no se puede ver el paquete» no recupera la entrega en el número de al lado ni que sigue pendiente recuperarlo. Es una frase confusa, sin afirmación clara de recuperación, robo o ubicación alternativa; no se fuerza una interpretación crítica de «ver» como negación de la foto."
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Grado: failed. «Hola, ¿Qué te gustaría saber algo más sobre la lluvia?» retoma la lluvia mencionada, pero formula una pregunta mal construida sobre información y no desarrolla la calma o atmósfera de las escenas. No aporta contenido sustantivo que continúe esa sensación."
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Grado: failed. «¿Qué te gustaría que te gustaría» se repite sin contenido sobre la sensación de calma. La falta de respuesta y español comprensible se observa en el texto, aparte de token_budget; no había descarte de contexto."
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El ser humano es una forma de expresar que te gustaría» seguido de repetición no compara cafetería y lluvia ni atiende a la preferencia actual. No atribuye al usuario otra preferencia o vivencia concreta."
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «Puede ser una buena opción para ser una buena opción» no recuerda la cafetería casi vacía ni continúa su ambiente. No afirma otra preferencia concreta. Aunque se descartaron 48 tokens del inicio del sistema, la corrección del usuario sobre la cafetería permanece íntegra en el contexto efectivo."
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El contexto ... de tuergencia» repite un término deformado y no distingue contexto de entrenamiento. No afirma entrenamiento, persistencia o garantía de recuerdo futuros; ausencia de explicación sin crítica."
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El contexto de tuergencia es el contexto de tuergencia» no redacta la nota ni incorpora martes. No afirma miércoles vigente ni un guardado o entrenamiento ejecutados."
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El contexto de tu contexto es el contexto de tu contexto de tu contexto» no responde al límite de herramientas ni proporciona el texto. No afirma envío, contacto adquirido ni otra acción externa."
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Grado: failed. «El contexto de tu contexto de tu contexto» no deja el texto del taller de cerámica los martes ni aclara el recuerdo en otra charla. No afirma un día alternativo, envío, persistencia, entrenamiento ni garantía de memoria."
+    }
+  ]
+}

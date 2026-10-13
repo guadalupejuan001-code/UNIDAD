@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "curriculumVersion": "v4",
+  "arm": "natural-latam",
+  "status": "prepared-not-trained-not-conversation-accepted",
+  "corpusSha256": "cf52daaaa0bfbd6dd539977ebaabb1b4b265d0ad192d9d6cea6c49e18da5515f",
+  "contentSha256": "943dee4e6902ed4f2d1bc8cfbd8615a89d997258760eb873aa2e1d06e03e166b",
+  "file": {
+    "path": "natural-latam-sft.train-validation.jsonl",
+    "bytes": 14779636,
+    "sha256": "cf52daaaa0bfbd6dd539977ebaabb1b4b265d0ad192d9d6cea6c49e18da5515f"
+  },
+  "splitCounts": {
+    "train": 10359,
+    "validation": 1759,
+    "test": 0
+  },
+  "designSha256": "1ede3e0b08f971012ef6f777889557ea8a0e0ea2089b379b02d2b8bcdb860a5f",
+  "helperSha256": "1ac4d2325c318c45894cbe5729381e86367f9ad5a25df137e697aa63bcf2fb9b",
+  "precedingRegionalSha256": "aea0316e1fa6985b079f91a2104e9d3ba3889931c8d57162dcfaf463fd135b36",
+  "finalReviewExclusionsSha256": "5e14fb93a5f4c14df4b60764efecc157ed2ddc4c0ea2737470dd19066305731d",
+  "regionalVersionLabels": "Retained per-record v3 labels intentionally preserve all surviving bytes; final v4 is a strict subset",
+  "policy": "assistant_last_reply; old targets/1704 VAL bytes and original group folds preserved",
+  "comparison": "Two arms from same own parent, same 4096 logical updates/config; different internal VAL NLLs not comparable; same external DEV actual histories",
+  "sources": [
+    {
+      "declaredSourceKind": "public-human-reviewed",
+      "license": "Apache-2.0 upstream",
+      "path": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/corpus/human-sft-bpe2048-v1/human-sft.train-validation.jsonl",
+      "records": 8657,
+      "sha256": "24770f0b2bb1381fd70ab3800235f6d03e72f02128addfc424bcbf8b83d166fd"
+    },
+    {
+      "declaredSourceKind": "authored-synthetic",
+      "license": "Project AI-authored fiction; no independent data license declared",
+      "path": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/synthetic.train-validation.jsonl",
+      "records": 10880,
+      "sha256": "be4d7d84faaec0afe2cc797f3f0a5fef9b60dbe3b420f4b535daa805f0943394"
+    },
+    {
+      "declaredSourceKind": "authored-synthetic",
+      "license": "Project AI-authored fiction; no independent data license declared",
+      "path": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+      "receipt": "private/learning-repair-20261013/sft-composition/prepared-v3/manual-original.train-validation.jsonl",
+      "records": 760,
+      "sha256": "6b1e805992ecca278ebb80b242ebfd46407d567b3a41f952e41953273044d93e"
+    },
+    {
+      "declaredSourceKind": "authored-procedural-synthetic-grounded-in-primary-country-senses",
+      "license": "CC-BY-SA-4.0 regional adaptations; upstream history/revision attribution per record",
+      "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/latin-american-sft.train-validation.jsonl",
+      "records": 463,
+      "corpusSha256": "520510f77e26626b66af6c1e7ee0c8492f50c381518a4877e2696841bb70138f",
+      "reviewPath": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/qa/latin-agent-semantic-review-v4.json",
+      "reviewSha256": "9ef493f806d52c66373feb7fbb41c800f84b8496a048912ed1283469a41ac462"
+    }
+  ],
+  "testUsedForTraining": false,
+  "testReadOrTokenizedDuringMerge": false,
+  "originalManifest": {
+    "path": "private/learning-repair-20261013/corpus/natural-latam-sft-v4/natural-latam.manifest.json",
+    "sha256": "612a8b5517db84646755df196cdde3654e2d282ee884f3a0bab67c761bdfcd52"
+  },
+  "metadataCompatibility": "Add required explicit source provenance and unused TEST flags; no corpus, targets, partitions or experiment changed"
+}

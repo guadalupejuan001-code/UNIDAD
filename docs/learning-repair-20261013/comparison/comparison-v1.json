@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T08:22:16.557016+00:00",
+  "suiteId": "learning-repair-20261013-development-v2",
+  "scope": "Exposed development comparison; not a reserved acceptance test or comparison against a commercial AI",
+  "comparisonType": "Same fictitious development conversations and generation policy; C7 reference vs new own 15M foundation plus SFT, with different parameter counts/tokenizers/training corpora. Not an isolated causal estimate of SFT.",
+  "reviewType": "Two project AI reviews; not independent human evaluation. Per-turn disagreements retained.",
+  "gradeDerivation": "The primary C7 rubric-derived receipt and both reviewer notes identify tap_flow_correction as the sole C7 partial; SFT reviews and cross summary identify library_initial_deadline as the sole SFT partial. All other turns fail. Assessments separately retain semantic dimensions and technical failures.",
+  "acceptance": {
+    "minimumCompleteTurns": 36,
+    "minimumCompleteDialogs": 8,
+    "maximumCriticalFailures": 0,
+    "maximumTechnicalFailures": 0
+  },
+  "models": [
+    {
+      "evidenceDirectory": "development-c7-comparable-v1",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "parameterCount": 6983937,
+      "generation": {
+        "temperature": 0,
+        "seed": 42,
+        "maxNewTokens": 160,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+      "outputsSha256": "a6bc6376ff1fd1b5b6282abd59c8e747e23a9ed62ea10d23be65824dea40752d",
+      "reviews": {
+        "primary": {
+          "complete": 0,
+          "partial": 1,
+          "failed": 39,
+          "partialTurn": "tap_flow_correction",
+          "completeDialogs": 0,
+          "totalDialogs": 10,
+          "criticalFailures": [
+            "library_late_collection",
+            "cinema_attendee_reduction",
+            "tap_visit_delegate",
+            "meeting_direct_final_notice",
+            "outing_day_revision",
+            "parcel_van_observation"
+          ],
+          "technicalFailures": [],
+          "accepted": false,
+          "reviewSha256": "d46b9939c11a3e9bb6c557a0f6b2fdb24f37d9cff2905d65b87bba38e19830b1",
+          "reviewer": "project-AI /root/conversation_review_ready; not independent human",
+          "assessmentSha256": "3895bc57bdde3fb1c4def4cded65e105b5b23b56ec5ebac121666be932fd76fd"
+        },
+        "cross": {
+          "complete": 0,
+          "partial": 1,
+          "failed": 39,
+          "partialTurn": "tap_flow_correction",
+          "completeDialogs": 0,
+          "totalDialogs": 10,
+          "criticalFailures": [
+            "library_late_collection",
+            "cinema_attendee_reduction",
+            "tap_visit_delegate",
+            "meeting_direct_final_notice",
+            "outing_day_revision",
+            "parcel_van_observation"
+          ],
+          "technicalFailures": [],
+          "accepted": false,
+          "reviewSha256": "34b36e071c406e97c40e4cd608ad3a862403c63466c1b6852fb1849bc0166ed5",
+          "reviewer": "project-AI cross reviewer; revisión de IA del proyecto, no evaluación humana independiente",
+          "assessmentSha256": "957ad006f331df991121e983ba44d326632b75fd2eec21bb2cb01673f9779ca0"
+        }
+      },
+      "technicalDiagnostics": [],
+      "reviewDisagreements": [
+        {
+          "id": "outing_initial_invitation",
+          "dimensions": {
+            "contextGrounding": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "«Primero vasdías el domingo a las cinco en la pista del barrio» conserva día, hora y lugar, pero «vasdías» deja la acción ininteligible y no redacta dos frases de invitación al baloncesto.",
+          "crossNote": "«Primero vasdías el domingo a las cinco en la pista del barrio;.» conserva día, hora y lugar, pero no construye una invitación al baloncesto en dos frases. «vasdías» y el cierre «;.» rompen el español; no afirma datos incompatibles ni un envío."
+        },
+        {
+          "id": "note_context_not_training",
+          "dimensions": {
+            "contextGrounding": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "«el taller es los miércoles» conserva el día dado, pero «Anteserte… buscart» resulta mal formado y no distingue contexto de actualización de pesos o persistencia.",
+          "crossNote": "«Anteserte presente ... buscart el taller es los miércoles» conserva el día inicial en un fragmento, pero no distingue contexto de entrenamiento, parámetros o persistencia. Las palabras corruptas impiden una respuesta natural; no afirma entrenamiento ni recuerdo futuro."
+        }
+      ]
+    },
+    {
+      "evidenceDirectory": "development-sft-step4096-v1",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "parameterCount": 15179520,
+      "generation": {
+        "temperature": 0,
+        "seed": 42,
+        "maxNewTokens": 160,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+      "outputsSha256": "ab8b1e2cf97389e5f985abd038702326c9a9efaff7ea8a6a2608ac7f65e52665",
+      "reviews": {
+        "primary": {
+          "complete": 0,
+          "partial": 1,
+          "failed": 39,
+          "partialTurn": "library_initial_deadline",
+          "completeDialogs": 0,
+          "totalDialogs": 10,
+          "criticalFailures": [
+            "library_day_correction",
+            "library_delegate_change",
+            "library_late_collection",
+            "cinema_initial_total",
+            "cinema_age_correction",
+            "cinema_current_plan",
+            "tap_flow_correction",
+            "tap_visit_delegate",
+            "tap_receiver_correction",
+            "outing_initial_invitation",
+            "outing_day_revision",
+            "outing_activity_revision"
+          ],
+          "technicalFailures": [
+            "outing_initial_invitation",
+            "outing_day_revision",
+            "outing_activity_revision",
+            "outing_one_sentence_final",
+            "quiet_mood_no_advice",
+            "quiet_current_preference_recall"
+          ],
+          "accepted": false,
+          "reviewSha256": "6b5f97b33e65320a6426ca62206bcd4ef5d9755428fd8db5dd334b98f1dfa59b",
+          "reviewer": "project-AI /root/conversation_review_ready; not independent human",
+          "assessmentSha256": "2195039dd645bf2d628f1dd6180c4f259c1c6374baa6d91bfa4bdb9205a9b98a"
+        },
+        "cross": {
+          "complete": 0,
+          "partial": 1,
+          "failed": 39,
+          "partialTurn": "library_initial_deadline",
+          "completeDialogs": 0,
+          "totalDialogs": 10,
+          "criticalFailures": [
+            "library_day_correction",
+            "library_delegate_change",
+            "library_late_collection",
+            "cinema_initial_total",
+            "cinema_age_correction",
+            "cinema_attendee_reduction",
+            "cinema_current_plan",
+            "tap_flow_correction",
+            "tap_visit_delegate",
+            "tap_receiver_correction",
+            "outing_initial_invitation",
+            "outing_day_revision"
+          ],
+          "technicalFailures": [
+            "outing_initial_invitation",
+            "outing_day_revision",
+            "outing_activity_revision",
+            "outing_one_sentence_final",
+            "quiet_mood_no_advice",
+            "quiet_current_preference_recall"
+          ],
+          "accepted": false,
+          "reviewSha256": "b694429c8e095f5b886c6dca912de365579507f1612b0c6ebdfd3032ce2b9796",
+          "reviewer": "project-AI independent cross reviewer (independent turn-level review; not human)",
+          "assessmentSha256": "86b302daa4d6941fead1803a6e041630c62e892677250b4bf42edfddd3fabec0"
+        }
+      },
+      "technicalDiagnostics": [
+        {
+          "id": "outing_initial_invitation",
+          "reasons": [
+            "token_budget"
+          ],
+          "discardedPromptTokens": 0
+        },
+        {
+          "id": "outing_day_revision",
+          "reasons": [
+            "token_budget"
+          ],
+          "discardedPromptTokens": 0
+        },
+        {
+          "id": "outing_activity_revision",
+          "reasons": [
+            "token_budget",
+            "discarded_context"
+          ],
+          "discardedPromptTokens": 13
+        },
+        {
+          "id": "outing_one_sentence_final",
+          "reasons": [
+            "discarded_context"
+          ],
+          "discardedPromptTokens": 212
+        },
+        {
+          "id": "quiet_mood_no_advice",
+          "reasons": [
+            "token_budget"
+          ],
+          "discardedPromptTokens": 0
+        },
+        {
+          "id": "quiet_current_preference_recall",
+          "reasons": [
+            "discarded_context"
+          ],
+          "discardedPromptTokens": 48
+        }
+      ],
+      "reviewDisagreements": [
+        {
+          "id": "cinema_attendee_reduction",
+          "dimensions": {
+            "criticalCorrect": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "«El cine se encuentra en la ocho y media vamos en la ocho» no proporciona dos entradas ni catorce euros y mezcla ubicación y hora en una frase ininteligible; «en la ocho» no permite identificar una afirmación inequívoca de otra tarifa, cantidad o participante.",
+          "crossNote": "Grado: failed. «vamos en la ocho» vuelve a sitúar la asistencia a las ocho, sin respetar las ocho y media. No aporta dos entradas ni catorce euros y mantiene la frase incoherente «El cine se encuentra en la ocho y media»."
+        },
+        {
+          "id": "tap_flow_correction",
+          "dimensions": {
+            "spanish": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "«La caliente sale bien de la cocina» contradice el poco caudal de la caliente, conservado desde el primer turno; además no identifica que la parte nueva corregida es la fría de cocina.",
+          "crossNote": "Grado: failed. «La caliente sale bien de la cocina» contradice que la caliente de cocina ya salía floja y que ahora ambas salidas tienen poco caudal. La repetición causal «ya que» no explica el cambio de la fría."
+        },
+        {
+          "id": "outing_activity_revision",
+          "dimensions": {
+            "criticalCorrect": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "«La inversión de WhatsApp es una herramienta de seguridad» introduce una caracterización factual de inversión y seguridad ajena al paseo solicitado; no comunica la invitación vigente. Repite texto, termina por token_budget y descarta 13 tokens iniciales.",
+          "crossNote": "Grado: failed. «La inversión de WhatsApp es una herramienta de seguridad que se apague» es un desvío incoherente sin invitación al paseo, sábado, cinco o pista. No expresa un plan, fecha, lugar o acción ejecutada alternativos de modo suficientemente inteligible para una crítica. Repetición y token_budget aparte; los 13 tokens descartados afectan al inicio del sistema, conservándose los datos del usuario."
+        },
+        {
+          "id": "parcel_theft_uncertainty",
+          "dimensions": {
+            "contextGrounding": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "«No tengo foto, no tengo fotografías» conserva la ausencia de foto inicial, pero «ni sé quién esa fotografia» resulta mal formado. No reconoce la imposibilidad de asegurar robo ni distingue seguimiento de entrega real.",
+          "crossNote": "Grado: failed. «No tengo foto, no tengo fotografías» hace eco de la ausencia de foto; «ni sé quién esa fotografia» es ininteligible. No contesta si se puede asegurar robo, pero tampoco afirma un robo, receptor o entrega comprobados."
+        },
+        {
+          "id": "parcel_van_observation",
+          "dimensions": {
+            "contextGrounding": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "«No, no tengo la fotografia» es comprensible y no afirma robo o entrega, pero repite la carencia anterior sin añadir el testimonio de furgoneta ni distinguir receptor, lugar y robo desconocidos.",
+          "crossNote": "Grado: failed. «No, no tengo la fotografia» conserva la ausencia de foto todavía vigente, pero sólo repite ese dato anterior: no incorpora que la vecina vio una furgoneta sin paquete ni distingue lo conocido de receptor, lugar y robo aún desconocidos. No atribuye a la vecina haber visto el paquete."
+        },
+        {
+          "id": "quiet_scene_preference",
+          "dimensions": {
+            "contextGrounding": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "«¿Qué te gustaría saber algo más sobre la lluvia?» es una pregunta mal construida de información, sin comentar la calma o atmósfera de las escenas. El saludo y la mención de lluvia no aportan charla sustantiva.",
+          "crossNote": "Grado: failed. «Hola, ¿Qué te gustaría saber algo más sobre la lluvia?» retoma la lluvia mencionada, pero formula una pregunta mal construida sobre información y no desarrolla la calma o atmósfera de las escenas. No aporta contenido sustantivo que continúe esa sensación."
+        }
+      ]
+    }
+  ],
+  "observedOutcome": "Both reviews: complete turns remain 0/40, complete dialogs remain 0/10 and partial turns remain 1. Critical counts rise from 6 to 12 and technical counts from 0 to 6. No verified conversational improvement. C7 remains the own reference, itself unaccepted.",
+  "reservedSuiteOpenedForPublication": false,
+  "publicationIntegritySha256": "fcc1b2e18eb7378b76f141c14ad146ccf61b8a84d05b04ff2e0de169558fb17f"
+}

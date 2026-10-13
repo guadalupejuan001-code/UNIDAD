@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T09:41:44.098191+00:00",
+  "failedPrRun": 38375885022,
+  "failedHead": "80b39d5f95590f145d6cc9133aff0497ee2aa9ce",
+  "failures": [
+    {
+      "test": "test_symlink_roots_ancestors_files_and_replacements_are_rejected",
+      "cause": "Device/inode may be reused after file replacement; original capture pinned only those two values",
+      "fix": "Pin dev,inode,size,mtime_ns,ctime_ns,mode before reading and in permission policy. Original security assertion unchanged. New same-size replacement regression preserves real IO and mocks only recycled dev/inode."
+    },
+    {
+      "test": "test_large_persisted_journal_returns_bounded_truthful_task_receipt",
+      "cause": "Test HTTP client had3-second timeout while task allowed30 seconds; CI socket timed out without lost-journal evidence",
+      "fix": "Only large-journal request uses finite20-second timeout within30-second task budget, all6 full200000-character payloads and exact journal/receipt checks retained; default clienttimeout3unchanged",
+      "localProfile": {
+        "wallSeconds": 0.78,
+        "persistedBytes": 2408209,
+        "receiptBytes": 712
+      }
+    }
+  ],
+  "fileToolsSha256": "78453e3819aa77bef968d478931f387b5185646fed9d10b3f3cf722b801f285d",
+  "nativeTrainingModifiedOrSignaled": false,
+  "frozenDataEvidenceRewritten": false
+}
