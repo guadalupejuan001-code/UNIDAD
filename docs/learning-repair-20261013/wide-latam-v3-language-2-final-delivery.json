@@ -1,0 +1,670 @@
+{
+  "actualTargetExposure": {
+    "supervisedEosPositions": 4090,
+    "supervisedNonEosPositions": 565169,
+    "supervisedTargetPositionsIncludingEos": 569259,
+    "unpaddedInputPositions": 569259,
+    "windowDraws": 4096
+  },
+  "bestNativeReference": {
+    "allFiveReconstructionStreamHashesVerified": true,
+    "distinctOwnFiles": [
+      "state.json",
+      "manifest.json"
+    ],
+    "nativeFiles": {
+      "manifest.json": {
+        "bytes": 361,
+        "sha256": "1c0b387d099b79f354eb759802879f53a78e6f212f513de59f6eef1b2dbd8402"
+      },
+      "resume.pt": {
+        "bytes": 126236530,
+        "sha256": "f3eb8596f0a40034847027af7f4ebeb564def867badc24243103907648ee366a"
+      },
+      "state.json": {
+        "bytes": 40253,
+        "sha256": "033fcc8ba3af2ba8a1ce14c606627a595cf8c15e3ac611bd9819dc1e05db9e96"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 63087256,
+        "sha256": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+      }
+    },
+    "path": "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/BEST-reference/step-000002048-0abfc341a30449e1a005b55717fdc1d6",
+    "referenceSha256": "47c836340b391f0a6ac77c2aac621511d218695478775878bb31680e06bdd479",
+    "restoreHelperPath": "docs/learning-repair-20261013/restore_action_native_reference.py",
+    "restoreHelperSha256": "21e46b4bdba1b12649cfad50c2e6a3906437d38e96d03090fe412b1ca15ee252",
+    "sharedWithLast": [
+      "weights.safetensors",
+      "resume.pt",
+      "tokenizer.json"
+    ]
+  },
+  "bestValidationNll": 2.143346329509529,
+  "budget": {
+    "addressSpaceMiB": 512,
+    "cpuCount": 1,
+    "maxCpuSeconds": 180,
+    "maxNativePartMiB": 32,
+    "maxNewDiskMiB": 256,
+    "maxWallSeconds": 180,
+    "nice": 19
+  },
+  "checkpointRoles": {
+    "best": "step-000002048-0abfc341a30449e1a005b55717fdc1d6",
+    "last": "step-000002048-9e40b66d64a4496ca0b17d5743a81681"
+  },
+  "conversationAccepted": false,
+  "cooperativeStopReasons": [
+    "absolute_step_boundary"
+  ],
+  "createdAtUtc": "2026-10-13T11:34:39.133822+00:00",
+  "frozenOriginalMetadata": {
+    "cacheManifest": {
+      "byteExactOnUtf8Reencoding": true,
+      "sha256": "7f35226a1b66271ebd737fbcd448d9a0776b50d3658227ea145693a32033149e",
+      "sourcePath": "private/learning-repair-20261013/runs/wide-latam-v3/language-2/tokenized-cache/manifest.json",
+      "utf8Text": "{\"identity\":{\"contextLength\":2048,\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"includeTest\":false,\"objective\":\"causal_lm\",\"partitionPolicy\":\"train_validation_only\",\"tokenizerSha256\":\"848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720\",\"vocabSize\":2048,\"windowEncoding\":\"little-endian-int32-inputs-labels-v1\",\"windowPolicy\":\"contiguous_nonoverlapping\"},\"schemaVersion\":1,\"splits\":{\"test\":{\"count\":0,\"data\":{\"bytes\":0,\"name\":\"test.windows.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"index\":{\"bytes\":0,\"name\":\"test.index.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"train\":{\"count\":5513,\"data\":{\"bytes\":6121384,\"name\":\"train.windows.bin\",\"sha256\":\"bf7ae2749c2d07229f1c3b47be2ee725192a959dae3bc1c88fa9b20ff64f09d8\"},\"index\":{\"bytes\":88208,\"name\":\"train.index.bin\",\"sha256\":\"4b723cb86cc63244bc4629b93e3eee83ea6fd9963dfb01c0a9531b1c9d86cfef\"}},\"validation\":{\"count\":540,\"data\":{\"bytes\":611000,\"name\":\"validation.windows.bin\",\"sha256\":\"1aeda7c346ee17d291ed4912d9c0548a5ffc866684aa8cbd765eb9399407244f\"},\"index\":{\"bytes\":8640,\"name\":\"validation.index.bin\",\"sha256\":\"7ea7e92df4febf726461a163a9f883d9825148d6d34857362121892e7445e369\"}}}}\n"
+    },
+    "stageDesign": {
+      "byteExactOnUtf8Reencoding": true,
+      "sha256": "507a26f3386a417a89e49dd4f9ef890ba1f3f6d0f396ebde002e5dbcf3544c95",
+      "sourcePath": "private/learning-repair-20261013/runs/wide-latam-v3/language-2/stage-design.json",
+      "utf8Text": "{\"conversationAccepted\":false,\"corpusPath\":\"/workspace/UNIDAD/examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.train-validation.jsonl\",\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"createdAtUtc\":\"2026-10-13T11:02:55.880333+00:00\",\"owner\":\"unidad-conversation-pilot-v1\",\"parentFiles\":{\"config.json\":\"8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2\",\"manifest.json\":\"710ca76fb58da48d78ae8a1932e270d5658a3a866cfe07144ec37af7a2eac8ad\",\"tokenizer.json\":\"848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720\",\"weights.safetensors\":\"b8856eed20322b4c0011b274fe582a3b9ff6b1ab57d874cb300420a617b5dc69\"},\"parentModelConfig\":{\"context_length\":2048,\"d_model\":384,\"dropout\":0.0,\"ffn_multiplier\":4,\"n_heads\":8,\"n_layers\":8,\"seed\":20261013,\"vocab_size\":2048},\"parentPath\":\"/workspace/UNIDAD/private/learning-repair-20261013/runs/wide-latam-v3/language-1/snapshots/best-step002048\",\"randomModelConfig\":null,\"recordSplits\":{\"test\":0,\"train\":5505,\"validation\":540},\"resourceCeilings\":{\"policy\":\"cooperative stop, finite OS environment remains the hard bound\",\"rssMiB\":6144,\"runDiskMiB\":2048},\"runnerId\":\"02cd6d6bfa3c40b2b937fea14e9327f3\",\"schemaVersion\":1,\"sourceSha256\":{\"__init__.py\":\"1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1\",\"__main__.py\":\"5874d42fdf7275ada4f44f138a239f6e1a403c169946eca54b1dddd25848ac15\",\"adaptive.py\":\"8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24\",\"artifacts.py\":\"6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375\",\"assessment.py\":\"95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5\",\"configuration.py\":\"c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83\",\"contract.py\":\"faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9\",\"data.py\":\"b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9\",\"disk_data.py\":\"490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71\",\"jobs.py\":\"ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842\",\"language_data.py\":\"6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813\",\"model.py\":\"375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d\",\"runner\":\"b88dc76efdb5df7863979c599ae614b2ab6ee74c6c5284e069dd75dedfbe0e00\",\"runtime.py\":\"3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed\",\"scoring.py\":\"cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933\",\"shared_pilot_helpers\":\"d9948fcea1a8582539998d013b47e0b8e1ef5706499f73f1111f967b1803a503\",\"tokenizer.py\":\"54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066\",\"training.py\":\"7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955\"},\"testEvaluated\":false,\"trainingConfig\":{\"batch_size\":2,\"checkpoint_every\":128,\"data_loading\":\"mmap\",\"grad_clip\":1.0,\"learning_rate\":0.00015,\"learning_rate_schedule\":{\"decay_steps\":2048,\"min_lr_ratio\":0.1,\"type\":\"cosine\"},\"loss_reduction\":\"token_mean\",\"max_epochs\":2,\"max_seconds\":1800,\"max_steps\":2048,\"micro_batch_size\":1,\"min_delta\":0.0001,\"objective\":\"causal_lm\",\"partition_policy\":\"train_validation_only\",\"patience\":8,\"projection_mode\":\"supervised\",\"seed\":20261013,\"torch_threads\":4,\"train_precision\":\"cpu_bfloat16\",\"trainable_parameters\":\"all\",\"validation_every\":256,\"warmup_steps\":32,\"weight_decay\":0.01,\"window_policy\":\"contiguous_nonoverlapping\"}}"
+    },
+    "stageLatest": {
+      "byteExactOnUtf8Reencoding": true,
+      "sha256": "5b862a3caed1d7b5a13e0ad3dbb8ee069c086e6078180d376d4b3c6071123b8a",
+      "sourcePath": "private/learning-repair-20261013/runs/wide-latam-v3/language-2/stage-latest.json",
+      "utf8Text": "{\"budgetSeconds\":1800.0,\"conversationAccepted\":false,\"cooperativeStopReasons\":[\"absolute_step_boundary\"],\"invocationId\":\"4620f96b036f4f94a3bb09c982be4b37\",\"modelId\":\"unidad-conversation-f327bb762eab5a9b5c559f21dab380a6b6ab16fe8548dfd8e03d260ab8bd863a\",\"nativeStatus\":{\"assistantTargets\":\"all_text_tokens\",\"bestCheckpoint\":\"step-000002048-0abfc341a30449e1a005b55717fdc1d6\",\"bestValidationNll\":2.143346329509529,\"cooperativeSignalInstalled\":false,\"corpusFormat\":\"text\",\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"dataLoading\":{\"cache\":{\"identity\":{\"contextLength\":2048,\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"includeTest\":false,\"objective\":\"causal_lm\",\"partitionPolicy\":\"train_validation_only\",\"tokenizerSha256\":\"848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720\",\"vocabSize\":2048,\"windowEncoding\":\"little-endian-int32-inputs-labels-v1\",\"windowPolicy\":\"contiguous_nonoverlapping\"},\"schemaVersion\":1,\"splits\":{\"test\":{\"count\":0,\"data\":{\"bytes\":0,\"name\":\"test.windows.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"index\":{\"bytes\":0,\"name\":\"test.index.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"train\":{\"count\":5513,\"data\":{\"bytes\":6121384,\"name\":\"train.windows.bin\",\"sha256\":\"bf7ae2749c2d07229f1c3b47be2ee725192a959dae3bc1c88fa9b20ff64f09d8\"},\"index\":{\"bytes\":88208,\"name\":\"train.index.bin\",\"sha256\":\"4b723cb86cc63244bc4629b93e3eee83ea6fd9963dfb01c0a9531b1c9d86cfef\"}},\"validation\":{\"count\":540,\"data\":{\"bytes\":611000,\"name\":\"validation.windows.bin\",\"sha256\":\"1aeda7c346ee17d291ed4912d9c0548a5ffc866684aa8cbd765eb9399407244f\"},\"index\":{\"bytes\":8640,\"name\":\"validation.index.bin\",\"sha256\":\"7ea7e92df4febf726461a163a9f883d9825148d6d34857362121892e7445e369\"}}}},\"mode\":\"mmap\"},\"elapsedSeconds\":486.66538323400164,\"environmentLifetimeGuaranteed\":false,\"epoch\":0,\"experimental\":true,\"heartbeatAt\":1791889862.5508382,\"lastCheckpoint\":\"step-000002048-9e40b66d64a4496ca0b17d5743a81681\",\"lineage\":{\"parentCorpusSha256\":\"81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81\",\"parentModelId\":\"unidad-conversation-a8c25b012d4cbf1da6b818983dc424ec219b93b7793115bb5d6474d8ef3087f8\",\"parentWeightsSha256\":\"b8856eed20322b4c0011b274fe582a3b9ff6b1ab57d874cb300420a617b5dc69\",\"rootOrigin\":\"random_weights\"},\"lossReduction\":\"token_mean\",\"optimizerReset\":true,\"partitionPolicy\":\"train_validation_only\",\"pid\":26737,\"processBirth\":\"3273905\",\"projectionMode\":\"supervised\",\"reason\":\"signal\",\"schedulerReset\":true,\"schemaVersion\":1,\"status\":\"stopped\",\"step\":2048,\"testPartitionPresent\":false,\"trainPrecision\":\"cpu_bfloat16\",\"trainableParameters\":{\"frozenParameterCount\":0,\"frozenTensorNames\":[],\"policy\":\"all\",\"trainableParameterCount\":15769344,\"trainableTensorNames\":[\"blocks.0.attention.projection.bias\",\"blocks.0.attention.projection.weight\",\"blocks.0.attention.qkv.bias\",\"blocks.0.attention.qkv.weight\",\"blocks.0.attention_norm.bias\",\"blocks.0.attention_norm.weight\",\"blocks.0.feedforward.0.bias\",\"blocks.0.feedforward.0.weight\",\"blocks.0.feedforward.2.bias\",\"blocks.0.feedforward.2.weight\",\"blocks.0.feedforward_norm.bias\",\"blocks.0.feedforward_norm.weight\",\"blocks.1.attention.projection.bias\",\"blocks.1.attention.projection.weight\",\"blocks.1.attention.qkv.bias\",\"blocks.1.attention.qkv.weight\",\"blocks.1.attention_norm.bias\",\"blocks.1.attention_norm.weight\",\"blocks.1.feedforward.0.bias\",\"blocks.1.feedforward.0.weight\",\"blocks.1.feedforward.2.bias\",\"blocks.1.feedforward.2.weight\",\"blocks.1.feedforward_norm.bias\",\"blocks.1.feedforward_norm.weight\",\"blocks.2.attention.projection.bias\",\"blocks.2.attention.projection.weight\",\"blocks.2.attention.qkv.bias\",\"blocks.2.attention.qkv.weight\",\"blocks.2.attention_norm.bias\",\"blocks.2.attention_norm.weight\",\"blocks.2.feedforward.0.bias\",\"blocks.2.feedforward.0.weight\",\"blocks.2.feedforward.2.bias\",\"blocks.2.feedforward.2.weight\",\"blocks.2.feedforward_norm.bias\",\"blocks.2.feedforward_norm.weight\",\"blocks.3.attention.projection.bias\",\"blocks.3.attention.projection.weight\",\"blocks.3.attention.qkv.bias\",\"blocks.3.attention.qkv.weight\",\"blocks.3.attention_norm.bias\",\"blocks.3.attention_norm.weight\",\"blocks.3.feedforward.0.bias\",\"blocks.3.feedforward.0.weight\",\"blocks.3.feedforward.2.bias\",\"blocks.3.feedforward.2.weight\",\"blocks.3.feedforward_norm.bias\",\"blocks.3.feedforward_norm.weight\",\"blocks.4.attention.projection.bias\",\"blocks.4.attention.projection.weight\",\"blocks.4.attention.qkv.bias\",\"blocks.4.attention.qkv.weight\",\"blocks.4.attention_norm.bias\",\"blocks.4.attention_norm.weight\",\"blocks.4.feedforward.0.bias\",\"blocks.4.feedforward.0.weight\",\"blocks.4.feedforward.2.bias\",\"blocks.4.feedforward.2.weight\",\"blocks.4.feedforward_norm.bias\",\"blocks.4.feedforward_norm.weight\",\"blocks.5.attention.projection.bias\",\"blocks.5.attention.projection.weight\",\"blocks.5.attention.qkv.bias\",\"blocks.5.attention.qkv.weight\",\"blocks.5.attention_norm.bias\",\"blocks.5.attention_norm.weight\",\"blocks.5.feedforward.0.bias\",\"blocks.5.feedforward.0.weight\",\"blocks.5.feedforward.2.bias\",\"blocks.5.feedforward.2.weight\",\"blocks.5.feedforward_norm.bias\",\"blocks.5.feedforward_norm.weight\",\"blocks.6.attention.projection.bias\",\"blocks.6.attention.projection.weight\",\"blocks.6.attention.qkv.bias\",\"blocks.6.attention.qkv.weight\",\"blocks.6.attention_norm.bias\",\"blocks.6.attention_norm.weight\",\"blocks.6.feedforward.0.bias\",\"blocks.6.feedforward.0.weight\",\"blocks.6.feedforward.2.bias\",\"blocks.6.feedforward.2.weight\",\"blocks.6.feedforward_norm.bias\",\"blocks.6.feedforward_norm.weight\",\"blocks.7.attention.projection.bias\",\"blocks.7.attention.projection.weight\",\"blocks.7.attention.qkv.bias\",\"blocks.7.attention.qkv.weight\",\"blocks.7.attention_norm.bias\",\"blocks.7.attention_norm.weight\",\"blocks.7.feedforward.0.bias\",\"blocks.7.feedforward.0.weight\",\"blocks.7.feedforward.2.bias\",\"blocks.7.feedforward.2.weight\",\"blocks.7.feedforward_norm.bias\",\"blocks.7.feedforward_norm.weight\",\"final_norm.bias\",\"final_norm.weight\",\"position_embedding.weight\",\"token_embedding.weight\"]},\"trainedFrom\":\"own_checkpoint\",\"trainingMicrobatch\":{\"checkpointBoundary\":\"completed_logical_batch\",\"gradientClipping\":\"once_after_all_microbatches\",\"logicalBatchSize\":2,\"lossReduction\":\"token_mean\",\"maxMicroBatchSize\":1,\"optimizerStepsUnit\":\"logical_batch\"},\"trainingObjective\":\"causal_lm\"},\"requestedStopAfterStep\":2048,\"resourceMonitorErrors\":[],\"resourceObservations\":{\"peakRssBytes\":2336141312,\"peakRunDiskBytes\":449061643,\"processPeakRssIncludingExportBytes\":2336141312},\"resume\":false,\"schemaVersion\":1,\"selectedStep\":2048,\"snapshot\":\"/workspace/UNIDAD/private/learning-repair-20261013/runs/wide-latam-v3/language-2/snapshots/best-step002048\",\"snapshotFiles\":{\"config.json\":\"8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2\",\"manifest.json\":\"5560c6ff34fd5eff997f8ecaace3bc98a4f77a6bf083d68daf09cbda5dd3f8ad\",\"tokenizer.json\":\"848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720\",\"weights.safetensors\":\"a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b\"},\"sourceAndInputsUnchanged\":true,\"testEvaluated\":false}"
+    },
+    "status": {
+      "byteExactOnUtf8Reencoding": true,
+      "sha256": "baafa38fa00a9fb7d2458f097732c5fca653318bed187c1abbde549f6305ffa3",
+      "sourcePath": "private/learning-repair-20261013/runs/wide-latam-v3/language-2/status.json",
+      "utf8Text": "{\"assistantTargets\":\"all_text_tokens\",\"bestCheckpoint\":\"step-000002048-0abfc341a30449e1a005b55717fdc1d6\",\"bestValidationNll\":2.143346329509529,\"cooperativeSignalInstalled\":false,\"corpusFormat\":\"text\",\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"dataLoading\":{\"cache\":{\"identity\":{\"contextLength\":2048,\"corpusSha256\":\"411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca\",\"includeTest\":false,\"objective\":\"causal_lm\",\"partitionPolicy\":\"train_validation_only\",\"tokenizerSha256\":\"848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720\",\"vocabSize\":2048,\"windowEncoding\":\"little-endian-int32-inputs-labels-v1\",\"windowPolicy\":\"contiguous_nonoverlapping\"},\"schemaVersion\":1,\"splits\":{\"test\":{\"count\":0,\"data\":{\"bytes\":0,\"name\":\"test.windows.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},\"index\":{\"bytes\":0,\"name\":\"test.index.bin\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"}},\"train\":{\"count\":5513,\"data\":{\"bytes\":6121384,\"name\":\"train.windows.bin\",\"sha256\":\"bf7ae2749c2d07229f1c3b47be2ee725192a959dae3bc1c88fa9b20ff64f09d8\"},\"index\":{\"bytes\":88208,\"name\":\"train.index.bin\",\"sha256\":\"4b723cb86cc63244bc4629b93e3eee83ea6fd9963dfb01c0a9531b1c9d86cfef\"}},\"validation\":{\"count\":540,\"data\":{\"bytes\":611000,\"name\":\"validation.windows.bin\",\"sha256\":\"1aeda7c346ee17d291ed4912d9c0548a5ffc866684aa8cbd765eb9399407244f\"},\"index\":{\"bytes\":8640,\"name\":\"validation.index.bin\",\"sha256\":\"7ea7e92df4febf726461a163a9f883d9825148d6d34857362121892e7445e369\"}}}},\"mode\":\"mmap\"},\"elapsedSeconds\":486.66538323400164,\"environmentLifetimeGuaranteed\":false,\"epoch\":0,\"experimental\":true,\"heartbeatAt\":1791889862.5508382,\"lastCheckpoint\":\"step-000002048-9e40b66d64a4496ca0b17d5743a81681\",\"lineage\":{\"parentCorpusSha256\":\"81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81\",\"parentModelId\":\"unidad-conversation-a8c25b012d4cbf1da6b818983dc424ec219b93b7793115bb5d6474d8ef3087f8\",\"parentWeightsSha256\":\"b8856eed20322b4c0011b274fe582a3b9ff6b1ab57d874cb300420a617b5dc69\",\"rootOrigin\":\"random_weights\"},\"lossReduction\":\"token_mean\",\"optimizerReset\":true,\"partitionPolicy\":\"train_validation_only\",\"pid\":26737,\"processBirth\":\"3273905\",\"projectionMode\":\"supervised\",\"reason\":\"signal\",\"schedulerReset\":true,\"schemaVersion\":1,\"status\":\"stopped\",\"step\":2048,\"testPartitionPresent\":false,\"trainPrecision\":\"cpu_bfloat16\",\"trainableParameters\":{\"frozenParameterCount\":0,\"frozenTensorNames\":[],\"policy\":\"all\",\"trainableParameterCount\":15769344,\"trainableTensorNames\":[\"blocks.0.attention.projection.bias\",\"blocks.0.attention.projection.weight\",\"blocks.0.attention.qkv.bias\",\"blocks.0.attention.qkv.weight\",\"blocks.0.attention_norm.bias\",\"blocks.0.attention_norm.weight\",\"blocks.0.feedforward.0.bias\",\"blocks.0.feedforward.0.weight\",\"blocks.0.feedforward.2.bias\",\"blocks.0.feedforward.2.weight\",\"blocks.0.feedforward_norm.bias\",\"blocks.0.feedforward_norm.weight\",\"blocks.1.attention.projection.bias\",\"blocks.1.attention.projection.weight\",\"blocks.1.attention.qkv.bias\",\"blocks.1.attention.qkv.weight\",\"blocks.1.attention_norm.bias\",\"blocks.1.attention_norm.weight\",\"blocks.1.feedforward.0.bias\",\"blocks.1.feedforward.0.weight\",\"blocks.1.feedforward.2.bias\",\"blocks.1.feedforward.2.weight\",\"blocks.1.feedforward_norm.bias\",\"blocks.1.feedforward_norm.weight\",\"blocks.2.attention.projection.bias\",\"blocks.2.attention.projection.weight\",\"blocks.2.attention.qkv.bias\",\"blocks.2.attention.qkv.weight\",\"blocks.2.attention_norm.bias\",\"blocks.2.attention_norm.weight\",\"blocks.2.feedforward.0.bias\",\"blocks.2.feedforward.0.weight\",\"blocks.2.feedforward.2.bias\",\"blocks.2.feedforward.2.weight\",\"blocks.2.feedforward_norm.bias\",\"blocks.2.feedforward_norm.weight\",\"blocks.3.attention.projection.bias\",\"blocks.3.attention.projection.weight\",\"blocks.3.attention.qkv.bias\",\"blocks.3.attention.qkv.weight\",\"blocks.3.attention_norm.bias\",\"blocks.3.attention_norm.weight\",\"blocks.3.feedforward.0.bias\",\"blocks.3.feedforward.0.weight\",\"blocks.3.feedforward.2.bias\",\"blocks.3.feedforward.2.weight\",\"blocks.3.feedforward_norm.bias\",\"blocks.3.feedforward_norm.weight\",\"blocks.4.attention.projection.bias\",\"blocks.4.attention.projection.weight\",\"blocks.4.attention.qkv.bias\",\"blocks.4.attention.qkv.weight\",\"blocks.4.attention_norm.bias\",\"blocks.4.attention_norm.weight\",\"blocks.4.feedforward.0.bias\",\"blocks.4.feedforward.0.weight\",\"blocks.4.feedforward.2.bias\",\"blocks.4.feedforward.2.weight\",\"blocks.4.feedforward_norm.bias\",\"blocks.4.feedforward_norm.weight\",\"blocks.5.attention.projection.bias\",\"blocks.5.attention.projection.weight\",\"blocks.5.attention.qkv.bias\",\"blocks.5.attention.qkv.weight\",\"blocks.5.attention_norm.bias\",\"blocks.5.attention_norm.weight\",\"blocks.5.feedforward.0.bias\",\"blocks.5.feedforward.0.weight\",\"blocks.5.feedforward.2.bias\",\"blocks.5.feedforward.2.weight\",\"blocks.5.feedforward_norm.bias\",\"blocks.5.feedforward_norm.weight\",\"blocks.6.attention.projection.bias\",\"blocks.6.attention.projection.weight\",\"blocks.6.attention.qkv.bias\",\"blocks.6.attention.qkv.weight\",\"blocks.6.attention_norm.bias\",\"blocks.6.attention_norm.weight\",\"blocks.6.feedforward.0.bias\",\"blocks.6.feedforward.0.weight\",\"blocks.6.feedforward.2.bias\",\"blocks.6.feedforward.2.weight\",\"blocks.6.feedforward_norm.bias\",\"blocks.6.feedforward_norm.weight\",\"blocks.7.attention.projection.bias\",\"blocks.7.attention.projection.weight\",\"blocks.7.attention.qkv.bias\",\"blocks.7.attention.qkv.weight\",\"blocks.7.attention_norm.bias\",\"blocks.7.attention_norm.weight\",\"blocks.7.feedforward.0.bias\",\"blocks.7.feedforward.0.weight\",\"blocks.7.feedforward.2.bias\",\"blocks.7.feedforward.2.weight\",\"blocks.7.feedforward_norm.bias\",\"blocks.7.feedforward_norm.weight\",\"final_norm.bias\",\"final_norm.weight\",\"position_embedding.weight\",\"token_embedding.weight\"]},\"trainedFrom\":\"own_checkpoint\",\"trainingMicrobatch\":{\"checkpointBoundary\":\"completed_logical_batch\",\"gradientClipping\":\"once_after_all_microbatches\",\"logicalBatchSize\":2,\"lossReduction\":\"token_mean\",\"maxMicroBatchSize\":1,\"optimizerStepsUnit\":\"logical_batch\"},\"trainingObjective\":\"causal_lm\"}"
+    }
+  },
+  "humanReview": false,
+  "independentProjectAiAudit": {
+    "actualPositionsMatchIndependentReadOnlyAudit": true,
+    "humanReview": false,
+    "nativeTrainCacheOrderAndCompletePythonRngMatch": true
+  },
+  "inferenceArtifact": {
+    "files": {
+      "config.json": {
+        "bytes": 129,
+        "sha256": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2"
+      },
+      "manifest.json": {
+        "bytes": 7233,
+        "sha256": "5560c6ff34fd5eff997f8ecaace3bc98a4f77a6bf083d68daf09cbda5dd3f8ad"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 63087256,
+        "sha256": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+      }
+    },
+    "inferenceExportReceiptPath": "docs/learning-repair-20261013/wide-latam-v3-language-2-final-inference-export.json",
+    "inferenceExportReceiptSha256": "072c979fd8d806075be1a08ba50aa8b71c7ae941d39b7e99b767c0f498e8aeac",
+    "modelId": "unidad-conversation-f327bb762eab5a9b5c559f21dab380a6b6ab16fe8548dfd8e03d260ab8bd863a",
+    "path": "models/learning-repair-20261013/wide-latam-v3/language-2-final-best2048"
+  },
+  "initialStepZeroNativeCheckpointPresentInRun": false,
+  "integrity": {
+    "allNativeAndSourceHashesUnchanged": true,
+    "bestAllFiveReferenceStreamHashesVerified": true,
+    "fourInferenceFilesByteExact": true,
+    "lastPartAndWholeFileHashesVerified": true,
+    "originalMetadataUtf8ReencodingByteExact": true
+  },
+  "inventoryCoverage": {
+    "fractionOfTrainSupervisedPositionsConsumed": 0.7439611695655753,
+    "fractionOfTrainWindowsConsumed": 0.7429711590785416,
+    "recordCoverageCountAvailable": false,
+    "uniqueWindowsConsumed": 4096,
+    "untouchedWindows": 1417
+  },
+  "kind": "closed-own-wide-latam-v3-stage-native-and-inference-delivery",
+  "lastNativePackage": {
+    "manifestSha256": "75ffac20da87f37ddf2508fe3c204370bd77fcf0bd097a796267e49e09df1612",
+    "path": "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681",
+    "result": {
+      "checkpointName": "step-000002048-9e40b66d64a4496ca0b17d5743a81681",
+      "directory": "/workspace/UNIDAD/checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681",
+      "manifestSha256": "75ffac20da87f37ddf2508fe3c204370bd77fcf0bd097a796267e49e09df1612",
+      "nativeFileHashes": {
+        "manifest.json": "be9aad680131d266273834744d7217cc176a7a3fbb124949d7444d1349f8af74",
+        "resume.pt": "f3eb8596f0a40034847027af7f4ebeb564def867badc24243103907648ee366a",
+        "state.json": "1af9b99fccfaeefff37200a737820657e2efd5ce701d71b1aa5061a47017c22d",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "weights.safetensors": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+      },
+      "operation": "pack",
+      "parts": 9
+    },
+    "totalNativeBytes": 189413903
+  },
+  "limitation": "Exact selected native/inference transport and partial TRAIN exposure only. No model promotion or new evaluation. Initial native checkpoint was not synthesized; selected existing BEST is the exported artifact.",
+  "lineage": {
+    "parentCorpusSha256": "81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81",
+    "parentModelId": "unidad-conversation-a8c25b012d4cbf1da6b818983dc424ec219b93b7793115bb5d6474d8ef3087f8",
+    "parentWeightsSha256": "b8856eed20322b4c0011b274fe582a3b9ff6b1ab57d874cb300420a617b5dc69",
+    "rootOrigin": "random_weights"
+  },
+  "localNewFilesBeforeThisReceipt": {
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/BEST-reference/step-000002048-0abfc341a30449e1a005b55717fdc1d6/manifest.json": {
+      "bytes": 361,
+      "sha256": "1c0b387d099b79f354eb759802879f53a78e6f212f513de59f6eef1b2dbd8402"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/BEST-reference/step-000002048-0abfc341a30449e1a005b55717fdc1d6/native-reference.json": {
+      "bytes": 3703,
+      "sha256": "47c836340b391f0a6ac77c2aac621511d218695478775878bb31680e06bdd479"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/BEST-reference/step-000002048-0abfc341a30449e1a005b55717fdc1d6/state.json": {
+      "bytes": 40253,
+      "sha256": "033fcc8ba3af2ba8a1ce14c606627a595cf8c15e3ac611bd9819dc1e05db9e96"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/manifest.json.part-000000": {
+      "bytes": 361,
+      "sha256": "be9aad680131d266273834744d7217cc176a7a3fbb124949d7444d1349f8af74"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/native-checkpoint-package.json": {
+      "bytes": 2411,
+      "sha256": "75ffac20da87f37ddf2508fe3c204370bd77fcf0bd097a796267e49e09df1612"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/native-checkpoint-pointer.json": {
+      "bytes": 262,
+      "sha256": "d9718dacdef39a42affd324540f434464a453d88dc71831cd1a9c02f9299c192"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/resume.pt.part-000000": {
+      "bytes": 33554432,
+      "sha256": "f45323cc60a186d602addb780aedfa778a7f0b389e81015dd2332ebd46a685fb"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/resume.pt.part-000001": {
+      "bytes": 33554432,
+      "sha256": "0a7b912565e7f6c2890b6cd7e5ffd981277c2287aec70878537ef393c602e055"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/resume.pt.part-000002": {
+      "bytes": 33554432,
+      "sha256": "f4c4c8ef429d2718b78eaa0403cf8ce4bb52a8bd26e536586336148da3afc276"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/resume.pt.part-000003": {
+      "bytes": 25573234,
+      "sha256": "9d112da31a1ec5b07b2f68d3a9d3a13eb4509fd55c6c98f105917f4c8f761b5f"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/state.json.part-000000": {
+      "bytes": 40254,
+      "sha256": "1af9b99fccfaeefff37200a737820657e2efd5ce701d71b1aa5061a47017c22d"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/tokenizer.json.part-000000": {
+      "bytes": 49502,
+      "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/weights.safetensors.part-000000": {
+      "bytes": 33554432,
+      "sha256": "f04b5c771b422735477db91e31af589a2e1b3699eca1aa8b84f7751d5fb8183e"
+    },
+    "checkpoints/learning-repair-20261013/wide-latam-v3/language-2-final/LAST/step-000002048-9e40b66d64a4496ca0b17d5743a81681/weights.safetensors.part-000001": {
+      "bytes": 29532824,
+      "sha256": "3653b6a0eab48d907eb0ad3bb57e8424de434e2b248c54eacf177b7d5ad80aa4"
+    },
+    "docs/learning-repair-20261013/wide-latam-v3-language-2-final-inference-export.json": {
+      "bytes": 2104,
+      "sha256": "072c979fd8d806075be1a08ba50aa8b71c7ae941d39b7e99b767c0f498e8aeac"
+    },
+    "docs/learning-repair-20261013/wide-latam-v3-language-2-final-target-exposure.json": {
+      "bytes": 397993,
+      "sha256": "56a055b6d8c4f9106174dd29e2b7911340ef3fa5a8b019157301edaf52809259"
+    },
+    "models/learning-repair-20261013/wide-latam-v3/language-2-final-best2048/config.json": {
+      "bytes": 129,
+      "sha256": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2"
+    },
+    "models/learning-repair-20261013/wide-latam-v3/language-2-final-best2048/manifest.json": {
+      "bytes": 7233,
+      "sha256": "5560c6ff34fd5eff997f8ecaace3bc98a4f77a6bf083d68daf09cbda5dd3f8ad"
+    },
+    "models/learning-repair-20261013/wide-latam-v3/language-2-final-best2048/tokenizer.json": {
+      "bytes": 49502,
+      "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+    },
+    "models/learning-repair-20261013/wide-latam-v3/language-2-final-best2048/weights.safetensors": {
+      "bytes": 63087256,
+      "sha256": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+    }
+  },
+  "measurement": {
+    "elapsedWallSeconds": 2.0003886400008923,
+    "peakRssBytes": 19701760
+  },
+  "method": {
+    "activeV2ControlReadOrModified": false,
+    "corpusRead": false,
+    "modelInferenceExecuted": false,
+    "nativeRestoreExecuted": false,
+    "optimizerPickleLoaded": false,
+    "reservedEvaluationRead": false,
+    "signalsSent": false,
+    "softwareTestsExecuted": false,
+    "torchImported": false,
+    "trainingExecuted": false,
+    "validationOrTestWindowsRead": false,
+    "weightsLoaded": false,
+    "workerOrSupervisorChanged": false
+  },
+  "nativeFiles": {
+    "step-000002048-0abfc341a30449e1a005b55717fdc1d6": {
+      "manifest.json": {
+        "bytes": 361,
+        "sha256": "1c0b387d099b79f354eb759802879f53a78e6f212f513de59f6eef1b2dbd8402"
+      },
+      "resume.pt": {
+        "bytes": 126236530,
+        "sha256": "f3eb8596f0a40034847027af7f4ebeb564def867badc24243103907648ee366a"
+      },
+      "state.json": {
+        "bytes": 40253,
+        "sha256": "033fcc8ba3af2ba8a1ce14c606627a595cf8c15e3ac611bd9819dc1e05db9e96"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 63087256,
+        "sha256": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+      }
+    },
+    "step-000002048-9e40b66d64a4496ca0b17d5743a81681": {
+      "manifest.json": {
+        "bytes": 361,
+        "sha256": "be9aad680131d266273834744d7217cc176a7a3fbb124949d7444d1349f8af74"
+      },
+      "resume.pt": {
+        "bytes": 126236530,
+        "sha256": "f3eb8596f0a40034847027af7f4ebeb564def867badc24243103907648ee366a"
+      },
+      "state.json": {
+        "bytes": 40254,
+        "sha256": "1af9b99fccfaeefff37200a737820657e2efd5ce701d71b1aa5061a47017c22d"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 63087256,
+        "sha256": "a1bc04ec65a66602370b1ee00f46cee9887beebd1d9d80abdc9956544330f00b"
+      }
+    }
+  },
+  "nativeReason": "signal",
+  "newDeliveryBytesBeforeThisReceipt": 253005110,
+  "originalInitialOptimizerCheckpointCreatedByThisDelivery": false,
+  "preparedBy": "project-AI",
+  "publication": {
+    "gitHubUploadVerified": false,
+    "localFilesPrepared": true
+  },
+  "requestedStopAfterStep": 2048,
+  "schemaVersion": 1,
+  "selectedBestStep": 2048,
+  "sourceAndInputsUnchanged": true,
+  "sourceFiles": {
+    "__init__.py": {
+      "bytes": 218,
+      "path": "src/ia_propia/conversation/__init__.py",
+      "sha256": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1"
+    },
+    "__main__.py": {
+      "bytes": 12381,
+      "path": "src/ia_propia/conversation/__main__.py",
+      "sha256": "5874d42fdf7275ada4f44f138a239f6e1a403c169946eca54b1dddd25848ac15"
+    },
+    "adaptive.py": {
+      "bytes": 11295,
+      "path": "src/ia_propia/conversation/adaptive.py",
+      "sha256": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24"
+    },
+    "artifacts.py": {
+      "bytes": 16911,
+      "path": "src/ia_propia/conversation/artifacts.py",
+      "sha256": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375"
+    },
+    "assessment.py": {
+      "bytes": 11268,
+      "path": "src/ia_propia/conversation/assessment.py",
+      "sha256": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5"
+    },
+    "configuration.py": {
+      "bytes": 3695,
+      "path": "src/ia_propia/conversation/configuration.py",
+      "sha256": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83"
+    },
+    "contract.py": {
+      "bytes": 710,
+      "path": "src/ia_propia/conversation/contract.py",
+      "sha256": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9"
+    },
+    "data.py": {
+      "bytes": 20611,
+      "path": "src/ia_propia/conversation/data.py",
+      "sha256": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9"
+    },
+    "disk_data.py": {
+      "bytes": 19407,
+      "path": "src/ia_propia/conversation/disk_data.py",
+      "sha256": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71"
+    },
+    "jobs.py": {
+      "bytes": 6399,
+      "path": "src/ia_propia/conversation/jobs.py",
+      "sha256": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842"
+    },
+    "language_data.py": {
+      "bytes": 3266,
+      "path": "src/ia_propia/conversation/language_data.py",
+      "sha256": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813"
+    },
+    "model.py": {
+      "bytes": 26602,
+      "path": "src/ia_propia/conversation/model.py",
+      "sha256": "375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d"
+    },
+    "runner": {
+      "bytes": 14113,
+      "path": "examples/run_learning_stage.py",
+      "sha256": "b88dc76efdb5df7863979c599ae614b2ab6ee74c6c5284e069dd75dedfbe0e00"
+    },
+    "runtime.py": {
+      "bytes": 3912,
+      "path": "src/ia_propia/conversation/runtime.py",
+      "sha256": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed"
+    },
+    "scoring.py": {
+      "bytes": 3507,
+      "path": "src/ia_propia/conversation/scoring.py",
+      "sha256": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933"
+    },
+    "shared_pilot_helpers": {
+      "bytes": 12436,
+      "path": "examples/run_conversation_pilot.py",
+      "sha256": "d9948fcea1a8582539998d013b47e0b8e1ef5706499f73f1111f967b1803a503"
+    },
+    "tokenizer.py": {
+      "bytes": 10126,
+      "path": "src/ia_propia/conversation/tokenizer.py",
+      "sha256": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066"
+    },
+    "training.py": {
+      "bytes": 93940,
+      "path": "src/ia_propia/conversation/training.py",
+      "sha256": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955"
+    }
+  },
+  "stageLatestSha256": "5b862a3caed1d7b5a13e0ad3dbb8ee069c086e6078180d376d4b3c6071123b8a",
+  "stageName": "language-2",
+  "status": {
+    "assistantTargets": "all_text_tokens",
+    "bestCheckpoint": "step-000002048-0abfc341a30449e1a005b55717fdc1d6",
+    "bestValidationNll": 2.143346329509529,
+    "cooperativeSignalInstalled": false,
+    "corpusFormat": "text",
+    "corpusSha256": "411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca",
+    "dataLoading": {
+      "cache": {
+        "identity": {
+          "contextLength": 2048,
+          "corpusSha256": "411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca",
+          "includeTest": false,
+          "objective": "causal_lm",
+          "partitionPolicy": "train_validation_only",
+          "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+          "vocabSize": 2048,
+          "windowEncoding": "little-endian-int32-inputs-labels-v1",
+          "windowPolicy": "contiguous_nonoverlapping"
+        },
+        "schemaVersion": 1,
+        "splits": {
+          "test": {
+            "count": 0,
+            "data": {
+              "bytes": 0,
+              "name": "test.windows.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "index": {
+              "bytes": 0,
+              "name": "test.index.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "train": {
+            "count": 5513,
+            "data": {
+              "bytes": 6121384,
+              "name": "train.windows.bin",
+              "sha256": "bf7ae2749c2d07229f1c3b47be2ee725192a959dae3bc1c88fa9b20ff64f09d8"
+            },
+            "index": {
+              "bytes": 88208,
+              "name": "train.index.bin",
+              "sha256": "4b723cb86cc63244bc4629b93e3eee83ea6fd9963dfb01c0a9531b1c9d86cfef"
+            }
+          },
+          "validation": {
+            "count": 540,
+            "data": {
+              "bytes": 611000,
+              "name": "validation.windows.bin",
+              "sha256": "1aeda7c346ee17d291ed4912d9c0548a5ffc866684aa8cbd765eb9399407244f"
+            },
+            "index": {
+              "bytes": 8640,
+              "name": "validation.index.bin",
+              "sha256": "7ea7e92df4febf726461a163a9f883d9825148d6d34857362121892e7445e369"
+            }
+          }
+        }
+      },
+      "mode": "mmap"
+    },
+    "elapsedSeconds": 486.66538323400164,
+    "environmentLifetimeGuaranteed": false,
+    "epoch": 0,
+    "experimental": true,
+    "heartbeatAt": 1791889862.5508382,
+    "lastCheckpoint": "step-000002048-9e40b66d64a4496ca0b17d5743a81681",
+    "lineage": {
+      "parentCorpusSha256": "81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81",
+      "parentModelId": "unidad-conversation-a8c25b012d4cbf1da6b818983dc424ec219b93b7793115bb5d6474d8ef3087f8",
+      "parentWeightsSha256": "b8856eed20322b4c0011b274fe582a3b9ff6b1ab57d874cb300420a617b5dc69",
+      "rootOrigin": "random_weights"
+    },
+    "lossReduction": "token_mean",
+    "optimizerReset": true,
+    "partitionPolicy": "train_validation_only",
+    "pid": 26737,
+    "processBirth": "3273905",
+    "projectionMode": "supervised",
+    "reason": "signal",
+    "schedulerReset": true,
+    "schemaVersion": 1,
+    "status": "stopped",
+    "step": 2048,
+    "testPartitionPresent": false,
+    "trainPrecision": "cpu_bfloat16",
+    "trainableParameters": {
+      "frozenParameterCount": 0,
+      "frozenTensorNames": [],
+      "policy": "all",
+      "trainableParameterCount": 15769344,
+      "trainableTensorNames": [
+        "blocks.0.attention.projection.bias",
+        "blocks.0.attention.projection.weight",
+        "blocks.0.attention.qkv.bias",
+        "blocks.0.attention.qkv.weight",
+        "blocks.0.attention_norm.bias",
+        "blocks.0.attention_norm.weight",
+        "blocks.0.feedforward.0.bias",
+        "blocks.0.feedforward.0.weight",
+        "blocks.0.feedforward.2.bias",
+        "blocks.0.feedforward.2.weight",
+        "blocks.0.feedforward_norm.bias",
+        "blocks.0.feedforward_norm.weight",
+        "blocks.1.attention.projection.bias",
+        "blocks.1.attention.projection.weight",
+        "blocks.1.attention.qkv.bias",
+        "blocks.1.attention.qkv.weight",
+        "blocks.1.attention_norm.bias",
+        "blocks.1.attention_norm.weight",
+        "blocks.1.feedforward.0.bias",
+        "blocks.1.feedforward.0.weight",
+        "blocks.1.feedforward.2.bias",
+        "blocks.1.feedforward.2.weight",
+        "blocks.1.feedforward_norm.bias",
+        "blocks.1.feedforward_norm.weight",
+        "blocks.2.attention.projection.bias",
+        "blocks.2.attention.projection.weight",
+        "blocks.2.attention.qkv.bias",
+        "blocks.2.attention.qkv.weight",
+        "blocks.2.attention_norm.bias",
+        "blocks.2.attention_norm.weight",
+        "blocks.2.feedforward.0.bias",
+        "blocks.2.feedforward.0.weight",
+        "blocks.2.feedforward.2.bias",
+        "blocks.2.feedforward.2.weight",
+        "blocks.2.feedforward_norm.bias",
+        "blocks.2.feedforward_norm.weight",
+        "blocks.3.attention.projection.bias",
+        "blocks.3.attention.projection.weight",
+        "blocks.3.attention.qkv.bias",
+        "blocks.3.attention.qkv.weight",
+        "blocks.3.attention_norm.bias",
+        "blocks.3.attention_norm.weight",
+        "blocks.3.feedforward.0.bias",
+        "blocks.3.feedforward.0.weight",
+        "blocks.3.feedforward.2.bias",
+        "blocks.3.feedforward.2.weight",
+        "blocks.3.feedforward_norm.bias",
+        "blocks.3.feedforward_norm.weight",
+        "blocks.4.attention.projection.bias",
+        "blocks.4.attention.projection.weight",
+        "blocks.4.attention.qkv.bias",
+        "blocks.4.attention.qkv.weight",
+        "blocks.4.attention_norm.bias",
+        "blocks.4.attention_norm.weight",
+        "blocks.4.feedforward.0.bias",
+        "blocks.4.feedforward.0.weight",
+        "blocks.4.feedforward.2.bias",
+        "blocks.4.feedforward.2.weight",
+        "blocks.4.feedforward_norm.bias",
+        "blocks.4.feedforward_norm.weight",
+        "blocks.5.attention.projection.bias",
+        "blocks.5.attention.projection.weight",
+        "blocks.5.attention.qkv.bias",
+        "blocks.5.attention.qkv.weight",
+        "blocks.5.attention_norm.bias",
+        "blocks.5.attention_norm.weight",
+        "blocks.5.feedforward.0.bias",
+        "blocks.5.feedforward.0.weight",
+        "blocks.5.feedforward.2.bias",
+        "blocks.5.feedforward.2.weight",
+        "blocks.5.feedforward_norm.bias",
+        "blocks.5.feedforward_norm.weight",
+        "blocks.6.attention.projection.bias",
+        "blocks.6.attention.projection.weight",
+        "blocks.6.attention.qkv.bias",
+        "blocks.6.attention.qkv.weight",
+        "blocks.6.attention_norm.bias",
+        "blocks.6.attention_norm.weight",
+        "blocks.6.feedforward.0.bias",
+        "blocks.6.feedforward.0.weight",
+        "blocks.6.feedforward.2.bias",
+        "blocks.6.feedforward.2.weight",
+        "blocks.6.feedforward_norm.bias",
+        "blocks.6.feedforward_norm.weight",
+        "blocks.7.attention.projection.bias",
+        "blocks.7.attention.projection.weight",
+        "blocks.7.attention.qkv.bias",
+        "blocks.7.attention.qkv.weight",
+        "blocks.7.attention_norm.bias",
+        "blocks.7.attention_norm.weight",
+        "blocks.7.feedforward.0.bias",
+        "blocks.7.feedforward.0.weight",
+        "blocks.7.feedforward.2.bias",
+        "blocks.7.feedforward.2.weight",
+        "blocks.7.feedforward_norm.bias",
+        "blocks.7.feedforward_norm.weight",
+        "final_norm.bias",
+        "final_norm.weight",
+        "position_embedding.weight",
+        "token_embedding.weight"
+      ]
+    },
+    "trainedFrom": "own_checkpoint",
+    "trainingMicrobatch": {
+      "checkpointBoundary": "completed_logical_batch",
+      "gradientClipping": "once_after_all_microbatches",
+      "logicalBatchSize": 2,
+      "lossReduction": "token_mean",
+      "maxMicroBatchSize": 1,
+      "optimizerStepsUnit": "logical_batch"
+    },
+    "trainingObjective": "causal_lm"
+  },
+  "statusSha256": "baafa38fa00a9fb7d2458f097732c5fca653318bed187c1abbde549f6305ffa3",
+  "targetExposureReceiptPath": "docs/learning-repair-20261013/wide-latam-v3-language-2-final-target-exposure.json",
+  "targetExposureReceiptSha256": "56a055b6d8c4f9106174dd29e2b7911340ef3fa5a8b019157301edaf52809259",
+  "terminalElapsedSeconds": 486.66538323400164,
+  "testEvaluated": false,
+  "timeAccounting": {
+    "configuredNativeMaxSeconds": 1800,
+    "hardWallLimitNeverExceededClaimed": false,
+    "interpretation": "Native signal/absolute-step stop, not a total-time-budget result. Time thresholds are cooperative; validation/save/export work can overshoot. This stage observed elapsed time remained below its 1800-second threshold.",
+    "observedSecondsAboveThreshold": 0,
+    "runnerBudgetSeconds": 1800.0,
+    "stopIsCooperative": true
+  },
+  "trainableParameterCount": 15769344,
+  "trainingConfig": {
+    "batch_size": 2,
+    "checkpoint_every": 128,
+    "data_loading": "mmap",
+    "grad_clip": 1.0,
+    "learning_rate": 0.00015,
+    "learning_rate_schedule": {
+      "decay_steps": 2048,
+      "min_lr_ratio": 0.1,
+      "type": "cosine"
+    },
+    "loss_reduction": "token_mean",
+    "max_epochs": 2,
+    "max_seconds": 1800,
+    "max_steps": 2048,
+    "micro_batch_size": 1,
+    "min_delta": 0.0001,
+    "objective": "causal_lm",
+    "partition_policy": "train_validation_only",
+    "patience": 8,
+    "projection_mode": "supervised",
+    "seed": 20261013,
+    "torch_threads": 4,
+    "train_precision": "cpu_bfloat16",
+    "trainable_parameters": "all",
+    "validation_every": 256,
+    "warmup_steps": 32,
+    "weight_decay": 0.01,
+    "window_policy": "contiguous_nonoverlapping"
+  }
+}

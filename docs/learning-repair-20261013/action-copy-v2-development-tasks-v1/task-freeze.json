@@ -1,0 +1,169 @@
+{
+  "acceptance": "DEV only; not fresh conversation or production acceptance",
+  "atUtc": "2026-10-13T11:49:03.088796+00:00",
+  "author_AI": true,
+  "budgets": {
+    "cpuCount": 1,
+    "diskMiB": 512,
+    "globalSeconds": 600,
+    "network": "localhost authenticated API only",
+    "rssMiB": 6144,
+    "taskInvocationSeconds": 150
+  },
+  "candidateSelection": "Native validation-selected BEST256 fixed before these tasks or responses",
+  "exactBasenameGoalFamilyAndWorldOverlap": false,
+  "excludeExaminedTasksFromFutureTraining": true,
+  "helperSha256": "1d0ef00589af518b2013cf73a51fc5730170b03972eab213795ca1f27cf30362",
+  "independentHumanReview": false,
+  "kind": "pre-generation-fixed-candidate-new-development-task-freeze",
+  "modelGenerationExecuted": false,
+  "models": {
+    "control": {
+      "files": {
+        "config.json": {
+          "bytes": 129,
+          "sha256": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2"
+        },
+        "manifest.json": {
+          "bytes": 7275,
+          "sha256": "380562ba2e3e272f75f920559c1e781a089acf9d013c2a71c7658d22629c4b3e"
+        },
+        "tokenizer.json": {
+          "bytes": 49502,
+          "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+        },
+        "weights.safetensors": {
+          "bytes": 63087256,
+          "sha256": "141da0470598094d9817794743ca1ba38366fe125d4811725f1b520538c22b5d"
+        }
+      },
+      "modelId": "unidad-conversation-734c92f9440d2d03bf1a6372e74335818e8ed65f00b69b24c2038d0ffffc0ac5",
+      "path": "models/learning-repair-20261013/autonomy/action-copy-v2-control-final-best256"
+    },
+    "treatment": {
+      "files": {
+        "config.json": {
+          "bytes": 129,
+          "sha256": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2"
+        },
+        "manifest.json": {
+          "bytes": 7274,
+          "sha256": "8ae73c2f6985f9cc39293950241084e09ac1cb20ecec6c23b3c6e341cfc9ed84"
+        },
+        "tokenizer.json": {
+          "bytes": 49502,
+          "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+        },
+        "weights.safetensors": {
+          "bytes": 63087256,
+          "sha256": "dcd07d43424e906fe2d97c4a2ba31649490707240b1ac8b012ccbb179d019bc9"
+        }
+      },
+      "modelId": "unidad-conversation-e70ea28e8d5dfb07481bcf966058f022ed3eebd392fc4afe773102a6e2e88088",
+      "path": "models/learning-repair-20261013/autonomy/action-copy-v2-treatment-final-best256"
+    }
+  },
+  "options": {
+    "max_argument_repairs": 0,
+    "max_failures": 2,
+    "max_new_tokens": 128,
+    "max_seconds": 90,
+    "max_steps": 8,
+    "seed": 42,
+    "temperature": 0
+  },
+  "originalConservationAloneIsSuccess": false,
+  "previousSplitCountsRead": {
+    "examples/learning-repair-20261013/autonomy-action-copy-v2/autonomy-action-copy.train-validation.jsonl": {
+      "train": 192,
+      "validation": 24
+    },
+    "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl": {
+      "train": 192,
+      "validation": 24
+    }
+  },
+  "previousTrainingValidationCorpora": {
+    "examples/learning-repair-20261013/autonomy-action-copy-v2/autonomy-action-copy.train-validation.jsonl": "33ba6224255dea9549f2d1640390c87d941267dcf136ef90903f52945f7926b0",
+    "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396"
+  },
+  "schemaVersion": 1,
+  "sourceFilesSha256": {
+    "src/ia_propia/brain/autonomy.py": "1e28d88dbaf32ac11ffcccc1ed27bc076f2d674e686a8e892e93f73cf0661f1c",
+    "src/ia_propia/brain/autonomy_model.py": "c414c81d0c71e5733d8333298067451056360cf219bafdf33df1a5856032f085",
+    "src/ia_propia/brain/core.py": "831c499c25c7c4edb935b3ab2da11fdb133677cce245bb6235289625c96d870e",
+    "src/ia_propia/brain/file_tools.py": "78453e3819aa77bef968d478931f387b5185646fed9d10b3f3cf722b801f285d",
+    "src/ia_propia/brain/http.py": "c53157376d008adde89ec6da397f5f61edd9372059dfa2cc3a3330811c4b8641",
+    "src/ia_propia/conversation/model.py": "375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d",
+    "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "src/ia_propia/conversation/tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066"
+  },
+  "successCriteria": [
+    "Own-model source and raw proposals",
+    "Host current-task verified report at exact requested basename",
+    "Task status completed",
+    "Original bytes unchanged",
+    "Explicit task follows committed tool order when requested",
+    "No argument repair, fixture fallback, action substitution or decoding filter"
+  ],
+  "tasks": [
+    {
+      "family": "development-new-world:Zelvoria",
+      "filenameBpeLengths": {
+        "cobre claro.csv": 8,
+        "cotejo-lago.json": 9,
+        "letra tenue.md": 7
+      },
+      "files": {
+        "cobre claro.csv": "sector,unidades\nZelvoria,17\n",
+        "letra tenue.md": "# Zelvoria\nMaterial ficticio: 23 unidades.\n"
+      },
+      "goal": "Analiza las fuentes registradas y guarda un informe verificable sin cambiarlas.",
+      "goalStyle": "brief-natural-generic",
+      "id": "generic-material-review",
+      "inputSha256": {
+        "cobre claro.csv": "23064fa6c09ea59544258373f046b241c5ef1ba836e768d389bc62234fd16aec",
+        "letra tenue.md": "f0d4b1bc8942eb3487888c9291f69187cf1d3a57f59ff7d5607d2ff3c025ac95"
+      },
+      "report": "cotejo-lago.json",
+      "requiredCommittedToolSequence": null,
+      "world": "Zelvoria"
+    },
+    {
+      "family": "development-new-world:Orsental",
+      "filenameBpeLengths": {
+        "nota-faro.json": 9,
+        "pauta violeta.md": 9,
+        "turno blanco.txt": 9
+      },
+      "files": {
+        "pauta violeta.md": "# Orsental\nInventario ficticio: 31 unidades.\n",
+        "turno blanco.txt": "Sector ficticio Orsental: lote de 29 unidades.\n"
+      },
+      "goal": "Inspecciona primero «turno blanco.txt», lee después «pauta violeta.md» y guarda «nota-faro.json» sin alterar las entradas.",
+      "goalStyle": "explicit-tool-order",
+      "id": "ordered-archive-review",
+      "inputSha256": {
+        "pauta violeta.md": "df25a391f8cff0e3df955898b41b9c96984824d2ecc8deb73a7cc93d7babf87d",
+        "turno blanco.txt": "3bf4d293068b5f8534c0e4ce74cd7bf37266a440ea04cc6265d65a9a27a9266b"
+      },
+      "report": "nota-faro.json",
+      "requiredCommittedToolSequence": [
+        {
+          "filename": "turno blanco.txt",
+          "tool": "inspect_file"
+        },
+        {
+          "filename": "pauta violeta.md",
+          "tool": "read_file"
+        },
+        {
+          "filename": "nota-faro.json",
+          "tool": "save_report"
+        }
+      ],
+      "world": "Orsental"
+    }
+  ],
+  "testOrReservedConversationRead": false
+}

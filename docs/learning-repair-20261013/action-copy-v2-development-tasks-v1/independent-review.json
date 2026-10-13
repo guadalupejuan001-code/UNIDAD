@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T11:59:50.327697+00:00",
+  "reviewer": "Codex project AI /root/autonomy_review",
+  "reviewerType": "project_ai",
+  "independentHumanReview": false,
+  "sourceReferences": [
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/task-freeze.json",
+      "sha256": "313b7fb89d31273b3de191ecc079fd7e98b5c287070d43ad55c422233877da76"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/summary.json",
+      "sha256": "f100cd95c8fb62c28e409412619706cbca0e7ac234975e08d413b5a75a5b41f9"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/manifest.json",
+      "sha256": "3146f1b5316c7f0a3d8da7aa5321bae6499f0dd9add32e691766934c09460ec8"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/future-training-exclusions.json",
+      "sha256": "3edf3a11b60dea59e1c6b337df9ffe491432a93adeb6c7427434f3be03b3dbef"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/replay-preparation-verification.json",
+      "sha256": "6e86461eeda95cb631c5f7f4d1e0004b89f271bfdd36522671315567dd2e0a7c"
+    },
+    {
+      "path": "examples/compare_action_copy_candidates.py",
+      "sha256": "1d0ef00589af518b2013cf73a51fc5730170b03972eab213795ca1f27cf30362"
+    },
+    {
+      "path": "models/learning-repair-20261013/autonomy/action-copy-v2-control-final-best256/manifest.json",
+      "sha256": "380562ba2e3e272f75f920559c1e781a089acf9d013c2a71c7658d22629c4b3e"
+    },
+    {
+      "path": "models/learning-repair-20261013/autonomy/action-copy-v2-treatment-final-best256/manifest.json",
+      "sha256": "8ae73c2f6985f9cc39293950241084e09ac1cb20ecec6c23b3c6e341cfc9ed84"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/treatment/generic-material-review/evidence.json",
+      "sha256": "b71677d1e38ae1a6ca88ca35962c6c5bbc42d761303d784232675175a1c9c02c"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/control/generic-material-review/evidence.json",
+      "sha256": "557a1fe18c6388786e7d1df182d62e548b1ed778e59a420d027011a0b37d64e7"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/treatment/ordered-archive-review/evidence.json",
+      "sha256": "fd615c2437a8cdeb8e39e0aa6008563ddbb6efa81663a941414c201ecd16c421"
+    },
+    {
+      "path": "docs/learning-repair-20261013/action-copy-v2-development-tasks-v1/control/ordered-archive-review/evidence.json",
+      "sha256": "a68ad2d86225f2213aee84b5d2632f6609cc3c54fe67c28624a6dbeb088f8f2a"
+    }
+  ],
+  "verdict": "Four failures independently supported; treatment0/2 and control0/2; no blocking evidence discrepancy.",
+  "results": [
+    {
+      "arm": "treatment",
+      "caseId": "generic-material-review",
+      "status": "blocked_policy",
+      "success": false,
+      "effectsStarted": 0,
+      "committedToolCount": 0,
+      "ownReportPresent": false,
+      "explicitToolOrderMet": true,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"cogo.csv\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "generatedTokens": 64,
+          "stopReason": "eos"
+        }
+      ]
+    },
+    {
+      "arm": "control",
+      "caseId": "generic-material-review",
+      "status": "blocked_policy",
+      "success": false,
+      "effectsStarted": 0,
+      "committedToolCount": 0,
+      "ownReportPresent": false,
+      "explicitToolOrderMet": true,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"co.txt\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "generatedTokens": 63,
+          "stopReason": "eos"
+        }
+      ]
+    },
+    {
+      "arm": "treatment",
+      "caseId": "ordered-archive-review",
+      "status": "blocked_model",
+      "success": false,
+      "effectsStarted": 0,
+      "committedToolCount": 0,
+      "ownReportPresent": false,
+      "explicitToolOrderMet": false,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"read_file\",\"arguments\":{\"filename\":\"pauta-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa-pa",
+          "valid": false,
+          "generatedTokens": 128,
+          "stopReason": "token_budget"
+        }
+      ]
+    },
+    {
+      "arm": "control",
+      "caseId": "ordered-archive-review",
+      "status": "blocked_policy",
+      "success": false,
+      "effectsStarted": 0,
+      "committedToolCount": 0,
+      "ownReportPresent": false,
+      "explicitToolOrderMet": false,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"pau.txt\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "generatedTokens": 64,
+          "stopReason": "eos"
+        }
+      ]
+    }
+  ],
+  "candidateLineage": {
+    "control": {
+      "modelId": "unidad-conversation-734c92f9440d2d03bf1a6372e74335818e8ed65f00b69b24c2038d0ffffc0ac5",
+      "selectedStep": 256,
+      "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+      "parentWeightsSha256": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1"
+    },
+    "treatment": {
+      "modelId": "unidad-conversation-e70ea28e8d5dfb07481bcf966058f022ed3eebd392fc4afe773102a6e2e88088",
+      "selectedStep": 256,
+      "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+      "parentWeightsSha256": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1"
+    }
+  },
+  "checks": {
+    "frozenBeforeAllTaskStarts": true,
+    "rawReplyEqualsJournalWithoutAlteration": true,
+    "samePerTaskPromptsAndGenerationBetweenArms": true,
+    "nativeGeneratedTokenCountsRecordedConsistently": true,
+    "persistedActualApiStatusMatchesFinalTask": true,
+    "successRequiresExactHostReportAndCurrentTaskVerificationAndCompletedStatus": true,
+    "explicitOrderCheckedIndependently": true,
+    "originalConservationNotCountedAsSuccess": true,
+    "noOwnReportsOrToolEffects": true,
+    "noFallbackSubstitutionRepairOrFilter": true,
+    "noCredentialFieldsOrAbsoluteWorkspacePathInEvidence": true,
+    "fictionalFrozenInputWorldsOnly": true,
+    "sourcePinsStillMatch": {
+      "src/ia_propia/brain/autonomy.py": true,
+      "src/ia_propia/brain/autonomy_model.py": true,
+      "src/ia_propia/brain/core.py": true,
+      "src/ia_propia/brain/file_tools.py": true,
+      "src/ia_propia/brain/http.py": true,
+      "src/ia_propia/conversation/model.py": true,
+      "src/ia_propia/conversation/runtime.py": true,
+      "src/ia_propia/conversation/tokenizer.py": true
+    },
+    "modelManifestPinsAndSameOwnParent": true,
+    "exactNewBasenamesGoalsFamilyWorldAbsentFromBothActionTRAINAndVAL": true
+  },
+  "nonBlockingFinding": {
+    "severity": "low",
+    "file": "examples/compare_action_copy_candidates.py",
+    "line": 269,
+    "detail": "Frozen helper checks argument_repair_requested, whereas controller emits argument_repair_allowed. This redundant guard has the wrong event spelling. It does not affect these four results: frozen max_argument_repairs=0, persisted counters0 and independent inspection finds no argument_repair event. Preserve historical helper and correct only a future version if reused."
+  },
+  "disagreements": [],
+  "limits": [
+    "Two newly frozen but now exposed operational DEV tasks; no reserved or conversational/production acceptance.",
+    "Exact overlap check covers the two recorded action TRAIN/VAL corpora; it does not prove semantic disjointness from every prior source or domain.",
+    "Helper is a frozen historical audit tied to source/model/corpus pins and private freeze state; direct fresh-clone replay is not claimed. The separate replay-preparation receipt validates isolated workspace preparation without inference.",
+    "This review checks archived raw/effect/status evidence; it does not reload weights, generate, train or re-execute tools."
+  ],
+  "conclusion": "Both arms fail before a committed tool result or own report. Treatment proposes cogo.csv on the generic task and malformed repetitive read_file JSON at128 tokens on the ordered task; control proposes co.txt and pau.txt, each denied outside the whitelist. No task-order/report/current-task/completed criterion is met, and unchanged inputs alone confer no success. These results do not extend the earlier single dos.txt inspection into operational generalization or learned planning."
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T11:40:06.257020+00:00",
+  "reviewer": "Codex project AI /root/autonomy_review",
+  "reviewerType": "project_ai",
+  "independentHumanReview": false,
+  "scope": "Read-only review of matched exposed operational DEV receipt and its three source evidence packets; no weight loading, generation, training or tests. Only this new review artifact is written.",
+  "sourceReferences": [
+    {
+      "path": "docs/learning-repair-20261013/autonomy-action-copy-v2-real-matched-development.json",
+      "sha256": "69f99163a165ae820f2f0c689b7aa2902e51727b4c62b5ea0368b6b0a046aae5"
+    },
+    {
+      "path": "docs/learning-repair-20261013/autonomy-demonstration/action256-own-v1/evidence.json",
+      "sha256": "ef2fa9da8ece2b9550cf59521a8369ae46ea21cedae2fff82eac19b8d7270789"
+    },
+    {
+      "path": "docs/learning-repair-20261013/autonomy-demonstration/action-copy-v2-treatment-own-v1/evidence.json",
+      "sha256": "d4a6c742f05a517240712476dec1e277b0569e8fe3ebd5738199fafb3f143d52"
+    },
+    {
+      "path": "docs/learning-repair-20261013/autonomy-demonstration/action-copy-v2-control-own-v1/evidence.json",
+      "sha256": "9640e3c831658aa65c688fdcd080f39403f75c409c13478eb77c65c7b21a7836"
+    },
+    {
+      "path": "examples/learning-repair-20261013/autonomy-action-copy-v2/cycle-for-existing-live-workspace.json",
+      "sha256": "dcdf0ee411e376a4566c2fc7fb0f08f99491cd816112f8cc286329a41664be2c"
+    },
+    {
+      "path": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/treatment/status.json",
+      "sha256": "dcf82530dacfafb316f360af97af5b70559cfd627e3888b6d3afe95ba68eaa0a"
+    },
+    {
+      "path": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/treatment/stage-design.json",
+      "sha256": "165450ac4dffc544d8b0ea635f5bd44220c135dd569f4da7dc82a7d9ffdc7238"
+    },
+    {
+      "path": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/control/status.json",
+      "sha256": "b585a3723b80d5f89cabb06e234bdac92443b17add554991678a99b276da1d4b"
+    },
+    {
+      "path": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/control/stage-design.json",
+      "sha256": "e40daa215066c3e17a486034af6a36f1c45860e1d1d8deb8273f4c4491a2e15c"
+    }
+  ],
+  "verdict": "Supported limited DEV finding; no blocking discrepancy found",
+  "disagreements": [],
+  "models": [
+    {
+      "name": "action256-own-v1",
+      "modelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+      "status": "blocked_policy",
+      "rawProposals": 1,
+      "effectsStarted": 0,
+      "verifiedRealResults": 0,
+      "ownReportPresent": false
+    },
+    {
+      "name": "action-copy-v2-treatment-own-v1",
+      "modelId": "unidad-conversation-e70ea28e8d5dfb07481bcf966058f022ed3eebd392fc4afe773102a6e2e88088",
+      "status": "blocked_model",
+      "rawProposals": 2,
+      "effectsStarted": 1,
+      "verifiedRealResults": 1,
+      "ownReportPresent": false
+    },
+    {
+      "name": "action-copy-v2-control-own-v1",
+      "modelId": "unidad-conversation-734c92f9440d2d03bf1a6372e74335818e8ed65f00b69b24c2038d0ffffc0ac5",
+      "status": "blocked_policy",
+      "rawProposals": 1,
+      "effectsStarted": 0,
+      "verifiedRealResults": 0,
+      "ownReportPresent": false
+    }
+  ],
+  "matchedTraining": {
+    "arms": [
+      {
+        "arm": "treatment",
+        "actualUpdates": 256,
+        "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+        "parentWeightsSha256": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1",
+        "optimizerReset": true,
+        "recordSplits": {
+          "test": 0,
+          "train": 192,
+          "validation": 24
+        },
+        "batchSize": 2,
+        "corpusSha256": "33ba6224255dea9549f2d1640390c87d941267dcf136ef90903f52945f7926b0"
+      },
+      {
+        "arm": "control",
+        "actualUpdates": 256,
+        "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+        "parentWeightsSha256": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1",
+        "optimizerReset": true,
+        "recordSplits": {
+          "test": 0,
+          "train": 192,
+          "validation": 24
+        },
+        "batchSize": 2,
+        "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396"
+      }
+    ],
+    "interpretation": "Both new arms completed 256 updates, batch size2, equal192 TRAIN/24 VAL encoded example counts, fresh optimizer/scheduler and identical pinned own parent. Different texts/corpora imply different token exposure; no claim of equal token budget or comparable validation NLL."
+  },
+  "checks": {
+    "sourceEvidenceHashesMatch": true,
+    "rawProposalEqualsRecordedEngineReplyAndReceipt": true,
+    "firstSystemAndUserMessagesAndGenerationExactlyMatch": true,
+    "firstUserContextSha256": "ec92d718bd018a588556c2aa4a2b9acf2ad90f120adcbac354e74bccf667cfc3",
+    "sameNormalizedControllerLimitsIncludingDefaultZeroRepairs": true,
+    "allProposalContextLength2048NoDiscard": true,
+    "originalHashesBeforeAfterIdenticalAcrossArms": true,
+    "noCredentialFieldsInSourcePackets": true,
+    "fictionalSourceContentNotCreatorPersonalHistory": true,
+    "fixtureCompletionAndCancellationExplicitlySeparatedFromOwnModel": true,
+    "ownReportOrOwnTaskCompletionClaimAbsent": true,
+    "fallbackOrGrammarRepairClaimAbsentAndRawMalformedOutputRetained": true
+  },
+  "conclusion": "V2 treatment chooses the registered dos.txt, produces one real verified inspection receipt, then stops on malformed raw JSON after128 generated tokens. Parent chooses k.txt and control v.txt; both are denied before any effect. Only the declared controller fixture creates informe.json; no own model creates modelo.json or completes the task. The fixture cancellation remains software evidence. This one exposed task supports partial input/action grounding, not complete operational autonomy, conversation acceptance or learned planning. No inference from loss, new capabilities or generalization is made.",
+  "limitations": [
+    "Raw-reply equality and effect receipts are internally consistent archived evidence; this review does not replay generation or independently re-execute filesystem effects.",
+    "The task is already exposed DEV and one matched example; it is not a fresh final acceptance.",
+    "Differences in wall time are confounded by concurrent evaluation and are not compared."
+  ]
+}

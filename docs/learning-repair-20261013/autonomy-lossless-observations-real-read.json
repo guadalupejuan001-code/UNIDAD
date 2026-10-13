@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T11:32:33.157324+00:00",
+  "scope": "Real read_file plus declared adapter engine fixture; no model weights loaded",
+  "fixtureOrigin": "test_fixture",
+  "learnedPlanningProven": false,
+  "trainingExecuted": false,
+  "originalFile": "src/ia_propia/conversation/contract.py",
+  "originalSha256BeforeAndAfter": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+  "actualToolRead": true,
+  "actualReadVerification": {
+    "verified": true,
+    "result": {
+      "filename": "contract.py",
+      "size_bytes": 710,
+      "sha256": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+      "statistics": {
+        "lines": 17,
+        "utf8": true,
+        "characters": 709,
+        "words": 91
+      },
+      "encoding": "utf-8",
+      "content": "\"\"\"Pure conversation constants shared by ingestion, inference and adapters.\"\"\"\n\nSPECIAL_TOKENS = (\"<pad>\", \"<bos>\", \"<eos>\", \"<system>\", \"<user>\", \"<assistant>\")\nPAD_ID, BOS_ID, EOS_ID, SYSTEM_ID, USER_ID, ASSISTANT_ID = range(6)\nROLE_IDS = {\"system\": SYSTEM_ID, \"user\": USER_ID, \"assistant\": ASSISTANT_ID}\nIGNORE_INDEX = -100\nMAX_MESSAGES = 64\nMAX_MESSAGE_BYTES = 16_384\nMAX_DIALOGUE_BYTES = 65_536\nDEFAULT_SYSTEM_PROMPT = (\n    \"Eres Unidad. Habla en español de forma cercana y de confianza. Relaciona lo que la persona ya ha compartido; \"\n    \"distingue tus inferencias de los hechos y no inventes recuerdos.\"\n)\nDEFAULT_MAX_NEW_TOKENS = 96\nDEFAULT_TEMPERATURE = 0.7\nDEFAULT_SEED = 42\nMAX_NEW_TOKENS = 1024\n"
+    }
+  },
+  "legacyPrompt": {
+    "exceptionType": "ConversationError",
+    "message": "Message text cannot contain reserved dialogue control tokens",
+    "generationCalls": 0
+  },
+  "fixedWire": {
+    "jsonDecodedValuesIdentical": true,
+    "roleTokenLiteralsQuoted": true,
+    "generationCalls": 1,
+    "promptTokens": 1496,
+    "discardedPromptTokens": 0,
+    "sha256": "5e9db0f79e7b68072c64109e80ed65c78dc8fbfb89356c31ba602a6d92860cdd",
+    "rawDeclaredFixtureReplyPreserved": true
+  },
+  "adapterSha256": "c414c81d0c71e5733d8333298067451056360cf219bafdf33df1a5856032f085",
+  "regressionTests": {
+    "file": "tests/test_autonomy_model_serialization.py",
+    "sha256": "70f1bcbe27faf47bd47569ab5f2c2e8709b79db1932319b6fecbf4730eff3197",
+    "count": 3,
+    "previousObservedPass": true
+  }
+}

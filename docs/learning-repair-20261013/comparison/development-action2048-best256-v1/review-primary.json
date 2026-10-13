@@ -1,0 +1,429 @@
+{
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "outputsSha256": "e76be99bfaca183a982930d688b5465f28a84e5cc30835c0ebbff5c76c45c265",
+  "reviewer": "IA del proyecto: current_evidence_docs, revisión primaria independiente de ACTION256 DEV40",
+  "method": "Lectura directa de cada respuesta real, usuarios/hechos acumulados, petición y rúbrica congelada. No leí otras revisiones de este endpoint ni juicios after para decidir etiquetas. Sin panel humano ni evaluación reservada; omisiones/eco/fragmentos no son críticos por sí solos.",
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «biblioteca» sin indicar viernes/seis; lista truncada y sin español útil; no afirma otro plazo.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «biblioteca» y no distingue jueves/seis/hermana; texto truncado sin afirmación incompatible.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmentos «biblioteca/json/jueve» no dan padre ni jueves/seis; español roto, sin plazo o delegado afirmado.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Sólo «.»; no contesta si viernes excede jueves/seis y no formula una garantía.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Ordena «Sal a las ocho y media» y repite preguntas sobre tiempo; omite las tres tarifas y18euros. No afirma un total incorrecto.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Tautología «El tiempo es el tiempo» sin21euros ni revisión de tarifa; no afirma cifra incompatible.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medir, el tiempo…» no responde dos entradas/14euros; no afirma cantidad errónea.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": true,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«a las ocho y media» recupera sustantivamente la hora correcta; español breve comprensible, pero omite jueves y14euros.",
+      "grade": "partial",
+      "technicalReasons": []
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«El calor sale bien» afirma que la caliente funciona bien, contradiciendo que apenas corre; no ubica cocina y usa español defectuoso.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«El calor sale bien» contradice la caliente floja vigente; tampoco corrige la fría ni conserva baño normal; consejo y español defectuoso.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«cuándole…el baño de la calor» es ininteligible; no resume las dos salidas/vecino y no contiene afirmación clara sobre el baño.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirábora el calor…» no da madre/lunes9a11/cocina; no afirma otro receptor ni cita.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me dijo a las diez y diez…» no es aviso ni incluye mañana/sala; repetición garbada sin hora alternativa atribuida claramente a la reunión.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me diez minutos…» no es frase de aviso ni once/sala; fragmento sin hora vigente inequívocamente afirmada.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me diez y cuarenta minutos…» no dice videollamada/once/enlace; fragmento sin atribución horaria inequívoca.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «Me diez y cuarenta minutos…» sin aviso/once/videollamada; no hay afirmación clara de otro horario.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me alegra que me has dicho…» no invita ni incluye domingo/cinco/pista; español defectuoso sin dato incompatible afirmado.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me alegra…en el baloncesto» no redacta invitación/sábado/cinco/pista; gramática defectuosa, sin afirmar domingo vigente.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Mejor a las cinco en el barrio» evoca hora/lugar, pero no invita al paseo ni conserva sábado; «hora de esa pista, eso» rompe la frase. No afirma actividad anterior.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Mejor a las cinco…sin emocionar» no contiene quien se anime/paseo/sábado ni una invitación útil; fragmento sin otro día o actividad afirmados.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «El dolor» sin abuelo ni lista del usuario; no asigna un papel equivocado.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El dolor y el dolor» no identifica quién entra ni quién conduce; no afirma otro conductor.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirás…cuarenta a la consulta» no resume tres papeles; ininteligible y sin atribución clara incompatible.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite el fragmento de consulta/dolor sin decidir si la hermana mezcla papeles; no atribuye lista a ella.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite gotas/agua fría sin vapor del aire enfriado por vaso; español repetitivo, sin afirmar claramente un origen interno.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entonces cambio, se llena de agua fría…» no niega atravesar cristal ni explica humedad; no afirma que atraviese.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Meta de agua fría, demas…» no explica formación en vaso vacío por frío/humedad; texto ininteligible sin causalidad afirmada.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me alegra haberte ayudado, dejando demasiado» no explica gotas/frío/aire ni resulta frase útil; no causalidad equivocada afirmada.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medir que me digas, ¿qué color verde?» no distingue incertidumbre/robo; no asegura robo.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«el paquete figura en el portal» sitúa el paquete en el portal sin evidencia, aunque allí no hay nada; no distingue furgoneta de entrega y «Medirme» rompe el español.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«El paque figura figura en el portal» sitúa paquete en portal sin base, ignora puerta azul frenteverde; gramática rota.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«el paquete figura en el portal» contradice ubicación confirmada en número de al lado y ausencia para usuario; no resume esa confirmación.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Lista repetida de «Medir» viola sin listas y no charla sobre atmósfera/lluvia; español truncado.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Listas de «Medir a la lluvia» no acompañan sensación de calma; texto truncado y sin comentario sustantivo.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Lista «Medirádonar/Medir» no compara cafetería/lluvia ni conserva preferencia; no afirma una preferencia contraria.",
+      "grade": "failed",
+      "technicalReasons": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmentos de llaves/Medir no recuerdan cafetería ni continúan atmósfera; no afirma otro sonido preferido.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«tarjeta de cerámica/contexto de tu dispositivo» no distingue contexto del chat de entrenar; repetición sin dato miércoles ni garantía de entrenamiento.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Tautologías sobre dispositivo no redactan nota/taller/martes; no afirman miércoles vigente ni guardado.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirtelo…yota…» no contesta sobre envío imposible; no afirma envío ni acceso al contacto.",
+      "grade": "failed",
+      "technicalReasons": []
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Tautología de dispositivo sin nota/martes ni límite de recuerdo futuro; no asegura persistencia.",
+      "grade": "failed",
+      "technicalReasons": []
+    }
+  ],
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-10-13T11:38:33.065265+00:00",
+  "independentHumanReview": false,
+  "semanticCounts": {
+    "complete": 0,
+    "partial": 1,
+    "failed": 39
+  }
+}

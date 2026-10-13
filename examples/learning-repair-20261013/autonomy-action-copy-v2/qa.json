@@ -1,0 +1,4177 @@
+{
+  "schemaVersion": 1,
+  "tokenAudit": {
+    "train": {
+      "recordCount": 192,
+      "contextLength": 2048,
+      "maxSequenceInputs": 1359,
+      "maxPromptTokens": 1260,
+      "targetTokensIncludingEos": 14888,
+      "supervisedEos": 192,
+      "eachFinalReplyTargetExactlyOnce": true,
+      "historicalAssistantTargetsIgnored": true,
+      "promptAndTargetFit": true,
+      "nativeEncoderPoliciesChecked": [
+        "contiguous_nonoverlapping",
+        "sliding_context"
+      ],
+      "torchLoaded": false,
+      "modelWeightsLoaded": false,
+      "testRowsRead": 0,
+      "stepTokenDistributions": {
+        "1": {
+          "promptTokens": {
+            "count": 64,
+            "min": 769,
+            "max": 787,
+            "median": 779,
+            "sum": 49842
+          },
+          "trainingInputTokens": {
+            "count": 64,
+            "min": 830,
+            "max": 857,
+            "median": 845,
+            "sum": 54071
+          }
+        },
+        "2": {
+          "promptTokens": {
+            "count": 64,
+            "min": 982,
+            "max": 1031,
+            "median": 995,
+            "sum": 64064
+          },
+          "trainingInputTokens": {
+            "count": 64,
+            "min": 1046,
+            "max": 1098,
+            "median": 1060,
+            "sum": 68290
+          }
+        },
+        "3": {
+          "promptTokens": {
+            "count": 64,
+            "min": 1186,
+            "max": 1260,
+            "median": 1224,
+            "sum": 78368
+          },
+          "trainingInputTokens": {
+            "count": 64,
+            "min": 1280,
+            "max": 1359,
+            "median": 1318,
+            "sum": 84609
+          }
+        }
+      },
+      "smallerContextControlAudit": [
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 771,
+          "discardedPromptTokens": 259,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 771,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 515,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 3,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1235,
+          "discardedPromptTokens": 723,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia11:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1235,
+          "discardedPromptTokens": 211,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 987,
+          "discardedPromptTokens": 475,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 987,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 738,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia12:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 226,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 986,
+          "discardedPromptTokens": 474,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 986,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1197,
+          "discardedPromptTokens": 685,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia13:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1197,
+          "discardedPromptTokens": 173,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 779,
+          "discardedPromptTokens": 267,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 779,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 995,
+          "discardedPromptTokens": 483,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 995,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 692,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia14:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 180,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 774,
+          "discardedPromptTokens": 262,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 774,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 515,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 3,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1236,
+          "discardedPromptTokens": 724,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia15:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1236,
+          "discardedPromptTokens": 212,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 987,
+          "discardedPromptTokens": 475,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 987,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1242,
+          "discardedPromptTokens": 730,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia16:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1242,
+          "discardedPromptTokens": 218,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 773,
+          "discardedPromptTokens": 261,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 773,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 982,
+          "discardedPromptTokens": 470,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 982,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1186,
+          "discardedPromptTokens": 674,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia17:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1186,
+          "discardedPromptTokens": 162,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 998,
+          "discardedPromptTokens": 486,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 998,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 692,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia18:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 180,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 769,
+          "discardedPromptTokens": 257,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 769,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1014,
+          "discardedPromptTokens": 502,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1014,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1224,
+          "discardedPromptTokens": 712,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia19:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1224,
+          "discardedPromptTokens": 200,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 986,
+          "discardedPromptTokens": 474,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 986,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 738,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia20:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 226,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 989,
+          "discardedPromptTokens": 477,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 989,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1201,
+          "discardedPromptTokens": 689,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia21:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1201,
+          "discardedPromptTokens": 177,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 787,
+          "discardedPromptTokens": 275,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 787,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1004,
+          "discardedPromptTokens": 492,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1004,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1213,
+          "discardedPromptTokens": 701,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia22:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1213,
+          "discardedPromptTokens": 189,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 776,
+          "discardedPromptTokens": 264,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 776,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1031,
+          "discardedPromptTokens": 519,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1031,
+          "discardedPromptTokens": 7,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 731,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia23:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 219,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 743,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia24:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 231,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 779,
+          "discardedPromptTokens": 267,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 779,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 990,
+          "discardedPromptTokens": 478,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 990,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1200,
+          "discardedPromptTokens": 688,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia25:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1200,
+          "discardedPromptTokens": 176,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 784,
+          "discardedPromptTokens": 272,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 784,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1003,
+          "discardedPromptTokens": 491,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1003,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1214,
+          "discardedPromptTokens": 702,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia26:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1214,
+          "discardedPromptTokens": 190,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 773,
+          "discardedPromptTokens": 261,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 773,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1026,
+          "discardedPromptTokens": 514,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1026,
+          "discardedPromptTokens": 2,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1240,
+          "discardedPromptTokens": 728,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia27:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1240,
+          "discardedPromptTokens": 216,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 738,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia28:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1250,
+          "discardedPromptTokens": 226,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1202,
+          "discardedPromptTokens": 690,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia29:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1202,
+          "discardedPromptTokens": 178,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 779,
+          "discardedPromptTokens": 267,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 779,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 990,
+          "discardedPromptTokens": 478,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 990,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 683,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia30:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 171,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 778,
+          "discardedPromptTokens": 266,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 778,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 518,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 6,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1244,
+          "discardedPromptTokens": 732,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia31:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1244,
+          "discardedPromptTokens": 220,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 988,
+          "discardedPromptTokens": 476,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 988,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1249,
+          "discardedPromptTokens": 737,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia32:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1249,
+          "discardedPromptTokens": 225,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 984,
+          "discardedPromptTokens": 472,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 984,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1197,
+          "discardedPromptTokens": 685,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia33:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1197,
+          "discardedPromptTokens": 173,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 786,
+          "discardedPromptTokens": 274,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 786,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 490,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1215,
+          "discardedPromptTokens": 703,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia34:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1215,
+          "discardedPromptTokens": 191,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 771,
+          "discardedPromptTokens": 259,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 771,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 515,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1027,
+          "discardedPromptTokens": 3,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1237,
+          "discardedPromptTokens": 725,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia35:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1237,
+          "discardedPromptTokens": 213,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 994,
+          "discardedPromptTokens": 482,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 994,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1258,
+          "discardedPromptTokens": 746,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia36:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1258,
+          "discardedPromptTokens": 234,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 991,
+          "discardedPromptTokens": 479,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 991,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1203,
+          "discardedPromptTokens": 691,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia37:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1203,
+          "discardedPromptTokens": 179,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 785,
+          "discardedPromptTokens": 273,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 785,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 490,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1209,
+          "discardedPromptTokens": 697,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia38:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1209,
+          "discardedPromptTokens": 185,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 776,
+          "discardedPromptTokens": 264,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 776,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 518,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 6,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 734,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia39:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 222,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 987,
+          "discardedPromptTokens": 475,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 987,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 735,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia40:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 223,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 988,
+          "discardedPromptTokens": 476,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 988,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 683,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia41:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 171,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 784,
+          "discardedPromptTokens": 272,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 784,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1005,
+          "discardedPromptTokens": 493,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1005,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1216,
+          "discardedPromptTokens": 704,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia42:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1216,
+          "discardedPromptTokens": 192,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1023,
+          "discardedPromptTokens": 511,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1023,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1234,
+          "discardedPromptTokens": 722,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia43:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1234,
+          "discardedPromptTokens": 210,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 989,
+          "discardedPromptTokens": 477,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 989,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 743,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia44:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 231,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 985,
+          "discardedPromptTokens": 473,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 985,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 683,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia45:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 171,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 785,
+          "discardedPromptTokens": 273,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 785,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 999,
+          "discardedPromptTokens": 487,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 999,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1211,
+          "discardedPromptTokens": 699,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia46:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1211,
+          "discardedPromptTokens": 187,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 776,
+          "discardedPromptTokens": 264,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 776,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 518,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 6,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 731,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia47:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 219,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 989,
+          "discardedPromptTokens": 477,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 989,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1252,
+          "discardedPromptTokens": 740,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia48:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1252,
+          "discardedPromptTokens": 228,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 779,
+          "discardedPromptTokens": 267,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 779,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 692,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia49:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1204,
+          "discardedPromptTokens": 180,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 784,
+          "discardedPromptTokens": 272,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 784,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1000,
+          "discardedPromptTokens": 488,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1000,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1210,
+          "discardedPromptTokens": 698,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia50:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1210,
+          "discardedPromptTokens": 186,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 771,
+          "discardedPromptTokens": 259,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 771,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1022,
+          "discardedPromptTokens": 510,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1022,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1234,
+          "discardedPromptTokens": 722,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia51:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1234,
+          "discardedPromptTokens": 210,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 996,
+          "discardedPromptTokens": 484,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 996,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1259,
+          "discardedPromptTokens": 747,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia52:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1259,
+          "discardedPromptTokens": 235,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 991,
+          "discardedPromptTokens": 479,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 991,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1198,
+          "discardedPromptTokens": 686,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia53:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1198,
+          "discardedPromptTokens": 174,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 785,
+          "discardedPromptTokens": 273,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 785,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1005,
+          "discardedPromptTokens": 493,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1005,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1214,
+          "discardedPromptTokens": 702,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia54:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1214,
+          "discardedPromptTokens": 190,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 778,
+          "discardedPromptTokens": 266,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 778,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1025,
+          "discardedPromptTokens": 513,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1025,
+          "discardedPromptTokens": 1,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1239,
+          "discardedPromptTokens": 727,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia55:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1239,
+          "discardedPromptTokens": 215,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 989,
+          "discardedPromptTokens": 477,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 989,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1251,
+          "discardedPromptTokens": 739,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia56:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1251,
+          "discardedPromptTokens": 227,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 983,
+          "discardedPromptTokens": 471,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 983,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 683,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia57:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 171,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 786,
+          "discardedPromptTokens": 274,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 786,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 490,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1002,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1216,
+          "discardedPromptTokens": 704,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia58:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1216,
+          "discardedPromptTokens": 192,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 773,
+          "discardedPromptTokens": 261,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 773,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1029,
+          "discardedPromptTokens": 517,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1029,
+          "discardedPromptTokens": 5,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1241,
+          "discardedPromptTokens": 729,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia59:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1241,
+          "discardedPromptTokens": 217,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 743,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia60:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1255,
+          "discardedPromptTokens": 231,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 988,
+          "discardedPromptTokens": 476,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 988,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1200,
+          "discardedPromptTokens": 688,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia61:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1200,
+          "discardedPromptTokens": 176,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 783,
+          "discardedPromptTokens": 271,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 783,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 998,
+          "discardedPromptTokens": 486,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 998,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1207,
+          "discardedPromptTokens": 695,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia62:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1207,
+          "discardedPromptTokens": 183,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 776,
+          "discardedPromptTokens": 264,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 776,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 518,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1030,
+          "discardedPromptTokens": 6,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 731,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia63:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1243,
+          "discardedPromptTokens": 219,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 988,
+          "discardedPromptTokens": 476,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 988,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 734,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia64:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 222,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 987,
+          "discardedPromptTokens": 475,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 987,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 683,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia65:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1195,
+          "discardedPromptTokens": 171,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 998,
+          "discardedPromptTokens": 486,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 998,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1207,
+          "discardedPromptTokens": 695,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia66:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1207,
+          "discardedPromptTokens": 183,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 773,
+          "discardedPromptTokens": 261,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 773,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1021,
+          "discardedPromptTokens": 509,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1021,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1233,
+          "discardedPromptTokens": 721,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia67:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1233,
+          "discardedPromptTokens": 209,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 991,
+          "discardedPromptTokens": 479,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 991,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1260,
+          "discardedPromptTokens": 748,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia68:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1260,
+          "discardedPromptTokens": 236,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 775,
+          "discardedPromptTokens": 263,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 775,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 988,
+          "discardedPromptTokens": 476,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 988,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1199,
+          "discardedPromptTokens": 687,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia69:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1199,
+          "discardedPromptTokens": 175,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 787,
+          "discardedPromptTokens": 275,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 787,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1003,
+          "discardedPromptTokens": 491,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1003,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1212,
+          "discardedPromptTokens": 700,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia70:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1212,
+          "discardedPromptTokens": 188,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 776,
+          "discardedPromptTokens": 264,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 776,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1031,
+          "discardedPromptTokens": 519,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1031,
+          "discardedPromptTokens": 7,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 735,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia71:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 223,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 780,
+          "discardedPromptTokens": 268,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 780,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 986,
+          "discardedPromptTokens": 474,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 986,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 734,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia72:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1246,
+          "discardedPromptTokens": 222,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 779,
+          "discardedPromptTokens": 267,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 779,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 990,
+          "discardedPromptTokens": 478,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 990,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1201,
+          "discardedPromptTokens": 689,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia73:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1201,
+          "discardedPromptTokens": 177,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 784,
+          "discardedPromptTokens": 272,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 784,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 998,
+          "discardedPromptTokens": 486,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 998,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1209,
+          "discardedPromptTokens": 697,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:train:tervelia74:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1209,
+          "discardedPromptTokens": 185,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        }
+      ]
+    },
+    "validation": {
+      "recordCount": 24,
+      "contextLength": 2048,
+      "maxSequenceInputs": 1367,
+      "maxPromptTokens": 1264,
+      "targetTokensIncludingEos": 1885,
+      "supervisedEos": 24,
+      "eachFinalReplyTargetExactlyOnce": true,
+      "historicalAssistantTargetsIgnored": true,
+      "promptAndTargetFit": true,
+      "nativeEncoderPoliciesChecked": [
+        "contiguous_nonoverlapping",
+        "sliding_context"
+      ],
+      "torchLoaded": false,
+      "modelWeightsLoaded": false,
+      "testRowsRead": 0,
+      "stepTokenDistributions": {
+        "1": {
+          "promptTokens": {
+            "count": 8,
+            "min": 774,
+            "max": 791,
+            "median": 784,
+            "sum": 6266
+          },
+          "trainingInputTokens": {
+            "count": 8,
+            "min": 836,
+            "max": 861,
+            "median": 850,
+            "sum": 6797
+          }
+        },
+        "2": {
+          "promptTokens": {
+            "count": 8,
+            "min": 992,
+            "max": 1037,
+            "median": 1006,
+            "sum": 8054
+          },
+          "trainingInputTokens": {
+            "count": 8,
+            "min": 1058,
+            "max": 1104,
+            "median": 1073,
+            "sum": 8591
+          }
+        },
+        "3": {
+          "promptTokens": {
+            "count": 8,
+            "min": 1203,
+            "max": 1264,
+            "median": 1247,
+            "sum": 9859
+          },
+          "trainingInputTokens": {
+            "count": 8,
+            "min": 1299,
+            "max": 1367,
+            "median": 1343,
+            "sum": 10652
+          }
+        }
+      },
+      "smallerContextControlAudit": [
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 777,
+          "discardedPromptTokens": 265,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 777,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1037,
+          "discardedPromptTokens": 525,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1037,
+          "discardedPromptTokens": 13,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 735,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria83:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1247,
+          "discardedPromptTokens": 223,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 789,
+          "discardedPromptTokens": 277,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 789,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 997,
+          "discardedPromptTokens": 485,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 997,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1264,
+          "discardedPromptTokens": 752,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria84:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1264,
+          "discardedPromptTokens": 240,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 782,
+          "discardedPromptTokens": 270,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 782,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 993,
+          "discardedPromptTokens": 481,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 993,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1206,
+          "discardedPromptTokens": 694,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria85:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1206,
+          "discardedPromptTokens": 182,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 788,
+          "discardedPromptTokens": 276,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 788,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1006,
+          "discardedPromptTokens": 494,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1006,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1220,
+          "discardedPromptTokens": 708,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria86:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1220,
+          "discardedPromptTokens": 196,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 774,
+          "discardedPromptTokens": 262,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 774,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1028,
+          "discardedPromptTokens": 516,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1028,
+          "discardedPromptTokens": 4,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1248,
+          "discardedPromptTokens": 736,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria87:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1248,
+          "discardedPromptTokens": 224,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 784,
+          "discardedPromptTokens": 272,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 784,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1251,
+          "discardedPromptTokens": 739,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria88:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1251,
+          "discardedPromptTokens": 227,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 781,
+          "discardedPromptTokens": 269,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 781,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 992,
+          "discardedPromptTokens": 480,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 992,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1203,
+          "discardedPromptTokens": 691,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria89:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1203,
+          "discardedPromptTokens": 179,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:1",
+          "step": "1",
+          "contextLength": 512,
+          "promptTokens": 791,
+          "discardedPromptTokens": 279,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:1",
+          "step": "1",
+          "contextLength": 1024,
+          "promptTokens": 791,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": true
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:2",
+          "step": "2",
+          "contextLength": 512,
+          "promptTokens": 1009,
+          "discardedPromptTokens": 497,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:2",
+          "step": "2",
+          "contextLength": 1024,
+          "promptTokens": 1009,
+          "discardedPromptTokens": 0,
+          "adapterWouldBlockBeforeGeneration": false,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:3",
+          "step": "3",
+          "contextLength": 512,
+          "promptTokens": 1220,
+          "discardedPromptTokens": 708,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        },
+        {
+          "id": "autonomy-copy-v2:validation:ausnoria90:step:3",
+          "step": "3",
+          "contextLength": 1024,
+          "promptTokens": 1220,
+          "discardedPromptTokens": 196,
+          "adapterWouldBlockBeforeGeneration": true,
+          "fullTrainingPromptAndTargetFit": false
+        }
+      ]
+    }
+  },
+  "filenameCopyStatistics": {
+    "train": {
+      "argumentQuotedStringsExactlyPresentInCurrentUser": 320,
+      "standaloneFilenameBpeSequencesContiguousInCurrentUser": 320,
+      "argumentValueOccurrences": 320,
+      "filenameTargetBpeTokensPresentInCurrentUser": 3080,
+      "filenameTargetBpeTokensAbsentFromCurrentUser": 0,
+      "assistantTargetTokensIncludingEos": 14888,
+      "filenameValueOverlappingBpeTargetTokens": 3080,
+      "remainingActionTargetTokensIncludingEos": 11808,
+      "distinctBasenames": 192,
+      "distinctFilenameBpeTokenIds": 103,
+      "distinctFilenameBpeSequences": 192,
+      "distinctFilenameCharacters": 37,
+      "filenameBpeLengths": {
+        "count": 320,
+        "min": 7,
+        "max": 13,
+        "median": 9,
+        "sum": 3080
+      },
+      "basenameCharacterLengths": {
+        "count": 320,
+        "min": 10,
+        "max": 18,
+        "median": 16,
+        "sum": 4666
+      },
+      "filenameValueTargetFraction": 0.20687802256851157,
+      "allArgumentValuesCopiedFromActualTaskInputs": true,
+      "method": "Whole BPE tokens whose character offsets overlap filename/report JSON string interiors; mixed boundary tokens count once. Remaining tokens include JSON keys/syntax, tool/reason values and final EOS, rather than syntax alone.",
+      "modelAbilityMeasured": false
+    },
+    "validation": {
+      "argumentQuotedStringsExactlyPresentInCurrentUser": 40,
+      "standaloneFilenameBpeSequencesContiguousInCurrentUser": 40,
+      "argumentValueOccurrences": 40,
+      "filenameTargetBpeTokensPresentInCurrentUser": 409,
+      "filenameTargetBpeTokensAbsentFromCurrentUser": 0,
+      "assistantTargetTokensIncludingEos": 1885,
+      "filenameValueOverlappingBpeTargetTokens": 409,
+      "remainingActionTargetTokensIncludingEos": 1476,
+      "distinctBasenames": 24,
+      "distinctFilenameBpeTokenIds": 81,
+      "distinctFilenameBpeSequences": 24,
+      "distinctFilenameCharacters": 40,
+      "filenameBpeLengths": {
+        "count": 40,
+        "min": 7,
+        "max": 14,
+        "median": 10,
+        "sum": 409
+      },
+      "basenameCharacterLengths": {
+        "count": 40,
+        "min": 10,
+        "max": 19,
+        "median": 17,
+        "sum": 610
+      },
+      "filenameValueTargetFraction": 0.21697612732095492,
+      "allArgumentValuesCopiedFromActualTaskInputs": true,
+      "method": "Whole BPE tokens whose character offsets overlap filename/report JSON string interiors; mixed boundary tokens count once. Remaining tokens include JSON keys/syntax, tool/reason values and final EOS, rather than syntax alone.",
+      "modelAbilityMeasured": false
+    },
+    "previousV1Train": {
+      "argumentQuotedStringsExactlyPresentInCurrentUser": 320,
+      "standaloneFilenameBpeSequencesContiguousInCurrentUser": 320,
+      "argumentValueOccurrences": 320,
+      "filenameTargetBpeTokensPresentInCurrentUser": 1817,
+      "filenameTargetBpeTokensAbsentFromCurrentUser": 0,
+      "assistantTargetTokensIncludingEos": 13625,
+      "filenameValueOverlappingBpeTargetTokens": 1817,
+      "remainingActionTargetTokensIncludingEos": 11808,
+      "distinctBasenames": 192,
+      "distinctFilenameBpeTokenIds": 41,
+      "distinctFilenameBpeSequences": 192,
+      "distinctFilenameCharacters": 27,
+      "filenameBpeLengths": {
+        "count": 320,
+        "min": 4,
+        "max": 6,
+        "median": 6,
+        "sum": 1817
+      },
+      "basenameCharacterLengths": {
+        "count": 320,
+        "min": 6,
+        "max": 7,
+        "median": 6,
+        "sum": 1984
+      },
+      "filenameValueTargetFraction": 0.13335779816513763,
+      "allArgumentValuesCopiedFromActualTaskInputs": true,
+      "method": "Whole BPE tokens whose character offsets overlap filename/report JSON string interiors; mixed boundary tokens count once. Remaining tokens include JSON keys/syntax, tool/reason values and final EOS, rather than syntax alone.",
+      "modelAbilityMeasured": false
+    },
+    "previousV1Validation": {
+      "argumentQuotedStringsExactlyPresentInCurrentUser": 40,
+      "standaloneFilenameBpeSequencesContiguousInCurrentUser": 40,
+      "argumentValueOccurrences": 40,
+      "filenameTargetBpeTokensPresentInCurrentUser": 232,
+      "filenameTargetBpeTokensAbsentFromCurrentUser": 0,
+      "assistantTargetTokensIncludingEos": 1708,
+      "filenameValueOverlappingBpeTargetTokens": 232,
+      "remainingActionTargetTokensIncludingEos": 1476,
+      "distinctBasenames": 24,
+      "distinctFilenameBpeTokenIds": 21,
+      "distinctFilenameBpeSequences": 24,
+      "distinctFilenameCharacters": 21,
+      "filenameBpeLengths": {
+        "count": 40,
+        "min": 5,
+        "max": 6,
+        "median": 6,
+        "sum": 232
+      },
+      "basenameCharacterLengths": {
+        "count": 40,
+        "min": 6,
+        "max": 7,
+        "median": 6,
+        "sum": 248
+      },
+      "filenameValueTargetFraction": 0.1358313817330211,
+      "allArgumentValuesCopiedFromActualTaskInputs": true,
+      "method": "Whole BPE tokens whose character offsets overlap filename/report JSON string interiors; mixed boundary tokens count once. Remaining tokens include JSON keys/syntax, tool/reason values and final EOS, rather than syntax alone.",
+      "modelAbilityMeasured": false
+    }
+  },
+  "tasksActuallyExecuted": 72,
+  "taskCompletionsVerified": 72,
+  "actualVerifiedToolResults": 216,
+  "originalsUnchanged": true,
+  "temporaryRootsDestroyed": true,
+  "elapsedSeconds": 3.601567753001291,
+  "peakRssMiB": 48.328125,
+  "torchLoaded": false,
+  "modelWeightsLoaded": false,
+  "trainingStarted": false,
+  "testRowsRead": 0,
+  "learnedPlanningProven": false,
+  "conversationCompetenceProven": false,
+  "review": "Project AI and actual filesystem/code measurements, not independent human evaluation"
+}

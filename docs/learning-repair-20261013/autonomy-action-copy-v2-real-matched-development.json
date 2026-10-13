@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T11:37:03.509277+00:00",
+  "evaluationScope": "Existing exposed development task, not fresh final acceptance",
+  "sameFirstPromptOriginalFilesToolsAndGeneration": true,
+  "parent": "Own ACTIONe202; both new arms start from identical pinned parent with fresh optimizer",
+  "matchedTrainingUpdatesPerArm": 256,
+  "dataVariable": "V2 varied basenames/goals/independent report names versus V1 rehearsal",
+  "trainingPinsPath": "examples/learning-repair-20261013/autonomy-action-copy-v2/cycle-for-existing-live-workspace.json",
+  "modelReplyAltered": false,
+  "decodingFiltersOrGrammarRepairUsed": false,
+  "controllerLimitsOrPermissionsRelaxed": false,
+  "reviewer": "Project AI; machine-verifiable tool results, not independent human review",
+  "records": [
+    {
+      "name": "action256-own-v1",
+      "evidencePath": "docs/learning-repair-20261013/autonomy-demonstration/action256-own-v1/evidence.json",
+      "evidenceSha256": "ef2fa9da8ece2b9550cf59521a8369ae46ea21cedae2fff82eac19b8d7270789",
+      "modelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+      "status": "blocked_policy",
+      "steps": 1,
+      "failures": 1,
+      "firstPromptSha256": "ec92d718bd018a588556c2aa4a2b9acf2ad90f120adcbac354e74bccf667cfc3",
+      "generation": {
+        "max_new_tokens": 128,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "contextLength": 2048,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"k.txt\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "promptTokens": 732,
+          "discardedPromptTokens": 0,
+          "generatedTokens": 63,
+          "stopReason": "eos"
+        }
+      ],
+      "verifiedRealToolResults": [],
+      "originalsUnchanged": true,
+      "originalHashes": {
+        "dos.txt": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+        "uno.txt": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830"
+      },
+      "ownReportPresent": false,
+      "fixtureFallback": false
+    },
+    {
+      "name": "action-copy-v2-treatment-own-v1",
+      "evidencePath": "docs/learning-repair-20261013/autonomy-demonstration/action-copy-v2-treatment-own-v1/evidence.json",
+      "evidenceSha256": "d4a6c742f05a517240712476dec1e277b0569e8fe3ebd5738199fafb3f143d52",
+      "modelId": "unidad-conversation-e70ea28e8d5dfb07481bcf966058f022ed3eebd392fc4afe773102a6e2e88088",
+      "status": "blocked_model",
+      "steps": 2,
+      "failures": 1,
+      "firstPromptSha256": "ec92d718bd018a588556c2aa4a2b9acf2ad90f120adcbac354e74bccf667cfc3",
+      "generation": {
+        "max_new_tokens": 128,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "contextLength": 2048,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"dos.txt\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "promptTokens": 732,
+          "discardedPromptTokens": 0,
+          "generatedTokens": 63,
+          "stopReason": "eos"
+        },
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"save_report\",\"arguments\":\"filename\":\"spect_file\",\"arguments\"filename\":\"spect_file\",\"save_file\",\"arguments\":\"filename\":\"save_report\",\"save_report\",\"",
+          "valid": false,
+          "promptTokens": 933,
+          "discardedPromptTokens": 0,
+          "generatedTokens": 128,
+          "stopReason": "token_budget"
+        }
+      ],
+      "verifiedRealToolResults": [
+        {
+          "index": 6,
+          "time": 1791890897.3950999,
+          "kind": "tool_result",
+          "tool": "inspect_file",
+          "arguments": {
+            "filename": "dos.txt"
+          },
+          "result": {
+            "filename": "dos.txt",
+            "size_bytes": 69,
+            "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+            "statistics": {
+              "lines": 2,
+              "utf8": true,
+              "characters": 68,
+              "words": 10
+            }
+          },
+          "verification": {
+            "verified": true,
+            "result": {
+              "filename": "dos.txt",
+              "size_bytes": 69,
+              "sha256": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+              "statistics": {
+                "lines": 2,
+                "utf8": true,
+                "characters": 68,
+                "words": 10
+              }
+            }
+          }
+        }
+      ],
+      "originalsUnchanged": true,
+      "originalHashes": {
+        "dos.txt": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+        "uno.txt": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830"
+      },
+      "ownReportPresent": false,
+      "fixtureFallback": false
+    },
+    {
+      "name": "action-copy-v2-control-own-v1",
+      "evidencePath": "docs/learning-repair-20261013/autonomy-demonstration/action-copy-v2-control-own-v1/evidence.json",
+      "evidenceSha256": "9640e3c831658aa65c688fdcd080f39403f75c409c13478eb77c65c7b21a7836",
+      "modelId": "unidad-conversation-734c92f9440d2d03bf1a6372e74335818e8ed65f00b69b24c2038d0ffffc0ac5",
+      "status": "blocked_policy",
+      "steps": 1,
+      "failures": 1,
+      "firstPromptSha256": "ec92d718bd018a588556c2aa4a2b9acf2ad90f120adcbac354e74bccf667cfc3",
+      "generation": {
+        "max_new_tokens": 128,
+        "temperature": 0.0,
+        "seed": 42
+      },
+      "contextLength": 2048,
+      "proposals": [
+        {
+          "raw": "{\"action\":\"tool\",\"tool\":\"inspect_file\",\"arguments\":{\"filename\":\"v.txt\"},\"reason\":\"Medir\"}",
+          "valid": true,
+          "promptTokens": 732,
+          "discardedPromptTokens": 0,
+          "generatedTokens": 63,
+          "stopReason": "eos"
+        }
+      ],
+      "verifiedRealToolResults": [],
+      "originalsUnchanged": true,
+      "originalHashes": {
+        "dos.txt": "2020cdff175e53390564332c33682d493c60cb12da1572401a3cced3de111e5c",
+        "uno.txt": "f53b39b61c774d0c5f3ca036bb6cd522f25b38fd0764dc3841e6dde5c413b830"
+      },
+      "ownReportPresent": false,
+      "fixtureFallback": false
+    }
+  ],
+  "conclusion": "Treatment performs one verified real inspection of dos.txt; parent and control select unregistered files. Treatment fails subsequent raw JSON and creates no own report. One exposed task is insufficient for generalization or complete operational autonomy.",
+  "conversationAccepted": false,
+  "learnedPlanningAccepted": false,
+  "nativeValidationNllDifferentCorporaNotCompared": true,
+  "latencyConfoundedByConcurrentEvaluation": true
+}

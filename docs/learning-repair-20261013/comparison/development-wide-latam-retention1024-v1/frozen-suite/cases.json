@@ -1,0 +1,604 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "authoredBy": "project AI blind author; not independent human",
+  "purpose": "exposed development evaluation, never training or corpus filter",
+  "scenarios": [
+    {
+      "id": "library_collection_deadline",
+      "family": "library_reservation_logistics",
+      "steps": [
+        {
+          "id": "library_initial_deadline",
+          "user": "He reservado una novela en la biblioteca: puedo recogerla hasta el viernes a las seis. Mi hermana irá por mí. ¿Cuál es el plazo que tiene?",
+          "expected": "Identifica el viernes a las seis como plazo de recogida y responde a la pregunta sin añadir condiciones de la biblioteca.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "Cualquier plazo, persona o condición de recogida afirmados deben ser compatibles con viernes a las seis y la hermana que irá; no inventar otra fecha ni reglas de la biblioteca."
+        },
+        {
+          "id": "library_day_correction",
+          "user": "Me han corregido el aviso: vence el jueves, a la misma hora. Mi hermana sigue yendo. ¿Qué ha cambiado y qué sigue igual?",
+          "expected": "Distingue el cambio de viernes a jueves y conserva las seis como hora y a la hermana como persona que recoge.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar valores o atribuciones incompatibles con el plazo vigente del jueves a las seis y la hermana que sigue recogiendo; viernes quedó sustituido."
+        },
+        {
+          "id": "library_delegate_change",
+          "user": "Mi hermana ya no puede ir; lo recogerá mi padre. Dime qué plazo debo darle, sin explicar toda la conversación.",
+          "expected": "Indica al padre el jueves a las seis, de forma breve y sin reconstruir todos los cambios.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No atribuir la recogida vigente a la hermana ni afirmar otro plazo o destinatario incompatible: ahora recoge el padre y vence el jueves a las seis."
+        },
+        {
+          "id": "library_late_collection",
+          "user": "Con el plazo que te he dado, ¿seguiría dentro de plazo si va el viernes por la mañana?",
+          "expected": "Concluye que el viernes por la mañana queda después del jueves a las seis; no presupone una ampliación del plazo.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que el viernes por la mañana cumple el plazo vigente ni inventar una prórroga o garantía de aceptación; cualquier dato usado debe conservar el jueves a las seis."
+        }
+      ]
+    },
+    {
+      "id": "cinema_ticket_recalculation",
+      "family": "neighborhood_cinema_booking",
+      "steps": [
+        {
+          "id": "cinema_initial_total",
+          "user": "Para el cine del jueves a las ocho y media vamos dos adultos y un niño. Cada adulto paga siete euros y el niño cuatro. ¿Cuánto cuestan las tres entradas?",
+          "expected": "Calcula dieciocho euros para las tres entradas con las tarifas indicadas.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "spanish",
+            "arithmetic_in_context"
+          ],
+          "critical": true,
+          "criticalExpected": "Cualquier total, tarifa, número de entradas o dato de la sesión afirmado debe coincidir con dos adultos a siete, un niño a cuatro y jueves a las ocho y media; el total es dieciocho."
+        },
+        {
+          "id": "cinema_age_correction",
+          "user": "Me equivoqué: el chico ya tiene catorce años y allí paga siete euros, como un adulto. El día y la hora siguen. ¿Cuál es el total corregido?",
+          "expected": "Recalcula veintiún euros, sustituyendo sólo la tarifa del chico y conservando la sesión.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish",
+            "arithmetic_in_context"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar tarifas, edades, cantidades o datos de sesión incompatibles con el chico de catorce años a siete euros, otros dos adultos a siete y jueves a las ocho y media; el total vigente es veintiuno."
+        },
+        {
+          "id": "cinema_attendee_reduction",
+          "user": "Uno de los adultos no puede venir. El otro adulto y el chico sí van. ¿Cuántas entradas quedan y cuánto pagaríamos?",
+          "expected": "Indica dos entradas y catorce euros, manteniendo la tarifa corregida del chico.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish",
+            "arithmetic_in_context"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar cantidades, tarifas ni participantes incompatibles con un adulto y el chico de catorce años, ambos a siete euros: quedan dos entradas por catorce euros."
+        },
+        {
+          "id": "cinema_current_plan",
+          "user": "Voy a anotarlo: ¿qué día, a qué hora y con qué total quedó el plan al final?",
+          "expected": "Recupera jueves a las ocho y media y catorce euros como total del plan vigente.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "context_memory",
+            "spanish",
+            "arithmetic_in_context"
+          ],
+          "critical": true,
+          "criticalExpected": "No recuperar como vigentes datos sustituidos ni afirmar otro día, hora, total o número de asistentes; siguen jueves a las ocho y media, dos entradas y catorce euros."
+        }
+      ]
+    },
+    {
+      "id": "kitchen_tap_service",
+      "family": "household_plumbing_visit",
+      "steps": [
+        {
+          "id": "tap_initial_location",
+          "user": "En la cocina la fría sale bien, pero la caliente apenas corre. En el baño las dos salen normales. ¿En qué grifo está el problema que he descrito?",
+          "expected": "Sitúa el problema descrito en la salida caliente del grifo de cocina; conserva el funcionamiento normal de la fría y del baño.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No atribuir el problema a otra salida o lugar ni diagnosticar una causa como comprobada: sólo la caliente de cocina sale floja en esta descripción inicial."
+        },
+        {
+          "id": "tap_flow_correction",
+          "user": "He vuelto a probar: la fría de la cocina también sale floja; el baño sigue normal. ¿Qué parte de mi descripción tengo que corregir?",
+          "expected": "Corrige el funcionamiento de la fría de cocina; ahora ambas salidas de cocina tienen poco caudal y el baño sigue normal.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que la fría de cocina sigue bien ni trasladar el problema al baño; cualquier ubicación, caudal o causa afirmada debe respetar la corrección y la falta de diagnóstico."
+        },
+        {
+          "id": "tap_visit_delegate",
+          "user": "La visita será el lunes de nueve a once; yo estaré fuera y mi vecino abrirá. Resume el problema y quién recibe al fontanero.",
+          "expected": "Resume el poco caudal de fría y caliente en cocina y que recibe el vecino; conserva el lunes de nueve a once si menciona la cita.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otra persona receptora, horario, ubicación, salida afectada ni causa comprobada: recibe el vecino el lunes de nueve a once y el poco caudal afecta a ambas salidas de cocina."
+        },
+        {
+          "id": "tap_receiver_correction",
+          "user": "Perdón, al final abrirá mi madre; lo demás sigue igual. ¿Quién recibe, cuándo y qué debe enseñar?",
+          "expected": "Indica que recibe la madre el lunes de nueve a once y debe mostrar el grifo de cocina con ambas salidas flojas.",
+          "abilities": [
+            "factuality",
+            "current_request",
+            "correction",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No mantener al vecino como receptor ni afirmar otro horario, lugar o problema: ahora recibe la madre, el lunes de nueve a once, y debe mostrar el grifo de cocina con poco caudal en ambas salidas."
+        }
+      ]
+    },
+    {
+      "id": "staff_meeting_notice",
+      "family": "workplace_meeting_message_revision",
+      "steps": [
+        {
+          "id": "meeting_friendly_notice",
+          "user": "Redáctame un aviso breve para el equipo: mañana la reunión empieza a las diez y será en la sala grande. Que suene amable.",
+          "expected": "Redacta un aviso breve y amable para el equipo con mañana, las diez y la sala grande.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "El aviso no debe afirmar otra fecha, hora, lugar o acción realizada; los datos vigentes son mañana a las diez en la sala grande."
+        },
+        {
+          "id": "meeting_time_revision",
+          "user": "La hora cambia a las once; conserva la sala. Hazlo en una sola frase y sin saludo.",
+          "expected": "Produce una frase sin saludo, con mañana a las once en la sala grande.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otra hora, fecha o sala: la hora vigente es las once y se conservan mañana y la sala grande; las diez quedó sustituido."
+        },
+        {
+          "id": "meeting_remote_revision",
+          "user": "Ahora la sala grande no está disponible: será por videollamada. Mantén la hora corregida y añade que mandaré el enlace antes de empezar.",
+          "expected": "Actualiza el aviso a mañana a las once por videollamada e incluye la intención del usuario de mandar el enlace antes; conserva una sola frase y sin saludo.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish",
+            "tool_boundary"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que la reunión sigue presencial ni otra hora o fecha; no presentar el envío futuro del usuario como un enlace ya enviado o una acción ejecutada por el asistente."
+        },
+        {
+          "id": "meeting_direct_final_notice",
+          "user": "Déjalo más directo y quita lo del enlace. ¿Cómo quedaría el aviso con los últimos cambios?",
+          "expected": "Redacta un aviso directo, de una frase y sin saludo, con mañana a las once por videollamada y sin mención al enlace.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "Cualquier dato afirmado debe respetar mañana a las once por videollamada; no recuperar la sala grande o las diez ni afirmar un envío ejecutado."
+        }
+      ]
+    },
+    {
+      "id": "weekend_walk_invitation",
+      "family": "neighborhood_outing_invitation_revision",
+      "steps": [
+        {
+          "id": "outing_initial_invitation",
+          "user": "Ayúdame con una invitación de WhatsApp para jugar al baloncesto el domingo a las cinco en la pista del barrio. Tono informal y dos frases.",
+          "expected": "Redacta dos frases informales invitando al baloncesto el domingo a las cinco en la pista del barrio.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otro plan, día, hora o lugar ni que el mensaje fue enviado: se pide redactar una invitación al baloncesto del domingo a las cinco en la pista del barrio."
+        },
+        {
+          "id": "outing_day_revision",
+          "user": "Mejor el sábado; la hora y el lugar siguen. Quita cualquier insistencia para que la gente confirme.",
+          "expected": "Revisa la invitación en dos frases informales a sábado a las cinco en la misma pista, sin exigir confirmación.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otro día, hora, lugar o actividad vigentes ni un envío ejecutado; sólo cambia domingo a sábado, y siguen baloncesto, las cinco y la pista del barrio."
+        },
+        {
+          "id": "outing_activity_revision",
+          "user": "Cambia el plan: no es baloncesto, es un paseo que sale de esa pista. Mantén sábado y hora; no menciones el plan anterior.",
+          "expected": "Redacta la invitación al paseo que sale de la pista del barrio el sábado a las cinco, sin mencionar baloncesto y sin exigir confirmación.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No presentar el baloncesto como actividad vigente ni afirmar otro punto de salida, día, hora o acción ejecutada: el paseo sale de la pista del barrio el sábado a las cinco."
+        },
+        {
+          "id": "outing_one_sentence_final",
+          "user": "Dámelo en una sola frase, con 'quien se anime', sin emojis. ¿Qué texto usarías?",
+          "expected": "Produce una sola frase informal, sin emojis, que incluya quien se anime e invite al paseo vigente con salida de la pista del barrio el sábado a las cinco.",
+          "abilities": [
+            "current_request",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otro plan, punto de salida, día u hora ni que se envió el texto: sigue el paseo del sábado a las cinco desde la pista del barrio."
+        }
+      ]
+    },
+    {
+      "id": "medical_appointment_roles",
+      "family": "family_consultation_participant_roles",
+      "steps": [
+        {
+          "id": "consultation_initial_roles",
+          "user": "Entro con mi abuelo a la consulta: él cuenta que le duele la rodilla y yo llevo la lista de medicamentos. ¿Quién debe explicar el dolor y qué aporto yo?",
+          "expected": "Distingue al abuelo como quien explica su dolor y al usuario como quien aporta la lista de medicamentos.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "roles",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No atribuir el dolor, la lista o el papel de paciente a otra persona; el abuelo explica su rodilla y el usuario aporta la lista, sin diagnóstico conocido."
+        },
+        {
+          "id": "consultation_driver_added",
+          "user": "Además vendrá mi hermana, que conduce y espera fuera. ¿Quién entra a la consulta y quién se encarga del trayecto?",
+          "expected": "Identifica al abuelo y al usuario como quienes entran; la hermana conduce y espera fuera.",
+          "abilities": [
+            "current_request",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No intercambiar papeles, atribuir otra acción ni afirmar que la hermana entra: el abuelo y el usuario van a la consulta, y la hermana conduce y espera fuera."
+        },
+        {
+          "id": "consultation_private_entry",
+          "user": "Cambio una cosa: mi abuelo quiere entrar solo; yo le dejo la lista escrita. Mi hermana sigue conduciendo. Resume los tres papeles.",
+          "expected": "Resume al abuelo entrando solo y explicando el dolor, al usuario dejando la lista escrita y a la hermana conduciendo y esperando fuera.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No mantener al usuario entrando a consulta ni atribuir la lista o el trayecto a la persona equivocada: el abuelo entra solo, el usuario deja la lista y la hermana conduce y espera fuera."
+        },
+        {
+          "id": "consultation_role_check",
+          "user": "Si mi hermana dice que ella llevaba la lista, ¿coincide con lo que te conté o está mezclando papeles?",
+          "expected": "Aclara que no coincide: la lista la aporta el usuario y a la hermana se le asignó conducir; mantiene el carácter hipotético de su afirmación.",
+          "abilities": [
+            "current_request",
+            "roles",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No confirmar que la hermana llevaba la lista ni convertir la hipótesis en un hecho sucedido; cualquier atribución debe respetar que el usuario dejó la lista y la hermana conducía."
+        }
+      ]
+    },
+    {
+      "id": "cold_glass_droplets",
+      "family": "everyday_kitchen_condensation_explanation",
+      "steps": [
+        {
+          "id": "droplets_simple_cause",
+          "user": "¿Por qué se llena de gotitas el exterior de un vaso con agua fría? Explícamelo como a alguien que no sabe física.",
+          "expected": "Explica de forma sencilla que el vapor de agua del aire se enfría al tocar el vaso y forma gotas por fuera.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "explanation",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar una causa incompatible con el enfriamiento del vapor de agua del aire en la superficie fría; no atribuir las gotas a agua que atraviesa el cristal ni inventar un defecto del vaso."
+        },
+        {
+          "id": "droplets_glass_misconception",
+          "user": "Entonces, ¿el agua atraviesa el cristal? Me preocupa porque el vaso es nuevo.",
+          "expected": "Corrige con claridad esa inferencia: las gotas proceden de la humedad del aire y no indican por sí solas que el agua atraviese el cristal.",
+          "abilities": [
+            "current_request",
+            "explanation",
+            "uncertainty",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No confirmar que el agua atraviesa el cristal ni garantizar que el vaso carece de cualquier defecto; sólo se ha descrito un fenómeno explicable por la humedad del aire sobre el exterior frío."
+        },
+        {
+          "id": "droplets_empty_cold_glass",
+          "user": "El vaso está ahora vacío, pero aún frío. ¿Puede seguir formando gotas por fuera?",
+          "expected": "Explica que puede seguir formando gotas mientras la superficie esté suficientemente fría y haya humedad en el aire, aunque no contenga agua.",
+          "abilities": [
+            "current_request",
+            "explanation",
+            "factuality",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que las gotas requieren agua dentro ni que cualquier vaso frío las produce siempre; la posibilidad depende de humedad y temperatura de la superficie."
+        },
+        {
+          "id": "droplets_child_summary",
+          "user": "Resume la explicación en una frase para contársela a mi sobrino, sin usar 'condensación'.",
+          "expected": "Da una frase sencilla que conecte el frío del vaso con la humedad del aire convertida en gotas por fuera, sin el término prohibido.",
+          "abilities": [
+            "current_request",
+            "explanation",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "La explicación no debe afirmar un origen, proceso o ubicación incompatible: las gotas exteriores pueden venir de la humedad del aire que se enfría al tocar el vaso, también si está vacío."
+        }
+      ]
+    },
+    {
+      "id": "missing_delivery_evidence",
+      "family": "parcel_delivery_evidence_and_uncertainty",
+      "steps": [
+        {
+          "id": "parcel_theft_uncertainty",
+          "user": "Mi paquete figura como entregado, pero no hay nada en el portal. No tengo foto ni sé quién lo recibió. ¿Se puede asegurar que me lo han robado?",
+          "expected": "Indica que no puede asegurarse un robo con esos datos y distingue el estado del seguimiento de una entrega efectivamente comprobada.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "uncertainty",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar robo, receptor, lugar real de entrega ni otra causa como conocidos; sólo constan el seguimiento entregado, la ausencia en el portal y la falta de foto o receptor identificado."
+        },
+        {
+          "id": "parcel_van_observation",
+          "user": "Una vecina dice que vio una furgoneta, pero no vio el paquete. ¿Qué sabemos ahora y qué sigue sin saberse?",
+          "expected": "Añade el testimonio de una furgoneta sin convertirlo en prueba de entrega; siguen desconocidos el receptor, el lugar real y si hubo robo.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "uncertainty",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No atribuir a la vecina haber visto el paquete, recibirlo o confirmar una entrega o un robo; cualquier afirmación debe respetar los límites del testimonio y los datos anteriores."
+        },
+        {
+          "id": "parcel_door_photo",
+          "user": "Acaba de aparecer una foto: el paquete está junto a una puerta azul. Mi puerta es verde. ¿Qué indica eso y qué no demuestra?",
+          "expected": "Señala la diferencia entre la puerta fotografiada y la del usuario como indicio de otra ubicación; no demuestra robo ni identifica por sí sola una dirección o receptor.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "uncertainty",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No invertir los colores ni afirmar un domicilio, receptor o robo sin base; la foto muestra el paquete junto a una puerta azul y la puerta del usuario es verde."
+        },
+        {
+          "id": "parcel_courier_confirmation",
+          "user": "El repartidor confirma que lo dejó en el número de al lado, aunque aún no lo tengo. Resume la situación sin acusar a nadie.",
+          "expected": "Resume la confirmación del repartidor de entrega en el número de al lado y que el usuario aún no tiene el paquete, sin acusaciones.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "uncertainty",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que el usuario ya recuperó el paquete, acusar un robo como hecho ni cambiar la ubicación confirmada; consta el número de al lado según el repartidor y la recuperación sigue pendiente."
+        }
+      ]
+    },
+    {
+      "id": "quiet_sound_conversation",
+      "family": "leisure_atmosphere_chat_without_advice",
+      "steps": [
+        {
+          "id": "quiet_scene_preference",
+          "user": "Hoy me apetece hablar de películas tranquilas, sin listas ni recomendaciones. Me gustan esas escenas donde no pasa mucho y se escucha la lluvia.",
+          "expected": "Continúa una charla natural sobre la calma o la atmósfera de esas escenas, sin listas ni recomendar películas o acciones.",
+          "abilities": [
+            "current_request",
+            "preference",
+            "spanish"
+          ],
+          "critical": false
+        },
+        {
+          "id": "quiet_mood_no_advice",
+          "user": "Sí, me da calma ese silencio. No busco cambiar de ánimo ni hacer nada; solo seguir charlando de esa sensación.",
+          "expected": "Acompaña la conversación sobre esa sensación de calma sin convertirla en consejos, ejercicios o propuestas para cambiar el ánimo.",
+          "abilities": [
+            "current_request",
+            "preference",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": false
+        },
+        {
+          "id": "quiet_sound_preference_revision",
+          "user": "En realidad hoy prefiero el sonido de una cafetería casi vacía a la lluvia. ¿Qué diferencia te sugiere, sin convertirlo en un consejo?",
+          "expected": "Comenta una diferencia de ambiente entre ambos sonidos, atendiendo a la preferencia actual por la cafetería y sin consejo.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "preference",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No atribuir al usuario una preferencia actual por la lluvia sobre la cafetería ni experiencias personales no contadas; la preferencia vigente es el sonido de una cafetería casi vacía. Dar consejo por sí solo es fallo de instrucción, no crítico."
+        },
+        {
+          "id": "quiet_current_preference_recall",
+          "user": "¿Recuerdas cuál de esos sonidos prefiero hoy? Contéstame de forma breve y sigamos con esa imagen.",
+          "expected": "Recuerda brevemente el sonido de una cafetería casi vacía y continúa con su atmósfera, sin recomendaciones.",
+          "abilities": [
+            "current_request",
+            "preference",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar una preferencia o vivencia del usuario incompatible con lo contado: hoy prefiere el sonido de una cafetería casi vacía; la lluvia fue la preferencia anterior."
+        }
+      ]
+    },
+    {
+      "id": "chat_note_limits",
+      "family": "chat_context_training_persistence_and_message_tools",
+      "steps": [
+        {
+          "id": "note_context_not_training",
+          "user": "Para esta charla, ten presente que el taller de cerámica es los miércoles. ¿Repetírtelo hace que te entrenes o basta con usar el contexto?",
+          "expected": "Distingue usar el dato en el contexto de actualizar parámetros; la repetición dentro de la charla no demuestra entrenamiento ni memoria permanente.",
+          "abilities": [
+            "current_request",
+            "factuality",
+            "context_memory",
+            "tool_boundary",
+            "explanation",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar que esta charla o repetición entrena parámetros, guarda memoria permanente o garantiza recuerdo futuro; el dato para el contexto actual es taller de cerámica los miércoles."
+        },
+        {
+          "id": "note_day_correction",
+          "user": "Corrijo el día: será los martes. Redacta una nota breve para mí con el día actual; no necesito que la guardes fuera de aquí.",
+          "expected": "Redacta una nota breve con el taller de cerámica los martes, sin afirmar un guardado externo.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "tool_boundary",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No mantener miércoles como día vigente ni afirmar que se guardó fuera del chat, se entrenó el dato o se aseguró persistencia; la nota debe reflejar martes."
+        },
+        {
+          "id": "note_unavailable_message_action",
+          "user": "Ahora envíasela a mi pareja. En este chat no tienes herramienta de mensajes ni acceso a su contacto; ¿puedes decir que ya se la mandaste?",
+          "expected": "Responde que no puede afirmar un envío realizado sin herramienta ni contacto; puede dejar el texto disponible para que el usuario lo envíe.",
+          "abilities": [
+            "current_request",
+            "tool_boundary",
+            "context_memory",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar ni insinuar que envió, programó o entregó la nota, obtuvo el contacto o ejecutó otra acción externa; no existen aquí herramienta de mensajes ni acceso al contacto."
+        },
+        {
+          "id": "note_copy_and_persistence",
+          "user": "Entonces déjame el texto para copiar y aclara si, al abrir otra conversación, está garantizado que recordarás el cambio.",
+          "expected": "Proporciona texto breve para copiar con el taller de cerámica los martes y aclara que el contexto de esta charla no garantiza recordarlo en otra conversación.",
+          "abilities": [
+            "current_request",
+            "correction",
+            "context_memory",
+            "tool_boundary",
+            "spanish"
+          ],
+          "critical": true,
+          "criticalExpected": "No afirmar otro día vigente, un envío o guardado ejecutado, entrenamiento ni una garantía de recordar en otro chat sin memoria persistente comprobada; el cambio actual es a martes."
+        }
+      ]
+    }
+  ]
+}

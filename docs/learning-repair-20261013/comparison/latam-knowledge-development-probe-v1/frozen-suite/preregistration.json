@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "status": "specified-and-frozen-before-any-probe-generation",
+  "authorship": "IA del proyecto; autor de preguntas sin acceso a modelos, respuestas de modelos ni reserved-suite; segundo agente audita únicamente las fuentes públicas.",
+  "hypothesis": "La exposición del tratamiento natural+LATAM puede mejorar la recuperación de seis sentidos regionales frente al mismo padre y conservarlos ante paráfrasis y combinaciones con nombres/formato nuevos. Se mide generalización local de preguntas, no adquisición causal completa ni conocimiento de lexemas inéditos.",
+  "scope": "15 casos independientes de un solo turno: 6 paráfrasis TRAIN, 6 combinaciones TRAIN y 3 preguntas VAL de calibración. No constituye evaluación conversacional final ni cobertura de todo el español.",
+  "source": {
+    "frozenTreatment": "examples/learning-repair-20261013/natural-latam-sft-v4/natural-latam-sft.train-validation.jsonl",
+    "frozenTreatmentSha256": "cf52daaaa0bfbd6dd539977ebaabb1b4b265d0ad192d9d6cea6c49e18da5515f",
+    "frozenRegionalSha256": "520510f77e26626b66af6c1e7ee0c8492f50c381518a4877e2696841bb70138f",
+    "rawLexicalSha256": "d27c633d6166f42d7fe5d59d865b5a8a3ba67c6d3838035d059178184d1d8f19",
+    "traceability": "source-support.json conserva bytes UTF-8 exactos de filas SFT y lexicales, hashes por fila/archivo, sentido y país, IDs, licencia CC-BY-SA-4.0, revisión, atribución e historial.",
+    "reviewLimit": "Wikcionario colaborativo y auditoría de IA del proyecto, sin validación humana independiente. No se verifica la totalidad del diccionario."
+  },
+  "selection": {
+    "trainCountries": ["Chile", "Costa Rica", "México", "Honduras", "Panamá", "Perú"],
+    "trainLexemes": ["estar al cateo de la laucha", "abastecedor", "cruzazulear", "a la zumba marumba", "buco", "cofla"],
+    "validationLexemes": ["apampichar", "champa", "a cuenta de oreja de cochino"],
+    "guard": "Un selectedSense por registro direct, país y glosa comprobados contra raw d27; sin padres/lexemas de las 11 decisiones previas/finales rechazadas; familias y folds originales conservados.",
+    "disjointness": "TRAIN prueba seis familias ya entrenadas, con dos casos por familia. Las tres familias y lexemas VAL no aparecen en TRAIN v4. No se afirma que el padre jamás haya encontrado esos términos en etapas anteriores.",
+    "novelty": "Las 15 preguntas están ausentes de todos los mensajes user v4; los seis nombres inventados están ausentes del texto TRAIN v4. Las glosas esperadas no se insertan en prompts.",
+    "uncertainty": "VAL permite sentido correcto o incertidumbre explícita. Estos hechos no vistos en TRAIN del tratamiento actual no son éxitos exigidos y no se añaden al denominador de hechos aprendidos."
+  },
+  "comparison": {
+    "roles": [
+      {
+        "label": "same-parent-072",
+        "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+        "path": "models/learning-repair-20261013/conversation-15m/intermediate-step004096",
+        "selection": "Padre común comunicado por el hilo principal; no elegido por respuestas de este probe."
+      },
+      {
+        "label": "treatment-best-ec9",
+        "modelId": "unidad-conversation-ec9ab262aaaa5761dfe77e51232ca9fcf78bea93b7af97ec17d971557f0166df",
+        "path": "models/learning-repair-20261013/natural-latam-v4/intermediate-step001024",
+        "selection": "BEST de validación del tratamiento fijado antes del probe; no selección por respuestas."
+      },
+      {
+        "label": "treatment-last-d6",
+        "modelId": "unidad-conversation-d6d860222baf5e8952eade42fcda3a0bd52dc77000c0c254ca895a91fdab7160",
+        "path": "models/learning-repair-20261013/natural-latam-v4/final-treatment-last-step004096",
+        "selection": "LAST del tratamiento 4096 fijado antes del probe."
+      },
+      {
+        "label": "control-last",
+        "modelId": null,
+        "path": "models/learning-repair-20261013/natural-latam-v4/control-final-last-step004096",
+        "selection": "Cuando exista: endpoint LAST de la corrida control desde el mismo padre, objetivo 4096 actualizaciones. Si la corrida cierra finitamente por recursos antes, usar su LAST real y declarar la desigualdad de pasos. Fijar ID/hash/estado antes de generar sus respuestas, nunca elegir por respuestas."
+      }
+    ],
+    "edges": ["treatment-best-ec9 vs same-parent-072", "treatment-last-d6 vs same-parent-072", "treatment-last-d6 vs treatment-best-ec9", "control-last vs same-parent-072 when available", "treatment-last-d6 vs control-last when available"],
+    "parentGuard": "El runner verifica linaje y carga exactamente los IDs fijados; no se sustituye un brazo por otro. El autor del probe no leyó sus manifests ni pesos.",
+    "matchedGeneration": {"temperature": 0, "maxNewTokens": 80, "seed": 42, "torchThreads": 1, "device": "cpu"},
+    "engine": "ConversationEngine común; mismo contexto por defecto y generación en todos los brazos. Registrar parámetros efectivos, manifest, tokenizer/weights hashes, entrada exacta, respuesta exacta, stopReason, truncamiento y errores.",
+    "history": "Un usuario por caso, historia inicial vacía; ninguna respuesta ideal, expectativa, glosa o rúbrica llega al modelo. No hay historial de un caso reutilizado en otro.",
+    "controlBinding": "El ID todavía desconocido del control se conserva null en este preregistro. Añadir recibo de binding separado con ID, hashes, pasos y cierre antes de cargarlo para este probe; no editar este archivo congelado.",
+    "causalLimit": "La intervención cambia un currículo compuesto; los resultados solo permiten comparación local bajo estas condiciones. BEST y LAST tienen distinta exposición. No comparar las NLL globales de brazos con VAL diferentes ni atribuir porcentajes causalmente sin control equivalente."
+  },
+  "analysis": {
+    "decisionProcedure": "Revisión semántica de IA después de generación, usando glosa/sentido/licencia congelados. Registrar decisiones por caso y motivos; conservar discrepancias.",
+    "primaryCounts": ["6 paráfrasis correctas", "6 combinaciones con significado y formato correctos", "6 familias con ambos casos correctos"],
+    "pairedResults": "Reportar aciertos y regresiones por caso frente al mismo padre; no seleccionar candidato ni cambiar el corpus a partir de estos recuentos.",
+    "validationReporting": "Tres estados de calibración por separado: hecho correcto, incertidumbre explícita o error/irrelevancia/fallo técnico. Incertidumbre válida no equivale a aprender el hecho.",
+    "finalAcceptance": false,
+    "reservedSuite": "No leer ni modificar. Este probe público queda como desarrollo expuesto una vez generado/revisado."
+  },
+  "contaminationPolicy": "No incorporar prompts, nombres/composiciones, glosas de este probe ni sus respuestas al entrenamiento. No modificar corpus congelados ni preparar/ejecutar otro entrenador. Conservar hashes originales y crear versiones nuevas para desarrollos posteriores; no optimizar para elevar recuentos de este probe.",
+  "authoringResources": {"modelImports": false, "modelLoads": 0, "modelOutputReads": 0, "reservedSuiteReads": 0, "trainingRuns": 0, "sourceReadScope": "Solo corpus públicos congelados y sus manifests/exclusiones; AGENTS/ORDENES y helper de evaluación para comprobar incompatibilidad 40-turnos, sin importarlo."}
+}

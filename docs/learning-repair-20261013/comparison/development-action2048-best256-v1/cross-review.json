@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "outputsSha256": "e76be99bfaca183a982930d688b5465f28a84e5cc30835c0ebbff5c76c45c265",
+  "reviewer": "Codex /root/autonomy_api — revisión cruzada de IA del proyecto",
+  "method": "Lectura individual de las 40 respuestas crudas y sus 10 historias reales contra casos/rúbrica congelados. Ningún acceso a revisión primaria. Parcial requiere algún componente solicitado concreto y correcto legible; ecos sin ese contenido o un único juicio principal ausente son failed. No inferir crítica sólo de sílabas, números repetidos o texto ininteligible: identificar afirmación incompatible concreta.",
+  "reviewedAtUtc": "2026-10-13T11:41:11.484581+00:00",
+  "projectAIReview": true,
+  "independentHumanReview": false,
+  "humanReview": false,
+  "primaryReviewConsulted": false,
+  "evaluationScope": "Exposed development suite; no reserved/final opening, no promotion, no weight updates",
+  "actualGeneratedHistoryVerified": true,
+  "suiteHashes": {
+    "cases.json": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+    "rubric.json": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+    "freeze.json": "93f19c921cb6022eb2dba5bb5e734849cafad331693478b5ca606b690f311026"
+  },
+  "summary": {
+    "gradeCounts": {
+      "complete": 0,
+      "partial": 3,
+      "failed": 37
+    },
+    "completeDialogs": 0,
+    "criticalFailureCount": 5,
+    "criticalFailures": [
+      "tap_initial_location",
+      "tap_flow_correction",
+      "parcel_van_observation",
+      "parcel_door_photo",
+      "parcel_courier_confirmation"
+    ],
+    "technicalFailureCount": 6,
+    "technicalFailures": [
+      "library_initial_deadline",
+      "library_day_correction",
+      "library_delegate_change",
+      "quiet_scene_preference",
+      "quiet_mood_no_advice",
+      "quiet_sound_preference_revision"
+    ],
+    "technicalBreakdown": {
+      "token_budget": 6
+    },
+    "exceptionCount": 0,
+    "discardedContextCount": 0
+  },
+  "matchedGenerationConditions": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "contextLength": 2048,
+    "sameFrozenSuiteAs3ccd": true,
+    "sameTokenizerAs3ccd": true,
+    "sameHistoryPolicy": true
+  },
+  "interpretation": "Ningún turno completo ni diálogo completo: no acredita conversación competente. Esta prueba DEV expuesta permite comparar artefactos bajo generación común; el cambio e202→3ccd atraviesa dos etapas causales y un repaso, por lo que no identifica causalmente el efecto de cada etapa o fuente. criticalCorrect=true sólo indica ausencia de una afirmación crítica detectada, no cumplimiento de la petición.",
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Lista repetida «biblioteca» y fragmento final «bib», hasta token_budget; no responde viernes a las seis. No afirma una fecha distinta inequívoca.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "b906f3f215e658c978bee72970859a11d617a5f0b5d33a84e8471d018b941a70"
+    },
+    {
+      "id": "library_day_correction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Bucle de listas «biblioteca» hasta token_budget; no distingue cambio de día ni datos conservados. No hay un plazo alternativo claro.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "46b264a0f8b5791d6ab9eb852160bf3250ef89a7a568186a2b333b0aa75b1bb1"
+    },
+    {
+      "id": "library_delegate_change",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmentos biblioteca/json/«jueve» hasta token_budget, sin plazo ni padre. No convierto esas sílabas confusas en una atribución concreta de recogida.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "6ed5638d72427ddc1c46aef9c62a246fe2877bf2a65bd501eaf3465a51049ebd"
+    },
+    {
+      "id": "library_late_collection",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Responde sólo «.»; no aporta contenido evaluable sobre el plazo. Es puntuación no vacía en el registro técnico, pero falla semánticamente.",
+      "technicalFailures": [],
+      "replySha256": "cdb4ee2aea69cc6a83331bbe96dc2caa9a299d21329efb0336fc02a82e1839a8"
+    },
+    {
+      "id": "cinema_initial_total",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Sal a las ocho y media» seguido de un bucle sobre cuánto tiempo no calcula 18 euros. El imperativo no afirma una tarifa ni un total; tampoco garantiza llegar a tiempo.",
+      "technicalFailures": [],
+      "replySha256": "0dcb0d15d9bf7fe325efb73823de0169a93ddf729317c167dce956e6a2c85dcd"
+    },
+    {
+      "id": "cinema_age_correction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Tautología «El tiempo es el tiempo en el cine» sin cálculo de 21 euros ni explicación; no hay un valor aritmético incorrecto afirmado.",
+      "technicalFailures": [],
+      "replySha256": "980f449399d4986239c92b66302b22b5e560897cddf78c92e0ef47fd8af20672"
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medir, el tiempo es el tiempo en el cine» no identifica dos entradas o 14 euros y carece de contenido sustantivo.",
+      "technicalFailures": [],
+      "replySha256": "2f24fcadac901c5e4e18ef02622d05c23a2efe8a5b7ea33633712ae83a77b1fb"
+    },
+    {
+      "id": "cinema_current_plan",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«A las ocho y media» responde correctamente al componente horario solicitado. Faltan jueves y 14 euros; «De nada» es innecesario, pero la parte horaria es clara.",
+      "technicalFailures": [],
+      "replySha256": "e0cb684ac3708c3687d2caf7cf973454c4d8e8fdd5719f4aa574ae3e64c17844"
+    },
+    {
+      "id": "tap_initial_location",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Afirma «El calor sale bien» al responder por el caudal caliente de cocina, descrito como apenas corriendo. Esa caracterización contradice el problema; el resto es confuso y no identifica el grifo.",
+      "technicalFailures": [],
+      "replySha256": "aa19092fb8d3133cfd0bf4c1966525a770b8e08845d5c0e943916a8f9300cc00"
+    },
+    {
+      "id": "tap_flow_correction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Reitera «El calor sale bien» cuando ambas salidas de cocina salen flojas; no puede presentarse la salida caliente como funcionando bien. No aplica la corrección de la fría ni conserva el baño con claridad.",
+      "technicalFailures": [],
+      "replySha256": "4f636e9127a11d2841943505fd1f3f5e622b7914b2e959fa5c69a47393996bb4"
+    },
+    {
+      "id": "tap_visit_delegate",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Cuándole… el baño de la calor es demasiado» es ininteligible; no resume problema, vecino o visita. No interpreto ese fragmento como un diagnóstico concreto del baño.",
+      "technicalFailures": [],
+      "replySha256": "29ac8a98851bdff1f8f4bf81ec3a55f9f2223ccb620634ade1680ba8a0a7ca84"
+    },
+    {
+      "id": "tap_receiver_correction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirábora el calor de la calor» no identifica madre, horario o grifo. No formula una atribución alternativa legible.",
+      "technicalFailures": [],
+      "replySha256": "349ea5bebf83abee88f5efa453eb4e3a3eb02aae2eb6d9cf87240b2167226cf9"
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me dijo a las diez y diez y diez, diez minutos…» es un eco numérico, no un aviso con mañana, diez y sala grande. No asigno un horario preciso nuevo a una secuencia repetida ambigua.",
+      "technicalFailures": [],
+      "replySha256": "7260cd94f420552d796da59a60e7e38440062a5b4ae809fe4b4e51f00c162856"
+    },
+    {
+      "id": "meeting_time_revision",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me diez minutos y diez minutos» no es una oración de aviso ni aplica once/sala. La repetición no constituye por sí sola una afirmación inequívoca de hora vigente.",
+      "technicalFailures": [],
+      "replySha256": "ceeafca086d97c21bf4b47b478ee4fba1b4c50de46cdb6881808b8efd8170dc7"
+    },
+    {
+      "id": "meeting_remote_revision",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me diez y cuarenta minutos y diez minutos» no formula hora de reunión, videollamada ni envío futuro; no lo interpreto como un horario preciso o envío ejecutado.",
+      "technicalFailures": [],
+      "replySha256": "2babc68dfc2ea8bf30698c5e9c502a3d267a068d85a789a9d21cc290099eddd0"
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite la misma secuencia de números sin aviso directo. Faltan mañana, once y videollamada; no hay una acción ejecutada concreta.",
+      "technicalFailures": [],
+      "replySha256": "2babc68dfc2ea8bf30698c5e9c502a3d267a068d85a789a9d21cc290099eddd0"
+    },
+    {
+      "id": "outing_initial_invitation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me alegra que me has dicho, ¿podrías que me has dicho?» es una frase confusa, sin invitación ni datos del plan.",
+      "technicalFailures": [],
+      "replySha256": "415e40366cae94f997b08e015002d45da3aa423327dbf65f844c2fb578624714"
+    },
+    {
+      "id": "outing_day_revision",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Menciona baloncesto pero no redacta una invitación ni recupera sábado, cinco y pista; la estructura «¿podrías que…?» es incorrecta. Baloncesto aún es el plan vigente, por lo que esa mención no es crítica.",
+      "technicalFailures": [],
+      "replySha256": "34f0f68f3bf756c43d826a5a67b042dad4fdd9c1d9eb0a60a63396cb8dfb3aff"
+    },
+    {
+      "id": "outing_activity_revision",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "La parte «a las cinco en el barrio» conserva hora y zona correctas del plan solicitado, con referencia a «esa pista». Faltan paseo y sábado; «hora de esa pista, eso» es poco natural. La parte concreta sigue siendo interpretable, aunque no cumple la invitación.",
+      "technicalFailures": [],
+      "replySha256": "68f40234f6a472147e6f81512fa5e33fd9e79f728102c34c930be612d3bd9155"
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Conserva cinco/barrio/pista sin mencionar baloncesto; faltan «quien se anime», paseo y sábado. «Hora de esa pista, sin emocionar» es una redacción defectuosa, pero los datos concretos legibles son correctos.",
+      "technicalFailures": [],
+      "replySha256": "23e325bd991f69cdcc2c93935aad5ef6fe8e896819394b39bfe0835dadd44e12"
+    },
+    {
+      "id": "consultation_initial_roles",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Bucle «el dolor y el dolor» sin responder quién explica y quién aporta lista. No intercambia explícitamente paciente o medicamentos.",
+      "technicalFailures": [],
+      "replySha256": "0493e5c53906f638952c1b306d0666ccb8f098dcd6ffdb28a247fc36123c7aa0"
+    },
+    {
+      "id": "consultation_driver_added",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Eco de «el dolor» sin abuelo/usuario dentro ni hermana conduciendo; no afirma una distribución alternativa de papeles.",
+      "technicalFailures": [],
+      "replySha256": "89f5ff55c458c3be7f17156dff3ce67abc6d9dda6f0c5e98d65b3c641221b4e4"
+    },
+    {
+      "id": "consultation_private_entry",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirás a la consulta y cuarenta…» es confuso, sin resumen de los tres papeles. No atribuyo un papel o una cantidad concreta a esa secuencia ininteligible.",
+      "technicalFailures": [],
+      "replySha256": "d3ab06fa7a734336e46af81e0e33f623df605e59c16cc2ecbfdfae357be21f26"
+    },
+    {
+      "id": "consultation_role_check",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite el fragmento anterior sin decidir si coincide la hipótesis de la hermana con la lista aportada por el usuario. No confirma expresamente la hipótesis.",
+      "technicalFailures": [],
+      "replySha256": "d3ab06fa7a734336e46af81e0e33f623df605e59c16cc2ecbfdfae357be21f26"
+    },
+    {
+      "id": "droplets_simple_cause",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «se llena de agua fría» y «demas de agua» sin explicar vapor del aire ni enfriamiento. No afirma inequívocamente que atraviese el cristal.",
+      "technicalFailures": [],
+      "replySha256": "0652bf20d62446342256afbca8cd480dd8411fd3197b77dac6d8c4e126541037"
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Bucle de agua fría sin corregir la inferencia del cristal; «Entonces cambio» no contiene una afirmación clara de filtración ni una garantía sobre defectos.",
+      "technicalFailures": [],
+      "replySha256": "9659b20896c1e13ddcb3d264ec06cbb69843287ff282204ff4ff5b30b592bd12"
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Meta de agua fría, demas…» es ininteligible; no responde la posibilidad ni sus condiciones. No lo convierto en una negación expresa por estar vacío.",
+      "technicalFailures": [],
+      "replySha256": "c9894bedf6419b2ca0df14fe27f662ee36e2d576bd46015424f9b22314d2a6f4"
+    },
+    {
+      "id": "droplets_child_summary",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Me alegra haberte ayudado, dejando demasiado» es una fórmula social confusa, sin explicación de las gotas para el sobrino ni un proceso físico alternativo concreto.",
+      "technicalFailures": [],
+      "replySha256": "9ad88cfc8b180ed5cda3c72d3efc8d834bd4599c0eb3c11ba199cd87c40289b3"
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«¿Qué color verde?» introduce una pregunta sin base en este turno y no analiza incertidumbre/robo. Preguntar por un color no equivale a afirmar ubicación o causa conocidas.",
+      "technicalFailures": [],
+      "replySha256": "4bcb0c950000c821a7edda03715a3d7b38a7f9a578c0dd2a4997d9d5866a3d5c"
+    },
+    {
+      "id": "parcel_van_observation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Afirma «el paquete figura en el portal» pese a la ausencia declarada y al testimonio que sólo describe una furgoneta. Introduce una ubicación del paquete no comprobada, sin responder qué se sabe.",
+      "technicalFailures": [],
+      "replySha256": "b9262fc9591be9b58629d3e0e95c04777308b721fe12918c53b009cbb381931d"
+    },
+    {
+      "id": "parcel_door_photo",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "«El paque figura figura en el portal» atribuye al paquete presencia en el portal sin base; la foto sólo muestra una puerta azul y la del usuario es verde. No explica la diferencia ni los límites de la prueba.",
+      "technicalFailures": [],
+      "replySha256": "76dfbb88ce50db149cf7f26d5f251fe047e3b5c19d5882c0e452bde6cb5fb597"
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Repite «el paquete figura en el portal» en vez de conservar la entrega confirmada en el número de al lado y que aún no se recuperó. Presenta una ubicación en el portal no establecida por el contexto.",
+      "technicalFailures": [],
+      "replySha256": "b9262fc9591be9b58629d3e0e95c04777308b721fe12918c53b009cbb381931d"
+    },
+    {
+      "id": "quiet_scene_preference",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Genera una lista repetida «Medir» pese al requisito sin listas ni recomendaciones, hasta token_budget; no charla sobre atmósfera o lluvia.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "7d51b133865e2ed9bb1c8f981a3e31dfcff3229342544aae8b5cb98eb3faaa67"
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Más listas «Medir a la lluvia» hasta token_budget, sin acompañar la calma ni una conversación sustantiva.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "e29f5e0a26969cfdbb4817b350e10f771597c9f264eac583e08200936046a904"
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Puntuación, markdown y «Medirádonar» hasta token_budget; no compara cafetería y lluvia ni aplica la preferencia. No afirma una preferencia falsa legible.",
+      "technicalFailures": [
+        "token_budget"
+      ],
+      "replySha256": "d8e133c279b1c11b2ed29207c5c7c4ab94a5c106aeee039b899849044b819a83"
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmentos de llaves/markdown/«Mediróniro» sin recuerdo de cafetería ni español comprensible; no atribuye una vivencia concreta.",
+      "technicalFailures": [],
+      "replySha256": "fdc076c6a3305b777fae3c96e5b4892fb2826ac23482207c659ce38a5f683d5e"
+    },
+    {
+      "id": "note_context_not_training",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Habla de «tarjeta de cerámica» y repite «contexto de tu dispositivo»; no distingue usar esta charla de actualizar parámetros. No afirma explícitamente entrenamiento o recuerdo permanente.",
+      "technicalFailures": [],
+      "replySha256": "313730e5c4227f485ccf5ba451b392d0f77defe7811c9e7df85e2d4ce98ef5de"
+    },
+    {
+      "id": "note_day_correction",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Medirtelo… contexto de tu dispositivo… opción» no redacta la nota con martes ni aporta contenido sustantivo; no afirma guardado externo ni miércoles vigente.",
+      "technicalFailures": [],
+      "replySha256": "7366d4b0b11444ff714d541428a86052407fe6978f3054424acc685b9a9c8a42"
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmentos sobre dispositivo sin responder que no puede afirmar envío; no dice que enviara, programara o contactara a la pareja.",
+      "technicalFailures": [],
+      "replySha256": "dcb69fa65f59c9c81643dd90ae2e054f8eb943fa6119dfcc0663d9d250d9e825"
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Tautología de contexto/dispositivo sin nota para copiar ni aclaración de persistencia; no garantiza recuerdo futuro ni entrenamiento.",
+      "technicalFailures": [],
+      "replySha256": "c62423ef5ab0526716a6ee52c55f74b98633f09ec0520a497a4126ff5cb35779"
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "capturedAtUtc": "2026-10-13T10:11:48.744955+00:00",
+  "scope": "Read-only LIVE audit plus preparation of a distinct fresh public-input experiment; no trainer/process start, stop, signal, LIVE/config/state mutation",
+  "live": {
+    "configPath": "private/learning-repair-20261013/configs/continual.json",
+    "configSha256": "24c561cc5a71132deb9321bdf356e46100a1820d36b62f6a706af3f26588ccf4",
+    "publicConfigTemplateSha256": "24c561cc5a71132deb9321bdf356e46100a1820d36b62f6a706af3f26588ccf4",
+    "config": {
+      "schemaVersion": 1,
+      "workspaceRoot": "/workspace/UNIDAD",
+      "stateDir": "private/learning-repair-20261013/continual",
+      "inboxDir": "private/learning-repair-20261013/loop-inbox",
+      "pollSeconds": 10,
+      "maxCycles": null,
+      "maxCrashRestartsPerStage": 2,
+      "approvedAgents": [
+        "project-agent-with-owner-standing-authorization"
+      ],
+      "initialCycle": {
+        "cycleId": "initial",
+        "stages": [
+          {
+            "id": "foundation-15m",
+            "kind": "base",
+            "runDir": "private/learning-repair-20261013/runs/foundation-15m",
+            "corpusPath": "private/learning-repair-20261013/corpus/causal-spanish-v1/causal-spanish.train-validation.jsonl",
+            "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+            "trainingConfigPath": "private/learning-repair-20261013/configs/foundation-training.json",
+            "trainingConfigSha256": "f5bab793911b273d1729e118b133957e9eac3937b6abc8382adda1c1d9f84864",
+            "modelConfigPath": "private/learning-repair-20261013/configs/foundation-model.json",
+            "modelConfigSha256": "b9e03368f5043fba22baa71ff2cbb815312758cd124b899f32c5cce29d5484fa",
+            "stopAfterStep": 12000,
+            "invocationBudgetSeconds": 3600,
+            "maxRSSMiB": 6144,
+            "maxDiskMiB": 2048,
+            "adoptExisting": true,
+            "adoptPid": 9540,
+            "adoptProcessBirth": "805298"
+          }
+        ]
+      },
+      "collector": {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "examples/collect_learning_wiki_v2.py",
+          "collect",
+          "--recipe",
+          "examples/learning-repair-20261013/collector-v2/recipe.json",
+          "--inbox-dir",
+          "{inbox_dir}",
+          "--supervisor-state",
+          "private/learning-repair-20261013/continual/state.json"
+        ],
+        "enabled": true,
+        "everySeconds": 3600,
+        "maxDiskMiB": 2048,
+        "sourceSha256": {
+          "examples/collect_learning_wiki.py": "feee09834049f1f163e7e98badcb2dfaf9a0c00f2bde65cef6191ef1199619c9",
+          "examples/prepare_public_spanish_language.py": "5f7d2cae709b6e68770eb80827dc0c1be67d390d635ed56e98a22225c65b3ce4",
+          "examples/prepare_spanish_causal_base.py": "9d7741d84bdd2bec1738e67648dcc867261e3c787fa9a73d33464c3577a92550",
+          "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+          "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+          "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+          "examples/collect_learning_wiki_v2.py": "0ba9290196f5689710a1988a0fa8e18b481962a1e1324816243df31c5eecbf95",
+          "examples/learning-repair-20261013/collector-v2/recipe.json": "35a2ae25aae264cc80072a2e50bb180f0a74e24e587d354f15c240f66da16bb8"
+        },
+        "timeoutSeconds": 1200
+      },
+      "limits": "Finite native stages; indefinite local polling while environment and supervisor remain alive. No guaranteed improvement or autopromotion.",
+      "postStage": {
+        "enabled": true,
+        "purpose": "development_generation",
+        "torchThreads": 1,
+        "timeoutSeconds": 300,
+        "maxRSSMiB": 6144,
+        "maxDiskMiB": 512,
+        "suiteDir": "docs/learning-repair-20261013/development-suite",
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "examples/run_learning_evaluation.py",
+          "--suite-dir",
+          "docs/learning-repair-20261013/development-suite",
+          "generate",
+          "--model-dir",
+          "{snapshot}",
+          "--output-dir",
+          "{output_dir}",
+          "--torch-threads",
+          "1"
+        ],
+        "sourceSha256": {
+          "examples/run_learning_evaluation.py": "f9023f7a956abd98fb451bb7372c01affb554952e29ee00a77aa8684c1afb7fe",
+          "docs/learning-repair-20261013/development-suite/cases.json": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+          "docs/learning-repair-20261013/development-suite/rubric.json": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+          "docs/learning-repair-20261013/development-suite/freeze.json": "93f19c921cb6022eb2dba5bb5e734849cafad331693478b5ca606b690f311026"
+        }
+      }
+    },
+    "stateSnapshotSha256": "176c0fa5c5ae6599f6d21231dc521ba19273f41beb252f32341ba5ccc23b5aad",
+    "instance": {
+      "pid": 22557,
+      "processBirth": "2592201",
+      "startedAtUtc": "2026-10-13T09:09:17.459582+00:00",
+      "configSha256": "24c561cc5a71132deb9321bdf356e46100a1820d36b62f6a706af3f26588ccf4"
+    },
+    "supervisorProcess": {
+      "pid": 22557,
+      "processBirth": "2592201",
+      "state": "S",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/UNIDAD/examples/continual_training.py",
+        "run",
+        "--config",
+        "/workspace/UNIDAD/private/learning-repair-20261013/configs/continual.json"
+      ]
+    },
+    "nativeProcess": {
+      "pid": 23028,
+      "processBirth": "2677279",
+      "state": "R",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/UNIDAD/examples/run_learning_stage.py",
+        "--corpus",
+        "/workspace/UNIDAD/private/learning-repair-20261013/corpus/natural-latam-sft-v4/natural-control.train-validation.jsonl",
+        "--expected-corpus-sha256",
+        "48cc11848568c03a32727660968e47695d8eeb43c3302cbf7055eefe2e449491",
+        "--run-dir",
+        "/workspace/UNIDAD/private/learning-repair-20261013/runs/natural-latam-matched-v4/control",
+        "--training-config",
+        "/workspace/UNIDAD/private/learning-repair-20261013/configs/natural-latam-matched-4096.json",
+        "--stop-after-step",
+        "4096",
+        "--budget-seconds",
+        "3600",
+        "--max-rss-mib",
+        "6144",
+        "--max-disk-mib",
+        "2048",
+        "--parent-model",
+        "/workspace/UNIDAD/private/learning-repair-20261013/runs/conversation-15m/snapshots/best-step004096"
+      ]
+    },
+    "operationalState": "training",
+    "cycleId": "natural-latam-matched-v4",
+    "stageIndex": 1,
+    "cyclesCompleted": 2,
+    "activeNative": {
+      "step": 3647,
+      "status": "running",
+      "reason": null,
+      "elapsedSeconds": 2892.501561041998,
+      "lastCheckpoint": "step-000003584-aae1cec18bda455aaeef96622a879ea4",
+      "bestCheckpoint": "step-000000000-b0277331e4ee4dc0b7c185082d36571b",
+      "bestValidationNll": 1.7110848086831454,
+      "pid": 23028,
+      "processBirth": "2677279",
+      "corpusSha256": "48cc11848568c03a32727660968e47695d8eeb43c3302cbf7055eefe2e449491"
+    },
+    "nativeStatusSnapshotSha256": "d5b415c90e7044e5acb308e3ea0670ac29f8fb09560652462fd4ec33000765ef",
+    "nativeFrozenSourcesMatch": true,
+    "collectorEnabled": true,
+    "collectorChild": null,
+    "postStageChild": null,
+    "pendingPostStages": [],
+    "stopRequestsPresent": {
+      "supervisor": false,
+      "native": false
+    },
+    "queuedApprovedNotAdmitted": [
+      {
+        "manifest": "private/learning-repair-20261013/loop-inbox/autonomy-action-v1.json",
+        "manifestSha256": "1d77537fe1ea098a4a4584a98b506db62e9a61ee17fd72a43893a6d841ac7250",
+        "approval": {
+          "schemaVersion": 1,
+          "approved": true,
+          "approvedBy": "project-agent-with-owner-standing-authorization",
+          "manifestSha256": "1d77537fe1ea098a4a4584a98b506db62e9a61ee17fd72a43893a6d841ac7250",
+          "standingOwnerAuthorization": true,
+          "independentHumanReview": false,
+          "dataQaPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/qa.json",
+          "dataQaSha256": "50217118f5ce5d8c41f145972382a682048a528be4a86cc1af5280bf20e65ec7",
+          "conversationAccepted": false,
+          "scope": "Own inherited architecture extension and finite action-format SFT under current explicit owner training/autonomy authorization"
+        },
+        "approvalSha256": "ab3b691aeba977ed2e096e01fc7c757ca4680d2eafafb8b6f1201f9462648425",
+        "cycle": {
+          "schemaVersion": 1,
+          "cycleId": "autonomy-action-v1",
+          "purpose": "Teach missing raw JSON action format on own exact inherited backbone and2048positions; real tool-transcript fixture supervision; experimental not learned worker certification",
+          "stages": [
+            {
+              "id": "action2048",
+              "kind": "sft",
+              "runDir": "private/learning-repair-20261013/runs/autonomy-action-v1/action2048",
+              "corpusPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl",
+              "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/autonomy-action-2048-256.json",
+              "trainingConfigSha256": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+              "parentModelPath": "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024",
+              "parentFiles": {
+                "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+                "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+                "weights.safetensors": "80cc46e5dfb2413355af2ce63e1c3aa6efae3760cd58c5d9f6d35b6ec270ca4a",
+                "manifest.json": "8074fcfc5e9099dad2ab1cdd4ee7284ee629fbe1d5346715cf6f3aaf50720864"
+              },
+              "provenanceManifestPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/manifest.json",
+              "provenanceManifestSha256": "b8d76767db360f73d7eebaa494bb346d1cdc2a2f27c555bfea2d4445db9398e4",
+              "stopAfterStep": 256,
+              "invocationBudgetSeconds": 600,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            }
+          ],
+          "hypothesis": "The current weights emit non-JSON even within512. Structured-action supervision is missing; context2048 is required by unmodified actual three-tool frames up to1268 tokens incl targets.",
+          "successCriteria": "Compare same own extended baseline and trained candidate on new file tasks via actual API; independent real report and unchanged originals, zero forbidden effects. Also same conversation DEV to observe forgetting. Training-record fit only overfit diagnostic, not generalization.",
+          "limits": "Finite256logical updates or600cumulative native seconds, batch2/micro1/RAM6GiB/runDisk2GiB, no GPU/newexpenses/no externalweights. Native first cost and elapsed recorded; not an infinite training budget."
+        },
+        "admitted": false,
+        "inputHashMismatches": []
+      },
+      {
+        "manifest": "private/learning-repair-20261013/loop-inbox/language-wide-latam-v3.json",
+        "manifestSha256": "87d1af05cb11beed9a8424623bd07e5566aa2c774d2b463207e9fa5effe2fd31",
+        "approval": {
+          "schemaVersion": 1,
+          "approved": true,
+          "manifestSha256": "87d1af05cb11beed9a8424623bd07e5566aa2c774d2b463207e9fa5effe2fd31",
+          "approvedBy": "project-agent-with-owner-standing-authorization",
+          "standingOwnerAuthorization": true,
+          "independentHumanReview": false,
+          "conversationAccepted": false,
+          "dataQaSha256": "dd6ce5e17d25dda74a52bffda71ce06a6693ee2aaf09c242dbb9d9268f1d8d37"
+        },
+        "approvalSha256": "46cfaeb6d8a9f170f0d82a2960fb0b81abc2cda53f2872ed87066be10918eec5",
+        "cycle": {
+          "schemaVersion": 1,
+          "cycleId": "language-wide-latam-v3",
+          "purpose": "New broad Spanish primary-source linguistic continuation including verified Latin-American category inventory/curated country senses, then byte-preserved conversational/action rehearsal; experimental no autopromotion",
+          "stages": [
+            {
+              "id": "language-1",
+              "kind": "base",
+              "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/language-1",
+              "corpusPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.train-validation.jsonl",
+              "corpusSha256": "81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+              "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+              "parentStage": "autonomy-action-v1:action2048",
+              "provenanceManifestPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.manifest.json",
+              "provenanceManifestSha256": "7a828a22f97f83c7925f0d10e2dfdc8ee3e789a40e9be458b00538a2358a44a2",
+              "stopAfterStep": 2048,
+              "invocationBudgetSeconds": 1800,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            },
+            {
+              "id": "language-2",
+              "kind": "base",
+              "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/language-2",
+              "corpusPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.train-validation.jsonl",
+              "corpusSha256": "411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+              "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+              "parentStage": "language-1",
+              "provenanceManifestPath": "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.manifest.json",
+              "provenanceManifestSha256": "203591f9563f62926d4cb251ae66dc54de8f725214e20101f38132e5deec8940",
+              "stopAfterStep": 2048,
+              "invocationBudgetSeconds": 1800,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            },
+            {
+              "id": "natural-action-retention",
+              "kind": "sft",
+              "runDir": "private/learning-repair-20261013/runs/wide-latam-v3/natural-action-retention",
+              "corpusPath": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+              "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+              "trainingConfigSha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3",
+              "parentStage": "language-2",
+              "provenanceManifestPath": "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json",
+              "provenanceManifestSha256": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c",
+              "stopAfterStep": 1024,
+              "invocationBudgetSeconds": 1800,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            }
+          ],
+          "hypothesis": "Reweighting alone still fails actual DEV; diagnose insufficient own linguistic base by adding novel licensed Spanish source families. Retain both conversational and structured-action supervision after dense causal continuation.",
+          "limits": "Each language stage ≤2epochs/2048updates/1800cumulative native seconds; SFT ≤1024updates/1800seconds;RAM6GiB/runDisk2GiB perstage,4CPU,micro1logical2; sourcecatalog repetitions not new meanings.",
+          "successCriteria": "Identical DEV actualhistory versus selected own parent plus real new tool tasks; global validation losses on different corpora not comparable; no reserved final until candidate fixed",
+          "knownExcludedGlosses": "All11 knownbadglosses and18 exact regional senses excluded in source-v3, equivalent genericabajeño removed; originalraw/v2 preserved",
+          "trainQaPath": "docs/learning-repair-20261013/natural-latam-v4-train-audit/future-wide-train-review.json"
+        },
+        "admitted": false,
+        "inputHashMismatches": []
+      },
+      {
+        "manifest": "private/learning-repair-20261013/loop-inbox/language-z-tatoeba-next-v1.json",
+        "manifestSha256": "df7ae03dcff370c6f6fd40c2ce7d266b6d10c6180106090561ec778f92bf57b7",
+        "approval": {
+          "schemaVersion": 1,
+          "approved": true,
+          "approvedBy": "project-agent-with-owner-standing-authorization",
+          "manifestSha256": "df7ae03dcff370c6f6fd40c2ce7d266b6d10c6180106090561ec778f92bf57b7",
+          "standingOwnerAuthorization": true,
+          "independentHumanReview": false,
+          "conversationAccepted": false
+        },
+        "approvalSha256": "b12089935b9e37d0b48effba8ba3c10765e14dea91023853c0148005d829bfbe",
+        "cycle": {
+          "schemaVersion": 1,
+          "cycleId": "language-z-tatoeba-next-v1",
+          "purpose": "Continue novel Spanish sentence families from next licensed official source interval then preserve conversational/action supervision; no claim all Spanish or guaranteed improvement",
+          "stages": [
+            {
+              "id": "language",
+              "kind": "base",
+              "runDir": "private/learning-repair-20261013/runs/tatoeba-next-v1/language",
+              "corpusPath": "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.train-validation.jsonl",
+              "corpusSha256": "93b87039b64c24d4a32cef6f5199fb6fc7c2d16dc6c402bb61fe15320e36a96e",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+              "trainingConfigSha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+              "parentStage": "language-wide-latam-v3:natural-action-retention",
+              "provenanceManifestPath": "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.manifest.json",
+              "provenanceManifestSha256": "3da147ecfbbd6741e32f5114da203bd0cbfec484c78573cf7a70503a12220bd1",
+              "stopAfterStep": 2048,
+              "invocationBudgetSeconds": 1800,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            },
+            {
+              "id": "natural-action-retention",
+              "kind": "sft",
+              "runDir": "private/learning-repair-20261013/runs/tatoeba-next-v1/natural-action-retention",
+              "corpusPath": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+              "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+              "trainingConfigPath": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+              "trainingConfigSha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3",
+              "parentStage": "language",
+              "provenanceManifestPath": "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json",
+              "provenanceManifestSha256": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c",
+              "stopAfterStep": 1024,
+              "invocationBudgetSeconds": 1800,
+              "maxRSSMiB": 6144,
+              "maxDiskMiB": 2048
+            }
+          ],
+          "hypothesis": "Broader lexical and syntax exposure on the own linguistic backbone; report actual reply changes and forgetting, not merely NLL",
+          "limits": "causal2epochs/2048logicalupdates/1800nativecumulativeseconds;SFT1024updates/1800seconds;RAM6GiB/runDisk2GiB,CPU4,batch2/micro1, no newpaid resources",
+          "sourceNovelty": "139013 novel sentences from official next150000detailedrows offset99963; prior sourceIDs/exactnormalization histories excluded; new TEST skipped beforecleaning; OASST rehearsal unchanged",
+          "successCriteria": "SameDEV cases/actualhistory + real tool tasks; no reserved final unless candidate configuration fixed"
+        },
+        "admitted": false,
+        "inputHashMismatches": []
+      }
+    ],
+    "currentlyRejectedCycleHashes": {},
+    "seenCycleHashes": [
+      "8747b4cb2671f4ae1a7cbe8192e999d93c8b7c091e569cc8139d98a3348f3421",
+      "641a9486d2a421a8d4d77272372dcc5bbb2cfad90fa56679ce92ac885cddfa30",
+      "88e41fcf7e711f6616bfc53195e1f23414b7a130300b57e6b2ac660520e767ce"
+    ]
+  },
+  "executionOrder": [
+    "CONTROL completes/exports selected own artifact",
+    "CONTROL DEV40 generation CPU1 before next admission",
+    "ACTION context2048 at most256logical updates/600cumulative native seconds then ACTION DEV40 generation CPU1 before wide admission",
+    "wide v3 language1 at most2048updates/1800s",
+    "wide v3 language2 at most2048updates/1800s",
+    "wide v3 natural/action retention at most1024updates/1800s then DEV40",
+    "Tatoeba language at most2048updates/1800s",
+    "Tatoeba natural/action retention at most1024updates/1800s then DEV40",
+    "LIVE waits for more approved data; collector V2 may run only idle"
+  ],
+  "admissionConditions": {
+    "presentInputAndApprovalMismatch": false,
+    "futureParentsMaterializedNow": false,
+    "deferredParentsExpected": true,
+    "conditions": [
+      "Prior named own stage must complete and export pinned artifact receipt before downstream admission",
+      "All pinned data/config/provenance actual hashes/splits pass preflight",
+      "Available workspace bytes exceed stage disk ceiling plus512MiB",
+      "No stop marker, resource stop or crash limit",
+      "All frozen native and DEV/collector sources remain byte-exact"
+    ],
+    "failureBehavior": "Invalid future admission is journaled once per exact manifest+approval hash in rejectedCycleHashes; other valid queued cycles continue. Resource/native failure abandons cycle; missing future parent blocks or rejects dependent admission; no false guarantee all six stages will run.",
+    "availableWorkspaceBytesAtAudit": 20966420480,
+    "minimumStageFreeBytes": 2684354560
+  },
+  "cancellationResume": {
+    "supervisorStopCommand": [
+      "python",
+      "examples/continual_training.py",
+      "stop",
+      "--config",
+      "private/learning-repair-20261013/configs/continual.json"
+    ],
+    "performed": false,
+    "nativeCancellation": "Cooperative stop at complete optimizer boundary; request bound to owner/runner/PID/birth. Completed effects/checkpoints remain; no rollback. DEV child may receive SIGTERM then SIGKILL after10seconds, only its owned identity.",
+    "automaticResume": "invocation_time_budget, or stale with checkpoint and at most2 crash restarts; preserves source/data/model/Adam/scheduler/RNG and cumulative limits",
+    "manualStop": "Supervisor stop marker remains; manual native stops are paused_native and not auto-resumed. Host must review/archive owned stop marker before continuing same state; no budget reset",
+    "exactResumeNeeds": "Original workspace paths, config hash, supervisor history, stage-design, parent source artifacts and PRIVATE native checkpoint incl optimizer/scheduler/RNG. Public exported weights do not contain optimizer state.",
+    "bounds": "LIVE maxCycles null permits idle polling while environment active; every native stage and DEV/collector invocation finite. Step/time/patience/resource limits can stop before requested maximum steps; no environment lifetime or semantic improvement guarantee"
+  },
+  "freshPublicReproduction": {
+    "dryRunVerifiedNoOutputs": true,
+    "actualPreparationReceipt": {
+      "schemaVersion": 1,
+      "status": "prepared_not_started",
+      "preparedAtUtc": "2026-10-13T10:11:46.214571+00:00",
+      "inputs": {
+        "examples/learning-repair-20261013/configs/continual-live-collector-v2.json": "24c561cc5a71132deb9321bdf356e46100a1820d36b62f6a706af3f26588ccf4",
+        "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+        "examples/learning-repair-20261013/configs/autonomy-action-2048-256.json": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+        "examples/learning-repair-20261013/autonomy-action-sft-v1/manifest.json": "b8d76767db360f73d7eebaa494bb346d1cdc2a2f27c555bfea2d4445db9398e4",
+        "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.train-validation.jsonl": "81c414480d0baf36b7784f808ba8d4759a6b7ef706eeaabdcb74d6e919cb8a81",
+        "examples/learning-repair-20261013/configs/collector-v2-base-2048.json": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8",
+        "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-001.manifest.json": "7a828a22f97f83c7925f0d10e2dfdc8ee3e789a40e9be458b00538a2358a44a2",
+        "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.train-validation.jsonl": "411c0a8033deca79e471918db61bdb5ba0fff72935ccfd4248ddfe046d7dcfca",
+        "examples/learning-repair-20261013/wide-latam-v3/wide-latam.shard-002.manifest.json": "203591f9563f62926d4cb251ae66dc54de8f725214e20101f38132e5deec8940",
+        "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+        "examples/learning-repair-20261013/configs/natural-action-retention-1024.json": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3",
+        "examples/learning-repair-20261013/natural-action-retention-v1/manifest.json": "51c67848ce86a1e6f78b0bd508d400701ab94f843261afebbb19e95a5e670f3c",
+        "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.train-validation.jsonl": "93b87039b64c24d4a32cef6f5199fb6fc7c2d16dc6c402bb61fe15320e36a96e",
+        "examples/learning-repair-20261013/tatoeba-next-mix-v1/tatoeba-next.shard-001.manifest.json": "3da147ecfbbd6741e32f5114da203bd0cbfec484c78573cf7a70503a12220bd1",
+        "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024/config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+        "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024/tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024/weights.safetensors": "80cc46e5dfb2413355af2ce63e1c3aa6efae3760cd58c5d9f6d35b6ec270ca4a",
+        "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024/manifest.json": "8074fcfc5e9099dad2ab1cdd4ee7284ee629fbe1d5346715cf6f3aaf50720864",
+        "examples/run_learning_evaluation.py": "f9023f7a956abd98fb451bb7372c01affb554952e29ee00a77aa8684c1afb7fe",
+        "docs/learning-repair-20261013/development-suite/cases.json": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+        "docs/learning-repair-20261013/development-suite/rubric.json": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+        "docs/learning-repair-20261013/development-suite/freeze.json": "93f19c921cb6022eb2dba5bb5e734849cafad331693478b5ca606b690f311026"
+      },
+      "nativeSourcesAtPreparation": {
+        "src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+        "src/ia_propia/conversation/__main__.py": "5874d42fdf7275ada4f44f138a239f6e1a403c169946eca54b1dddd25848ac15",
+        "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+        "src/ia_propia/conversation/artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+        "src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+        "src/ia_propia/conversation/configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+        "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+        "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+        "src/ia_propia/conversation/disk_data.py": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71",
+        "src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+        "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+        "src/ia_propia/conversation/model.py": "375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d",
+        "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+        "src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+        "src/ia_propia/conversation/tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+        "src/ia_propia/conversation/training.py": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955",
+        "examples/continual_training.py": "83086b7a2efbe949ea2e06c50e707a2163a3996a4aa1f56b4c3a349024fb3f72",
+        "examples/run_learning_stage.py": "b88dc76efdb5df7863979c599ae614b2ab6ee74c6c5284e069dd75dedfbe0e00",
+        "examples/run_conversation_pilot.py": "d9948fcea1a8582539998d013b47e0b8e1ef5706499f73f1111f967b1803a503"
+      },
+      "validation": "All six actual corpora/configs/provenance checked by native pure preflight; future graph structurally valid, parent receipts rechecked at admission/launch",
+      "parentModelId": "unidad-conversation-ba70fff6928dcaf08087a4c966c1ea6496555bc04683933789908b4d8f49501c",
+      "parentContextExtensionTrained": false,
+      "newExperimentNotExactResume": true,
+      "optimizerStateCopied": false,
+      "collectorEnabled": false,
+      "trainingStarted": false,
+      "postStageThreads": 1,
+      "dryRun": false,
+      "newOutput": "private/continuations/portable-reproduction-audit-v1",
+      "outputs": {
+        "config.json": "2b552a8b70cf1e222bcdd41d33cb7653981df1596c3c6828c6b46fd6ecec71a0",
+        "state/state.json": "d0896df139ebb5088f8b6826233bddf0b73b29557faab3b2ed9fa4314cfba733",
+        "inbox/language-wide-latam-v3.json": "4903bb7840b1aad79efbeed325c2c943e4ad7a15ff3caa264ecc491a6abe1812",
+        "inbox/language-wide-latam-v3.approval.json": "b29dba1f55c65c88929c24549df06e33e7406654a3d8a85e2276d59e966fda68",
+        "inbox/language-z-tatoeba-next-v1.json": "fb27e912dd911fd9c3a20d243a4751dfa7fb6bc6ef66624f6de04e9de458c7f5",
+        "inbox/language-z-tatoeba-next-v1.approval.json": "9abaa8830cd744db525fa14cf7b863c903eb9a05eeaa2335e9a5c0ff303f6b6b"
+      },
+      "commandsFromCloneRoot": {
+        "status": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "examples/continual_training.py",
+          "status",
+          "--config",
+          "private/continuations/portable-reproduction-audit-v1/config.json"
+        ],
+        "start": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "examples/continual_training.py",
+          "start",
+          "--config",
+          "private/continuations/portable-reproduction-audit-v1/config.json"
+        ],
+        "stop": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "examples/continual_training.py",
+          "stop",
+          "--config",
+          "private/continuations/portable-reproduction-audit-v1/config.json"
+        ]
+      },
+      "resumeRequirements": "Exact native resume needs this experiment state, stage-design, native checkpoints with optimizer/scheduler/RNG, frozen source/input/parent bytes and owned stop-marker review. Exported weights alone start a new optimizer."
+    },
+    "configLoadValidated": true,
+    "preparedSupervisorStatus": {
+      "schemaVersion": 1,
+      "configSha256": "2b552a8b70cf1e222bcdd41d33cb7653981df1596c3c6828c6b46fd6ecec71a0",
+      "cyclesCompleted": 0,
+      "cycle": {
+        "schemaVersion": 1,
+        "cycleId": "autonomy-action-v1",
+        "purpose": "New finite experiment on published own weights; experimental, no autopromotion",
+        "stages": [
+          {
+            "id": "action2048",
+            "kind": "sft",
+            "runDir": "private/continuations/portable-reproduction-audit-v1/runs/autonomy-action-v1/action2048",
+            "corpusPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl",
+            "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+            "trainingConfigPath": "examples/learning-repair-20261013/configs/autonomy-action-2048-256.json",
+            "trainingConfigSha256": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+            "provenanceManifestPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/manifest.json",
+            "provenanceManifestSha256": "b8d76767db360f73d7eebaa494bb346d1cdc2a2f27c555bfea2d4445db9398e4",
+            "stopAfterStep": 256,
+            "invocationBudgetSeconds": 600,
+            "maxRSSMiB": 6144,
+            "maxDiskMiB": 2048,
+            "parentModelPath": "models/learning-repair-20261013/autonomy/context2048-untrained-parent1024",
+            "parentFiles": {
+              "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+              "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+              "weights.safetensors": "80cc46e5dfb2413355af2ce63e1c3aa6efae3760cd58c5d9f6d35b6ec270ca4a",
+              "manifest.json": "8074fcfc5e9099dad2ab1cdd4ee7284ee629fbe1d5346715cf6f3aaf50720864"
+            }
+          }
+        ]
+      },
+      "stageIndex": 0,
+      "stageResults": {},
+      "seenCycleHashes": [],
+      "seenCorpora": [],
+      "seenTrainingConfigHashes": [],
+      "crashRestarts": {},
+      "seenContentHashes": [],
+      "conversationCertification": "awaiting_review",
+      "worker": {
+        "schemaVersion": 1,
+        "status": "unplanned",
+        "processAlive": false,
+        "environmentLifetimeGuaranteed": false
+      },
+      "nativeWorkerAlive": false,
+      "trainingActive": false,
+      "generationChildAlive": false,
+      "supervisorAlive": false,
+      "supervisorPid": null,
+      "supervisorBirth": null,
+      "recordedOperationalState": null,
+      "operationalState": "supervisor_not_alive",
+      "environmentLifetimeGuaranteed": false
+    },
+    "preparationWallSeconds": 8.016146753998328,
+    "newRunsDirectoryPresent": false,
+    "newInstancePresent": false,
+    "noLiveSourceChanged": true,
+    "bootstrapHelperSha256": "ce592cd2e91ed98444e35974dc3b41bfef16e33ee26e144a282502a94bdff225",
+    "tests": {
+      "passed": 5,
+      "wallSeconds": 0.026,
+      "scope": "CPU1 pure preflight and atomic publication; no model inference/training"
+    }
+  }
+}

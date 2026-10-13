@@ -1,0 +1,702 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-d6d860222baf5e8952eade42fcda3a0bd52dc77000c0c254ca895a91fdab7160",
+  "outputsSha256": "8011eefafab0b823fe49fe689607f8225eb8c36a7a9b486c37bbe8b28ba114ac",
+  "reviewer": "project AI cross reviewer /root/treatment_last4096_cross; not an independent human evaluator",
+  "method": "Revisión semántica independiente de IA, turno por turno, únicamente contra cases.json y rubric.json de docs/learning-repair-20261013/development-suite y las 40 respuestas reales de este outputs.json, con historia real comprobada por assess. No se consultaron la primaria, otras evaluaciones, corpus ni reserved-suite. Se preservan las respuestas. Grado partial requiere aporte sustantivo correcto; cadenas repetidas sin respuesta útil son failed. Fallo crítico sólo cuando hay una afirmación factual concreta sin base o incompatible; eco, omisión, texto ininteligible e irrelevancia no bastan. Cada crítica conserva una cita exacta y la contradicción. Los campos technicalFailures registran los fallos observados y assess valida los historiales y los descartes.",
+  "rubricSha256": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+  "casesSha256": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+  "independentHumanReview": false,
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "partial",
+      "note": "Se reconocen viernes y seis como plazo solicitado, pero «es de las seis seis» resulta una formulación defectuosa; no es español natural.",
+      "evidence": {
+        "quote": "El viernes es de las seis seis.",
+        "source": "outputs.json",
+        "turnId": "library_initial_deadline"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No explica el cambio a jueves ni conserva claramente la hora. Añade una ubicación no conocida de la hermana y luego repite «de arco» hasta agotar tokens.",
+      "evidence": {
+        "quote": "Aquí tienes una lista de 10 seis. Mi hermana está en la biblioteca:\n\n- Peso de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de arco de ar",
+        "source": "outputs.json",
+        "turnId": "library_day_correction"
+      },
+      "criticalFailure": {
+        "claimQuote": "Mi hermana está en la biblioteca",
+        "contradiction": "Sólo se dijo que la hermana sigue yendo a recoger; no que ya esté en la biblioteca ni que sea hermana del asistente."
+      },
+      "technicalFailures": [
+        "token_budget"
+      ]
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Aparecen jueves y seis compatibles con el plazo vigente, pero la larga repetición de «seis» no produce una respuesta breve y natural evaluable como contenido sustantivo. No hay otro plazo ni receptor afirmado.",
+      "evidence": {
+        "quote": "El jueves seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis.",
+        "source": "outputs.json",
+        "turnId": "library_delegate_change"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La frase inconclusa y la repetición de «seis» no resuelven si el viernes queda fuera de plazo. No afirma que el viernes cumpla ni inventa una prórroga.",
+      "evidence": {
+        "quote": "En el caso de que, el jueves seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis seis.",
+        "source": "outputs.json",
+        "turnId": "library_late_collection"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No calcula los dieciocho euros y introduce dos entradas frente a las tres del caso; la construcción «solo dime quedan» es defectuosa.",
+      "evidence": {
+        "quote": "No; solo dime quedan dos entradas.",
+        "source": "outputs.json",
+        "turnId": "cinema_initial_total"
+      },
+      "criticalFailure": {
+        "claimQuote": "quedan dos entradas",
+        "contradiction": "En este turno van dos adultos y un niño: se preguntó por tres entradas, no dos."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No calcula veintiún euros; introduce una atribución al cine y afirma una hora de las ocho que no conserva las ocho y media.",
+      "evidence": {
+        "quote": "El cine le dice que el jueves a las ocho y media vamos a las ocho, ya que el jueves a las ocho y media vamos a las ocho.",
+        "source": "outputs.json",
+        "turnId": "cinema_age_correction"
+      },
+      "criticalFailure": {
+        "claimQuote": "vamos a las ocho",
+        "contradiction": "El día y la hora siguen siendo jueves a las ocho y media; no se corrigió la hora a las ocho."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "Menciona correctamente jueves a las ocho y media, pero no indica dos entradas ni catorce euros y afirma una presencia en el cine sin base.",
+      "evidence": {
+        "quote": "El cine le dice que está en el cine. El jueves a las ocho y media vamos a las ocho y media.",
+        "source": "outputs.json",
+        "turnId": "cinema_attendee_reduction"
+      },
+      "criticalFailure": {
+        "claimQuote": "El cine le dice que está en el cine.",
+        "contradiction": "Sólo consta un plan para ir al cine; no consta que alguien ya esté en él ni una comunicación del cine."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No recupera jueves, ocho y media y catorce euros; dice que la hora es ahora sin base y acaba en un fragmento.",
+      "evidence": {
+        "quote": "No; el cine le dice que la hora es ahora y el cine.",
+        "source": "outputs.json",
+        "turnId": "cinema_current_plan"
+      },
+      "criticalFailure": {
+        "claimQuote": "la hora es ahora",
+        "contradiction": "El plan vigente conserva jueves a las ocho y media; no se anunció una sesión que empiece ahora."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "Desplaza la salida caliente fuera de la cocina en lugar de localizar en ella el problema descrito.",
+      "evidence": {
+        "quote": "No, la caliente queda fuera de la cocina.",
+        "source": "outputs.json",
+        "turnId": "tap_initial_location"
+      },
+      "criticalFailure": {
+        "claimQuote": "la caliente queda fuera de la cocina",
+        "contradiction": "La salida caliente problemática pertenece al grifo de la cocina; en el baño ambas funcionan normalmente."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Ofrece una despedida genérica, sin corregir el caudal de la fría de cocina ni resumir ambas salidas flojas. No contiene una afirmación errada del estado de los grifos.",
+      "evidence": {
+        "quote": "No, si necesitas algo más, no dudes en preguntar.",
+        "source": "outputs.json",
+        "turnId": "tap_flow_correction"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No identifica al vecino ni resume el poco caudal de ambas salidas; afirma que la cocina sale bien y repite «el problema».",
+      "evidence": {
+        "quote": "La visita será el problema y el problema. La cocina sale bien.",
+        "source": "outputs.json",
+        "turnId": "tap_visit_delegate"
+      },
+      "criticalFailure": {
+        "claimQuote": "La cocina sale bien.",
+        "contradiction": "La corrección vigente establece poco caudal tanto en la fría como en la caliente de cocina."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No identifica a la madre ni el lunes de nueve a once; vuelve a afirmar buen funcionamiento de cocina en una frase incoherente.",
+      "evidence": {
+        "quote": "La cocina sale bien por la cocina sale bien antes de dormir, cuando la cocina sale atravesa.",
+        "source": "outputs.json",
+        "turnId": "tap_receiver_correction"
+      },
+      "criticalFailure": {
+        "claimQuote": "La cocina sale bien",
+        "contradiction": "Las dos salidas del grifo de cocina siguen flojas; sólo se cambió al vecino por la madre como receptora."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La secuencia «Día 19uega» y las repeticiones no forman un aviso con mañana y sala grande. No interpreto la cadena ilegible «19uega» como una fecha alternativa afirmada.",
+      "evidence": {
+        "quote": "Día 19uega y dirigir a las diez y diez y dirigir a las diez y diez y dirigir a las diez y diez y diez.",
+        "source": "outputs.json",
+        "turnId": "meeting_friendly_notice"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "No redacta la frase con mañana a las once en la sala grande. La cadena de «diez» sin predicación comprensible se califica fallo por ininteligibilidad; no es por sí sola una hora alternativa afirmada.",
+      "evidence": {
+        "quote": "Día 19uega y diez; diez y diez y diez; diez y diez y diez y diez.",
+        "source": "outputs.json",
+        "turnId": "meeting_time_revision"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No incluye videollamada ni intención de enviar el enlace y recupera explícitamente «a las diez», incompatible con la hora corregida.",
+      "evidence": {
+        "quote": "Día 19uega a las diez y diez y diez minutos, diez minutos.",
+        "source": "outputs.json",
+        "turnId": "meeting_remote_revision"
+      },
+      "criticalFailure": {
+        "claimQuote": "a las diez",
+        "contradiction": "La hora vigente de la reunión es las once; las diez fue sustituida y debía conservarse la corrección."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No produce el aviso de mañana por videollamada; vuelve a situarlo explícitamente a las diez en texto repetitivo.",
+      "evidence": {
+        "quote": "Día 19uega a las diez y diez y diez y diez minutos, diez y diez y diez.",
+        "source": "outputs.json",
+        "turnId": "meeting_direct_final_notice"
+      },
+      "criticalFailure": {
+        "claimQuote": "a las diez",
+        "contradiction": "Los últimos cambios conservan las once; no se autorizó volver a las diez."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La pregunta sobre «el número uno» y los ficheros de WhatsApp no constituyen una invitación ni recuperan día, hora y pista. La irrelevancia no afirma por sí sola otro plan vigente ni un envío.",
+      "evidence": {
+        "quote": "¿Qué le dijo el número uno? El número uno de los ficheros de WhatsApp para jugar al baloncesto el número uno.",
+        "source": "outputs.json",
+        "turnId": "outing_initial_invitation"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "No redacta la invitación a sábado con hora y lugar; ofrece fragmentos sobre «domingo» y ficheros. «Corrio el domingo» no establece de manera comprensible la fecha vigente de la invitación; no se marca crítica sólo por repetir el dato anterior.",
+      "evidence": {
+        "quote": "Corrio el domingo; la hora y el número uno de los ficheros de WhatsApp. Con el domingo, el domingo, el domingo y el domingo.",
+        "source": "outputs.json",
+        "turnId": "outing_day_revision"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "Mezcla baloncesto y paseo, omite las cinco y formula el paseo con domingo en vez de sábado.",
+      "evidence": {
+        "quote": "El número uno de los ficheros de WhatsApp es un tipo de invitación de WhatsApp para jugar al baloncesto. Con el objetivo de su invitación, la hora es el siguiente:\n\n\"El domingo: es un paseo por la pista del barrio, que es un paseo por la pista. Con el domingo: una pista del barrio, que sale de escape para el balcón.",
+        "source": "outputs.json",
+        "turnId": "outing_activity_revision"
+      },
+      "criticalFailure": {
+        "claimQuote": "El domingo: es un paseo por la pista del barrio",
+        "contradiction": "El plan corregido es un paseo que sale de la pista del barrio el sábado a las cinco."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No incorpora «quien se anime» ni las cinco y presenta el paseo con domingo en lugar del sábado vigente.",
+      "evidence": {
+        "quote": "El domingo: es un paseo por la pista del barrio, que es un paseo por la pista.",
+        "source": "outputs.json",
+        "turnId": "outing_one_sentence_final"
+      },
+      "criticalFailure": {
+        "claimQuote": "El domingo: es un paseo por la pista del barrio",
+        "contradiction": "El paseo sigue siendo el sábado a las cinco desde la pista del barrio; domingo fue corregido."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «la consulta» sin identificar al abuelo como quien explica el dolor ni al usuario como quien aporta la lista. No asigna de manera inteligible esos papeles a otra persona.",
+      "evidence": {
+        "quote": "La consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de una persona.",
+        "source": "outputs.json",
+        "turnId": "consultation_initial_roles"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «la consulta» sin decir quién entra ni que la hermana conduce y espera fuera. No hay una atribución factual legible que intercambie esos papeles.",
+      "evidence": {
+        "quote": "Según la consulta, la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta.",
+        "source": "outputs.json",
+        "turnId": "consultation_driver_added"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La repetición no resume al abuelo entrando solo, al usuario dejando la lista y a la hermana conduciendo. No afirma que el usuario siga entrando.",
+      "evidence": {
+        "quote": "La consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta.",
+        "source": "outputs.json",
+        "turnId": "consultation_private_entry"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La repetición de «la consulta» no resuelve la hipótesis sobre la lista; no confirma que la hermana la llevase.",
+      "evidence": {
+        "quote": "Entro contexto, la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta de la consulta.",
+        "source": "outputs.json",
+        "turnId": "consultation_role_check"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite agua fría y gotas sin explicar el enfriamiento del vapor del aire. No hay una causa alternativa inteligible afirmada; la ausencia de explicación no es crítica por sí sola.",
+      "evidence": {
+        "quote": "En agua fría de gotas de agua fría de agua fría, que es la llenas de agua fría, que es la llenas de agua fría, que es la llenas de agua fría, que es la llenas de agua fría, que es la llenas de agua fría, que es la llenas de agua, que es la llenas de agua.",
+        "source": "outputs.json",
+        "turnId": "droplets_simple_cause"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La repetición no contesta si el agua atraviesa el cristal ni explica su origen en la humedad del aire. No confirma una filtración ni garantiza ausencia de defectos.",
+      "evidence": {
+        "quote": "La lleno de agua fría de agua fría de agua fría, que es la llenas de agua fría, que es la llenas de agua fría, que es la llenas de agua fría y que es la llenas de agua fría.",
+        "source": "outputs.json",
+        "turnId": "droplets_glass_misconception"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La frase defectuosa no responde si el vaso vacío y frío puede seguir formando gotas; no afirma de manera inteligible que éstas requieran agua dentro o aparezcan siempre.",
+      "evidence": {
+        "quote": "Se llenas de agua fría de agua fría de la lleno.",
+        "source": "outputs.json",
+        "turnId": "droplets_empty_cold_glass"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "No ofrece una explicación comprensible para el sobrino; repite agua fría sin conectar el frío con la humedad del aire. No afirma un proceso alternativo inteligible.",
+      "evidence": {
+        "quote": "La lleno de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua fría de agua.",
+        "source": "outputs.json",
+        "turnId": "droplets_child_summary"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«No hay evidencias» queda seguido de negaciones y repeticiones incoherentes; no distingue el seguimiento de una entrega comprobada ni contesta de forma útil sobre el robo. No acusa ni fija un receptor o causa.",
+      "evidence": {
+        "quote": "No hay evidencias de que no hay nada que no hay nada que no hay nada que no hay nada que no hay nada que no hay nada que ver con la fotografía.",
+        "source": "outputs.json",
+        "turnId": "parcel_theft_uncertainty"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Una frase figura» repetido no conserva el testimonio limitado a una furgoneta ni distingue lo desconocido. No afirma que la vecina viera el paquete o confirmase un robo.",
+      "evidence": {
+        "quote": "Una frase figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura.",
+        "source": "outputs.json",
+        "turnId": "parcel_van_observation"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite que el paquete figura sin contrastar puerta azul y verde ni explicar los límites de la foto. No identifica un domicilio o receptor ni acusa un robo.",
+      "evidence": {
+        "quote": "El paquete figura figura figura figura figura figura figura figura figura figura figura figura figura figura. Muestra: el paquete figura figura figura figura figura figura.",
+        "source": "outputs.json",
+        "turnId": "parcel_door_photo"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Perdón figura» repetido no resume la confirmación del número de al lado ni la recuperación pendiente. No declara recuperado el paquete ni acusa a nadie.",
+      "evidence": {
+        "quote": "Perdón figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura figura.",
+        "source": "outputs.json",
+        "turnId": "parcel_courier_confirmation"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "grade": "failed",
+      "note": "Desvía la charla a hablar con amigos, formula «como si no te gustan» y pregunta de nuevo el tema; no acompaña la atmósfera de películas tranquilas y lluvia.",
+      "evidence": {
+        "quote": "Hoy me gustaría hablar con tus amigos, como si no te gustan. ¿Qué te gustaría hablar?",
+        "source": "outputs.json",
+        "turnId": "quiet_scene_preference"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "grade": "failed",
+      "note": "Saluda y cambia a hablar de la vida del usuario; no sigue la sensación de calma que éste acaba de concretar. «Qué te gustaría hablar» no es una pregunta natural en español.",
+      "evidence": {
+        "quote": "Hola, me gustaría hablar sobre tu vida. ¿Qué te gustaría hablar?",
+        "source": "outputs.json",
+        "turnId": "quiet_mood_no_advice"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite el saludo y desvía a la vida del usuario sin comparar cafetería casi vacía y lluvia. No atribuye una preferencia por lluvia ni una experiencia personal inventada.",
+      "evidence": {
+        "quote": "Hola, me gustaría hablar sobre tu vida. ¿Qué te gustaría hablar?",
+        "source": "outputs.json",
+        "turnId": "quiet_sound_preference_revision"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Las frases son comprensibles, pero repiten el interés del asistente por hablar de la vida del usuario en lugar de recuperar cafetería casi vacía y seguir esa imagen. No afirma otra preferencia del usuario.",
+      "evidence": {
+        "quote": "Hola, me gustaría hablar sobre tu vida. En este caso, me gustaría hablar sobre tu vida.",
+        "source": "outputs.json",
+        "turnId": "quiet_current_preference_recall"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Declara no tener información del taller pese a recibir el dato en el contexto, pero no contesta sobre contexto frente a entrenamiento. No afirma actualización de parámetros, guardado o recuerdo garantizado; la negativa no se interpreta como una acción externa o garantía falsa.",
+      "evidence": {
+        "quote": "No tengo acceso a información sobre el taller de cerámica.",
+        "source": "outputs.json",
+        "turnId": "note_context_not_training"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No redacta la nota con martes y redefine el taller como software sin base en el caso.",
+      "evidence": {
+        "quote": "Disculpa, el taller de cerámica es un bloque de código abierto que te permite realizar tareas específicas.",
+        "source": "outputs.json",
+        "turnId": "note_day_correction"
+      },
+      "criticalFailure": {
+        "claimQuote": "el taller de cerámica es un bloque de código abierto que te permite realizar tareas específicas",
+        "contradiction": "El referente del diálogo es un taller de cerámica que se celebra los martes; no se lo describió como código abierto o software."
+      },
+      "technicalFailures": []
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«No necesito que te puedo dar una respuesta» es una frase defectuosa que no explica la imposibilidad de afirmar el envío sin herramienta ni contacto. No dice que haya enviado o programado la nota.",
+      "evidence": {
+        "quote": "No necesito que te puedo dar una respuesta.",
+        "source": "outputs.json",
+        "turnId": "note_unavailable_message_action"
+      },
+      "criticalFailure": null,
+      "technicalFailures": []
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«No necesariamente» apunta a falta de garantía, pero no proporciona la nota con martes y repite la definición falsa del taller como software.",
+      "evidence": {
+        "quote": "No necesariamente. El taller de cerámica es un bloque de código abierto que te permite realizar tareas específicas.",
+        "source": "outputs.json",
+        "turnId": "note_copy_and_persistence"
+      },
+      "criticalFailure": {
+        "claimQuote": "El taller de cerámica es un bloque de código abierto que te permite realizar tareas específicas",
+        "contradiction": "El dato actual es un taller de cerámica los martes; no hay base para presentarlo como bloque de código abierto."
+      },
+      "technicalFailures": []
+    }
+  ],
+  "gradeCounts": {
+    "complete": 0,
+    "partial": 1,
+    "failed": 39
+  }
+}

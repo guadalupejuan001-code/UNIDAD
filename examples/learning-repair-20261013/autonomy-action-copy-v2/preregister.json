@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-autonomy-action-copy-v2",
+  "status": "preregistered-before-real-fixture-execution",
+  "hypothesis": "V1 learned JSON structure but did not ground the read filename in current task inputs. Broadening basename BPE sequences and natural goal order should improve copying under unchanged action SFT.",
+  "interventionCount": 1,
+  "intervention": "Data distribution breadth for exact current-task filename/report argument copying",
+  "reportNames": "Separate TRAIN/validation lexical pools independent of input basenames; independent numeric permutation; only task_inputs.report authorizes target report name",
+  "unchanged": [
+    "own E202 parent",
+    "model architecture",
+    "tokenizer",
+    "native assistant_last_reply loss",
+    "generic three-tool schemas",
+    "host validators",
+    "generation and raw JSON validation"
+  ],
+  "modelErrorUsedAsPositiveTarget": false,
+  "oldV1BytesPreserved": true,
+  "splitCounts": {
+    "train": 192,
+    "validation": 24,
+    "test": 0
+  },
+  "taskCounts": {
+    "train": 64,
+    "validation": 8,
+    "test": 0
+  },
+  "splitUnit": "whole fictional world/task/family and separately authored goal templates; normalized filenames/report names disjoint",
+  "contextLength": 2048,
+  "objective": "assistant_last_reply",
+  "testUsedForTraining": false,
+  "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "parentWeightsSha256": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1",
+  "parentManifestSha256": "68f42aa12b321eca6a69d06f31e67e83bb1a56a8a3fe7001743f3c4716a78738",
+  "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+  "previousCorpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+  "taskSpecSha256": "26b053487958c50c2f4a4753f7a7b64cb7a9077f64417562792100c0cbb43aad",
+  "futureMatchedComparison": {
+    "status": "proposed-not-run-not-queued",
+    "sameOwnParentForBothArms": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+    "treatment": "new copy-v2 corpus",
+    "control": "unchanged v1 corpus rehearsal",
+    "configuration": "future-training-config.json identical for both arms; reset optimizer/scheduler equally",
+    "logicalUpdatesMaximum": 256,
+    "nativeSecondsMaximum": 600,
+    "singleNativeTrainer": true,
+    "evaluation": "New unseen basename/goal/task families, actual raw JSON, exact current-task authorized arguments and verified tool completion; no fixture fallback",
+    "notEvaluation": "NLL or valid JSON alone does not establish task completion or Spanish conversation competence",
+    "stop": "Retain failure evidence; no extra updates beyond finite limits without a new design"
+  },
+  "preparationBudget": {
+    "wallSeconds": 120,
+    "cpuThreads": 1,
+    "rssMiB": 256,
+    "diskMiB": 128,
+    "networkUsed": false
+  },
+  "author_AI": true,
+  "independentHumanReview": false,
+  "modelWeightsLoaded": false,
+  "trainingStarted": false
+}

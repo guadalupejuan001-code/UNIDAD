@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "modelId": "unidad-conversation-3ccd6deb69d32443f41096f06a9c2bacb2fe67e54a257de35a44d8f78aa4ef5b",
+  "outputsSha256": "b488893ecdc3771d587a4a974d916aa0e3a10d29fa2a0b3b9cfd9315c91789bc",
+  "reviewType": "Two project AI reviews, not independent human reviews",
+  "primary": {
+    "complete": 1,
+    "partial": 4,
+    "failed": 35,
+    "criticalIds": [
+      "outing_one_sentence_final",
+      "consultation_private_entry",
+      "consultation_role_check",
+      "droplets_empty_cold_glass",
+      "parcel_door_photo",
+      "parcel_courier_confirmation"
+    ],
+    "technicalIds": [
+      "cinema_initial_total",
+      "note_context_not_training"
+    ],
+    "dialogs": 0
+  },
+  "cross": {
+    "complete": 1,
+    "partial": 1,
+    "failed": 38,
+    "criticalIds": [
+      "outing_one_sentence_final",
+      "consultation_private_entry",
+      "consultation_role_check",
+      "droplets_empty_cold_glass",
+      "parcel_door_photo",
+      "parcel_courier_confirmation"
+    ],
+    "technicalIds": [
+      "cinema_initial_total",
+      "note_context_not_training"
+    ],
+    "dialogs": 0
+  },
+  "disagreements": [
+    {
+      "id": "library_delegate_change",
+      "disagreements": {
+        "grade": {
+          "primary": "partial",
+          "cross": "failed"
+        }
+      }
+    },
+    {
+      "id": "library_late_collection",
+      "disagreements": {
+        "grade": {
+          "primary": "partial",
+          "cross": "failed"
+        }
+      }
+    },
+    {
+      "id": "cinema_age_correction",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "disagreements": {
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "cinema_current_plan",
+      "disagreements": {
+        "grade": {
+          "primary": "partial",
+          "cross": "failed"
+        },
+        "contextGrounding": {
+          "primary": true,
+          "cross": false
+        }
+      }
+    },
+    {
+      "id": "quiet_scene_preference",
+      "disagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": null
+        }
+      }
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "disagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": null
+        }
+      }
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "disagreements": {
+        "spanish": {
+          "primary": false,
+          "cross": true
+        }
+      }
+    }
+  ],
+  "accepted": false,
+  "limits": [
+    "Exposed DEV40; no reserved acceptance",
+    "Same original rubric and actual generated histories; no ideal reply injected",
+    "One complete response is not conversation competence",
+    "Causal stages and retention changed multiple factors; no single-variable learning attribution",
+    "Losses from different corpora/objectives are not comparator results"
+  ]
+}

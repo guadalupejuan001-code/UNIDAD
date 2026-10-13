@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "modelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "outputsSha256": "e76be99bfaca183a982930d688b5465f28a84e5cc30835c0ebbff5c76c45c265",
+  "reviewType": "Two project AI reviews, no human review; authored separately before reading counterpart",
+  "primary": {
+    "complete": 0,
+    "partial": 1,
+    "failed": 39,
+    "criticalIds": [
+      "tap_initial_location",
+      "tap_flow_correction",
+      "parcel_van_observation",
+      "parcel_door_photo",
+      "parcel_courier_confirmation"
+    ],
+    "technicalIds": [
+      "library_initial_deadline",
+      "library_day_correction",
+      "library_delegate_change",
+      "quiet_scene_preference",
+      "quiet_mood_no_advice",
+      "quiet_sound_preference_revision"
+    ],
+    "dialogs": 0
+  },
+  "cross": {
+    "complete": 0,
+    "partial": 3,
+    "failed": 37,
+    "criticalIds": [
+      "tap_initial_location",
+      "tap_flow_correction",
+      "parcel_van_observation",
+      "parcel_door_photo",
+      "parcel_courier_confirmation"
+    ],
+    "technicalIds": [
+      "library_initial_deadline",
+      "library_day_correction",
+      "library_delegate_change",
+      "quiet_scene_preference",
+      "quiet_mood_no_advice",
+      "quiet_sound_preference_revision"
+    ],
+    "dialogs": 0
+  },
+  "disagreements": [
+    {
+      "id": "cinema_current_plan",
+      "disagreements": {
+        "relevance": {
+          "primary": true,
+          "cross": false
+        },
+        "contextGrounding": {
+          "primary": false,
+          "cross": true
+        }
+      }
+    },
+    {
+      "id": "outing_activity_revision",
+      "disagreements": {
+        "grade": {
+          "primary": "failed",
+          "cross": "partial"
+        },
+        "contextGrounding": {
+          "primary": false,
+          "cross": true
+        }
+      }
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "disagreements": {
+        "grade": {
+          "primary": "failed",
+          "cross": "partial"
+        },
+        "contextGrounding": {
+          "primary": false,
+          "cross": true
+        }
+      }
+    },
+    {
+      "id": "quiet_scene_preference",
+      "disagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": null
+        }
+      }
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "disagreements": {
+        "criticalCorrect": {
+          "primary": true,
+          "cross": null
+        }
+      }
+    }
+  ],
+  "accepted": false,
+  "limits": [
+    "Exposed DEV40; no reserved acceptance",
+    "Same frozen rubric,2048context/temperature0/seed42/160newtokens, actual generated histories",
+    "Natural-language before endpoint for two causal stages and retention; does not isolate one variable",
+    "Losses from different corpora/objectives not compared"
+  ]
+}

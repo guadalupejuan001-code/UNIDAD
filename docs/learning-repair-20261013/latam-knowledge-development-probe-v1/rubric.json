@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "purpose": "Diagnóstico de desarrollo de aprendizaje local de sentidos LATAM; no aceptación final.",
+  "reviewType": "Revisión semántica de IA del proyecto; no revisión humana independiente.",
+  "acceptance": null,
+  "promotionAuthorized": false,
+  "dimensions": {
+    "relevance": "Responde al significado solicitado, sin sustituirlo por ubicación, saludo u otro tema.",
+    "countrySenseCorrect": "Conserva el sentido apoyado para el país explícito. Acepta paráfrasis y no exige que sea el único significado posible.",
+    "unsupportedClaims": "Marca como fallo factual una glosa inventada, una acepción trasladada de otro país o especificidad no sustentada. Una nota de uso no solicitada puede omitirse; si se afirma, debe ser compatible con la fuente.",
+    "formatCorrect": "En las seis combinaciones, conserva el nombre inventado y el formato solicitado, con significado semánticamente correcto. Los marcadores de viñeta pueden variar; el JSON debe ser válido y contener solo las dos claves solicitadas.",
+    "spanish": "Texto comprensible en español, sin repetición incoherente que impida comprender la glosa.",
+    "calibration": "En VAL acepta un sentido correcto o incertidumbre explícita pertinente, sin presentar una glosa errónea como hecho. No exige conocer estos tres hechos excluidos del TRAIN del tratamiento actual.",
+    "technical": "Conservar errores reales, respuesta vacía, fin por presupuesto de tokens y truncamiento de entrada. No editar respuestas ni completarlas con texto esperado."
+  },
+  "trainingFacts": {
+    "knowledgeCorrect": "En los 12 casos derivados de TRAIN, relevancia, sentido correcto y español comprensible sin afirmaciones incompatibles. La incertidumbre honesta se registra como desconocimiento, no como recuperación correcta del hecho entrenado.",
+    "compositionCorrect": "El caso de combinación requiere además formato y nombre correctos.",
+    "specialCases": {
+      "abastecedor": "Tienda de alimentación y productos del hogar; aceptar minitienda, pulpería o comercio equivalente con esa función. Gasolinera sola es incorrecta.",
+      "cruzazulear": "Perder estrepitosamente, especialmente tras una racha positiva. No convertir «especialmente» en condición universal. La combinación solicita además uso coloquial y jocoso; aceptar equivalentes de informal y humorístico.",
+      "buco": "Panamá: gran cantidad. Orificio es el sentido argentino de la misma familia y falla este caso.",
+      "cofla": "Persona delgada/flaca. No exigir literalmente la frase torpe de la fuente «Es una jerga» ni inventar advertencias adicionales."
+    }
+  },
+  "validationFacts": {
+    "allowedStatuses": ["correct_known_fact", "explicit_uncertainty", "unsupported_or_wrong_fact", "irrelevant_or_incoherent", "technical_failure"],
+    "knowledgeRequired": false,
+    "learnedKnowledgeDenominatorContribution": 0,
+    "specialCases": {
+      "apampichar": "Tocar o bailar merengue al estilo del pambiche; no limitar el sentido a bailar. La glosa exacta permite precisar variante lenta y acompasada.",
+      "champa": "Guatemala: vivienda de mala calidad asociada en la fuente a población muy humilde de suburbios. No importar el sentido chileno ni su marca vulgar.",
+      "a cuenta de oreja de cochino": "Beneficio sin ofrecer nada a cambio, como si fuera donación caritativa, especialmente si es costoso. Evitar interpretación literal."
+    }
+  },
+  "reporting": {
+    "primary": ["train_paraphrase_correct_out_of_6", "train_composition_meaning_and_format_correct_out_of_6", "train_families_with_both_cases_correct_out_of_6"],
+    "secondary": ["train_meaning_correct_out_of_12", "composition_format_correct_out_of_6", "validation_status_counts_out_of_3", "technical_failure_count_out_of_15"],
+    "pairing": "Publicar decisiones por caso y transiciones frente al mismo padre, junto a respuestas exactas y hashes; conservar desacuerdos entre revisores de IA.",
+    "countLimit": "Doce casos TRAIN comparten seis familias y seis hechos seleccionados. No cuentan como doce hechos nuevos independientes ni generalización a lexemas inéditos. Los tres VAL no suman al recuento de aprendizaje exigido.",
+    "noThreshold": "No fijar aceptación o promoción por este probe pequeño. Ningún resultado acredita 36/40, 8/10 ni cobertura de todo el español.",
+    "noFitAfterSeeingResults": "No reescribir preguntas, glosas, corpus, rúbrica ni configuración para elevar estos recuentos. Si el desarrollo cambia, congelar otra versión y conservar esta evidencia."
+  }
+}

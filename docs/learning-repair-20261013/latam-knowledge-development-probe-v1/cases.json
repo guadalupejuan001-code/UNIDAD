@@ -1,0 +1,595 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "purpose": "Diagnostic development only; local learning, paraphrase and composition, not final acceptance.",
+  "authorship": "Project AI, manually authored from frozen public source before generation; not human review.",
+  "counts": {
+    "scenarios": 15,
+    "turns": 15,
+    "trainParaphrases": 6,
+    "trainCompositions": 6,
+    "validationCalibration": 3,
+    "uniqueTrainFamilies": 6,
+    "uniqueValidationFamilies": 3
+  },
+  "historyPolicy": "Each case is one independent user turn; no assistant gold text, source gloss, rubric or support injected into input.",
+  "scenarios": [
+    {
+      "id": "tr01p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+      "steps": [
+        {
+          "id": "tr01p",
+          "user": "¿Cómo dirías en español general «estar al cateo de la laucha» (Chile)?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "estar al cateo de la laucha",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:42091:6037645:natural-latam-v3:direct",
+            "wiktionary:es:regional:42091:6037645"
+          ],
+          "supportRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "Estar a la expectativa de que se produzca una oportunidad favorable.",
+            "mustConvey": [
+              "Estar a la expectativa de una oportunidad favorable."
+            ],
+            "sourceUsage": [],
+            "country": "Chile",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr01c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+      "steps": [
+        {
+          "id": "tr01c",
+          "user": "Soy Neralvo. En Chile oí «estar al cateo de la laucha». ¿Me lo aclaras? Usa una sola línea: «Neralvo: <sentido>».",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "estar al cateo de la laucha",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:42091:6037645:natural-latam-v3:direct",
+            "wiktionary:es:regional:42091:6037645"
+          ],
+          "supportRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+          "newInventedName": "Neralvo",
+          "expected": {
+            "sourceGlossExact": "Estar a la expectativa de que se produzca una oportunidad favorable.",
+            "mustConvey": [
+              "Estar a la expectativa de una oportunidad favorable."
+            ],
+            "sourceUsage": [],
+            "country": "Chile",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "one-line-prefix",
+              "prefix": "Neralvo: "
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr02p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:abastecedor",
+      "steps": [
+        {
+          "id": "tr02p",
+          "user": "En Costa Rica, ¿qué clase de local llaman «abastecedor»?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "abastecedor",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:12803:5722010:natural-latam-v3:direct",
+            "wiktionary:es:regional:12803:5722010"
+          ],
+          "supportRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "tienda de alimentación y productos del hogar.",
+            "mustConvey": [
+              "Tienda de alimentación y productos del hogar."
+            ],
+            "sourceUsage": [],
+            "country": "Costa Rica",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr02c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:abastecedor",
+      "steps": [
+        {
+          "id": "tr02c",
+          "user": "Odrilena pregunta por «abastecedor» en Costa Rica. ¿Qué es? Devuelve solo JSON con «persona»: «Odrilena» y «significado»: una frase.",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "abastecedor",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:12803:5722010:natural-latam-v3:direct",
+            "wiktionary:es:regional:12803:5722010"
+          ],
+          "supportRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+          "newInventedName": "Odrilena",
+          "expected": {
+            "sourceGlossExact": "tienda de alimentación y productos del hogar.",
+            "mustConvey": [
+              "Tienda de alimentación y productos del hogar."
+            ],
+            "sourceUsage": [],
+            "country": "Costa Rica",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "json-object",
+              "exactKeys": [
+                "persona",
+                "significado"
+              ],
+              "fixedValues": {
+                "persona": "Odrilena"
+              }
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr03p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:cruzazulear",
+      "steps": [
+        {
+          "id": "tr03p",
+          "user": "Si en México un equipo «cruzazulea», ¿qué le pasa?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "cruzazulear",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:970176:6322442:natural-latam-v3:direct",
+            "wiktionary:es:regional:970176:6322442"
+          ],
+          "supportRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "perder estrepitosamente, especialmente tras una racha positiva.",
+            "mustConvey": [
+              "Perder estrepitosamente; especialmente tras una racha positiva, sin convertir esa circunstancia en requisito universal."
+            ],
+            "sourceUsage": [
+              {
+                "label": "coloquial",
+                "qualifier": ""
+              },
+              {
+                "label": "jocoso",
+                "qualifier": ""
+              }
+            ],
+            "country": "México",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr03c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:cruzazulear",
+      "steps": [
+        {
+          "id": "tr03c",
+          "user": "Talvexo quiere entender «cruzazulear» en México. ¿Qué describe y con qué tono se usa? Contesta con dos viñetas: «Talvexo: <sentido>» y «Uso: <tono>».",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "cruzazulear",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:970176:6322442:natural-latam-v3:direct",
+            "wiktionary:es:regional:970176:6322442"
+          ],
+          "supportRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+          "newInventedName": "Talvexo",
+          "expected": {
+            "sourceGlossExact": "perder estrepitosamente, especialmente tras una racha positiva.",
+            "mustConvey": [
+              "Perder estrepitosamente; especialmente tras una racha positiva, sin convertir esa circunstancia en requisito universal."
+            ],
+            "sourceUsage": [
+              {
+                "label": "coloquial",
+                "qualifier": ""
+              },
+              {
+                "label": "jocoso",
+                "qualifier": ""
+              }
+            ],
+            "country": "México",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "two-bullets",
+              "prefixes": [
+                "Talvexo: ",
+                "Uso: "
+              ],
+              "requiredUsage": [
+                "coloquial",
+                "jocoso"
+              ]
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr04p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+      "steps": [
+        {
+          "id": "tr04p",
+          "user": "¿Qué manera de actuar describe «a la zumba marumba» en Honduras?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "a la zumba marumba",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:974807:6107413:natural-latam-v3:direct",
+            "wiktionary:es:regional:974807:6107413"
+          ],
+          "supportRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "De forma alocada, sin planificar.",
+            "mustConvey": [
+              "Actuar de forma alocada, sin planificar."
+            ],
+            "sourceUsage": [],
+            "country": "Honduras",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr04c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+      "steps": [
+        {
+          "id": "tr04c",
+          "user": "Me llamo Ismarune y oí «a la zumba marumba» en Honduras. ¿Cómo se interpreta? Una línea, con este formato: «Ismarune — <sentido>».",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "a la zumba marumba",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:974807:6107413:natural-latam-v3:direct",
+            "wiktionary:es:regional:974807:6107413"
+          ],
+          "supportRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+          "newInventedName": "Ismarune",
+          "expected": {
+            "sourceGlossExact": "De forma alocada, sin planificar.",
+            "mustConvey": [
+              "Actuar de forma alocada, sin planificar."
+            ],
+            "sourceUsage": [],
+            "country": "Honduras",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "one-line-prefix",
+              "prefix": "Ismarune — "
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr05p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:buco",
+      "steps": [
+        {
+          "id": "tr05p",
+          "user": "¿Qué expresa «buco» al hablar de cantidades en Panamá?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "buco",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:22148:6421374:natural-latam-v3:direct",
+            "wiktionary:es:regional:22148:6421374"
+          ],
+          "supportRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "Gran cantidad de algo.",
+            "mustConvey": [
+              "Gran cantidad de algo; no trasladar el sentido argentino de orificio."
+            ],
+            "sourceUsage": [],
+            "country": "Panamá",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr05c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:buco",
+      "steps": [
+        {
+          "id": "tr05c",
+          "user": "Veldunio consulta por «buco» en Panamá. ¿Qué indica sobre una cantidad? Responde solo «Veldunio | <sentido>», en una línea.",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "buco",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:22148:6421374:natural-latam-v3:direct",
+            "wiktionary:es:regional:22148:6421374"
+          ],
+          "supportRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+          "newInventedName": "Veldunio",
+          "expected": {
+            "sourceGlossExact": "Gran cantidad de algo.",
+            "mustConvey": [
+              "Gran cantidad de algo; no trasladar el sentido argentino de orificio."
+            ],
+            "sourceUsage": [],
+            "country": "Panamá",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "one-line-prefix",
+              "prefix": "Veldunio | "
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr06p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:cofla",
+      "steps": [
+        {
+          "id": "tr06p",
+          "user": "Si en Perú llaman «cofla» a una persona, ¿cómo la describen?",
+          "critical": false,
+          "kind": "train_paraphrase",
+          "lexeme": "cofla",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:1037265:5820672:natural-latam-v3:direct",
+            "wiktionary:es:regional:1037265:5820672"
+          ],
+          "supportRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "Referido a persona, delgada, flaca. Es una jerga.",
+            "mustConvey": [
+              "Persona delgada o flaca; la fuente lo identifica como jerga, sin exigir copiar «Es una jerga»."
+            ],
+            "sourceUsage": [],
+            "country": "Perú",
+            "uncertaintyAllowed": false,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "tr06c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:cofla",
+      "steps": [
+        {
+          "id": "tr06c",
+          "user": "Senavira pregunta qué describe «cofla» en Perú. ¿Qué le dirías? Usa tres líneas: «Nombre: Senavira», «País: Perú» y «Sentido: <explicación>».",
+          "critical": false,
+          "kind": "train_composition",
+          "lexeme": "cofla",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "sourceSplit": "train",
+          "supportIds": [
+            "wiktionary:es:regional:1037265:5820672:natural-latam-v3:direct",
+            "wiktionary:es:regional:1037265:5820672"
+          ],
+          "supportRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+          "newInventedName": "Senavira",
+          "expected": {
+            "sourceGlossExact": "Referido a persona, delgada, flaca. Es una jerga.",
+            "mustConvey": [
+              "Persona delgada o flaca; la fuente lo identifica como jerga, sin exigir copiar «Es una jerga»."
+            ],
+            "sourceUsage": [],
+            "country": "Perú",
+            "uncertaintyAllowed": false,
+            "format": {
+              "type": "three-lines",
+              "fixedLines": [
+                "Nombre: Senavira",
+                "País: Perú"
+              ],
+              "lastPrefix": "Sentido: "
+            },
+            "correctFactRequiredForLearnedKnowledgeCount": true,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "val07u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:apampichar",
+      "steps": [
+        {
+          "id": "val07u",
+          "user": "En República Dominicana, ¿qué actividad nombra «apampichar»? Si no lo sabes, dilo.",
+          "critical": false,
+          "kind": "validation_calibration",
+          "lexeme": "apampichar",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "sourceSplit": "validation",
+          "supportIds": [
+            "wiktionary:es:regional:18515:5806586:natural-latam-v3:direct",
+            "wiktionary:es:regional:18515:5806586"
+          ],
+          "supportRowSha256": "e9eb5d4ef1506501be1f84f9abdfe51bc234b7cc2139cb4706aa35c85456b7c0",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "tocar o bailar el merengue al estilo del pambiche, una variante más lenta y acompasada en la que ambos bailarines permanecen por lo general abrazados.",
+            "mustConvey": [
+              "Tocar o bailar merengue al estilo del pambiche, variante más lenta y acompasada; no exigir exclusivamente bailar."
+            ],
+            "sourceUsage": [
+              {
+                "label": "coloquial",
+                "qualifier": ""
+              }
+            ],
+            "country": "República Dominicana",
+            "uncertaintyAllowed": true,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": false,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "val08u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:champa",
+      "steps": [
+        {
+          "id": "val08u",
+          "user": "En Guatemala, ¿qué vivienda se llama «champa»? Si no lo sabes, dilo.",
+          "critical": false,
+          "kind": "validation_calibration",
+          "lexeme": "champa",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "sourceSplit": "validation",
+          "supportIds": [
+            "wiktionary:es:regional:22799:6356442:natural-latam-v3:direct",
+            "wiktionary:es:regional:22799:6356442"
+          ],
+          "supportRowSha256": "349304b842935cdcbf31405e66160b5a5bc80ea901d672627b43cd98f41291e7",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "Casa de mala calidad propia de gente muy humilde de los suburbios.",
+            "mustConvey": [
+              "Casa de mala calidad propia de gente muy humilde de los suburbios; no trasladar el sentido ni la marca vulgar de Chile."
+            ],
+            "sourceUsage": [],
+            "country": "Guatemala",
+            "uncertaintyAllowed": true,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": false,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    },
+    {
+      "id": "val09u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+      "steps": [
+        {
+          "id": "val09u",
+          "user": "En Venezuela, ¿qué pretende alguien que pide algo «a cuenta de oreja de cochino»? Si no lo sabes, dilo.",
+          "critical": false,
+          "kind": "validation_calibration",
+          "lexeme": "a cuenta de oreja de cochino",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "sourceSplit": "validation",
+          "supportIds": [
+            "wiktionary:es:regional:1036260:5613556:natural-latam-v3:direct",
+            "wiktionary:es:regional:1036260:5613556"
+          ],
+          "supportRowSha256": "ffdc8a1b2b1c5956e2e4394070add0145a9d8c77776c20a04d321f66cd8d33ed",
+          "newInventedName": null,
+          "expected": {
+            "sourceGlossExact": "Pretender recibir un beneficio o prebenda sin ofrecer nada a cambio creyendo que es una donación caritativa, especialmente si es algo costoso.",
+            "mustConvey": [
+              "Recibir un beneficio sin ofrecer nada a cambio, creyendo que es donación caritativa, especialmente si es costoso."
+            ],
+            "sourceUsage": [
+              {
+                "label": "coloquial",
+                "qualifier": ""
+              },
+              {
+                "label": "figurado",
+                "qualifier": ""
+              }
+            ],
+            "country": "Venezuela",
+            "uncertaintyAllowed": true,
+            "format": null,
+            "correctFactRequiredForLearnedKnowledgeCount": false,
+            "policy": "Semantic paraphrases accepted; no unsupported specificity, cross-country sense, or exclusivity claim."
+          }
+        }
+      ]
+    }
+  ]
+}

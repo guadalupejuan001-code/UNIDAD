@@ -1,0 +1,103 @@
+{
+  "cacheManifestSha256": "3fb89b090b96c39b6600dea9f3b71994ff95a746fb22d075bf71788c257e651c",
+  "checkpoints": {
+    "best": {
+      "actual": {
+        "supervisedEosPositions": 0,
+        "supervisedPayloadPositionsExcludingEos": 0,
+        "supervisedTargetPositionsIncludingEos": 0,
+        "unpaddedInputPositions": 0,
+        "windowDraws": 0
+      },
+      "checkpointName": "step-000000000-b0277331e4ee4dc0b7c185082d36571b",
+      "checkpointStateSha256": "5bfb0e87ba6b9274f8b1d9063a25342a80c9d73b344acbc8bd4c42a44db953cf",
+      "checkpointStep": 0,
+      "completedEpochs": 0,
+      "consumedPrefixUint32LeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "currentEpochCursor": 0,
+      "currentOrderUint32LeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "epochFinalBatchWindows": 7,
+      "epochLogicalUpdates": 1244,
+      "logicalBatchSize": 8,
+      "maxMicroBatchSize": 4,
+      "naiveStepTimesBatchOvercount": 0,
+      "optimizerLogicalUpdates": 0,
+      "samplerOrderAndPythonRngReplayed": true,
+      "samplerOrderUint32LeSha256": {}
+    },
+    "last": {
+      "actual": {
+        "supervisedEosPositions": 32765,
+        "supervisedPayloadPositionsExcludingEos": 4370109,
+        "supervisedTargetPositionsIncludingEos": 4402874,
+        "unpaddedInputPositions": 8760288,
+        "windowDraws": 32765
+      },
+      "checkpointName": "step-000004096-b6bdfcddec62449b82825fd7b9f838e5",
+      "checkpointStateSha256": "1c65d8d38b82fceed92ed0b5d2c09641b2759c55f419edfd1b909e86ab762d84",
+      "checkpointStep": 4096,
+      "completedEpochs": 3,
+      "consumedPrefixUint32LeSha256": "88fc92880089868ecbf3785bb4260a041e3a7b2e44f2c30acaf0292e09350e6f",
+      "currentEpochCursor": 2912,
+      "currentOrderUint32LeSha256": "82e90c3b6e49d1e008b5501a0460c89c7a11c16094bf2d994b09a70e3ff9e67b",
+      "epochFinalBatchWindows": 7,
+      "epochLogicalUpdates": 1244,
+      "logicalBatchSize": 8,
+      "maxMicroBatchSize": 4,
+      "naiveStepTimesBatchOvercount": 3,
+      "optimizerLogicalUpdates": 4096,
+      "samplerOrderAndPythonRngReplayed": true,
+      "samplerOrderUint32LeSha256": {
+        "0": "661872fd7b9340a41722939b04633e2981d13bb26e939d68cbd8c96abe2d6fb3",
+        "1": "27f8ac7153d8f6306928536fc488783b111055aa785ebc7162d10815aceb69ff",
+        "2": "619bb4787db284459964336776215f60cc752944ccbbd31eff2b4d2d9bf3af50",
+        "3": "82e90c3b6e49d1e008b5501a0460c89c7a11c16094bf2d994b09a70e3ff9e67b"
+      }
+    }
+  },
+  "eosTokenId": 2,
+  "formula": "epoch * sum(TRAIN window count) + sum(count[order[:cursor]])",
+  "humanReview": false,
+  "identity": {
+    "contextLength": 512,
+    "corpusSha256": "48cc11848568c03a32727660968e47695d8eeb43c3302cbf7055eefe2e449491",
+    "includeTest": false,
+    "objective": "assistant_last_reply",
+    "partitionPolicy": "train_validation_only",
+    "tokenizerSha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048,
+    "windowEncoding": "little-endian-int32-inputs-labels-v1",
+    "windowPolicy": "sliding_context"
+  },
+  "ignoredLabelValue": -100,
+  "kind": "closed-matched-control-exact-train-exposure",
+  "labelsCriterion": "label >= 0",
+  "limitation": "Only executed CONTROL exposure; excludes inherited training and padding. BEST0 reports zero new control learning, even though inherited parent weights were trained previously. Counts do not establish conversational acceptance.",
+  "method": {
+    "corpusRead": false,
+    "optimizerPickleLoaded": false,
+    "reservedEvaluationRead": false,
+    "testWindowsRead": false,
+    "testsExecuted": false,
+    "torchImported": false,
+    "trainInputTokensDecoded": false,
+    "trainLabelsRead": true,
+    "trainingExecuted": false,
+    "validationWindowsRead": false,
+    "weightsLoaded": false
+  },
+  "perWindowLedger": {
+    "path": "docs/learning-repair-20261013/natural-latam-v4-control-final-window-exposure.csv",
+    "rows": 9951,
+    "sha256": "279cb34080712d57d6f5b39f9a05fcaea9a4020b9cbef641c0a99359c3623aed"
+  },
+  "preparedBy": "project-AI",
+  "schemaVersion": 1,
+  "supervisedPositionsPerEpoch": 1336577,
+  "trainDataBytesRead": 21282848,
+  "trainDataSha256": "8489037a732ad881bc2aab2d755bdb4a394e00470714c34eb71093a07d24f7fb",
+  "trainIndexBytesRead": 159216,
+  "trainIndexSha256": "47fee9d76b355af9571b0614c390fa8f8515c77dec3a0d0ee185953112965194",
+  "trainWindowsPerEpoch": 9951,
+  "unpaddedInputPositionsPerEpoch": 2660356
+}

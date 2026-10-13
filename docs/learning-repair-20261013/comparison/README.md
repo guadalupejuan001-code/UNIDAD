@@ -1,12 +1,12 @@
-# Comparación real de desarrollo: C7 y SFT propio de 15 M
+# Comparación real de desarrollo de los modelos propios
 
 Comparación inicial publicada el 13 de octubre de 2026, 08:23 UTC;
 LAST y su revisión cruzada se añaden a las 08:40 UTC, y el tratamiento 1.024
-a las 09:14 UTC. **No se comprobó mejora
-conversacional**: ninguno de los snapshots publicados obtiene respuestas completas ni
-diálogos completos. C7 sigue siendo la referencia propia, también rechazada por
-el criterio de conversación. La pérdida de entrenamiento y la existencia de
-pesos no cambian esta conclusión.
+a las09:14 UTC. Los endpoints iniciales dieron0/40 completas y0/10 diálogos.
+La continuación español LATAM v3 + retención obtuvo **1/40 completa**,
+manteniendo **0/10 diálogos, seis críticas/dos técnicas**. No cumple aceptación.
+C7 sigue siendo la referencia propia, también rechazada por conversación.
+La pérdida de entrenamiento y los archivos de pesos no aceptan modelos.
 
 | Modelo | Revisión | Completas | Parciales | Fallidas | Diálogos completos | Críticas | Técnicas |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -18,6 +18,14 @@ pesos no cambian esta conclusión.
 | LAST, mismos pesos | Cruzada | 0/40 | 3 | 37 | 0/10 | 12 | 8 |
 | Natural + LATAM, paso 1.024 | Primaria | 0/40 | 0 | 40 | 0/10 | 1 | 11 |
 | Natural + LATAM, mismos pesos | Cruzada | 0/40 | 0 | 40 | 0/10 | 0 | 11 |
+| Natural + LATAM, LAST 4.096 | Primaria | 0/40 | 1 | 39 | 0/10 | 14 | 1 |
+| Natural + LATAM, LAST 4.096 | Cruzada | 0/40 | 1 | 39 | 0/10 | 14 | 1 |
+| Control natural, LAST 4.096 | Primaria | 0/40 | 1 | 39 | 0/10 | 2 | 7 |
+| Control natural, LAST 4.096 | Cruzada | 0/40 | 1 | 39 | 0/10 | 2 | 7 |
+| ACTION2048 BEST256, antes de base v3 | Primaria | 0/40 | 1 | 39 | 0/10 | 5 | 6 |
+| ACTION2048 BEST256, mismos pesos | Cruzada | 0/40 | 3 | 37 | 0/10 | 5 | 6 |
+| Español LATAM v3 + retención 1.024 | Primaria | 1/40 | 4 | 35 | 0/10 | 6 | 2 |
+| Retención1.024, mismos pesos | Cruzada | 1/40 | 1 | 38 | 0/10 | 6 | 2 |
 
 La aceptación exige 36/40 respuestas completas, 8/10 diálogos completos y cero
 fallos críticos o técnicos. Son dos revisiones de **IA del proyecto**, realizadas
@@ -36,6 +44,22 @@ permaneció BEST por validación. Las salidas conservan el campo original
 
 ## Evidencia conservada sin editar
 
+El [endpoint ACTION 256 anterior](development-action2048-best256-v1/README.md)
+y el [endpoint tras dos etapas causales y retención](development-wide-latam-retention1024-v1/README.md)
+conservan 52 copias byteexact cada uno: 40 turnos, outputs/template, ambos juicios y
+assessments,freeze y metadatos del artefacto. Cada manifiesto identifica todos
+los SHA; los proofs verifican historias realmente generadas, sin descartes,
+excepciones ni corrección de respuestas. Comparan la misma rúbrica,
+contexto 2.048 y generación 160 tokens/temperatura 0/semilla 42. Primaria y cruzada
+se hicieron por separado como IA del proyecto, no panel humano.
+
+La completa posterior es `library_initial_deadline`. Las tres diferencias de
+grado posterior son `library_delegate_change`,`library_late_collection` y
+`cinema_current_plan`; antes, la cruzada añade dos parciales de invitación.
+Los summaries conservan también todas las discrepancias de dimensiones.
+Cambian pesos y varias etapas/corpus; no hay atribución causal a una sola
+variable ni comparación de pérdidas entre objetivos/corpus distintos.
+
 | Evidencia | C7 | SFT BEST 4.096 |
 | --- | --- | --- |
 | Respuestas, historial, tokens y contexto efectivo | [outputs.json](development-c7-comparable-v1/outputs.json) | [outputs.json](development-sft-step4096-v1/outputs.json) |
@@ -49,7 +73,8 @@ permaneció BEST por validación. Las salidas conservan el campo original
 Se copiaron **97 archivos JSON byte por byte**: las salidas agregadas, 40 archivos
 por turno en cada modelo y los juicios y recibos disponibles. `review-template.json`
 es una plantilla original, no una revisión realizada. El
-[recibo de publicación](publication-integrity.json) identifica origen, destino,+tamaño y ambos SHA-256 para cada archivo. El
+[recibo de publicación](publication-integrity.json) identifica origen, destino,
+tamaño y ambos SHA-256 para cada archivo. El
 [resumen estructurado](comparison-v1.json) conserva todas las discrepancias en
 las cuatro dimensiones, los fallos técnicos y los hashes de evaluaciones.
 Los [casos, rúbrica y congelación](../development-suite/README.md) siguen intactos.
@@ -98,10 +123,60 @@ demostración de planificación autónoma o calidad comercial.
 
 La [nueva entrega de tratamiento](development-natural-latam-step1024-v1/README.md)
 añade 47 archivos copiados byte por byte y su recibo, sin tocar las fuentes ni
-los recibos anteriores. El entrenamiento sigue activo, el control aún no se ha
-evaluado y este snapshot no es un candidato promovido. La única discrepancia
+los recibos anteriores. El tratamiento estaba activo al generar ese snapshot. Ahora tratamiento y
+control terminaron en 4.096 cada uno; sus juicios se conservan por separado.
+Ningún snapshot es un candidato promovido. La única discrepancia
 crítica aplicable es `cinema_initial_total`, «Tus entradas en dos entradas.»:
 primaria interpreta cantidad errónea y cruzada un fragmento no inequívoco.
 Las críticas inferiores no acreditan mejora ante cero respuestas completas,
 cero parciales y once fallos técnicos. El [resumen](development-natural-latam-step1024-v1/comparison-treatment1024-v1.json)
 conserva juicios e IDs completos.
+
+## Cierres del tratamiento y control
+
+La [entrega LAST del tratamiento](development-natural-latam-last4096-v1/README.md)
+conserva 45 archivos de generación/metadatos y cuatro revisiones/assessments
+exactos. Ambas revisiones de IA obtienen 0 completas, 1 parcial, 39 fallidas,
+14 críticas y 1 técnica. Se comprobaron los IDs críticos, iguales en ambas;
+difieren en español para `cinema_attendee_reduction` y
+`outing_one_sentence_final`. La primaria incluye auditoría auxiliar de siete
+casos mediante IA, no humanos independientes.
+
+La [entrega LAST del control](development-natural-control-last4096-v1/README.md)
+conserva otras 45 copias de generación/metadatos y cuatro de juicios. Ambas
+revisiones dan 0 completas, 1 parcial, 39 fallidas, 2 críticas y 7 técnicas,
+0/10 diálogos completos. Los IDs críticos son `outing_day_revision` y
+`outing_one_sentence_final`, iguales en ambos juicios; se compararon las cuatro
+claves booleanas de los cuarenta turnos y no difieren. Los textos y notas
+originales siguen completos. Menos críticas no acredita mejor conocimiento
+ante las omisiones y cero respuestas completas. BEST del control es el padre
+heredado en paso 0, sin aprendizaje nuevo de control; estos resultados son LAST.
+
+## Significados regionales
+
+El [probe completo de cuatro modelos](latam-knowledge-development-probe-v1/README.md)
+conserva 92 archivos originales exactos y sesenta respuestas. Todos obtienen
+0/12 significados TRAIN y 0/6 familias. El padre presenta incertidumbre en
+1/3 VALIDATION; los otros, 0/3. Agotamientos: 8/7/3/8, sin excepciones, vacíos
+ni descartes. El mismo autor creó el probe e hizo la primaria, con ese vínculo
+declarado; la cruzada es de otro agente de IA. No son humanos independientes.
+La clasificación semántica de `val07u` del control difiere y se conserva.
+El endpoint del control quedó fijado antes de generar, y TEST/reservados
+permanecieron fuera. No se comprobó mejora regional ni aceptación.
+
+## Autonomía y publicación
+
+El [intento real de acciones256](../autonomy-demonstration/action256-own-v1/README.md)
+produjo JSON válido con `k.txt` sin permiso, rechazado antes del handler.
+La [prueba real con un reintento de lectura](../autonomy-demonstration/action256-own-read-repair-v1/README.md)
+conservó esa primera propuesta y dio otra mal formada: trabajo fallido, sin
+informe ni fallback. Se observó una mejora parcial de formato en una muestra,
+sin aceptar planificación fiable. La base causal amplia v3 está entrenando
+desde esos pesos propios con fuente nueva y límites finitos.
+
+PR10 se [fusionó sin borrador](https://github.com/guadalupejuan001-code/UNIDAD/pull/10)
+en `62cf4d43780204f8d09dce6715cefcb6110aa310`, con cuatro checks CI aprobados.
+El [recibo de publicación](../pr10-publication-verification.json) conserva ese
+corte de código, datos y pesos. Cierres, juicios y pruebas posteriores se
+preparan como entrega posterior; la integración de bytes no acepta modelos.
+Todos los recibos y salidas anteriores permanecen intactos.
