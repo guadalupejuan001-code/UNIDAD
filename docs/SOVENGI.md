@@ -1,5 +1,14 @@
 # Usar SOVENGI
 
+La [integración conversacional de NERVA](nerva-conversation-20261013/README.md)
+se aplica también a esta entrada: `brain.conversation_decoder` en la configuración
+común selecciona `"torch"` o `"nerva"`, y `brain.conversation_cache` controla la
+caché por respuesta. Torch con caché queda predeterminado por la medición C7;
+NERVA requiere Node.js 18+. Ambos conservan el modelo propio seleccionado.
+`sovengi chat` y `sovengi ask` admiten `--seed`, `--top-k`, `--top-p` y
+`--repetition-penalty` con el mismo contrato de la API. Los controles de variedad
+y repetición son neutrales por defecto y no acreditan nuevo aprendizaje.
+
 SOVENGI une los servicios que ya existen. Una instancia carga un solo motor
 conversacional y comparte esos pesos entre sus productos, conversación y
 propuestas de herramientas. Las respuestas proceden del modelo propio; no hay

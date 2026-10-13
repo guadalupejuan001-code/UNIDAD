@@ -177,6 +177,21 @@ class SovengiTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "identity"):
                 Sovengi(self.config_path).connect()
 
+    def test_cli_propagates_controls_and_validates_before_loading_the_model(self):
+        from ia_propia.sovengi.__main__ import main
+        output = io.StringIO()
+        with patch("sys.stdout", output):
+            code = main(["--config", str(self.config_path), "ask", "Hola", "--max-new-tokens", "1",
+                         "--seed", "19", "--top-k", "8", "--top-p", "0.8", "--repetition-penalty", "1.1"])
+        self.assertEqual(code, 0)
+        result = json.loads(output.getvalue())
+        self.assertEqual(result["seed"], 19)
+        self.assertEqual(result["decoding"], {"backend": "torch", "kvCache": True,
+                                           "top_k": 8, "top_p": .8, "repetition_penalty": 1.1})
+        with patch("ia_propia.sovengi.__main__.Sovengi", side_effect=AssertionError("invalid settings must not load weights")):
+            with patch("sys.stderr", io.StringIO()):
+                self.assertEqual(main(["ask", "Hola", "--top-p", "0"]), 2)
+
     def test_explicit_workflow_retrieves_memory_through_the_same_reply_path(self):
         session = self.app.connect()
         result = self.request(session, "workflow.run", {"steps": [

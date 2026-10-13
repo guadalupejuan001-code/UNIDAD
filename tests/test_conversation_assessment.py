@@ -131,7 +131,8 @@ class ConversationAssessmentTests(unittest.TestCase):
         class UnconditionalEngine:
             model_id = "unit-model"
             manifest = {"modelId": model_id}
-            def __init__(self, path):
+            execution = {"neuralBackend": "fixture", "decoderBackend": "fixture", "kvCache": False}
+            def __init__(self, path, **host_options):
                 pass
             def score_reply(self, messages, text):
                 # An unconditional phrase preference must fail the swapped pair.

@@ -141,12 +141,14 @@ def _write_new_json(path, report):
             temporary.unlink(missing_ok=True)
 
 
-def assess(model_dir, cases_path, *, output=None, max_new_tokens=64, temperature=0, seed=42, torch_threads=2):
+def assess(model_dir, cases_path, *, output=None, max_new_tokens=64, temperature=0, seed=42, torch_threads=2,
+           decoder_backend="torch", use_cache=True, top_k=0, top_p=1.0, repetition_penalty=1.0):
     from .runtime import ConversationEngine, validate_reply_request
     from .tokenizer import integer
 
     suite, digest = load_cases(cases_path)
-    settings = {"max_new_tokens": max_new_tokens, "temperature": temperature, "seed": seed}
+    settings = {"max_new_tokens": max_new_tokens, "temperature": temperature, "seed": seed,
+                "top_k": top_k, "top_p": top_p, "repetition_penalty": repetition_penalty}
     validate_reply_request({"messages": suite["cases"][0]["messages"], **settings})
     integer(torch_threads, "torch_threads", 1, 8)
     if output is not None:
@@ -155,7 +157,7 @@ def assess(model_dir, cases_path, *, output=None, max_new_tokens=64, temperature
     previous_threads = torch.get_num_threads()
     torch.set_num_threads(torch_threads)
     try:
-        engine = ConversationEngine(model_dir)
+        engine = ConversationEngine(model_dir, decoder_backend=decoder_backend, use_cache=use_cache)
         results, pair_cases = [], defaultdict(list)
         for case in suite["cases"]:
             good = engine.score_reply(case["messages"], case["referenceGoodReply"])
@@ -185,7 +187,7 @@ def assess(model_dir, cases_path, *, output=None, max_new_tokens=64, temperature
         report = {"schemaVersion": 1, "purpose": "development", "evaluationId": suite["evaluationId"],
                   "suiteSha256": digest, "modelId": engine.model_id, "modelManifest": engine.manifest,
                   "suiteSource": suite.get("source", {}),
-                  "generationSettings": settings, "counts": suite["counts"], "cases": results,
+                  "generationSettings": settings, "execution": engine.execution, "counts": suite["counts"], "cases": results,
                   "pairs": pair_results, "families": family_results,
                   "familyMacroPairWinRate": math.fsum(r["pairWinRate"] for r in family_results) / len(family_results),
                   "humanRubric": suite.get("humanRubric"), "humanReviewCompleted": False,

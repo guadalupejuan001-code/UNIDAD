@@ -44,7 +44,7 @@ class ConversationInteractiveTests(unittest.TestCase):
             "Primer mensaje\nSegundo mensaje\n/reiniciar\nNuevo mensaje\n/salir\nNo debe leerse\n", engine,
             ["--max-new-tokens", "13", "--temperature", "0.4", "--seed", "9"])
         self.assertEqual(code, 0, errors)
-        loading.assert_called_once_with(Path("declared-fixture"))
+        loading.assert_called_once_with(Path("declared-fixture"), decoder_backend="torch", use_cache=True)
         self.assertIn("Unidad: Salida real del fixture.\nSegunda línea.", output)
         self.assertIn("Unidad: Después del reinicio.", output)
         self.assertIn("Historial reiniciado", output)

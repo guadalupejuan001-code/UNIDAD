@@ -331,7 +331,7 @@ class ConversationPrecisionTests(unittest.TestCase):
                 # Selective decoding bypasses module forward hooks.
                 with patch.object(model, "selected_logits", side_effect=observe_selected_logits):
                     result = chat(model, tokenizer, [{"role": "user", "content": "Hola."}],
-                                  max_new_tokens=2, temperature=0, seed=42)
+                                  max_new_tokens=2, temperature=0, seed=42, use_cache=False)
                 self.assertTrue(result["experimental"])
                 self.assertTrue(observations)
                 self.assertTrue(all(value == (self.torch.float32, False) for value in observations))

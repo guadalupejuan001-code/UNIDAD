@@ -30,9 +30,19 @@ unidad gnosis chat --project configs/gnosis.json --temperature 0
 ```
 
 `plan` no asigna pesos, no inicia procesos y no entrena. La configuración entregada
-selecciona C7 para conversar y el perfil `50m` para una nueva base; los corpus
+selecciona `reference-wiki1` para conversar y el perfil `15m`; los corpus
 están sin configurar. El informe indica ese bloqueo. El chat sigue siendo
-experimental: C7 no ha superado la aceptación conversacional.
+experimental: esta selección no acredita la aceptación conversacional. C7 se
+conserva como referencia histórica.
+
+`brain.conversation_decoder` conecta el selector `"torch"` o `"nerva"` al mismo
+`ConversationEngine`; `brain.conversation_cache` habilita la caché por respuesta.
+Las configuraciones anteriores que omiten estos campos conservan Torch y usan
+caché. La configuración entregada elige Torch con caché por su
+[mejor tiempo medido](nerva-conversation-20261013/README.md); NERVA está disponible
+como selector real con Node.js 18+. `chat` admite `--top-k`, `--top-p` y
+`--repetition-penalty`, con valores neutrales por defecto. Cambiar esos controles
+no entrena los pesos ni demuestra mejor conversación.
 
 Desde Python, todos los productos pueden utilizar el mismo objeto:
 
@@ -88,11 +98,12 @@ de las corridas y se selecciona explícitamente mediante su identidad.
 | Perfil | Parámetros nominales | Contexto configurado | Comprobación actual |
 | --- | ---: | ---: | --- |
 | `small` | 6.967.296 | 512 | Arquitectura pequeña ya disponible |
+| `15m` | 15.769.344 | 2.048 | Arquitectura propia seleccionada por SOVENGI; conversación aún experimental |
 | `50m` | 48.852.992 | 1.024 | Modelo real, forward/backward de 64 tokens, exportación y carga |
 | `100m` | 99.446.400 | 1.024 | Conteo y validación; no entrenado ni ejecutado aquí |
 | `1b` | 991.586.304 | 2.048 | Conteo y estructura meta; no entrenado ni ejecutado aquí |
 
-Los conteos nominales usan vocabularios de 8.192 y 16.384 tokens. Un tokenizador
+Los conteos nominales usan vocabularios de 2.048, 8.192 y 16.384 tokens. Un tokenizador
 ajustado con poco texto puede tener menos entradas. La admisión de una etapa
 heredada o reanudada usa su configuración real antes de cargar los tensores,
 rechaza arquitecturas ajenas al perfil y fija esa configuración en la carga.
@@ -154,8 +165,9 @@ PYTHONPATH=src python examples/verify_gnosis_scaling.py \
 
 El modelo de 49 millones de la prueba tiene pesos aleatorios y cero actualizaciones;
 no ha aprendido conversación. El contexto completo de 1.024 tokens y el optimizador
-de ese modelo tampoco se probaron en ese benchmark. NERVA ejecuta el char-RNN;
-PyTorch ejecuta el Transformer. GNOSIS coordina ambos, no traduce C7 a NERVA.
+de ese modelo tampoco se probaron en ese benchmark. NERVA ejecuta el char-RNN y
+ahora puede seleccionar los tokens del Transformer. PyTorch conserva el cálculo
+neuronal del Transformer; no se ha traducido ese cálculo a NERVA.
 
 La siguiente prioridad es ampliar y diversificar la base lingüística de español,
 con entrenamiento verificable y diálogos nuevos que midan conservación de hechos
@@ -166,3 +178,4 @@ el [contraste de preparación](tokenized-data-20261013.md) documenta su efecto.
 Continúan pendientes entrenamiento con GPU y aprendizaje conversacional aceptado.
 No hay autoaprendizaje,
 autoprogramación ni conversación competitiva demostrados por esta entrega.
+

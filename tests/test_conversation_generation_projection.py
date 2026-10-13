@@ -33,8 +33,8 @@ class GenerationProjectionTests(unittest.TestCase):
             model=self.model(**head)
             for temperature in (0,0.7):
                 with self.subTest(head=bool(head),temperature=temperature):
-                    efficient=chat(model,self.tokenizer,self.messages,max_new_tokens=8,temperature=temperature,seed=11)
+                    efficient=chat(model,self.tokenizer,self.messages,max_new_tokens=8,temperature=temperature,seed=11,use_cache=False)
                     with patch.object(model,'selected_logits',side_effect=lambda ids,mask:model(ids)[mask]):
-                        original=chat(model,self.tokenizer,self.messages,max_new_tokens=8,temperature=temperature,seed=11)
+                        original=chat(model,self.tokenizer,self.messages,max_new_tokens=8,temperature=temperature,seed=11,use_cache=False)
                     self.assertEqual(efficient,original)
 

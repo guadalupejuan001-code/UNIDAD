@@ -1,0 +1,6 @@
+nerva 0.2
+# El Transformer propio entrega sus logits; NERVA decide el siguiente token.
+# Controles neutrales: top_k=0, top_p=1, repetition_penalty=1.
+# draw viene de un RNG local de la peticion; nunca se usa texto como programa.
+const logits = tensor64(scores)
+print("token", select_token(logits, excluded, generated, temperature, top_k, top_p, repetition_penalty, draw))

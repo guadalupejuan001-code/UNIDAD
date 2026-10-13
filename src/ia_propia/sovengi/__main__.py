@@ -6,6 +6,8 @@ import os
 import sys
 
 from .application import Sovengi
+from ..conversation.contract import DEFAULT_MAX_NEW_TOKENS, DEFAULT_SEED
+from ..conversation.runtime import validate_reply_request
 
 
 def _print(value):
@@ -19,7 +21,13 @@ def _request(session, operation, values):
     return response["result"]
 
 
-def _chat(session, args):
+def _generation_settings(args):
+    return validate_reply_request({"max_new_tokens": args.max_new_tokens, "temperature": args.temperature,
+        "seed": args.seed, "top_k": args.top_k, "top_p": args.top_p,
+        "repetition_penalty": args.repetition_penalty}, partial=True)
+
+
+def _chat(session, settings):
     history = []
     print("SOVENGI · modelo experimental propio. /recordar texto · /memoria palabra · /nuevo · /salir")
     while True:
@@ -45,8 +53,7 @@ def _chat(session, args):
                 _print(_request(session, "memory.task.search", {"query": text[9:].strip()}))
                 continue
             messages = history + [{"role": "user", "content": text}]
-            result = _request(session, "conversation.reply", {"messages": messages,
-                "max_new_tokens": args.max_new_tokens, "temperature": args.temperature})
+            result = _request(session, "conversation.reply", {"messages": messages, **settings})
             print("SOVENGI: " + (result["text"] or "[El modelo no generó texto.]"))
             if result["text"].strip():
                 history = (messages + [{"role": "assistant", "content": result["text"]}])[-60:]
@@ -67,8 +74,12 @@ def parser(prog="sovengi"):
         command = commands.add_parser(name, help="Conversar" if name == "chat" else "Hacer una pregunta")
         if name == "ask":
             command.add_argument("text")
-        command.add_argument("--max-new-tokens", type=int, default=96)
+        command.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
         command.add_argument("--temperature", type=float, default=0)
+        command.add_argument("--seed", type=int, default=DEFAULT_SEED)
+        command.add_argument("--top-k", type=int, default=0)
+        command.add_argument("--top-p", type=float, default=1.0)
+        command.add_argument("--repetition-penalty", type=float, default=1.0)
     commands.add_parser("status", help="Ver identidad, servicios y límites reales")
     remember = commands.add_parser("remember", help="Guardar texto explícitamente en memoria")
     remember.add_argument("text")
@@ -97,6 +108,7 @@ def main(argv=None, *, prog="sovengi"):
     args = parser(prog).parse_args(argv)
     application = None
     try:
+        settings = _generation_settings(args) if args.command in ("chat", "ask") else {}
         application = Sovengi(args.config)
         if args.command in ("plan", "train"):
             kwargs = {"resume": args.resume}
@@ -107,12 +119,12 @@ def main(argv=None, *, prog="sovengi"):
         session = application.connect(args.body, input_root=args.input_root, report_root=args.report_root,
             operator_token=os.environ.get("SOVENGI_OPERATOR_TOKEN") if args.input_root else None)
         if args.command == "chat":
-            return _chat(session, args)
+            return _chat(session, settings)
         if args.command == "status":
             _print(session.capabilities())
         elif args.command == "ask":
             _print(_request(session, "conversation.reply", {"messages": [{"role": "user", "content": args.text}],
-                "max_new_tokens": args.max_new_tokens, "temperature": args.temperature}))
+                **settings}))
         elif args.command == "remember":
             _print(_request(session, "memory.task.add", {"goal": args.text}))
         elif args.command == "memory":

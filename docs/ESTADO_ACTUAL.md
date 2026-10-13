@@ -1,5 +1,21 @@
 # Estado actual de Unidad
 
+## Integración conversacional de NERVA, 13 de octubre de 2026
+
+La [entrega y medición](nerva-conversation-20261013/README.md) conecta NERVA a
+la selección de tokens del Transformer mediante el motor compartido. Añade
+caché por respuesta, controles de generación neutrales por defecto y una ruta
+sin caché para comparación. CLI, Brain/API y GNOSIS pueden seleccionar NERVA;
+el anfitrión fija esa elección, no el texto del diálogo.
+
+Con C7, diez consultas conocidas y tres repeticiones, las medianas fueron
+12,72 s sin caché, 4,37 s con caché Torch y 27,13 s con caché NERVA. Los tokens
+y los artefactos coincidieron. Se adopta Torch con caché como opción rápida;
+NERVA permanece disponible y comprobado. Esta medición corresponde a C7 y no
+evalúa semánticamente ni promueve el candidato de patrones de 15,77 millones.
+La intervención conservó pesos, datos, checkpoints y procesos de entrenamiento.
+Las observaciones históricas de otros procesos mantienen sus fechas.
+
 ## Descargas completas y entrenamiento activo, 13 de octubre, 15:18:20 UTC
 
 La [recuperación del lote pendiente](learning-repair-20261013/download-recovery/README.md)

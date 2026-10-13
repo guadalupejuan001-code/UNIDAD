@@ -158,6 +158,8 @@ export function runProgram(source, options = {}) {
   builtin('mse', 2, 2, (a, b) => T.mse(asTensor(a), asTensor(b)));
   builtin('cross_entropy', 2, 2, (logits, labels) => T.crossEntropy(asTensor(logits), labels));
   builtin('argmax', 1, 1, value => T.argmax(asTensor(value)));
+  builtin('select_token', 8, 8, (logits, excluded, generated, temperature, topK, topP, penalty, draw) =>
+    T.selectToken(asTensor(logits), excluded, generated, temperature, topK, topP, penalty, draw));
   builtin('detach', 1, 1, value => T.detach(asTensor(value)));
   builtin('backward', 1, 1, loss => { T.backward(asTensor(loss)); return null; });
   builtin('zero_grad', 1, 1, value => { T.zeroGrad(params(value)); return null; });

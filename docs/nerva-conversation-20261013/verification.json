@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "sourceBase": "63eede1649f7293bc8bf55cf603367b0bae853b5",
+  "localTests": {
+    "count": 152,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 207.207,
+    "log": "software-tests.log",
+    "logSha256": "691bacdaed2b96c5f4ddfd7a867a4457daf70b9eec1991db14182ddcb48114ca",
+    "command": "PYTHONPATH=src:tests python -m unittest -v test_conversation_cache_decoder test_conversation_model test_conversation_runtime test_conversation_generation_projection test_conversation_copy_head test_conversation_brain test_conversation_assessment test_conversation_interactive test_conversation_precision test_conversation_cli test_nerva_language test_nerva_brain test_gnosis test_brain_models test_brain_core test_brain_cli test_brain_http test_brain_integration"
+  },
+  "benchmark": {
+    "path": "benchmark-c7.json",
+    "sha256": "59d780eac274338f0fbc3125c55f7b40fbb2cf985f564eaab907a5b8de62221d",
+    "generatedReplies": 90,
+    "allTokenIdsMatchReference": true,
+    "artifactHashesUnchanged": true,
+    "isSemanticAcceptance": false,
+    "sourceHashesVerifiedAtMeasurement": true,
+    "generationAndNervaSourceStillUnchanged": true,
+    "laterIntegrationChanges": "ConversationEngine preserves the PR15 inference lock and prompt_usage; SOVENGI CLI forwards validated generation controls"
+  },
+  "trainingStarted": false,
+  "weightsChanged": false,
+  "oldEvidenceChanged": false,
+  "newSemanticImprovementClaimed": false,
+  "ciStatus": "See pull request checks for the published commit",
+  "integrationBase": "85929202f7eb9c9a069dbaba3acc409c3f2195e3",
+  "preservedLaterWork": "PR14 download recovery and PR15 SOVENGI entry point, memory, API, 15m profile, selected reference-wiki1 identity and inference lock",
+  "compatibilityTests": {
+    "count": 42,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 33.19,
+    "log": "sovengi-tests.log",
+    "logSha256": "5f59d33a25caa015d105f758cc4e261aaaa5473cf9fa5844896e63fee5196d94",
+    "command": "PYTHONPATH=src:tests python -m unittest -v test_sovengi test_gnosis test_conversation_runtime test_conversation_cache_decoder",
+    "overlapsEarlierTests": true
+  },
+  "priorCi": {
+    "commit": "0ee4369252144a7cc4d2d74300a4fcec95f1aa3c",
+    "pullRequestRun": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38427569611",
+    "conclusion": "success"
+  }
+}

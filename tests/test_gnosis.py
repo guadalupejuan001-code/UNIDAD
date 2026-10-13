@@ -3,6 +3,7 @@ import importlib.util
 import io
 import json
 import hashlib
+import shutil
 from pathlib import Path
 import tempfile
 import unittest
@@ -20,7 +21,8 @@ HAS_EXTRAS = all(importlib.util.find_spec(p) for p in ("torch", "tokenizers", "s
 def configuration(root):
     value = json.loads((ROOT / "configs/gnosis.json").read_text())
     value["projectRoot"] = str(root)
-    value["brain"].update(conversation_model=None, expected_model_id=None, language_backend="numpy")
+    value["brain"].update(conversation_model=None, expected_model_id=None, language_backend="numpy",
+                          conversation_decoder="torch")
     value["learning"]["profile"] = "small"
     # This fixture exercises a fresh three-stage lifecycle. The product default
     # instead continues the published current model at its conversation stage.
@@ -38,6 +40,21 @@ class GnosisPlanningTests(unittest.TestCase):
 
     def project(self, config=None):
         return GnosisProject(config or self.config, config_dir=self.directory)
+
+    def test_old_host_config_defaults_to_torch_and_new_controls_are_strict(self):
+        old = copy.deepcopy(self.config)
+        del old["brain"]["conversation_decoder"]
+        del old["brain"]["conversation_cache"]
+        project = self.project(old)
+        self.assertEqual(project.config["brain"]["conversation_decoder"], "torch")
+        self.assertTrue(project.config["brain"]["conversation_cache"])
+        self.assertNotIn("conversation_decoder", old["brain"])
+        for key, value in (("conversation_decoder", "unknown"), ("conversation_decoder", []),
+                           ("conversation_cache", 1), ("conversation_cache", "false")):
+            config = copy.deepcopy(self.config)
+            config["brain"][key] = value
+            with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                self.project(config)
 
     def test_plan_counts_scaling_without_loading_a_model_or_writing_weights(self):
         for profile, expected in (("small", 6_967_296), ("15m", 15_769_344), ("50m", 48_852_992), ("100m", 99_446_400), ("1b", 991_586_304)):
@@ -198,6 +215,19 @@ class GnosisInferenceTests(unittest.TestCase):
                                       training={"trainedFrom": "random", "purpose": "software-test"})
         self.config = configuration(self.directory)
         self.config["brain"].update(conversation_model="reference", expected_model_id=self.manifest["modelId"])
+
+    @unittest.skipUnless(shutil.which("node"), "NERVA requires Node.js 18+")
+    def test_gnosis_config_connects_the_real_nerva_decoder_to_its_shared_brain(self):
+        supplied = json.loads((ROOT / "configs/gnosis.json").read_text())
+        self.assertEqual(supplied["brain"]["conversation_decoder"], "torch")
+        self.config["brain"]["conversation_decoder"] = "nerva"
+        project = GnosisProject(self.config, config_dir=self.directory)
+        result = project.connect("pc").request({"schemaVersion": 1, "requestId": "nerva-gnosis",
+            "operation": "conversation.reply", "input": {"messages": [{"role": "user", "content": "Hola"}],
+                                                         "max_new_tokens": 4, "temperature": 0}})
+        self.assertEqual(result["status"], "ok", result)
+        self.assertEqual(result["result"]["decoding"]["backend"], "nerva")
+        self.assertEqual(result["result"]["modelId"], self.manifest["modelId"])
 
     def test_pinned_reference_and_same_engine_generation_for_all_bodies(self):
         from ia_propia.conversation import artifacts

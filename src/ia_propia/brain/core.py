@@ -54,13 +54,15 @@ class Tool:
 
 
 class Brain:
-    def __init__(self, state_dir, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy"):
+    def __init__(self, state_dir, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy",
+                 conversation_decoder="torch", conversation_cache=True):
         if not isinstance(state_dir, (str, Path)):
             raise BrainError("invalid_input", "Brain state directory must be configured by the host")
         self._state_dir = Path(state_dir).expanduser().absolute()
         # One model runtime for all sessions. No per-body weight loading or chat cache.
         self.models = ModelRuntime(language_model=language_model, attention_model=attention_model,
-                                   conversation_model=conversation_model, language_backend=language_backend)
+                                   conversation_model=conversation_model, language_backend=language_backend,
+                                   conversation_decoder=conversation_decoder, conversation_cache=conversation_cache)
         self._autonomy_bindings = {}
         self._connection_lock = threading.Lock()
 

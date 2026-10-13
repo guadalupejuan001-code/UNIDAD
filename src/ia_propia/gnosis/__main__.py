@@ -33,6 +33,9 @@ def parser(prog=None):
             command.add_argument("--max-new-tokens", default=96, type=int)
             command.add_argument("--temperature", default=0.7, type=float)
             command.add_argument("--seed", default=42, type=int)
+            command.add_argument("--top-k", default=0, type=int)
+            command.add_argument("--top-p", default=1.0, type=float)
+            command.add_argument("--repetition-penalty", default=1.0, type=float)
         if name == "assess":
             command.add_argument("--cases", required=True)
             command.add_argument("--output", required=True)
@@ -63,7 +66,8 @@ def main(argv=None, *, prog=None):
                 raise ValueError("No conversation reference is selected")
             # The common console owns history; every body shares this loaded engine.
             settings = SimpleNamespace(model=project.path(selected), max_new_tokens=args.max_new_tokens,
-                                       temperature=args.temperature, seed=args.seed)
+                                       temperature=args.temperature, seed=args.seed, top_k=args.top_k,
+                                       top_p=args.top_p, repetition_penalty=args.repetition_penalty)
             return _converse(settings, engine=project.brain.models.conversation_engine)
         elif args.command == "serve":
             from ..brain.http import create_server, validate_token
@@ -84,7 +88,9 @@ def main(argv=None, *, prog=None):
         elif args.command == "assess":
             from ..conversation.assessment import assess
             artifact = project.path(project.config["learning"]["stages"][args.stage]["run_dir"]) / "artifact"
-            result = assess(artifact, args.cases, output=args.output)
+            host = project.config["brain"]
+            result = assess(artifact, args.cases, output=args.output,
+                            decoder_backend=host["conversation_decoder"], use_cache=host["conversation_cache"])
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
         return 0
     except (ValueError, OSError, RuntimeError, ImportError) as error:

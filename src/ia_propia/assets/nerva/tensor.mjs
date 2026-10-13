@@ -17,6 +17,51 @@ function charge(count) {
   if (!Number.isSafeInteger(count) || count < 0 || count > budgetLimit - budgetUsed) throw new RangeError('Tensor operation budget exceeded');
   budgetUsed += count;
 }
+
+// Inference-only token selection. No tensor/parameter is mutated and there is
+// no vocabulary text, answer template, filesystem or external model here.
+export function selectToken(logits, excluded, generated, temperature, topK, topP, penalty, draw) {
+  if (!(logits instanceof Tensor) || logits.shape.length !== 1 || !logits.data.length || logits.data.length > 65536)
+    throw new RangeError('select_token requires a vector of 1..65536 logits');
+  const size = logits.data.length;
+  for (const ids of [excluded, generated]) {
+    if (!Array.isArray(ids) || ids.length > 4096 || ids.some(id => !Number.isSafeInteger(id) || id < 0 || id >= size))
+      throw new RangeError('select_token requires bounded valid token IDs');
+  }
+  for (const [value, low, high] of [[temperature, 0, 2], [topK, 0, 65536], [topP, 0.000001, 1], [penalty, 1, 2], [draw, 0, 1]]) {
+    finite(value);
+    if (value < low || value > high) throw new RangeError('Invalid select_token control');
+  }
+  if (!Number.isSafeInteger(topK) || draw === 1) throw new RangeError('Invalid top_k or random draw');
+  charge(size * (8 + Math.ceil(Math.log2(size + 1))) + excluded.length + generated.length);
+  const scores = Array.from(logits.data, x => finite(x));
+  for (const id of new Set(generated)) scores[id] = scores[id] < 0 ? scores[id] * penalty : scores[id] / penalty;
+  for (const id of excluded) scores[id] = -Infinity;
+  let best = -1;
+  for (let id = 0; id < size; id++) if (scores[id] !== -Infinity && (best < 0 || scores[id] > scores[best])) best = id;
+  if (best < 0) throw new RangeError('All tokens are excluded');
+  if (temperature === 0) return best;
+  let order = scores.map((_, id) => id).filter(id => scores[id] !== -Infinity);
+  order.sort((a, b) => scores[b] - scores[a] || a - b);
+  if (topK) order = order.slice(0, topK);
+  const maximum = scores[order[0]];
+  // Subtract before division: small positive temperatures remain stable.
+  const weights = order.map(id => Math.exp((scores[id] - maximum) / temperature));
+  let total = weights.reduce((a, b) => a + b, 0);
+  if (topP < 1) {
+    let cumulative = 0, keep = 0;
+    do { cumulative += weights[keep++]; } while (keep < weights.length && cumulative < topP * total);
+    order = order.slice(0, keep);
+    weights.length = keep;
+    total = cumulative;
+  }
+  let cursor = draw * total;
+  for (let i = 0; i < order.length; i++) {
+    cursor -= weights[i];
+    if (cursor < 0) return order[i];
+  }
+  return order[order.length - 1];
+}
 function finite(x, what = 'Tensor value') {
   if (typeof x !== 'number' || !Number.isFinite(x)) throw new RangeError(`${what} must be finite`);
   return x;
