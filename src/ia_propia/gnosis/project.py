@@ -124,8 +124,31 @@ class GnosisProject:
             config["brain"].setdefault("conversation_decoder", "torch")
             config["brain"].setdefault("conversation_cache", True)
         _keys(config["brain"], ("state_dir", "language_backend", "conversation_model", "expected_model_id",
-                                "conversation_decoder", "conversation_cache"))
+                                "conversation_decoder", "conversation_cache"),
+              ("conversation_ensemble", "language_model", "attention_model"))
         brain = config["brain"]
+        for key in ("language_model", "attention_model"):
+            if brain.get(key) is not None:
+                _text(brain[key], key)
+        ensemble = brain.get("conversation_ensemble")
+        self._catalog = None
+        if ensemble is not None:
+            _keys(ensemble, ("catalog", "primary"), ("max_candidates", "min_candidates", "max_resident",
+                "max_seconds", "total_new_tokens", "max_score_calls", "critic_count",
+                "max_scoring_tokens", "max_sliding_score_tokens"))
+            _text(ensemble["catalog"], "ensemble catalog")
+            _text(ensemble["primary"], "ensemble primary")
+            from ..conversation.catalog import load_catalog
+            from ..conversation.ensemble import EnsembleBudget
+            EnsembleBudget(**{key: value for key, value in ensemble.items() if key not in ("catalog", "primary")})
+            self._catalog = load_catalog(self.path(ensemble["catalog"]), self._root)
+            matching = [entry for entry in self._catalog if entry["name"] == ensemble["primary"]]
+            if len(matching) != 1 or len(self._catalog) < 2:
+                raise ValueError("GNOSIS ensemble requires a catalogued primary and at least two models")
+            if (brain["conversation_model"] is None or
+                    self.path(matching[0]["path"]) != self.path(brain["conversation_model"]) or
+                    matching[0]["modelId"] != brain["expected_model_id"]):
+                raise ValueError("GNOSIS ensemble primary must match the selected artifact and identity")
         _text(brain["state_dir"], "state_dir")
         if type(brain["language_backend"]) is not str or brain["language_backend"] not in ("numpy", "nerva"):
             raise ValueError("The host must select the language backend")
@@ -175,6 +198,11 @@ class GnosisProject:
         reference = self.path(brain["conversation_model"]) if brain["conversation_model"] else None
         if reference is not None and any(_overlap(reference, p) for p in paths):
             raise ValueError("Learning runs cannot overwrite the selected reference artifact")
+        if any(_overlap(self.path(brain[key]), run) for key in ("language_model", "attention_model")
+               if brain.get(key) is not None for run in paths):
+            raise ValueError("Learning runs cannot overwrite selected auxiliary artifacts")
+        if self._catalog is not None and any(_overlap(self.path(entry["path"]), run) for entry in self._catalog for run in paths):
+            raise ValueError("Learning runs cannot overwrite any catalogued conversation artifact")
         self._config = deepcopy(config)
         self._brain = None
         self._brain_lock = threading.RLock()
@@ -201,9 +229,19 @@ class GnosisProject:
                 metadata = _metadata(selected / "manifest.json")
                 if metadata.get("modelId") != config["expected_model_id"]:
                     raise ValueError("Selected conversation model differs from the GNOSIS identity")
+            ensemble_options = {}
+            ensemble = config.get("conversation_ensemble")
+            if ensemble is not None:
+                ensemble_options = {"conversation_models": [{"name": entry["name"],
+                    "model_dir": self.path(entry["path"]), "expected_model_id": entry["modelId"],
+                    "decoder_backend": config["conversation_decoder"], "use_cache": config["conversation_cache"]}
+                    for entry in self._catalog], "ensemble_primary": ensemble["primary"],
+                    "ensemble_budget": {key: value for key, value in ensemble.items() if key not in ("catalog", "primary")}}
             brain = Brain(self.path(config["state_dir"]), conversation_model=selected,
+                          language_model=self.path(config["language_model"]) if config.get("language_model") else None,
+                          attention_model=self.path(config["attention_model"]) if config.get("attention_model") else None,
                           language_backend=config["language_backend"], conversation_decoder=config["conversation_decoder"],
-                          conversation_cache=config["conversation_cache"])
+                          conversation_cache=config["conversation_cache"], **ensemble_options)
             if selected is not None and brain.models.capabilities()["models"]["conversation"]["modelId"] != config["expected_model_id"]:
                 raise ValueError("Loaded model identity differs from the GNOSIS identity")
             self._brain = brain
@@ -306,7 +344,7 @@ class GnosisProject:
                 "limitations": ["resource_estimates_are_not_peak_guarantees",
                                 "mmap_metadata_order_and_tokenizer_still_use_memory" if data_loading == "mmap"
                                 else "corpus_and_windows_are_still_in_memory",
-                                "gpu_training_not_implemented", "nerva_runs_char_rnn_only", "larger_profiles_are_not_trained_models"]}
+                                "gpu_training_not_implemented", "nerva_conversation_selection_is_host_configured", "larger_profiles_are_not_trained_models"]}
 
     def train(self, stage, *, budget_seconds, resume=False):
         _positive(budget_seconds, "invocation budget", 86400)

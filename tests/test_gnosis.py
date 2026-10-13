@@ -21,6 +21,7 @@ HAS_EXTRAS = all(importlib.util.find_spec(p) for p in ("torch", "tokenizers", "s
 def configuration(root):
     value = json.loads((ROOT / "configs/gnosis.json").read_text())
     value["projectRoot"] = str(root)
+    value["brain"].pop("conversation_ensemble", None)
     value["brain"].update(conversation_model=None, expected_model_id=None, language_backend="numpy",
                           conversation_decoder="torch")
     value["learning"]["profile"] = "small"

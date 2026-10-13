@@ -37,6 +37,14 @@ def verify(config_path):
             for prompt in cases:
                 result = _request(session, "conversation.reply", {"messages": [{"role": "user", "content": prompt}],
                     "max_new_tokens": 48, "temperature": 0, "seed": 42})
+                if config["brain"].get("conversation_ensemble") is not None:
+                    trace = result["ensemble"]
+                    assert trace["minimumCandidatesSatisfied"]
+                    assert len(trace["candidates"]) >= 2
+                    assert len(set(trace["modelIdsExecuted"])) >= 2
+                    assert trace["selectedModelId"] == result["modelId"]
+                    assert any(candidate.get("auxiliary") for candidate in trace["candidates"])
+                    assert trace["cache"]["residentCount"] <= config["brain"]["conversation_ensemble"]["max_resident"]
                 outputs.append({"prompt": prompt, "result": result})
             assert note["id"] in outputs[1]["result"]["memoryContext"]["taskIds"]
             assert _request(session, "memory.task.status", {})["eventCount"] == count
@@ -48,6 +56,7 @@ def verify(config_path):
                 "integrationVerified": True, "conversationQualityValidated": False,
                 "productionAccepted": False, "trainingExecuted": False,
                 "fixtureScope": "fictional prompts; real selected published weights; no reserved TEST",
+                "ensembleConfigured": config["brain"].get("conversation_ensemble") is not None,
                 "outputs": outputs}
         finally:
             app.close()

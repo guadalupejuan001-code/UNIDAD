@@ -26,6 +26,13 @@ class DeclaredEngineFixture:
         self.calls = []
         self.raw_reply = '```json\n{"action":"stop","reason":"declared fixture"}\n```'
 
+    def prompt_usage(self, messages):
+        from ia_propia.conversation.tokenizer import encode_prompt
+        capacity = self._model.config['context_length']
+        ids, discarded = encode_prompt(messages, self._tokenizer, capacity)
+        return {'tokens': len(ids) + discarded, 'capacity': capacity,
+                'discarded': discarded}
+
     def reply(self, **request):
         from ia_propia.conversation.runtime import validate_reply_request
         validate_reply_request(request)

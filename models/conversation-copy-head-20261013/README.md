@@ -1,5 +1,17 @@
 # Candidato propio de copia: 128 pasos, rechazado
 
+La integración de varios Transformers del 13 de octubre también entrega
+`weights.safetensors` completo, reconstruido con el script original a partir
+de la referencia propia C7 y `head_delta.safetensors`. Su SHA-256 es
+`c3d2d09bd4f82efd8c92f649482441e1e40bc29cd192a35ddfc1d56a45df400b`;
+su identidad permanece
+`unidad-conversation-20009f454b06bcb223c3d83bcbe4070f03383989776454d48b57f39af54654df`.
+El [recibo de reconstrucción](../../docs/sovengi-ensemble-20261013/delta-reconstruction.json)
+fija padre, delta, script y resultado comprobado. El artefacto puede cargarse
+directamente y sin red; la receta de reconstrucción siguiente se conserva
+para reproducir su procedencia. No se entrenaron pesos nuevos ni cambia el
+rechazo conversacional del experimento.
+
 Este artefacto experimental parte exactamente de C7. El entrenamiento cambia
 los cuatro tensores de copia (16.641 parámetros) y conserva los otros 6.967.296
 byte a byte. El delta contiene todos los cambios de pesos; C7 contiene la base.

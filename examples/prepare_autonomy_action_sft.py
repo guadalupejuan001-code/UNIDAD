@@ -51,6 +51,13 @@ def compact_projection(context):
             {"role": "user", "content": compact({"task": view, "tools": tools, "observations": observations})}]
 
 
+def measure_prompt(tokenizer, messages, capacity):
+    """Expose the common engine facade for declared, tokenizer-only fixtures."""
+    from ia_propia.conversation.tokenizer import encode_prompt
+    encoded, discarded = encode_prompt(messages, tokenizer, capacity)
+    return {"tokens": len(encoded) + discarded, "capacity": capacity, "discarded": discarded}
+
+
 class DeclaredActionFixture:
     """Exercise the actual prompt adapter using a clearly named fixture engine."""
     origin = "test_fixture"
@@ -67,6 +74,9 @@ class DeclaredActionFixture:
             model_id = "declared-test-fixture-no-weights"
             _model = SimpleNamespace(config={"context_length": 2048})
             _tokenizer = tokenizer
+
+            def prompt_usage(engine, messages):
+                return measure_prompt(tokenizer, messages, engine._model.config["context_length"])
 
             def reply(engine, **request):
                 self._request = deepcopy(request)
@@ -106,7 +116,8 @@ def check_small_context_rejections(captures, tokenizer):
             raise AssertionError("An overflowing context must never call generation")
 
         engine = SimpleNamespace(model_id="declared-fixture-context-control-no-weights", reply=forbidden_reply,
-                                 _tokenizer=tokenizer, _model=SimpleNamespace(config={"context_length": 1024}))
+                                 _tokenizer=tokenizer, _model=SimpleNamespace(config={"context_length": 1024}),
+                                 prompt_usage=lambda messages: measure_prompt(tokenizer, messages, 1024))
         adapter = ModelActionProposer(SimpleNamespace(conversation_engine=engine), max_new_tokens=128)
         try:
             adapter(capture["context"])

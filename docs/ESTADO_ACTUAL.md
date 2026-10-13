@@ -1,6 +1,27 @@
 # Estado actual de Unidad
 
-## SOVENGI: integración vigente y entrenamiento cerrado el 13 de octubre
+## SOVENGI 0.8: coordinación y conexiones, 13 de octubre de 2026
+
+La configuración común coordina los 35 Transformers propios del
+[catálogo](../configs/conversation-models.json). Cada petición programa hasta
+cuatro generadores: dos anclas disponibles y dos puestos rotatorios, con un
+mínimo de dos candidatos y un máximo de cuatro motores residentes. Conserva
+la identidad del ganador y su texto original; los tokenizadores distintos se
+comunican mediante texto y puntuaciones relativas dentro de cada juez.
+
+La [entrega de coordinación](sovengi-ensemble-20261013/README.md) conserva
+identidades, reconstrucción exacta del delta, pruebas y mediciones. La
+[auditoría de conexiones](sovengi-connectivity-20261013/audit.json) distingue
+los componentes y su trabajo real: contexto y memoria, diagnóstico RNN,
+pronóstico MLP con observaciones explícitas, autonomía y etapas GNOSIS. Torch
+con caché sigue siendo el decodificador predeterminado; NERVA se selecciona
+desde la configuración del anfitrión.
+
+Esta entrega integra la ejecución y no entrena nuevos pesos. La calidad
+conversacional y la aceptación general siguen sin acreditarse. Los cortes de
+entrenamiento y resultados anteriores que siguen se conservan como historia.
+
+## Historial: integración y entrenamiento cerrado el 13 de octubre
 
 El código verificado en `main` `2d989a5` reúne SOVENGI, memoria recuperada,
 herramientas, API y NERVA conversacional. `configs/gnosis.json` carga el modelo
