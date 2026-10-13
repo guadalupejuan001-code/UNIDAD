@@ -1,6 +1,27 @@
 # Estado actual de Unidad
 
-## Avance posterior a PR11, 13 de octubre de 2026
+## Aprendizaje de patrones, 13 de octubre de 2026, 14:25 UTC
+
+El [control de relaciones conversacionales](learning-repair-20261013/pattern-relations-v2/README.md)
+integró datos contrastantes, evaluación real y una etapa en la cola existente.
+Ejecutó 512 actualizaciones sobre los pesos propios de 15.769.344 parámetros
+en 72,283 segundos. La validación seleccionó BEST 128, `af515755…`.
+El padre, el candidato, el tokenizador y el checkpoint nativo BEST se entregan
+con hashes, historial y respuestas antes/después.
+
+En doce prefijos TRAIN, la revisión de IA pasó de cero a once completas.
+En doce de desarrollo pasó de cero a una completa y una parcial; las
+coincidencias exactas siguieron en cero. Los dos diálogos libres fallaron.
+El control demuestra aprendizaje de ejemplos conocidos, sin cumplir el
+criterio de generalización ni la aceptación conversacional. La reserva final
+sigue cerrada y C7 permanece como referencia anterior propia.
+
+En este corte el supervisor 22557 sigue vivo, en `waiting_for_data` después
+de cerrar la etapa; no hay entrenador nativo activo. La etapa diagnóstica no
+se convirtió en padre automático del colector. Este estado es una observación
+fechada, no una promesa de ejecución futura fuera del entorno.
+
+## Historial: avance posterior a PR11, 13:21 UTC
 
 La descripción vigente está en [qué tenemos en Unidad](QUE_TENEMOS.md), el
 [README](../README.md) y el [recibo posterior a PR11](learning-repair-20261013/progress-20261013-1304.md).

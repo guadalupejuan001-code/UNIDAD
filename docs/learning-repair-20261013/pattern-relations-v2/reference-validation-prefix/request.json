@@ -1,0 +1,69 @@
+{
+  "conversationAccepted": false,
+  "createdAtUnix": 1791900469.3881,
+  "diagnosticOnly": true,
+  "generation": {
+    "max_new_tokens": 64,
+    "seed": 42,
+    "temperature": 0,
+    "torchThreads": 1
+  },
+  "inputs": {
+    "casesSha256": "7324c05d249f864874f9ca97e7a4bfc3993a52d8723addfe22c5f7f50322636d",
+    "corpusSha256": "c38db1b3f3464048145df46be4d23b048896d19952bd37417f8a208936b6fed2",
+    "manifestSha256": "36d80eb8a8f00dde393f16e8a0358625c7d11db865befcd89a425e9a26547d3e"
+  },
+  "limits": {
+    "cpuAffinityCount": 1,
+    "maxTurns": 12,
+    "nice": 19,
+    "outputMiB": 32,
+    "ramMiB": 6144,
+    "wallSeconds": 300
+  },
+  "mode": "validation-prefix",
+  "modelFilesSha256": {
+    "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+    "manifest.json": "dffdb6370ec01a38691b884200ee9920154c3619796d456ff70e83606a9933a9",
+    "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "weights.safetensors": "a1b52c676927c2dbebc76a0550c545310760f130e479ba2e29ee946b00fdc671"
+  },
+  "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+  "nativeLikelihoodEnabled": true,
+  "parentOwnModelId": null,
+  "prefixTurn": "contrast",
+  "schemaVersion": 1,
+  "selectedCaseIds": [
+    "pattern-v1:validation:current_request_format:0:branch:0",
+    "pattern-v1:validation:current_request_format:0:branch:1",
+    "pattern-v1:validation:explicit_correction:0:branch:0",
+    "pattern-v1:validation:explicit_correction:0:branch:1",
+    "pattern-v1:validation:known_vs_unknown:0:branch:0",
+    "pattern-v1:validation:known_vs_unknown:0:branch:1",
+    "pattern-v1:validation:negation:0:branch:0",
+    "pattern-v1:validation:negation:0:branch:1",
+    "pattern-v1:validation:relevant_context:0:branch:0",
+    "pattern-v1:validation:relevant_context:0:branch:1",
+    "pattern-v1:validation:role_binding:0:branch:0",
+    "pattern-v1:validation:role_binding:0:branch:1"
+  ],
+  "sourceSha256": {
+    "examples/run_conversation_pattern_probe.py": "c4d761fe8ccfecb10ea652b518bf5c3bbb23c2ff5676ba65633a63a8c519aa98",
+    "src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+    "src/ia_propia/conversation/__main__.py": "5874d42fdf7275ada4f44f138a239f6e1a403c169946eca54b1dddd25848ac15",
+    "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "src/ia_propia/conversation/artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+    "src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+    "src/ia_propia/conversation/configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+    "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+    "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+    "src/ia_propia/conversation/disk_data.py": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71",
+    "src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+    "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+    "src/ia_propia/conversation/model.py": "375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d",
+    "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+    "src/ia_propia/conversation/tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+    "src/ia_propia/conversation/training.py": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-conversation-pattern-curriculum-v1",
+  "provenance": {
+    "kind": "authored-synthetic",
+    "license": "CC0-1.0",
+    "fictional": true,
+    "author": "Codex engineering agent",
+    "humanReviewed": false,
+    "method": "Explicit deterministic authored contexts and state transitions; no external model calls, no mined private/evaluation data"
+  },
+  "parent": {
+    "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+    "manifestSha256": "dffdb6370ec01a38691b884200ee9920154c3619796d456ff70e83606a9933a9",
+    "weightsSha256": "a1b52c676927c2dbebc76a0550c545310760f130e479ba2e29ee946b00fdc671",
+    "rootOrigin": "random_weights"
+  },
+  "tokenizer": {
+    "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "vocabSize": 2048,
+    "refitted": false
+  },
+  "contextLength": 2048,
+  "objective": "assistant_last_reply",
+  "partitionPolicy": "train_validation_only",
+  "file": {
+    "path": "corpus.jsonl",
+    "sha256": "c38db1b3f3464048145df46be4d23b048896d19952bd37417f8a208936b6fed2",
+    "bytes": 77322
+  },
+  "corpusSha256": "c38db1b3f3464048145df46be4d23b048896d19952bd37417f8a208936b6fed2",
+  "contentSha256": "65c86fb0b38eac8a854cbe295e7f72c4984745ae4ad720d694a72c36d7fb927f",
+  "contentSha256Method": "SHA256 over ordered UTF-8 JSONL of {groupId,messages}, sorted keys, compact JSON, ensure_ascii=False, one trailing LF per record; excludes IDs, splits and source metadata",
+  "splitCounts": {
+    "train": 48,
+    "validation": 24
+  },
+  "splits": {
+    "train": 48,
+    "validation": 24
+  },
+  "sources": {
+    "unidad-conversation-pattern-curriculum-v1": 72
+  },
+  "testUsedForTraining": false,
+  "families": {
+    "train": 12,
+    "validation": 6
+  },
+  "byCompetency": {
+    "train": {
+      "role_binding": 8,
+      "explicit_correction": 8,
+      "known_vs_unknown": 8,
+      "negation": 8,
+      "current_request_format": 8,
+      "relevant_context": 8
+    },
+    "validation": {
+      "role_binding": 4,
+      "explicit_correction": 4,
+      "known_vs_unknown": 4,
+      "negation": 4,
+      "current_request_format": 4,
+      "relevant_context": 4
+    }
+  },
+  "distinctFinalAnswers": {
+    "train": 34,
+    "validation": 23
+  },
+  "distinctPhraseTemplates": {
+    "train": 6,
+    "validation": 6
+  },
+  "inputTokens": {
+    "count": 72,
+    "min": 98,
+    "median": 148,
+    "max": 233
+  },
+  "targetTokensIncludingEos": {
+    "count": 72,
+    "min": 5,
+    "median": 8,
+    "max": 19
+  },
+  "totalTrainSupervisedTokensOnePass": 403,
+  "weightsTrained": false,
+  "reservedFinalRead": false,
+  "files": {
+    "corpus.jsonl": {
+      "sha256": "c38db1b3f3464048145df46be4d23b048896d19952bd37417f8a208936b6fed2",
+      "bytes": 77322
+    },
+    "development-cases.json": {
+      "sha256": "7324c05d249f864874f9ca97e7a4bfc3993a52d8723addfe22c5f7f50322636d",
+      "bytes": 53463
+    },
+    "split-and-contrast-audit.json": {
+      "sha256": "14aa18c4edf2c5aed433cea71268d1fd11cc40c1834b3b8f44ee6ea067766f75",
+      "bytes": 4232
+    },
+    "last-reply-audit.json": {
+      "sha256": "37be647aa424047cb92328da34bb67fea2c46af07022cf9ef0c02632481bcf36",
+      "bytes": 28998
+    },
+    "preregister.json": {
+      "sha256": "aa6fd8d91f2d436631b6370003032e1eb27dc6efc8a70c72750f9e27d46eedc9",
+      "bytes": 1851
+    },
+    "LICENSE-DATA.md": {
+      "sha256": "ed7036d13d4f43f2b963738dfce8febcf60032400230725b83dae0c9a27ac7df",
+      "bytes": 230
+    },
+    "README.md": {
+      "sha256": "d01c567731de52f1ad071d7712525a452386ff5908904b53da6a723834cc5b1b",
+      "bytes": 1647
+    }
+  }
+}

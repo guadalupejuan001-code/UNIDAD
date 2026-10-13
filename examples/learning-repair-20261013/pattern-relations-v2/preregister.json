@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "dataset": "unidad-conversation-pattern-curriculum-v1",
+  "hypothesis": "The current model can learn context-sensitive bindings and corrections when small contrastive families prevent fixed-answer shortcuts. Failure to overfit this control would motivate a training/capacity diagnosis before more broad data.",
+  "intervention": "Small contrastive conversation data; unchanged own architecture, tokenizer, native last-reply loss and generation",
+  "parentModelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+  "parentManifestSha256": "dffdb6370ec01a38691b884200ee9920154c3619796d456ff70e83606a9933a9",
+  "successCriterionProposedBeforeTraining": {
+    "selection": "One complete family per competency and fold; both contrast branches. Select the latest turn with distinct expected responses within each pair (--prefix-turn contrast), yielding 12 TRAIN and 12 VALIDATION turns; known_vs_unknown selects turn 0.",
+    "control": "At least 10 of 12 selected TRAIN turns fully correct with EOS; report both-branch discrimination. This measures learning/memorization only.",
+    "development": "At least 8 of 12 selected VALIDATION turns fully correct with EOS, improvement over the identical frozen parent, and two generated-history dialogues correct after the authored initial context. Report both-branch discrimination, zero technical failures, inference errors or dropped history turns.",
+    "acceptance": "No model promotion from this diagnostic. Preserve the separate new final criterion of 36/40, 8/10 and zero critical/technical failures."
+  },
+  "trainingStatus": "not_run_not_queued",
+  "modelResponsesUsedToAuthorTargets": false,
+  "externalModelsCalled": false,
+  "reservedFinalRead": false,
+  "oldCorporaModified": false,
+  "parameterLearningNotPersistentMemory": true
+}

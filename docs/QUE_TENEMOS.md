@@ -14,6 +14,9 @@ Los modelos de conversación son Transformers propios: su origen son pesos
 aleatorios, y las continuaciones parten de checkpoints de esa misma familia.
 C7 se conserva como referencia propia; también hay una base de **15.179.520
 parámetros** y variantes de **15.769.344** con contexto de **2.048 tokens**.
+C7 es una etiqueta del candidato anterior, no otra IA externa: el proyecto se
+llama UNIDAD. La base de quince millones comenzó con nuevos pesos aleatorios
+propios; sus continuaciones reutilizan esa línea y no redimensionan C7.
 No se usan los pesos de otro asistente para reemplazarlos. Un parámetro es un
 número que el entrenamiento ajusta; tener más no garantiza mejores respuestas.
 
@@ -23,6 +26,14 @@ a la vez. Primero se entrena a predecir texto de documentos —aprendizaje causa
 y después a responder al usuario —ajuste supervisado o SFT—. Los archivos guardan
 qué datos y configuración produjo cada versión. [La guía de conversación](conversation.md)
 y [la de preentrenamiento](language-pretraining.md) explican esos recorridos.
+
+La atención y las capas neuronales ya permiten aprender patrones. El
+[ajuste específico de relaciones](learning-repair-20261013/pattern-relations-v2/README.md)
+ejecutó 512 actualizaciones y pasó de cero a once completas en doce ejemplos
+entrenados. Sólo logró una completa y una parcial de doce prefijos nuevos,
+según revisión de IA, y ninguno de los dos diálogos fue correcto. Hay aprendizaje
+del control, pero siguen fallando atribución de hechos y generalización.
+Entregar estos pesos experimentales no significa que UNIDAD converse bien.
 
 | Pieza | Para qué sirve |
 | --- | --- |

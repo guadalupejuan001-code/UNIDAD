@@ -7,6 +7,15 @@ que el trabajador digital solicitado ya esté terminado.
 
 ## Encargo actual del 13 de octubre: integrar y entrenar
 
+La petición posterior pide comprobar el reconocimiento de patrones e integrarlo
+en el modelo donde falte. La arquitectura Transformer ya contiene atención y
+capas aprendibles; se distingue esa implementación de la capacidad comprobada
+de aprender relaciones, personas y correcciones. Se autoriza un currículo y un
+control acotado con los pesos propios, sin detener el entrenamiento activo,
+conservando las respuestas reales y separando memorización de generalización.
+
+> reconoce patrones? y si este es uno de los problemas? si no tiene esto integra reconocimiento de patrones a mi modelo de ia
+
 Continuación posterior a la entrega `242aa3e`: el creador confirma que integrar
 código y publicar resultados negativos no cumple la misión de conversar. Pide
 resolver el aprendizaje, modificar lo necesario y priorizar entrenamiento real,
