@@ -1,0 +1,380 @@
+{
+  "scope": "selector_with_real_Python_Node_IPC_no_model_forward",
+  "rounds": 5,
+  "callsPerStage": 50,
+  "note": "Independent stage measurements; do not add their medians as an exact attribution. IPC includes JSON parsing and selection in Node.",
+  "environment": {
+    "python": "3.12.15",
+    "torch": "2.8.0+cpu",
+    "node": "v20.20.2"
+  },
+  "allTokensMatch": true,
+  "summary": [
+    {
+      "vocabularySize": 2048,
+      "optimized": false,
+      "medianMillisecondsPerDecision": {
+        "tolist": 0.04540754000004199,
+        "json_encode": 1.0835563999998499,
+        "ipc_preencoded": 1.5614231399999312,
+        "complete_select": 2.4995594999998616
+      },
+      "medianEnterPlusFirstSelectionSeconds": 0.047467287000003466
+    },
+    {
+      "vocabularySize": 2048,
+      "optimized": true,
+      "medianMillisecondsPerDecision": {
+        "tolist": 0.048033520000103636,
+        "json_encode": 1.0800905799999327,
+        "ipc_preencoded": 1.1652986600000759,
+        "complete_select": 2.278768000000184
+      },
+      "medianEnterPlusFirstSelectionSeconds": 0.046974274999996624
+    },
+    {
+      "vocabularySize": 8192,
+      "optimized": false,
+      "medianMillisecondsPerDecision": {
+        "tolist": 0.17354952000005142,
+        "json_encode": 4.085999739999977,
+        "ipc_preencoded": 6.738380560000223,
+        "complete_select": 11.105044120000116
+      },
+      "medianEnterPlusFirstSelectionSeconds": 0.06790728600000762
+    },
+    {
+      "vocabularySize": 8192,
+      "optimized": true,
+      "medianMillisecondsPerDecision": {
+        "tolist": 0.173323939999932,
+        "json_encode": 4.071964560000083,
+        "ipc_preencoded": 5.194073000000117,
+        "complete_select": 8.965626979999683
+      },
+      "medianEnterPlusFirstSelectionSeconds": 0.06081570800000691
+    }
+  ],
+  "samples": [
+    {
+      "vocabularySize": 2048,
+      "repeat": 0,
+      "optimized": false,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.001645781999997098,
+      "firstSelectionSeconds": 0.045842315999991,
+      "closeSeconds": 0.0035184140000126263,
+      "millisecondsPerDecision": {
+        "tolist": 0.05420047999990629,
+        "json_encode": 1.1002958800000329,
+        "ipc_preencoded": 1.5533560800000146,
+        "complete_select": 2.477538720000041
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 0,
+      "optimized": true,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0011082399999935433,
+      "firstSelectionSeconds": 0.04586603500000308,
+      "closeSeconds": 0.0035172229999886895,
+      "millisecondsPerDecision": {
+        "tolist": 0.09021716000006563,
+        "json_encode": 1.053264760000161,
+        "ipc_preencoded": 1.1652986600000759,
+        "complete_select": 2.2445131800000695
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 1,
+      "optimized": true,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0010537099999936572,
+      "firstSelectionSeconds": 0.04861561999999253,
+      "closeSeconds": 0.003519507999996563,
+      "millisecondsPerDecision": {
+        "json_encode": 1.1941111199999455,
+        "ipc_preencoded": 1.1592661800000315,
+        "complete_select": 2.278768000000184,
+        "tolist": 0.04638292000009869
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 1,
+      "optimized": false,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0009331610000060664,
+      "firstSelectionSeconds": 0.04640829000000224,
+      "closeSeconds": 0.0034883259999958227,
+      "millisecondsPerDecision": {
+        "json_encode": 1.152782620000039,
+        "ipc_preencoded": 1.5614231399999312,
+        "complete_select": 2.4995594999998616,
+        "tolist": 0.04540754000004199
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 2,
+      "optimized": false,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0009571610000023156,
+      "firstSelectionSeconds": 0.04651012600000115,
+      "closeSeconds": 0.0035480220000039253,
+      "millisecondsPerDecision": {
+        "ipc_preencoded": 1.65804952000002,
+        "complete_select": 2.4992721000000984,
+        "tolist": 0.04499088000017082,
+        "json_encode": 1.01767040000027
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 2,
+      "optimized": true,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0010463050000026897,
+      "firstSelectionSeconds": 0.04561920100000805,
+      "closeSeconds": 0.0035428270000039674,
+      "millisecondsPerDecision": {
+        "ipc_preencoded": 1.2441017400001897,
+        "complete_select": 2.2887722999999482,
+        "tolist": 0.048033520000103636,
+        "json_encode": 1.0249805199998718
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 3,
+      "optimized": true,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0010462110000020175,
+      "firstSelectionSeconds": 0.04488189699999623,
+      "closeSeconds": 0.003534287999997332,
+      "millisecondsPerDecision": {
+        "complete_select": 2.5573433200000295,
+        "tolist": 0.046078839999950105,
+        "json_encode": 1.0800905799999327,
+        "ipc_preencoded": 1.1283170800001585
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 3,
+      "optimized": false,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0009227580000015223,
+      "firstSelectionSeconds": 0.045076739000009525,
+      "closeSeconds": 0.0034819349999963833,
+      "millisecondsPerDecision": {
+        "complete_select": 2.912348940000129,
+        "tolist": 0.045159080000019,
+        "json_encode": 1.0210093000000597,
+        "ipc_preencoded": 1.3300292200000285
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 4,
+      "optimized": false,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0009575999999924534,
+      "firstSelectionSeconds": 0.047292295000005424,
+      "closeSeconds": 0.0034859679999925675,
+      "millisecondsPerDecision": {
+        "tolist": 0.0886379799999304,
+        "json_encode": 1.0835563999998499,
+        "ipc_preencoded": 1.5699785399999655,
+        "complete_select": 2.5073496199999568
+      }
+    },
+    {
+      "vocabularySize": 2048,
+      "repeat": 4,
+      "optimized": true,
+      "token": 1586,
+      "payloadBytes": 40292,
+      "enterSeconds": 0.0010332650000037802,
+      "firstSelectionSeconds": 0.04786736500000188,
+      "closeSeconds": 0.003522164999992583,
+      "millisecondsPerDecision": {
+        "tolist": 0.09685632000014266,
+        "json_encode": 1.1511523800001555,
+        "ipc_preencoded": 1.16954125999996,
+        "complete_select": 2.268452639999907
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 0,
+      "optimized": false,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.000991605000010054,
+      "firstSelectionSeconds": 0.06813267399999745,
+      "closeSeconds": 0.0035182129999924427,
+      "millisecondsPerDecision": {
+        "tolist": 0.1753770600001303,
+        "json_encode": 4.105566120000219,
+        "ipc_preencoded": 6.844440959999929,
+        "complete_select": 11.10413818000012
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 0,
+      "optimized": true,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0010431200000056151,
+      "firstSelectionSeconds": 0.06058628699999247,
+      "closeSeconds": 0.007605290000000764,
+      "millisecondsPerDecision": {
+        "tolist": 0.173323939999932,
+        "json_encode": 4.071964560000083,
+        "ipc_preencoded": 5.155531740000185,
+        "complete_select": 8.915978260000088
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 1,
+      "optimized": true,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0010483559999983072,
+      "firstSelectionSeconds": 0.059270959000002676,
+      "closeSeconds": 0.0076402469999976574,
+      "millisecondsPerDecision": {
+        "json_encode": 4.105756600000063,
+        "ipc_preencoded": 5.253893519999906,
+        "complete_select": 8.976290319999976,
+        "tolist": 0.1733272399999919
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 1,
+      "optimized": false,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.000932977000005053,
+      "firstSelectionSeconds": 0.06697430900000256,
+      "closeSeconds": 0.0076113719999995055,
+      "millisecondsPerDecision": {
+        "json_encode": 4.085999739999977,
+        "ipc_preencoded": 6.738380560000223,
+        "complete_select": 11.63944306000019,
+        "tolist": 0.17260587999999188
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 2,
+      "optimized": false,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0009361999999981663,
+      "firstSelectionSeconds": 0.06912670500000218,
+      "closeSeconds": 0.008419325999994953,
+      "millisecondsPerDecision": {
+        "ipc_preencoded": 6.591067559999999,
+        "complete_select": 11.089578979999999,
+        "tolist": 0.1721539600001165,
+        "json_encode": 4.069615600000134
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 2,
+      "optimized": true,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0013557179999992286,
+      "firstSelectionSeconds": 0.061412851000000046,
+      "closeSeconds": 0.003549758999980668,
+      "millisecondsPerDecision": {
+        "ipc_preencoded": 5.2120073800000455,
+        "complete_select": 8.965626979999683,
+        "tolist": 0.17317198000000644,
+        "json_encode": 4.12707016000013
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 3,
+      "optimized": true,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0010451789999876837,
+      "firstSelectionSeconds": 0.058585663999991766,
+      "closeSeconds": 0.007620460999987699,
+      "millisecondsPerDecision": {
+        "complete_select": 9.761240579999821,
+        "tolist": 0.18123285999990912,
+        "json_encode": 4.068507320000094,
+        "ipc_preencoded": 4.279269300000124
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 3,
+      "optimized": false,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0009090540000045166,
+      "firstSelectionSeconds": 0.06524075900000526,
+      "closeSeconds": 0.007605372999989868,
+      "millisecondsPerDecision": {
+        "complete_select": 11.533326999999645,
+        "tolist": 0.2931057000000692,
+        "json_encode": 4.064879679999649,
+        "ipc_preencoded": 6.228889719999984
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 4,
+      "optimized": false,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0009729159999949388,
+      "firstSelectionSeconds": 0.06449498399999243,
+      "closeSeconds": 0.007618242999996028,
+      "millisecondsPerDecision": {
+        "tolist": 0.17354952000005142,
+        "json_encode": 4.136035559999982,
+        "ipc_preencoded": 6.789422139999601,
+        "complete_select": 11.105044120000116
+      }
+    },
+    {
+      "vocabularySize": 8192,
+      "repeat": 4,
+      "optimized": true,
+      "token": 2417,
+      "payloadBytes": 160893,
+      "enterSeconds": 0.0009947679999982029,
+      "firstSelectionSeconds": 0.059820940000008704,
+      "closeSeconds": 0.007881137999987686,
+      "millisecondsPerDecision": {
+        "tolist": 0.17236167999953977,
+        "json_encode": 4.0701046800000995,
+        "ipc_preencoded": 5.194073000000117,
+        "complete_select": 8.909338240000011
+      }
+    }
+  ]
+}

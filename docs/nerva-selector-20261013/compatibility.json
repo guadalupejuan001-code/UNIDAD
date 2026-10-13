@@ -1,0 +1,112 @@
+{
+  "unidadBaseCommit": "2ad7b6efbe5f35759241649537243da1fb7bc3f5",
+  "unidadMeasuredCommit": "ecf03da85e129cb94c46524a88b32cabc5569e81",
+  "nervaInitialBaseCommit": "b3002995590aa8b960749e6258acddbf67c3897f",
+  "nervaReconciledBaseCommit": "c2e121dd461bce374de000df8758852f8ca16c79",
+  "nervaCodeCommit": "1b9f84bdeb8a164d21bd2cee9f05f5150a90eef9",
+  "originalUnidadRuntime": [
+    {
+      "path": "src/ia_propia/assets/nerva/conversation_decoder.nv",
+      "sha256": "97d5b38f4e3aa0277eec0d37debbfdbba4e6b814eb281b1cbcd05fc9a2bfec4d",
+      "originalSha256": "97d5b38f4e3aa0277eec0d37debbfdbba4e6b814eb281b1cbcd05fc9a2bfec4d",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/conversation_worker.mjs",
+      "sha256": "420773fc26c27812f2d200186793318fa3f0868e85cbbe1e794082129676959c",
+      "originalSha256": "420773fc26c27812f2d200186793318fa3f0868e85cbbe1e794082129676959c",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/language_rnn.nv",
+      "sha256": "94efa33605e0ab8a18ae4072df2ec1134c4dcfab1a4a35bf4d5919b7452f607c",
+      "originalSha256": "94efa33605e0ab8a18ae4072df2ec1134c4dcfab1a4a35bf4d5919b7452f607c",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/nerva.mjs",
+      "sha256": "83197cafb2594f931dfe963bb57c81e40f9e027a1dc6355697bfb7624ce1d7eb",
+      "originalSha256": "83197cafb2594f931dfe963bb57c81e40f9e027a1dc6355697bfb7624ce1d7eb",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/parser.mjs",
+      "sha256": "d25d3a409faef397a60ac70239b9674aa6616a8f1159f28067f2a9fb8178fba6",
+      "originalSha256": "d25d3a409faef397a60ac70239b9674aa6616a8f1159f28067f2a9fb8178fba6",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/runtime.mjs",
+      "sha256": "67eef8b571770485fab2f9aa7950f8021db008fb5e41e9a268a37015223aed06",
+      "originalSha256": "67eef8b571770485fab2f9aa7950f8021db008fb5e41e9a268a37015223aed06",
+      "unchanged": true
+    },
+    {
+      "path": "src/ia_propia/assets/nerva/tensor.mjs",
+      "sha256": "807e6e020ad854a79234635d6adea204881f2bed7497369c7f3433a233d4cd62",
+      "originalSha256": "807e6e020ad854a79234635d6adea204881f2bed7497369c7f3433a233d4cd62",
+      "unchanged": true
+    }
+  ],
+  "extensions": [
+    {
+      "filename": "token_selector.mjs",
+      "sha256": "c6b70ee78ecc4187125510b09a85d5598213375449dd019549233eacda8bcb98",
+      "byteIdenticalBetweenRepositories": true
+    },
+    {
+      "filename": "conversation_worker_fast.mjs",
+      "sha256": "abbf8edbed84fc13ff80ec464a6270e9bc141daad1b03d7818cfbf97b664583e",
+      "byteIdenticalBetweenRepositories": true
+    }
+  ],
+  "nerva03ChangesPreserved": true,
+  "defaultBackendUnchanged": "torch",
+  "weightsModified": false,
+  "validation": {
+    "node03LocalTestsPassed": 134,
+    "pythonTargetedInitialTestsPassed": 61,
+    "pythonFinalExtensionTestsPassed": 5,
+    "parityCasesPerRuntimeVersion": 288,
+    "runtimeVersions": [
+      "0.2.0",
+      "0.3.0"
+    ],
+    "localNote": "One concurrent local run hit the unchanged 10 s original-worker timeout. Isolated rerun and full local rerun passed; no production timeout was raised.",
+    "unidadCI": {
+      "runId": 38445054637,
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38445054637",
+      "jobs": [
+        {
+          "name": "python",
+          "jobId": 115461146061,
+          "conclusion": "success",
+          "lines": [
+            "2026-10-13T18:19:24.9391545Z Ran 577 tests in 14.842s"
+          ]
+        },
+        {
+          "name": "conversation",
+          "jobId": 115461146533,
+          "conclusion": "success",
+          "lines": [
+            "2026-10-13T18:20:26.8532525Z Ran 673 tests in 78.431s",
+            "2026-10-13T18:20:26.8533338Z OK",
+            "2026-10-13T18:20:35.0468394Z Ran 12 tests in 7.348s",
+            "2026-10-13T18:20:35.0469290Z OK"
+          ]
+        }
+      ]
+    },
+    "nerva03CI": {
+      "runId": 38445064046,
+      "url": "https://github.com/guadalupejuan001-code/NERVA-/actions/runs/38445064046",
+      "nodeVersions": [
+        18,
+        22,
+        24
+      ],
+      "conclusion": "success"
+    }
+  }
+}

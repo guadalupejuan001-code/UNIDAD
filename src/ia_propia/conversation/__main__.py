@@ -65,7 +65,7 @@ def parser(prog=None):
     converse.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
     converse.add_argument("--seed", type=int, default=DEFAULT_SEED)
     for command in (chatting, converse, assessment):
-        command.add_argument("--decoder-backend", choices=("torch", "nerva"), default="torch")
+        command.add_argument("--decoder-backend", choices=("torch", "nerva", "nerva-fast"), default="torch")
         command.add_argument("--no-cache", action="store_true", help="Recalcular contexto para comparar con la referencia")
         command.add_argument("--top-k", type=int, default=0)
         command.add_argument("--top-p", type=float, default=1.0)

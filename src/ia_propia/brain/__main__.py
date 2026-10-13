@@ -27,7 +27,7 @@ def parser(prog=None):
                              help="Motor del char-RNN fijado por el host; NERVA usa greedy y requiere Node.js 18+")
         command.add_argument("--attention-model", type=Path, help="Ruta del modelo de atención fijada al iniciar")
         command.add_argument("--conversation-model", type=Path, help="Directorio local del modelo conversacional fijado al iniciar")
-        command.add_argument("--conversation-decoder", choices=("torch", "nerva"), default="torch",
+        command.add_argument("--conversation-decoder", choices=("torch", "nerva", "nerva-fast"), default="torch",
                              help="Selector del Transformer; NERVA requiere Node.js 18+")
         command.add_argument("--no-conversation-cache", action="store_true", help="Recalcular el contexto para comparación de referencia")
         command.add_argument("--autonomy-input-root", type=Path,
