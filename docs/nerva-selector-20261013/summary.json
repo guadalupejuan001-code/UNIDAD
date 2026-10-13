@@ -1,0 +1,116 @@
+{
+  "scope": "measured_CPU_generation_not_model_quality_or_general_speedup",
+  "measuredCommit": "ecf03da85e129cb94c46524a88b32cabc5569e81",
+  "workflowRun": 38445054650,
+  "fullReplies": 468,
+  "exactNervaPairs": 117,
+  "allArtifactHashesUnchanged": true,
+  "models": [
+    {
+      "model": "c7",
+      "label": "C7 histórico",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "secondsPerTenQuerySuite": {
+        "torch_reference": 2.5242924590000086,
+        "torch_cache": 0.9123530840000456,
+        "nerva_cache": 4.617224302999944,
+        "nerva_fast_cache": 3.6686286720000396
+      },
+      "speedupVsOriginalNerva": 1.2585695407768687,
+      "fastNervaTimeVsTorchCache": 4.021062389481501,
+      "medianReplySeconds": {
+        "torch_reference": 0.2512937930000021,
+        "torch_cache": 0.0902971094999998,
+        "nerva_cache": 0.4655887750000005,
+        "nerva_fast_cache": 0.37302431350001086
+      },
+      "artifactHashes": {
+        "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+        "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+        "weights.safetensors": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+      }
+    },
+    {
+      "model": "sovengi-current",
+      "label": "SOVENGI predeterminado (reference-wiki1)",
+      "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+      "secondsPerTenQuerySuite": {
+        "torch_reference": 27.356441332999935,
+        "torch_cache": 4.416973970000043,
+        "nerva_cache": 7.430699833999967,
+        "nerva_fast_cache": 6.739569289999963
+      },
+      "speedupVsOriginalNerva": 1.1025481769325363,
+      "fastNervaTimeVsTorchCache": 1.5258340519493478,
+      "medianReplySeconds": {
+        "torch_reference": 0.9839405055000157,
+        "torch_cache": 0.21139111399998,
+        "nerva_cache": 0.3863258730000041,
+        "nerva_fast_cache": 0.3567560635000149
+      },
+      "artifactHashes": {
+        "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "weights.safetensors": "a1b52c676927c2dbebc76a0550c545310760f130e479ba2e29ee946b00fdc671"
+      }
+    },
+    {
+      "model": "sovengi-candidate",
+      "label": "Candidato de memoria (separado)",
+      "modelId": "unidad-conversation-a52997f88799597080c93ec3e79ba4029d9eb5b6d756e2136098dd16e909ca0c",
+      "secondsPerTenQuerySuite": {
+        "torch_reference": 31.142060524000044,
+        "torch_cache": 4.912943724999934,
+        "nerva_cache": 8.099265302999925,
+        "nerva_fast_cache": 7.392241659000149
+      },
+      "speedupVsOriginalNerva": 1.0956440111963826,
+      "fastNervaTimeVsTorchCache": 1.5046461088866325,
+      "medianReplySeconds": {
+        "torch_reference": 0.9473920539999767,
+        "torch_cache": 0.20935604600001056,
+        "nerva_cache": 0.37175568199998565,
+        "nerva_fast_cache": 0.34411911500001224
+      },
+      "artifactHashes": {
+        "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "weights.safetensors": "08a4f57c420bc3c454abc326f61a664fcdf23c756db9e6b0b53157f97105c031"
+      }
+    }
+  ],
+  "kernel": [
+    {
+      "vocabularySize": 2048,
+      "temperature": 0,
+      "originalMs": 0.7758328166666654,
+      "optimizedMs": 0.710558983333334,
+      "speedup": 1.0918626530159712
+    },
+    {
+      "vocabularySize": 2048,
+      "temperature": 0.7,
+      "originalMs": 1.1737278666666688,
+      "optimizedMs": 1.1017907166666645,
+      "speedup": 1.0652911200936976
+    },
+    {
+      "vocabularySize": 8192,
+      "temperature": 0,
+      "originalMs": 4.47500218333333,
+      "optimizedMs": 2.94693285,
+      "speedup": 1.5185287249871777
+    },
+    {
+      "vocabularySize": 8192,
+      "temperature": 0.7,
+      "originalMs": 6.373164849999982,
+      "optimizedMs": 4.878504483333351,
+      "speedup": 1.3063767537311701
+    }
+  ],
+  "recommendation": "Keep Torch with KV cache as default. Retain nerva-fast as explicit optional path; do not merge or activate automatically.",
+  "merged": false,
+  "defaultBackendChanged": false,
+  "weightsModified": false
+}
