@@ -43,7 +43,7 @@
     }
   },
   "integration": {
-    "verifiedMainCommit": "2d989a56f92af6a8c9d4a686bef77a173b1f602b",
+    "verifiedMainCommit": "ea1ce73aa92cf53d238b1c7ab923ddae539bc349",
     "mergedPRs": [
       1,
       2,
@@ -60,7 +60,8 @@
       13,
       14,
       15,
-      16
+      16,
+      21
     ],
     "productEntry": "sovengi",
     "generationEngine": "ConversationEngine",
@@ -149,5 +150,31 @@
     "conversationQualityValidated": false,
     "evidenceDirectory": "docs/sovengi-ensemble-20261013",
     "connectivityAudit": "docs/sovengi-connectivity-20261013/audit.json"
+  },
+  "trainedCoordination": {
+    "version": "0.9.0",
+    "artifact": "models/coordination-reference-v1/model.json",
+    "modelId": "unidad-selector-9a2eefa31085a181bc488bf50455ea2fff2d8feee3f0961a95d07b644c4b3154",
+    "parameterCount": 18,
+    "rootOrigin": "random_weights",
+    "completedEpochs": 1000,
+    "selectedEpoch": 1000,
+    "trainingCases": 36,
+    "validationCases": 12,
+    "heldoutCases": 12,
+    "trainingPairs": 38,
+    "validationPairs": 15,
+    "trainingSeconds": 0.10719311000048037,
+    "trainingModelCoverage": 35,
+    "baselineHeldoutLiteralPasses": 2,
+    "learnedHeldoutLiteralPasses": 2,
+    "heldoutCohortsWithAnyLiteralPass": 5,
+    "heldoutTechnicalErrors": 0,
+    "testUsedForTraining": false,
+    "configuration": "configs/sovengi-coordination-candidate.json",
+    "defaultPromoted": false,
+    "conversationQualityValidated": false,
+    "evidence": "docs/sovengi-coordination-20261013/report.json",
+    "limitations": "Literal criteria; one gain and one regression; seven cohorts with no matching candidate"
   }
 }

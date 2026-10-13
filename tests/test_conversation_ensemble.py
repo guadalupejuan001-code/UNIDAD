@@ -98,6 +98,28 @@ class FixtureEngine:
                 "discardedPromptTokens": usage["discarded"]}
 
 
+class FixtureSelector:
+    """A declared stub verifies the hook; it is not a trained-model receipt."""
+    model_id = "coordination-selector-" + hashlib.sha256(b"declared-selector-fixture").hexdigest()
+
+    def __init__(self, *, selected="model-0", modify=None, mutate_input=False):
+        self.selected, self.modify, self.mutate_input = selected, modify, mutate_input
+        self.calls = []
+
+    def select(self, messages, candidates):
+        self.calls.append((deepcopy(messages), deepcopy(candidates)))
+        if self.mutate_input:
+            messages[0]["content"] = "FABRICATED PRIVATE CONDITIONING"
+            candidates[0]["text"] = "FABRICATED PRIVATE REPLY"
+            candidates[0]["auxiliary"]["meanNll"] = -999
+        result = {"selectedName": self.selected, "modelId": self.model_id,
+            "candidateScores": [{"name": candidate["name"], "score": 2.0 if candidate["name"] == self.selected else 0.0}
+                                for candidate in candidates], "learned": True, "selectorSeconds": 0.001}
+        if self.modify is not None:
+            self.modify(result)
+        return result
+
+
 class EnsembleImportTests(unittest.TestCase):
     def test_facade_import_and_description_do_not_import_ml_or_load_weights(self):
         script = """
@@ -126,6 +148,11 @@ assert engine.describe()['memberCount']==2
             ConversationEnsemble([ModelSpec("a", "a", "same"), ModelSpec("b", "b", "same")])
         with self.assertRaises(ValueError):
             ModelSpec("../../private", "fixture", "a")
+        for selector in ({"model_id": "not-an-object", "select": lambda: None},
+                         SimpleNamespace(model_id="/private/path", select=lambda: None),
+                         SimpleNamespace(model_id="safe-id", select=None)):
+            with self.assertRaises(ValueError):
+                ConversationEnsemble(specifications(2), learned_selector=selector)
 
 
 @unittest.skipUnless(HAS_EXTRAS, "conversation extras are optional")
@@ -312,6 +339,119 @@ class EnsembleCoordinationTests(unittest.TestCase):
         self.assertEqual(result["ensemble"]["sharedCritics"], [])
         self.assertEqual(result["text"], "El taller abre el lunes.")
         self.assertTrue(result["ensemble"]["selectionRule"]["unscoredSelection"])
+
+    def test_optional_learned_selector_preserves_an_exact_original_and_records_rule_comparison(self):
+        selector = FixtureSelector(mutate_input=True)
+        factory = FixtureFactory()
+        engine = ConversationEnsemble(specifications(2), engine_factory=factory, learned_selector=selector)
+        self.addCleanup(engine.close)
+        before = deepcopy(self.messages)
+        result = engine.reply(self.messages, max_new_tokens=8, temperature=0, seed=29)
+        self.assertEqual(result["text"], factory.texts["0"])
+        self.assertEqual(result["modelId"], identity("0"))
+        self.assertNotEqual(result["modelId"], selector.model_id)
+        self.assertEqual(result["generatedTokenIds"], [0, 1, 2, 3])
+        self.assertEqual((result["seed"], result["stopReason"]), (29, "eos"))
+        trace = result["ensemble"]
+        self.assertEqual((trace["ruleSelectedName"], trace["ruleSelectedModelId"]), ("model-1", identity("1")))
+        self.assertTrue(trace["learnedSelectorApplied"])
+        self.assertEqual(trace["learnedSelection"]["modelId"], selector.model_id)
+        self.assertEqual(trace["learnedSelection"]["selectedName"], "model-0")
+        self.assertEqual(len(selector.calls), 1)
+        self.assertEqual(set(selector.calls[0][1][0]), {"name", "text", "criticRankCost", "lexicalSourceSupport",
+                                                       "auxiliary", "generatedTokens"})
+        self.assertEqual(self.messages, before)
+        serialized = json.dumps(trace)
+        for text in ("FABRICATED", self.messages[-1]["content"], result["text"]):
+            self.assertNotIn(text, serialized)
+        self.assertEqual(engine.describe()["selectorModelId"], selector.model_id)
+
+    def test_unconfigured_or_explicit_none_selector_keep_the_same_standalone_rule(self):
+        replies = []
+        for kwargs in ({}, {"learned_selector": None}):
+            engine = ConversationEnsemble(specifications(2), engine_factory=FixtureFactory(), **kwargs)
+            self.addCleanup(engine.close)
+            result = engine.reply(self.messages, max_new_tokens=8, temperature=0, seed=29)
+            replies.append({key: value for key, value in result.items() if key != "ensemble"})
+            self.assertFalse(result["ensemble"]["learnedSelectorApplied"])
+            self.assertFalse(result["ensemble"]["learnedSelector"])
+            self.assertNotIn("learnedSelection", result["ensemble"])
+            self.assertNotIn("selectorModelId", engine.describe())
+        self.assertEqual(replies[0], replies[1])
+
+    def test_invalid_selector_output_explicitly_falls_back_to_the_original_rule(self):
+        modifications = [
+            lambda result: result.update(selectedName="unknown-private-name"),
+            lambda result: result.update(modelId="PRIVATE WRONG ID"),
+            lambda result: result.update(learned=False),
+            lambda result: result.update(candidateScores=result["candidateScores"][:1]),
+            lambda result: result.update(candidateScores=[result["candidateScores"][0]] * 2),
+            lambda result: result["candidateScores"][0].update(score=float("nan")),
+            lambda result: result["candidateScores"][0].update(score=True),
+            lambda result: result["candidateScores"][0].update(score=-1),
+        ]
+        for modify in modifications:
+            with self.subTest(modification=modify):
+                engine = ConversationEnsemble(specifications(2), engine_factory=FixtureFactory(),
+                                              learned_selector=FixtureSelector(modify=modify))
+                self.addCleanup(engine.close)
+                result = engine.reply(self.messages, max_new_tokens=8, temperature=0)
+                self.assertEqual(result["modelId"], identity("1"))
+                self.assertFalse(result["ensemble"]["learnedSelectorApplied"])
+                self.assertEqual(result["ensemble"]["learnedSelection"]["status"], "failed")
+                self.assertTrue(any(row["stage"] == "learned_selection" for row in result["ensemble"]["failed"]))
+                self.assertNotIn("PRIVATE", json.dumps(result["ensemble"]))
+
+    def test_selector_exceptions_or_changed_identity_fall_back_without_private_error_text(self):
+        class PrivateSelector(FixtureSelector):
+            def select(self, messages, candidates):
+                raise RuntimeError("PRIVATE PROMPT /private/path")
+        for selector in (PrivateSelector(), FixtureSelector()):
+            engine = ConversationEnsemble(specifications(2), engine_factory=FixtureFactory(), learned_selector=selector)
+            self.addCleanup(engine.close)
+            if not isinstance(selector, PrivateSelector):
+                selector.model_id = "coordination-selector-replaced"
+            result = engine.reply(self.messages, max_new_tokens=8, temperature=0)
+            self.assertFalse(result["ensemble"]["learnedSelectorApplied"])
+            self.assertEqual(result["ensemble"]["selectedModelId"], result["ensemble"]["ruleSelectedModelId"])
+            self.assertNotIn("PRIVATE", json.dumps(result["ensemble"]))
+            self.assertNotIn("/private", json.dumps(result["ensemble"]))
+
+    def test_selector_does_not_start_after_cooperative_budget_is_exhausted(self):
+        clock, selector = [0.0], FixtureSelector()
+        engine = ConversationEnsemble(specifications(2), budget=EnsembleBudget(max_candidates=2, max_seconds=1),
+            engine_factory=FixtureFactory(clock=clock, advance=.6), learned_selector=selector)
+        self.addCleanup(engine.close)
+        with patch("ia_propia.conversation.ensemble.perf_counter", side_effect=lambda: clock[0]):
+            result = engine.reply(self.messages, max_new_tokens=8, temperature=0)
+        self.assertEqual(selector.calls, [])
+        self.assertFalse(result["ensemble"]["learnedSelectorApplied"])
+        self.assertEqual(result["ensemble"]["learnedSelection"]["reason"], "request_budget")
+        self.assertTrue(any(row["stage"] == "learned_selection" for row in result["ensemble"]["skips"]))
+
+    def test_real_own_trained_selector_contract_keeps_parameters_unchanged_during_reply(self):
+        from ia_propia.conversation.selection import FEATURE_NAMES, LearnedSelector, train_selector
+        good, bad = [0.0] * len(FEATURE_NAMES), [0.0] * len(FEATURE_NAMES)
+        good[FEATURE_NAMES.index("lexical_source_support")] = 1.0
+        artifact = train_selector(
+            [{"cohortId": "fixture-train", "features": [good, bad], "utilities": [1, 0]}],
+            [{"cohortId": "fixture-validation", "features": [good, bad], "utilities": [1, 0]}],
+            epochs=10, max_seconds=1, provenance={"kind": "fictional-integration-fixture"})
+        selector = LearnedSelector(artifact)
+        before = deepcopy(selector._artifact)
+        factory = FixtureFactory()
+        engine = ConversationEnsemble(specifications(2), engine_factory=factory, learned_selector=selector)
+        self.addCleanup(engine.close)
+        with patch.object(selector, "select", wraps=selector.select) as selecting:
+            result = engine.reply(self.messages, max_new_tokens=8, temperature=0)
+            selecting.assert_called_once()
+        self.assertTrue(result["ensemble"]["learnedSelectorApplied"])
+        self.assertEqual(result["ensemble"]["learnedSelection"]["modelId"], selector.model_id)
+        self.assertEqual(result["ensemble"]["method"], "learned_candidate_selector_with_cross_model_features")
+        self.assertFalse(result["ensemble"]["selectionRule"]["usedForWinner"])
+        selected_name = result["ensemble"]["learnedSelection"]["selectedName"]
+        self.assertEqual(result["text"], factory.texts[selected_name.rsplit("-", 1)[-1]])
+        self.assertEqual(selector._artifact, before)
 
 
 @unittest.skipUnless(HAS_EXTRAS, "conversation extras are optional")

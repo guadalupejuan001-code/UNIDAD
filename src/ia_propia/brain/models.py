@@ -99,7 +99,7 @@ class ModelRuntime:
 
     def __init__(self, language_model=None, attention_model=None, conversation_model=None, *, language_backend="numpy",
                  conversation_decoder="torch", conversation_cache=True, conversation_models=None,
-                 ensemble_budget=None, ensemble_primary=None):
+                 ensemble_budget=None, ensemble_primary=None, conversation_selector=None):
         if language_backend not in ("numpy", "nerva"):
             raise ModelRuntimeError("The host must choose language_backend='numpy' or 'nerva'")
         self._language_backend = language_backend
@@ -145,10 +145,19 @@ class ModelRuntime:
                     raise ModelRuntimeError("Host ensemble descriptors must be ModelSpec or literal dictionaries")
                 if type(ensemble_budget) not in (dict, type(None)):
                     raise ModelRuntimeError("Host ensemble budget must be a literal dictionary")
+                learned_selector = None
+                if conversation_selector is not None:
+                    from ..conversation.selection import LearnedSelector, load_selector
+                    if not isinstance(conversation_selector, (str, Path)):
+                        raise ModelRuntimeError("The coordination selector must be a host-configured local artifact")
+                    learned_selector = LearnedSelector(load_selector(conversation_selector))
                 self._conversation = ConversationEnsemble(specs,
                     budget=EnsembleBudget(**(ensemble_budget or {})), primary_name=ensemble_primary,
-                    auxiliary_scorer=self._score_language)
+                    auxiliary_scorer=self._score_language,
+                    **({"learned_selector": learned_selector} if learned_selector is not None else {}))
             else:
+                if conversation_selector is not None:
+                    raise ModelRuntimeError("A trained coordination selector requires an ensemble")
                 self._conversation = ConversationEngine(conversation_model, decoder_backend=conversation_decoder,
                                                          use_cache=conversation_cache)
             self._capabilities["operations"].append("conversation.reply")
@@ -164,7 +173,7 @@ class ModelRuntime:
             forecast_schema = self._capabilities["inputSchemas"]["conversation.forecast"]
             forecast_schema["required"] = ["messages", "forecast"]
             forecast_schema["properties"]["forecast"] = deepcopy(INPUT_SCHEMAS["attention.forecast"])
-        elif conversation_models is not None:
+        elif conversation_models is not None or conversation_selector is not None:
             raise ModelRuntimeError("An ensemble requires an explicit primary conversation artifact")
 
     @property

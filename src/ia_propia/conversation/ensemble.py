@@ -2,7 +2,8 @@
 
 Models exchange text, not incompatible token IDs or hidden states. Selection is
 an explicit rule: within-critic likelihood ranks, lexical source support, and an
-optional auxiliary diagnostic. Neither likelihood nor overlap proves truth or
+optional auxiliary diagnostic. A host-loaded learned selector can subsequently
+choose among those same originals. Neither likelihood nor overlap proves truth or
 conversation quality. The returned text is exactly one model's original output.
 """
 
@@ -151,7 +152,8 @@ _FILLERS = frozenset(("el", "la", "los", "las", "un", "una", "de", "del", "en", 
 _FAILURE_REASONS = frozenset(("artifact_unavailable", "artifact_manifest_invalid", "model_identity_mismatch",
     "weights_size_mismatch", "weights_header_invalid", "minimum_context_exceeds_capacity", "request_budget",
     "generation_result_invalid", "generation_token_budget_invalid", "scoring_target_token_budget",
-    "scoring_result_invalid", "scoring_sliding_budget"))
+    "scoring_result_invalid", "scoring_sliding_budget", "learned_selector_identity_mismatch",
+    "learned_selector_result_invalid"))
 
 
 def _terms(text):
@@ -206,8 +208,9 @@ def _auxiliary_metadata(extra):
     digest = extra.get("artifactSha256")
     if type(digest) is str and re.fullmatch(r"[0-9a-f]{64}", digest):
         result["artifactSha256"] = digest
-    for key in ("source", "task"):
-        if type(extra.get(key)) is str and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}", extra[key]):
+    for key, allowed in (("source", ("own_character_rnn", "language.score", "local_own_rnn")),
+                         ("task", ("next_character_likelihood", "next_character_scoring"))):
+        if type(extra.get(key)) is str and extra[key] in allowed:
             result[key] = extra[key]
     if type(extra.get("executionBackend")) is str and extra["executionBackend"] in ("numpy", "torch", "nerva", "nerva-0.2"):
         result["executionBackend"] = extra["executionBackend"]
@@ -228,7 +231,7 @@ class ConversationEnsemble:
     """Lazy LRU engines and a serialized, cooperatively bounded request pipeline."""
 
     def __init__(self, specs, budget=None, primary_name=None, *,
-                 engine_factory=ConversationEngine, auxiliary_scorer=None):
+                 engine_factory=ConversationEngine, auxiliary_scorer=None, learned_selector=None):
         if type(specs) not in (list, tuple) or not 2 <= len(specs) <= 64 or any(not isinstance(spec, ModelSpec) for spec in specs):
             raise ValueError("Coordination needs 2 to 64 host-configured own model specifications")
         if len({spec.name for spec in specs}) != len(specs) or len({spec.expected_model_id for spec in specs}) != len(specs):
@@ -243,6 +246,14 @@ class ConversationEnsemble:
         if not callable(engine_factory) or (auxiliary_scorer is not None and not callable(auxiliary_scorer)):
             raise ValueError("Engine and optional auxiliary scorer must be host-provided callables")
         self._factory, self._auxiliary = engine_factory, auxiliary_scorer
+        self._learned_selector = learned_selector
+        self._selector_model_id = None
+        if learned_selector is not None:
+            selector_id = getattr(learned_selector, "model_id", None)
+            if (type(selector_id) is not str or re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}", selector_id) is None
+                    or not callable(getattr(learned_selector, "select", None))):
+                raise ValueError("Learned selector must be a host-loaded object with a pinned identity and select method")
+            self._selector_model_id = selector_id
         self._resident = OrderedDict()
         self._states = {name: "not_loaded" for name in self._specs}
         self._loads, self._evictions, self._peak_resident, self._rotation = 0, 0, 0, 0
@@ -330,13 +341,17 @@ class ConversationEnsemble:
                                                      ("manifest.json", "config.json", "tokenizer.json", "weights.safetensors"))
                 member.update({key: value for key, value in availability[member["name"]].items()
                                if key not in ("name", "modelId")})
-            return {"method": "own_transformer_ensemble", "primaryName": self.primary_name,
+            result = {"method": "own_transformer_ensemble", "primaryName": self.primary_name,
                     "primaryModelId": self.model_id, "memberCount": len(members),
                     "members": members, "budget": asdict(self.budget), "cache": self.cache_info(),
                     "cohortPolicy": {"method": "two_fixed_available_anchors_then_round_robin",
                                      "anchors": self._anchor_names(availability.values()),
                                      "rotatingSlots": max(0, self.budget.max_candidates - 2)},
                     "learnedSelector": False, "conversationValidated": False}
+            if self._learned_selector is not None:
+                result["learnedSelector"] = True
+                result["selectorModelId"] = self._selector_model_id
+            return result
 
     def catalog_state(self):
         with self._lock:
@@ -509,6 +524,60 @@ class ConversationEnsemble:
             result["candidate"] = candidate
         return result
 
+    def _learned_selection(self, messages, candidates, rule_winner, deadline, trace):
+        """Run one trusted selector and retain only validated, text-free output."""
+        if self._learned_selector is None:
+            return rule_winner
+        record = {"modelId": self._selector_model_id, "applied": False}
+        trace["learnedSelection"] = record
+        if perf_counter() >= deadline:
+            record.update(status="skipped", reason="request_budget", seconds=0.0)
+            trace["skips"].append({"name": "learned-selector", "stage": "learned_selection", "reason": "request_budget"})
+            return rule_winner
+        started = perf_counter()
+        try:
+            if self._learned_selector.model_id != self._selector_model_id:
+                raise EnsembleError("learned_selector_identity_mismatch")
+            inputs = [{"name": candidate["name"], "text": candidate["reply"]["text"],
+                "criticRankCost": candidate["metadata"]["criticRankCost"],
+                "lexicalSourceSupport": candidate["metadata"]["lexicalSourceSupport"],
+                "auxiliary": {key: value for key, value in candidate["metadata"].get("auxiliary", {}).items()
+                              if key in ("meanNll", "unknownRatio", "scoreable")},
+                "generatedTokens": candidate["reply"]["generatedTokens"]} for candidate in candidates]
+            result = self._learned_selector.select(deepcopy(messages), deepcopy(inputs))
+            if self._learned_selector.model_id != self._selector_model_id:
+                raise EnsembleError("learned_selector_identity_mismatch")
+            if type(result) is not dict or result.get("modelId") != self._selector_model_id:
+                raise EnsembleError("learned_selector_identity_mismatch")
+            names = {candidate["name"] for candidate in candidates}
+            selected_name, scores = result.get("selectedName"), result.get("candidateScores")
+            if (result.get("learned") is not True or type(selected_name) is not str or selected_name not in names
+                    or type(scores) is not list or len(scores) != len(names)):
+                raise EnsembleError("learned_selector_result_invalid")
+            checked = {}
+            for row in scores:
+                if (type(row) is not dict or set(row) != {"name", "score"}
+                        or type(row["name"]) is not str or row["name"] not in names or row["name"] in checked
+                        or type(row["score"]) not in (int, float) or not math.isfinite(row["score"])):
+                    raise EnsembleError("learned_selector_result_invalid")
+                checked[row["name"]] = float(row["score"])
+            if set(checked) != names or checked[selected_name] != max(checked.values()):
+                raise EnsembleError("learned_selector_result_invalid")
+            record.update(status="applied", applied=True, learned=True, selectedName=selected_name,
+                candidateScores=[{"name": candidate["name"], "score": checked[candidate["name"]]}
+                                 for candidate in candidates], seconds=perf_counter() - started)
+            trace["learnedSelector"] = True
+            trace["learnedSelectorApplied"] = True
+            trace["method"] = "learned_candidate_selector_with_cross_model_features"
+            trace["selectionRule"]["usedForWinner"] = False
+            return next(candidate for candidate in candidates if candidate["name"] == selected_name)
+        except Exception as exc:
+            failure = self._failure("learned-selector", "learned_selection", exc)
+            trace["failed"].append(failure)
+            record.update(status="failed", reason=failure["reason"], errorType=failure["errorType"],
+                          seconds=perf_counter() - started)
+            return rule_winner
+
     def reply(self, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
               temperature=DEFAULT_TEMPERATURE, seed=DEFAULT_SEED, *,
               top_k=0, top_p=1.0, repetition_penalty=1.0, context_sources=None):
@@ -523,6 +592,8 @@ class ConversationEnsemble:
             deadline = started + self.budget.max_seconds
             trace = {"method": "explicit_cross_model_rank_and_lexical_support",
                 "learnedSelector": False, "conversationValidated": False,
+                "learnedSelectorApplied": False,
+                "learnedSelectorConfigured": self._learned_selector is not None,
                 "candidateTextsIncluded": False, "modelIdsExecuted": [], "selectedModelId": None,
                 "candidates": [], "critics": [], "loads": [], "skips": [], "failed": [],
                 "budget": {"maxSeconds": self.budget.max_seconds, "timeLimit": "cooperative_between_operations",
@@ -600,7 +671,10 @@ class ConversationEnsemble:
             trace["selectionRule"] = {"criticAggregation": "mean_within_critic_character_nll_rank",
                 "sourceSupportWeight": 0.25, "sourceSupportIsLexical": True,
                 "auxiliary": "diagnostic_and_tie_break_only", "completeSharedCritics": len(shared),
-                "unscoredSelection": not bool(shared)}
+                "unscoredSelection": not bool(shared), "usedForWinner": True}
+            trace["ruleSelectedName"] = winner["name"]
+            trace["ruleSelectedModelId"] = winner["reply"]["modelId"]
+            winner = self._learned_selection(values["messages"], usable, winner, deadline, trace)
             trace["selectedModelId"] = winner["reply"]["modelId"]
             self._finish_trace(trace, started)
             return {**deepcopy(winner["reply"]), "ensemble": trace}

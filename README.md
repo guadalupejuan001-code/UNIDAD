@@ -1,5 +1,18 @@
 # SOVENGI
 
+**Coordinación entrenada, SOVENGI 0.9:** se guardó un selector propio de 18 pesos
+tras 1.000 épocas sobre candidatos reales de los 35 Transformers. Usa familias
+ficticias nuevas y evaluación reservada: obtuvo **2/12 cumplimientos literales,
+igual que las reglas**, con una ganancia y una regresión. Está conectado como
+candidato experimental en `configs/sovengi-coordination-candidate.json`; la
+configuración habitual conserva las reglas anteriores. Los
+[pesos y el informe](docs/sovengi-coordination-20261013/README.md) incluyen la
+congelación previa a TEST, respuestas originales y límites de calidad.
+
+```bash
+sovengi --config configs/sovengi-coordination-candidate.json chat
+```
+
 **SOVENGI 0.8: 35 Transformers propios coordinados.** La configuración habitual conecta
 todos los artefactos distintos del [catálogo](configs/conversation-models.json).
 En cada respuesta intenta hasta cuatro generaciones: dos referencias estables

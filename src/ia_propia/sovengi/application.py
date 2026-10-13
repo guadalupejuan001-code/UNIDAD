@@ -45,7 +45,7 @@ class SovengiSession(BodySession):
         result["auxiliaryModels"] = ["language", "attention"]
         result["connections"] = {"conversation": "shared_engine",
             "characterModel": ("candidate_scoring_and_language_operations"
-                if result["models"]["language"].get("conversationCandidateScoring") else "language_operations"),
+                if result["models"]["models"]["language"].get("conversationCandidateScoring") else "language_operations"),
             "metricModel": "explicit_observations_forecast_and_conversation_forecast",
             "decoder": "host_configured_torch_or_nerva", "learning": "explicit_gnosis_stages"}
         result["contextModel"] = {"enabled": self._context is not None,

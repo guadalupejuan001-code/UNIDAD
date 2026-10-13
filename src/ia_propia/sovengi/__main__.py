@@ -142,7 +142,7 @@ def main(argv=None, *, prog="sovengi"):
         if args.command == "status":
             _print(session.capabilities())
         elif args.command == "models":
-            _print(session.capabilities()["models"]["conversation"])
+            _print(session.capabilities()["models"]["models"]["conversation"])
         elif args.command == "score":
             _print(_request(session, "language.score", {"text": args.text, "max_chars": args.max_chars}))
         elif args.command == "forecast":

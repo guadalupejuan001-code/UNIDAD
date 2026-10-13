@@ -1,5 +1,18 @@
 # Órdenes del creador de SOVENGI (repositorio UNIDAD)
 
+## Prioridad posterior: entrenar las conexiones nuevas
+
+El creador pide continuar la publicación de la integración en segundo plano y
+priorizar el entrenamiento de las nuevas conexiones. Se autoriza un experimento
+finito de selección aprendida entre candidatos realmente generados, con pesos
+propios, ejemplos ficticios nuevos y familias separadas. Se reserva la evaluación
+final hasta congelar los parámetros y se compara con las reglas existentes.
+Se informa cuando ningún generador produce una respuesta adecuada: un selector
+no puede reparar texto ausente. Esta orden no convierte el historial personal
+en corpus ni acredita conversación general por entrenar la coordinación.
+
+> perdon por interrumpir, pero ya haz lo primero en segundo plano y prioriza entrenar las nuevas conexiones
+
 ## Continuación: conectar y coordinar los componentes existentes
 
 El creador pide adaptar el código para que los modelos y servicios existentes
