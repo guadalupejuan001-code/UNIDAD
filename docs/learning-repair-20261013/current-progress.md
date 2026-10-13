@@ -1,6 +1,6 @@
 # Estado comprobado de la continuación
 
-Lectura del **13 de octubre de 2026, 09:14:40 UTC**. La conversación fiable y
+Lectura del **13 de octubre de 2026, 09:43:36 UTC**. La conversación fiable y
 la planificación aprendida siguen pendientes. Esta entrega conserva resultados
 negativos, continúa con datos revisados e incorpora un controlador operativo
 experimental; ninguna de esas tres cosas declara terminada la misión de Unidad.
@@ -86,19 +86,16 @@ La [activación del collector V2](collector-v2-enable-receipt.json) sustituyó
 después el supervisor 19895 por 22557, `birth=2592201`, adoptando el mismo
 entrenador 19896 vivo y sin señales, cambios de corpus/fuente/configuración
 nativa ni reinicio de Adam/RNG/presupuestos. En esta lectura el supervisor registra `operationalState=training`,
-`trainingActive=true`, `nativeWorkerAlive=true`. El proceso nativo del
-tratamiento es PID 19896, `birth=2318347`, `status=running`, **step=3560**:
-**3.560 actualizaciones de pesos comprobadas a las 09:11:51 UTC**, con
-2.880,2897863769977 segundos
-nativos acumulados. Su linaje fija el padre `072eedd2…` y SHA de pesos
-`0a71ae3feb61b7dabac9f31ecc4fd312f97ead8a790ed13b8144617b60e3e4e6`.
-El brazo control sigue pendiente. Ni iniciar un proceso ni encolar datos se
-cuenta como aprendizaje ejecutado.
+`trainingActive=true`, `nativeWorkerAlive=true`. El proceso nativo del **control**
+es PID 23028, `birth=2677279`, `status=running`, **step=1517**:
+1.517 actualizaciones comprobadas, con 1.198,4858097859978 segundos acumulados.
+Conserva el mismo padre propio BEST 4.096 que el tratamiento. No se han evaluado
+sus conversaciones ni se ha promovido un candidato.
 
 Esta lectura procede de `private/learning-repair-20261013/continual/state.json`,
-SHA `2651b01ed77a1a2a461533b7fc8b1ff9258e332a2527af122191bb2e6daaf22b`,
-y `runs/natural-latam-matched-v4/treatment/status.json`, SHA
-`42703628deb262506f51f136c8155960ee841b7d6028db5dde86f639b27a3733`.
+SHA `862996222203a617ed100d0c6ae76a892b60dbd035e17fa86dd2a28b58478b52`,
+y `runs/natural-latam-matched-v4/control/status.json`, SHA
+`f7acfa6b73aa29765b6692e3e2dce06c5b7c5e3f94371a19fe928006d4ba585a`.
 Son estados cambiantes del entorno; el README no garantiza que sigan vivos
 después de esta fecha. Para leerlos de nuevo dentro del entorno:
 
@@ -118,7 +115,28 @@ técnicas: siete token_budget y cinco descartes, con una salida común. Treinta
 conversacional verificada ni aceptación reservada. Hasta esta lectura, la mejor
 NLL propia del tratamiento es 1,7603046832825393 en 1.024; no se compara con
 la VALIDATION de otro corpus. El [estado y cola del bucle](loop-runtime.md)
-separan esta corrida del control pendiente y de las etapas futuras.
+separan el tratamiento terminado del control activo y de las etapas futuras.
+
+El [tratamiento terminó](natural-latam-v4-treatment-final-delivery.md) con
+4.096 actualizaciones y 3.337,367299398 segundos, al alcanzar su límite
+configurado (`absolute_step_boundary`; estado nativo `signal`). Procesó
+32.765 ventanas, 4.277.235 posiciones supervisadas, incluidas 52.188 regionales
+en 1.295 exposiciones regionales. El
+[recibo final](natural-latam-v4-treatment-final-delivery.json), SHA
+`89079a6a314024ff6208837d49d39be12f30e63d29cbf2d45982b9b813a71e1e`,
+conserva fuentes, presupuestos y estados históricos. BEST sigue en 1.024,
+NLL 1,7603046832825393. Sus pesos/configuración/tokenizador son idénticos a
+`intermediate-step001024`; los metadatos del manifiesto de selección final son
+distintos y se conservan aparte. La carpeta de referencia final no se carga
+como si fuera un artefacto de inferencia completo.
+
+El paquete nativo LAST 4.096 contiene 182.360.596 bytes en nueve partes. El
+[artefacto LAST para inferencia](../../models/learning-repair-20261013/natural-latam-v4/final-treatment-last-step004096/)
+es `unidad-conversation-d6d860222baf5e8952eade42fcda3a0bd52dc77000c0c254ca895a91fdab7160`,
+SHA de pesos `5888240335df305a5f80aa438200b524af741278d8e8c7af234d8a60f86f7f6e`.
+Está exportado, pero **todavía sin generación/revisión conversacional**; no es
+BEST ni un modelo aceptado. Procesar targets y entregar paquetes no acredita
+conversación competente.
 
 ## Datos públicos nuevos
 
@@ -177,7 +195,7 @@ propuesta fallida. `planningAccepted=false` y las capacidades de planificación
 natural/trabajo del modelo siguen sin aceptar. Los registros de experiencia
 no actualizan pesos ni activan reentrenamiento.
 
-La verificación de cierre pasó 143 pruebas en 6,393 segundos, con una CPU y
+La verificación de cierre pasó 145 pruebas en 6,893 segundos, con una CPU y
 límite de 180 segundos. Incluye autonomía/controlador/API/archivos, contratos
 del cerebro anterior, bucle, collector V2, nueve pruebas de extensión y seis
 de datos de acciones. Es evidencia de software; no cambia los fallos del modelo.
@@ -214,11 +232,25 @@ entorno o mejora automática.
 
 ## Git y publicación
 
-El trabajo local está en `work/learning-repair-20261013`, HEAD
-`91e7f3a84bccc968df97be717a1e45e17519fe67`. A las 08:24:47 UTC se comprobó
-`origin/main=3930c1ef5c25ff5953a5b57793231e7f78c6eac7`, con
-[PR9 fusionado](https://github.com/guadalupejuan001-code/UNIDAD/pull/9).
-Los nuevos cambios de controlador, cierre y evaluación de esta continuación
-están **sin commit en esta lectura**; aún no se presentan como integrados en
-`main`. Los recibos históricos conservan la fecha y el estado de su publicación.
-Clonar el repositorio no inicia entrenamientos ni mantiene el supervisor vivo.
+La rama `work/learning-repair-20261013` está publicada, con
+[PR10 abierto y sin borrador](https://github.com/guadalupejuan001-code/UNIDAD/pull/10),
+head `80b39d5f95590f145d6cc9133aff0497ee2aa9ce` en esta lectura. `main` sigue en
+`3930c1ef5c25ff5953a5b57793231e7f78c6eac7`, con PR9 fusionado. El siguiente
+commit del mismo PR incorpora el cierre del tratamiento y las correcciones de
+CI; todavía no se declara integración en main ni CI aprobado.
+
+El [recibo de correcciones](pr10-ci-corrections.json) conserva el workflow fallido
+`38375885022` y sus causas. El control de archivos ahora fija dispositivo, inode,
+tamaño, mtime, ctime y modo para rechazar reemplazos incluso cuando el sistema
+reutiliza un inode; la aserción original de seguridad se conserva. La prueba del
+journal grande mantiene seis payloads exactos de 200.000 caracteres y más de
+1 MiB persistido; sólo su cliente usa 20 segundos dentro de una tarea de 30,
+en lugar del timeout de tres segundos incompatible con ese caso. La ejecución
+remota posterior sigue pendiente; los fallos anteriores no se presentan como
+pruebas aprobadas. Fuente, datos y estado nativos de entrenamiento permanecen
+congelados, y los hashes históricos del corpus de acciones no se reescribieron.
+
+Los recibos históricos conservan su fecha y estado. Clonar el repositorio no
+inicia entrenamientos ni mantiene el supervisor vivo. El collector se activa
+tras las etapas en cola cuando el entorno y sus recursos lo permiten; ninguna
+etapa promueve pesos automáticamente.

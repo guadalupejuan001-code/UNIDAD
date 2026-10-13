@@ -100,6 +100,11 @@ herramientas sensibles, configura `autonomy_operator_token` y usa
 credencial al proponente. El registro inicial de archivos sólo utiliza lecturas
 y escritura de informes nuevos; no registra comandos de shell o gastos.
 
+Las herramientas propias con recursos o configuración mutable deben definir
+un `policy_id` estable que cambie al cambiar esa configuración. El registro
+incluido vincula raíces, archivos y límites a esa identidad; los nombres de
+callbacks por sí solos no identifican los recursos de una integración nueva.
+
 Verificación pertinente:
 
 ```bash

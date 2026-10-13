@@ -60,7 +60,7 @@ def _identity(status):
 
 
 def _revision(status):
-    return (_identity(status), status.st_size, status.st_mtime_ns, status.st_ctime_ns)
+    return (_identity(status), status.st_size, status.st_mtime_ns, status.st_ctime_ns, status.st_mode)
 
 
 def _report_bytes(observations):
@@ -80,8 +80,8 @@ class SafeFileTools:
 
     ``filenames`` may restrict the captured whitelist; omitted, all existing
     regular files with safe basenames are captured. The adapter pins directory
-    and input-file identities and rejects later replacements. In-place changes
-    may be observed, but invalidate earlier observations and saved reports.
+    and input-file revisions and rejects replacements or later changes. A host
+    must explicitly reconfigure inputs after changing their bytes or metadata.
     """
 
     def __init__(self, input_root, report_root, filenames=None, max_file_bytes=65_536):
@@ -193,7 +193,10 @@ class SafeFileTools:
                 if explicit:
                     raise BrainError("invalid_file_configuration", "Whitelisted inputs must be existing regular files")
                 return
-            captured[name] = _identity(status)
+            # Filesystems may recycle an inode immediately after unlinking it.
+            # Bind the captured revision as well as its device/inode identity;
+            # atime is intentionally excluded because reads may update it.
+            captured[name] = _revision(status)
 
         if explicit:
             for name in filenames:
@@ -261,15 +264,17 @@ class SafeFileTools:
                 if descriptor is not None:
                     os.close(descriptor)
 
-    def _read_bytes(self, root_fd, filename, limit, expected_identity=None):
+    def _read_bytes(self, root_fd, filename, limit, expected_revision=None):
         descriptor = None
         try:
             descriptor = os.open(filename, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC | os.O_NONBLOCK,
                                  dir_fd=root_fd)
             before = os.fstat(descriptor)
             if (not stat.S_ISREG(before.st_mode)
-                    or (expected_identity is not None and _identity(before) != expected_identity)):
+                    or (expected_revision is not None and _identity(before) != expected_revision[0])):
                 raise BrainError("file_unavailable", "Configured file was replaced or is not regular")
+            if expected_revision is not None and _revision(before) != expected_revision:
+                raise BrainError("file_changed", "Configured file revision changed after host capture")
             if before.st_size > limit:
                 raise BrainError("file_too_large", "Configured file exceeds the host's byte limit")
             chunks, size = [], 0
@@ -485,7 +490,13 @@ class SafeFileTools:
                     filename = arguments["filename"]
                     if filename not in inputs["files"]:
                         continue
-                    current = self._observe(filename, content=name == "read_file")
+                    try:
+                        current = self._observe(filename, content=name == "read_file")
+                    except BrainError as error:
+                        if error.code not in {"file_changed", "file_unavailable", "file_too_large"}:
+                            raise
+                        observed.pop(filename, None)
+                        continue
                     if _same_json(current, result):
                         observed[filename] = {key: current[key] for key in _OBSERVATION_FIELDS}
                     continue

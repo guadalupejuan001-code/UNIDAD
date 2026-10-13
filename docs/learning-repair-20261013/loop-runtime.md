@@ -1,11 +1,13 @@
 # Bucle progresivo: procesos, cola y límites
 
-Lectura del 13 de octubre de 2026, **09:11:51 UTC**. El tratamiento natural +
-LATAM sigue activo: PID 19896, `birth=2318347`, `step=3560`,
-`elapsedSeconds=2880.2897863769977`. Su mejor validación hasta esta lectura es
-el paso 1.024, NLL 1,7603046832825393; no se compara directamente con NLL de otro
-corpus. El supervisor es PID 22557, `birth=2592201`. El brazo control sigue
-pendiente y ningún candidato se ha promovido.
+Lectura del 13 de octubre de 2026, **09:43:36 UTC**. El tratamiento terminó en
+4.096 updates y 3.337,367299398 segundos; BEST permanece en 1.024, NLL
+1,7603046832825393. Su [cierre verificable](natural-latam-v4-treatment-final-delivery.md)
+conserva 4.277.235 targets supervisados, 32.765 ventanas y LAST separado.
+El **control natural sigue activo**: PID 23028, `birth=2677279`, `step=1517`,
+`elapsedSeconds=1198.4858097859978`, desde el mismo padre del tratamiento.
+El supervisor es PID 22557, `birth=2592201`. Todavía no se han evaluado
+conversaciones del control y ningún candidato se ha promovido.
 
 La [activación del collector V2](collector-v2-enable-receipt.json) sustituyó sólo
 el supervisor el 13 de octubre a las 09:09:17 UTC. Adoptó el mismo entrenador
@@ -26,7 +28,7 @@ La cola conserva este orden y límites propios:
 
 | Etapa posterior | Estado en esta lectura | Límite |
 | --- | --- | --- |
-| Control natural | Pendiente, mismo padre que tratamiento | 4.096 updates y umbral nativo de 7.200 s |
+| Control natural | Activo, mismo padre que tratamiento | 4.096 updates y umbral nativo de 7.200 s |
 | [SFT de acciones](autonomy-action-v1-enqueue.json) | Encolado tras ambos brazos, sin entrenar | 256 updates / 600 s; lote 2, microbatch 1 |
 | [Español + LATAM causal v3](wide-latam-v3-enqueue.json) | Dos shards encolados tras acciones, sin entrenar | Cada uno: 2 épocas / 2.048 updates / 1.800 s |
 | Retención natural + acciones | Encolada tras los dos shards, sin entrenar | 1.024 updates / 1.800 s |
@@ -47,3 +49,8 @@ ni reapertura de los presupuestos históricos 24+2 horas. Para leer el estado:
 python3 examples/continual_training.py status \
   --config examples/learning-repair-20261013/configs/continual-live-collector-v2.json
 ```
+
+La rama está publicada en [PR10 abierto y sin borrador](https://github.com/guadalupejuan001-code/UNIDAD/pull/10),
+con CI pendiente; main permanece en PR9. El [recibo de correcciones de CI](pr10-ci-corrections.json)
+conserva el primer fallo y los arreglos sin tocar el entrenamiento nativo.
+La entrega de artefactos y la apertura del PR no aceptan la conversación.

@@ -75,8 +75,8 @@ class BrainAutonomyApiTests(unittest.TestCase):
                                   autonomy_completion_verifier=self.files.completion_verifier,
                                   autonomy_input_validator=self.files.validate_task_inputs, **extra)
 
-    def request(self, server, operation, values, **extra):
-        status, _, response = exchange(server, payload=payload(operation, values, **extra))
+    def request(self, server, operation, values, *, timeout=3, **extra):
+        status, _, response = exchange(server, payload=payload(operation, values, **extra), timeout=timeout)
         return status, response
 
     def start(self, server, report="informe.json"):
@@ -306,11 +306,14 @@ class BrainAutonomyApiTests(unittest.TestCase):
                                          *[action("large_observation", {}) for _ in range(6)],
                                          {"action": "finish", "reason": "No verified completion fixture"}]),
                                      autonomy_limits=AutonomyLimits(max_steps=10, max_result_bytes=262144,
-                                                                    max_state_bytes=4194304))
+                                                                    max_state_bytes=4194304, max_seconds=30))
         with running_server(session) as server:
             status, response = self.request(server, "autonomy.start", {"goal": "Bounded transport fixture"})
             task_id = response["result"]["task_id"]
-            status, response = self.request(server, "autonomy.run", {"task_id": task_id})
+            # CI exceeded the ordinary helper's three-second wait while
+            # persisting this multi-MiB journal. This single call has a finite
+            # wait within its explicit thirty-second task budget.
+            status, response = self.request(server, "autonomy.run", {"task_id": task_id}, timeout=20)
             self.assertEqual(status, 200, response)
             receipt = response["result"]
             self.assertEqual(receipt["status"], "blocked_verification")
@@ -320,7 +323,12 @@ class BrainAutonomyApiTests(unittest.TestCase):
             self.assertLess(len(json.dumps(response).encode()), 1048576)
         stored = session._autonomy["controller"].status(task_id)
         self.assertEqual(stored["status"], receipt["status"])
-        self.assertEqual(sum(event["kind"] == "tool_result" for event in stored["journal"]), 6)
+        results = [event["result"] for event in stored["journal"] if event["kind"] == "tool_result"]
+        self.assertEqual(len(results), 6)
+        self.assertTrue(all(result == {"bytes": "x" * 200000} for result in results))
+        self.assertGreater(len(json.dumps(stored).encode()), 1048576)
+        self.assertEqual(receipt["journalEntries"], len(stored["journal"]))
+        self.assertEqual(receipt["task_id"], task_id)
 
 
 if __name__ == "__main__":

@@ -112,6 +112,44 @@ class SafeFileToolsTests(unittest.TestCase):
         with self.assertRaises(BrainError):
             SafeFileTools(nested, self.inputs)
 
+    def test_replacement_with_reused_inode_still_rejects_real_new_bytes(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        captured = self.source.stat()
+        original_bytes = self.source.read_bytes()
+        self.source.unlink()
+        self.source.write_bytes(b"X" * len(original_bytes))
+        os.utime(self.source, ns=(captured.st_atime_ns, captured.st_mtime_ns + 1_000_000_000))
+        self.assertNotEqual(self.source.read_bytes(), original_bytes)
+        self.assertEqual(self.source.stat().st_size, captured.st_size)
+        # Deterministically simulate inode recycling while retaining the new
+        # file's real revision and bytes. No read or replace operation is mocked.
+        replacement = self.source.stat()
+        actual_fstat, actual_stat = os.fstat, os.stat
+        def recycled_identity(status):
+            if (status.st_dev, status.st_ino) == (replacement.st_dev, replacement.st_ino):
+                return SimpleNamespace(st_dev=captured.st_dev, st_ino=captured.st_ino,
+                                       st_size=status.st_size, st_mtime_ns=status.st_mtime_ns,
+                                       st_ctime_ns=status.st_ctime_ns, st_mode=status.st_mode)
+            return status
+        with patch("ia_propia.brain.file_tools.os.fstat", side_effect=lambda fd: recycled_identity(actual_fstat(fd))), \
+                patch("ia_propia.brain.file_tools.os.stat", side_effect=lambda *args, **kwargs: recycled_identity(actual_stat(*args, **kwargs))):
+            with self.assertRaises(BrainError) as error:
+                self.adapter.read_file({"filename": "primero.txt"})
+        self.assertEqual(error.exception.code, "file_changed")
+
+    def test_in_place_changes_require_explicit_host_reconfiguration(self):
+        captured = self.source.stat()
+        self.source.write_bytes(b"changed bytes")
+        self.assertEqual((self.source.stat().st_dev, self.source.stat().st_ino),
+                         (captured.st_dev, captured.st_ino))
+        with self.assertRaises(BrainError):
+            self.adapter.inspect_file({"filename": "primero.txt"})
+        refreshed = self.make_adapter()
+        result = refreshed.read_file({"filename": "primero.txt"})
+        self.assertEqual(result["sha256"], hashlib.sha256(b"changed bytes").hexdigest())
+        self.assertNotEqual(self.adapter.tools[0].policy_id, refreshed.tools[0].policy_id)
+
     def test_limit_prevents_read_and_no_report_exists_without_observation(self):
         limited = self.make_adapter(max_file_bytes=2)
         with self.assertRaises(BrainError) as error:
@@ -427,7 +465,8 @@ class SafeFileToolsTests(unittest.TestCase):
 
     def test_control_heavy_read_and_long_whitelist_keep_metadata_bounded(self):
         self.source.write_bytes(b"\x00" * 65_536)
-        result = self.adapter.read_file({"filename": "primero.txt"})
+        configured_after_write = self.make_adapter()
+        result = configured_after_write.read_file({"filename": "primero.txt"})
         self.assertEqual(result["encoding"], "base64")
         self.assertLess(len(json.dumps(result).encode("utf-8")), 131_072)
         names = [f"{index:03d}_" + "x" * 200 for index in range(128)]
