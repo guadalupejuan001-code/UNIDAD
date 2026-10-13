@@ -7,6 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            .github
+            configs
+            docs
+            examples
+            models/context-reference-v1
+            models/conversation-basics-v4
+            models/conversation-language-v7
+            models/conversation-reference-c7
+            models/learning-repair-20261013/pattern-relations-v1/reference-wiki1
+            models/sovengi-memory-20261013/candidate-best
+            scripts
+            src
+            tests
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -20,6 +36,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            .github
+            configs
+            docs
+            examples
+            models/context-reference-v1
+            models/conversation-basics-v4
+            models/conversation-language-v7
+            models/conversation-reference-c7
+            models/learning-repair-20261013/pattern-relations-v1/reference-wiki1
+            models/sovengi-memory-20261013/candidate-best
+            scripts
+            src
+            tests
       - uses: actions/setup-node@v4
         with:
           node-version: '20'

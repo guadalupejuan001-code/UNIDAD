@@ -109,6 +109,11 @@ de `unidad 0.7.0` pasó otras 27 pruebas del selector sin importar NumPy ni
 PyTorch. Incluye hashes de fuentes, artefactos y pesos del generador, además de
 la comprobación de enlaces.
 
+La CI usa un checkout parcial con los mismos directorios de código, corpus,
+fixtures y modelos de esta regresión, además del selector entregado. Así evita
+descargar todos los checkpoints históricos para comprobar un cambio de
+software. Conserva las mismas pruebas y verificaciones con pesos publicados.
+
 ## Respuestas reales de SOVENGI
 
 Se generaron 48 respuestas reales: 12 casos reservados, dos brazos por caso y
