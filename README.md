@@ -25,6 +25,18 @@ reutilizan esos pesos. La línea actual no procede de pesos externos ni de
 redimensionar automáticamente C7. Cada etiqueta permite identificar exactamente
 qué configuración y pesos se entrenaron y evaluaron.
 
+## Descargas recuperadas y entrenamiento reanudado
+
+El [lote pendiente de español](docs/learning-repair-20261013/download-recovery/README.md)
+se completó después del fallo HTTP 502: 58 páginas verificadas, incluidas 28
+reutilizadas de caché, y **2.553 registros nuevos de 2.545 artículos**. Se
+incorporó al supervisor existente; el entrenamiento causal ya había ejecutado
+251 actualizaciones en el corte del 13 de octubre a las 15:18:20 UTC.
+Los datos con procedencia, hashes, recibos y condiciones de uso están publicados.
+Se añadió recuperación con reintentos finitos sin modificar la corrida activa.
+Completar la descarga no demuestra que el modelo haya aprendido todos esos
+contenidos ni que ya converse bien.
+
 ## Aprendizaje de relaciones: avance posterior del 13 de octubre
 
 Se integró un [currículo y control de patrones conversacionales](docs/learning-repair-20261013/pattern-relations-v2/README.md)

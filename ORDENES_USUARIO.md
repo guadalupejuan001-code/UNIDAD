@@ -7,6 +7,13 @@ que el trabajador digital solicitado ya esté terminado.
 
 ## Encargo actual del 13 de octubre: integrar y entrenar
 
+El creador prioriza después completar las descargas pendientes tras HTTP 502.
+Se recupera la caché verificada y se completan lotes finitos con la misma fuente,
+revisión, procedencia y particiones; se conservan procesos y checkpoints. Sus
+mensajes no se presentan como causa de una respuesta HTTP del servidor.
+
+> osea que interrumpi las descargas de los datos? pz completas ahora mismo que sea prioridad
+
 La petición posterior pide comprobar el reconocimiento de patrones e integrarlo
 en el modelo donde falte. La arquitectura Transformer ya contiene atención y
 capas aprendibles; se distingue esa implementación de la capacidad comprobada
