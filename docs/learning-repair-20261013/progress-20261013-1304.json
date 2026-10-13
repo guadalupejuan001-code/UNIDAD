@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-13T13:21:18.608505+00:00",
+  "documentLabel": "1304 is the requested document name; actual observation timestamp is observedAtUtc",
+  "reviewer": "Codex project AI /root/autonomy_review",
+  "reviewerType": "project_ai",
+  "independentHumanReview": false,
+  "scope": "Read-only local metadata and streamed TRAIN/VAL record counts; new documentation only",
+  "state": {
+    "evidencePath": "private/learning-repair-20261013/continual/state.json",
+    "evidenceSha256": "587729b3c8d488b414cd48cc8c5313b78e7d291b22fdbf84dcef05e48e45e479",
+    "heartbeatAtUnix": 1791897673.5670145,
+    "cycleId": "wiki-cycle-0001",
+    "stageIndex": 2,
+    "operationalState": "waiting_for_data",
+    "trainingActive": false,
+    "nativeWorkerAlive": false,
+    "generationChildAlive": false
+  },
+  "processEvidence": {
+    "supervisor": {
+      "pid": 22557,
+      "observedBirth": "2592201",
+      "recordedBirth": "2592201",
+      "birthMatches": true,
+      "state": "S",
+      "aliveNonZombie": true
+    },
+    "liveRelevantProcesses": [
+      {
+        "pid": 22557,
+        "observedBirth": "2592201",
+        "recordedBirth": null,
+        "birthMatches": null,
+        "state": "S",
+        "aliveNonZombie": true,
+        "roles": [
+          "supervisor"
+        ]
+      }
+    ],
+    "liveRoleCounts": {
+      "supervisor": 1
+    },
+    "noDuplicateRelevantWorkersObserved": true,
+    "scope": "Point-in-time /proc snapshot; supervisor waiting for data/collector interval, no native trainer or DEV generator active"
+  },
+  "collector": {
+    "enabled": true,
+    "everySeconds": 3600,
+    "timeoutSeconds": 1200,
+    "maxDiskMiB": 2048,
+    "lastCollectorLaunchAtUnix": 1791894190.0347254,
+    "childRecordedInState": false,
+    "completedCycleLimits": {
+      "budgetSeconds": 900,
+      "corpusCapMiB": 24,
+      "maxDiskMiB": 2048,
+      "maxNetworkMiB": 512,
+      "maxPages": 80,
+      "targetNovelPayloadMiB": 12
+    }
+  },
+  "closedPrivateStages": [
+    {
+      "selectedStep": 2048,
+      "nativeFinalStep": 2048,
+      "nativeFinalReason": "signal",
+      "modelId": "unidad-conversation-22c1debc59efd635e89a22ed59b04c715c2927eb66d7f1c2f672e93f63140a84",
+      "receiptSha256": "403f5afb5238084438bb620782d7f5025365be00b77059710754aafbd1b8591c",
+      "conversationCertification": "awaiting_review",
+      "stageKey": "language-z-tatoeba-next-v1:language",
+      "receiptPath": "private/learning-repair-20261013/runs/tatoeba-next-v1/language/stage-latest.json",
+      "snapshot": "private/learning-repair-20261013/runs/tatoeba-next-v1/language/snapshots/best-step002048",
+      "snapshotVisibility": "private"
+    },
+    {
+      "selectedStep": 1024,
+      "nativeFinalStep": 1024,
+      "nativeFinalReason": "signal",
+      "modelId": "unidad-conversation-60d942338eb5936f1936093b88f5645ac3466847d07906ce81da5adc6eadddd7",
+      "receiptSha256": "70c940b1a2f2ef2703de2d6bc5aa82d84f270584264e791c186cc18eed078542",
+      "conversationCertification": "awaiting_review",
+      "stageKey": "language-z-tatoeba-next-v1:natural-action-retention",
+      "receiptPath": "private/learning-repair-20261013/runs/tatoeba-next-v1/natural-action-retention/stage-latest.json",
+      "snapshot": "private/learning-repair-20261013/runs/tatoeba-next-v1/natural-action-retention/snapshots/best-step001024",
+      "snapshotVisibility": "private"
+    },
+    {
+      "selectedStep": 1772,
+      "nativeFinalStep": 1772,
+      "nativeFinalReason": "total_time_budget",
+      "modelId": "unidad-conversation-f2bd020fa770262ba63a735e1b8e71af9e11fb01105d2f0aa2b28cfaf7230f16",
+      "receiptSha256": "248e0b722c5036333a171265065acdb6b33318620e3369fef64dc368c975f58a",
+      "conversationCertification": "awaiting_review",
+      "stageKey": "wiki-cycle-0001:base",
+      "receiptPath": "private/learning-repair-20261013/runs/progressive-v2/wiki-cycle-0001/base/stage-latest.json",
+      "snapshot": "private/learning-repair-20261013/runs/progressive-v2/wiki-cycle-0001/base/snapshots/best-step001772",
+      "snapshotVisibility": "private"
+    },
+    {
+      "selectedStep": 1024,
+      "nativeFinalStep": 1024,
+      "nativeFinalReason": "signal",
+      "modelId": "unidad-conversation-c0ee5f24b2424eb652f3ca9bda5fcb8841d703b4f8f5efc4db23427a8ed123c4",
+      "receiptSha256": "971e2639f344d1df8b92805155364f86a1f818783b37418a5d85656b8995b9f1",
+      "conversationCertification": "awaiting_review",
+      "stageKey": "wiki-cycle-0001:sft",
+      "receiptPath": "private/learning-repair-20261013/runs/progressive-v2/wiki-cycle-0001/sft/stage-latest.json",
+      "snapshot": "private/learning-repair-20261013/runs/progressive-v2/wiki-cycle-0001/sft/snapshots/best-step001024",
+      "snapshotVisibility": "private"
+    }
+  ],
+  "newWikiSource": {
+    "manifestPath": "private/learning-repair-20261013/wiki-batches-v2/wiki-cycle-0001/manifest.json",
+    "manifestSha256": "8506c59a92e8d29749c817a3744b209b2e4764729a5d3e26f21de6e8aeba8109",
+    "corpusSha256": "ed0c380b026c4882c0b8e5f2bdf463f2a3a995a90d13a59ea72af40487aa5425",
+    "dataset": "wikimedia/wikipedia",
+    "configuration": "20231101.es",
+    "revision": "b04c8d1ceb2f5cd4588862100d08de323dccfbaa",
+    "snapshotDate": "2023-11-01",
+    "newWikiRecords": 2651,
+    "uniqueNewArticleIds": 2648,
+    "selectedProseParagraphBlocks": 26890,
+    "paragraphCountingRule": "Nonempty blocks in admitted Wiki TRAIN/VAL record text split by blank lines; not all raw article paragraphs",
+    "oasstRehearsalRecords": 2299,
+    "totalRecords": 4950,
+    "splitCounts": {
+      "train": 4439,
+      "validation": 511,
+      "test": 0
+    },
+    "sourceResponsePages": 69,
+    "reusedCachedPages": 3,
+    "networkDownloadedBytes": 20416883,
+    "seedPath": "examples/learning-repair-20261013/collector/seen-source-seed.json",
+    "seedSha256": "e7b16b6335ae64858b9ea98600948262bbe27200fd325cbba84924ff025af963",
+    "initialSeedArticleIds": 5200,
+    "allInitialFoldsSeeded": true,
+    "admittedArticleIdOverlapWithInitialSeed": 0,
+    "rehearsalCountsAsNewDiversity": false,
+    "pageOrderStart": 593,
+    "nextPageOrder": 662,
+    "sourceFilters": {
+      "low_prose_letter_fraction": 1,
+      "reserved_source_id_text_not_read": 696,
+      "short_article_below_150_words": 2729,
+      "short_heading_list_or_fragment": 134465,
+      "short_or_repeated_selected_article": 821,
+      "weak_spanish_function_word_signal": 4,
+      "weak_spanish_prose_signal": 359
+    },
+    "quarantinedNovelFamilyCount": 2,
+    "historicalCollisionClassesPreserved": 5,
+    "fixedRehearsalRowsPreserved": 2299,
+    "foldsMoved": 0,
+    "testTextRead": false,
+    "limitations": [
+      "Snapshot is 2023-11-01, not current news or factual certification",
+      "Exact digests do not detect semantic paraphrases; previous reserved text is never consulted",
+      "Article IDs and full-article/prose metadata digests cover all initial folds; exact overlap with individual historical TEST paragraphs/chunks is not exhaustively checked because those texts are never decoded",
+      "No model improvement or conversational readiness is inferred from these data"
+    ]
+  },
+  "licenses": {
+    "receiptPath": "examples/learning-repair-20261013/collector/source-license-receipt.json",
+    "receiptSha256": "063b3f578fd89642f7c68beb6eff65106a180d03da0161ebde9cbff6c2421210",
+    "pinnedHfCardDeclared": [
+      "CC-BY-SA-3.0",
+      "GFDL"
+    ],
+    "currentWikimediaLegalDeclared": [
+      "CC-BY-SA-4.0",
+      "GFDL"
+    ],
+    "oasstRehearsal": "Apache-2.0",
+    "qualification": "Different documented declarations are retained; not certification of each article's rights. Some content may be CC-only. Retain article title/URL/history attribution. OASST source manifest declares Apache-2.0."
+  },
+  "fixedRetention": {
+    "provenancePath": "private/learning-repair-20261013/wiki-batches-v2/wiki-cycle-0001/sft-retention-provenance.json",
+    "provenanceSha256": "e51fe077374f3e59ffa80e0eb358716e1415a517d56e3259f9d5615191c1b5af",
+    "corpusSha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7",
+    "addedRecords": 0,
+    "retentionOnlyStage": true,
+    "newKnowledgeClaim": false,
+    "splitCounts": {
+      "test": 0,
+      "train": 10551,
+      "validation": 1783
+    },
+    "testUsedForTraining": false
+  },
+  "verifiedPins": {
+    "supervisorConfigPath": "private/learning-repair-20261013/configs/continual.json",
+    "supervisorConfigSha256": "24c561cc5a71132deb9321bdf356e46100a1820d36b62f6a706af3f26588ccf4",
+    "collectorSourceSha256": {
+      "examples/collect_learning_wiki.py": "feee09834049f1f163e7e98badcb2dfaf9a0c00f2bde65cef6191ef1199619c9",
+      "examples/prepare_public_spanish_language.py": "5f7d2cae709b6e68770eb80827dc0c1be67d390d635ed56e98a22225c65b3ce4",
+      "examples/prepare_spanish_causal_base.py": "9d7741d84bdd2bec1738e67648dcc867261e3c787fa9a73d33464c3577a92550",
+      "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+      "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+      "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+      "examples/collect_learning_wiki_v2.py": "0ba9290196f5689710a1988a0fa8e18b481962a1e1324816243df31c5eecbf95",
+      "examples/learning-repair-20261013/collector-v2/recipe.json": "35a2ae25aae264cc80072a2e50bb180f0a74e24e587d354f15c240f66da16bb8"
+    },
+    "cycleInputPins": [
+      {
+        "path": "private/learning-repair-20261013/wiki-batches-v2/wiki-cycle-0001/causal-spanish.train-validation.jsonl",
+        "sha256": "ed0c380b026c4882c0b8e5f2bdf463f2a3a995a90d13a59ea72af40487aa5425"
+      },
+      {
+        "path": "private/learning-repair-20261013/configs/collector-v2-base-2048.json",
+        "sha256": "ff402d5a33da6c180bdac2fa64d0a7c0704a8c5010fa3e95219cbe403d9d99e8"
+      },
+      {
+        "path": "private/learning-repair-20261013/wiki-batches-v2/wiki-cycle-0001/manifest.json",
+        "sha256": "8506c59a92e8d29749c817a3744b209b2e4764729a5d3e26f21de6e8aeba8109"
+      },
+      {
+        "path": "examples/learning-repair-20261013/natural-action-retention-v1/natural-action-retention.train-validation.jsonl",
+        "sha256": "808e1bdd98f1447fea82f83e3d936e8724f86dc23c124d8b8e3cc9504937b7a7"
+      },
+      {
+        "path": "private/learning-repair-20261013/configs/natural-action-retention-1024.json",
+        "sha256": "87b2c127d537d87fb4b85188d74e8871e6bd92e7882db0d845fa56be06c049a3"
+      },
+      {
+        "path": "private/learning-repair-20261013/wiki-batches-v2/wiki-cycle-0001/sft-retention-provenance.json",
+        "sha256": "e51fe077374f3e59ffa80e0eb358716e1415a517d56e3259f9d5615191c1b5af"
+      }
+    ],
+    "nativeStageDesignPath": "private/learning-repair-20261013/runs/progressive-v2/wiki-cycle-0001/sft/stage-design.json",
+    "nativeStageDesignSha256": "4e66347761f63240f191d99a5d4e81cb671c763126af36550ccbefd04cedd9ec",
+    "nativeSourceSha256": {
+      "src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+      "src/ia_propia/conversation/__main__.py": "5874d42fdf7275ada4f44f138a239f6e1a403c169946eca54b1dddd25848ac15",
+      "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+      "src/ia_propia/conversation/artifacts.py": "6649b10d534c039841a0471c69d90290c4b91205b55aa54b99cb0a6198137375",
+      "src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+      "src/ia_propia/conversation/configuration.py": "c8af875407af95dd2db3d820816ef4f8809143b4d420b1e1b735a1a28484cd83",
+      "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+      "src/ia_propia/conversation/data.py": "b70d42dbbd32f85a3fb7a6595b7bdbbaccfd49f30f06f951421e654ab505e4a9",
+      "src/ia_propia/conversation/disk_data.py": "490c7c40ac019cdea30bb48610ea57cee3e66d700630cad7d9c1b13232fa8a71",
+      "src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+      "src/ia_propia/conversation/language_data.py": "6201abb3fb48c261b7985f68e893c05a4222fb80421c85c1222cfe359e81f813",
+      "src/ia_propia/conversation/model.py": "375a749057cc9ce7a5a9837f814e7ced6f02969cb75fc75cb61cb6b0b9d59f0d",
+      "examples/run_learning_stage.py": "b88dc76efdb5df7863979c599ae614b2ab6ee74c6c5284e069dd75dedfbe0e00",
+      "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+      "src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+      "examples/run_conversation_pilot.py": "d9948fcea1a8582539998d013b47e0b8e1ef5706499f73f1111f967b1803a503",
+      "src/ia_propia/conversation/tokenizer.py": "54f8e859b15dca68821c30e4c8621d47649dbf30fabf7ae72469548e0bce1066",
+      "src/ia_propia/conversation/training.py": "7f84e503bfe4d94a8c78c46f200834704059015e7be135f7fb9e7e0642f64955"
+    },
+    "allSelectedPinsMatch": true
+  },
+  "publication": {
+    "mainMergeCommit": "a948c0fd358b250c7137978e3077ac70cdc51d83",
+    "context": "PR11/main confirmed by root GitHub API; prior independent fetched origin/main object verification referenced here, no new network query",
+    "priorVerificationPath": "private/learning-repair-20261013/pr11-main-verification.json",
+    "priorVerificationSha256": "76c73564bcd845f5adbda012bb5dccfb2f65304f381b01c0ed67786ca3d677b9",
+    "priorVerificationAtUtc": "2026-10-13T12:16:20.248103+00:00",
+    "verifiedPublicFullBestModels": 5,
+    "checkedPublicationFiles": 45,
+    "latestTatoebaAndWikiSnapshotsPrivate": true,
+    "allLatestWeightsPublicClaim": false
+  },
+  "capabilityAndBudgets": {
+    "semanticReviewPerformedByThisObservation": false,
+    "conversationAccepted": false,
+    "autonomyAccepted": false,
+    "acceptanceCriteria": {
+      "requiredPassedTurns": 36,
+      "totalTurns": 40,
+      "requiredPassedCases": 8,
+      "totalCases": 10,
+      "criticalFailuresAllowed": 0,
+      "technicalFailuresAllowed": 0
+    },
+    "lossOrNewDataImpliesCompetence": false,
+    "historical24HourAnd2HourBudgetsRemainClosed": true,
+    "newWorkUnderLaterStandingAuthorization": true,
+    "currentStopAfterSteps": {
+      "base": 2048,
+      "sft": 1024
+    },
+    "currentInvocationBudgetsSeconds": {
+      "base": 3600,
+      "sft": 3600
+    }
+  },
+  "actionsPerformed": {
+    "training": false,
+    "inference": false,
+    "reservedTestRead": false,
+    "modelWeightsLoaded": false,
+    "gitMutation": false,
+    "codeChanged": false,
+    "existingReceiptsChanged": false
+  },
+  "resources": {
+    "cpuAffinityCount": 1,
+    "nice": 19,
+    "addressSpaceMiBLimit": 512,
+    "streamBufferBytes": 1048576,
+    "elapsedSeconds": 0.1282386899983976
+  },
+  "developmentGenerationsSupervisorMetadata": [
+    {
+      "stageKey": "language-z-tatoeba-next-v1:natural-action-retention",
+      "finishedAtUtc": "2026-10-13T12:23:00.024364+00:00",
+      "knownExitCode": 0,
+      "turns": 40,
+      "generationErrors": 0,
+      "semanticReviewPerformed": false,
+      "conversationCertification": "awaiting_review",
+      "outputsSha256": "14b6260dbb0b4ebf147634acc3b3ebddf3da0a1a4c108d1512f16bf5278cf591",
+      "outputsPath": "private/learning-repair-20261013/continual/development-generations/language-z-tatoeba-next-v1-natural-action-retention-60d942338eb5936f/outputs.json"
+    },
+    {
+      "stageKey": "wiki-cycle-0001:sft",
+      "finishedAtUtc": "2026-10-13T13:11:13.306529+00:00",
+      "knownExitCode": 0,
+      "turns": 40,
+      "generationErrors": 0,
+      "semanticReviewPerformed": false,
+      "conversationCertification": "awaiting_review",
+      "outputsSha256": "950913d5539b3ea3c94cb59907d358944e66ada9a12a51c5ad229733708c8d71",
+      "outputsPath": "private/learning-repair-20261013/continual/development-generations/wiki-cycle-0001-sft-c0ee5f24b2424eb6/outputs.json"
+    }
+  ],
+  "supervisorReviewMetadataScope": "Raw supervisor state remains awaiting_review; this is separate from external project-AI reviews, which are stored and verified below.",
+  "externalDevelopmentReview": {
+    "stageKey": "language-z-tatoeba-next-v1:natural-action-retention",
+    "modelId": "unidad-conversation-60d942338eb5936f1936093b88f5645ac3466847d07906ce81da5adc6eadddd7",
+    "reviewerType": "project_ai",
+    "independentHumanReview": false,
+    "evidence": {
+      "outputs.json": {
+        "path": "docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/outputs.json",
+        "sha256": "14b6260dbb0b4ebf147634acc3b3ebddf3da0a1a4c108d1512f16bf5278cf591"
+      },
+      "primary-review.json": {
+        "path": "docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/primary-review.json",
+        "sha256": "a2edd74ff99134486e79c0e71986e39be5a7bc9ee03b53978ea2bcc37e00e550"
+      },
+      "primary-assessment.json": {
+        "path": "docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/primary-assessment.json",
+        "sha256": "7d622d43c580a28055cee01c8c3e9aa79e9ea5b11be1a79a466dc5587e8e88eb"
+      },
+      "cross-review.json": {
+        "path": "docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/cross-review.json",
+        "sha256": "f254f6c30401e4143f3f28f12f7fce3cb088c5cf99f04ace4d8364ba6323b757"
+      },
+      "cross-assessment.json": {
+        "path": "docs/learning-repair-20261013/comparison/development-tatoeba-retention1024-v1/cross-assessment.json",
+        "sha256": "9ee7faf5d5bd14822feb579422ebf35cd1175d9d50500da01aee89e2578675f1"
+      }
+    },
+    "fullyMetTurns": 0,
+    "fullyMetDialogs": 0,
+    "primaryCriticalFailures": 9,
+    "crossCriticalFailures": 10,
+    "technicalFailuresBoth": 5,
+    "accepted": false,
+    "wikiGenerationSemanticallyReviewedInThisUpdate": false,
+    "supervisorStateModified": false
+  }
+}

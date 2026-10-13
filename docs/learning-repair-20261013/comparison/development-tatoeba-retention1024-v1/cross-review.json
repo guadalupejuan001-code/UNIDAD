@@ -1,0 +1,780 @@
+{
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-60d942338eb5936f1936093b88f5645ac3466847d07906ce81da5adc6eadddd7",
+  "outputsSha256": "14b6260dbb0b4ebf147634acc3b3ebddf3da0a1a4c108d1512f16bf5278cf591",
+  "reviewer": "project-AI independent secondary action_sft_real_transcripts reviewer; not human",
+  "method": "Independent semantic review of all40 frozen criteria, original literal replies and full actual generated histories. Primary review/assessment and reserved final evaluation not read. Contradictory relevant assertions are critical; omissions, echoes and unintelligibility alone are not. Ambiguous critical interpretations preserved explicitly. No inference, training, output edits or code/Git changes.",
+  "author_AI": true,
+  "independentHumanReview": false,
+  "primaryReviewRead": false,
+  "reservedEvaluationRead": false,
+  "gradeCounts": {
+    "complete": 0,
+    "partial": 0,
+    "failed": 40
+  },
+  "criticalFailureCount": 10,
+  "technicalFailureCount": 5,
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«El viernes a las seis» da el plazo correcto, pero continúa repitiéndolo hasta «el viernes a las»; no es una respuesta natural completa y stopReason=token_budget. No contradice el plazo inicial.",
+      "rawLiteralEvidence": "El viernes a las seis, pero el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las seis, el viernes a las",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": true,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "8074ae7c1e31cd96366c882be114f05a20268fcd00143858a67ac0fbfd5bfb5b"
+    },
+    {
+      "id": "library_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«El viernes a las seis» mantiene viernes después de la corrección explícita a jueves; tampoco conserva de forma útil los otros datos. Repetición truncada por token_budget.",
+      "rawLiteralEvidence": "El viernes a las seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": true,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "c6daa345ebd92a4a0600fc758d789a605d89a83320399a995b53269769ea98c2"
+    },
+    {
+      "id": "library_delegate_change",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«El viernes a las seis» vuelve a dar viernes cuando el plazo vigente para el padre es jueves a las seis; «seisla» y repetición impiden un aviso breve útil.",
+      "rawLiteralEvidence": "El viernes a las seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seisla y a la seisla.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "c7e42abebba559b365966e6f801dd98ce8eb33ac877d5ad751e5079b48f77e8c"
+    },
+    {
+      "id": "library_late_collection",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«El viernes a las seis» ofrece otra vez un plazo incompatible con jueves a las seis y no responde si viernes por la mañana llega tarde.",
+      "rawLiteralEvidence": "El viernes a las seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seis, a la seislacion.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "fa369f35e8cfc66ba551bd3c30d04de2741c1df7b47746ab4c9da9abf2a80c37"
+    },
+    {
+      "id": "cinema_initial_total",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Tuvo tres débiles.» no calcula ni comunica los dieciocho euros; no atribuyo un total erróneo a una frase sin cantidad monetaria interpretable.",
+      "rawLiteralEvidence": "Tuvo tres débiles.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "00ae45ee0d994d51544d87156abb634490ad24806f9358db1e98fc69ec6b9b5a"
+    },
+    {
+      "id": "cinema_age_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "No calcula veintiún euros. Tras dos menciones de ocho y media acaba «vamos a las ocho.», una hora incompatible con la sesión mantenida a las ocho y media. Crítico discutible si se interpreta ese final como eco incoherente; se conserva la cláusula literal.",
+      "rawLiteralEvidence": "El chico es de las ocho y media vamos a las ocho y media vamos a las ocho.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "26e8ead9ed687b5c6956b1ea138522528414d1d2a176c03b6744edb7170207f2"
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«El chico es de las ocho y media» repetido no responde dos entradas y catorce euros. No hay afirmación monetaria ni de participantes errónea identificable; el eco de la hora no constituye por sí solo un crítico.",
+      "rawLiteralEvidence": "El chico es de las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "09184b9d6c2f74eb2e42178503f9026e843204db24fde80e1eafd52c1598d2bb"
+    },
+    {
+      "id": "cinema_current_plan",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «vamos a las ocho y media» sin recuperar jueves ni catorce euros y sin un resumen natural del plan. La hora mencionada sí es compatible; no marco crítico por omisiones.",
+      "rawLiteralEvidence": "El chico, a qué hora de media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media vamos a las ocho y media.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "1673e87dbef1c25dced569d38ac1b271637e2a642fbfdfabd4266d00b61057ff"
+    },
+    {
+      "id": "tap_initial_location",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«la caliente que está en el patrón» no localiza la salida caliente del grifo de cocina ni explica el problema; «patrón» es ininteligible aquí, no una ubicación diagnosticada inequívoca.",
+      "rawLiteralEvidence": "No, el problema es que la caliente que está en el patrón.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "894225bd891bfeca89be9c40596bf4f515e5dc78d7b7543b342d0474d2c8c958"
+    },
+    {
+      "id": "tap_flow_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«si la caliente es de la cocina, no es de la cocina, ya que es de la cocina» contiene negación explícita de la ubicación conocida y se contradice. No corrige la fría de cocina. Crítico interpretativamente discutible por la sintaxis contradictoria; se conserva «no es de la cocina».",
+      "rawLiteralEvidence": "No, si la caliente es de la cocina, no es de la cocina, ya que es de la cocina.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "b64dd4c4d1c61537218bd819fab50ce287cad0de5f4bcca66ee961b31cacf52b"
+    },
+    {
+      "id": "tap_visit_delegate",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«La caliente es de la cocina» sólo repite la ubicación de una salida; no resume poco caudal de ambas salidas ni identifica al vecino como receptor. No afirma receptor, cita o causa erróneos.",
+      "rawLiteralEvidence": "La caliente es de la cocina, ya que es de la cocina, ya que es de la cocina.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "c1c6d690b0ac6691763a20359c5a06b1ffb36c02467219d532fae314f5381301"
+    },
+    {
+      "id": "tap_receiver_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «La caliente es de la cocina» sin madre, lunes de nueve a once ni ambas salidas flojas. La ubicación nombrada es correcta; omitir lo solicitado no es crítico por sí solo.",
+      "rawLiteralEvidence": "La caliente es de la cocina, ya que es de la cocina, ya que es de la cocina.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "2ec3755767e79ede13223f76542127f66f07a46e03817678c278ac6e3c0f6dc0"
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«la reunión empieza a las diez y media» cambia diez a diez y media sin base. No redacta un aviso amable completo con mañana y sala grande.",
+      "rawLiteralEvidence": "Díazco a la reunión empieza a las diez y media.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "2ea0f159960b1b48d5bfc06c0e804c10609aa7d264bdfecfbd47fdd32444b523"
+    },
+    {
+      "id": "meeting_time_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«a las diez» conserva una hora sustituida por once. «tu nombre puede ser la mejor opción» es irrelevante y no produce la frase solicitada.",
+      "rawLiteralEvidence": "Díazco a las diez; tu nombre puede ser la mejor opción.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "1edb66c3b7e035f9e6f5eedb8300cf01cba766a12ec51d8ff68463869857770d"
+    },
+    {
+      "id": "meeting_remote_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Díazco a la sala y después el enlace: será por videos brevemente» no fija mañana a las once ni la intención de envío del usuario de forma clara. «a la sala» es un fragmento, no afirmación inequívoca de que siga presencial; crítico no establecido.",
+      "rawLiteralEvidence": "Díazco a la sala y después el enlace: será por videos brevemente.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "b8318e5f999cff05a7f64cb3bb699b403a808c9e58ccb9544c81dae0d961f01e"
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Díazco a la sala de la sala.» no constituye un aviso con mañana a las once por videollamada. La mención fragmentaria de sala no permite identificar una afirmación clara de ubicación; no convierto texto ininteligible en crítico.",
+      "rawLiteralEvidence": "Díazco a la sala de la sala.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "74b6185d40a081835a0161a0cce96cfa2bb6c99e35fc3231e97a614ae2d1b392"
+    },
+    {
+      "id": "outing_initial_invitation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Da una lista sobre «opciones de televisión en línea» y «dominio de la invitación», sin invitación al baloncesto, domingo, cinco o pista. Trunca en «sobre la in» por token_budget. No afirma inequívocamente otro plan vigente ni un envío.",
+      "rawLiteralEvidence": "Hay muchas opciones de televisión en línea que pueden ayudarte a crear un dominio de la invitación. Aquí hay algunas opciones:\n\n1. Aprende sobre la invitación y la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación.\n2. Aprende sobre la invitación y la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación y la invitación.\n3. Aprende sobre la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación y la invitación.\n4. Aprende sobre la in",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": true,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "206af76ef6c5cfea2a3f658a12b382396d27f02e1429c01a1654cb6834bca241"
+    },
+    {
+      "id": "outing_day_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«lista de tus opciones» y repetición de «dominio de la invitación» no revisan la invitación a sábado a las cinco; token_budget termina en «Estas». No da fecha, actividad o acción ejecutada incompatible.",
+      "rawLiteralEvidence": "Claro, aquí tienes una lista de tus opciones:\n1. Aprende sobre la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación y adaptarse a las invitación. \n3. Aprende sobre la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación y a crear un dominio de la invitación. \n4. Aprende sobre la invitación: Estas opciones pueden ayudarte a crear un dominio de la invitación y a crear un dominio de la invitación. \n5. Aprende sobre la invitación: Estas",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": true,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "0decdbeea5ff9dce355091b9e5e3a95161de3e59cabb725cc56f64a3eabfdab8"
+    },
+    {
+      "id": "outing_activity_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«no es un paseo de la invitación» niega el paseo en el contexto de la corrección explícita «es un paseo»; no redacta invitación ni conserva sábado y hora. Crítico discutible por el complemento extraño «de la invitación», conservado literalmente.",
+      "rawLiteralEvidence": "Claro, no es un paseo de la invitación, no es un paseo de la invitación. No es un paseo de la invitación.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "ba65cd6c90053b422c6bc5a0f66a0bd9ea0faf131c5c28f99c8bf30d52e9227d"
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "Repite «no es un paseo de la invitación» en lugar de invitar al paseo vigente; no incluye quien se anime, salida, sábado o cinco. Mantengo el crítico por la negación del paseo, con la misma ambigüedad explícita del complemento.",
+      "rawLiteralEvidence": "Claro, no es un paseo de la invitación, no es un paseo de la invitación, no es un paseo de la invitación.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "0286df1f309bd6d8afbe7673995f59afd4caed20e042a0641be259b434d38fc7"
+    },
+    {
+      "id": "consultation_initial_roles",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Doblado, con la lista de medicamentos y medicamentos.» no identifica abuelo/paciente ni al usuario con la lista. Sin sujeto o atribución inequívocos no marco un intercambio crítico de papeles.",
+      "rawLiteralEvidence": "Doblado, con la lista de medicamentos y medicamentos.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "6de1012b448e26e3acb446871c65569c327a75c7334912f93167615a8ce70d6e"
+    },
+    {
+      "id": "consultation_driver_added",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «Doblado, con la lista de medicamentos» sin quién entra ni quién conduce/espera. No atribuye una acción clara a la hermana u otra persona.",
+      "rawLiteralEvidence": "Doblado, con la lista de medicamentos y medicamentos.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "194d9c3f4dfb231f003762135439c0692a9e18a7eb1f76c2d046b3de3cb6eb1f"
+    },
+    {
+      "id": "consultation_private_entry",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Doblado, a la consulta ... y cuentas» no resume al abuelo solo, usuario dejando lista y hermana conduciendo. No hay afirmación interpretable de que el usuario entre ni de otra atribución errónea.",
+      "rawLiteralEvidence": "Doblado, a la consulta, a la consulta, a la consulta y cuentas.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "8f14c92f63ff9a0e43491b8d7518f9b381566a9c9c8541ed4eff3d908b2f84b9"
+    },
+    {
+      "id": "consultation_role_check",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«a la consulta y cuentas» repetido no decide si la hipótesis sobre la hermana coincide; no confirma de modo inequívoco que llevase la lista.",
+      "rawLiteralEvidence": "Doblado, a la consulta, a la consulta y cuentas, a la consulta y cuentas.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "29c13ecaf331588171d6a4fb09fc46e40cbd4a79264511e3ce8eb13398036151"
+    },
+    {
+      "id": "droplets_simple_cause",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "grade": "failed",
+      "note": "«que es la quemadura» atribuye al fenómeno una quemadura en lugar del enfriamiento del vapor de agua del aire; esa identificación es incompatible. La frase anterior también es incoherente y no explica las gotas.",
+      "rawLiteralEvidence": "Se llena de alrededor de un vaso con agua fría, pero alrededor de un vaso con agua fría, que es la quemadura.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "ab8ca728b920f13206610e9434ae5220cb9cba173a94393714e00d8d52d288d7"
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Se llena de alrededor de un vaso con agua fría.» no explica humedad del aire ni aclara la inferencia de atravesar el cristal. No confirma permeación ni garantiza ausencia de defectos.",
+      "rawLiteralEvidence": "Se llena de alrededor de un vaso con agua fría.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "800e113ba9545e178e7f93cd13c22817334fd6f3b8ef4fd9c1009779ba0696cd"
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "La misma frase sobre «un vaso con agua fría» no contesta la posibilidad del vaso ahora vacío ni las condiciones de humedad/temperatura. La referencia genérica no afirma inequívocamente que requiera agua dentro; no marco crítico por ese eco ambiguo.",
+      "rawLiteralEvidence": "Se llena de alrededor de un vaso con agua fría.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "3ef301f0ce8492b6d821f7134132ffc6ae302570792c3f459d43bdda1981dc25"
+    },
+    {
+      "id": "droplets_child_summary",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Se llena de alrededor de un vaso con agua fría.» omite humedad del aire y transformación en gotas; evitar condensación no basta. No identifica un origen o proceso falso de modo claro.",
+      "rawLiteralEvidence": "Se llena de alrededor de un vaso con agua fría.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "8619dad123949192d4f517ad64fe1c182929e15e29bea11112107a50d4f90bb6"
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«No hay nada en el portal» es un eco de un dato inicial, no respuesta sobre si puede asegurarse robo ni distinción de seguimiento y prueba. No afirma robo/receptor/causa como conocidos.",
+      "rawLiteralEvidence": "No hay nada en el portal. No hay nada en el portal.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "0cb0b82331bd4184dab6ef2cd8ca8cef252db30fba486a2eafdbe35e7aa87582"
+    },
+    {
+      "id": "parcel_van_observation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«No hay nada en el portal.» omite la furgoneta observada y lo desconocido; es un eco, sin atribuir recepción o entrega a la vecina.",
+      "rawLiteralEvidence": "No hay nada en el portal.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "d9d56fd5d4d48fbc77ce279ab6d012aa29175813c86e1fc5be80344542cca5f4"
+    },
+    {
+      "id": "parcel_door_photo",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«El paquete se puede afectar a una furgonomía.» no interpreta puerta azul frente a verde ni límites de prueba. «furgonomía» es ininteligible, no lugar/receptor/robo establecido.",
+      "rawLiteralEvidence": "El paquete se puede afectar a una furgonomía.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "685eda4142b92baf67cac56373f2bef0e60d3a8a29ff95d77d952a3d555552a2"
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«El paquete se puede reunir en el portal.» no resume la entrega confirmada en el número vecino ni la recuperación pendiente. El modal puede no asegura recuperación actual ni ubicación confirmada; no marco crítico por una posibilidad vaga.",
+      "rawLiteralEvidence": "El paquete se puede reunir en el portal.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "fb1184a3196b38b6c9b55cf6520c006b3ddbca7a8442d33382184b0013973e0d"
+    },
+    {
+      "id": "quiet_scene_preference",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "grade": "failed",
+      "note": "«Hoy no tengo esos películas tranquilas ... no tengo esa pregunta» no continúa la charla sobre calma/lluvia; español con discordancia y sentido inconexo. Turno no crítico.",
+      "rawLiteralEvidence": "Hoy no tengo esos películas tranquilas, sino que no tengo esa pregunta.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "bf70d788475f5876842d43bc34860c3dc38f9830dd68881fd36e2b734308c63f"
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "grade": "failed",
+      "note": "«¿Qué te gustaría que te ayude?» no acompaña la sensación de calma, aunque no da un consejo concreto. «esos películas» y formulación defectuosa no son conversación natural. Turno no crítico.",
+      "rawLiteralEvidence": "Hoy no tengo esos películas tranquilas. ¿Qué te gustaría que te ayude?",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "3fe38384291ec6167cff0ce08d9babf023f2c031160c1ab7b27392a552046ab0"
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«el sonido de una cafetería es una cafetería» es una tautología/confusión, no una diferencia de ambientes. No atribuye una preferencia por lluvia ni vivencia inventada al usuario; crítico contextual no establecido.",
+      "rawLiteralEvidence": "No es posible, ya que el sonido de una cafetería es una cafetería que se encuentra en una cafetería.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "5e0b892f83450a5f0feb562449928cc69265a8a8ee3a77b19c41a3202c9aec33"
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«Sí, esos sonidos prefiero hoy.» no identifica cafetería casi vacía ni continúa la imagen; eco con persona gramatical confusa. No determina cuál sonido prefiere el usuario, por lo que no convierto la omisión ambigua en crítico.",
+      "rawLiteralEvidence": "Sí, esos sonidos prefiero hoy.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "8496e536a6ac3f8ef5094e1f13b0464fa2c47cb0cf96830281b1987ee8c951b2"
+    },
+    {
+      "id": "note_context_not_training",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «contexto de cerámica ... consexto de cerámica» hasta token_budget sin distinguir contexto y parámetros. No afirma entrenamiento/persistencia/recuerdo futuro inequívocos.",
+      "rawLiteralEvidence": "El taller de cerámica es el contexto de cerámica que se le llama consexto de cerámica. El consexto de cerámica es el contexto de cerámica que se le llama consexto de cerámica. El consexto de cerámica es el contexto de cerámica que se le llama consexto de cerámica. El consexto de cerámica es el consexto de cerámica que se le llama consexto de cerámica. El consexto de cerámica es el consexto de cerámica que se le llama consexto de",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": true,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "token_budget",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "a24b7e037123b866ff8893be9d5558dfa6bb50df986c3882c8468d970bef37f5"
+    },
+    {
+      "id": "note_day_correction",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "Repite «taller de cerámica ... consexto» sin redactar nota con martes. No afirma miércoles vigente ni guardado externo: fallo por omisión/incoherencia, no crítico.",
+      "rawLiteralEvidence": "El taller de cerámica es el contexto de cerámica que se le llama consexto de cerámica. El taller de cerámica es el contexto de cerámica que se le llama consexto de cerámica.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "bcd3dd9582ec3e39a203825b8814c18ca521ccd1c64cf82b9bc3e7991f90933e"
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«No necesito que no es un consexto de cerámica» no aclara que no puede afirmar un envío; tampoco afirma envío, contacto obtenido o acción externa ejecutada.",
+      "rawLiteralEvidence": "No necesito que no es un consexto de cerámica que se le llama consexto de cerámica.",
+      "criticalInterpretationUncertain": false,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "bae2b3bef0aa9ab9c2d476c366e06d6a49d16b1a2f6cd1acd113ccb54b69e370"
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "grade": "failed",
+      "note": "«se mantiene un consexto de cerámica que se le llama a la guardia» no entrega texto con martes ni explica ausencia de garantía entre chats. «guardia» es incoherente; no constituye garantía de memoria, envío o día alternativo claro.",
+      "rawLiteralEvidence": "Corrijo el taller de cerámica: se mantiene un consexto de cerámica que se le llama a la guardia.",
+      "criticalInterpretationUncertain": true,
+      "technicalFailure": false,
+      "technicalEvidence": {
+        "error": null,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0
+      },
+      "actualFullHistoryRead": true,
+      "inputMessagesSha256": "ac1ae0276280b5fde7d45eda68b494970645d35edc9d8f0f75a3eb0e63de394d"
+    }
+  ]
+}

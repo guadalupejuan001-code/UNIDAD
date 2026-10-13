@@ -1,5 +1,26 @@
 # Estado actual de Unidad
 
+## Avance posterior a PR11, 13 de octubre de 2026
+
+La descripción vigente está en [qué tenemos en Unidad](QUE_TENEMOS.md), el
+[README](../README.md) y el [recibo posterior a PR11](learning-repair-20261013/progress-20261013-1304.md).
+Las secciones de las 06:44 y anteriores que siguen se conservan como historia;
+sus PID, colas y estados no representan la situación actual.
+
+El código, los datos y los cinco artefactos BEST completos de PR11 se fusionaron
+en `a948c0fd358b250c7137978e3077ac70cdc51d83`, con cuatro checks aprobados.
+Después cerraron Tatoeba (2.048 + 1.024 actualizaciones) y el primer lote
+automático de Wikipedia (1.772 + 1.024). El supervisor sigue vivo; el corte
+actual registra espera de nuevos datos. Sus checkpoints posteriores son locales.
+
+La última comparación revisada, tras Tatoeba, obtuvo 0/40 respuestas completas
+y 0/10 diálogos en ambos juicios de IA, con nueve/diez críticos y cinco técnicos.
+El anterior resultado de 1/40 se conserva, sin presentar este retroceso como
+mejora. La generación más reciente se revisa por separado. C7 sigue como
+referencia; conversación y planificación fiables permanecen pendientes.
+
+## Historial de observaciones
+
 ## SFT en ejecución y PR8 integrado, 13 de octubre, 06:44 UTC
 
 El [nuevo recibo](learning-repair-20261013/observation-20261013-064409-sft-active-pr8-merged.json)

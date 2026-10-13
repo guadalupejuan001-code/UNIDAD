@@ -8,6 +8,12 @@ manteniendo **0/10 diálogos, seis críticas/dos técnicas**. No cumple aceptaci
 C7 sigue siendo la referencia propia, también rechazada por conversación.
 La pérdida de entrenamiento y los archivos de pesos no aceptan modelos.
 
+La continuación [Tatoeba + retención 1.024](development-tatoeba-retention1024-v1/README.md)
+obtuvo después **0/40 completas y 0/10 diálogos**, nueve críticas en la primaria
+y diez en la cruzada, con cinco técnicas en ambas. Se conserva el candidato
+anterior de 1/40 y este deterioro observado, sin promoción ni atribución causal
+a una sola de las dos etapas nuevas. Los juicios son de IA del proyecto.
+
 | Modelo | Revisión | Completas | Parciales | Fallidas | Diálogos completos | Críticas | Técnicas |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | C7, 6.983.937 parámetros | Primaria | 0/40 | 1 | 39 | 0/10 | 6 | 0 |
@@ -26,6 +32,8 @@ La pérdida de entrenamiento y los archivos de pesos no aceptan modelos.
 | ACTION2048 BEST256, mismos pesos | Cruzada | 0/40 | 3 | 37 | 0/10 | 5 | 6 |
 | Español LATAM v3 + retención 1.024 | Primaria | 1/40 | 4 | 35 | 0/10 | 6 | 2 |
 | Retención1.024, mismos pesos | Cruzada | 1/40 | 1 | 38 | 0/10 | 6 | 2 |
+| Tatoeba + retención 1.024, `60d94233…` | Primaria | 0/40 | 0 | 40 | 0/10 | 9 | 5 |
+| Tatoeba + retención 1.024, mismos pesos | Cruzada | 0/40 | 0 | 40 | 0/10 | 10 | 5 |
 
 La aceptación exige 36/40 respuestas completas, 8/10 diálogos completos y cero
 fallos críticos o técnicos. Son dos revisiones de **IA del proyecto**, realizadas
@@ -59,6 +67,18 @@ grado posterior son `library_delegate_change`,`library_late_collection` y
 Los summaries conservan también todas las discrepancias de dimensiones.
 Cambian pesos y varias etapas/corpus; no hay atribución causal a una sola
 variable ni comparación de pérdidas entre objetivos/corpus distintos.
+
+El [paquete posterior Tatoeba](development-tatoeba-retention1024-v1/README.md)
+añade 52 copias exactas y sus hashes, con la misma rúbrica, contexto 2.048 y
+generación. Los 40 historiales conservan las respuestas reales, sin descartes
+ni excepciones; hay 35 finales EOS y cinco token_budget. El verificador original
+reproduce cada campo de ambos assessments; los campos adicionales de la primaria
+también permanecen intactos. La cruzada añade una crítica en
+`cinema_age_correction`; el resumen retiene seis diferencias de dimensiones y
+las interpretaciones que ese juez marca como inciertas, sin consenso forzado.
+Este paquete publica respuestas, juicios, freeze y tres JSON de metadatos:
+los pesos completos y el checkpoint nativo siguen privados en el corte del
+archivo. Es una continuación de dos fases, no una intervención de variable única.
 
 | Evidencia | C7 | SFT BEST 4.096 |
 | --- | --- | --- |

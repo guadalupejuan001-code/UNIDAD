@@ -1,5 +1,40 @@
 # Estado comprobado de la continuación
 
+## Actualización posterior a PR11
+
+El [recibo actual con fecha y hashes](progress-20261013-1304.md) registra el
+avance posterior a las observaciones históricas que siguen. Tatoeba cerró
+2.048 actualizaciones causales y 1.024 de retención; el primer lote automático
+de Wikipedia cerró 1.772 y 1.024. El supervisor permanece vivo y, en el corte
+registrado, espera el siguiente lote; no hay un entrenador activo en esa lectura.
+Los checkpoints de estas etapas posteriores se guardaron localmente. No se
+atribuyen a los cinco BEST completos publicados con PR11.
+
+[PR11](https://github.com/guadalupejuan001-code/UNIDAD/pull/11) se fusionó el
+13 de octubre a las 12:10:20 UTC en `a948c0fd358b250c7137978e3077ac70cdc51d83`.
+Los cuatro checks del head `dcff4f8…` pasaron en los runs `38394372464` y
+`38394351336`. La verificación posterior comparó 45 archivos de los objetos
+obtenidos de `origin/main`, incluidos los cinco pesos BEST completos, con sus
+manifiestos locales. Las menciones de PR11 abierto o entregas locales que siguen
+son observaciones anteriores a esa fusión.
+
+La [evaluación posterior a Tatoeba](comparison/development-tatoeba-retention1024-v1/README.md)
+conserva las 40 respuestas reales y dos juicios independientes de IA del proyecto:
+ambos dieron 0 completas, 0 parciales y 40 fallidas, 0/10 diálogos completos y
+cinco fallos técnicos. Registraron nueve y diez críticos; se mantienen todas sus
+discrepancias. El candidato anterior a Tatoeba había dado 1/40 completa, seis
+críticos y dos técnicos. Se conserva el retroceso, sin promover pesos por NLL.
+Las 40 generaciones del nuevo lote de Wikipedia aún no tienen revisión
+semántica en el recibo actual. La evaluación final reservada permanece cerrada.
+
+[Qué tenemos en el repositorio](../QUE_TENEMOS.md) distingue infraestructura
+funcional, modelos entrenados, fuentes, memoria, herramientas y capacidades
+pendientes. Para esta actualización documental se comprueban el diff y los
+enlaces; no se inicia entrenamiento ni se repiten baterías locales de software.
+El bucle existente conserva sus límites y presupuestos.
+
+## Observaciones anteriores conservadas
+
 Lectura del **13 de octubre de 2026, 11:28:38 UTC**. La conversación fiable y
 la planificación aprendida siguen pendientes. Esta entrega conserva resultados
 negativos, continúa con datos revisados e incorpora un controlador operativo
