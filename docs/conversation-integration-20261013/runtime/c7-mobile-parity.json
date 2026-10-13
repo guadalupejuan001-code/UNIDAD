@@ -1,0 +1,467 @@
+{
+  "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "sourceFiles": {
+    "weights.safetensors": {
+      "bytes": 27943524,
+      "sha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836"
+    },
+    "tokenizer.json": {
+      "bytes": 234592,
+      "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+    },
+    "config.json": {
+      "bytes": 168,
+      "sha256": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+    },
+    "manifest.json": {
+      "bytes": 11883,
+      "sha256": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242"
+    }
+  },
+  "export": {
+    "bytes": 33707280,
+    "sha256": "fc63ef83618cdb0afa60dec643483d45e309a942765c36b1b09e47815ff5b3c7"
+  },
+  "versions": {
+    "torch": "2.8.0+cpu",
+    "onnx": "1.17.0",
+    "onnxruntime": "1.20.0"
+  },
+  "logitCases": 7,
+  "maxAbsoluteLogitError": 2.2411346435546875e-05,
+  "greedyTurnsIdentical": 4,
+  "replies": [
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cómo te llamas?"
+        }
+      ],
+      "expected": {
+        "text": "No me has dicho tu alias, ¿Qué quieres empezar?",
+        "generatedTokenIds": [
+          1581,
+          421,
+          4220,
+          4535,
+          610,
+          1312,
+          273,
+          17,
+          1072,
+          2345,
+          3073,
+          3599,
+          36,
+          2
+        ],
+        "discardedPromptTokens": 0
+      }
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cómo te llamas?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho tu alias, ¿Qué quieres empezar?"
+        },
+        {
+          "role": "user",
+          "content": "Mi cita es el martes a las cuatro."
+        }
+      ],
+      "expected": {
+        "text": "Tienes las cuatro.",
+        "generatedTokenIds": [
+          57,
+          7146,
+          362,
+          1937,
+          19,
+          2
+        ],
+        "discardedPromptTokens": 0
+      }
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cómo te llamas?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho tu alias, ¿Qué quieres empezar?"
+        },
+        {
+          "role": "user",
+          "content": "Mi cita es el martes a las cuatro."
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes las cuatro."
+        },
+        {
+          "role": "user",
+          "content": "La cambiaron al jueves a las cinco."
+        }
+      ],
+      "expected": {
+        "text": "Tienes las cinco.",
+        "generatedTokenIds": [
+          57,
+          7146,
+          362,
+          2632,
+          19,
+          2
+        ],
+        "discardedPromptTokens": 0
+      }
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hola, ¿cómo te llamas?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho tu alias, ¿Qué quieres empezar?"
+        },
+        {
+          "role": "user",
+          "content": "Mi cita es el martes a las cuatro."
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes las cuatro."
+        },
+        {
+          "role": "user",
+          "content": "La cambiaron al jueves a las cinco."
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes las cinco."
+        },
+        {
+          "role": "user",
+          "content": "¿Qué día y a qué hora es mi cita?"
+        }
+      ],
+      "expected": {
+        "text": "A las cinco.",
+        "generatedTokenIds": [
+          38,
+          362,
+          2632,
+          19,
+          2
+        ],
+        "discardedPromptTokens": 0
+      }
+    }
+  ],
+  "tokenizerCases": [
+    {
+      "text": "Hola, ¿cómo estás?",
+      "ids": [
+        2780,
+        17,
+        1072,
+        1978,
+        416,
+        3259,
+        36
+      ]
+    },
+    {
+      "text": "  a\n\n b\t\r\n",
+      "ids": [
+        226,
+        275,
+        1016,
+        365,
+        203,
+        207,
+        204
+      ]
+    },
+    {
+      "text": "don't I'M I'd we'll",
+      "ids": [
+        6235,
+        12,
+        89,
+        408,
+        12,
+        50,
+        408,
+        12,
+        73,
+        957,
+        74,
+        12,
+        1543
+      ]
+    },
+    {
+      "text": "🐜👩🏽‍💻中文العربية",
+      "ids": [
+        993,
+        244,
+        256,
+        993,
+        245,
+        108,
+        993,
+        243,
+        127,
+        7843,
+        246,
+        125,
+        166,
+        122,
+        261,
+        168,
+        250,
+        235,
+        154,
+        106,
+        155,
+        232,
+        154,
+        123,
+        154,
+        115,
+        154,
+        107,
+        155,
+        238,
+        154,
+        108
+      ]
+    },
+    {
+      "text": "á é í ó ú ñ á",
+      "ids": [
+        306,
+        799,
+        226,
+        294,
+        3229,
+        909,
+        226,
+        367,
+        275,
+        142,
+        229
+      ]
+    },
+    {
+      "text": "   ",
+      "ids": [
+        982,
+        560,
+        231,
+        560,
+        107,
+        132,
+        233
+      ]
+    },
+    {
+      "text": "",
+      "ids": []
+    },
+    {
+      "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "ids": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ]
+    },
+    {
+      "text": "Eres Unidad. Habla en español de forma cercana y de confianza. Relaciona lo que la persona ya ha compartido; distingue tus inferencias de los hechos y no inventes recuerdos.",
+      "ids": [
+        42,
+        343,
+        665,
+        361,
+        19,
+        5660,
+        340,
+        286,
+        1722,
+        264,
+        793,
+        7842,
+        292,
+        264,
+        7192,
+        19,
+        619,
+        340,
+        364,
+        70,
+        427,
+        300,
+        283,
+        1516,
+        840,
+        508,
+        1746,
+        1128,
+        32,
+        6696,
+        280,
+        1227,
+        329,
+        963,
+        264,
+        321,
+        6056,
+        292,
+        409,
+        1126,
+        534,
+        5558,
+        451,
+        19
+      ]
+    }
+  ],
+  "qualityImprovementClaimed": false,
+  "androidDeviceTested": false
+}

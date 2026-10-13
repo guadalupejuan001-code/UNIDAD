@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "models": {
+    "c7": {
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "grades": {
+        "failed": 35,
+        "partial": 4,
+        "complete": 1
+      },
+      "fullDialogs": 0,
+      "criticals": 4,
+      "technicalStops": 0
+    },
+    "history-ideal512": {
+      "modelId": "unidad-conversation-42e2f6c98ccb35d9f6585d73ed8c7c536f2b355745dc2022013d6b7abf80353b",
+      "grades": {
+        "failed": 34,
+        "partial": 5,
+        "complete": 1
+      },
+      "fullDialogs": 0,
+      "criticals": 2,
+      "technicalStops": 0
+    },
+    "history-generated384": {
+      "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+      "grades": {
+        "failed": 35,
+        "partial": 4,
+        "complete": 1
+      },
+      "fullDialogs": 0,
+      "criticals": 0,
+      "technicalStops": 0
+    }
+  },
+  "pairs": {
+    "c7--history-ideal512": {
+      "gradeTransitions": [
+        {
+          "before": "failed",
+          "after": "failed",
+          "turns": 31
+        },
+        {
+          "before": "failed",
+          "after": "partial",
+          "turns": 3
+        },
+        {
+          "before": "partial",
+          "after": "failed",
+          "turns": 3
+        },
+        {
+          "before": "complete",
+          "after": "partial",
+          "turns": 1
+        },
+        {
+          "before": "failed",
+          "after": "complete",
+          "turns": 1
+        },
+        {
+          "before": "partial",
+          "after": "partial",
+          "turns": 1
+        }
+      ],
+      "newComplete": [
+        "dev-documentary-t3"
+      ],
+      "lostComplete": [
+        "dev-documentary-t1"
+      ],
+      "exactSameReplyTurns": [
+        "dev-window-t1"
+      ]
+    },
+    "c7--history-generated384": {
+      "gradeTransitions": [
+        {
+          "before": "failed",
+          "after": "failed",
+          "turns": 33
+        },
+        {
+          "before": "partial",
+          "after": "partial",
+          "turns": 2
+        },
+        {
+          "before": "complete",
+          "after": "partial",
+          "turns": 1
+        },
+        {
+          "before": "failed",
+          "after": "complete",
+          "turns": 1
+        },
+        {
+          "before": "partial",
+          "after": "failed",
+          "turns": 2
+        },
+        {
+          "before": "failed",
+          "after": "partial",
+          "turns": 1
+        }
+      ],
+      "newComplete": [
+        "dev-documentary-t3"
+      ],
+      "lostComplete": [
+        "dev-documentary-t1"
+      ],
+      "exactSameReplyTurns": [
+        "dev-credits-t3",
+        "dev-window-t1"
+      ]
+    },
+    "history-ideal512--history-generated384": {
+      "gradeTransitions": [
+        {
+          "before": "failed",
+          "after": "failed",
+          "turns": 33
+        },
+        {
+          "before": "partial",
+          "after": "failed",
+          "turns": 2
+        },
+        {
+          "before": "failed",
+          "after": "partial",
+          "turns": 1
+        },
+        {
+          "before": "partial",
+          "after": "partial",
+          "turns": 3
+        },
+        {
+          "before": "complete",
+          "after": "complete",
+          "turns": 1
+        }
+      ],
+      "newComplete": [],
+      "lostComplete": [],
+      "exactSameReplyTurns": [
+        "dev-receipt-t1",
+        "dev-documentary-t1",
+        "dev-documentary-t2",
+        "dev-documentary-t3",
+        "dev-sieve-t1",
+        "dev-sieve-t2",
+        "dev-route-t2",
+        "dev-window-t1",
+        "dev-bread-t1",
+        "dev-bread-t2"
+      ]
+    }
+  },
+  "extensionCriterion": {
+    "rootRequested": "New complete response and better fact retention than both baseline and ideal control without more critical failures.",
+    "met": false,
+    "reason": "Generated384 has no new complete turn versus ideal512; both only complete dev-documentary-t3. Compared with C7 each gains that question but loses complete dev-documentary-t1, with zero net complete-turn gain and zero complete dialogs. Generated384 has fewer partial replies than ideal512. Fewer critical claims are not improved retrieval because corresponding answers omit direction/motive or become inintelligible."
+  },
+  "identityObservations": {
+    "systemPrompt": "Eres Unidad plus Spanish/context/inference rules present in all effective contexts.",
+    "OpenAssistantClaimInTheseTwoArms": false,
+    "ownNameUnrelatedGreeting": "Hoy Unidad on soup factual query; proper name presence does not imply current-question compliance.",
+    "creatorPersonalIdentity": "No creator identity questions in frozen development suite; no claim of creator replication or personal identity validation.",
+    "modelArtifactIdentity": "Actual output modelId/manifest verified by assess; selected generated384 evaluated; endpoint512 not evaluated."
+  },
+  "trainingLimits": "Existing grounded-v2 templated families with separate within-family validation; not broad Spanish-language base. Development is exposed and cannot be final acceptance.",
+  "reservedOpened": false,
+  "projectAIReview": true,
+  "independentHumanReview": false
+}

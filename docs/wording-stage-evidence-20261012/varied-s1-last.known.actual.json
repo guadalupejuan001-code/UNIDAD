@@ -1,0 +1,2159 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Known development regression; not final acceptance and never training input",
+  "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+  "suiteSha256": "59f9097815b988e5046a72e729e53359ba6aaf05848c592d9a67953e3f27608b",
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 32,
+    "torchThreads": 1
+  },
+  "trainingPerformedByEvaluator": false,
+  "rubricsSentToModel": false,
+  "historyPolicy": "actual_generated_assistant_replies",
+  "episodes": [
+    {
+      "id": "ngdev-v1-01",
+      "turns": [
+        {
+          "id": "ngdev-v1-01-t1",
+          "user": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?"
+            }
+          ],
+          "actual": {
+            "text": "Te vas a Zelún.",
+            "generatedTokenIds": [
+              2629,
+              4247,
+              275,
+              1236,
+              395,
+              593,
+              19,
+              2
+            ],
+            "generatedTokens": 8,
+            "stopReason": "eos",
+            "promptTokens": 75,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-01-t2",
+          "user": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te vas a Zelún."
+            },
+            {
+              "role": "user",
+              "content": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?"
+            }
+          ],
+          "actual": {
+            "text": "Quieres faro.",
+            "generatedTokenIds": [
+              4518,
+              3552,
+              308,
+              5447,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 101,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-01-t3",
+          "user": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te vas a Zelún."
+            },
+            {
+              "role": "user",
+              "content": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Quieres faro."
+            },
+            {
+              "role": "user",
+              "content": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?"
+            }
+          ],
+          "actual": {
+            "text": "Ahora te llamaré Zela.",
+            "generatedTokenIds": [
+              38,
+              4827,
+              423,
+              8118,
+              319,
+              1236,
+              74,
+              340,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 133,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-01-t4",
+          "user": "¿Qué apodo elegí primero y cuál prefiero ahora?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Me llamo Zelomara. Prefiero el apodo Zelún. ¿Cómo me vas a llamar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te vas a Zelún."
+            },
+            {
+              "role": "user",
+              "content": "Hoy quiero dibujar un faro. ¿Qué quiero dibujar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Quieres faro."
+            },
+            {
+              "role": "user",
+              "content": "Lo pensé mejor: llámame Zelaia desde ahora. ¿Qué apodo vas a usar?"
+            },
+            {
+              "role": "assistant",
+              "content": "Ahora te llamaré Zela."
+            },
+            {
+              "role": "user",
+              "content": "¿Qué apodo elegí primero y cuál prefiero ahora?"
+            }
+          ],
+          "actual": {
+            "text": "Ahora te llamaré Zela.",
+            "generatedTokenIds": [
+              38,
+              4827,
+              423,
+              8118,
+              319,
+              1236,
+              74,
+              340,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 160,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-02",
+      "turns": [
+        {
+          "id": "ngdev-v1-02-t1",
+          "user": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?"
+            }
+          ],
+          "actual": {
+            "text": "No me has dicho su color.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              330,
+              1691,
+              19,
+              2
+            ],
+            "generatedTokens": 8,
+            "stopReason": "eos",
+            "promptTokens": 72,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-02-t2",
+          "user": "Ya lo encontré: es color coral. ¿De qué color es?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?"
+            },
+            {
+              "role": "assistant",
+              "content": "No me has dicho su color."
+            },
+            {
+              "role": "user",
+              "content": "Ya lo encontré: es color coral. ¿De qué color es?"
+            }
+          ],
+          "actual": {
+            "text": "Es color color color color color color color color color color color color color color color color color color color.",
+            "generatedTokenIds": [
+              819,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              1691,
+              19,
+              2
+            ],
+            "generatedTokens": 22,
+            "stopReason": "eos",
+            "promptTokens": 100,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-02-t3",
+          "user": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?"
+            },
+            {
+              "role": "assistant",
+              "content": "No me has dicho su color."
+            },
+            {
+              "role": "user",
+              "content": "Ya lo encontré: es color coral. ¿De qué color es?"
+            },
+            {
+              "role": "assistant",
+              "content": "Es color color color color color color color color color color color color color color color color color color color."
+            },
+            {
+              "role": "user",
+              "content": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?"
+            }
+          ],
+          "actual": {
+            "text": "Es colorén.",
+            "generatedTokenIds": [
+              819,
+              1691,
+              463,
+              19,
+              2
+            ],
+            "generatedTokens": 5,
+            "stopReason": "eos",
+            "promptTokens": 145,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-02-t4",
+          "user": "¿Sabemos ya su color y en qué tienda se compró?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco mi paraguas. Aún no he contado su color. ¿Puedes saber cuál es?"
+            },
+            {
+              "role": "assistant",
+              "content": "No me has dicho su color."
+            },
+            {
+              "role": "user",
+              "content": "Ya lo encontré: es color coral. ¿De qué color es?"
+            },
+            {
+              "role": "assistant",
+              "content": "Es color color color color color color color color color color color color color color color color color color color."
+            },
+            {
+              "role": "user",
+              "content": "Me lo regaló mi prima Nelavia. ¿Quién me dio el paraguas?"
+            },
+            {
+              "role": "assistant",
+              "content": "Es colorén."
+            },
+            {
+              "role": "user",
+              "content": "¿Sabemos ya su color y en qué tienda se compró?"
+            }
+          ],
+          "actual": {
+            "text": "Es color; no me has dichoal.",
+            "generatedTokenIds": [
+              819,
+              1691,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              285,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 169,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-03",
+      "turns": [
+        {
+          "id": "ngdev-v1-03-t1",
+          "user": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?"
+            }
+          ],
+          "actual": {
+            "text": "Estás en Valdehumo y mañana voy a Puerto Arce.",
+            "generatedTokenIds": [
+              1618,
+              377,
+              286,
+              1747,
+              262,
+              77,
+              3395,
+              292,
+              6222,
+              325,
+              945,
+              275,
+              6112,
+              689,
+              462,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 72,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-03-t2",
+          "user": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?"
+            },
+            {
+              "role": "assistant",
+              "content": "Estás en Valdehumo y mañana voy a Puerto Arce."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?"
+            }
+          ],
+          "actual": {
+            "text": "Irás a Villa Né a Villa Nébula, tu Villa Nébula, tu Villa Nébo no no no no no",
+            "generatedTokenIds": [
+              46,
+              87,
+              377,
+              275,
+              5419,
+              440,
+              319,
+              275,
+              5419,
+              440,
+              319,
+              71,
+              1538,
+              17,
+              610,
+              5419,
+              440,
+              319,
+              71,
+              1538,
+              17,
+              610,
+              5419,
+              440,
+              319,
+              71,
+              84,
+              409,
+              409,
+              409,
+              409,
+              409
+            ],
+            "generatedTokens": 32,
+            "stopReason": "token_budget",
+            "promptTokens": 121,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-03-t3",
+          "user": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?"
+            },
+            {
+              "role": "assistant",
+              "content": "Estás en Valdehumo y mañana voy a Puerto Arce."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?"
+            },
+            {
+              "role": "assistant",
+              "content": "Irás a Villa Né a Villa Nébula, tu Villa Nébula, tu Villa Nébo no no no no no"
+            },
+            {
+              "role": "user",
+              "content": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?"
+            }
+          ],
+          "actual": {
+            "text": "No, sigues en Valdehumo.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              383,
+              412,
+              272,
+              286,
+              1747,
+              262,
+              77,
+              3395,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 178,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-03-t4",
+          "user": "Resume mi punto de salida y mi destino actual.",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Estoy en Valdehumo y mañana voy a Puerto Arce. ¿Dónde estoy hoy?"
+            },
+            {
+              "role": "assistant",
+              "content": "Estás en Valdehumo y mañana voy a Puerto Arce."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el viaje: mañana iré a Villa Nébula, no a Puerto Arce. ¿Adónde voy?"
+            },
+            {
+              "role": "assistant",
+              "content": "Irás a Villa Né a Villa Nébula, tu Villa Nébula, tu Villa Nébo no no no no no"
+            },
+            {
+              "role": "user",
+              "content": "Todavía sigo en Valdehumo. ¿Ya estoy en Villa Nébula?"
+            },
+            {
+              "role": "assistant",
+              "content": "No, sigues en Valdehumo."
+            },
+            {
+              "role": "user",
+              "content": "Resume mi punto de salida y mi destino actual."
+            }
+          ],
+          "actual": {
+            "text": "Estás en Valdehumo.",
+            "generatedTokenIds": [
+              1618,
+              377,
+              286,
+              1747,
+              262,
+              77,
+              3395,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 204,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-04",
+      "turns": [
+        {
+          "id": "ngdev-v1-04-t1",
+          "user": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos.",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos."
+            }
+          ],
+          "actual": {
+            "text": "Te escucho. ¿Qué ocurrió?",
+            "generatedTokenIds": [
+              2629,
+              2794,
+              1146,
+              19,
+              1072,
+              2345,
+              3027,
+              1983,
+              36,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 70,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-04-t2",
+          "user": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso.",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos."
+            },
+            {
+              "role": "assistant",
+              "content": "Te escucho. ¿Qué ocurrió?"
+            },
+            {
+              "role": "user",
+              "content": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso."
+            }
+          ],
+          "actual": {
+            "text": "¿Quién te interrumpieran al hablar?",
+            "generatedTokenIds": [
+              1020,
+              4518,
+              463,
+              423,
+              579,
+              7697,
+              78,
+              5861,
+              351,
+              3421,
+              36,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 102,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-04-t3",
+          "user": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos."
+            },
+            {
+              "role": "assistant",
+              "content": "Te escucho. ¿Qué ocurrió?"
+            },
+            {
+              "role": "user",
+              "content": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso."
+            },
+            {
+              "role": "assistant",
+              "content": "¿Quién te interrumpieran al hablar?"
+            },
+            {
+              "role": "user",
+              "content": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?"
+            }
+          ],
+          "actual": {
+            "text": "Te interrumpieran al hablar.",
+            "generatedTokenIds": [
+              2629,
+              579,
+              7697,
+              78,
+              5861,
+              351,
+              3421,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 137,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-04-t4",
+          "user": "Sigo sin querer soluciones. ¿Qué situación estoy intentando contarte?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "El trabajo se me hizo pesado hoy. Sólo quiero contarlo; no me des consejos."
+            },
+            {
+              "role": "assistant",
+              "content": "Te escucho. ¿Qué ocurrió?"
+            },
+            {
+              "role": "user",
+              "content": "Lo difícil fue que me interrumpieran al hablar. Hazme una pregunta sobre eso."
+            },
+            {
+              "role": "assistant",
+              "content": "¿Quién te interrumpieran al hablar?"
+            },
+            {
+              "role": "user",
+              "content": "Fue mi compañero Taviro, no mi jefe. ¿Quién me interrumpió?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te interrumpieran al hablar."
+            },
+            {
+              "role": "user",
+              "content": "Sigo sin querer soluciones. ¿Qué situación estoy intentando contarte?"
+            }
+          ],
+          "actual": {
+            "text": "Tu compañero Taviro es eso.",
+            "generatedTokenIds": [
+              8092,
+              7418,
+              2667,
+              375,
+              307,
+              315,
+              2840,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 165,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-05",
+      "turns": [
+        {
+          "id": "ngdev-v1-05-t1",
+          "user": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?"
+            }
+          ],
+          "actual": {
+            "text": "Tu proyecto Ventana Coúne cuentosves.",
+            "generatedTokenIds": [
+              8092,
+              2286,
+              482,
+              309,
+              575,
+              1171,
+              593,
+              74,
+              387,
+              612,
+              1487,
+              19,
+              2
+            ],
+            "generatedTokens": 13,
+            "stopReason": "eos",
+            "promptTokens": 73,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-05-t2",
+          "user": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu proyecto Ventana Coúne cuentosves."
+            },
+            {
+              "role": "user",
+              "content": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?"
+            }
+          ],
+          "actual": {
+            "text": "Huscas el es las historias que me has dicho mi abuelo.",
+            "generatedTokenIds": [
+              45,
+              372,
+              931,
+              293,
+              315,
+              362,
+              6118,
+              300,
+              421,
+              4220,
+              4535,
+              557,
+              737,
+              3912,
+              19,
+              2
+            ],
+            "generatedTokens": 16,
+            "stopReason": "eos",
+            "promptTokens": 108,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-05-t3",
+          "user": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu proyecto Ventana Coúne cuentosves."
+            },
+            {
+              "role": "user",
+              "content": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?"
+            },
+            {
+              "role": "assistant",
+              "content": "Huscas el es las historias que me has dicho mi abuelo."
+            },
+            {
+              "role": "user",
+              "content": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?"
+            }
+          ],
+          "actual": {
+            "text": "Lo quieres.",
+            "generatedTokenIds": [
+              4028,
+              3073,
+              19,
+              2
+            ],
+            "generatedTokens": 4,
+            "stopReason": "eos",
+            "promptTokens": 156,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-05-t4",
+          "user": "¿Cómo se relaciona este proyecto con mi abuelo?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Mi proyecto Ventana Cobre reúne cuentos breves. ¿Cómo se llama y qué es?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu proyecto Ventana Coúne cuentosves."
+            },
+            {
+              "role": "user",
+              "content": "La idea nació de las historias que me contaba mi abuelo. ¿De dónde salió?"
+            },
+            {
+              "role": "assistant",
+              "content": "Huscas el es las historias que me has dicho mi abuelo."
+            },
+            {
+              "role": "user",
+              "content": "Ahora lo llamaré Cuaderno de Junco. Los cuentos no cambian. ¿Qué cambió y qué no?"
+            },
+            {
+              "role": "assistant",
+              "content": "Lo quieres."
+            },
+            {
+              "role": "user",
+              "content": "¿Cómo se relaciona este proyecto con mi abuelo?"
+            }
+          ],
+          "actual": {
+            "text": "Tu abuelo es Cuaderno de Junco.",
+            "generatedTokenIds": [
+              8092,
+              737,
+              3912,
+              315,
+              1439,
+              70,
+              472,
+              634,
+              264,
+              445,
+              284,
+              419,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 175,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-06",
+      "turns": [
+        {
+          "id": "ngdev-v1-06-t1",
+          "user": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?"
+            }
+          ],
+          "actual": {
+            "text": "Tu hermana es Darielvo es Dariel es mi vecino.",
+            "generatedTokenIds": [
+              8092,
+              7385,
+              315,
+              393,
+              390,
+              395,
+              555,
+              315,
+              393,
+              390,
+              395,
+              315,
+              557,
+              6442,
+              634,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-06-t2",
+          "user": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu hermana es Darielvo es Dariel es mi vecino."
+            },
+            {
+              "role": "user",
+              "content": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?"
+            }
+          ],
+          "actual": {
+            "text": "Quien?",
+            "generatedTokenIds": [
+              4518,
+              270,
+              36,
+              2
+            ],
+            "generatedTokens": 4,
+            "stopReason": "eos",
+            "promptTokens": 123,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-06-t3",
+          "user": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu hermana es Darielvo es Dariel es mi vecino."
+            },
+            {
+              "role": "user",
+              "content": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?"
+            },
+            {
+              "role": "assistant",
+              "content": "Quien?"
+            },
+            {
+              "role": "user",
+              "content": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?"
+            }
+          ],
+          "actual": {
+            "text": "Quienvaria es Sel.",
+            "generatedTokenIds": [
+              4518,
+              270,
+              91,
+              1036,
+              315,
+              336,
+              395,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 166,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-06-t4",
+          "user": "¿Qué parentesco tengo con Selvaria y qué plantas cuida Darielvo?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Selvaria es mi hermana; Darielvo es mi vecino. ¿Quién es cada uno?"
+            },
+            {
+              "role": "assistant",
+              "content": "Tu hermana es Darielvo es Dariel es mi vecino."
+            },
+            {
+              "role": "user",
+              "content": "Selvaria toca el violín y Darielvo cuida cactus. ¿Quién toca el violín?"
+            },
+            {
+              "role": "assistant",
+              "content": "Quien?"
+            },
+            {
+              "role": "user",
+              "content": "Corrijo: Selvaria cuida los cactus. Darielvo cuida helechos. ¿Quién cuida los cactus?"
+            },
+            {
+              "role": "assistant",
+              "content": "Quienvaria es Sel."
+            },
+            {
+              "role": "user",
+              "content": "¿Qué parentesco tengo con Selvaria y qué plantas cuida Darielvo?"
+            }
+          ],
+          "actual": {
+            "text": "Tu hermana es Selvo es Selvo; Darielvo cuida los cactus.",
+            "generatedTokenIds": [
+              8092,
+              7385,
+              315,
+              336,
+              395,
+              555,
+              315,
+              336,
+              395,
+              555,
+              32,
+              393,
+              390,
+              395,
+              555,
+              3390,
+              338,
+              321,
+              267,
+              384,
+              3821,
+              19,
+              2
+            ],
+            "generatedTokens": 23,
+            "stopReason": "eos",
+            "promptTokens": 199,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-07",
+      "turns": [
+        {
+          "id": "ngdev-v1-07-t1",
+          "user": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?"
+            }
+          ],
+          "actual": {
+            "text": "El jueves a las cinco.",
+            "generatedTokenIds": [
+              569,
+              3815,
+              1487,
+              275,
+              362,
+              2632,
+              19,
+              2
+            ],
+            "generatedTokens": 8,
+            "stopReason": "eos",
+            "promptTokens": 71,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-07-t2",
+          "user": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?"
+            },
+            {
+              "role": "assistant",
+              "content": "El jueves a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?"
+            }
+          ],
+          "actual": {
+            "text": "El sábado a las cinco.",
+            "generatedTokenIds": [
+              569,
+              276,
+              306,
+              7234,
+              275,
+              362,
+              2632,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 103,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-07-t3",
+          "user": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?"
+            },
+            {
+              "role": "assistant",
+              "content": "El jueves a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?"
+            },
+            {
+              "role": "assistant",
+              "content": "El sábado a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?"
+            }
+          ],
+          "actual": {
+            "text": "En la biblioteca del Olmo.",
+            "generatedTokenIds": [
+              512,
+              283,
+              5126,
+              331,
+              524,
+              81,
+              416,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 133,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-07-t4",
+          "user": "Recuérdame el día, la hora y el lugar actuales.",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Tengo una cita con Renivia el jueves a las cinco. ¿Cuándo es?"
+            },
+            {
+              "role": "assistant",
+              "content": "El jueves a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "La cambiamos al sábado; la hora sigue igual. ¿Qué día y a qué hora?"
+            },
+            {
+              "role": "assistant",
+              "content": "El sábado a las cinco."
+            },
+            {
+              "role": "user",
+              "content": "Quedamos en la biblioteca del Olmo. ¿Dónde nos veremos?"
+            },
+            {
+              "role": "assistant",
+              "content": "En la biblioteca del Olmo."
+            },
+            {
+              "role": "user",
+              "content": "Recuérdame el día, la hora y el lugar actuales."
+            }
+          ],
+          "actual": {
+            "text": "El sábado a las cinco, en la biblioteca del Olmo.",
+            "generatedTokenIds": [
+              569,
+              276,
+              306,
+              7234,
+              275,
+              362,
+              2632,
+              17,
+              286,
+              283,
+              5126,
+              331,
+              524,
+              81,
+              416,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 160,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-08",
+      "turns": [
+        {
+          "id": "ngdev-v1-08-t1",
+          "user": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?"
+            }
+          ],
+          "actual": {
+            "text": "Primero vas a las plantas y revisaré un borrador.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              4247,
+              275,
+              362,
+              4749,
+              292,
+              6212,
+              269,
+              319,
+              297,
+              2861,
+              6674,
+              19,
+              2
+            ],
+            "generatedTokens": 15,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-08-t2",
+          "user": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?"
+            },
+            {
+              "role": "assistant",
+              "content": "Primero vas a las plantas y revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?"
+            }
+          ],
+          "actual": {
+            "text": "Primero vas a revisaré un borrador.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              4247,
+              275,
+              6212,
+              269,
+              319,
+              297,
+              2861,
+              6674,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 117,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-08-t3",
+          "user": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?"
+            },
+            {
+              "role": "assistant",
+              "content": "Primero vas a las plantas y revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?"
+            },
+            {
+              "role": "assistant",
+              "content": "Primero vas a revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?"
+            }
+          ],
+          "actual": {
+            "text": "Después vas a revisaré un borrador.",
+            "generatedTokenIds": [
+              4779,
+              4247,
+              275,
+              6212,
+              269,
+              319,
+              297,
+              2861,
+              6674,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 152,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-08-t4",
+          "user": "¿Qué cambié respecto al comienzo?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Hoy regaré las plantas y revisaré un borrador. Primero van las plantas. ¿Qué va antes?"
+            },
+            {
+              "role": "assistant",
+              "content": "Primero vas a las plantas y revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "Cambio el orden: revisaré el borrador primero. ¿Cuál es mi prioridad ahora?"
+            },
+            {
+              "role": "assistant",
+              "content": "Primero vas a revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "Sólo recuerda el orden, no lo hagas. ¿Qué viene después del borrador?"
+            },
+            {
+              "role": "assistant",
+              "content": "Después vas a revisaré un borrador."
+            },
+            {
+              "role": "user",
+              "content": "¿Qué cambié respecto al comienzo?"
+            }
+          ],
+          "actual": {
+            "text": "Antes ibas regarías.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              388,
+              2211,
+              333,
+              567,
+              677,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 174,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-09",
+      "turns": [
+        {
+          "id": "ngdev-v1-09-t1",
+          "user": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?"
+            }
+          ],
+          "actual": {
+            "text": "Buscas el títuloBuscas el títuloBuscas el títuloBuscas un libro titulado Laderas de Sal.",
+            "generatedTokenIds": [
+              39,
+              372,
+              931,
+              293,
+              2539,
+              39,
+              372,
+              931,
+              293,
+              2539,
+              39,
+              372,
+              931,
+              293,
+              2539,
+              39,
+              372,
+              931,
+              297,
+              2191,
+              3594,
+              1686,
+              488,
+              6576,
+              264,
+              1837,
+              19,
+              2
+            ],
+            "generatedTokens": 28,
+            "stopReason": "eos",
+            "promptTokens": 68,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-09-t2",
+          "user": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?"
+            },
+            {
+              "role": "assistant",
+              "content": "Buscas el títuloBuscas el títuloBuscas el títuloBuscas un libro titulado Laderas de Sal."
+            },
+            {
+              "role": "user",
+              "content": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?"
+            }
+          ],
+          "actual": {
+            "text": "No me has dicho quién lo lo lo lo lo lo lo lo lo lo escribió Sal.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              6055,
+              427,
+              427,
+              427,
+              427,
+              427,
+              427,
+              427,
+              427,
+              427,
+              427,
+              5094,
+              1837,
+              19,
+              2
+            ],
+            "generatedTokens": 19,
+            "stopReason": "eos",
+            "promptTokens": 120,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-09-t3",
+          "user": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?"
+            },
+            {
+              "role": "assistant",
+              "content": "Buscas el títuloBuscas el títuloBuscas el títuloBuscas un libro titulado Laderas de Sal."
+            },
+            {
+              "role": "user",
+              "content": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?"
+            },
+            {
+              "role": "assistant",
+              "content": "No me has dicho quién lo lo lo lo lo lo lo lo lo lo escribió Sal."
+            },
+            {
+              "role": "user",
+              "content": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?"
+            }
+          ],
+          "actual": {
+            "text": "Lo quieres lectura sólo te llamaré lectura del domingo.",
+            "generatedTokenIds": [
+              4028,
+              3073,
+              7598,
+              3613,
+              423,
+              8118,
+              319,
+              7598,
+              331,
+              2177,
+              396,
+              19,
+              2
+            ],
+            "generatedTokens": 13,
+            "stopReason": "eos",
+            "promptTokens": 160,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-09-t4",
+          "user": "¿Qué sabemos del libro y qué dato nos sigue faltando?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Busco un libro titulado Laderas de Sal. ¿Qué título busco?"
+            },
+            {
+              "role": "assistant",
+              "content": "Buscas el títuloBuscas el títuloBuscas el títuloBuscas un libro titulado Laderas de Sal."
+            },
+            {
+              "role": "user",
+              "content": "No sé quién lo escribió. ¿Puedes decirme su autor sólo con lo que te he contado?"
+            },
+            {
+              "role": "assistant",
+              "content": "No me has dicho quién lo lo lo lo lo lo lo lo lo lo escribió Sal."
+            },
+            {
+              "role": "user",
+              "content": "Lo necesito para mi club de lectura del domingo. ¿Para qué lo quiero?"
+            },
+            {
+              "role": "assistant",
+              "content": "Lo quieres lectura sólo te llamaré lectura del domingo."
+            },
+            {
+              "role": "user",
+              "content": "¿Qué sabemos del libro y qué dato nos sigue faltando?"
+            }
+          ],
+          "actual": {
+            "text": "Buscas su autor de lectura del domingo; ahora, nos de lectura del domingo.",
+            "generatedTokenIds": [
+              39,
+              372,
+              931,
+              330,
+              2672,
+              264,
+              7598,
+              331,
+              2177,
+              396,
+              32,
+              3208,
+              17,
+              2277,
+              264,
+              7598,
+              331,
+              2177,
+              396,
+              19,
+              2
+            ],
+            "generatedTokens": 21,
+            "stopReason": "eos",
+            "promptTokens": 191,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    },
+    {
+      "id": "ngdev-v1-10",
+      "turns": [
+        {
+          "id": "ngdev-v1-10-t1",
+          "user": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?"
+            }
+          ],
+          "actual": {
+            "text": "Te ayuda a mi perro.",
+            "generatedTokenIds": [
+              2629,
+              1917,
+              275,
+              557,
+              7072,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 77,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-10-t2",
+          "user": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te ayuda a mi perro."
+            },
+            {
+              "role": "user",
+              "content": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?"
+            }
+          ],
+          "actual": {
+            "text": "Antes vas a mi perro.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              4247,
+              275,
+              557,
+              7072,
+              19,
+              2
+            ],
+            "generatedTokens": 8,
+            "stopReason": "eos",
+            "promptTokens": 105,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-10-t3",
+          "user": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te ayuda a mi perro."
+            },
+            {
+              "role": "user",
+              "content": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?"
+            },
+            {
+              "role": "assistant",
+              "content": "Antes vas a mi perro."
+            },
+            {
+              "role": "user",
+              "content": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?"
+            }
+          ],
+          "actual": {
+            "text": "Ahora será, sigues.",
+            "generatedTokenIds": [
+              38,
+              4827,
+              3165,
+              17,
+              383,
+              412,
+              272,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 140,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        },
+        {
+          "id": "ngdev-v1-10-t4",
+          "user": "Relaciona el paseo con lo que hago después, sin inventar nada más.",
+          "inputMessages": [
+            {
+              "role": "user",
+              "content": "Pasear a mi perro Trazuli al amanecer me despeja. ¿Qué me ayuda a despejarme?"
+            },
+            {
+              "role": "assistant",
+              "content": "Te ayuda a mi perro."
+            },
+            {
+              "role": "user",
+              "content": "Justo después de pasear, escribo. ¿Qué hago antes de escribir?"
+            },
+            {
+              "role": "assistant",
+              "content": "Antes vas a mi perro."
+            },
+            {
+              "role": "user",
+              "content": "Desde hoy paseo al anochecer, no al amanecer. ¿Cuándo lo paseo ahora?"
+            },
+            {
+              "role": "assistant",
+              "content": "Ahora será, sigues."
+            },
+            {
+              "role": "user",
+              "content": "Relaciona el paseo con lo que hago después, sin inventar nada más."
+            }
+          ],
+          "actual": {
+            "text": "Antes preferías.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              7785,
+              677,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 172,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-1edc6309c587a6ba236ad10d09740f1f0c72b83392e2e30fb11ca7d459464146",
+            "workerCapabilityValidated": false
+          },
+          "matchesArchivedBaseline": false
+        }
+      ]
+    }
+  ],
+  "elapsedSeconds": 13.724839344999054,
+  "baselineExactMatches": 0
+}

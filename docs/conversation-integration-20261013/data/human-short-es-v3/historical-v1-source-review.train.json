@@ -1,0 +1,21 @@
+{
+  "evidenceType": "TRAIN-only public source sanity review",
+  "reviewer": "Project assistant; AI review, not independent human evaluation",
+  "corpusSha256": "8fee3c1f78196b05ae8df2cca5e6f8ba7ca412117d32dfaae73110b70fb3afcd",
+  "sampleReceiptSha256": "f9d4a1b4b15a9b15f94a961f37cdbbf6608d7c2ee3d7a303deea5a5fe0fddf2c",
+  "modelEvaluationPerformed": false,
+  "ownerChatIncluded": false,
+  "testSamplesInspected": false,
+  "corpusChangedByReview": false,
+  "reviewScope": "Eight TRAIN snippets selected deterministically before any model training; not full factual certification",
+  "findings": [
+    "Spanish prose covers varied ordinary knowledge and requests, including some follow-up turns.",
+    "Most retained source conversations are short question/answer explanations, not extended everyday chats.",
+    "Upstream reviews retain apparent dated claims and errors: the Spain 2023 population answer is unsupported and the agrochemical/cancer answer overstates a broad relation.",
+    "Some vocabulary and morphology answers mix imprecise categories or do not obey the requested wording.",
+    "Original spelling and punctuation variations are kept, including informal questions.",
+    "The sample supports a linguistic diversity experiment but cannot establish correct conversation behavior or reliable factual knowledge."
+  ],
+  "ingestionCodeReview": "Another assistant of the same project inspected provenance, folds, lengths and leakage guards; no blockers after fixes.",
+  "ingestionRegressionTests": "Five fixture-only regressions passed; no public TEST scores or model outputs used."
+}

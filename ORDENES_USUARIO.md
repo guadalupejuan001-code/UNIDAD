@@ -5,7 +5,49 @@ que trabaje por su creador y se adapte a sus cambios de criterio**. Las redes
 pequeñas actuales son componentes experimentales de ese proyecto; no acreditan
 que el trabajador digital solicitado ya esté terminado.
 
-## Encargo actual: coherencia del repositorio y de GitHub
+## Encargo actual del 13 de octubre: integrar y entrenar
+
+El creador pidió integrar el código, reconciliar las ramas, entrenar y modificar
+Unidad conjuntamente para lograr conversación, actualizar el README al terminar
+y no dejar entregas en borrador. Esta petición autoriza un nuevo entrenamiento
+con los recursos disponibles y la integración de cambios comprobados en `main`.
+No reabre las 24 horas ni las dos horas históricas ya cerradas.
+
+Se conservan los pesos propios, los resultados reales y la aceptación de
+36/40 respuestas completas, 8/10 diálogos y cero fallos críticos o técnicos.
+Las ramas de evidencia y candidatos descartados conservan su historia; integrar
+su código no convierte sus modelos en candidatos aceptados. El README debe
+declarar el resultado observado, incluso si el nuevo entrenamiento no supera
+la aceptación. No se sustituyen los pesos por respuestas de otra IA.
+
+> ya integraste todo al codigo? ahora entrena  resuelve y modifica en conjunto todas las ramas para lograr que la ia pueda conversar y estar lista para seguir integrando mas cosas y al terminar d
+> todo actualiza el read me y no guardes nada en borrador
+
+### Ampliación expresa durante la ejecución
+
+El creador autoriza modificar arquitectura, tokenizador, corpus, pérdidas,
+entrenamiento, muestreo, generación, evaluación, dependencias, CI, NERVA y GNOSIS
+cuando la evidencia justifique su contribución a la conversación. Pide conservar
+cambios ajenos, historial, procedencia propia y datos personales privados;
+entregar una mejora verificada o identificar un bloqueo concreto. Se mantienen
+las condiciones de aceptación y la instrucción de no dejar entregas en borrador.
+
+Se exige inspeccionar todas las ramas y procesos; comprobar el fallo histórico
+`stale` frente a `planned`; distinguir memorización de generalización mediante
+controles pequeños; consultar publicaciones originales de InstructGPT/ChatGPT,
+Constitutional AI, Llama 3, Gemini 1.5, Qwen3, DeepSeek-R1, DPO y escalado de
+datos/cómputo; usar técnicas sólo con hipótesis, datos y recursos adecuados.
+Cada corrida debe fijar límites finitos y detener una intervención fallida.
+Los modelos grandes configurables no se presentan como entrenados. Se preservan
+las particiones anteriores, se fijan candidatos antes del test final y se
+conservan las respuestas reales y discrepancias entre revisores de IA.
+
+Esta autorización no crea credenciales ni elimina límites del entorno. Sólo se
+consulta por gastos, accesos adicionales, exposición privada u operaciones
+irreversibles fuera del encargo. No se contratan servicios ni se atribuyen GPU,
+presupuestos históricos o procesos continuos inexistentes.
+
+## Encargo anterior: coherencia del repositorio y de GitHub
 
 Después de pedir la subida de pesos y checkpoints, el creador solicitó comprobar
 que GitHub sea coherente con los archivos locales, corregir las inconsistencias

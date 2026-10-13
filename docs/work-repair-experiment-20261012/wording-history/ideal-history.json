@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Diagnostic past-assistant history replacement only. Not targets for training, not acceptance answers, no current or future answers in input.",
+  "episodes": [
+    {
+      "episodeId": "pr1diag-v1-h01",
+      "previousAssistantReplies": [
+        "El paraguas es de Elisa y la linterna es de Raúl.",
+        "La linterna sigue siendo de Raúl.",
+        "El paraguas es de Noelia.",
+        "El paraguas es de Noelia y la linterna es de Raúl."
+      ],
+      "use": "Feed only past replies before each diagnostic ideal-history turn; never current/future replies."
+    },
+    {
+      "episodeId": "pr1diag-v1-h02",
+      "previousAssistantReplies": [
+        "Sé que la caja es amarilla; falta saber quién la fabricó.",
+        "La hizo Mateo.",
+        "Mateo sigue siendo su fabricante.",
+        "Es morada y la fabricó Mateo."
+      ],
+      "use": "Feed only past replies before each diagnostic ideal-history turn; never current/future replies."
+    },
+    {
+      "episodeId": "pr1diag-v1-h03",
+      "previousAssistantReplies": [
+        "El comedor está cerrado por limpieza.",
+        "El comedor está cerrado por limpieza y abrirá por la tarde.",
+        "El comedor está cerrado por limpieza y abrirá por la noche.",
+        "Por limpieza."
+      ],
+      "use": "Feed only past replies before each diagnostic ideal-history turn; never current/future replies."
+    },
+    {
+      "episodeId": "pr1diag-v1-h04",
+      "previousAssistantReplies": [
+        "¿A qué lugar quieres que te acompañen?",
+        "¿Me acompañas a la farmacia?",
+        "¿Me acompañas a la panadería?",
+        "¿Me acompañas a la panadería?"
+      ],
+      "use": "Feed only past replies before each diagnostic ideal-history turn; never current/future replies."
+    }
+  ]
+}

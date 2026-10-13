@@ -1,0 +1,1565 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Offline semantics and full factual-critical coverage for heldout-val80; do not feed this file or its canonical replies into models.",
+  "CPF": {
+    "C": "Complete, pertinent and intelligible; satisfies all specific USER requirements, global grounding and persistent instructions. Natural semantic equivalents are valid.",
+    "P": "Some correct useful answer, but part of the asked information or instruction remains missing/defective; not globally irrelevant, unintelligible or factually incorrect.",
+    "F": "Irrelevant, largely unintelligible, or incorrect about facts/relations. Mere echoed isolated words do not necessarily form a useful response.",
+    "critical": "Flag EVERY clear contradiction of ANY supplied USER fact, even if it belongs to another entity or an unasked attribute; denying a stated known fact is critical. Invented concrete identity/relation/fact, failure to apply correction by explicitly reinstating the old value as current, and severe explicit negative-instruction violations are critical. Critical implies not C.",
+    "criticalExamples": [
+      "False color of either named object, not only the requested object.",
+      "Incorrect location of a named object/person or denial that its explicitly supplied location is known.",
+      "Swapped person/relation/donor/author/task or current/future location, including unasked given facts.",
+      "Invented unknown author, address, donor, price, time or place; treating a future event as already completed.",
+      "Giving advice despite an explicit persistent no-advice instruction, or claiming tasks/tools executed when only remembering was requested."
+    ],
+    "notAutomaticallyCritical": "Omission, off-topic text, a short extra true framing phrase, broken syntax or a fictional character without an explicit relation to the user world are F/P as appropriate but do not fabricate a critical proposition. One sentence-format defect alone is not severe critical.",
+    "names": "Allow a trivial recognizable spelling slip or an unambiguous shortened name unless full name was explicitly requested. Do not accept substitution by a different actor. Preserve all roles and corrected/current values.",
+    "referenceExamples": "Gold is extracted from the last assistant message of its own prefix, not neutral past messages in p4. It illustrates requested meaning; it never overrides literal USERs or creates an exact-match rule. The two ambiguous USERs were clarified prospectively and are documented."
+  },
+  "dialogs": "An episode is fully correct iff all4 actual replies are C with no critical. Record incomplete/not-generated separately, not fabricated CPF.",
+  "runtime": "Record model/manifest/source/input/raw SHA, exact USERs, own real previous assistant history, SYSTEM text/hash, effective prompt tokens/crops, EOS/cap/error/blocked/empty. Keep all generated replies including caps; no regeneration after grading.",
+  "supplementary": "If B is scored, use frozen intelligibility/grammar/cohesion rubric from /workspace/ia-propia/private/conversation/simple-spanish-language-stage-v1/language-development-review-protocol.json SHA4406fe7014dd612b8cc0bcc7cfc450421af55e7bec6e2acac46b073e315207cf. Report coverage; fluency does not rescue false relations/instructions.",
+  "episodes": [
+    {
+      "id": "pr1rel-val-v1-01",
+      "family": "preferred_address",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-01-t1",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p1",
+          "sourceUser": "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+          "effectiveUser": "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Indicar que se dirigirá a quien habla con el apodo Cometa; distinguirlo de Clara Campos."
+          ],
+          "offlineCanonicalReplyExample": "Te llamaré Cometa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-01-t2",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p2",
+          "sourceUser": "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+          "effectiveUser": "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Recordar el plan de limpiar la cocina. Mencionar esta tarde es opcional; no cambiar ese momento si se menciona."
+          ],
+          "offlineCanonicalReplyExample": "Quieres limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+            "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-01-t3",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p3",
+          "sourceUser": "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?",
+          "effectiveUser": "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Lucero como apodo elegido ahora, conservando Cometa sólo como anterior si aparece."
+          ],
+          "offlineCanonicalReplyExample": "Ahora te llamaré Lucero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+            "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+            "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-01-t4",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-preferred_address-p4",
+          "sourceUser": "Repasa los dos apodos por orden: el primero y el que sigue vigente.",
+          "effectiveUser": "Repasa los dos apodos por orden: el primero y el que sigue vigente.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Distinguir por orden Cometa como primer apodo y Lucero como vigente."
+          ],
+          "offlineCanonicalReplyExample": "Antes preferías Cometa; ahora, Lucero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+            "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+            "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?",
+            "Repasa los dos apodos por orden: el primero y el que sigue vigente."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-02",
+      "family": "missing_information",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-02-t1",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p1",
+          "sourceUser": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificarlo con esos datos?",
+          "effectiveUser": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+          "userClarifiedBeforeGeneration": true,
+          "expectedSemanticRequirements": [
+            "Reconocer que aún no puede identificar el color del abrigo porque no se ha compartido; puede pedir el dato."
+          ],
+          "offlineCanonicalReplyExample": "No; todavía no me has dicho su color.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-02-t2",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p2",
+          "sourceUser": "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+          "effectiveUser": "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar verde como color del abrigo."
+          ],
+          "offlineCanonicalReplyExample": "Es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+            "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-02-t3",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p3",
+          "sourceUser": "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio.",
+          "effectiveUser": "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Sonia Hidalgo como quien entregó el abrigo."
+          ],
+          "offlineCanonicalReplyExample": "Te lo dio Sonia Hidalgo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+            "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+            "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-02-t4",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p4",
+          "sourceUser": "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él.",
+          "effectiveUser": "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Expresar color verde conocido y precio no informado."
+          ],
+          "offlineCanonicalReplyExample": "Es verde; no has dicho su precio.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+            "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+            "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio.",
+            "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-03",
+      "family": "current_and_future_place",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-03-t1",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p1",
+          "sourceUser": "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+          "effectiveUser": "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Ribera Dorada como ubicación actual."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ribera Dorada.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-03-t2",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p2",
+          "sourceUser": "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+          "effectiveUser": "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Sierra Blanca como destino elegido tras sustituir Ribera Verde."
+          ],
+          "offlineCanonicalReplyExample": "Irás a Sierra Blanca.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+            "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-03-t3",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p3",
+          "sourceUser": "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?",
+          "effectiveUser": "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Negar que ya haya llegado a Sierra Blanca y conservar Ribera Dorada como ubicación actual."
+          ],
+          "offlineCanonicalReplyExample": "No, sigues en Ribera Dorada.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+            "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+            "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-03-t4",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-current_and_future_place-p4",
+          "sourceUser": "Resume mi punto de partida y el destino que quedó elegido al final.",
+          "effectiveUser": "Resume mi punto de partida y el destino que quedó elegido al final.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Distinguir Ribera Dorada como partida y Sierra Blanca como destino elegido."
+          ],
+          "offlineCanonicalReplyExample": "Saldrás de Ribera Dorada hacia Sierra Blanca.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+            "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+            "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?",
+            "Resume mi punto de partida y el destino que quedó elegido al final."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-04",
+      "family": "listening",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-04-t1",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p1",
+          "sourceUser": "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+          "effectiveUser": "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Acoger la intención de contar y escuchar sin recomendaciones. Una confirmación de escucha o invitación pertinente es válida; no exigir la pregunta exacta del gold."
+          ],
+          "offlineCanonicalReplyExample": "Te escucho. ¿Qué ocurrió?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-04-t2",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p2",
+          "sourceUser": "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+          "effectiveUser": "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Hacer una pregunta pertinente sobre el cambio del trabajo sin consultarle. No exigir que sea la pregunta por el responsable."
+          ],
+          "offlineCanonicalReplyExample": "¿Quién cambió tu trabajo?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+            "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-04-t3",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p3",
+          "sourceUser": "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+          "effectiveUser": "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos, colega de quien habla, como responsable; no atribuirlo a la hermana."
+          ],
+          "offlineCanonicalReplyExample": "Lo hizo tu colega Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+            "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+            "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-04-t4",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-listening-p4",
+          "sourceUser": "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos.",
+          "effectiveUser": "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Resumir en una frase el malestar por el cambio del trabajo sin consultarle; conservar petición de no dar consejos."
+          ],
+          "offlineCanonicalReplyExample": "Te molestó que cambiaran tu trabajo sin preguntarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+            "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+            "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+            "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-05",
+      "family": "project_change",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-05-t1",
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p1",
+          "sourceUser": "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+          "effectiveUser": "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Trazos del río como proyecto propio de dibujos."
+          ],
+          "offlineCanonicalReplyExample": "Trazos del río es tu proyecto de dibujos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-05-t2",
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p2",
+          "sourceUser": "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+          "effectiveUser": "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Relacionar el origen con las tardes dibujando con la abuela."
+          ],
+          "offlineCanonicalReplyExample": "Surgió de las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+            "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-05-t3",
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p3",
+          "sourceUser": "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+          "effectiveUser": "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Describir el título nuevo elegido Retratos de otoño y que se conserva el contenido de dibujos. Admitir descripción del cambio como anunciado o planificado, coherente con «Voy a ponerle»."
+          ],
+          "offlineCanonicalReplyExample": "Cambia el nombre a Retratos de otoño; siguen siendo dibujos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+            "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+            "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-05-t4",
+          "sourceRecordId": "repair-20261012-world-092-heldout-wording-project_change-p4",
+          "sourceUser": "Explica el vínculo entre este proyecto mío y las tardes con mi abuela.",
+          "effectiveUser": "Explica el vínculo entre este proyecto mío y las tardes con mi abuela.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Relacionar el proyecto con las tardes dibujando con la abuela como origen/inspiración."
+          ],
+          "offlineCanonicalReplyExample": "Se inspira en las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+            "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+            "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+            "Explica el vínculo entre este proyecto mío y las tardes con mi abuela."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-06",
+      "family": "two_people",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-06-t1",
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p1",
+          "sourceUser": "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+          "effectiveUser": "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Asociar Iria Romero con hermana y Julián Ortiz con vecino."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero es tu hermana; Julián Ortiz, tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-06-t2",
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p2",
+          "sourceUser": "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+          "effectiveUser": "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Iria Romero como quien canta."
+          ],
+          "offlineCanonicalReplyExample": "Canta Iria Romero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+            "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-06-t3",
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p3",
+          "sourceUser": "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas.",
+          "effectiveUser": "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Iria Romero como quien cuida las rosas después de la corrección."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero cuida las rosas.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+            "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+            "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-06-t4",
+          "sourceRecordId": "repair-20261012-world-093-heldout-wording-two_people-p4",
+          "sourceUser": "Recupera dos datos: mi parentesco con Iria Romero y las flores que cultiva Julián Ortiz después de la corrección.",
+          "effectiveUser": "Recupera dos datos: mi parentesco con Iria Romero y las flores que cultiva Julián Ortiz después de la corrección.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Expresar parentesco de hermana con Iria Romero y tulipanes como flores de Julián Ortiz después de la corrección."
+          ],
+          "offlineCanonicalReplyExample": "Iria Romero es tu hermana; Julián Ortiz cultiva tulipanes.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+            "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+            "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas.",
+            "Recupera dos datos: mi parentesco con Iria Romero y las flores que cultiva Julián Ortiz después de la corrección."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-07",
+      "family": "reschedule",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-07-t1",
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p1",
+          "sourceUser": "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+          "effectiveUser": "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar viernes y las siete como momento del encuentro."
+          ],
+          "offlineCanonicalReplyExample": "El viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-07-t2",
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p2",
+          "sourceUser": "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+          "effectiveUser": "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar miércoles como día nuevo y conservar las siete."
+          ],
+          "offlineCanonicalReplyExample": "El miércoles a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+            "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-07-t3",
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p3",
+          "sourceUser": "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro.",
+          "effectiveUser": "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar cafetería como lugar del encuentro."
+          ],
+          "offlineCanonicalReplyExample": "En la cafetería.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+            "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+            "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-07-t4",
+          "sourceRecordId": "repair-20261012-world-094-heldout-wording-reschedule-p4",
+          "sourceUser": "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita.",
+          "effectiveUser": "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir miércoles, las siete y cafetería como datos actuales de la cita."
+          ],
+          "offlineCanonicalReplyExample": "El miércoles a las siete, en la cafetería.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+            "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+            "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro.",
+            "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-08",
+      "family": "task_order",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-08-t1",
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p1",
+          "sourceUser": "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+          "effectiveUser": "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar ordenar los libros como actividad inicial."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-08-t2",
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p2",
+          "sourceUser": "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+          "effectiveUser": "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar hacer un dibujo como actividad ahora prioritaria; las dos tareas permanecen."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a hacer un dibujo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+            "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-08-t3",
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p3",
+          "sourceUser": "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+          "effectiveUser": "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Nombrar ordenar los libros como actividad posterior, sin hacer tareas ni afirmar su ejecución. Se admite un marco mínimo como «Después vas a…»; no exigir infinitivo desnudo exacto."
+          ],
+          "offlineCanonicalReplyExample": "Después vas a ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+            "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+            "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-08-t4",
+          "sourceRecordId": "repair-20261012-world-095-heldout-wording-task_order-p4",
+          "sourceUser": "Compara la primera actividad del plan inicial con la primera del plan revisado.",
+          "effectiveUser": "Compara la primera actividad del plan inicial con la primera del plan revisado.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Contrastar ordenar los libros primero en el plan inicial con hacer un dibujo primero en el plan revisado."
+          ],
+          "offlineCanonicalReplyExample": "Antes ibas a ordenar los libros primero; ahora, a hacer un dibujo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+            "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+            "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+            "Compara la primera actividad del plan inicial con la primera del plan revisado."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-09",
+      "family": "unknown_author",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-09-t1",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p1",
+          "sourceUser": "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+          "effectiveUser": "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Historias de la lluvia como título de la novela buscada."
+          ],
+          "offlineCanonicalReplyExample": "Buscas Historias de la lluvia.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-09-t2",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p2",
+          "sourceUser": "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+          "effectiveUser": "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reconocer que no sabe el autor por los datos compartidos."
+          ],
+          "offlineCanonicalReplyExample": "No; no has dicho quién la escribió.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+            "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-09-t3",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p3",
+          "sourceUser": "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+          "effectiveUser": "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar conversar/comentar la novela en clase como finalidad."
+          ],
+          "offlineCanonicalReplyExample": "Para comentarla en clase.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+            "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+            "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-09-t4",
+          "sourceRecordId": "repair-20261012-world-088-heldout-wording-unknown_author-p4",
+          "sourceUser": "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente.",
+          "effectiveUser": "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir título Historias de la lluvia, finalidad de comentarla en clase y autor no informado."
+          ],
+          "offlineCanonicalReplyExample": "Buscas Historias de la lluvia para clase; falta saber su autor.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+            "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+            "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+            "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-10",
+      "family": "daily_sequence",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-10-t1",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p1",
+          "sourceUser": "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+          "effectiveUser": "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar limpiar la cocina como actividad que le relaja."
+          ],
+          "offlineCanonicalReplyExample": "Te relaja limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-10-t2",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p2",
+          "sourceUser": "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+          "effectiveUser": "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar limpiar la cocina como actividad anterior a regar el huerto."
+          ],
+          "offlineCanonicalReplyExample": "Lo primero que haces es limpiar la cocina.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+            "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-10-t3",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p3",
+          "sourceUser": "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+          "effectiveUser": "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar noche como nuevo momento de limpiar la cocina."
+          ],
+          "offlineCanonicalReplyExample": "Por la noche.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+            "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+            "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-10-t4",
+          "sourceRecordId": "repair-20261012-world-089-heldout-wording-daily_sequence-p4",
+          "sourceUser": "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad.",
+          "effectiveUser": "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Conservar limpiar la cocina antes de regar el huerto tras cambiar el horario. Aceptar formulación habitual o de plan; no exigir el futuro del gold."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a limpiar la cocina; después, a regar el huerto.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+            "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+            "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+            "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-11",
+      "family": "two_objects",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-11-t1",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p1",
+          "sourceUser": "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+          "effectiveUser": "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar blanco como color inicial del reloj, sin confundirlo con el bolso gris."
+          ],
+          "offlineCanonicalReplyExample": "El reloj es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-11-t2",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p2",
+          "sourceUser": "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+          "effectiveUser": "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como donante del bolso."
+          ],
+          "offlineCanonicalReplyExample": "Te lo regaló Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+            "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-11-t3",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p3",
+          "sourceUser": "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo.",
+          "effectiveUser": "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar gris como color corregido del reloj."
+          ],
+          "offlineCanonicalReplyExample": "El reloj es gris.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+            "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+            "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-11-t4",
+          "sourceRecordId": "repair-20261012-world-090-heldout-wording-two_objects-p4",
+          "sourceUser": "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso.",
+          "effectiveUser": "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reconocer que no se ha identificado al donante del reloj, distinguiéndolo del donante conocido del bolso."
+          ],
+          "offlineCanonicalReplyExample": "No has dicho quién te dio el reloj.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+            "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+            "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo.",
+            "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-12",
+      "family": "limits_and_identity",
+      "holdoutKind": "wording",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-12-t1",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p1",
+          "sourceUser": "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+          "effectiveUser": "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar al asistente como Unidad, con identidad explícita del contexto por defecto del runtime registrada."
+          ],
+          "offlineCanonicalReplyExample": "Me llamo Unidad.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-12-t2",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p2",
+          "sourceUser": "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+          "effectiveUser": "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a quien habla como Lidia Campos; no intercambiar identidad de asistente y usuario."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+            "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-12-t3",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p3",
+          "sourceUser": "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+          "effectiveUser": "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reconocer que el domicilio de quien habla no ha sido compartido."
+          ],
+          "offlineCanonicalReplyExample": "No; no me has dicho tu dirección.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+            "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+            "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-12-t4",
+          "sourceRecordId": "repair-20261012-world-091-heldout-wording-limits_and_identity-p4",
+          "sourceUser": "Recapitula los datos sobre mí que realmente he compartido contigo aquí.",
+          "effectiveUser": "Recapitula los datos sobre mí que realmente he compartido contigo aquí.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Recapitular sólo el nombre Lidia Campos como dato personal compartido sobre quien habla; no atribuirle el nombre del asistente ni domicilio inventado."
+          ],
+          "offlineCanonicalReplyExample": "Me has dicho que te llamas Lidia Campos.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+            "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+            "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+            "Recapitula los datos sobre mí que realmente he compartido contigo aquí."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-13",
+      "family": "location_and_appointment",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-13-t1",
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p1",
+          "sourceUser": "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+          "effectiveUser": "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Distinguir Isla Verde como ubicación y Ribera Alta como destino previsto."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Isla Verde; viajarás a Ribera Alta.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-13-t2",
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p2",
+          "sourceUser": "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+          "effectiveUser": "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar martes, las cuatro y teatro como momento/lugar de la cita con Clara Campos."
+          ],
+          "offlineCanonicalReplyExample": "El martes a las cuatro, en el teatro.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+            "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-13-t3",
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p3",
+          "sourceUser": "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+          "effectiveUser": "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Conservar Ribera Alta como destino del viaje pese al cambio de día de la cita."
+          ],
+          "offlineCanonicalReplyExample": "Viajarás a Ribera Alta.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+            "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+            "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-13-t4",
+          "sourceRecordId": "repair-20261012-world-088-heldout-composition-location_and_appointment-p4",
+          "sourceUser": "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita.",
+          "effectiveUser": "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Isla Verde, destino Ribera Alta y cita el viernes a las cuatro en el teatro."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Isla Verde; viajarás a Ribera Alta. La cita es el viernes a las cuatro, en el teatro.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+            "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+            "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+            "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-14",
+      "family": "alias_identity_and_other_person",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-14-t1",
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p1",
+          "sourceUser": "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+          "effectiveUser": "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Distinguir Sonia Hidalgo como nombre y Sauce como apodo preferido."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Sonia Hidalgo y prefieres Sauce.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-14-t2",
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p2",
+          "sourceUser": "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+          "effectiveUser": "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Felipe Suárez como vecino."
+          ],
+          "offlineCanonicalReplyExample": "Tu vecino se llama Felipe Suárez.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+            "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-14-t3",
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p3",
+          "sourceUser": "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+          "effectiveUser": "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar Brisa como apodo actual; el nombre Sonia Hidalgo no cambia."
+          ],
+          "offlineCanonicalReplyExample": "Tu apodo actual es Brisa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+            "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+            "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-14-t4",
+          "sourceRecordId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p4",
+          "sourceUser": "Dime mi nombre, el apodo actual y quién es la otra persona mencionada.",
+          "effectiveUser": "Dime mi nombre, el apodo actual y quién es la otra persona mencionada.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir nombre Sonia Hidalgo, apodo actual Brisa y Felipe Suárez como vecino mencionado."
+          ],
+          "offlineCanonicalReplyExample": "Te llamas Sonia Hidalgo, prefieres Brisa y Felipe Suárez es tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+            "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+            "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+            "Dime mi nombre, el apodo actual y quién es la otra persona mencionada."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-15",
+      "family": "people_and_reassigned_tasks",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-15-t1",
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p1",
+          "sourceUser": "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+          "effectiveUser": "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como hermana y a Tomás Hidalgo como vecino."
+          ],
+          "offlineCanonicalReplyExample": "Lidia Campos es tu hermana y Tomás Hidalgo es tu vecino.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-15-t2",
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p2",
+          "sourceUser": "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+          "effectiveUser": "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar leer una novela como tarea inicial de Lidia Campos."
+          ],
+          "offlineCanonicalReplyExample": "Lidia Campos va a leer una novela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+            "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-15-t3",
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p3",
+          "sourceUser": "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?",
+          "effectiveUser": "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Tomás Hidalgo como quien leerá una novela tras el intercambio."
+          ],
+          "offlineCanonicalReplyExample": "Tomás Hidalgo va a leer una novela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+            "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+            "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-15-t4",
+          "sourceRecordId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p4",
+          "sourceUser": "Di qué relación tiene Tomás Hidalgo conmigo y qué tarea hará; luego indica quién hará la otra tarea.",
+          "effectiveUser": "Di qué relación tiene Tomás Hidalgo conmigo y qué tarea hará; luego indica quién hará la otra tarea.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Expresar Tomás Hidalgo como vecino que leerá una novela y Lidia Campos como quien hará la otra tarea, recoger el correo. La referencia inequívoca a «la otra» es válida si la asignación queda clara."
+          ],
+          "offlineCanonicalReplyExample": "Tomás Hidalgo es tu vecino y va a leer una novela; Lidia Campos va a recoger el correo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+            "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+            "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?",
+            "Di qué relación tiene Tomás Hidalgo conmigo y qué tarea hará; luego indica quién hará la otra tarea."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-16",
+      "family": "objects_known_giver_and_missing_price",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-16-t1",
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p1",
+          "sourceUser": "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+          "effectiveUser": "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Asociar bolso con gris y reloj con verde."
+          ],
+          "offlineCanonicalReplyExample": "El bolso es gris y el reloj es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-16-t2",
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p2",
+          "sourceUser": "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+          "effectiveUser": "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reconocer que el donante del bolso no se indicó; Lidia Campos es donante del reloj."
+          ],
+          "offlineCanonicalReplyExample": "No has dicho quién te dio el bolso.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+            "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-16-t3",
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p3",
+          "sourceUser": "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+          "effectiveUser": "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar el bolso como objeto recién corregido. Mencionar su color verde es opcional; no usar gris como vigente."
+          ],
+          "offlineCanonicalReplyExample": "Has corregido el bolso; es verde.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+            "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+            "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-16-t4",
+          "sourceRecordId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p4",
+          "sourceUser": "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso.",
+          "effectiveUser": "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Lidia Campos como donante del reloj y reconocer precio del bolso no informado."
+          ],
+          "offlineCanonicalReplyExample": "Te dio el reloj Lidia Campos; no has dicho el precio del bolso.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+            "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+            "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+            "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-17",
+      "family": "project_and_separate_book",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-17-t1",
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p1",
+          "sourceUser": "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+          "effectiveUser": "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Distinguir Trazos del río como proyecto propio de dibujos y Retratos de otoño como novela aparte."
+          ],
+          "offlineCanonicalReplyExample": "Tu proyecto se llama Trazos del río; la novela, Retratos de otoño.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-17-t2",
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p2",
+          "sourceUser": "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+          "effectiveUser": "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar las tardes dibujando con la abuela como origen del proyecto."
+          ],
+          "offlineCanonicalReplyExample": "De las tardes dibujando con tu abuela.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+            "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-17-t3",
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p3",
+          "sourceUser": "El proyecto pasará a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+          "effectiveUser": "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+          "userClarifiedBeforeGeneration": true,
+          "expectedSemanticRequirements": [
+            "Identificar Lince como título ya vigente del proyecto en el USER derivado aclarado; conservar Retratos de otoño como título de la novela."
+          ],
+          "offlineCanonicalReplyExample": "El proyecto se llama Lince; la novela, Retratos de otoño.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+            "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+            "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-17-t4",
+          "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p4",
+          "sourceUser": "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?",
+          "effectiveUser": "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar proyecto actual Lince y novela Retratos de otoño, reconociendo que no se indicó quién escribió la novela."
+          ],
+          "offlineCanonicalReplyExample": "Tu proyecto se llama Lince y la novela, Retratos de otoño; no has dicho quién la escribió.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+            "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+            "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+            "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-18",
+      "family": "routine_and_rescheduled_appointment",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-18-t1",
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p1",
+          "sourceUser": "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+          "effectiveUser": "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar ordenar los libros como actividad que le relaja."
+          ],
+          "offlineCanonicalReplyExample": "Te relaja ordenar los libros.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-18-t2",
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p2",
+          "sourceUser": "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+          "effectiveUser": "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Expresar ordenar los libros primero y lavar la ropa después."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros; después, a lavar la ropa.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+            "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-18-t3",
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p3",
+          "sourceUser": "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+          "effectiveUser": "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar viernes y las siete como cita actual tras cambiar miércoles."
+          ],
+          "offlineCanonicalReplyExample": "El viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+            "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+            "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-18-t4",
+          "sourceRecordId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p4",
+          "sourceUser": "Recupera el orden de las actividades y el día y la hora actuales de la cita.",
+          "effectiveUser": "Recupera el orden de las actividades y el día y la hora actuales de la cita.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir el orden libros→ropa y la cita actual viernes a las siete."
+          ],
+          "offlineCanonicalReplyExample": "Primero vas a ordenar los libros; después, a lavar la ropa. La cita es el viernes a las siete.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+            "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+            "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+            "Recupera el orden de las actividades y el día y la hora actuales de la cita."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-19",
+      "family": "listening_with_actor_correction",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-19-t1",
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p1",
+          "sourceUser": "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+          "effectiveUser": "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Acoger el deseo de contar/ser escuchado, sin consejos. Puede reflejar el cambio del trabajo sin consulta como motivo de malestar, sin exigir literalmente el gold."
+          ],
+          "offlineCanonicalReplyExample": "Te escucho. Te molestó que cambiaran tu trabajo sin consultarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-19-t2",
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p2",
+          "sourceUser": "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+          "effectiveUser": "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Hacer una sola pregunta pertinente sobre cómo le afectó ese cambio; sin dar consejos ni inventar sentimientos concretos."
+          ],
+          "offlineCanonicalReplyExample": "¿Cómo te afectó ese cambio?",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+            "Hazme una sola pregunta sobre cómo me afectó ese cambio."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-19-t3",
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p3",
+          "sourceUser": "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+          "effectiveUser": "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar a Mateo Romero, colega, como responsable tras corregir Noelia Hidalgo; conservar que el cambio del trabajo ocurrió."
+          ],
+          "offlineCanonicalReplyExample": "Lo hizo tu colega Mateo Romero.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+            "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+            "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-19-t4",
+          "sourceRecordId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p4",
+          "sourceUser": "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones.",
+          "effectiveUser": "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Recoger el cambio del trabajo sin consulta como motivo del malestar, nombrando correctamente a Mateo Romero; no sugerir soluciones."
+          ],
+          "offlineCanonicalReplyExample": "Te molestó que tu colega Mateo Romero cambiara tu trabajo sin consultarte.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+            "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+            "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+            "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-20",
+      "family": "object_correction_preserves_location",
+      "holdoutKind": "composition",
+      "turns": [
+        {
+          "id": "pr1rel-val-v1-20-t1",
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p1",
+          "sourceUser": "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+          "effectiveUser": "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Ladera Nueva y bolso rojo."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ladera Nueva y tu bolso es rojo.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-20-t2",
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p2",
+          "sourceUser": "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+          "effectiveUser": "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Conservar Ladera Nueva como ubicación actual pese al destino Ribera Alta."
+          ],
+          "offlineCanonicalReplyExample": "Sigues en Ladera Nueva.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+            "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-20-t3",
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p3",
+          "sourceUser": "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+          "effectiveUser": "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Identificar blanco como color corregido del bolso."
+          ],
+          "offlineCanonicalReplyExample": "El bolso es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+            "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+            "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?"
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        },
+        {
+          "id": "pr1rel-val-v1-20-t4",
+          "sourceRecordId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p4",
+          "sourceUser": "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección.",
+          "effectiveUser": "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección.",
+          "userClarifiedBeforeGeneration": false,
+          "expectedSemanticRequirements": [
+            "Reunir ubicación Ladera Nueva, destino Ribera Alta y bolso blanco corregido."
+          ],
+          "offlineCanonicalReplyExample": "Estás en Ladera Nueva, viajarás a Ribera Alta y tu bolso es blanco.",
+          "canonicalExampleIsNotExactMatchRequirement": true,
+          "factSourceUserPrefix": [
+            "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+            "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+            "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+            "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección."
+          ],
+          "criticalCoverage": "Every concrete contradiction of ANY supplied USER fact, including non-target entities and known-information denials; any invented fact/identity/relation/correction; any severe explicit instruction violation. Do not reconstruct a proposition from broken fragments or treat unrelated narrative characters as user facts without an explicit link."
+        }
+      ]
+    }
+  ]
+}

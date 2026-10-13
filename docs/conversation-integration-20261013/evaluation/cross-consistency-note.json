@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "createdAtUtc": "2026-10-13T03:37:05.668808+00:00",
+  "reviewer": "cross_review_development project AI",
+  "independentHumanReview": false,
+  "projectAIReview": true,
+  "purpose": "Documentar una discrepancia de consistencia entre dos juicios originales de IA del proyecto sobre la misma respuesta real, sin recalificar outputs, modificar primarias o atribuir consenso.",
+  "scope": {
+    "turnId": "dev-route-t2",
+    "scenarioId": "dev-route",
+    "arms": [
+      "development-history-ideal512",
+      "development-history-generated384"
+    ],
+    "reservedSuiteRead": false,
+    "priorPrimaryOrAssessmentRead": false,
+    "trainingPerformed": false,
+    "codeModified": false
+  },
+  "frozenCriterion": {
+    "expected": "No conoce ubicación del salón; al fondo sólo una posibilidad sin información.",
+    "criticalExpected": "Falla crítica si afirma ubicación del salón.",
+    "spanish": "Natural, understandable Spanish with coherent grammar; minor typo that does not impede meaning may pass.",
+    "complete": "All relevance, contextGrounding and spanish true, and criticalCorrect true on critical turns; no technical error."
+  },
+  "identicalReply": "No, no me has dicho el salón.",
+  "identicalReplyUtf8Sha256": "9261cbff1191f82c5dbc217ddb90288029fcd9ff6854a05b458339a3288c5aa1",
+  "identicalCurrentUser": "No he dicho dónde está el salón. ¿Sabes si queda al fondo?",
+  "judgmentComparison": {
+    "grade": {
+      "development-history-ideal512": "partial",
+      "development-history-generated384": "complete"
+    },
+    "relevance": {
+      "development-history-ideal512": true,
+      "development-history-generated384": true
+    },
+    "contextGrounding": {
+      "development-history-ideal512": true,
+      "development-history-generated384": true
+    },
+    "spanish": {
+      "development-history-ideal512": false,
+      "development-history-generated384": true
+    },
+    "criticalCorrect": {
+      "development-history-ideal512": true,
+      "development-history-generated384": true
+    }
+  },
+  "records": [
+    {
+      "arm": "development-history-ideal512",
+      "reviewer": "cross_review_development project AI",
+      "reviewerActor": "project AI agent cross_review_development",
+      "originalReviewPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-ideal512/cross-review.json",
+      "originalReviewSha256": "924616c8555b18bea231c6e2ab8b279e1ceddf398bf88bdaee770991eefdcc34",
+      "normalizedReviewPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-ideal512/cross-review-normalized.json",
+      "normalizedReviewSha256": "9d3f7dfaf9ddb0de0db40398617f86e39b1f5cdc5a9502d7c10163deeeb681fd",
+      "outputsPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-ideal512/outputs.json",
+      "outputsSha256": "b30875a6b52d1b886b88fcf37c53bfddc83c0634df4901015f040464946446e2",
+      "modelId": "unidad-conversation-42e2f6c98ccb35d9f6585d73ed8c7c536f2b355745dc2022013d6b7abf80353b",
+      "currentUser": "No he dicho dónde está el salón. ¿Sabes si queda al fondo?",
+      "reply": "No, no me has dicho el salón.",
+      "replyUtf8Sha256": "9261cbff1191f82c5dbc217ddb90288029fcd9ff6854a05b458339a3288c5aa1",
+      "actualInputMessages": [
+        {
+          "role": "user",
+          "content": "Al entrar en mi piso, la cocina queda a la izquierda y el baño a la derecha. ¿Hacia dónde voy para lavarme las manos en el baño?"
+        },
+        {
+          "role": "assistant",
+          "content": "El baño está la izquierda;. Podemos de la izquierda y el baño a la derecha."
+        },
+        {
+          "role": "user",
+          "content": "No he dicho dónde está el salón. ¿Sabes si queda al fondo?"
+        }
+      ],
+      "originalJudgment": {
+        "id": "dev-route-t2",
+        "scenarioId": "dev-route",
+        "critical": true,
+        "grade": "partial",
+        "relevance": true,
+        "contextGrounding": true,
+        "spanish": false,
+        "note": "Responde «No» y comunica que falta información sobre el salón, sin afirmar que esté al fondo. «No me has dicho el salón» omite el complemento de ubicación y no es una formulación natural del dato desconocido; por eso es parcial.",
+        "criticalCorrect": true
+      },
+      "originalCounts": {
+        "complete": 1,
+        "partial": 3,
+        "failed": 36
+      },
+      "normalizedCounts": {
+        "complete": 1,
+        "partial": 3,
+        "failed": 36
+      }
+    },
+    {
+      "arm": "development-history-generated384",
+      "reviewer": "cross_review_development project AI",
+      "reviewerActor": "project AI subagent cross_review_development/generated384",
+      "originalReviewPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-generated384/cross-review.json",
+      "originalReviewSha256": "79ec6f9763d894b78d48e76b8860e5320cae9d77d45658fde63badb7a1a93855",
+      "normalizedReviewPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-generated384/cross-review-normalized.json",
+      "normalizedReviewSha256": "58cfc407dfa70f432823d424411e1918411a8b2446291386c850109a50a27ca7",
+      "outputsPath": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/development-history-generated384/outputs.json",
+      "outputsSha256": "ec6379db34b54284041b5de7f17c87358aa7bc4fd25eaf74081c6fe9efa68e4c",
+      "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+      "currentUser": "No he dicho dónde está el salón. ¿Sabes si queda al fondo?",
+      "reply": "No, no me has dicho el salón.",
+      "replyUtf8Sha256": "9261cbff1191f82c5dbc217ddb90288029fcd9ff6854a05b458339a3288c5aa1",
+      "actualInputMessages": [
+        {
+          "role": "user",
+          "content": "Al entrar en mi piso, la cocina queda a la izquierda y el baño a la derecha. ¿Hacia dónde voy para lavarme las manos en el baño?"
+        },
+        {
+          "role": "assistant",
+          "content": "El baño, el baño, el baño, el baño y el baño."
+        },
+        {
+          "role": "user",
+          "content": "No he dicho dónde está el salón. ¿Sabes si queda al fondo?"
+        }
+      ],
+      "originalJudgment": {
+        "id": "dev-route-t2",
+        "scenarioId": "dev-route",
+        "critical": true,
+        "grade": "complete",
+        "relevance": true,
+        "contextGrounding": true,
+        "spanish": true,
+        "reason": "«No, no me has dicho el salón» responde que no sabe si está al fondo. En esta pregunta sobre ubicación, se entiende la elipsis no me has dicho dónde está el salón; no se convierte en una afirmación de que la palabra salón nunca apareció. No inventa su posición.",
+        "technicalFailure": false,
+        "technicalFailureReasons": [],
+        "criticalCorrect": true
+      },
+      "originalCounts": {
+        "complete": 2,
+        "partial": 3,
+        "failed": 35
+      },
+      "normalizedCounts": {
+        "complete": 2,
+        "partial": 3,
+        "failed": 35
+      }
+    }
+  ],
+  "interpretationsPreserved": [
+    {
+      "arm": "development-history-ideal512",
+      "grade": "partial",
+      "explanation": "El revisor recupera la respuesta negativa y la ausencia de ubicación, y conserva relevance/contextGrounding/criticalCorrect=true. Considera que «no me has dicho el salón» omite el complemento de ubicación y no alcanza español natural/coherente; por eso spanish=false y partial. Se conserva este juicio individual."
+    },
+    {
+      "arm": "development-history-generated384",
+      "grade": "complete",
+      "explanation": "El revisor entiende «No» como respuesta directa a si sabe dónde está y la segunda cláusula como elipsis de «no me has dicho dónde está el salón», recuperable por la pregunta inmediata sobre ubicación. Acepta esa elipsis como español conversacional comprensible; por eso spanish=true y complete. Se conserva este juicio individual."
+    }
+  ],
+  "historyContext": {
+    "policy": "Ambos juicios usan historias realmente generadas, no asistentes ideales insertados.",
+    "precedingAssistantRepliesDiffer": true,
+    "ideal512PreviousAssistant": "El baño está la izquierda;. Podemos de la izquierda y el baño a la derecha.",
+    "generated384PreviousAssistant": "El baño, el baño, el baño, el baño y el baño.",
+    "observation": "Las historias anteriores difieren y se conservan íntegramente. Ninguno de esos mensajes suministra una ubicación del salón; las dos revisiones coinciden en que la respuesta actual no inventa esa ubicación. La discrepancia registrada está en el umbral de naturalidad para la misma elipsis, sin añadir datos a los historiales."
+  },
+  "formatNormalization": {
+    "files": "cross-review-normalized.json creados aparte; los originales cross-review.json siguen intactos.",
+    "changes": "note copia reason sólo si faltaba note; reason se conserva. criticalCorrect mantiene bool original en los 22 turnos críticos y se explicita como null en los otros 18. Calificaciones y dimensiones originales permanecen iguales.",
+    "semanticChange": false
+  },
+  "status": "Both original judgments preserved; discrepancy unresolved; no consensus or regrading.",
+  "consequences": [
+    "Los recuentos originales siguen ideal512 C1/P3/F36 y generated384 C2/P3/F35.",
+    "La diferencia de calificación de este texto idéntico no demuestra una diferencia de calidad de respuesta entre modelos; depende de las interpretaciones individuales registradas.",
+    "No se utiliza este informe para alterar una identidad o selección de candidato ya congelada.",
+    "Ambos brazos siguen con cero diálogos completamente correctos y sin aceptación; esta nota no modifica esas conclusiones."
+  ],
+  "integrity": {
+    "originalReviewsPreserved": true,
+    "outputsPreserved": true,
+    "normalizedGradesPreserved": true,
+    "primaryReviewsModified": false,
+    "newConsensusCreated": false
+  }
+}

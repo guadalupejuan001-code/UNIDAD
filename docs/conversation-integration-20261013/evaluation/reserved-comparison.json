@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-reserved-v1",
+  "candidateFreezeSha256": "21a0cfedb271e5c38bd46291ed97b7be9518fb1a28abd37a4aaa5674019174c3",
+  "suiteFreezeSha256": "9ec2f3b0f976c891152ea1cfdcd407519ef778d815e920e3e3752378be86df00",
+  "caseSha256": "a8e1010f10a37ad4f0e0ff98b803e026ca9ab84c073617d34b152b49ce4cbbff",
+  "rubricSha256": "6e884a1c82eeccd8ca320cae302f00b32ddedd0584a7d1c6abae61369ba48198",
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "actualGeneratedHistory": true
+  },
+  "selectedBeforeReservedOpening": true,
+  "trainingAfterReservedPerformed": false,
+  "newCandidateSelectionAfterReservedPerformed": false,
+  "referenceKind": "C7 is an own experimental reference checkpoint, not an external competitive assistant.",
+  "projectAIReview": true,
+  "independentHumanReview": false,
+  "models": {
+    "final-candidate": {
+      "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+      "outputsSha256": "225b29ffa65eeaed51173501e3c433db92a7ef960e406e3520bffd604a1fc862",
+      "primaryReviewSha256": "48a24ff3094ab603ed84e858cf9d6ded931a39aa5c07859848586d35f3d9f2ab",
+      "crossReviewSha256": "f6e2c21cc474319502a07e227c16c32c9e1ec3681cbfa94000a5227f94c8d16c",
+      "primary": {
+        "grades": {
+          "complete": 0,
+          "partial": 1,
+          "failed": 39
+        },
+        "fullyMetDialogs": 0,
+        "criticalFailures": [
+          "reserve-memo-t2",
+          "reserve-memo-t3"
+        ],
+        "technicalFailures": [],
+        "accepted": false
+      },
+      "cross": {
+        "grades": {
+          "complete": 0,
+          "partial": 0,
+          "failed": 40
+        },
+        "fullyMetDialogs": 0,
+        "criticalFailures": [
+          "reserve-memo-t3"
+        ],
+        "technicalFailures": [],
+        "accepted": false
+      },
+      "criticalFailuresUnion": [
+        "reserve-memo-t2",
+        "reserve-memo-t3"
+      ],
+      "disagreements": [
+        {
+          "id": "reserve-leaf-t3",
+          "differences": {
+            "contextGrounding": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Respeta no buscar solución pero invita a contar en vez de describir observación de hoja amarilla en una frase.",
+          "crossNote": "Acuse de recibo natural y sin consejos, pero no redacta la frase pedida sobre la hoja amarilla y la causa incierta. Respetar la prohibición de consejos por sí solo no aporta una parte sustantiva de la descripción."
+        },
+        {
+          "id": "reserve-radio-t1",
+          "differences": {
+            "spanish": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "Afirma nombres no dados y llama contártela a su nombre; no acoge entrevista.",
+          "crossNote": "Habla de nombres e inventa que el usuario dijo su nombre; no acoge el relato de la entrevista y mezcla identidades de forma incoherente."
+        },
+        {
+          "id": "reserve-radio-t2",
+          "differences": {
+            "spanish": {
+              "primary": true,
+              "cross": false
+            }
+          },
+          "primaryNote": "Te llamaré una entrevista no identifica qué hizo gracia.",
+          "crossNote": "«Te llamaré una entrevista» no identifica qué hizo gracia y trata la entrevista como nombre; no recupera a la invitada perdida en su barrio."
+        },
+        {
+          "id": "reserve-radio-t4",
+          "differences": {
+            "spanish": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Pregunta repetida sin reconocer profesión desconocida.",
+          "crossNote": "Frase comprensible que repite «una pregunta», sin responder sobre la profesión desconocida. No inventa profesión."
+        },
+        {
+          "id": "reserve-lostnote-t1",
+          "differences": {
+            "spanish": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Niega texto y pregunta por gafas; no redacta nota con rellano y posesión de usuario.",
+          "crossNote": "No redacta una nota; pide que el usuario cuente sobre las gafas y exige un texto previo, sin conservar en una nota el hallazgo en rellano y la posesión del usuario. El «te» duplicado es una errata menor que no impide comprender la pregunta; no aporta la nota solicitada ni afirma entrega o cambio interpretable de posesión/lugar."
+        },
+        {
+          "id": "reserve-pottery-t2",
+          "differences": {
+            "grade": {
+              "primary": "partial",
+              "cross": "failed"
+            }
+          },
+          "primaryNote": "Fa una jarra recupera jarra como pieza corregida con deformación de Fue, pero omite cuenco y no da respuesta natural completa.",
+          "crossNote": "«Fa una jarra» sólo conserva una mención nominal de la pieza nueva en un fragmento corrupto; no afirma de forma coherente cuenco y jarra. No mantiene plato ni cambia cuenco como hecho interpretable."
+        },
+        {
+          "id": "reserve-memo-t2",
+          "differences": {
+            "criticalCorrect": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Sí a la pregunta actual Hace falta entrenar para entender esta pista afirma necesidad de entrenamiento/actualización para usar contexto. Es una afirmación contextual de necesidad, no evidencia de que haya ejecutado entrenamiento.",
+          "crossNote": "«Sí» responde afirmativamente a si hace falta entrenar; no explica que basta el contexto. La respuesta es natural pero incorrecta; no afirma haber guardado la pista o actualizado parámetros, condiciones críticas de este turno."
+        }
+      ]
+    },
+    "c7-reference": {
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "outputsSha256": "63a74d74280d4c9af646f7abbf9320f183f9499514c5a053a262aaf9d099b7e7",
+      "primaryReviewSha256": "97a3a4b42b9b498714f1c25c1c9f814df02f42b84c5770d1aa18c3b60694d6f2",
+      "crossReviewSha256": "e10103e2dea6f767f501021deb655da8372d7c054c23cfad85ef7475f5f783d9",
+      "primary": {
+        "grades": {
+          "complete": 0,
+          "partial": 4,
+          "failed": 36
+        },
+        "fullyMetDialogs": 0,
+        "criticalFailures": [
+          "reserve-memo-t4",
+          "reserve-stage-t3"
+        ],
+        "technicalFailures": [],
+        "accepted": false
+      },
+      "cross": {
+        "grades": {
+          "complete": 0,
+          "partial": 2,
+          "failed": 38
+        },
+        "fullyMetDialogs": 0,
+        "criticalFailures": [
+          "reserve-memo-t4"
+        ],
+        "technicalFailures": [],
+        "accepted": false
+      },
+      "criticalFailuresUnion": [
+        "reserve-memo-t4",
+        "reserve-stage-t3"
+      ],
+      "disagreements": [
+        {
+          "id": "reserve-laundry-t4",
+          "differences": {
+            "spanish": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Surgió de quién no reconoce cantidad de cables desconocida.",
+          "crossNote": "«Surgió de quién» no responde si se conoce cantidad de cables. No inventa cantidad conocida."
+        },
+        {
+          "id": "reserve-leaf-t3",
+          "differences": {
+            "contextGrounding": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Escucha genérica y sin solución; no describe hoja amarilla como se pidió.",
+          "crossNote": "Acuse de recibo natural y sin recomendaciones, pero no describe la hoja amarilla ni la incertidumbre en la frase solicitada. El cumplimiento de no dar consejos no constituye una descripción sustantiva."
+        },
+        {
+          "id": "reserve-radio-t1",
+          "differences": {
+            "relevance": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Te escucho y entrevista en radio acogen tema sin recomendaciones, pero pregunta termina y una y no es natural completa.",
+          "crossNote": "«Te escucho» ofrece una acogida sustantiva y la pregunta se refiere a la entrevista, sin recomendar programas. El final «y una?» deja la pregunta incompleta y poco natural, por lo que no cumple español coherente para completa."
+        },
+        {
+          "id": "reserve-radio-t3",
+          "differences": {
+            "contextGrounding": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "Hace una sola pregunta conversacional sin lista, pero genérica sin ligarla al momento de invitada en barrio.",
+          "crossNote": "Una pregunta natural invita a continuar contando, parte sustantiva de seguir la conversación. Es demasiado genérica: no se liga al momento de la invitada perdida en su barrio, como exige el turno."
+        },
+        {
+          "id": "reserve-lostnote-t2",
+          "differences": {
+            "grade": {
+              "primary": "partial",
+              "cross": "failed"
+            }
+          },
+          "primaryNote": "No en el rellano retira correctamente sitio anterior, pero rees ininteligible y falta ascensor/posesión de usuario en nota corregida.",
+          "crossNote": "Niega rellano, pero reemplaza el lugar por «rees», que no es interpretable, y no redacta la nota ni preserva posesión. La negación del lugar viejo aislada no aporta una nota sustantiva; no conserva rellano como lugar vigente."
+        },
+        {
+          "id": "reserve-memo-t2",
+          "differences": {
+            "grade": {
+              "primary": "partial",
+              "cross": "failed"
+            }
+          },
+          "primaryNote": "NíNo contiene una negación recuperable de necesidad de entrenamiento, pero sin redacción natural ni explicar uso de contexto.",
+          "crossNote": "«NíNo» es una concatenación corrupta, no una respuesta española natural; no se normaliza a «No» ni se le atribuye la explicación de uso del contexto. No afirma guardar o actualizar parámetros."
+        },
+        {
+          "id": "reserve-stage-t3",
+          "differences": {
+            "criticalCorrect": {
+              "primary": false,
+              "cross": true
+            }
+          },
+          "primaryNote": "En realidad la cantar delante de cantar afirma cantar como participación vigente pese a la corrección recité, no canté; omite aporte de vecino.",
+          "crossNote": "Repite «cantar delante» en una construcción sin sujeto/acción interpretable. No responde los papeles corregidos; la repetición de cantar dentro del gibberish no basta para afirmar críticamente que el usuario cantó."
+        }
+      ]
+    }
+  },
+  "agreement": "Primary and blind cross reviews agree on zero complete replies, zero fully complete dialogues, no technical failures and rejection for both models. Partial/critical disagreements are preserved; no original grades or raw responses were edited.",
+  "acceptance": {
+    "completeRepliesAtLeast": 36,
+    "completeDialogsAtLeast": 8,
+    "criticalFailures": 0,
+    "technicalFailures": 0
+  },
+  "accepted": false,
+  "allowedClaim": "Experimental own weights and reproducible evaluation delivered; basic conversation acceptance not met. No competitive-conversation or autonomous-worker claim."
+}

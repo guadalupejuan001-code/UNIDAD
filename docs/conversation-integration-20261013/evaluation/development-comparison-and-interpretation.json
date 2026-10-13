@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "projectAIReview": true,
+  "independentHumanReview": false,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "reservedOpened": false,
+  "models": {
+    "v7": {
+      "modelId": "unidad-conversation-9081da24a3a73e748887dd66ee937798ef6808579ed5cdb78c3b27b70639cd9d",
+      "counts": {
+        "complete": 0,
+        "partial": 2,
+        "failed": 38
+      },
+      "dimensions": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 11
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": 0,
+      "technicalStops": 1,
+      "reviewSha256": "4b1477f6f7ca0e249ab9d8286d3e7e8076f8b905b7b187218c9f0d17708b0956"
+    },
+    "c7": {
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "counts": {
+        "complete": 1,
+        "partial": 4,
+        "failed": 35
+      },
+      "dimensions": {
+        "relevance": 2,
+        "contextGrounding": 2,
+        "spanish": 12
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": 4,
+      "technicalStops": 0,
+      "reviewSha256": "a5e92f79bce14d9bd5ceda37ddfdb282edb992b0b3fd75196176f5fbd43cf4a4"
+    },
+    "v6": {
+      "modelId": "unidad-conversation-4708a11a968afeacf4f130632865dd376452a7fd7c060736b2f8da7bdc795d04",
+      "counts": {
+        "complete": 0,
+        "partial": 1,
+        "failed": 39
+      },
+      "dimensions": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 9
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": 0,
+      "technicalStops": 0,
+      "reviewSha256": "59c568ebd2eae968383e8211ba01199e5bdcef080a50afb4a17a10e820e054da"
+    },
+    "v7-pilot256": {
+      "modelId": "unidad-conversation-9d27cc9a24a38beb2e6139dc62dcb13850ac4ac068ed89e6ce65eeef98bc7bf5",
+      "counts": {
+        "complete": 0,
+        "partial": 0,
+        "failed": 40
+      },
+      "dimensions": {
+        "relevance": 0,
+        "contextGrounding": 0,
+        "spanish": 7
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": 0,
+      "technicalStops": 1,
+      "reviewSha256": "572addfd5f66adbc1509504e9e193df65a3a516dca4768b4a8a7d298b1688f99"
+    },
+    "c7-pilot256": {
+      "modelId": "unidad-conversation-f417996465cabf1c20cd739fbec8300a72cee2840e83d19919eff9729dc17b06",
+      "counts": {
+        "complete": 1,
+        "partial": 2,
+        "failed": 37
+      },
+      "dimensions": {
+        "relevance": 1,
+        "contextGrounding": 2,
+        "spanish": 6
+      },
+      "fullyMetDialogs": 0,
+      "criticalFailures": 0,
+      "technicalStops": 1,
+      "reviewSha256": "9b135f7bc5e8f176e0a8b308a0c0f865674dbe417f1e35accbaad2b09d4d399e"
+    }
+  },
+  "pairedTransitions": {
+    "v7": {
+      "gradeTransitions": [
+        {
+          "before": "failed",
+          "after": "failed",
+          "turns": 38
+        },
+        {
+          "before": "partial",
+          "after": "failed",
+          "turns": 2
+        }
+      ],
+      "newCompleteTurnIds": [],
+      "lostCompleteTurnIds": [],
+      "interpretation": "No gain in complete replies. Fewer identifiable critical claims while most replies are incoherent does not constitute improved factual competence."
+    },
+    "c7": {
+      "gradeTransitions": [
+        {
+          "before": "failed",
+          "after": "failed",
+          "turns": 33
+        },
+        {
+          "before": "partial",
+          "after": "failed",
+          "turns": 4
+        },
+        {
+          "before": "complete",
+          "after": "complete",
+          "turns": 1
+        },
+        {
+          "before": "failed",
+          "after": "partial",
+          "turns": 2
+        }
+      ],
+      "newCompleteTurnIds": [],
+      "lostCompleteTurnIds": [],
+      "interpretation": "No gain in complete replies. Fewer identifiable critical claims while most replies are incoherent does not constitute improved factual competence."
+    }
+  },
+  "prospectiveInterpretationForNextExperiments": [
+    "Use the same frozen 40-turn development suite, same engine and generation settings, and actual prior assistant replies.",
+    "A real fact/current-request gain requires a new complete reply that answers this turn, preserves user facts/corrections and remains understandable Spanish, not just copies a name or an irrelevant correct fact.",
+    "Inspect matched-turn gains and losses together; an entity recovered on one turn cannot compensate for new factual errors on its following corrected turns.",
+    "Count full four-turn dialogs. Correct isolated first turns with breakdown under own generated history do not establish conversation coherence.",
+    "Grade partials only for substantive correct requested content. Mere token/name echo, generic support in place of a requested fact, or incomprehensible fragments remain failed.",
+    "Critical counts cover identifiable frozen forbidden assertions only; silence, refusal, repetition and incoherence can lower critical counts while leaving factual competence unchanged.",
+    "Report technical budget stops and context truncation alongside semantic outcomes. Fewer completed claims caused by technical failure must not appear as safety improvement.",
+    "Lower validation NLL is training evidence, not improvement in free conversation. No reserved cases or results may guide experiment choice.",
+    "The final acceptance requires 36/40 complete replies, 8/10 complete dialogs and zero critical/technical failures; development comparison does not constitute reserved acceptance."
+  ]
+}

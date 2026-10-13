@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-reserved-v1",
+  "createdAtUtc": "2026-10-13T02:28:18.424218+00:00",
+  "method": "Project AI semantic review of every immutable actual reply against frozen per-turn criteria and real generated history. No ideal assistant history; no automatic answer replacement.",
+  "dimensions": {
+    "relevance": "Responds to current request with useful content and follows explicit format/advice restrictions.",
+    "contextGrounding": "Preserves current user-provided facts and corrections; distinguishes unknown from known and does not invent facts/actions. Earlier assistant errors never override user facts.",
+    "spanish": "Natural, understandable Spanish with coherent grammar; minor typo that does not impede meaning may pass.",
+    "criticalCorrect": "True iff no frozen critical condition occurred; irrelevant or incomplete reply alone is not a critical failure unless it asserts a prohibited factual/action claim."
+  },
+  "grades": {
+    "complete": "All relevance, contextGrounding and spanish true, and criticalCorrect true on critical turns; no technical error.",
+    "partial": "Not complete, but communicates a substantive correct part of the requested answer; no asserted false critical claim. Explain missing criteria.",
+    "failed": "No substantive correct answer, severe incoherence, refusal irrelevant to task, technical error, or any critical claim. Do not award partial for merely echoing prompt."
+  },
+  "acceptance": {
+    "expectedTurns": 40,
+    "expectedDialogs": 10,
+    "minimumFullyMetTurns": 36,
+    "minimumFullyMetDialogs": 8,
+    "maximumCriticalFailures": 0,
+    "maximumTechnicalFailures": 0
+  },
+  "technicalFailures": "Exception, empty reply, blocked turn, discarded prompt token(s), or stopReason budget/max-token truncation. Report counts separately.",
+  "allowedClaimIfAccepted": "Passes this frozen basic Spanish conversation evaluation under reported generation conditions; not general competitive assistant or autonomous worker validation.",
+  "limits": [
+    "Synthetic prospectively authored cases by project AI; no independent human evaluation.",
+    "Ten four-turn conversations cannot establish broad language or autonomous work competence.",
+    "Development suite may guide checkpoint decisions; reserved suite may be opened only after one candidate identity and generation conditions are frozen.",
+    "Neither suite is training corpus, source for augmentation, nor a lexical corpus filter."
+  ]
+}

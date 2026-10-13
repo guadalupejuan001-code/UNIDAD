@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 1,
+  "status": "built-technical-guards-pass-awaiting-semantic-peer",
+  "builtAtUtc": "2026-10-12T18:45:21.440140+00:00",
+  "seed": "No random draws; world index bit factors over original authored seed20261012",
+  "originalSourceCorpusSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+  "originalAuthoringScriptSha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9",
+  "worldMetadataSha256": "88a76a66ad298fdb84307a1b41b0c14a080c5c5f4b02b82c5e0c5eafb13afb32",
+  "compilerSha256": "14f784e6acc4d74e971d27f1f77e5ad038eb705a910384ce9e21d1c4400ffdb7",
+  "files": {
+    "relational-train.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-train.jsonl",
+      "sha256": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8"
+    },
+    "original-train.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/original-train.jsonl",
+      "sha256": "3324dcae7c1e4c7e0fb32043685e52792f8243681dde046669a00adbe8cb57ab"
+    },
+    "relational-full-original-validation.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-full-original-validation.jsonl",
+      "sha256": "24e2d52253a8a6e58e44ed9964fc11c37e1783b4e3ceeb1d9f6375180fe129bb"
+    },
+    "relational-paired-corpus.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-paired-corpus.jsonl",
+      "sha256": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30"
+    },
+    "original-paired-corpus.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/original-paired-corpus.jsonl",
+      "sha256": "86127ba5fb89ccb145401dadc73dbd25d67ca8eb114ad9f0fa8a801128c430e6"
+    },
+    "changed-dialogues-state-traces.json": {
+      "path": "private/pr1-relational-data-contrast-v1/changed-dialogues-state-traces.json",
+      "sha256": "99a59681d10c552ef33a808b14ea6a3eae264a1583179b7289e60b22e04a0a5d"
+    },
+    "semantic-review-seeds.json": {
+      "path": "private/pr1-relational-data-contrast-v1/semantic-review-seeds.json",
+      "sha256": "2ac465af4f9d2981f0aeb05dd27bb89c6d14098ac96c4876f744148493b0d486"
+    }
+  },
+  "primaryPair": {
+    "original": "original-paired-corpus.jsonl",
+    "relational": "relational-paired-corpus.jsonl",
+    "trainRecordsPerArm": 4224,
+    "sameValidationRecordsPerArm": 80,
+    "validationSha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+    "futureTrainingOnly": {
+      "start": "own C7",
+      "seed": 61,
+      "updatesMaximum": 128,
+      "secondsMaximumPerArm": 600,
+      "learningRate": 0.0001,
+      "validateCheckpointEvery": 64,
+      "auxiliaryLossWeights": [
+        0.2,
+        0.2
+      ],
+      "objectiveBpeArchitectureRuntime": "unchanged across both arms"
+    },
+    "trainingLaunched": false
+  },
+  "changedFamilies": [
+    "current_and_future_place",
+    "preferred_address",
+    "two_objects",
+    "two_people"
+  ],
+  "changedNativeTrainRecords": {
+    "preferred_address": 352,
+    "current_and_future_place": 352,
+    "two_people": 352,
+    "two_objects": 352
+  },
+  "changedMessagesRecordCounts": {
+    "preferred_address": 308,
+    "current_and_future_place": 297,
+    "two_people": 275,
+    "two_objects": 330
+  },
+  "changedLastTargetRecordCounts": {
+    "preferred_address": 88,
+    "current_and_future_place": 132,
+    "two_people": 242,
+    "two_objects": 187
+  },
+  "unmodifiedOtherTrainFamilies": 8,
+  "byteIdenticalOtherTrainLines": 2816,
+  "byteIdenticalOriginalValLines": 384,
+  "originalRecordSlotsIdsGroupsSplitsOrderRetained": true,
+  "originalCorpusSha256After": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+  "originalCorpusUnchanged": true,
+  "trainWorldGroups": 88,
+  "sameOldValWorldsAlwaysVal": true,
+  "changedFullDialogues": 352,
+  "semanticReviewSeeds": 40,
+  "balancedCells": {
+    "two_objects": [
+      {
+        "bits": [
+          0,
+          0,
+          0,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          0,
+          0,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1,
+          true
+        ],
+        "worlds": 6
+      }
+    ],
+    "preferred_address": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ],
+    "two_people": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ],
+    "current_and_future_place": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ]
+  },
+  "targetExposure": {
+    "two_objects": [
+      {
+        "factor": "colorsEqualAfterCorrection",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "colorsEqualAfterCorrection",
+        "value": "True",
+        "dialogues": 44
+      },
+      {
+        "factor": "correctedColorEntity",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "correctedColorEntity",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "giverDisclosedFor",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "giverDisclosedFor",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastQueriesKnownGiver",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastQueriesKnownGiver",
+        "value": "True",
+        "dialogues": 44
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "amarillo",
+        "dialogues": 10
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "azul",
+        "dialogues": 11
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "blanco",
+        "dialogues": 7
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "gris",
+        "dialogues": 16
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "negro",
+        "dialogues": 8
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "rojo",
+        "dialogues": 11
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "verde",
+        "dialogues": 16
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "violeta",
+        "dialogues": 9
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "bag-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "watch-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "requestedColorEntity",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "requestedColorEntity",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdQueriesCorrectedEntity",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdQueriesCorrectedEntity",
+        "value": "True",
+        "dialogues": 44
+      }
+    ],
+    "preferred_address": [
+      {
+        "factor": "firstRequestedRole",
+        "value": "identification",
+        "dialogues": 44
+      },
+      {
+        "factor": "firstRequestedRole",
+        "value": "preferred-address",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "alias-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "name-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedRole",
+        "value": "identification",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedRole",
+        "value": "preferred-address",
+        "dialogues": 44
+      },
+      {
+        "factor": "unusedCellBit",
+        "value": "0",
+        "dialogues": 44
+      },
+      {
+        "factor": "unusedCellBit",
+        "value": "1",
+        "dialogues": 44
+      }
+    ],
+    "two_people": [
+      {
+        "factor": "lastCropPerson",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastCropPerson",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastRelationPerson",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastRelationPerson",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "A-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "B-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "rosesActorAfterCorrection",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "rosesActorAfterCorrection",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "singer",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "singer",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedCrop",
+        "value": "rosas",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedCrop",
+        "value": "tulipanes",
+        "dialogues": 44
+      }
+    ],
+    "current_and_future_place": [
+      {
+        "factor": "firstRequestedRole",
+        "value": "current",
+        "dialogues": 44
+      },
+      {
+        "factor": "firstRequestedRole",
+        "value": "future",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "current-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "future-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "secondRequestedRole",
+        "value": "current",
+        "dialogues": 44
+      },
+      {
+        "factor": "secondRequestedRole",
+        "value": "future",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdYesNo",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdYesNo",
+        "value": "True",
+        "dialogues": 44
+      }
+    ]
+  },
+  "perFamilyLastTargetTokenBudgetIncludingEos": {
+    "preferred_address": 3626,
+    "missing_information": 3156,
+    "current_and_future_place": 4102,
+    "listening": 3980,
+    "project_change": 5598,
+    "two_people": 5604,
+    "reschedule": 3128,
+    "task_order": 4444,
+    "unknown_author": 3918,
+    "daily_sequence": 3798,
+    "two_objects": 3485,
+    "limits_and_identity": 3648
+  },
+  "allTrainLastTargetTokensIncludingEos": 48487,
+  "maximumNativeInputTokens": 253,
+  "maximumLastAssistantTargetsIncludingEos": 27,
+  "completeContextsWithoutTruncation": true,
+  "assistantEosSupervised": true,
+  "guards": {
+    "known60FullUserNormalized": 0,
+    "diagnosis64FullUserNormalized": 0,
+    "diagnosis64UserOnlyPrefixes": 0,
+    "newVal80FullUserNormalized": 0,
+    "newValHeldoutSingleUserDelexForms": 0,
+    "newValHeldoutWholeUserPrefixDelexForms": 0
+  },
+  "guardSources": {
+    "known60Sha256": "42119ddbbf9c9847c5194e08323ff8d389cf5930305762145f2c31dadf7a9286",
+    "diagnosis64HashOnlySha256": "0279193256fd4aa0b8d49fb49965dbe404ed345407f5991c5304502563a3a407",
+    "newVal80Sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c"
+  },
+  "semanticCompositionExclusion": "No new heldout cross-task recipe is authored: selected tasks retain alias/activity, present/future place, person relation/singing/crops, and object color/giver operations only. Formal delex/prefix guards complement peer semantic review.",
+  "correctionColorPolicy": "44worlds correct to the other object color and44 correct to a third color from original eight-color palette; corrected object always changes, other color and both givers remain intact. Equality and difference are both present, alongside44queries of corrected entity and44of untouched entity.",
+  "preferredAddressPolicy": "Identification query uses already-existing TRAIN frame ¿Cuál es mi nombre?; calling/preference queries always target preferred address, never full name.",
+  "limitations": [
+    "This tests a bounded binding/order/requested-target data contrast, not wording-only improvement or broad conversation.",
+    "Four full prefixes are dependent rows; 88worldgroups and352changed dialogues, not1408independent situations.",
+    "State-map compiler and technical checks do not replace peer semantic review or model evaluation.",
+    "preferred_address secondary cell bit is intentionally unused: four order/query cells have22worlds each; places/people have8cells×11worlds, objects16cells×5–6worlds.",
+    "Data volume and update configuration match; changed token lengths change supervised token exposure, explicitly reported."
+  ],
+  "torchImported": false,
+  "modelsLoaded": false,
+  "trainingPerformed": false,
+  "coreEdited": false,
+  "ownerChatOrOldSealedFinalRead": false
+}

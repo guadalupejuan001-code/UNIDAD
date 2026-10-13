@@ -1,0 +1,1190 @@
+{
+  "plan": {
+    "createdAtUnix": 1791829125.3184516,
+    "changed": "deterministic beam width 1 versus 8; same native engine and fixed weights",
+    "hypothesis": "Some wrong early greedy choices may lose a higher probability complete reply; no expected reply enters search.",
+    "lengthNormalization": false,
+    "repetitionRules": false,
+    "training": false,
+    "generation": {
+      "temperature": 0,
+      "seed": 42,
+      "maxNewTokens": 32
+    },
+    "scope": "Already exposed diagnostic development, not final acceptance",
+    "gate": "If beam shows a semantic benefit on these pairs, compare both models on the same known 40 turns before adopting anything."
+  },
+  "models": {
+    "C7": {
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "pairs": [
+        {
+          "family": "preferred_address",
+          "target": "Te llamaré Cometa.",
+          "user": "Para dirigirte a mí usa Cometa. Mi nombre completo es Clara Campos. ¿Qué apodo he escogido?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "No me has dicho tu apodo.",
+                "generatedTokenIds": [
+                  1581,
+                  421,
+                  4220,
+                  4535,
+                  610,
+                  1740,
+                  310,
+                  19,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 77,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.4648519820002548,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "No me has dicho tu apodo.",
+                "generatedTokenIds": [
+                  1581,
+                  421,
+                  4220,
+                  4535,
+                  610,
+                  1740,
+                  310,
+                  19,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 77,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.8657186584314331,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.9797901070014632,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "missing_information",
+          "target": "No; todavía no me has dicho su color.",
+          "user": "Aún no te he contado el color de mi abrigo. ¿Tienes información para decir de qué color es?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Entonces el color es de mi abrigo.",
+                "generatedTokenIds": [
+                  512,
+                  1557,
+                  293,
+                  1691,
+                  315,
+                  264,
+                  557,
+                  737,
+                  316,
+                  396,
+                  19,
+                  2
+                ],
+                "generatedTokens": 12,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.5560665989996778,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "No has dicho el color del color.",
+                "generatedTokenIds": [
+                  1581,
+                  4220,
+                  4535,
+                  293,
+                  1691,
+                  331,
+                  1691,
+                  19,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -4.112901484710164,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 4.075342321999415,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "current_and_future_place",
+          "target": "Estás en Isla Verde.",
+          "user": "Tengo planeado un viaje a Ribera Alta, pero sigo en Isla Verde. ¿Cuál es mi ubicación de hoy?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Tu ubicación es un viaje a Ribera.",
+                "generatedTokenIds": [
+                  8092,
+                  6512,
+                  315,
+                  297,
+                  3232,
+                  275,
+                  397,
+                  526,
+                  435,
+                  19,
+                  2
+                ],
+                "generatedTokens": 11,
+                "stopReason": "eos",
+                "promptTokens": 81,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.27934756800095784,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Tu ubicación es un viaje a Ribera.",
+                "generatedTokenIds": [
+                  8092,
+                  6512,
+                  315,
+                  297,
+                  3232,
+                  275,
+                  397,
+                  526,
+                  435,
+                  19,
+                  2
+                ],
+                "generatedTokens": 11,
+                "stopReason": "eos",
+                "promptTokens": 81,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.3985394938426907,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 4.412384103001386,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "listening",
+          "target": "Te escucho. ¿Qué ocurrió?",
+          "user": "Necesito desahogarme de un día difícil. Acompáñame escuchando y deja los consejos.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Necesito que te llamaré escuchando.",
+                "generatedTokenIds": [
+                  51,
+                  691,
+                  3066,
+                  300,
+                  423,
+                  8118,
+                  319,
+                  7637,
+                  436,
+                  19,
+                  2
+                ],
+                "generatedTokens": 11,
+                "stopReason": "eos",
+                "promptTokens": 75,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.28632841800026654,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "¿Qué quieres contarme sobre deja?",
+                "generatedTokenIds": [
+                  1020,
+                  2345,
+                  3073,
+                  4481,
+                  581,
+                  609,
+                  6849,
+                  36,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 75,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -5.203119609504938,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 2.662904171000264,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "project_change",
+          "target": "Historias de la lluvia es tu proyecto de dibujos.",
+          "user": "Estoy reuniendo dibujos en Historias de la lluvia. Dime cómo se llama mi proyecto y qué contiene.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Se llama mi proyecto de la lluvia.",
+                "generatedTokenIds": [
+                  1350,
+                  4004,
+                  557,
+                  2286,
+                  264,
+                  283,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 74,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.37412145500093175,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Se llama mi proyecto de la lluvia.",
+                "generatedTokenIds": [
+                  1350,
+                  4004,
+                  557,
+                  2286,
+                  264,
+                  283,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 74,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -2.1635755754541606,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 2.292476460999751,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "reschedule",
+          "target": "El martes a las cuatro.",
+          "user": "Mi encuentro con Clara Campos será el martes, a las cuatro. Repite solamente el día y la hora.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Queda con Clara Campos será.",
+                "generatedTokenIds": [
+                  4551,
+                  338,
+                  304,
+                  7732,
+                  70,
+                  1396,
+                  613,
+                  3165,
+                  19,
+                  2
+                ],
+                "generatedTokens": 10,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.39526293000017176,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Queda con Clara Campos será.",
+                "generatedTokenIds": [
+                  4551,
+                  338,
+                  304,
+                  7732,
+                  70,
+                  1396,
+                  613,
+                  3165,
+                  19,
+                  2
+                ],
+                "generatedTokens": 10,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -3.834397177794017,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 2.5242280079983175,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "two_objects",
+          "target": "El reloj es blanco.",
+          "user": "El reloj es blanco; el bolso, gris. Recuérdame el color del reloj.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "El reloj es del relo.",
+                "generatedTokenIds": [
+                  569,
+                  333,
+                  366,
+                  79,
+                  315,
+                  331,
+                  333,
+                  366,
+                  19,
+                  2
+                ],
+                "generatedTokens": 10,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.47861513800125977,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "El relo.",
+                "generatedTokenIds": [
+                  569,
+                  333,
+                  366,
+                  19,
+                  2
+                ],
+                "generatedTokens": 5,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.3972969241440296,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.3713921759990626,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "unknown_author",
+          "target": "Buscas Historias de la lluvia.",
+          "user": "Necesito una novela: Historias de la lluvia. ¿Cuál es el título de esa novela?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "La lluvia.",
+                "generatedTokenIds": [
+                  607,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 4,
+                "stopReason": "eos",
+                "promptTokens": 71,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.09333298400088097,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "La lluvia.",
+                "generatedTokenIds": [
+                  607,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 4,
+                "stopReason": "eos",
+                "promptTokens": 71,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.0336956959217787,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.9680256829997234,
+              "exact": false
+            }
+          }
+        }
+      ]
+    },
+    "adjusted": {
+      "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+      "pairs": [
+        {
+          "family": "preferred_address",
+          "target": "Te llamaré Cometa.",
+          "user": "Para dirigirte a mí usa Cometa. Mi nombre completo es Clara Campos. ¿Qué apodo he escogido?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Te escogido?",
+                "generatedTokenIds": [
+                  2629,
+                  6521,
+                  4446,
+                  36,
+                  2
+                ],
+                "generatedTokens": 5,
+                "stopReason": "eos",
+                "promptTokens": 77,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.13638150299993868,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Te escogido?",
+                "generatedTokenIds": [
+                  2629,
+                  6521,
+                  4446,
+                  36,
+                  2
+                ],
+                "generatedTokens": 5,
+                "stopReason": "eos",
+                "promptTokens": 77,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.5254356432706118,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.122704495999642,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "missing_information",
+          "target": "No; todavía no me has dicho su color.",
+          "user": "Aún no te he contado el color de mi abrigo. ¿Tienes información para decir de qué color es?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "No; no me has con tu abrigo.",
+                "generatedTokenIds": [
+                  1581,
+                  32,
+                  409,
+                  421,
+                  4220,
+                  304,
+                  610,
+                  737,
+                  316,
+                  396,
+                  19,
+                  2
+                ],
+                "generatedTokens": 12,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.3208865560009144,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Es de qué color.",
+                "generatedTokenIds": [
+                  819,
+                  264,
+                  1602,
+                  1691,
+                  19,
+                  2
+                ],
+                "generatedTokens": 6,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -3.124910712693236,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.3185390450016712,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "current_and_future_place",
+          "target": "Estás en Isla Verde.",
+          "user": "Tengo planeado un viaje a Ribera Alta, pero sigo en Isla Verde. ¿Cuál es mi ubicación de hoy?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Noeado un viaje a Ribera Alta.",
+                "generatedTokenIds": [
+                  1581,
+                  74,
+                  341,
+                  297,
+                  3232,
+                  275,
+                  397,
+                  526,
+                  435,
+                  680,
+                  328,
+                  19,
+                  2
+                ],
+                "generatedTokens": 13,
+                "stopReason": "eos",
+                "promptTokens": 81,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.34715002899974934,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "TeCuál es un viaje a Ribera Alta.",
+                "generatedTokenIds": [
+                  2629,
+                  5649,
+                  315,
+                  297,
+                  3232,
+                  275,
+                  397,
+                  526,
+                  435,
+                  680,
+                  328,
+                  19,
+                  2
+                ],
+                "generatedTokens": 13,
+                "stopReason": "eos",
+                "promptTokens": 81,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -2.7022176653699717,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.9207381890009856,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "listening",
+          "target": "Te escucho. ¿Qué ocurrió?",
+          "user": "Necesito desahogarme de un día difícil. Acompáñame escuchando y deja los consejos.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Antes. ¿Qué ocurrió?",
+                "generatedTokenIds": [
+                  2409,
+                  441,
+                  19,
+                  1072,
+                  2345,
+                  3027,
+                  1983,
+                  36,
+                  2
+                ],
+                "generatedTokens": 9,
+                "stopReason": "eos",
+                "promptTokens": 75,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.21218517899978906,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Antes. ¿Cuál es tuáñame de un día?",
+                "generatedTokenIds": [
+                  2409,
+                  441,
+                  19,
+                  1072,
+                  5649,
+                  315,
+                  610,
+                  306,
+                  367,
+                  1424,
+                  264,
+                  297,
+                  1233,
+                  36,
+                  2
+                ],
+                "generatedTokens": 15,
+                "stopReason": "eos",
+                "promptTokens": 75,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -6.87964556569932,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.6464544350001233,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "project_change",
+          "target": "Historias de la lluvia es tu proyecto de dibujos.",
+          "user": "Estoy reuniendo dibujos en Historias de la lluvia. Dime cómo se llama mi proyecto y qué contiene.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Dime cómo. ¿Qué quieres contarme cómo teoy Unidad.",
+                "generatedTokenIds": [
+                  3037,
+                  581,
+                  1263,
+                  19,
+                  1072,
+                  2345,
+                  3073,
+                  4481,
+                  581,
+                  1263,
+                  423,
+                  945,
+                  665,
+                  361,
+                  19,
+                  2
+                ],
+                "generatedTokens": 16,
+                "stopReason": "eos",
+                "promptTokens": 74,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.5931911860006949,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": " seguido de Historias de la lluvia.",
+                "generatedTokenIds": [
+                  1595,
+                  310,
+                  264,
+                  7900,
+                  2851,
+                  264,
+                  283,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 10,
+                "stopReason": "eos",
+                "promptTokens": 74,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -4.510004192357883,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.2903644119996898,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "reschedule",
+          "target": "El martes a las cuatro.",
+          "user": "Mi encuentro con Clara Campos será el martes, a las cuatro. Repite solamente el día y la hora.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "El día con Clara, el martes, tu encuentro en, la hora y la hora.",
+                "generatedTokenIds": [
+                  569,
+                  1233,
+                  304,
+                  7732,
+                  70,
+                  17,
+                  293,
+                  716,
+                  441,
+                  17,
+                  610,
+                  7143,
+                  286,
+                  17,
+                  283,
+                  3103,
+                  292,
+                  283,
+                  3103,
+                  19,
+                  2
+                ],
+                "generatedTokens": 21,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.7763468400007696,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "A las cuatro.",
+                "generatedTokenIds": [
+                  38,
+                  362,
+                  1937,
+                  19,
+                  2
+                ],
+                "generatedTokens": 5,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -4.082508085062727,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 3.0486973769984616,
+              "exact": false
+            }
+          }
+        },
+        {
+          "family": "two_objects",
+          "target": "El reloj es blanco.",
+          "user": "El reloj es blanco; el bolso, gris. Recuérdame el color del reloj.",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "El bolso, el bolso, el bolso, el bolso.",
+                "generatedTokenIds": [
+                  569,
+                  4163,
+                  803,
+                  17,
+                  293,
+                  4163,
+                  803,
+                  17,
+                  293,
+                  4163,
+                  803,
+                  17,
+                  293,
+                  4163,
+                  803,
+                  19,
+                  2
+                ],
+                "generatedTokens": 17,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.8304287440005282,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "El reloj es blanco.",
+                "generatedTokenIds": [
+                  569,
+                  333,
+                  366,
+                  79,
+                  315,
+                  4006,
+                  19,
+                  2
+                ],
+                "generatedTokens": 8,
+                "stopReason": "eos",
+                "promptTokens": 76,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.8810690788232023,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 2.847595909001029,
+              "exact": true
+            }
+          }
+        },
+        {
+          "family": "unknown_author",
+          "target": "Buscas Historias de la lluvia.",
+          "user": "Necesito una novela: Historias de la lluvia. ¿Cuál es el título de esa novela?",
+          "responses": {
+            "1": {
+              "actual": {
+                "text": "Buscas de la lluvia.",
+                "generatedTokenIds": [
+                  39,
+                  372,
+                  931,
+                  264,
+                  283,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 8,
+                "stopReason": "eos",
+                "promptTokens": 71,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 0.3088359749999654,
+              "exact": false
+            },
+            "8": {
+              "actual": {
+                "text": "Buscas de la lluvia.",
+                "generatedTokenIds": [
+                  39,
+                  372,
+                  931,
+                  264,
+                  283,
+                  8133,
+                  19,
+                  2
+                ],
+                "generatedTokens": 8,
+                "stopReason": "eos",
+                "promptTokens": 71,
+                "discardedPromptTokens": 0,
+                "seed": 42,
+                "temperature": 0.0,
+                "modelType": "unidad-conversation-transformer",
+                "experimental": true,
+                "instructionFollowingValidated": false,
+                "generalConversationValidated": false,
+                "decodingStrategy": "beam",
+                "beamWidth": 8,
+                "sequenceLogProbability": -1.862170639942633,
+                "lengthPenalty": 0.0,
+                "modelId": "unidad-conversation-ea7ac4cad4decd902f1e8d9bf532837a7f191b47dacd6a537981a4eeca50e7a9",
+                "workerCapabilityValidated": false
+              },
+              "elapsedSeconds": 1.4907161340015591,
+              "exact": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

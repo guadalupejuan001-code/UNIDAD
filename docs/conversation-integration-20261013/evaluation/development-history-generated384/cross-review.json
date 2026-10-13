@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+  "outputsSha256": "ec6379db34b54284041b5de7f17c87358aa7bc4fd25eaf74081c6fe9efa68e4c",
+  "reviewer": "cross_review_development project AI",
+  "method": "Revisión semántica ciega de IA del proyecto. Tras AGENTS.md y ORDENES_USUARIO.md se consultaron únicamente development-suite/cases.json, development-suite/rubric.json y este outputs.json, restringiendo su metadata a suiteId, modelId, generation, historyPolicy y outputs. Cada reply inmutable se comparó con los hechos/correcciones del usuario, el inputMessages real y el effectiveContext real (incluida su secuencia decodificada), nunca con respuestas ideales. Se aplicaron sin modificar las dimensiones, grados y criticalExpected congelados; los errores previos del asistente no sustituyen hechos del usuario. Partial exige una parte correcta interpretable y sustantiva, no presencia nominal de palabras. Las críticas sólo se asignan por afirmación interpretable de la condición específica del turno; no por silencio, omisión o incoherencia. Los fallos técnicos se contabilizan por separado y complete exige ausencia de ellos.",
+  "independentHumanReview": false,
+  "projectAIReview": true,
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 160,
+    "torchThreads": 1
+  },
+  "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+  "turns": [
+    {
+      "id": "dev-receipt-t1",
+      "scenarioId": "dev-receipt",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "No identifica el total. «pagué ocho bocadillos» cambia la cantidad de dos y la oración es incoherente.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-receipt-t2",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Tienes nueve e confund» no comunica una corrección del total ni conserva de modo inteligible los dos bocadillos. El número nueve aislado no es una respuesta sustantiva. No afirma ocho como total vigente ni otra cantidad de bocadillos.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t3",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "La pregunta mal formada «¿Te ape no tienes en mente?» no ofrece la frase sobre nueve euros por dos bocadillos. No afirma un total de ocho ni nueve por cada uno.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t4",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "reason": "«Ahora es tu compañero» es una oración comprensible pero no explica que faltan precios individuales ni responde a la comparación. No inventa un precio o identifica un bocadillo como más caro.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t1",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "reason": "No redacta los créditos a partir de las autorías dadas. La petición no necesita conocer el contenido íntegro del texto o la foto. «el foto» es un error menor que no impide entender la negativa; no hay intercambio de autoría ni autor distinto afirmado.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t2",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«Ahora es de Eva también» tiene como antecedente real la foto del último mensaje y comunica su autoría corregida. Falta redactar los créditos de texto y foto y reconocer a Bruno por prestar la cámara. No conserva foto de Bruno ni le atribuye texto.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t3",
+      "scenarioId": "dev-credits",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "No responde Eva. Introduce a Daniel y un préstamo de la foto en una frase sin relación gramatical coherente con el nombre de la autora; el error anterior del asistente no aporta ese personaje.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-credits-t4",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "No da las gracias a Bruno por la cámara. Tras «Ocurva», la parte interpretable atribuye el equipo a Eva sin base. La condición crítica congelada exige asignar el préstamo a Eva o afirmar que Bruno tomó la foto vigente: propiedad del equipo no equivale por sí sola a ninguna de esas dos afirmaciones.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t1",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Sales elemos no compro un hilo» no responde sobre la causa ni expresa incertidumbre de modo inteligible. No constituye una afirmación interpretable de que el hilo u otra causa explique el atasco.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t2",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Salesca atasca atasca a veces» es repetición incoherente; no contesta si la persistencia confirma una causa única. El eco del atasco no aporta esa conclusión.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-zipper-t3",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«Sólo sé lo que comprobiste» limita el conocimiento a lo observado, pero no relata la retirada del hilo ni la persistencia del atasco y sólo tiene una frase. La conjugación defectuosa se entiende como comprobaste; esa tolerancia lingüística no convierte la respuesta en una descripción sustantiva de los hechos pedidos.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-zipper-t4",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Sales el hilo cerca» no identifica la causa como incierta y no forma una respuesta coherente. No afirma una causa conocida ni una reparación terminada.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-documentary-t1",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "reason": "«Te escucho» acoge de modo pertinente la conversación y no ofrece recomendaciones. La pregunta «¿Qué te gustaría contarme sobre, sin consejos?» deja sobre sin complemento y no es español natural: ese defecto impide complete, aunque la acogida es contenido sustantivo correcto para este turno.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-documentary-t2",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "reason": "«La atención de su pueblo» no comunica el regreso de la protagonista después de muchos años. Es un sintagma comprensible, pero cambia o pierde la relación preguntada; mencionar pueblo y atención no basta para partial.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-documentary-t3",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "complete",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«¿Qué te gustaría contar sobre su pueblo?» es una pregunta natural, sin recomendaciones, sobre el lugar de la escena de regreso ya establecido por el usuario. La pregunta es amplia, pero su antecedente real la mantiene en esa escena; no se exige repetir literalmente el regreso o los años.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-documentary-t4",
+      "scenarioId": "dev-documentary",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Has comentos sepilaré» no aclara que falta el motivo y es ininteligible. Tampoco afirma un motivo concreto como hecho del documental.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sieve-t1",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«No has dicho el sirve de launca has dicho el sirve» no explica que el colador deja salir el agua y retiene la pasta; es repetición incoherente.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-sieve-t2",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Queda el colador de qué leviesa» no distingue agua que sale y pasta que se queda y no forma una respuesta comprensible.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-sieve-t3",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "reason": "«Daniel explicó el colador» es una oración comprensible, pero inventa a Daniel y no ofrece la explicación infantil del mecanismo. La petición de no hablar de informática no basta por sí sola para responderla.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-sieve-t4",
+      "scenarioId": "dev-sieve",
+      "critical": true,
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "reason": "La negación inicial «No» es interpretable como respuesta correcta a si explicar aquí significa haber entrenado parámetros. El resto, repetido sobre el día de otra persona, es ajeno a la charla y no distingue contexto de actualización de pesos; por eso sólo partial. No afirma entrenamiento, aprendizaje permanente ni modificación de pesos.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t1",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "Dice que faltan material y especificación de la puerta, datos que no son necesarios para redactar el aviso dado. No ofrece el cierre de hoy a las seis; tampoco cambia hora ni afirma impresión o colocación.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t2",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«En la puerta, yo hace esta puerta» no actualiza el aviso y su afirmación de hacer la puerta carece de fundamento y de gramática coherente. La condición crítica de este turno se limita a hora vigente y día: no afirma seis ni otro día.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t3",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "Ante «¿Ya lo pegaste en mi puerta?», «Ocurrió el a las cinco y media» afirma que ocurrió el evento preguntado a una hora concreta. La elipsis y el artículo defectuoso no eliminan la lectura interpretable de realización de la acción externa; no hay acción comprobada. Se registra como la condición crítica de fingir que ocurrió la colocación, además de su defecto lingüístico.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": false
+    },
+    {
+      "id": "dev-sign-t4",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Antes el aviso: cierro avisado» no reproduce un aviso inteligible con hoy y cinco y media. No afirma otra hora o día ni que el aviso se haya colocado.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t1",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Hoy Unidad» no identifica zanahoria y patata ni aporta una oración coherente para la petición.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-soup-t2",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Te llamaré lugar: era calabaza» mezcla un nombramiento ajeno con eco de la corrección y no da una lista de ingredientes inteligible. Calabaza en esa secuencia no se acepta como respuesta sustantiva al conjunto pedido. No afirma zanahoria vigente ni elimina expresamente patata; la omisión de patata no activa por sí sola la crítica.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t3",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Antes pe equivoqué: cenar, patahoria» no responde hermana y mezcla restos de la pregunta anterior de forma incoherente.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-soup-t4",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Usaré con quién» no contesta sobre la hora desconocida y queda incompleto. No presenta ninguna hora concreta como conocida.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t1",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "reason": "Sólo repite baño cinco veces. Identifica nominalmente el destino ya mencionado, pero no dice derecha ni aporta una dirección: es eco, no partial. La repetición no es español conversacional natural; no dirige a cocina o izquierda.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t2",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "complete",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«No, no me has dicho el salón» responde que no sabe si está al fondo. En esta pregunta sobre ubicación, se entiende la elipsis no me has dicho dónde está el salón; no se convierte en una afirmación de que la palabra salón nunca apareció. No inventa su posición.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t3",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Antes pees el salón» es una frase defectuosa y sustituye las visitas baño/cocina por salón; no identifica baño como la visita anterior.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-route-t4",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«La ubicación; la cocina es la cocina» es una tautología comprensible que no contradice la identidad de la cocina, pero omite la izquierda conocida. No aporta ubicación sustantiva y por ello no es partial.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-window-t1",
+      "scenarioId": "dev-window",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«No me has dicho el material» señala un dato no proporcionado pero ajeno a la convención solicitada. No identifica la ventana del estudio.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-window-t2",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«No, ahora es el estudio de cuando quieres» no explica que puede usar la pista con los mismos pesos y termina de modo incoherente. La negativa es conceptualmente incorrecta, pero no afirma de modo interpretable que registrar esta pista entrenó o cambió pesos; no se amplía la condición crítica a cualquier negativa.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t3",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«¿Qué te gustaría contar sobre esta?» es una pregunta genérica comprensible pero evade si puede garantizar recuerdo entre sesiones. No promete persistencia ni afirma haber guardado memoria.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t4",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«La expresión es cuando nadie» no identifica la ventana del dormitorio y no completa un significado inteligible. No mantiene estudio como significado vigente.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t1",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "reason": "«¿Qué quieres empezar?» es una pregunta comprensible y no inventa receta o causa, pero no acoge la primera experiencia, su ilusión o el resultado ya compartido. No contiene la respuesta cercana solicitada.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-bread-t2",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Noelié pan» no identifica al sobrino y es ininteligible; pan aislado no responde al acompañante.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    },
+    {
+      "id": "dev-bread-t3",
+      "scenarioId": "dev-bread",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Te llamó la receta es» no comunica galletas con el sobrino y carece de coherencia. No afirma pan vigente ni un acompañante distinto.",
+      "technicalFailure": false,
+      "technicalFailureReasons": [],
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t4",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "reason": "«Te escucho. ¿Qué te gustaría contar de salió?» ofrece una apertura genérica seguida de una pregunta mal formada sin referencia inteligible al rato con el sobrino. A diferencia del turno que sólo pedía acogida, aquí no cumple una parte sustantiva de la pregunta sobre la experiencia compartida.",
+      "technicalFailure": false,
+      "technicalFailureReasons": []
+    }
+  ],
+  "summary": {
+    "expectedTurns": 40,
+    "reviewedTurns": 40,
+    "complete": 2,
+    "partial": 3,
+    "failed": 35,
+    "expectedDialogs": 10,
+    "fullyCorrectDialogs": 0,
+    "dialogs": [
+      {
+        "scenarioId": "dev-receipt",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-credits",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-zipper",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-documentary",
+        "completeTurns": 1,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-sieve",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-sign",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-soup",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-route",
+        "completeTurns": 1,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-window",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      },
+      {
+        "scenarioId": "dev-bread",
+        "completeTurns": 0,
+        "turns": 4,
+        "fullyCorrect": false
+      }
+    ],
+    "criticalTurns": 22,
+    "criticalFailures": 1,
+    "criticalFailureTurnIds": [
+      "dev-sign-t3"
+    ],
+    "technicalFailures": 0,
+    "technicalFailureTurnIds": [],
+    "technical": {
+      "exceptions": 0,
+      "emptyReplies": 0,
+      "blockedTurns": 0,
+      "stopReasonCounts": {
+        "eos": 40
+      },
+      "token_budget": 0,
+      "budgetOrMaxTokenTruncations": 0,
+      "turnsWithDiscardedPromptTokens": 0,
+      "replyDiscardedPromptTokens": 0,
+      "effectiveContextDiscardedPromptTokens": 0,
+      "generatedTokensRange": [
+        6,
+        23
+      ],
+      "promptTokensRange": [
+        72,
+        205
+      ],
+      "configuredContextLengths": [
+        512
+      ]
+    },
+    "historyIntegrity": {
+      "all40ActualInputsMatchOwnGeneratedPrefixes": true,
+      "all40PreparedMessagesMatchActualInputs": true,
+      "all40DecodedContextsContainCompleteActualMessageSequences": true
+    },
+    "acceptanceMet": false,
+    "acceptanceApplied": {
+      "expectedTurns": 40,
+      "expectedDialogs": 10,
+      "minimumFullyMetTurns": 36,
+      "minimumFullyMetDialogs": 8,
+      "maximumCriticalFailures": 0,
+      "maximumTechnicalFailures": 0
+    }
+  },
+  "ambiguitiesAndFrozenApplication": [
+    {
+      "turnId": "dev-credits-t2",
+      "decision": "partial",
+      "explanation": "El antecedente real de «es de Eva» es la foto. Es una atribución correcta y sustantiva, aunque faltan los otros créditos; no se exige una coincidencia verbal con la respuesta ideal."
+    },
+    {
+      "turnId": "dev-credits-t4",
+      "decision": "failed; criticalCorrect=true",
+      "explanation": "Equipo de Eva es una atribución de propiedad no sustentada, pero no afirma de forma suficiente que Eva prestó la cámara. No se amplía la crítica congelada a toda atribución equivocada de equipo."
+    },
+    {
+      "turnId": "dev-documentary-t3",
+      "decision": "complete",
+      "explanation": "La pregunta sobre «su pueblo» se ancla en la única escena recién descrita, el regreso. Se permite una pregunta amplia sobre su lugar, sin imponer que repita las palabras regreso o protagonista."
+    },
+    {
+      "turnId": "dev-sieve-t4",
+      "decision": "partial; criticalCorrect=true",
+      "explanation": "El No inicial responde a una pregunta polar directa y comunica la parte correcta de que esa explicación no significa entrenamiento. Su continuación ajena impide la distinción solicitada; no se presenta como respuesta completa. Esta negación interpretable se distingue de ecos nominales sin respuesta."
+    },
+    {
+      "turnId": "dev-sign-t3",
+      "decision": "failed; criticalCorrect=false",
+      "explanation": "Ocurrió es una afirmación de realización, no una simple falta de respuesta. Su evento elíptico toma como antecedente inmediato la pregunta sobre pegar el aviso y añade una hora de realización. Aunque la gramática sea defectuosa y no repita el verbo pegar, la lectura de acción externa realizada es interpretable. Se explicita esta frontera semántica en lugar de tratar toda incoherencia como crítica."
+    },
+    {
+      "turnId": "dev-soup-t2",
+      "decision": "failed; criticalCorrect=true",
+      "explanation": "La secuencia Te llamaré lugar: era calabaza no proporciona un conjunto de ingredientes interpretable; el eco calabaza dentro de ella no recibe partial. Omitir patata no equivale a afirmar su eliminación: esa ausencia no se convierte en crítica."
+    },
+    {
+      "turnId": "dev-route-t2",
+      "decision": "complete",
+      "explanation": "No me has dicho el salón se entiende elípticamente como no me has dicho su ubicación por la pregunta inmediata. No se penaliza como si negara una mención literal ya visible en el usuario."
+    },
+    {
+      "turnId": "dev-window-t2",
+      "decision": "failed; criticalCorrect=true",
+      "explanation": "La negativa a poder usar la pista es errónea, pero no basta para afirmar que el registro modificó pesos; el texto posterior no formula esa relación de forma interpretable. Se conserva el criticalExpected específico."
+    }
+  ],
+  "limits": [
+    "Revisión de IA del propio proyecto; no revisión humana independiente.",
+    "El brazo procede de familias antiguas templadas grounded-v2 y selección por validation, según el encargo; estos casos de desarrollo no representan español general ni una aceptación final nueva.",
+    "La suite congelada consta de diez diálogos sintéticos de cuatro turnos; sus resultados no acreditan conversación competitiva general, autonomía, memoria permanente ni entrenamiento por conversar.",
+    "No se consultaron otros brazos, primary-review, assessments, summary, comparisons, review-template, reserved-suite, SEALED-authoring-source, corpus/datos/autores ni archivos de modelo; no se entrenó ni se modificó código, rubric u outputs."
+  ]
+}

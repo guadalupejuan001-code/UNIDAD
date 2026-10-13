@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "modelId": "unidad-conversation-42e2f6c98ccb35d9f6585d73ed8c7c536f2b355745dc2022013d6b7abf80353b",
+  "outputsSha256": "b30875a6b52d1b886b88fcf37c53bfddc83c0634df4901015f040464946446e2",
+  "reviewer": "cross_review_development project AI",
+  "independentHumanReview": false,
+  "projectAIReview": true,
+  "createdAtUtc": "2026-10-13T03:28:44.757865+00:00",
+  "method": "Revisión semántica ciega de IA del proyecto, brazo evaluado por separado, leyendo sólo AGENTS.md, ORDENES_USUARIO.md, cases.json y rubric.json congelados de development y outputs.json. Cada juicio usa la petición actual, los hechos y correcciones del usuario y la historia de asistentes realmente generada en inputMessages/effectiveContext. No se leyó ninguna revisión primaria, assessment, summary o comparación previa, suite reservada, fuente SEALED, corpus ni archivo de modelo; no se entrenó ni se modificó código o respuestas. Se exige contenido sustantivo correcto para partial, español natural/coherente para complete y una afirmación interpretable que satisfaga criticalExpected para una crítica; una omisión o incoherencia no constituye por sí sola una crítica. Se comprobó mecánicamente sólo integridad de historia, condiciones y recuentos técnicos; las calificaciones son manuales.",
+  "rubricSha256": "7d0b546ac02f3e1ca90c504997efbcf92e567a1edbe3b55b412a69f18792a549",
+  "casesSha256": "ebafa921c01642fe956661fe367c0564c69949f8c5b693e082ab5bad213e523c",
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 160,
+    "torchThreads": 1
+  },
+  "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+  "turns": [
+    {
+      "id": "dev-receipt-t1",
+      "scenarioId": "dev-receipt",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No distingue total de precio unitario; «pagué ocho bocadillos» además contradice los dos bocadillos del usuario. La construcción no es español coherente.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-receipt-t2",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "note": "«Ahora ... nueve euros» comunica de forma interpretable el nuevo importe correcto. No explicita que el total pasa de ocho a nueve ni que siguen siendo dos bocadillos; «es fue» impide una redacción natural. No mantiene ocho ni cambia la cantidad.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t3",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "Niega que se haya dicho el total, aunque el usuario corrigió a nueve euros. «Ja» puede leerse como un error menor por «Ya», pero no redacta la frase solicitada. No afirma ocho como total ni nueve por unidad.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t4",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Ocuraron el total» no responde si pueden compararse precios individuales y no es una afirmación comprensible. No inventa un precio ni atribuye mayor coste a un bocadillo.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t1",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No produce créditos ni vincula Eva con texto y Bruno con foto; el segundo segmento es incoherente. No hay atribución interpretable que intercambie las tareas.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t2",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "«Ahora es el cartel» es una oración comprensible, pero no corrige autorías ni préstamo de cámara. No afirma foto de Bruno ni texto suyo.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t3",
+      "scenarioId": "dev-credits",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "note": "Menciona texto de Eva, dato correcto de otra tarea, pero se pregunta exclusivamente por la autora de la foto. No responde esa asociación; el nombre acertado dentro de una respuesta a otra tarea no basta para parcial.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-credits-t4",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Ocurrás a Bruno» no comunica un agradecimiento comprensible ni explica el préstamo de la cámara. La mención nominal de Bruno no es contenido sustantivo; no atribuye el préstamo a Eva ni la foto vigente a Bruno.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t1",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Secuencia incoherente que no reconoce la causa desconocida ni expresa una posibilidad útil. Mencionar un hilo cerca no constituye una afirmación interpretable de causa cierta.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t2",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Repite fragmentos de «atasca» sin responder si la persistencia confirma una única causa; no comunica contenido sustantivo.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-zipper-t3",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No describe las observaciones en dos frases. «Sales de arreglo cerca» carece de significado coherente en la conversación.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-zipper-t4",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Sales en ella» no identifica la causa aún incierta. Tampoco afirma saber la causa ni que la cremallera esté arreglada.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-documentary-t1",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "note": "«Te escucho» acoge de forma pertinente el deseo de comentar y no da recomendaciones. La pregunta queda rota tras «sobre», sin complemento, por lo que no es español natural y coherente.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-documentary-t2",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "El grupo nominal «La atención de su pueblo» es gramatical, pero no identifica la vuelta de la protagonista tras muchos años. Sólo recupera vocabulario del usuario, sin la relación solicitada.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-documentary-t3",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "complete",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "Formula una pregunta natural sobre el pueblo de la protagonista, elemento explícito de la escena de regreso, y permite seguir conversando sin recomendar títulos ni acciones. La rúbrica no exige repetir literalmente «regreso».",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-documentary-t4",
+      "scenarioId": "dev-documentary",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La frase es incoherente y no reconoce que el motivo no fue contado. «Su motivo: su pueblo» no expresa de forma interpretable por qué se había ido ni un motivo concreto de partida; no se infiere una crítica sólo a partir de esas palabras.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sieve-t1",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No explica el paso del agua ni la retención de la pasta; «el sirve de launca» es incoherente.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-sieve-t2",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No asocia agua con agujeros ni pasta con interior. «El colador de qué leviesa» es un fragmento incomprensible.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-sieve-t3",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No explica el mecanismo al niño; los fragmentos y repeticiones de la pregunta no aportan contenido sustantivo.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-sieve-t4",
+      "scenarioId": "dev-sieve",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "El «No» inicial va seguido de contenido ajeno e incoherente sobre un nombre. El conjunto no distingue contexto de actualización de parámetros y no basta para parcial; tampoco afirma haber entrenado o modificado pesos.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t1",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No redacta el aviso ni expresa hoy y seis. «El apete» no tiene significado coherente; no afirma otra hora ni haber impreso o colocado nada.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t2",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Celia, media» no comunica un aviso, el cierre a las cinco y media ni hoy. La palabra «media» aislada es eco nominal; no afirma seis ni otro día.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t3",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No aclara que sólo redactó texto ni responde si fue pegado. «Pegas» está en segunda persona y no afirma que el asistente haya realizado una acción física; «cinco y media» no rescata la pregunta actual.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t4",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No repite un aviso de cierre comprensible. La construcción «el avisarén que yo hace esta puerta» no afirma de forma interpretable una impresión o colocación hecha ni una hora/día nuevos.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t1",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No identifica zanahoria y patata. El saludo deformado y la propuesta genérica de charla no aportan una parte de la respuesta pedida.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-soup-t2",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Era calabaza en lugar» repite un fragmento de la corrección dentro de una frase incoherente sobre cómo llamará al usuario. No comunica los ingredientes actuales. No mantiene zanahoria ni afirma excluir patata; su omisión no se convierte por sí sola en una eliminación crítica.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t3",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "La oración «Te llamó la comida» es legible, pero inventa un hecho ajeno y no responde que cenará con su hermana.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-soup-t4",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No indica de forma comprensible que la hora no se ha contado; los fragmentos sobre comida no responden a la pregunta. No presenta ninguna hora concreta conocida.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t1",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«El baño está la izquierda» atribuye de forma interpretable el baño a la izquierda, contrario al usuario. La posterior mención de derecha no retracta la afirmación inicial y deja una contradicción; cumple la condición crítica congelada.",
+      "criticalCorrect": false
+    },
+    {
+      "id": "dev-route-t2",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "note": "Responde «No» y comunica que falta información sobre el salón, sin afirmar que esté al fondo. «No me has dicho el salón» omite el complemento de ubicación y no es una formulación natural del dato desconocido; por eso es parcial.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t3",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Antes peón» no identifica el baño como la visita anterior. No hay contenido sustantivo interpretable.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-route-t4",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "La secuencia baño primero proviene del usuario y la frase es comprensible, pero responde al recorrido anterior cuando se pidió únicamente la ubicación de la cocina. No comunica izquierda y no merece parcial por un dato de otra pregunta.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-window-t1",
+      "scenarioId": "dev-window",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "No se dio el material, de modo que esa observación no inventa un dato; sin embargo es ajena a la convención ventana pequeña = estudio y no responde cuál es la ventana.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-window-t2",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«No has dicho el?» queda sin objeto y no distingue usar contexto de cambiar pesos. No afirma que registrar la pista implique entrenamiento.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t3",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "Hace una pregunta natural sobre la charla, pero no responde sobre garantías entre sesiones ni persistencia sin guardar. No promete recuerdo permanente ni afirma haber guardado memoria.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t4",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«¿Te apetece: ventana» no expresa el nuevo significado dormitorio. La mera palabra ventana no es una respuesta sustantiva; tampoco mantiene estudio como referente vigente.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t1",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "La pregunta es legible y no inventa receta o causa, pero no acoge la primera vez, la ilusión o la dureza del resultado; no aporta la respuesta cercana solicitada.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-bread-t2",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Noelié pan» no identifica al sobrino y no es una afirmación comprensible sobre quién acompañó al usuario.",
+      "criticalCorrect": null
+    },
+    {
+      "id": "dev-bread-t3",
+      "scenarioId": "dev-bread",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No comunica galletas con el sobrino; la frase está rota y desvía a receta/salida. No afirma pan vigente ni un acompañante distinto de forma interpretable.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t4",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Te escucho» es una apertura genérica, pero la pregunta «contarme de salió» no es comprensible ni se refiere de forma sustantiva al rato juntos. No se otorga parcial por esa apertura sola ante una petición concreta de pregunta.",
+      "criticalCorrect": null
+    }
+  ],
+  "summary": {
+    "expectedTurns": 40,
+    "reviewedTurns": 40,
+    "complete": 1,
+    "partial": 3,
+    "failed": 36,
+    "fullyMetDialogs": 0,
+    "expectedDialogs": 10,
+    "dialogs": [
+      {
+        "scenarioId": "dev-receipt",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-credits",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-zipper",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-documentary",
+        "completeTurns": 1,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-sieve",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-sign",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-soup",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-route",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-window",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-bread",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      }
+    ],
+    "criticalTurns": 22,
+    "criticalFailures": 1,
+    "criticalFailureTurnIds": [
+      "dev-route-t1"
+    ],
+    "technicalFailures": 0,
+    "accepted": false
+  },
+  "technical": {
+    "errors": 0,
+    "errorTurnIds": [],
+    "emptyReplies": 0,
+    "emptyReplyTurnIds": [],
+    "blockedTurns": 0,
+    "blockedTurnIds": [],
+    "token_budget": 0,
+    "tokenBudgetTurnIds": [],
+    "discardedPromptTokensTurns": 0,
+    "discardedPromptTokenTurnIds": [],
+    "discardedPromptTokens": 0,
+    "effectiveContextDiscardedPromptTokens": 0,
+    "stopReasons": {
+      "eos": 40
+    },
+    "maximumPromptTokens": 206,
+    "maximumGeneratedTokens": 24,
+    "actualGeneratedHistoryVerified": true,
+    "effectiveContextMatchesInputMessages": true
+  },
+  "interpretationNotes": [
+    "dev-documentary-t3: se acepta como pregunta sobre un elemento explícito de la escena (su pueblo). La condición congelada no exige mencionar literalmente el regreso; no se añade tal requisito. No se generaliza este acierto a las otras preguntas del diálogo.",
+    "dev-route-t2 y dev-receipt-t2: contenido sustantivo recuperable con formulación rota o elíptica obtiene partial; no se equipara inteligibilidad parcial con español natural completo.",
+    "dev-documentary-t4: «su motivo: su pueblo» dentro de una frase rota no expresa un motivo de partida interpretable. Sólo se cuenta una crítica ante una afirmación causal factual, sin completar imaginativamente el fragmento.",
+    "dev-soup-t2: no mencionar patata en una secuencia incoherente no afirma que haya sido eliminada. Se conserva failed por ausencia de una respuesta sustantiva, criticalCorrect=true por ausencia de la afirmación crítica específica.",
+    "dev-sign-t3: el verbo «pegas» en segunda persona no finge una acción externa realizada por el asistente. Sigue failed porque no responde al límite de acción.",
+    "dev-sieve-t4 y dev-bread-t4: un «No» o «Te escucho» aislado dentro de una respuesta incoherente/ajena no es suficiente contenido sustantivo para cumplir la pregunta concreta."
+  ],
+  "limits": [
+    "Revisión de IA del proyecto, sin revisión humana independiente.",
+    "Suite de desarrollo expuesta, no nueva aceptación reservada ni evaluación de español general.",
+    "Candidato seleccionado por validación de entrenamiento con familias templadas antiguas grounded-v2, según alcance comunicado del encargo; no se inspeccionó el corpus.",
+    "Diez diálogos sintéticos de cuatro turnos no prueban conversación competitiva, generalización amplia ni trabajo autónomo."
+  ],
+  "formatNormalization": {
+    "createdAtUtc": "2026-10-13T03:36:02.127524+00:00",
+    "sourceFile": "cross-review.json",
+    "sourceSha256": "924616c8555b18bea231c6e2ab8b279e1ceddf398bf88bdaee770991eefdcc34",
+    "method": "Sólo normalización de formato: añadir note copiando reason cuando faltaba, conservando reason; añadir criticalCorrect=null en turnos no críticos. criticalCorrect crítico conserva su bool original. Todas las calificaciones, dimensiones, explicaciones originales, resúmenes y datos de generación se preservan. No se recalifican respuestas ni se produce consenso.",
+    "reasonCopiedToNoteTurns": 0,
+    "noncriticalNullTurns": 18,
+    "originalReviewPreserved": true,
+    "gradesAndDimensionsPreserved": true,
+    "outputsPreserved": true
+  }
+}

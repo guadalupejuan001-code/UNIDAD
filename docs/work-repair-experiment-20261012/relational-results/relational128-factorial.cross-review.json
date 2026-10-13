@@ -1,0 +1,4214 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Independent project-AI cross review of relational128 on OLD frozen PR1 factorial; not new VAL80 rubric",
+  "reviewer": "/root/linguistic_development/prospective_case_qa; project AI agent",
+  "humanIndependentEvaluation": false,
+  "reviewedAtUtc": "2026-10-12T19:03:17.608107+00:00",
+  "primaryReviewSeen": false,
+  "newValidationOutputsSeen": false,
+  "modelsLoaded": false,
+  "MLExecuted": false,
+  "trainingValidationOrFinalBodiesReadDuringThisTask": false,
+  "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+  "rawPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/relational128-factorial.actual.json",
+  "rawSha256": "5227417f2f52c512af161e213c443e828a1611c376938bb91a7348f44a1b6fba",
+  "rubricInputs": {
+    "cases": {
+      "path": "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/cases.json",
+      "sha256": "3a97d7208edd30d089c65c543ba028a3f6984b806e88f060edb02b7c20222da7"
+    },
+    "protocol": {
+      "path": "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/protocol.json",
+      "sha256": "a8da2c6cf8474dc1fd2e02bc8c8e7813adf6e2e95084d69afac196db5e6108f8"
+    },
+    "ideal-history": {
+      "path": "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/ideal-history.json",
+      "sha256": "8be20a9a44c39fdbae4362620bb2f0d9200017ce61bd1f25d6c7af40e22a6476"
+    }
+  },
+  "oldCriticalIfUnchanged": true,
+  "audit": {
+    "sourceCompleteAndFrozenBeforeRepliesInspected": true,
+    "completedAtUtc": "2026-10-12T18:54:44.645740+00:00",
+    "frozenInputsUnchanged": true,
+    "rawSummary": {
+      "responses": 80,
+      "technicalErrors": 0,
+      "emptyReplies": 0,
+      "eos": 80,
+      "tokenBudgetStops": 0,
+      "promptCuts": 0
+    },
+    "all80UserStringsMatchFrozenCases": true,
+    "allActualHistoriesOwnPastVerbatim": true,
+    "allIdealHistoriesFixedPastOnly": true,
+    "noCurrentOrFutureIdealReplyFed": true,
+    "all80ActualTextHashesVerified": true,
+    "inputHashesMatchReceipt": {
+      "cases": true,
+      "protocol": true,
+      "ideal-history": true
+    },
+    "allFourFirstTurnsEqualInTextTokensMessages": true
+  },
+  "scopes": {
+    "singleTurn48": {
+      "n": 48,
+      "C": 3,
+      "P": 2,
+      "F": 43,
+      "critical": 12,
+      "C_ids": [
+        "pr1diag-v1-r01-o1-w1/t1",
+        "pr1diag-v1-r10-o0-w0/t1",
+        "pr1diag-v1-r10-o1-w0/t1"
+      ],
+      "P_ids": [
+        "pr1diag-v1-r05-o0-w1/t1",
+        "pr1diag-v1-r09-o0-w0/t1"
+      ],
+      "critical_ids": [
+        "pr1diag-v1-r01-o0-w1/t1",
+        "pr1diag-v1-r02-o1-w0/t1",
+        "pr1diag-v1-r02-o1-w1/t1",
+        "pr1diag-v1-r05-o1-w0/t1",
+        "pr1diag-v1-r05-o1-w1/t1",
+        "pr1diag-v1-r06-o0-w0/t1",
+        "pr1diag-v1-r06-o1-w0/t1",
+        "pr1diag-v1-r08-o0-w0/t1",
+        "pr1diag-v1-r08-o0-w1/t1",
+        "pr1diag-v1-r08-o1-w0/t1",
+        "pr1diag-v1-r08-o1-w1/t1",
+        "pr1diag-v1-r11-o1-w1/t1"
+      ],
+      "additionalContradictionRows": 20
+    },
+    "actualMulti16": {
+      "n": 16,
+      "C": 2,
+      "P": 5,
+      "F": 9,
+      "critical": 1,
+      "C_ids": [
+        "pr1diag-v1-h01/t2",
+        "pr1diag-v1-h02/t2"
+      ],
+      "P_ids": [
+        "pr1diag-v1-h01/t1",
+        "pr1diag-v1-h01/t3",
+        "pr1diag-v1-h02/t1",
+        "pr1diag-v1-h02/t4",
+        "pr1diag-v1-h04/t3"
+      ],
+      "critical_ids": [
+        "pr1diag-v1-h02/t3"
+      ],
+      "additionalContradictionRows": 2
+    },
+    "idealMulti16DiagnosticOnly": {
+      "n": 16,
+      "C": 0,
+      "P": 2,
+      "F": 14,
+      "critical": 2,
+      "C_ids": [],
+      "P_ids": [
+        "pr1diag-v1-h01/t1",
+        "pr1diag-v1-h02/t1"
+      ],
+      "critical_ids": [
+        "pr1diag-v1-h03/t2",
+        "pr1diag-v1-h03/t3"
+      ],
+      "additionalContradictionRows": 1
+    }
+  },
+  "overallDescriptiveOnly": {
+    "n": 80,
+    "C": 5,
+    "P": 9,
+    "F": 66,
+    "critical": 15,
+    "C_ids": [
+      "pr1diag-v1-r01-o1-w1/t1",
+      "pr1diag-v1-r10-o0-w0/t1",
+      "pr1diag-v1-r10-o1-w0/t1",
+      "pr1diag-v1-h01/t2",
+      "pr1diag-v1-h02/t2"
+    ],
+    "P_ids": [
+      "pr1diag-v1-r05-o0-w1/t1",
+      "pr1diag-v1-r09-o0-w0/t1",
+      "pr1diag-v1-h01/t1",
+      "pr1diag-v1-h01/t3",
+      "pr1diag-v1-h01/t1",
+      "pr1diag-v1-h02/t1",
+      "pr1diag-v1-h02/t4",
+      "pr1diag-v1-h02/t1",
+      "pr1diag-v1-h04/t3"
+    ],
+    "critical_ids": [
+      "pr1diag-v1-r01-o0-w1/t1",
+      "pr1diag-v1-r02-o1-w0/t1",
+      "pr1diag-v1-r02-o1-w1/t1",
+      "pr1diag-v1-r05-o1-w0/t1",
+      "pr1diag-v1-r05-o1-w1/t1",
+      "pr1diag-v1-r06-o0-w0/t1",
+      "pr1diag-v1-r06-o1-w0/t1",
+      "pr1diag-v1-r08-o0-w0/t1",
+      "pr1diag-v1-r08-o0-w1/t1",
+      "pr1diag-v1-r08-o1-w0/t1",
+      "pr1diag-v1-r08-o1-w1/t1",
+      "pr1diag-v1-r11-o1-w1/t1",
+      "pr1diag-v1-h02/t3",
+      "pr1diag-v1-h03/t2",
+      "pr1diag-v1-h03/t3"
+    ],
+    "additionalContradictionRows": 23
+  },
+  "singleTurnMatrix": {
+    "bySkill": {
+      "explicit_fact_retrieval": {
+        "n": 16,
+        "C": 1,
+        "P": 0,
+        "F": 15,
+        "critical": 3,
+        "C_ids": [
+          "pr1diag-v1-r01-o1-w1/t1"
+        ],
+        "P_ids": [],
+        "critical_ids": [
+          "pr1diag-v1-r01-o0-w1/t1",
+          "pr1diag-v1-r02-o1-w0/t1",
+          "pr1diag-v1-r02-o1-w1/t1"
+        ],
+        "additionalContradictionRows": 6
+      },
+      "relation_and_referent": {
+        "n": 16,
+        "C": 0,
+        "P": 1,
+        "F": 15,
+        "critical": 8,
+        "C_ids": [],
+        "P_ids": [
+          "pr1diag-v1-r05-o0-w1/t1"
+        ],
+        "critical_ids": [
+          "pr1diag-v1-r05-o1-w0/t1",
+          "pr1diag-v1-r05-o1-w1/t1",
+          "pr1diag-v1-r06-o0-w0/t1",
+          "pr1diag-v1-r06-o1-w0/t1",
+          "pr1diag-v1-r08-o0-w0/t1",
+          "pr1diag-v1-r08-o0-w1/t1",
+          "pr1diag-v1-r08-o1-w0/t1",
+          "pr1diag-v1-r08-o1-w1/t1"
+        ],
+        "additionalContradictionRows": 7
+      },
+      "language_and_instruction_production": {
+        "n": 16,
+        "C": 2,
+        "P": 1,
+        "F": 13,
+        "critical": 1,
+        "C_ids": [
+          "pr1diag-v1-r10-o0-w0/t1",
+          "pr1diag-v1-r10-o1-w0/t1"
+        ],
+        "P_ids": [
+          "pr1diag-v1-r09-o0-w0/t1"
+        ],
+        "critical_ids": [
+          "pr1diag-v1-r11-o1-w1/t1"
+        ],
+        "additionalContradictionRows": 7
+      }
+    },
+    "cells": {
+      "o0-w0": {
+        "n": 12,
+        "C": 1,
+        "P": 1,
+        "F": 10,
+        "critical": 2,
+        "C_ids": [
+          "pr1diag-v1-r10-o0-w0/t1"
+        ],
+        "P_ids": [
+          "pr1diag-v1-r09-o0-w0/t1"
+        ],
+        "critical_ids": [
+          "pr1diag-v1-r06-o0-w0/t1",
+          "pr1diag-v1-r08-o0-w0/t1"
+        ],
+        "additionalContradictionRows": 5
+      },
+      "o0-w1": {
+        "n": 12,
+        "C": 0,
+        "P": 1,
+        "F": 11,
+        "critical": 2,
+        "C_ids": [],
+        "P_ids": [
+          "pr1diag-v1-r05-o0-w1/t1"
+        ],
+        "critical_ids": [
+          "pr1diag-v1-r01-o0-w1/t1",
+          "pr1diag-v1-r08-o0-w1/t1"
+        ],
+        "additionalContradictionRows": 5
+      },
+      "o1-w0": {
+        "n": 12,
+        "C": 1,
+        "P": 0,
+        "F": 11,
+        "critical": 4,
+        "C_ids": [
+          "pr1diag-v1-r10-o1-w0/t1"
+        ],
+        "P_ids": [],
+        "critical_ids": [
+          "pr1diag-v1-r02-o1-w0/t1",
+          "pr1diag-v1-r05-o1-w0/t1",
+          "pr1diag-v1-r06-o1-w0/t1",
+          "pr1diag-v1-r08-o1-w0/t1"
+        ],
+        "additionalContradictionRows": 5
+      },
+      "o1-w1": {
+        "n": 12,
+        "C": 1,
+        "P": 0,
+        "F": 11,
+        "critical": 4,
+        "C_ids": [
+          "pr1diag-v1-r01-o1-w1/t1"
+        ],
+        "P_ids": [],
+        "critical_ids": [
+          "pr1diag-v1-r02-o1-w1/t1",
+          "pr1diag-v1-r05-o1-w1/t1",
+          "pr1diag-v1-r08-o1-w1/t1",
+          "pr1diag-v1-r11-o1-w1/t1"
+        ],
+        "additionalContradictionRows": 5
+      }
+    },
+    "wording": {
+      "n": 24,
+      "direction": "w0→w1 within fixed order",
+      "CPFtransitions": {
+        "F→F": 19,
+        "F→C": 1,
+        "F→P": 1,
+        "P→F": 1,
+        "C→F": 2
+      },
+      "criticalTransitions": {
+        "0→1": 2,
+        "0→0": 16,
+        "1→1": 4,
+        "1→0": 2
+      },
+      "C_lost": 2,
+      "C_gained": 1,
+      "pairs": [
+        {
+          "baseCaseId": "r01",
+          "episodeIds": [
+            "pr1diag-v1-r01-o0-w0",
+            "pr1diag-v1-r01-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r01",
+          "episodeIds": [
+            "pr1diag-v1-r01-o1-w0",
+            "pr1diag-v1-r01-o1-w1"
+          ],
+          "CPFtransition": "F→C",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": true
+        },
+        {
+          "baseCaseId": "r02",
+          "episodeIds": [
+            "pr1diag-v1-r02-o0-w0",
+            "pr1diag-v1-r02-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r02",
+          "episodeIds": [
+            "pr1diag-v1-r02-o1-w0",
+            "pr1diag-v1-r02-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r03",
+          "episodeIds": [
+            "pr1diag-v1-r03-o0-w0",
+            "pr1diag-v1-r03-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r03",
+          "episodeIds": [
+            "pr1diag-v1-r03-o1-w0",
+            "pr1diag-v1-r03-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r04",
+          "episodeIds": [
+            "pr1diag-v1-r04-o0-w0",
+            "pr1diag-v1-r04-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r04",
+          "episodeIds": [
+            "pr1diag-v1-r04-o1-w0",
+            "pr1diag-v1-r04-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r05",
+          "episodeIds": [
+            "pr1diag-v1-r05-o0-w0",
+            "pr1diag-v1-r05-o0-w1"
+          ],
+          "CPFtransition": "F→P",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r05",
+          "episodeIds": [
+            "pr1diag-v1-r05-o1-w0",
+            "pr1diag-v1-r05-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r06",
+          "episodeIds": [
+            "pr1diag-v1-r06-o0-w0",
+            "pr1diag-v1-r06-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r06",
+          "episodeIds": [
+            "pr1diag-v1-r06-o1-w0",
+            "pr1diag-v1-r06-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r07",
+          "episodeIds": [
+            "pr1diag-v1-r07-o0-w0",
+            "pr1diag-v1-r07-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r07",
+          "episodeIds": [
+            "pr1diag-v1-r07-o1-w0",
+            "pr1diag-v1-r07-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r08",
+          "episodeIds": [
+            "pr1diag-v1-r08-o0-w0",
+            "pr1diag-v1-r08-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r08",
+          "episodeIds": [
+            "pr1diag-v1-r08-o1-w0",
+            "pr1diag-v1-r08-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r09",
+          "episodeIds": [
+            "pr1diag-v1-r09-o0-w0",
+            "pr1diag-v1-r09-o0-w1"
+          ],
+          "CPFtransition": "P→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r09",
+          "episodeIds": [
+            "pr1diag-v1-r09-o1-w0",
+            "pr1diag-v1-r09-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r10",
+          "episodeIds": [
+            "pr1diag-v1-r10-o0-w0",
+            "pr1diag-v1-r10-o0-w1"
+          ],
+          "CPFtransition": "C→F",
+          "criticalTransition": "0→0",
+          "C_lost": true,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r10",
+          "episodeIds": [
+            "pr1diag-v1-r10-o1-w0",
+            "pr1diag-v1-r10-o1-w1"
+          ],
+          "CPFtransition": "C→F",
+          "criticalTransition": "0→0",
+          "C_lost": true,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r11",
+          "episodeIds": [
+            "pr1diag-v1-r11-o0-w0",
+            "pr1diag-v1-r11-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r11",
+          "episodeIds": [
+            "pr1diag-v1-r11-o1-w0",
+            "pr1diag-v1-r11-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r12",
+          "episodeIds": [
+            "pr1diag-v1-r12-o0-w0",
+            "pr1diag-v1-r12-o0-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r12",
+          "episodeIds": [
+            "pr1diag-v1-r12-o1-w0",
+            "pr1diag-v1-r12-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        }
+      ]
+    },
+    "order": {
+      "n": 24,
+      "direction": "o0→o1 within fixed wording",
+      "CPFtransitions": {
+        "F→F": 20,
+        "F→C": 1,
+        "P→F": 2,
+        "C→C": 1
+      },
+      "criticalTransitions": {
+        "0→0": 15,
+        "1→0": 1,
+        "0→1": 5,
+        "1→1": 3
+      },
+      "C_lost": 0,
+      "C_gained": 1,
+      "pairs": [
+        {
+          "baseCaseId": "r01",
+          "episodeIds": [
+            "pr1diag-v1-r01-o0-w0",
+            "pr1diag-v1-r01-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r01",
+          "episodeIds": [
+            "pr1diag-v1-r01-o0-w1",
+            "pr1diag-v1-r01-o1-w1"
+          ],
+          "CPFtransition": "F→C",
+          "criticalTransition": "1→0",
+          "C_lost": false,
+          "C_gained": true
+        },
+        {
+          "baseCaseId": "r02",
+          "episodeIds": [
+            "pr1diag-v1-r02-o0-w0",
+            "pr1diag-v1-r02-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r02",
+          "episodeIds": [
+            "pr1diag-v1-r02-o0-w1",
+            "pr1diag-v1-r02-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r03",
+          "episodeIds": [
+            "pr1diag-v1-r03-o0-w0",
+            "pr1diag-v1-r03-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r03",
+          "episodeIds": [
+            "pr1diag-v1-r03-o0-w1",
+            "pr1diag-v1-r03-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r04",
+          "episodeIds": [
+            "pr1diag-v1-r04-o0-w0",
+            "pr1diag-v1-r04-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r04",
+          "episodeIds": [
+            "pr1diag-v1-r04-o0-w1",
+            "pr1diag-v1-r04-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r05",
+          "episodeIds": [
+            "pr1diag-v1-r05-o0-w0",
+            "pr1diag-v1-r05-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r05",
+          "episodeIds": [
+            "pr1diag-v1-r05-o0-w1",
+            "pr1diag-v1-r05-o1-w1"
+          ],
+          "CPFtransition": "P→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r06",
+          "episodeIds": [
+            "pr1diag-v1-r06-o0-w0",
+            "pr1diag-v1-r06-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r06",
+          "episodeIds": [
+            "pr1diag-v1-r06-o0-w1",
+            "pr1diag-v1-r06-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r07",
+          "episodeIds": [
+            "pr1diag-v1-r07-o0-w0",
+            "pr1diag-v1-r07-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r07",
+          "episodeIds": [
+            "pr1diag-v1-r07-o0-w1",
+            "pr1diag-v1-r07-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r08",
+          "episodeIds": [
+            "pr1diag-v1-r08-o0-w0",
+            "pr1diag-v1-r08-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r08",
+          "episodeIds": [
+            "pr1diag-v1-r08-o0-w1",
+            "pr1diag-v1-r08-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "1→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r09",
+          "episodeIds": [
+            "pr1diag-v1-r09-o0-w0",
+            "pr1diag-v1-r09-o1-w0"
+          ],
+          "CPFtransition": "P→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r09",
+          "episodeIds": [
+            "pr1diag-v1-r09-o0-w1",
+            "pr1diag-v1-r09-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r10",
+          "episodeIds": [
+            "pr1diag-v1-r10-o0-w0",
+            "pr1diag-v1-r10-o1-w0"
+          ],
+          "CPFtransition": "C→C",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r10",
+          "episodeIds": [
+            "pr1diag-v1-r10-o0-w1",
+            "pr1diag-v1-r10-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r11",
+          "episodeIds": [
+            "pr1diag-v1-r11-o0-w0",
+            "pr1diag-v1-r11-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r11",
+          "episodeIds": [
+            "pr1diag-v1-r11-o0-w1",
+            "pr1diag-v1-r11-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→1",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r12",
+          "episodeIds": [
+            "pr1diag-v1-r12-o0-w0",
+            "pr1diag-v1-r12-o1-w0"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        },
+        {
+          "baseCaseId": "r12",
+          "episodeIds": [
+            "pr1diag-v1-r12-o0-w1",
+            "pr1diag-v1-r12-o1-w1"
+          ],
+          "CPFtransition": "F→F",
+          "criticalTransition": "0→0",
+          "C_lost": false,
+          "C_gained": false
+        }
+      ]
+    }
+  },
+  "historyMatrix": {
+    "diagnosticOnlyIdeal": true,
+    "completeDialogsActual": 0,
+    "completeDialogsIdealDiagnosticOnly": 0,
+    "episodes": [
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "historyMode": "actual",
+        "CPFsequence": [
+          "P",
+          "C",
+          "P",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 1,
+          "P": 2,
+          "F": 1,
+          "critical": 0,
+          "C_ids": [
+            "pr1diag-v1-h01/t2"
+          ],
+          "P_ids": [
+            "pr1diag-v1-h01/t1",
+            "pr1diag-v1-h01/t3"
+          ],
+          "critical_ids": [],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "historyMode": "ideal",
+        "CPFsequence": [
+          "P",
+          "F",
+          "F",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 1,
+          "F": 3,
+          "critical": 0,
+          "C_ids": [],
+          "P_ids": [
+            "pr1diag-v1-h01/t1"
+          ],
+          "critical_ids": [],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "historyMode": "actual",
+        "CPFsequence": [
+          "P",
+          "C",
+          "F",
+          "P"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 1,
+          "P": 2,
+          "F": 1,
+          "critical": 1,
+          "C_ids": [
+            "pr1diag-v1-h02/t2"
+          ],
+          "P_ids": [
+            "pr1diag-v1-h02/t1",
+            "pr1diag-v1-h02/t4"
+          ],
+          "critical_ids": [
+            "pr1diag-v1-h02/t3"
+          ],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "historyMode": "ideal",
+        "CPFsequence": [
+          "P",
+          "F",
+          "F",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 1,
+          "F": 3,
+          "critical": 0,
+          "C_ids": [],
+          "P_ids": [
+            "pr1diag-v1-h02/t1"
+          ],
+          "critical_ids": [],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "historyMode": "actual",
+        "CPFsequence": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 0,
+          "F": 4,
+          "critical": 0,
+          "C_ids": [],
+          "P_ids": [],
+          "critical_ids": [],
+          "additionalContradictionRows": 2
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "historyMode": "ideal",
+        "CPFsequence": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 0,
+          "F": 4,
+          "critical": 2,
+          "C_ids": [],
+          "P_ids": [],
+          "critical_ids": [
+            "pr1diag-v1-h03/t2",
+            "pr1diag-v1-h03/t3"
+          ],
+          "additionalContradictionRows": 1
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "historyMode": "actual",
+        "CPFsequence": [
+          "F",
+          "F",
+          "P",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 1,
+          "F": 3,
+          "critical": 0,
+          "C_ids": [],
+          "P_ids": [
+            "pr1diag-v1-h04/t3"
+          ],
+          "critical_ids": [],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "historyMode": "ideal",
+        "CPFsequence": [
+          "F",
+          "F",
+          "F",
+          "F"
+        ],
+        "counts": {
+          "n": 4,
+          "C": 0,
+          "P": 0,
+          "F": 4,
+          "critical": 0,
+          "C_ids": [],
+          "P_ids": [],
+          "critical_ids": [],
+          "additionalContradictionRows": 0
+        },
+        "complete": false
+      }
+    ],
+    "firstTurnComparisons": {
+      "n": 4,
+      "CPFtransitions": {
+        "P→P": 2,
+        "F→F": 2
+      }
+    },
+    "laterTurnComparisons": {
+      "n": 12,
+      "CPFtransitions": {
+        "C→F": 2,
+        "P→F": 3,
+        "F→F": 7
+      }
+    },
+    "comparisons": [
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "turn": 1,
+        "actualCPF": "P",
+        "idealCPF": "P",
+        "CPFtransition": "P→P",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [],
+        "previousActualCritical": [],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": true
+      },
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "turn": 2,
+        "actualCPF": "C",
+        "idealCPF": "F",
+        "CPFtransition": "C→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P"
+        ],
+        "previousActualCritical": [
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "turn": 3,
+        "actualCPF": "P",
+        "idealCPF": "F",
+        "CPFtransition": "P→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P",
+          "C"
+        ],
+        "previousActualCritical": [
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h01",
+        "turn": 4,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P",
+          "C",
+          "P"
+        ],
+        "previousActualCritical": [
+          false,
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "turn": 1,
+        "actualCPF": "P",
+        "idealCPF": "P",
+        "CPFtransition": "P→P",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [],
+        "previousActualCritical": [],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": true
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "turn": 2,
+        "actualCPF": "C",
+        "idealCPF": "F",
+        "CPFtransition": "C→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P"
+        ],
+        "previousActualCritical": [
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "turn": 3,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": true,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P",
+          "C"
+        ],
+        "previousActualCritical": [
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h02",
+        "turn": 4,
+        "actualCPF": "P",
+        "idealCPF": "F",
+        "CPFtransition": "P→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "P",
+          "C",
+          "F"
+        ],
+        "previousActualCritical": [
+          false,
+          false,
+          true
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "turn": 1,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [],
+        "previousActualCritical": [],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": true
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "turn": 2,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": true,
+        "previousActualCPF": [
+          "F"
+        ],
+        "previousActualCritical": [
+          false
+        ],
+        "previousActualHadAdditionalContradiction": true,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "turn": 3,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": true,
+        "previousActualCPF": [
+          "F",
+          "F"
+        ],
+        "previousActualCritical": [
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": true,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h03",
+        "turn": 4,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "F",
+          "F",
+          "F"
+        ],
+        "previousActualCritical": [
+          false,
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": true,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "turn": 1,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [],
+        "previousActualCritical": [],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": true
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "turn": 2,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "F"
+        ],
+        "previousActualCritical": [
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "turn": 3,
+        "actualCPF": "P",
+        "idealCPF": "F",
+        "CPFtransition": "P→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "F",
+          "F"
+        ],
+        "previousActualCritical": [
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      },
+      {
+        "episodeId": "pr1diag-v1-h04",
+        "turn": 4,
+        "actualCPF": "F",
+        "idealCPF": "F",
+        "CPFtransition": "F→F",
+        "actualCritical": false,
+        "idealCritical": false,
+        "previousActualCPF": [
+          "F",
+          "F",
+          "P"
+        ],
+        "previousActualCritical": [
+          false,
+          false,
+          false
+        ],
+        "previousActualHadAdditionalContradiction": false,
+        "firstTurnTextTokensMessagesEqual": null
+      }
+    ]
+  },
+  "boundaryNotes": [
+    "The old criticalIf patterns are unchanged. False secondary colors, secondary loan facts, other object properties and known-information denials remain F plus explicit additional contradictions without new critical patterns.",
+    "r10-o0-w0/o1-w0 are C: por una revisión identifies the sole requested cause clearly despite repeated motivo; language style does not impose an exact-match test.",
+    "r05-o1-w1 identifies a new neighbor subject siguán; critical follows the same literal-subject boundary recorded in original128, beside any primary disagreement.",
+    "h02 actual turn3 No; no sigue is judged a role contradiction: the prior explicitly identified Mateo does not remain maker. This differs from merely claiming the maker was not stated and is retained as a critical borderline.",
+    "h01 ideal turn2 EsCelia is a fused fragment, so no separate person Celia is inferred.",
+    "h03 ideal turns2/3 explicitly bind comedor/times to motivo and are critical changes of cause; ideal turn4 is a broken enumeration without a recoverable causal assertion.",
+    "Ideal is aided diagnostic history. Its two actual C→F transitions do not establish a single cause or a global memory conclusion."
+  ],
+  "acceptanceUnchanged": {
+    "completeAnswers": 36,
+    "answers": 40,
+    "completeDialogs": 8,
+    "dialogs": 10,
+    "criticalFailures": 0,
+    "newProbeDoesNotReplaceFinal": true
+  },
+  "rows": [
+    {
+      "id": "pr1diag-v1-r01-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r01-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?",
+      "actualText": "La taza?",
+      "actualTextSha256": "1d6cb39921b72cad01c419f7cdd7c2411c813d6e5db697389d3824b42d47e9f5",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "La taza?",
+      "reason": "Pregunta por la taza sin dar su color.",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 4,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r01-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r01-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la taza.",
+      "actualText": "La taza es verde.",
+      "actualTextSha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "La taza es verde.",
+      "reason": "Asigna verde a la taza; el color dado es violeta.",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r01-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la taza?",
+      "actualText": "La botella es violeta.",
+      "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "La botella es violeta.",
+      "reason": "Asigna violeta a la botella y omite el target taza. La propiedad falsa del otro objeto queda adicional bajo el criticalIf estrecho.",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "La botella es violeta.",
+          "tag": "false_other_object_color",
+          "reason": "La botella era verde, mientras el target crítico estrecho era taza.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r01-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la taza.",
+      "actualText": "La taza es violeta.",
+      "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d",
+      "CPF": "C",
+      "critical": false,
+      "evidenceQuote": "La taza es violeta.",
+      "reason": "Identifica correctamente violeta como color de la taza.",
+      "constraints": [
+        "Identificar violeta como color de la taza.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la taza por la botella ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la taza un color distinto de violeta."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r02-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?",
+      "actualText": "La taza es violeta.",
+      "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "La taza es violeta.",
+      "reason": "Recita el color verdadero de la taza, pero no responde el color de la botella.",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r02-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la botella.",
+      "actualText": "La taza es violeta.",
+      "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "La taza es violeta.",
+      "reason": "Recita el color verdadero de la taza, pero no responde el color de la botella.",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r02-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la botella?",
+      "actualText": "La botella es violeta.",
+      "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "La botella es violeta.",
+      "reason": "Asigna violeta a la botella; el color dado es verde.",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r02-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la botella.",
+      "actualText": "La botella es violeta.",
+      "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "La botella es violeta.",
+      "reason": "Asigna violeta a la botella; el color dado es verde.",
+      "constraints": [
+        "Identificar verde como color de la botella.",
+        "Dar una respuesta pertinente e inteligible; no se exige una frase modelo.",
+        "No sustituir la botella por la taza ni añadir datos inventados."
+      ],
+      "criticalIf": [
+        "Atribuir a la botella un color distinto de verde."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r03-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde están los guantes?",
+      "actualText": "No, no me has dicho el cajón.",
+      "actualTextSha256": "cd8621463cdf99071ce394a3623781bd8c1755ad1425d3c5dfa6ac970322e322",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No, no me has dicho el cajón.",
+      "reason": "Niega el dato conocido del cajón y no responde ubicación; no asigna otro lugar crítico.",
+      "constraints": [
+        "Identificar el cajón como lugar de los guantes.",
+        "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar los guantes en un lugar distinto del cajón."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicho el cajón.",
+          "tag": "known_location_denied",
+          "reason": "USER sí dio cajón para guantes.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r03-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar están los guantes.",
+      "actualText": "No me has dicho en quélla silla silla silla silla.",
+      "actualTextSha256": "f2bc6322c12df048209c13813bbc0c2ce102f882c9dcd786c69bc5591136495f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No me has dicho en quélla silla silla silla silla.",
+      "reason": "Declara faltar ubicación y repite silla dentro de una construcción rota; no se reconstruye una ubicación positiva falsa desde esos fragmentos.",
+      "constraints": [
+        "Identificar el cajón como lugar de los guantes.",
+        "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar los guantes en un lugar distinto del cajón."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No me has dicho en quélla",
+          "tag": "known_location_denial_fragment",
+          "reason": "Fórmula de desconocimiento de lugar con final corrupto; USER sí dio cajón.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 17,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r03-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde están los guantes?",
+      "actualText": "No.",
+      "actualTextSha256": "38178a20b470cfd18299fb1593dd4ba706f1a83321dac051d01086efd8b7a96f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No.",
+      "reason": "Negación aislada sin ubicación; no se infiere una proposición crítica.",
+      "constraints": [
+        "Identificar el cajón como lugar de los guantes.",
+        "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar los guantes en un lugar distinto del cajón."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 3,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r03-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar están los guantes.",
+      "actualText": "No me has dicho en quélla.",
+      "actualTextSha256": "f6830ba25c9f34525122c717f2b307eef7b20975787a0ebd2aba54db2e4fe4c2",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No me has dicho en quélla.",
+      "reason": "Fórmula rota de falta de ubicación sin cajón ni otro lugar afirmado.",
+      "constraints": [
+        "Identificar el cajón como lugar de los guantes.",
+        "No atribuirles el lugar de la bufanda ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar los guantes en un lugar distinto del cajón."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No me has dicho en quélla.",
+          "tag": "known_location_denial_fragment",
+          "reason": "Fórmula de desconocimiento de lugar con final corrupto; USER sí dio cajón.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r04-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde está la bufanda?",
+      "actualText": "No, no me has dicholla silla silla silla silla silla.",
+      "actualTextSha256": "f55886b2ae40bfb1790dcca3719d20fc64078b971bd5aaff01de279559ab09af",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No, no me has dicholla silla silla silla silla silla.",
+      "reason": "Negación rota con silla repetida; no ofrece la ubicación conocida de manera afirmativa.",
+      "constraints": [
+        "Identificar la silla como lugar de la bufanda.",
+        "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar la bufanda en un lugar distinto de la silla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicholla silla",
+          "tag": "known_location_denial_fragment",
+          "reason": "Negación con silla que contradice información ya dada, aunque el predicado esté corrupto.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 19,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r04-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar está la bufanda.",
+      "actualText": "Es sobre quélla.",
+      "actualTextSha256": "9cf8a780309e81358415b4732446d621f1afdfb70792beb45c1eaa686c936a5a",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Es sobre quélla.",
+      "reason": "«sobre quélla» no identifica una silla de manera recuperable.",
+      "constraints": [
+        "Identificar la silla como lugar de la bufanda.",
+        "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar la bufanda en un lugar distinto de la silla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r04-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde está la bufanda?",
+      "actualText": "No, no me has dicholla.",
+      "actualTextSha256": "ba89fcd8936198229f1bc3a7c625a5ba0df0bf9cd7f9fa5a3fbc7b947611737d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No, no me has dicholla.",
+      "reason": "Negación rota sin ubicación.",
+      "constraints": [
+        "Identificar la silla como lugar de la bufanda.",
+        "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar la bufanda en un lugar distinto de la silla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r04-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "skill": "explicit_fact_retrieval",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar está la bufanda.",
+      "actualText": "No me has dicho en quélla.",
+      "actualTextSha256": "f6830ba25c9f34525122c717f2b307eef7b20975787a0ebd2aba54db2e4fe4c2",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No me has dicho en quélla.",
+      "reason": "Fórmula rota de falta de ubicación sin silla ni otro lugar afirmado.",
+      "constraints": [
+        "Identificar la silla como lugar de la bufanda.",
+        "No atribuirle el lugar de los guantes ni añadir una ubicación nueva."
+      ],
+      "criticalIf": [
+        "Situar la bufanda en un lugar distinto de la silla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No me has dicho en quélla.",
+          "tag": "known_location_denial_fragment",
+          "reason": "Fórmula de desconocimiento de lugar con final corrupto; USER sí dio silla.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r05-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "actualText": "Antes guarda; se llama es tu prima y sutal es tu vecino; se llama es mi prima y guarda el llavero.",
+      "actualTextSha256": "c050c9e26188d961252115b6c13f37b7924669639fef87cd5f9e610dd392fa18",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes guarda; se llama es tu prima y sutal es tu vecino; se llama es mi prima y guarda el llavero.",
+      "reason": "La parte prima está mezclada con vecino y con «mi prima ... guarda el llavero», cambiando el guardador del otro objeto. El texto no da nombre/relación útiles sin contradicción adicional.",
+      "constraints": [
+        "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "mi prima y guarda el llavero",
+          "tag": "false_other_object_keeper",
+          "reason": "La prima Inés guarda postal; el llavero lo guarda Damián.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 33,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r05-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "actualText": "La persona es de guarda; el nombre de la persona, el vínculo es mi prima y guarda.",
+      "actualTextSha256": "83dd03a0516f89c2de97febda74c666ec4bdef7acebce4e40dc3bf363a773d13",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "La persona es de guarda; el nombre de la persona, el vínculo es mi prima y guarda.",
+      "reason": "«el vínculo es mi prima» conserva la relación correcta, pero omite Inés y deja el nombre sin resolver.",
+      "constraints": [
+        "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 25,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r05-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "actualText": "Antes guarda; se llama mi vecino; se llama mi prima y guarda; no me has dicho relación postal.",
+      "actualTextSha256": "6af94add624115a1019276724029bef0c250ffd8f28761085f9bc4530775d44a",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Antes guarda; se llama mi vecino; se llama mi prima y guarda; no me has dicho relación postal.",
+      "reason": "Identifica al guardador de la postal como «mi vecino», además de otros fragmentos; la relación correcta es prima/Inés.",
+      "constraints": [
+        "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicho relación postal.",
+          "tag": "known_relation_denial_fragment",
+          "reason": "El vínculo prima de la guardadora de la postal sí estaba dado.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 28,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r05-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "actualText": "El nombre de la persona, el vín es de mi vecino; siguán es mi vecino.",
+      "actualTextSha256": "99650539701d85c06fa5b95cb3ac7a988a07ba8d8163478f9e65554e3459fc25",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "El nombre de la persona, el vín es de mi vecino; siguán es mi vecino.",
+      "reason": "La respuesta identifica al guardador solicitado con vecino/siguán en vez de Inés y prima. El sujeto nuevo se conserva como frontera explícita de crítica.",
+      "constraints": [
+        "Dar explícitamente el nombre Inés y su relación de prima con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Damián y vecino."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda la postal o atribuir a Inés otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 24,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r06-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "actualText": "Se llama es tu prima y su prima y su relación es tu prima y su prima y suán es tu prima y suán es tu prima y su prima y su relación.",
+      "actualTextSha256": "93004c24ce7de6fa347830910def5301bd9b42b4e755c5d30959f66f6a340403",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Se llama es tu prima y su prima y su relación es tu prima y su prima y suán es tu prima y suán es tu prima y su prima y su relación.",
+      "reason": "«su relación es tu prima» cambia el vínculo del guardador del llavero; Damián es vecino.",
+      "constraints": [
+        "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 37,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r06-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "actualText": "El nombre y guarda un lla; no me has dicho guarda; no me has dicho guarda un llavero.",
+      "actualTextSha256": "85917f7b5d9dcf512287167303da98968e294ab04c0b9f95006bdd90757e51f1",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El nombre y guarda un lla; no me has dicho guarda; no me has dicho guarda un llavero.",
+      "reason": "Niega en fragmentos que se haya dado el guardador del llavero y no responde nombre/relación. La negación conocida se registra adicional sin un nuevo crítico.",
+      "constraints": [
+        "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicho guarda un llavero.",
+          "tag": "known_keeper_denial_fragment",
+          "reason": "Damián como guardador del llavero sí estaba dado.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 29,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r06-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "actualText": "Se llama mi vecino; se llamaán es tu prima y guarda; no me has dichoán es tu vecino.",
+      "actualTextSha256": "73c8d65d0b19927ceebec11aac4521865fa1245919e30a936baabb63988bf23a",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Se llama mi vecino; se llamaán es tu prima y guarda; no me has dichoán es tu vecino.",
+      "reason": "«es tu prima y guarda» cambia el vínculo solicitado aunque otra parte diga vecino; no hay corrección que resuelva la contradicción.",
+      "constraints": [
+        "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dichoán es tu vecino.",
+          "tag": "known_relation_denial_fragment",
+          "reason": "El vínculo vecino sí estaba dado, aunque el sujeto esté corrupto.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 27,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r06-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "actualText": "El nombre y guarda una postal; no me has dicho el llavero.",
+      "actualTextSha256": "f478a4338aa03c43bccdf80a3d58aeccfb93b5649317e7546946017a5deaf17f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El nombre y guarda una postal; no me has dicho el llavero.",
+      "reason": "Menciona guardar postal y niega el dato del llavero, sin identificar un guardador concreto distinto ni el nombre/vínculo pedido.",
+      "constraints": [
+        "Dar explícitamente el nombre Damián y su relación de vecino con quien habla.",
+        "Conservar ambas partes de la respuesta; no confundirlas con Inés y prima."
+      ],
+      "criticalIf": [
+        "Cambiar quién guarda el llavero o atribuir a Damián otra relación con quien habla."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicho el llavero.",
+          "tag": "known_object_denied",
+          "reason": "El llavero sí estaba dado.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 20,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r07-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿A quién presté yo la revista?",
+      "actualText": "TeA Silvia prestó el paraguas a Silvia.",
+      "actualTextSha256": "c6643bef43ec9f63c94923bd01c6d19771c04ba2c41541c62738c219f51d685f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "TeA Silvia prestó el paraguas a Silvia.",
+      "reason": "La cláusula «Silvia prestó el paraguas a Silvia» contradice el préstamo secundario a Omar y no responde la revista. No identifica un receptor distinto de Silvia para la revista: contradicción adicional, sin ampliar criticalIf.",
+      "constraints": [
+        "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "Silvia prestó el paraguas a Silvia.",
+          "tag": "false_secondary_loan_receiver",
+          "reason": "El paraguas lo recibió Omar; el target era préstamo de revista.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r07-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime quién recibió de mí la revista.",
+      "actualText": "Te llamaré Omar.",
+      "actualTextSha256": "9ef262ee5f3d5d5b06b3a60ac55eb7d5e30d941bad4d467f47fb1f32b9b0ca87",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Te llamaré Omar.",
+      "reason": "Promete llamar Omar al interlocutor en vez de responder el préstamo de la revista.",
+      "constraints": [
+        "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r07-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿A quién presté yo la revista?",
+      "actualText": "No, no me hasA quién.",
+      "actualTextSha256": "057abc0f045e39fb6787fad9b3b7516a773bbb463ecec6925573ea52a5b8a365",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No, no me hasA quién.",
+      "reason": "Declara faltar a quién sin responder Silvia; la negación conocida no se convierte en otro receptor crítico.",
+      "constraints": [
+        "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me hasA quién.",
+          "tag": "known_recipient_denial_fragment",
+          "reason": "La receptora Silvia sí estaba dada.",
+          "fragmentary": true
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r07-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime quién recibió de mí la revista.",
+      "actualText": "Te llamaré Omar.",
+      "actualTextSha256": "9ef262ee5f3d5d5b06b3a60ac55eb7d5e30d941bad4d467f47fb1f32b9b0ca87",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Te llamaré Omar.",
+      "reason": "Promete llamar Omar al interlocutor en vez de responder el préstamo de la revista.",
+      "constraints": [
+        "Identificar a Silvia como receptora de la revista prestada por quien habla.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor de la revista distinto de Silvia; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r08-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿Quién recibió el paraguas de Silvia?",
+      "actualText": "No, el paraguas a Silvia.",
+      "actualTextSha256": "40ea6dba7b2fb87f976376f8bbbb078255967759739f959778e6381be9046295",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "No, el paraguas a Silvia.",
+      "reason": "«el paraguas a Silvia» cambia el receptor; el receptor dado es Omar.",
+      "constraints": [
+        "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r08-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime a quién le prestó Silvia el paraguas.",
+      "actualText": "Tetó a Silvia el para Silvia el paraguas.",
+      "actualTextSha256": "ee09bb982b644bb7e34a516d676f5476c57bc42d4c95f007fd8a5bfb48e55e0f",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Tetó a Silvia el para Silvia el paraguas.",
+      "reason": "Los fragmentos afirmativos «a Silvia ... Silvia el paraguas» atribuyen a Silvia la recepción del paraguas, no a Omar.",
+      "constraints": [
+        "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r08-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿Quién recibió el paraguas de Silvia?",
+      "actualText": "No, el paraguas a Silvia.",
+      "actualTextSha256": "40ea6dba7b2fb87f976376f8bbbb078255967759739f959778e6381be9046295",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "No, el paraguas a Silvia.",
+      "reason": "«el paraguas a Silvia» cambia el receptor; el receptor dado es Omar.",
+      "constraints": [
+        "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r08-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "skill": "relation_and_referent",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime a quién le prestó Silvia el paraguas.",
+      "actualText": "El paraguas a Silvia.",
+      "actualTextSha256": "167176f4c4972808fd2b35eee1f256d91f798d4c15c0bd1342ac11ef037b05c4",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "El paraguas a Silvia.",
+      "reason": "«El paraguas a Silvia» atribuye el objeto al receptor equivocado; era Omar.",
+      "constraints": [
+        "Identificar a Omar como receptor del paraguas prestado por Silvia.",
+        "No sustituir receptor, objeto o dirección del préstamo."
+      ],
+      "criticalIf": [
+        "Identificar un receptor del paraguas distinto de Omar; cambiar quién presta, la dirección del préstamo o el objeto prestado."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 8,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r09-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+      "actualText": "El ascensor está parado; no hacecensor.",
+      "actualTextSha256": "906ad40062375c7840e3f3c9e5dcd3d5a89e2d55dc369afdac398915237fe268",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "El ascensor está parado; no hacecensor.",
+      "reason": "Conserva claramente ascensor parado, pero omite causa revisión y escalera abierta; el fragmento final no expresa otra propiedad concreta.",
+      "constraints": [
+        "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+        "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+        "No añadir duración, peligro, horario o instrucciones no dados."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r09-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+      "actualText": "El ascensor está parado; no me has dicho una revisión.",
+      "actualTextSha256": "46c486975a3978f8cb3b9492a68f4262d1fef582ee6839ac762efc295c7884cf",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El ascensor está parado; no me has dicho una revisión.",
+      "reason": "Conserva parada, pero niega la revisión ya dada; la contradicción adicional impide P y no fija otro motivo crítico.",
+      "constraints": [
+        "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+        "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+        "No añadir duración, peligro, horario o instrucciones no dados."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no me has dicho una revisión.",
+          "tag": "known_cause_denied",
+          "reason": "La revisión sí estaba dada.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 17,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r09-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+      "actualText": "El una sola frase.",
+      "actualTextSha256": "30e1acc4a40a0da201d4a76113177b85b1ee21c785e14a15e3b685f06fcd9e97",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El una sola frase.",
+      "reason": "Menciona formato sin expresar los dos hechos del aviso.",
+      "constraints": [
+        "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+        "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+        "No añadir duración, peligro, horario o instrucciones no dados."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r09-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+      "actualText": "El ascensor.",
+      "actualTextSha256": "a8b1932d61cbb4c42b54c5d3b41e858a4e1d66ae6e882b6b53d6d51f2c86c85d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El ascensor.",
+      "reason": "Sólo identifica el ascensor sin datos del aviso.",
+      "constraints": [
+        "Expresar que el ascensor está parado por una revisión y que la escalera sigue abierta.",
+        "Usar una sola frase de aviso; se acepta unir los datos con puntuación o conectores naturales.",
+        "No añadir duración, peligro, horario o instrucciones no dados."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada, afirmar que funciona el ascensor o que está cerrada la escalera."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r10-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+      "actualText": "El motivo es sólo el motivo por una revisión.",
+      "actualTextSha256": "7a0bb4162cf49b573005e0f73bebd19fb9320c7cab4e09463a24573bc001ba44",
+      "CPF": "C",
+      "critical": false,
+      "evidenceQuote": "El motivo es sólo el motivo por una revisión.",
+      "reason": "«por una revisión» identifica la causa correcta. La repetición de motivo no añade otro dato y el significado completo sigue recuperable; no se exige una frase modelo.",
+      "constraints": [
+        "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+        "Omitir la escalera y todo dato ajeno al motivo pedido."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r10-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nDi únicamente la causa de la parada del ascensor.",
+      "actualText": "No me has dicho una revisión.",
+      "actualTextSha256": "b6fc8b92f077b06114fa77f78f9b4111b8bfb928918c89d5922ebda42cda4b58",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No me has dicho una revisión.",
+      "reason": "Niega el dato de revisión ya dado; la negación es adicional y no afirma otra causa crítica.",
+      "constraints": [
+        "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+        "Omitir la escalera y todo dato ajeno al motivo pedido."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No me has dicho una revisión.",
+          "tag": "known_cause_denied",
+          "reason": "La revisión sí estaba dada.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r10-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+      "actualText": "El motivo es sólo el motivo por una revisión.",
+      "actualTextSha256": "7a0bb4162cf49b573005e0f73bebd19fb9320c7cab4e09463a24573bc001ba44",
+      "CPF": "C",
+      "critical": false,
+      "evidenceQuote": "El motivo es sólo el motivo por una revisión.",
+      "reason": "«por una revisión» identifica la causa correcta. La repetición de motivo no añade otro dato y el significado completo sigue recuperable; no se exige una frase modelo.",
+      "constraints": [
+        "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+        "Omitir la escalera y todo dato ajeno al motivo pedido."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r10-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nDi únicamente la causa de la parada del ascensor.",
+      "actualText": "No me has dicho una revisión.",
+      "actualTextSha256": "b6fc8b92f077b06114fa77f78f9b4111b8bfb928918c89d5922ebda42cda4b58",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No me has dicho una revisión.",
+      "reason": "Niega el dato de revisión ya dado; la negación es adicional y no afirma otra causa crítica.",
+      "constraints": [
+        "Expresar únicamente la revisión como motivo; una frase mínima o sintagma es válido.",
+        "Omitir la escalera y todo dato ajeno al motivo pedido."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo de la parada; una mención sobrante de la escalera es defecto de instrucción, sin crítico por sí sola."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No me has dicho una revisión.",
+          "tag": "known_cause_denied",
+          "reason": "La revisión sí estaba dada.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r11-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+      "actualText": "El agua quedó dentro es de junto a la botella.",
+      "actualTextSha256": "2615c1aea28a8b2fbd963520456cfff72bffb64aff8754e28f07c86ca2796221",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El agua quedó dentro es de junto a la botella.",
+      "reason": "Repite agua dentro, pero no da cierre del tapón como explicación; el final no formula otra causa concreta.",
+      "constraints": [
+        "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+        "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+        "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+      ],
+      "criticalIf": [
+        "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r11-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+      "actualText": "El agua quedó dentro es de la botella.",
+      "actualTextSha256": "3296d18722925de273bb1c4a8ab9338e7cd7f5257a290de9d65d9c28ea3049a0",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El agua quedó dentro es de la botella.",
+      "reason": "Repite agua dentro y botella, sin identificar el cierre del tapón como causa.",
+      "constraints": [
+        "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+        "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+        "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+      ],
+      "criticalIf": [
+        "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r11-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+      "actualText": "El vaso es la botella.",
+      "actualTextSha256": "70676b86dcd60efb9a0775c3a9c5151c6613d34cdce85637a9b6ed1242b57634",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El vaso es la botella.",
+      "reason": "Afirma una identidad falsa vaso=botella sin explicar el cierre; propiedad adicional fuera del patrón causal específico.",
+      "constraints": [
+        "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+        "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+        "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+      ],
+      "criticalIf": [
+        "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "El vaso es la botella.",
+          "tag": "incorrect_object_identity",
+          "reason": "Vaso y botella son los objetos distintos dados en USER.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r11-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+      "actualText": "Es dentro porque no me has dicho saliera; no me has dicho saliera.",
+      "actualTextSha256": "55dde54cfde5470c332432ac1d301b2d9a7bf63104e2518e78edfb91bb7ca35d",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Es dentro porque no me has dicho saliera; no me has dicho saliera.",
+      "reason": "La causal «dentro porque no me has dicho saliera» sustituye el cierre del tapón por ausencia de información como causa concreta.",
+      "constraints": [
+        "Explicar de forma sencilla que el tapón estaba bien cerrado y por eso el agua quedó dentro.",
+        "No atribuir el resultado al vaso ni inventar propiedades o acciones.",
+        "Una explicación semánticamente equivalente es válida; no exigir repetición exacta."
+      ],
+      "criticalIf": [
+        "Afirmar que el tapón estaba abierto o que salió el agua; sustituir el cierre del tapón por una causa incompatible o concreta no dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 18,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w0/t1",
+      "episodeId": "pr1diag-v1-r12-o0-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 0,
+      "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "actualText": "Antes el tapón es tu agua; tu causa.",
+      "actualTextSha256": "fe60fab163420f7125818e616d7476c4cdef4a57805c3ec9a5ae09d9010d6ca0",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes el tapón es tu agua; tu causa.",
+      "reason": "Afirma tapón=agua y no da resultado/causa; «tu causa» aislado no basta para reconstruir una causal explícita distinta.",
+      "constraints": [
+        "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+        "No incluir el vaso ni añadir hechos nuevos.",
+        "Se acepta cualquier reformulación natural que conserve resultado y causa."
+      ],
+      "criticalIf": [
+        "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "el tapón es tu agua",
+          "tag": "incorrect_object_identity",
+          "reason": "Identidad falsa de tapón y agua.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 14,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w1/t1",
+      "episodeId": "pr1diag-v1-r12-o0-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 0,
+      "questionWording": 1,
+      "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "actualText": "Antes el tapón es de la botella; el tapón es la botella.",
+      "actualTextSha256": "fb02821745e1349f2168410b56bdd7f735c5afb8e9fdca5d3596a94a5c9cb5d1",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes el tapón es de la botella; el tapón es la botella.",
+      "reason": "Afirma tapón=botella sin resultado ni causa; propiedad falsa adicional fuera del patrón crítico estrecho.",
+      "constraints": [
+        "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+        "No incluir el vaso ni añadir hechos nuevos.",
+        "Se acepta cualquier reformulación natural que conserve resultado y causa."
+      ],
+      "criticalIf": [
+        "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "el tapón es la botella.",
+          "tag": "incorrect_object_identity",
+          "reason": "Identidad falsa de tapón y botella.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 24,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w0/t1",
+      "episodeId": "pr1diag-v1-r12-o1-w0",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 0,
+      "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "actualText": "Antes lo ocurrido; sigues, sigube sólo tu el tapón.",
+      "actualTextSha256": "2044d7b6eaf7efc8fd74bf2817c325cf7038ec5eb966540ae16bf899097cc7d0",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes lo ocurrido; sigues, sigube sólo tu el tapón.",
+      "reason": "Fragmentos sin resultado y cierre causal recuperables.",
+      "constraints": [
+        "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+        "No incluir el vaso ni añadir hechos nuevos.",
+        "Se acepta cualquier reformulación natural que conserve resultado y causa."
+      ],
+      "criticalIf": [
+        "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 21,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w1/t1",
+      "episodeId": "pr1diag-v1-r12-o1-w1",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "skill": "language_and_instruction_production",
+      "factOrder": 1,
+      "questionWording": 1,
+      "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "actualText": "Antes qué el vaso es la botella; el tapón es la botella.",
+      "actualTextSha256": "b427eae5a5ed45d6ff7182347c37d3e7b003eded42d0a476ca0f7bcc500f9142",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes qué el vaso es la botella; el tapón es la botella.",
+      "reason": "Afirma vaso=botella y tapón=botella sin agua dentro ni causa; propiedades falsas adicionales sin causal explícita.",
+      "constraints": [
+        "Expresar en una sola frase sencilla que el agua quedó dentro porque el tapón estaba bien cerrado.",
+        "No incluir el vaso ni añadir hechos nuevos.",
+        "Se acepta cualquier reformulación natural que conserve resultado y causa."
+      ],
+      "criticalIf": [
+        "Invertir el resultado o afirmar una causa incompatible con el tapón cerrado; mencionar el vaso sin cambiar hechos es defecto de instrucción, sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "el vaso es la botella",
+          "tag": "incorrect_object_identity",
+          "reason": "Identidad falsa de vaso y botella.",
+          "fragmentary": false
+        },
+        {
+          "evidenceQuote": "el tapón es la botella.",
+          "tag": "incorrect_object_identity",
+          "reason": "Identidad falsa de tapón y botella.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 23,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t1",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+      "actualText": "El paraguas es de Elisa es tu para de Raúl.",
+      "actualTextSha256": "6ccee86f8abfa2d3414e7e6d5b9f1abb7d398696b868695a65c7522782abb94c",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "El paraguas es de Elisa es tu para de Raúl.",
+      "reason": "Conserva paraguas de Elisa, pero la segunda pertenencia queda rota sin linterna de Raúl identificada claramente.",
+      "constraints": [
+        "Identificar paraguas de Elisa y linterna de Raúl.",
+        "No cruzar ni inventar dueños."
+      ],
+      "criticalIf": [
+        "Cambiar un dueño o cruzar objetos y personas."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 15,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t2",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "actual",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+      "actualText": "Es de Raúl.",
+      "actualTextSha256": "e3996a8d846e342e97ef7d030aa8ad6472e50198a45db0d2c93b5ae2d8e9fb73",
+      "CPF": "C",
+      "critical": false,
+      "evidenceQuote": "Es de Raúl.",
+      "reason": "Identifica Raúl como dueño de la linterna.",
+      "constraints": [
+        "Identificar a Raúl como dueño de la linterna, conservando esa relación pese a la corrección ajena.",
+        "No reinstalar a Elisa como dueña actual del paraguas si se menciona."
+      ],
+      "criticalIf": [
+        "Cambiar el dueño de la linterna o negar la corrección del paraguas."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t3",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "actual",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "¿De quién es ahora el paraguas?",
+      "actualText": "Antesterías de Noelia.",
+      "actualTextSha256": "3f19c4f2e54832b52cbffb235862d879f00442fdec7e5b560cf42b2cc5916818",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "Antesterías de Noelia.",
+      "reason": "«de Noelia» conserva la dueña correcta, pero «Antesterías» impide una afirmación completa de pertenencia actual.",
+      "constraints": [
+        "Identificar a Noelia como dueña actual del paraguas."
+      ],
+      "criticalIf": [
+        "Reinstalar a Elisa o asignar el paraguas a otro dueño."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t4",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "actual",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Resume las dos pertenencias actuales en una frase.",
+      "actualText": "¿Cuén la linterna lin dos?",
+      "actualTextSha256": "f995ff41da7dd61be24edac3c08f98795dabb6a1b686a0b68e922f9c38097980",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "¿Cuén la linterna lin dos?",
+      "reason": "Pregunta rota sin resumen de las dos pertenencias.",
+      "constraints": [
+        "Resumir en una sola frase paraguas de Noelia y linterna de Raúl.",
+        "No añadir otras pertenencias."
+      ],
+      "criticalIf": [
+        "Cambiar o cruzar dueños actuales."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t1",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "ideal",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+      "actualText": "El paraguas es de Elisa es tu para de Raúl.",
+      "actualTextSha256": "6ccee86f8abfa2d3414e7e6d5b9f1abb7d398696b868695a65c7522782abb94c",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "El paraguas es de Elisa es tu para de Raúl.",
+      "reason": "Conserva paraguas de Elisa, pero la segunda pertenencia queda rota sin linterna de Raúl identificada claramente.",
+      "constraints": [
+        "Identificar paraguas de Elisa y linterna de Raúl.",
+        "No cruzar ni inventar dueños."
+      ],
+      "criticalIf": [
+        "Cambiar un dueño o cruzar objetos y personas."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 15,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t2",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "ideal",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+      "actualText": "EsCelia.",
+      "actualTextSha256": "15d3a64d21ca2413d8ff9cb6f175bcdec926d895ea6e787061f661df23162bb4",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "EsCelia.",
+      "reason": "«EsCelia» es un fragmento fusionado sin dueño recuperable; no se reconstruye una persona nueva Celia desde ese token.",
+      "constraints": [
+        "Identificar a Raúl como dueño de la linterna, conservando esa relación pese a la corrección ajena.",
+        "No reinstalar a Elisa como dueña actual del paraguas si se menciona."
+      ],
+      "criticalIf": [
+        "Cambiar el dueño de la linterna o negar la corrección del paraguas."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t3",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "ideal",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "¿De quién es ahora el paraguas?",
+      "actualText": "El paraguas.",
+      "actualTextSha256": "c74c6808b1b8530447574a3a16f01cf786f25ab1614b6f56fc54cc1b0e9593df",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El paraguas.",
+      "reason": "Da el objeto paraguas, pero no a su dueña Noelia.",
+      "constraints": [
+        "Identificar a Noelia como dueña actual del paraguas."
+      ],
+      "criticalIf": [
+        "Reinstalar a Elisa o asignar el paraguas a otro dueño."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 5,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h01/t4",
+      "episodeId": "pr1diag-v1-h01",
+      "historyMode": "ideal",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "correction_and_other_possession",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Resume las dos pertenencias actuales en una frase.",
+      "actualText": "¿CuénCelia linter?",
+      "actualTextSha256": "1aea8e489d638bf7600c507ee78559914c0bcd572030ee14fb3cea781354b0ef",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "¿CuénCelia linter?",
+      "reason": "Pregunta/fragmento roto sin resumen de pertenencias.",
+      "constraints": [
+        "Resumir en una sola frase paraguas de Noelia y linterna de Raúl.",
+        "No añadir otras pertenencias."
+      ],
+      "criticalIf": [
+        "Cambiar o cruzar dueños actuales."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t1",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+      "actualText": "No; no me has dicho quién la fabricó.",
+      "actualTextSha256": "dfc788291a183cb10168c27da13d63b5689b6169c624c5b742f10dc6a0eb6e64",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho quién la fabricó.",
+      "reason": "Identifica correctamente fabricante no informado, pero omite amarillo como dato conocido.",
+      "constraints": [
+        "Distinguir color amarillo conocido y fabricante no informado.",
+        "No inventar fabricante."
+      ],
+      "criticalIf": [
+        "Inventar un fabricante, negar el color dado o cambiarlo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t2",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "actual",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "La fabricó Mateo. ¿Quién la hizo?",
+      "actualText": "La hizo Mateo.",
+      "actualTextSha256": "e41dc72c699301d8ee0c244ba7831a10d17ffa64132f5574f37c6cc1a6fc604a",
+      "CPF": "C",
+      "critical": false,
+      "evidenceQuote": "La hizo Mateo.",
+      "reason": "Identifica correctamente a Mateo como fabricante.",
+      "constraints": [
+        "Identificar a Mateo como fabricante de la caja."
+      ],
+      "criticalIf": [
+        "Asignar otro fabricante o negar que se indicó."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t3",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "actual",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+      "actualText": "No; no sigue.",
+      "actualTextSha256": "fd718bb7f753e081276a72e0c8a678290c9f2e41e52e2d45380e00b7d7079cec",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "No; no sigue.",
+      "reason": "«No; no sigue» niega que el fabricante Mateo continúe en ese rol tras corregir sólo el color; cambia la relación fabricante conservada. Frontera explícita frente a una simple negación de información.",
+      "constraints": [
+        "Conservar a Mateo como fabricante aunque cambie el color a morado.",
+        "Si se menciona el color actual, usar morado."
+      ],
+      "criticalIf": [
+        "Cambiar el fabricante o reinstalar amarillo como color actual."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t4",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "actual",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+      "actualText": "Dijiste quién falta el color morada.",
+      "actualTextSha256": "9cb0c0584b0a4d22dcf95c0c142da16a6fa6dd63dd9a5121ed47aa4fa4d9a269",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "Dijiste quién falta el color morada.",
+      "reason": "«el color morada» aporta el color actual correcto, pero falta fabricante Mateo y el resto es defectuoso.",
+      "constraints": [
+        "Identificar morado como color actual y a Mateo como fabricante.",
+        "No añadir datos ajenos a ambas respuestas."
+      ],
+      "criticalIf": [
+        "Cambiar fabricante o color actual; texto accesorio sin cambio factual es defecto de instrucción."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t1",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "ideal",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+      "actualText": "No; no me has dicho quién la fabricó.",
+      "actualTextSha256": "dfc788291a183cb10168c27da13d63b5689b6169c624c5b742f10dc6a0eb6e64",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho quién la fabricó.",
+      "reason": "Identifica correctamente fabricante no informado, pero omite amarillo como dato conocido.",
+      "constraints": [
+        "Distinguir color amarillo conocido y fabricante no informado.",
+        "No inventar fabricante."
+      ],
+      "criticalIf": [
+        "Inventar un fabricante, negar el color dado o cambiarlo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 12,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t2",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "ideal",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "La fabricó Mateo. ¿Quién la hizo?",
+      "actualText": "Quieres amarilla.",
+      "actualTextSha256": "3c2b18d8157cb28c5652d846646d52dbab9af29c259dc0c4c29214e9bb654b59",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Quieres amarilla.",
+      "reason": "Habla de querer amarillo sin identificar Mateo; no se convierte amarillo en fabricante ni una preferencia en color factual del objeto.",
+      "constraints": [
+        "Identificar a Mateo como fabricante de la caja."
+      ],
+      "criticalIf": [
+        "Asignar otro fabricante o negar que se indicó."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t3",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "ideal",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+      "actualText": "No. TeQuieres amarilla.",
+      "actualTextSha256": "2b2dd7ea318c9c6a072591ed950520c782b6cf550e7b22d1ec1b9b0ffd94056c",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No. TeQuieres amarilla.",
+      "reason": "Fragmento de querer amarillo sin identificar fabricante; no afirma de forma inequívoca que la caja siga siendo amarilla.",
+      "constraints": [
+        "Conservar a Mateo como fabricante aunque cambie el color a morado.",
+        "Si se menciona el color actual, usar morado."
+      ],
+      "criticalIf": [
+        "Cambiar el fabricante o reinstalar amarillo como color actual."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h02/t4",
+      "episodeId": "pr1diag-v1-h02",
+      "historyMode": "ideal",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "known_missing_and_independent_attribute",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+      "actualText": "Antes no he dicho quién falta el da falta el da quién la fabricó.",
+      "actualTextSha256": "5776cb6723b9b2a41a1efc91d786963b3976b4095e7a08df46228d986fde2d24",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes no he dicho quién falta el da falta el da quién la fabricó.",
+      "reason": "Fragmento negativo sobre quién/la fabricación sin color actual o fabricante; no se reconstruye otra identidad desde las repeticiones.",
+      "constraints": [
+        "Identificar morado como color actual y a Mateo como fabricante.",
+        "No añadir datos ajenos a ambas respuestas."
+      ],
+      "criticalIf": [
+        "Cambiar fabricante o color actual; texto accesorio sin cambio factual es defecto de instrucción."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 18,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t1",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase.",
+      "actualText": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+      "actualTextSha256": "ee49e800b66779f0494865ef212280ee00b31207bdadf218d239afe81f112b7d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+      "reason": "Niega limpieza ya dada y repite esa causa sin redactar el aviso; negación adicional, no crítico nuevo.",
+      "constraints": [
+        "Redactar una sola frase de aviso que diga comedor cerrado por limpieza.",
+        "No inventar apertura, duración u otros motivos."
+      ],
+      "criticalIf": [
+        "Cambiar el cierre o su motivo, inventar horario de apertura."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No; no me has dicho limpieza",
+          "tag": "known_cause_denied",
+          "reason": "La limpieza sí estaba dada.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 43,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t2",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "actual",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Añade que abrirá por la tarde, conservando el motivo.",
+      "actualText": "Antes un a el comedor está cerrado; no has dicho limpieza.",
+      "actualTextSha256": "f0a18f1c7e8d8d15476b5948bd4d1d4597890a61cc1b7e813a839c066e292c6f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes un a el comedor está cerrado; no has dicho limpieza.",
+      "reason": "Conserva comedor cerrado, pero niega limpieza dada y omite apertura por la tarde; contradicción adicional.",
+      "constraints": [
+        "Dar el aviso con cierre por limpieza y apertura por la tarde.",
+        "No sustituir ni omitir el motivo al añadir la apertura."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo o la apertura dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "no has dicho limpieza.",
+          "tag": "known_cause_denied",
+          "reason": "La limpieza seguía dada como motivo.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 19,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t3",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "actual",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Cambia sólo la apertura: será por la noche. Da el aviso completo.",
+      "actualText": "Antes la noche.",
+      "actualTextSha256": "5c1a5eea2f060de23287d8821bb7afbc8e9eccc7e724abf350702bfe7654e36f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Antes la noche.",
+      "reason": "«Antes la noche» no da el aviso completo ni expresa claramente apertura por la noche; no basta la palabra noche para P.",
+      "constraints": [
+        "Aplicar apertura por la noche y conservar cierre por limpieza.",
+        "Dar el aviso completo sin hechos nuevos."
+      ],
+      "criticalIf": [
+        "Reinstalar apertura por la tarde o cambiar el motivo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 6,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t4",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "actual",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre.",
+      "actualText": "El comedor está cer abre.",
+      "actualTextSha256": "2a21b870e5dcbc606a62874487568f2f9b79872c9b9152ae5bc99b0f39543a59",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El comedor está cer abre.",
+      "reason": "Fragmento cer/abre sin limpieza como motivo solicitado.",
+      "constraints": [
+        "Expresar sólo limpieza como motivo del cierre.",
+        "No añadir comedor, apertura, saludo o explicación."
+      ],
+      "criticalIf": [
+        "Dar otro motivo; datos sobrantes verdaderos incumplen formato sin crítico por sí solos."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t1",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "ideal",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase.",
+      "actualText": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+      "actualTextSha256": "ee49e800b66779f0494865ef212280ee00b31207bdadf218d239afe81f112b7d",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+      "reason": "Niega limpieza ya dada y repite esa causa sin redactar el aviso; negación adicional, no crítico nuevo.",
+      "constraints": [
+        "Redactar una sola frase de aviso que diga comedor cerrado por limpieza.",
+        "No inventar apertura, duración u otros motivos."
+      ],
+      "criticalIf": [
+        "Cambiar el cierre o su motivo, inventar horario de apertura."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [
+        {
+          "evidenceQuote": "No; no me has dicho limpieza",
+          "tag": "known_cause_denied",
+          "reason": "La limpieza sí estaba dada.",
+          "fragmentary": false
+        }
+      ],
+      "technical": {
+        "generatedTokens": 43,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t2",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "ideal",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Añade que abrirá por la tarde, conservando el motivo.",
+      "actualText": "El comedor es el motivo.",
+      "actualTextSha256": "d29e1975938d7cb9a5d7bcc98bcb1481c0830278f3ac6af1d5a4464231f22885",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "El comedor es el motivo.",
+      "reason": "«El comedor es el motivo» sustituye limpieza por comedor como causa del cierre.",
+      "constraints": [
+        "Dar el aviso con cierre por limpieza y apertura por la tarde.",
+        "No sustituir ni omitir el motivo al añadir la apertura."
+      ],
+      "criticalIf": [
+        "Cambiar el motivo o la apertura dada."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 9,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t3",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "ideal",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Cambia sólo la apertura: será por la noche. Da el aviso completo.",
+      "actualText": "Antes vas a el motivo: por la tarde, por la noche.",
+      "actualTextSha256": "a6ba2bc063534a62279f3a40b4fc5b66c45eb1071f05efe3e9954051e97d7806",
+      "CPF": "F",
+      "critical": true,
+      "evidenceQuote": "Antes vas a el motivo: por la tarde, por la noche.",
+      "reason": "La etiqueta «el motivo: por la tarde, por la noche» sustituye limpieza por tiempos como motivo.",
+      "constraints": [
+        "Aplicar apertura por la noche y conservar cierre por limpieza.",
+        "Dar el aviso completo sin hechos nuevos."
+      ],
+      "criticalIf": [
+        "Reinstalar apertura por la tarde o cambiar el motivo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 16,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h03/t4",
+      "episodeId": "pr1diag-v1-h03",
+      "historyMode": "ideal",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "incremental_notice_and_requested_fragment",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre.",
+      "actualText": "El coma sólo la tarde es por la tarde, por la noche.",
+      "actualTextSha256": "82929892137e30c0aee91dffa92b06953907a91df70e8d22803dce105412b80e",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "El coma sólo la tarde es por la tarde, por la noche.",
+      "reason": "Fragmentos de tarde/noche sin limpieza ni una proposición causal recuperable; no se reconstruye otro motivo de una enumeración rota.",
+      "constraints": [
+        "Expresar sólo limpieza como motivo del cierre.",
+        "No añadir comedor, apertura, saludo o explicación."
+      ],
+      "criticalIf": [
+        "Dar otro motivo; datos sobrantes verdaderos incumplen formato sin crítico por sí solos."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 16,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t1",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "actual",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta.",
+      "actualText": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+      "actualTextSha256": "204aa951f0de01765be35a1f246d786ffd22544f5c1a61de84efde34757fc528",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+      "reason": "Bucle de dato ausente sin una pregunta única por destino.",
+      "constraints": [
+        "Preguntar únicamente por el destino al que quiere acompañamiento.",
+        "No redactar aún una petición con destino inventado ni preguntar hora o persona."
+      ],
+      "criticalIf": [
+        "Inventar destino; pedir otro dato es fallo de aclaración sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 80,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t2",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "actual",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "A la farmacia. Redacta la petición en una frase, sin inventar una hora.",
+      "actualText": "Primero; aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún no no adónde.",
+      "actualTextSha256": "f24243a3e242643b838167e83dbc38dd307da3700ab3eaf9b05cfc422f2923d2",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Primero; aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún no no adónde.",
+      "reason": "Bucle sin petición de acompañamiento a farmacia; no se infiere una proposición factual de «no no adónde».",
+      "constraints": [
+        "Redactar una petición de acompañamiento a la farmacia en una sola frase.",
+        "No inventar una hora."
+      ],
+      "criticalIf": [
+        "Cambiar destino o inventar una hora."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 43,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t3",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "actual",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición.",
+      "actualText": "Primero; ahora es la panadería.",
+      "actualTextSha256": "b66d4726f707cb5a76f406afbe903c33590c49c3e5571d72303eb8f1557a742a",
+      "CPF": "P",
+      "critical": false,
+      "evidenceQuote": "Primero; ahora es la panadería.",
+      "reason": "«ahora es la panadería» conserva el destino corregido, pero falta la petición de acompañamiento.",
+      "constraints": [
+        "Reformular la petición de acompañamiento a la panadería.",
+        "Conservar la intención de acompañamiento, sin añadir hora."
+      ],
+      "criticalIf": [
+        "Reinstalar farmacia como destino actual, cambiar intención o inventar hora."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t4",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "actual",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Da únicamente la petición actual, sin saludo ni explicación.",
+      "actualText": "Primero; ahora es la petición.",
+      "actualTextSha256": "16c09938de813c4c04b48923b388b7386d12451f6ad3c464a9dae64007f9ed9f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Primero; ahora es la petición.",
+      "reason": "Dice «la petición» sin formular acompañamiento ni destino.",
+      "constraints": [
+        "Dar sólo la petición de acompañamiento a la panadería.",
+        "Omitir saludo, explicación y hora no dada."
+      ],
+      "criticalIf": [
+        "Cambiar destino o inventar hora; saludo o explicación es defecto de instrucción, no crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 10,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t1",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "ideal",
+      "turn": 1,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta.",
+      "actualText": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+      "actualTextSha256": "204aa951f0de01765be35a1f246d786ffd22544f5c1a61de84efde34757fc528",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+      "reason": "Bucle de dato ausente sin una pregunta única por destino.",
+      "constraints": [
+        "Preguntar únicamente por el destino al que quiere acompañamiento.",
+        "No redactar aún una petición con destino inventado ni preguntar hora o persona."
+      ],
+      "criticalIf": [
+        "Inventar destino; pedir otro dato es fallo de aclaración sin crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 80,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t2",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "ideal",
+      "turn": 2,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "A la farmacia. Redacta la petición en una frase, sin inventar una hora.",
+      "actualText": "Te acompañe a alguien aún; no has dicho una frase, sin proción sólo el dacia, sin embargo el dacia.",
+      "actualTextSha256": "26edb3f300e4ff88fec2a4ad1175ae42e4606f7a2a2b0cd91d5380f199cf18ed",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Te acompañe a alguien aún; no has dicho una frase, sin proción sólo el dacia, sin embargo el dacia.",
+      "reason": "Construcción rota sobre alguien/frase/dacia sin petición a farmacia. No se reconstruye otro destino desde dacia.",
+      "constraints": [
+        "Redactar una petición de acompañamiento a la farmacia en una sola frase.",
+        "No inventar una hora."
+      ],
+      "criticalIf": [
+        "Cambiar destino o inventar una hora."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 28,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t3",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "ideal",
+      "turn": 3,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición.",
+      "actualText": "Primero vas el destino.",
+      "actualTextSha256": "0d0bdd5d78eb5fe7ab9b64a12e4cdffc1eac6f8343a40cae64276eeb294f7d4f",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Primero vas el destino.",
+      "reason": "Menciona destino sin decir panadería ni formular petición.",
+      "constraints": [
+        "Reformular la petición de acompañamiento a la panadería.",
+        "Conservar la intención de acompañamiento, sin añadir hora."
+      ],
+      "criticalIf": [
+        "Reinstalar farmacia como destino actual, cambiar intención o inventar hora."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 7,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    },
+    {
+      "id": "pr1diag-v1-h04/t4",
+      "episodeId": "pr1diag-v1-h04",
+      "historyMode": "ideal",
+      "turn": 4,
+      "probeKind": "history_comparison",
+      "baseCaseId": null,
+      "worldId": null,
+      "skill": "clarification_then_request_then_correction",
+      "factOrder": null,
+      "questionWording": null,
+      "user": "Da únicamente la petición actual, sin saludo ni explicación.",
+      "actualText": "Después vas el da ún es la petición.",
+      "actualTextSha256": "8ba0370a136788ccfb8990b08ff784cf2161c5976ba4ba5f7079f6699bcbf2a9",
+      "CPF": "F",
+      "critical": false,
+      "evidenceQuote": "Después vas el da ún es la petición.",
+      "reason": "Fragmento sin acompañamiento, destino o petición actual.",
+      "constraints": [
+        "Dar sólo la petición de acompañamiento a la panadería.",
+        "Omitir saludo, explicación y hora no dada."
+      ],
+      "criticalIf": [
+        "Cambiar destino o inventar hora; saludo o explicación es defecto de instrucción, no crítico por sí solo."
+      ],
+      "additionalContradictionsOutsideCriticalIf": [],
+      "technical": {
+        "generatedTokens": 11,
+        "stopReason": "eos",
+        "discardedPromptTokens": 0,
+        "error": null
+      }
+    }
+  ]
+}

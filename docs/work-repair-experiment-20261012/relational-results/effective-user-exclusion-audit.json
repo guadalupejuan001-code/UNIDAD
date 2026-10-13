@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-12T19:08:38.008298+00:00",
+  "scope": "post-generation exclusion audit; not pre-training protocol or FINAL",
+  "casesSha256": "2d339d3439c22f4faea6f5f4c29306cacbec213042c5a43882f7303c82b40810",
+  "freezeSha256": "3289aede34f4b3a6ae399a45b8ef17a05d9a0a95171a14bece47f7d8f067f2d7",
+  "helperSha256": "a36863e6a3fa5121a38419e39a51b9da1071a4e807de21b8583e9e292d1c5969",
+  "effectiveUsers": 80,
+  "arms": {
+    "original": {
+      "corpusSha256": "86127ba5fb89ccb145401dadc73dbd25d67ca8eb114ad9f0fa8a801128c430e6",
+      "trainRecords": 4224,
+      "overlapCounts": {
+        "effectiveNormalizedUserHashes": 0,
+        "wholeUserDelexicalizedForms": 0,
+        "wholeUserPrefixDelexicalizedForms": 0,
+        "normalizedUserOnlyPrefixes": 0
+      },
+      "changedUserChecks": [
+        {
+          "episodeId": "pr1rel-val-v1-02",
+          "turn": 1,
+          "sourceNormalizedUserSha256": "1bafdeea9e3b918aa87fef9f7a334c30a598b618c04126b2f6e7fe3dcddd2829",
+          "effectiveNormalizedUserSha256": "5f5872c438cc356f8c5c30d525fe9db53ef72e1192f8c3918b5cec6d217d4c88",
+          "effectiveUSERexactInTRAIN": false
+        },
+        {
+          "episodeId": "pr1rel-val-v1-17",
+          "turn": 3,
+          "sourceNormalizedUserSha256": "b336eab7d6f6d1a55db3d8c4f108750ca2e2a772937847b34fd1b36f325937e1",
+          "effectiveNormalizedUserSha256": "1abcaffbdb121a430684ce3f85ec7f1bb84193213d0afc4ca0c5bbd0e6750e83",
+          "effectiveUSERexactInTRAIN": false
+        }
+      ]
+    },
+    "relational": {
+      "corpusSha256": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30",
+      "trainRecords": 4224,
+      "overlapCounts": {
+        "effectiveNormalizedUserHashes": 0,
+        "wholeUserDelexicalizedForms": 0,
+        "wholeUserPrefixDelexicalizedForms": 0,
+        "normalizedUserOnlyPrefixes": 0
+      },
+      "changedUserChecks": [
+        {
+          "episodeId": "pr1rel-val-v1-02",
+          "turn": 1,
+          "sourceNormalizedUserSha256": "1bafdeea9e3b918aa87fef9f7a334c30a598b618c04126b2f6e7fe3dcddd2829",
+          "effectiveNormalizedUserSha256": "5f5872c438cc356f8c5c30d525fe9db53ef72e1192f8c3918b5cec6d217d4c88",
+          "effectiveUSERexactInTRAIN": false
+        },
+        {
+          "episodeId": "pr1rel-val-v1-17",
+          "turn": 3,
+          "sourceNormalizedUserSha256": "b336eab7d6f6d1a55db3d8c4f108750ca2e2a772937847b34fd1b36f325937e1",
+          "effectiveNormalizedUserSha256": "1abcaffbdb121a430684ce3f85ec7f1bb84193213d0afc4ca0c5bbd0e6750e83",
+          "effectiveUSERexactInTRAIN": false
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Exact and field-delexicalized whole forms only; does not prove semantic family independence.",
+    "Original eightVAL worlds reused as prescribed; no world moved toTRAIN.",
+    "Additional third-color replacement in two_objects derivative is not delexicalized by this supplemental audit. Both changed effectiveUSERs are in other families; original DATA author guards cover native corpus before training.",
+    "All80 effectiveUSERs/gold remain development and were validation inputs for loss; native optimizer trained on TRAIN only."
+  ],
+  "frozenEvaluationFilesUnchanged": true
+}

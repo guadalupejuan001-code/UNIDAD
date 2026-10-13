@@ -1,0 +1,149 @@
+diff --git a/src/ia_propia/conversation/model.py b/src/ia_propia/conversation/model.py
+index 47a0e29..0089aaa 100644
+--- a/src/ia_propia/conversation/model.py
++++ b/src/ia_propia/conversation/model.py
+@@ -42,7 +42,7 @@ def validate_config(config):
+         head = result["copy_head"]
+         if type(head) is not dict or set(head) != {"version", "rank", "seed"}:
+             raise ConversationError("copy_head requires version, rank and seed")
+-        integer(head["version"], "copy_head.version", 1, 1)
++        integer(head["version"], "copy_head.version", 1, 2)
+         integer(head["rank"], "copy_head.rank", 32, 32)
+         integer(head["seed"], "copy_head.seed", 0, 2**32 - 1)
+         result["copy_head"] = dict(head)
+@@ -194,7 +194,13 @@ class ConversationModel(nn.Module):
+         return roles, boundaries >= 0
+ 
+     def _copy_project(self, input_ids, mask=None, *, details=False):
+-        """One hidden pass: generator plus learned causal USER successor pointer.
++        """One hidden pass: generator plus a versioned causal USER pointer.
++
++        Version 1 keeps the historical successor pointer: key h[j-1] copies
++        token j. Version 2 uses key h[j], which includes the source token's
++        identity. Both restrict sources to visible USER tokens at j <= query
++        time. The source version is artifact configuration, never inferred
++        from text, and existing v1 artifacts keep their exact computation.
+ 
+         Returned scores are logits-compatible log mixture probabilities wherever
+         a USER source exists, and the original generator logits otherwise.
+@@ -233,7 +239,8 @@ class ConversationModel(nn.Module):
+             if not torch.all(torch.isfinite(gate_logits)):
+                 raise ConversationError("Copy gate scores must be finite")
+             if length > 1:
+-                keys = self.copy_key(hidden[:, :-1].float())
++                source_hidden = hidden[:, :-1] if self._config["copy_head"]["version"] == 1 else hidden[:, 1:]
++                keys = self.copy_key(source_hidden.float())
+                 projected_queries = self.copy_query(queries.float())
+                 scores = (keys[rows] * projected_queries[:, None, :]).sum(dim=-1) / math.sqrt(self._config["copy_head"]["rank"])
+                 if not torch.all(torch.isfinite(scores)):
+diff --git a/src/ia_propia/conversation/training.py b/src/ia_propia/conversation/training.py
+index 40f35c5..18a52e2 100644
+--- a/src/ia_propia/conversation/training.py
++++ b/src/ia_propia/conversation/training.py
+@@ -176,10 +176,10 @@ _COPY_NEW_KEYS = {"copy_query.weight", "copy_key.weight", "copy_gate.weight", "c
+ 
+ def _validate_copy_head(value):
+     if (type(value) is not dict or set(value) != {"version", "rank", "seed"}
+-            or type(value["version"]) is not int or value["version"] != 1
++            or type(value["version"]) is not int or value["version"] not in (1, 2)
+             or type(value["rank"]) is not int or value["rank"] != 32
+             or type(value["seed"]) is not int or not 0 <= value["seed"] <= 2**32 - 1):
+-        raise ValueError("copy_head requires version1/rank32 and an integer own seed")
++        raise ValueError("copy_head requires version1 or version2/rank32 and an integer own seed")
+     return copy.deepcopy(value)
+ 
+ 
+diff --git a/tests/test_conversation_copy_head.py b/tests/test_conversation_copy_head.py
+index 1304116..54baa1d 100644
+--- a/tests/test_conversation_copy_head.py
++++ b/tests/test_conversation_copy_head.py
+@@ -146,7 +146,7 @@ class CopyNumericalTests(unittest.TestCase):
+         exposed = model.config
+         exposed["copy_head"]["rank"] = 1
+         self.assertEqual(model.config["copy_head"], HEAD)
+-        for bad in (None, True, {}, {**HEAD, "seed": True}, {**HEAD, "version": 2}, {**HEAD, "extra": 1}):
++        for bad in (None, True, {}, {**HEAD, "seed": True}, {**HEAD, "version": 3}, {**HEAD, "extra": 1}):
+             with self.subTest(bad=bad), self.assertRaises(ValueError):
+                 validate_config({**self.base_config, "copy_head": bad})
+ 
+diff --git a/tests/test_conversation_source_pointer.py b/tests/test_conversation_source_pointer.py
+new file mode 100644
+index 0000000..9b570f5
+--- /dev/null
++++ b/tests/test_conversation_source_pointer.py
+@@ -0,0 +1,75 @@
++"""Versioned source-copy tests: causality, actual token identity, and persistence."""
++import importlib.util
++import tempfile
++import unittest
++
++HAS_EXTRAS = all(importlib.util.find_spec(n) is not None for n in ('torch','tokenizers','safetensors'))
++
++
++@unittest.skipUnless(HAS_EXTRAS, 'optional conversation dependencies unavailable')
++class SourcePointerTests(unittest.TestCase):
++    def setUp(self):
++        import torch
++        from ia_propia.conversation.model import ConversationModel
++        self.torch = torch
++        self.old_threads = torch.get_num_threads()
++        torch.set_num_threads(1)
++        base = dict(vocab_size=262,d_model=16,n_layers=1,n_heads=2,context_length=64,
++                    dropout=0.0,ffn_multiplier=1,seed=19)
++        self.old = ConversationModel({**base,'copy_head':{'version':1,'rank':32,'seed':73}}).eval()
++        self.new = ConversationModel({**base,'copy_head':{'version':2,'rank':32,'seed':73}}).eval()
++
++    def tearDown(self):
++        self.torch.set_num_threads(self.old_threads)
++
++    def test_source_key_includes_copied_token_identity_only_in_version_two(self):
++        torch = self.torch
++        first = torch.tensor([[1,4,10,11,2,5]])
++        changed = first.clone(); changed[0,2] = 12
++        for model, expects_change in ((self.old,False),(self.new,True)):
++            keys=[]
++            hook=model.copy_key.register_forward_pre_hook(lambda _, args: keys.append(args[0].detach().clone()))
++            try:
++                model(first); model(changed)
++            finally:
++                hook.remove()
++            # Copy source token j=2 occupies index j-1 in the source arrays.
++            self.assertEqual(not torch.equal(keys[0][0,1], keys[1][0,1]),expects_change)
++        for name,value in self.old.state_dict().items():
++            self.assertTrue(torch.equal(value,self.new.state_dict()[name]))
++
++    def test_v2_cannot_copy_roles_assistant_system_or_future_tokens(self):
++        torch=self.torch
++        ids=torch.tensor([[1,3,20,2,4,10,11,2,5,10,4,12]])
++        mask=torch.zeros_like(ids,dtype=torch.bool);mask[0,8]=True
++        logits,info=self.new._copy_project(ids,mask,details=True)
++        self.assertEqual(info['sourcePositions'][info['allowed'][0]].tolist(),[5,6])
++        future=ids.clone();future[0,11]=13
++        self.assertTrue(torch.equal(logits,self.new.selected_logits(future,mask)))
++        torch.testing.assert_close(self.new(ids)[mask],logits,rtol=1e-5,atol=1e-6)
++
++    def test_v2_auxiliary_gradients_and_portable_round_trip(self):
++        from ia_propia.conversation.tokenizer import fit_tokenizer
++        from ia_propia.conversation.artifacts import save_artifact,load_artifact
++        from ia_propia.conversation import training
++        torch=self.torch
++        ids=torch.tensor([[1,4,7,8,7,2,5,7,8]])
++        labels=torch.tensor([[-100]*6+[7,8,2]])
++        self.new.train()
++        logits,alignment,gate,stats=self.new.copy_training_outputs(ids,labels)
++        loss=torch.nn.functional.cross_entropy(logits,labels[labels!=-100])+alignment+gate
++        loss.backward()
++        self.assertTrue(bool(torch.isfinite(loss)))
++        for p in self.new.parameters():
++            if p.grad is not None:self.assertTrue(bool(torch.isfinite(p.grad).all()))
++        self.assertGreater(float(self.new.copy_key.weight.grad.abs().sum()),0)
++        head={'version':2,'rank':32,'seed':73}
++        self.assertEqual(training._validate_copy_head(head),head)
++        tokenizer=fit_tokenizer([[{'role':'user','content':'hola'},{'role':'assistant','content':'bien'}]],vocab_size=262)
++        with tempfile.TemporaryDirectory() as folder:
++            saved=save_artifact(folder,self.new,tokenizer,training={'trainedFrom':'random_weights'})
++            reloaded,_,manifest=load_artifact(folder)
++            self.assertEqual(manifest['modelId'],saved['modelId'])
++            self.assertEqual(reloaded.config['copy_head']['version'],2)
++            self.new.eval()
++            self.assertTrue(torch.equal(self.new(ids),reloaded(ids)))

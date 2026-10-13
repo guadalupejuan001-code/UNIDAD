@@ -1,0 +1,5003 @@
+{
+  "schemaVersion": 1,
+  "purpose": "development_factorial_not_final_acceptance",
+  "startedAtUtc": "2026-10-12T18:53:55.681780+00:00",
+  "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+  "modelManifest": {
+    "config": {
+      "context_length": 512,
+      "copy_head": {
+        "rank": 32,
+        "seed": 47,
+        "version": 1
+      },
+      "d_model": 256,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "n_heads": 8,
+      "n_layers": 6,
+      "seed": 42,
+      "vocab_size": 8192
+    },
+    "evaluation": {
+      "experimental": true,
+      "productionAccepted": false,
+      "purpose": "development_not_final_acceptance"
+    },
+    "files": {
+      "config.json": {
+        "bytes": 168,
+        "sha256": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+      },
+      "tokenizer.json": {
+        "bytes": 234592,
+        "sha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+      },
+      "weights.safetensors": {
+        "bytes": 27943524,
+        "sha256": "448cd17dbb6899d181a43553c45434efcc18f19ae1494118deaba9adc128eaca"
+      }
+    },
+    "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+    "modelType": "unidad-conversation-transformer",
+    "schemaVersion": 1,
+    "training": {
+      "assistantTargets": "last_reply_only",
+      "auxiliaryLossSplit": "train_only",
+      "config": {
+        "batch_size": 8,
+        "checkpoint_every": 64,
+        "copy_supervision": {
+          "alignment_weight": 0.2,
+          "gate_weight": 0.2
+        },
+        "grad_clip": 1.0,
+        "learning_rate": 0.0001,
+        "loss_reduction": "token_mean",
+        "max_epochs": 1000,
+        "max_seconds": 600,
+        "max_steps": 128,
+        "min_delta": 0.0001,
+        "objective": "assistant_last_reply",
+        "partition_policy": "train_validation_only",
+        "patience": 12,
+        "projection_mode": "supervised",
+        "seed": 61,
+        "torch_threads": 4,
+        "train_precision": "cpu_bfloat16",
+        "validation_every": 64,
+        "warmup_steps": 32,
+        "weight_decay": 0.01,
+        "window_policy": "sliding_context"
+      },
+      "copySupervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      },
+      "corpusFormat": "messages",
+      "corpusSha256": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30",
+      "experimentDesignSha256": "bdffd461423d68b8c507b0d156e6d98d5483b8d6565e161a4e511e0dd1d02f98",
+      "lineage": {
+        "parentCorpusSha256": "6355eb7a812814628e0cec3aaa01888f113e33aee4e900f90714977950d576f7",
+        "parentModelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+        "parentWeightsSha256": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+        "rootOrigin": "random_weights"
+      },
+      "lossReduction": "token_mean",
+      "optimizerReset": true,
+      "parameterCount": 6983937,
+      "partitionPolicy": "train_validation_only",
+      "projectionMode": "supervised",
+      "reportedNll": "prediction_cross_entropy_only",
+      "schedulerReset": true,
+      "selectedCheckpoint": "step-000000128-7d4ea252e47f47c7ac3e7c0eead9066c",
+      "selectedStep": 128,
+      "selectionSplit": "prospective_fixed_endpoint",
+      "testEvaluated": false,
+      "testPartitionPresent": false,
+      "trainPrecision": "cpu_bfloat16",
+      "trainedFrom": "own_checkpoint",
+      "trainingObjective": "assistant_last_reply"
+    }
+  },
+  "sourceFilesSha256": {
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/run_probe.py": "0377fab0e73a3a7e529f0f8501ed35fe2185df6f452d358f4c1786a9e33700dd",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/freeze.json": "8ea7b8a463b08800449df45dd94cc5aaedaf7fe451d9da46dc7469fe3a319172",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/cases.json": "3a97d7208edd30d089c65c543ba028a3f6984b806e88f060edb02b7c20222da7",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/ideal-history.json": "8be20a9a44c39fdbae4362620bb2f0d9200017ce61bd1f25d6c7af40e22a6476",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/protocol.json": "a8da2c6cf8474dc1fd2e02bc8c8e7813adf6e2e95084d69afac196db5e6108f8",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/hash-only-exclusion.json": "0279193256fd4aa0b8d49fb49965dbe404ed345407f5991c5304502563a3a407",
+    "/workspace/unidad-conversation-repair/private/pr1-wording-history-diagnosis-v1/prospective-case-qa.json": "ed7f6fcfa15417850652473e36f7d32a24dd9dd3b5463054afbdb2388e858e56",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/__main__.py": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/data.py": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/language_data.py": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/tokenizer.py": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+    "/workspace/unidad-conversation-repair/src/ia_propia/conversation/training.py": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/relational/endpoint/manifest.json": "840bf279a6eb3b370eb60c4d7b567b854cfda1a24a8c327e8dad44f787725658",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/relational/endpoint/config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/relational/endpoint/tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/relational/endpoint/weights.safetensors": "448cd17dbb6899d181a43553c45434efcc18f19ae1494118deaba9adc128eaca"
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "episodes": [
+    {
+      "id": "pr1diag-v1-r01-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "¿De qué color es la taza?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r01-o0-w0/t1",
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\n¿De qué color es la taza?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La taza?",
+            "generatedTokenIds": [
+              607,
+              5776,
+              36,
+              2
+            ],
+            "generatedTokens": 4,
+            "stopReason": "eos",
+            "promptTokens": 73,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "1d6cb39921b72cad01c419f7cdd7c2411c813d6e5db697389d3824b42d47e9f5"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "Dime el color que tiene la taza.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r01-o0-w1/t1",
+          "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la taza.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la taza."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La taza es verde.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              4878,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "744b73ac13b9ede6f3f2dd560fb7da203c2e487abd0ab0ccadc5c06cd3c5000a"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "¿De qué color es la taza?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r01-o1-w0/t1",
+          "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la taza?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La botella es verde. La taza es violeta.\n\n¿De qué color es la taza?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La botella es violeta.",
+            "generatedTokenIds": [
+              607,
+              2094,
+              289,
+              1871,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 73,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r01-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r01",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "Dime el color que tiene la taza.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r01-o1-w1/t1",
+          "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la taza.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la taza."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La taza es violeta.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "¿De qué color es la botella?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r02-o0-w0/t1",
+          "user": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\n¿De qué color es la botella?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La taza es violeta.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 75,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "La taza es violeta. La botella es verde.",
+      "question": "Dime el color que tiene la botella.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r02-o0-w1/t1",
+          "user": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la botella.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La taza es violeta. La botella es verde.\n\nDime el color que tiene la botella."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La taza es violeta.",
+            "generatedTokenIds": [
+              607,
+              5776,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "40ed1525ce66542d47eca03d91559028a48c421ad476ca8753547626826fc93d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "¿De qué color es la botella?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r02-o1-w0/t1",
+          "user": "La botella es verde. La taza es violeta.\n\n¿De qué color es la botella?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La botella es verde. La taza es violeta.\n\n¿De qué color es la botella?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La botella es violeta.",
+            "generatedTokenIds": [
+              607,
+              2094,
+              289,
+              1871,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 75,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r02-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r02",
+      "worldId": "colors-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La botella es verde. La taza es violeta.",
+      "question": "Dime el color que tiene la botella.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r02-o1-w1/t1",
+          "user": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la botella.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La botella es verde. La taza es violeta.\n\nDime el color que tiene la botella."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La botella es violeta.",
+            "generatedTokenIds": [
+              607,
+              2094,
+              289,
+              1871,
+              315,
+              3385,
+              1329,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "bc24814bfe45d719cc858d6ac53776d88def4d62c1da32e8014d9a8720c872f4"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "¿Dónde están los guantes?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r03-o0-w0/t1",
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde están los guantes?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde están los guantes?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, no me has dicho el cajón.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              409,
+              421,
+              4220,
+              4535,
+              293,
+              267,
+              415,
+              298,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 80,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "cd8621463cdf99071ce394a3623781bd8c1755ad1425d3c5dfa6ac970322e322"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "Dime en qué lugar están los guantes.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r03-o0-w1/t1",
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar están los guantes.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar están los guantes."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No me has dicho en quélla silla silla silla silla.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              286,
+              1602,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 82,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f2bc6322c12df048209c13813bbc0c2ce102f882c9dcd786c69bc5591136495f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "¿Dónde están los guantes?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r03-o1-w0/t1",
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde están los guantes?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde están los guantes?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No.",
+            "generatedTokenIds": [
+              1581,
+              19,
+              2
+            ],
+            "generatedTokens": 3,
+            "stopReason": "eos",
+            "promptTokens": 80,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "38178a20b470cfd18299fb1593dd4ba706f1a83321dac051d01086efd8b7a96f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r03-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r03",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "Dime en qué lugar están los guantes.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r03-o1-w1/t1",
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar están los guantes.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar están los guantes."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No me has dicho en quélla.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              286,
+              1602,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 82,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f6830ba25c9f34525122c717f2b307eef7b20975787a0ebd2aba54db2e4fe4c2"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "¿Dónde está la bufanda?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r04-o0-w0/t1",
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde está la bufanda?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\n¿Dónde está la bufanda?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, no me has dicholla silla silla silla silla silla.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              409,
+              421,
+              4220,
+              4535,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              383,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 19,
+            "stopReason": "eos",
+            "promptTokens": 81,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f55886b2ae40bfb1790dcca3719d20fc64078b971bd5aaff01de279559ab09af"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o0-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Los guantes están en el cajón. La bufanda está sobre la silla.",
+      "question": "Dime en qué lugar está la bufanda.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r04-o0-w1/t1",
+          "user": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar está la bufanda.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Los guantes están en el cajón. La bufanda está sobre la silla.\n\nDime en qué lugar está la bufanda."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Es sobre quélla.",
+            "generatedTokenIds": [
+              819,
+              609,
+              1602,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 83,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "9cf8a780309e81358415b4732446d621f1afdfb70792beb45c1eaa686c936a5a"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w0",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "¿Dónde está la bufanda?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r04-o1-w0/t1",
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde está la bufanda?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\n¿Dónde está la bufanda?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, no me has dicholla.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              409,
+              421,
+              4220,
+              4535,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 81,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "ba89fcd8936198229f1bc3a7c625a5ba0df0bf9cd7f9fa5a3fbc7b947611737d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r04-o1-w1",
+      "topic": "explicit_fact_retrieval",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r04",
+      "worldId": "locations-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La bufanda está sobre la silla. Los guantes están en el cajón.",
+      "question": "Dime en qué lugar está la bufanda.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r04-o1-w1/t1",
+          "user": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar está la bufanda.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La bufanda está sobre la silla. Los guantes están en el cajón.\n\nDime en qué lugar está la bufanda."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No me has dicho en quélla.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              286,
+              1602,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 83,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f6830ba25c9f34525122c717f2b307eef7b20975787a0ebd2aba54db2e4fe4c2"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r05-o0-w0/t1",
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes guarda; se llama es tu prima y sutal es tu vecino; se llama es mi prima y guarda el llavero.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              4799,
+              338,
+              32,
+              313,
+              4004,
+              315,
+              610,
+              6198,
+              292,
+              330,
+              644,
+              315,
+              610,
+              6442,
+              634,
+              32,
+              313,
+              4004,
+              315,
+              557,
+              6198,
+              292,
+              4799,
+              338,
+              293,
+              265,
+              340,
+              91,
+              466,
+              19,
+              2
+            ],
+            "generatedTokens": 33,
+            "stopReason": "eos",
+            "promptTokens": 98,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "c050c9e26188d961252115b6c13f37b7924669639fef87cd5f9e610dd392fa18"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r05-o0-w1/t1",
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La persona es de guarda; el nombre de la persona, el vínculo es mi prima y guarda.",
+            "generatedTokenIds": [
+              607,
+              1516,
+              315,
+              264,
+              4799,
+              338,
+              32,
+              293,
+              1134,
+              264,
+              283,
+              1516,
+              17,
+              293,
+              325,
+              595,
+              2337,
+              315,
+              557,
+              6198,
+              292,
+              4799,
+              338,
+              19,
+              2
+            ],
+            "generatedTokens": 25,
+            "stopReason": "eos",
+            "promptTokens": 102,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "83dd03a0516f89c2de97febda74c666ec4bdef7acebce4e40dc3bf363a773d13"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r05-o1-w0/t1",
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda la postal y qué relación tiene conmigo?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes guarda; se llama mi vecino; se llama mi prima y guarda; no me has dicho relación postal.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              4799,
+              338,
+              32,
+              313,
+              4004,
+              557,
+              6442,
+              634,
+              32,
+              313,
+              4004,
+              557,
+              6198,
+              292,
+              4799,
+              338,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              2180,
+              639,
+              644,
+              19,
+              2
+            ],
+            "generatedTokens": 28,
+            "stopReason": "eos",
+            "promptTokens": 98,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "6af94add624115a1019276724029bef0c250ffd8f28761085f9bc4530775d44a"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r05-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r05",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r05-o1-w1/t1",
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda la postal."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El nombre de la persona, el vín es de mi vecino; siguán es mi vecino.",
+            "generatedTokenIds": [
+              569,
+              1134,
+              264,
+              283,
+              1516,
+              17,
+              293,
+              325,
+              595,
+              315,
+              264,
+              557,
+              6442,
+              634,
+              32,
+              383,
+              412,
+              460,
+              315,
+              557,
+              6442,
+              634,
+              19,
+              2
+            ],
+            "generatedTokens": 24,
+            "stopReason": "eos",
+            "promptTokens": 102,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "99650539701d85c06fa5b95cb3ac7a988a07ba8d8163478f9e65554e3459fc25"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r06-o0-w0/t1",
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Se llama es tu prima y su prima y su relación es tu prima y su prima y suán es tu prima y suán es tu prima y su prima y su relación.",
+            "generatedTokenIds": [
+              1350,
+              4004,
+              315,
+              610,
+              6198,
+              292,
+              330,
+              6198,
+              292,
+              330,
+              2180,
+              315,
+              610,
+              6198,
+              292,
+              330,
+              6198,
+              292,
+              330,
+              460,
+              315,
+              610,
+              6198,
+              292,
+              330,
+              460,
+              315,
+              610,
+              6198,
+              292,
+              330,
+              6198,
+              292,
+              330,
+              2180,
+              19,
+              2
+            ],
+            "generatedTokens": 37,
+            "stopReason": "eos",
+            "promptTokens": 100,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "93004c24ce7de6fa347830910def5301bd9b42b4e755c5d30959f66f6a340403"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r06-o0-w1/t1",
+          "user": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Inés es mi prima y guarda una postal. Damián es mi vecino y guarda un llavero.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El nombre y guarda un lla; no me has dicho guarda; no me has dicho guarda un llavero.",
+            "generatedTokenIds": [
+              569,
+              1134,
+              292,
+              4799,
+              338,
+              297,
+              265,
+              340,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              4799,
+              338,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              4799,
+              338,
+              297,
+              265,
+              340,
+              91,
+              466,
+              19,
+              2
+            ],
+            "generatedTokens": 29,
+            "stopReason": "eos",
+            "promptTokens": 104,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "85917f7b5d9dcf512287167303da98968e294ab04c0b9f95006bdd90757e51f1"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r06-o1-w0/t1",
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\n¿Cómo se llama quien guarda el llavero y qué relación tiene conmigo?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Se llama mi vecino; se llamaán es tu prima y guarda; no me has dichoán es tu vecino.",
+            "generatedTokenIds": [
+              1350,
+              4004,
+              557,
+              6442,
+              634,
+              32,
+              313,
+              4004,
+              460,
+              315,
+              610,
+              6198,
+              292,
+              4799,
+              338,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              460,
+              315,
+              610,
+              6442,
+              634,
+              19,
+              2
+            ],
+            "generatedTokens": 27,
+            "stopReason": "eos",
+            "promptTokens": 100,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "73c8d65d0b19927ceebec11aac4521865fa1245919e30a936baabb63988bf23a"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r06-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r06",
+      "worldId": "people-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.",
+      "question": "Dime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r06-o1-w1/t1",
+          "user": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Damián es mi vecino y guarda un llavero. Inés es mi prima y guarda una postal.\n\nDime el nombre y el vínculo conmigo de la persona que guarda el llavero."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El nombre y guarda una postal; no me has dicho el llavero.",
+            "generatedTokenIds": [
+              569,
+              1134,
+              292,
+              4799,
+              338,
+              337,
+              639,
+              644,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              293,
+              265,
+              340,
+              91,
+              466,
+              19,
+              2
+            ],
+            "generatedTokens": 20,
+            "stopReason": "eos",
+            "promptTokens": 104,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f478a4338aa03c43bccdf80a3d58aeccfb93b5649317e7546946017a5deaf17f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "¿A quién presté yo la revista?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r07-o0-w0/t1",
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿A quién presté yo la revista?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿A quién presté yo la revista?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "TeA Silvia prestó el paraguas a Silvia.",
+            "generatedTokenIds": [
+              2629,
+              38,
+              5118,
+              2166,
+              620,
+              1094,
+              293,
+              356,
+              7134,
+              275,
+              5118,
+              2166,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 81,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "c6643bef43ec9f63c94923bd01c6d19771c04ba2c41541c62738c219f51d685f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "Dime quién recibió de mí la revista.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r07-o0-w1/t1",
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime quién recibió de mí la revista.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime quién recibió de mí la revista."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Te llamaré Omar.",
+            "generatedTokenIds": [
+              2629,
+              8118,
+              319,
+              524,
+              1093,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 81,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "9ef262ee5f3d5d5b06b3a60ac55eb7d5e30d941bad4d467f47fb1f32b9b0ca87"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "¿A quién presté yo la revista?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r07-o1-w0/t1",
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿A quién presté yo la revista?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿A quién presté yo la revista?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, no me hasA quién.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              409,
+              421,
+              4220,
+              38,
+              6055,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 82,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "057abc0f045e39fb6787fad9b3b7516a773bbb463ecec6925573ea52a5b8a365"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r07-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r07",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "Dime quién recibió de mí la revista.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r07-o1-w1/t1",
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime quién recibió de mí la revista.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime quién recibió de mí la revista."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Te llamaré Omar.",
+            "generatedTokenIds": [
+              2629,
+              8118,
+              319,
+              524,
+              1093,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 82,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "9ef262ee5f3d5d5b06b3a60ac55eb7d5e30d941bad4d467f47fb1f32b9b0ca87"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "¿Quién recibió el paraguas de Silvia?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r08-o0-w0/t1",
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿Quién recibió el paraguas de Silvia?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\n¿Quién recibió el paraguas de Silvia?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, el paraguas a Silvia.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              293,
+              356,
+              7134,
+              275,
+              5118,
+              2166,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 83,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "40ea6dba7b2fb87f976376f8bbbb078255967759739f959778e6381be9046295"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o0-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.",
+      "question": "Dime a quién le prestó Silvia el paraguas.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r08-o0-w1/t1",
+          "user": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime a quién le prestó Silvia el paraguas.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yo presté la revista a Silvia. Silvia prestó el paraguas a Omar.\n\nDime a quién le prestó Silvia el paraguas."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Tetó a Silvia el para Silvia el paraguas.",
+            "generatedTokenIds": [
+              2629,
+              1094,
+              275,
+              5118,
+              2166,
+              293,
+              356,
+              5118,
+              2166,
+              293,
+              356,
+              7134,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 85,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "ee09bb982b644bb7e34a516d676f5476c57bc42d4c95f007fd8a5bfb48e55e0f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w0",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "¿Quién recibió el paraguas de Silvia?",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r08-o1-w0/t1",
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿Quién recibió el paraguas de Silvia?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\n¿Quién recibió el paraguas de Silvia?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No, el paraguas a Silvia.",
+            "generatedTokenIds": [
+              1581,
+              17,
+              293,
+              356,
+              7134,
+              275,
+              5118,
+              2166,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 84,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "40ea6dba7b2fb87f976376f8bbbb078255967759739f959778e6381be9046295"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r08-o1-w1",
+      "topic": "relation_and_referent",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r08",
+      "worldId": "loans-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.",
+      "question": "Dime a quién le prestó Silvia el paraguas.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r08-o1-w1/t1",
+          "user": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime a quién le prestó Silvia el paraguas.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Silvia prestó el paraguas a Omar. Yo presté la revista a Silvia.\n\nDime a quién le prestó Silvia el paraguas."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El paraguas a Silvia.",
+            "generatedTokenIds": [
+              569,
+              356,
+              7134,
+              275,
+              5118,
+              2166,
+              19,
+              2
+            ],
+            "generatedTokens": 8,
+            "stopReason": "eos",
+            "promptTokens": 86,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "167176f4c4972808fd2b35eee1f256d91f798d4c15c0bd1342ac11ef037b05c4"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Redacta un aviso breve con ambos datos en una sola frase.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r09-o0-w0/t1",
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nRedacta un aviso breve con ambos datos en una sola frase."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El ascensor está parado; no hacecensor.",
+            "generatedTokenIds": [
+              569,
+              513,
+              72,
+              6096,
+              797,
+              327,
+              341,
+              32,
+              409,
+              1572,
+              72,
+              6096,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 87,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "906ad40062375c7840e3f3c9e5dcd3d5a89e2d55dc369afdac398915237fe268"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Escribe una única frase breve de aviso que conserve los dos datos.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r09-o0-w1/t1",
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe una única frase breve de aviso que conserve los dos datos."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El ascensor está parado; no me has dicho una revisión.",
+            "generatedTokenIds": [
+              569,
+              513,
+              72,
+              6096,
+              797,
+              327,
+              341,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              337,
+              333,
+              4406,
+              19,
+              2
+            ],
+            "generatedTokens": 17,
+            "stopReason": "eos",
+            "promptTokens": 88,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "46c486975a3978f8cb3b9492a68f4262d1fef582ee6839ac762efc295c7884cf"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Redacta un aviso breve con ambos datos en una sola frase.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r09-o1-w0/t1",
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nRedacta un aviso breve con ambos datos en una sola frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nRedacta un aviso breve con ambos datos en una sola frase."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El una sola frase.",
+            "generatedTokenIds": [
+              569,
+              337,
+              5705,
+              5810,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 87,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "30e1acc4a40a0da201d4a76113177b85b1ee21c785e14a15e3b685f06fcd9e97"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r09-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r09",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Escribe una única frase breve de aviso que conserve los dos datos.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r09-o1-w1/t1",
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe una única frase breve de aviso que conserve los dos datos.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe una única frase breve de aviso que conserve los dos datos."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El ascensor.",
+            "generatedTokenIds": [
+              569,
+              513,
+              72,
+              6096,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 88,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "a8b1932d61cbb4c42b54c5d3b41e858a4e1d66ae6e882b6b53d6d51f2c86c85d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Escribe sólo el motivo por el que el ascensor está parado.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r10-o0-w0/t1",
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nEscribe sólo el motivo por el que el ascensor está parado."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El motivo es sólo el motivo por una revisión.",
+            "generatedTokenIds": [
+              569,
+              6768,
+              315,
+              3613,
+              293,
+              6768,
+              359,
+              337,
+              333,
+              4406,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 86,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "7a0bb4162cf49b573005e0f73bebd19fb9320c7cab4e09463a24573bc001ba44"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El ascensor está parado por una revisión. La escalera sigue abierta.",
+      "question": "Di únicamente la causa de la parada del ascensor.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r10-o0-w1/t1",
+          "user": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nDi únicamente la causa de la parada del ascensor.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El ascensor está parado por una revisión. La escalera sigue abierta.\n\nDi únicamente la causa de la parada del ascensor."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No me has dicho una revisión.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              337,
+              333,
+              4406,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 84,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "b6fc8b92f077b06114fa77f78f9b4111b8bfb928918c89d5922ebda42cda4b58"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Escribe sólo el motivo por el que el ascensor está parado.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r10-o1-w0/t1",
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe sólo el motivo por el que el ascensor está parado.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nEscribe sólo el motivo por el que el ascensor está parado."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El motivo es sólo el motivo por una revisión.",
+            "generatedTokenIds": [
+              569,
+              6768,
+              315,
+              3613,
+              293,
+              6768,
+              359,
+              337,
+              333,
+              4406,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 86,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "7a0bb4162cf49b573005e0f73bebd19fb9320c7cab4e09463a24573bc001ba44"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r10-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r10",
+      "worldId": "notice-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "La escalera sigue abierta. El ascensor está parado por una revisión.",
+      "question": "Di únicamente la causa de la parada del ascensor.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r10-o1-w1/t1",
+          "user": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nDi únicamente la causa de la parada del ascensor.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "La escalera sigue abierta. El ascensor está parado por una revisión.\n\nDi únicamente la causa de la parada del ascensor."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No me has dicho una revisión.",
+            "generatedTokenIds": [
+              1581,
+              421,
+              4220,
+              4535,
+              337,
+              333,
+              4406,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 84,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "b6fc8b92f077b06114fa77f78f9b4111b8bfb928918c89d5922ebda42cda4b58"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Explica con palabras sencillas por qué el agua quedó dentro.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r11-o0-w0/t1",
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExplica con palabras sencillas por qué el agua quedó dentro."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El agua quedó dentro es de junto a la botella.",
+            "generatedTokenIds": [
+              569,
+              1415,
+              5153,
+              1881,
+              315,
+              264,
+              1632,
+              275,
+              283,
+              2094,
+              289,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 93,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "2615c1aea28a8b2fbd963520456cfff72bffb64aff8754e28f07c86ca2796221"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Di en lenguaje cotidiano qué evitó que saliera el agua.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r11-o0-w1/t1",
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El agua quedó dentro es de la botella.",
+            "generatedTokenIds": [
+              569,
+              1415,
+              5153,
+              1881,
+              315,
+              264,
+              283,
+              2094,
+              289,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 93,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "3296d18722925de273bb1c4a8ab9338e7cd7f5257a290de9d65d9c28ea3049a0"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Explica con palabras sencillas por qué el agua quedó dentro.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r11-o1-w0/t1",
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExplica con palabras sencillas por qué el agua quedó dentro.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExplica con palabras sencillas por qué el agua quedó dentro."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El vaso es la botella.",
+            "generatedTokenIds": [
+              569,
+              4247,
+              84,
+              315,
+              283,
+              2094,
+              289,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 93,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "70676b86dcd60efb9a0775c3a9c5151c6613d34cdce85637a9b6ed1242b57634"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r11-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r11",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Di en lenguaje cotidiano qué evitó que saliera el agua.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r11-o1-w1/t1",
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nDi en lenguaje cotidiano qué evitó que saliera el agua."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Es dentro porque no me has dicho saliera; no me has dicho saliera.",
+            "generatedTokenIds": [
+              819,
+              1881,
+              2008,
+              409,
+              421,
+              4220,
+              4535,
+              1797,
+              435,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              1797,
+              435,
+              19,
+              2
+            ],
+            "generatedTokens": 18,
+            "stopReason": "eos",
+            "promptTokens": 93,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "55dde54cfde5470c332432ac1d301b2d9a7bf63104e2518e78edfb91bb7ca35d"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 0,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Reescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r12-o0-w0/t1",
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes el tapón es tu agua; tu causa.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              293,
+              301,
+              1061,
+              298,
+              315,
+              610,
+              1415,
+              32,
+              610,
+              3571,
+              19,
+              2
+            ],
+            "generatedTokens": 14,
+            "stopReason": "eos",
+            "promptTokens": 98,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "fe60fab163420f7125818e616d7476c4cdef4a57805c3ec9a5ae09d9010d6ca0"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o0-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 0,
+      "questionWording": 1,
+      "factParagraph": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.",
+      "question": "Expresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r12-o0-w1/t1",
+          "user": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El agua quedó dentro porque el tapón estaba bien cerrado. El vaso vacío estaba junto a la botella.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes el tapón es de la botella; el tapón es la botella.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              293,
+              301,
+              1061,
+              298,
+              315,
+              264,
+              283,
+              2094,
+              289,
+              1871,
+              32,
+              293,
+              301,
+              1061,
+              298,
+              315,
+              283,
+              2094,
+              289,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 24,
+            "stopReason": "eos",
+            "promptTokens": 97,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "fb02821745e1349f2168410b56bdd7f735c5afb8e9fdca5d3596a94a5c9cb5d1"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w0",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 0,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Reescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r12-o1-w0/t1",
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nReescribe sólo lo ocurrido con el agua y su causa en una frase sencilla."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes lo ocurrido; sigues, sigube sólo tu el tapón.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              427,
+              3027,
+              3453,
+              32,
+              383,
+              412,
+              272,
+              17,
+              383,
+              412,
+              807,
+              3613,
+              610,
+              293,
+              301,
+              1061,
+              298,
+              19,
+              2
+            ],
+            "generatedTokens": 21,
+            "stopReason": "eos",
+            "promptTokens": 98,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "2044d7b6eaf7efc8fd74bf2817c325cf7038ec5eb966540ae16bf899097cc7d0"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-r12-o1-w1",
+      "topic": "language_and_instruction_production",
+      "probeKind": "single_turn_factorial",
+      "baseCaseId": "r12",
+      "worldId": "explanation-v1",
+      "factOrder": 1,
+      "questionWording": 1,
+      "factParagraph": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.",
+      "question": "Expresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-r12-o1-w1/t1",
+          "user": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El vaso vacío estaba junto a la botella. El agua quedó dentro porque el tapón estaba bien cerrado.\n\nExpresa con una frase fácil únicamente qué pasó con el agua y por qué."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes qué el vaso es la botella; el tapón es la botella.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              1602,
+              293,
+              4247,
+              84,
+              315,
+              283,
+              2094,
+              289,
+              1871,
+              32,
+              293,
+              301,
+              1061,
+              298,
+              315,
+              283,
+              2094,
+              289,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 23,
+            "stopReason": "eos",
+            "promptTokens": 97,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "b427eae5a5ed45d6ff7182347c37d3e7b003eded42d0a476ca0f7bcc500f9142"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h01",
+      "topic": "correction_and_other_possession",
+      "probeKind": "history_comparison",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h01/t1",
+          "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El paraguas es de Elisa es tu para de Raúl.",
+            "generatedTokenIds": [
+              569,
+              356,
+              7134,
+              315,
+              264,
+              6851,
+              911,
+              315,
+              610,
+              356,
+              264,
+              1961,
+              5364,
+              19,
+              2
+            ],
+            "generatedTokens": 15,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "6ccee86f8abfa2d3414e7e6d5b9f1abb7d398696b868695a65c7522782abb94c"
+        },
+        {
+          "id": "pr1diag-v1-h01/t2",
+          "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa es tu para de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Es de Raúl.",
+            "generatedTokenIds": [
+              819,
+              264,
+              1961,
+              5364,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 116,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "e3996a8d846e342e97ef7d030aa8ad6472e50198a45db0d2c93b5ae2d8e9fb73"
+        },
+        {
+          "id": "pr1diag-v1-h01/t3",
+          "user": "¿De quién es ahora el paraguas?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa es tu para de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "Es de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antesterías de Noelia.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              368,
+              677,
+              264,
+              1191,
+              74,
+              1041,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 134,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "3f19c4f2e54832b52cbffb235862d879f00442fdec7e5b560cf42b2cc5916818"
+        },
+        {
+          "id": "pr1diag-v1-h01/t4",
+          "user": "Resume las dos pertenencias actuales en una frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa es tu para de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "Es de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            },
+            {
+              "role": "assistant",
+              "content": "Antesterías de Noelia."
+            },
+            {
+              "role": "user",
+              "content": "Resume las dos pertenencias actuales en una frase."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "¿Cuén la linterna lin dos?",
+            "generatedTokenIds": [
+              1020,
+              1597,
+              463,
+              283,
+              6291,
+              368,
+              541,
+              6291,
+              709,
+              36,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 158,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f995ff41da7dd61be24edac3c08f98795dabb6a1b686a0b68e922f9c38097980"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h01",
+      "topic": "correction_and_other_possession",
+      "probeKind": "history_comparison",
+      "historyCondition": "ideal",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h01/t1",
+          "user": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El paraguas es de Elisa es tu para de Raúl.",
+            "generatedTokenIds": [
+              569,
+              356,
+              7134,
+              315,
+              264,
+              6851,
+              911,
+              315,
+              610,
+              356,
+              264,
+              1961,
+              5364,
+              19,
+              2
+            ],
+            "generatedTokens": 15,
+            "stopReason": "eos",
+            "promptTokens": 74,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "6ccee86f8abfa2d3414e7e6d5b9f1abb7d398696b868695a65c7522782abb94c"
+        },
+        {
+          "id": "pr1diag-v1-h01/t2",
+          "user": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            }
+          ],
+          "pastIdealRepliesFed": 1,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "EsCelia.",
+            "generatedTokenIds": [
+              819,
+              40,
+              74,
+              1041,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 119,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "15d3a64d21ca2413d8ff9cb6f175bcdec926d895ea6e787061f661df23162bb4"
+        },
+        {
+          "id": "pr1diag-v1-h01/t3",
+          "user": "¿De quién es ahora el paraguas?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "La linterna sigue siendo de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            }
+          ],
+          "pastIdealRepliesFed": 2,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El paraguas.",
+            "generatedTokenIds": [
+              569,
+              356,
+              7134,
+              19,
+              2
+            ],
+            "generatedTokens": 5,
+            "stopReason": "eos",
+            "promptTokens": 142,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "c74c6808b1b8530447574a3a16f01cf786f25ab1614b6f56fc54cc1b0e9593df"
+        },
+        {
+          "id": "pr1diag-v1-h01/t4",
+          "user": "Resume las dos pertenencias actuales en una frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl. ¿De quién es cada cosa?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Elisa y la linterna es de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo sólo el paraguas: es de Noelia. ¿De quién queda la linterna?"
+            },
+            {
+              "role": "assistant",
+              "content": "La linterna sigue siendo de Raúl."
+            },
+            {
+              "role": "user",
+              "content": "¿De quién es ahora el paraguas?"
+            },
+            {
+              "role": "assistant",
+              "content": "El paraguas es de Noelia."
+            },
+            {
+              "role": "user",
+              "content": "Resume las dos pertenencias actuales en una frase."
+            }
+          ],
+          "pastIdealRepliesFed": 3,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "¿CuénCelia linter?",
+            "generatedTokenIds": [
+              1020,
+              1597,
+              463,
+              40,
+              74,
+              1041,
+              6291,
+              368,
+              36,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 166,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "1aea8e489d638bf7600c507ee78559914c0bcd572030ee14fb3cea781354b0ef"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h02",
+      "topic": "known_missing_and_independent_attribute",
+      "probeKind": "history_comparison",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h02/t1",
+          "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho quién la fabricó.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              6055,
+              283,
+              5324,
+              282,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "dfc788291a183cb10168c27da13d63b5689b6169c624c5b742f10dc6a0eb6e64"
+        },
+        {
+          "id": "pr1diag-v1-h02/t2",
+          "user": "La fabricó Mateo. ¿Quién la hizo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "La hizo Mateo.",
+            "generatedTokenIds": [
+              607,
+              2353,
+              1085,
+              5746,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 103,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "e41dc72c699301d8ee0c244ba7831a10d17ffa64132f5574f37c6cc1a6fc604a"
+        },
+        {
+          "id": "pr1diag-v1-h02/t3",
+          "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo Mateo."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no sigue.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              3198,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 132,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "fd718bb7f753e081276a72e0c8a678290c9f2e41e52e2d45380e00b7d7079cec"
+        },
+        {
+          "id": "pr1diag-v1-h02/t4",
+          "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo Mateo."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            },
+            {
+              "role": "assistant",
+              "content": "No; no sigue."
+            },
+            {
+              "role": "user",
+              "content": "Di el color actual y quién la fabricó, sin añadir nada."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Dijiste quién falta el color morada.",
+            "generatedTokenIds": [
+              3037,
+              79,
+              690,
+              6055,
+              3428,
+              293,
+              1691,
+              2657,
+              381,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 155,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "9cb0c0584b0a4d22dcf95c0c142da16a6fa6dd63dd9a5121ed47aa4fa4d9a269"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h02",
+      "topic": "known_missing_and_independent_attribute",
+      "probeKind": "history_comparison",
+      "historyCondition": "ideal",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h02/t1",
+          "user": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho quién la fabricó.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              6055,
+              283,
+              5324,
+              282,
+              19,
+              2
+            ],
+            "generatedTokens": 12,
+            "stopReason": "eos",
+            "promptTokens": 76,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "dfc788291a183cb10168c27da13d63b5689b6169c624c5b742f10dc6a0eb6e64"
+        },
+        {
+          "id": "pr1diag-v1-h02/t2",
+          "user": "La fabricó Mateo. ¿Quién la hizo?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "Sé que la caja es amarilla; falta saber quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            }
+          ],
+          "pastIdealRepliesFed": 1,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Quieres amarilla.",
+            "generatedTokenIds": [
+              4518,
+              3552,
+              5438,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 108,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "3c2b18d8157cb28c5652d846646d52dbab9af29c259dc0c4c29214e9bb654b59"
+        },
+        {
+          "id": "pr1diag-v1-h02/t3",
+          "user": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "Sé que la caja es amarilla; falta saber quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo Mateo."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            }
+          ],
+          "pastIdealRepliesFed": 2,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No. TeQuieres amarilla.",
+            "generatedTokenIds": [
+              1581,
+              19,
+              1319,
+              4518,
+              3552,
+              5438,
+              1871,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 137,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "2b2dd7ea318c9c6a072591ed950520c782b6cf550e7b22d1ec1b9b0ffd94056c"
+        },
+        {
+          "id": "pr1diag-v1-h02/t4",
+          "user": "Di el color actual y quién la fabricó, sin añadir nada.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Mi caja es amarilla. Aún no he dicho quién la fabricó. ¿Qué dato sabes y cuál falta?"
+            },
+            {
+              "role": "assistant",
+              "content": "Sé que la caja es amarilla; falta saber quién la fabricó."
+            },
+            {
+              "role": "user",
+              "content": "La fabricó Mateo. ¿Quién la hizo?"
+            },
+            {
+              "role": "assistant",
+              "content": "La hizo Mateo."
+            },
+            {
+              "role": "user",
+              "content": "Corrijo el color: es morada. ¿Quién sigue siendo su fabricante?"
+            },
+            {
+              "role": "assistant",
+              "content": "Mateo sigue siendo su fabricante."
+            },
+            {
+              "role": "user",
+              "content": "Di el color actual y quién la fabricó, sin añadir nada."
+            }
+          ],
+          "pastIdealRepliesFed": 3,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes no he dicho quién falta el da falta el da quién la fabricó.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              409,
+              2306,
+              4535,
+              6055,
+              3428,
+              293,
+              717,
+              3428,
+              293,
+              717,
+              6055,
+              283,
+              5324,
+              282,
+              19,
+              2
+            ],
+            "generatedTokens": 18,
+            "stopReason": "eos",
+            "promptTokens": 164,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "5776cb6723b9b2a41a1efc91d786963b3976b4095e7a08df46228d986fde2d24"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h03",
+      "topic": "incremental_notice_and_requested_fragment",
+      "probeKind": "history_comparison",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h03/t1",
+          "user": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              19,
+              2
+            ],
+            "generatedTokens": 43,
+            "stopReason": "eos",
+            "promptTokens": 77,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "ee49e800b66779f0494865ef212280ee00b31207bdadf218d239afe81f112b7d"
+        },
+        {
+          "id": "pr1diag-v1-h03/t2",
+          "user": "Añade que abrirá por la tarde, conservando el motivo.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes un a el comedor está cerrado; no has dicho limpieza.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              297,
+              275,
+              293,
+              332,
+              926,
+              278,
+              797,
+              920,
+              1633,
+              32,
+              409,
+              4220,
+              4535,
+              4575,
+              5768,
+              19,
+              2
+            ],
+            "generatedTokens": 19,
+            "stopReason": "eos",
+            "promptTokens": 139,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f0a18f1c7e8d8d15476b5948bd4d1d4597890a61cc1b7e813a839c066e292c6f"
+        },
+        {
+          "id": "pr1diag-v1-h03/t3",
+          "user": "Cambia sólo la apertura: será por la noche. Da el aviso completo.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            },
+            {
+              "role": "assistant",
+              "content": "Antes un a el comedor está cerrado; no has dicho limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo la apertura: será por la noche. Da el aviso completo."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes la noche.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              283,
+              3111,
+              19,
+              2
+            ],
+            "generatedTokens": 6,
+            "stopReason": "eos",
+            "promptTokens": 180,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "5c1a5eea2f060de23287d8821bb7afbc8e9eccc7e724abf350702bfe7654e36f"
+        },
+        {
+          "id": "pr1diag-v1-h03/t4",
+          "user": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            },
+            {
+              "role": "assistant",
+              "content": "Antes un a el comedor está cerrado; no has dicho limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo la apertura: será por la noche. Da el aviso completo."
+            },
+            {
+              "role": "assistant",
+              "content": "Antes la noche."
+            },
+            {
+              "role": "user",
+              "content": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El comedor está cer abre.",
+            "generatedTokenIds": [
+              569,
+              332,
+              926,
+              278,
+              797,
+              920,
+              7459,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 209,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "2a21b870e5dcbc606a62874487568f2f9b79872c9b9152ae5bc99b0f39543a59"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h03",
+      "topic": "incremental_notice_and_requested_fragment",
+      "probeKind": "history_comparison",
+      "historyCondition": "ideal",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h03/t1",
+          "user": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza por limpieza.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              359,
+              4575,
+              5768,
+              19,
+              2
+            ],
+            "generatedTokens": 43,
+            "stopReason": "eos",
+            "promptTokens": 77,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "ee49e800b66779f0494865ef212280ee00b31207bdadf218d239afe81f112b7d"
+        },
+        {
+          "id": "pr1diag-v1-h03/t2",
+          "user": "Añade que abrirá por la tarde, conservando el motivo.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            }
+          ],
+          "pastIdealRepliesFed": 1,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El comedor es el motivo.",
+            "generatedTokenIds": [
+              569,
+              332,
+              926,
+              278,
+              315,
+              293,
+              6768,
+              19,
+              2
+            ],
+            "generatedTokens": 9,
+            "stopReason": "eos",
+            "promptTokens": 108,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "d29e1975938d7cb9a5d7bcc98bcb1481c0830278f3ac6af1d5a4464231f22885"
+        },
+        {
+          "id": "pr1diag-v1-h03/t3",
+          "user": "Cambia sólo la apertura: será por la noche. Da el aviso completo.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza y abrirá por la tarde."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo la apertura: será por la noche. Da el aviso completo."
+            }
+          ],
+          "pastIdealRepliesFed": 2,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Antes vas a el motivo: por la tarde, por la noche.",
+            "generatedTokenIds": [
+              2409,
+              441,
+              4247,
+              275,
+              293,
+              6768,
+              31,
+              359,
+              283,
+              2188,
+              17,
+              359,
+              283,
+              3111,
+              19,
+              2
+            ],
+            "generatedTokens": 16,
+            "stopReason": "eos",
+            "promptTokens": 149,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "a6ba2bc063534a62279f3a40b4fc5b66c45eb1071f05efe3e9954051e97d7806"
+        },
+        {
+          "id": "pr1diag-v1-h03/t4",
+          "user": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Necesito un aviso: el comedor está cerrado por limpieza. Escríbelo en una frase."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza."
+            },
+            {
+              "role": "user",
+              "content": "Añade que abrirá por la tarde, conservando el motivo."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza y abrirá por la tarde."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo la apertura: será por la noche. Da el aviso completo."
+            },
+            {
+              "role": "assistant",
+              "content": "El comedor está cerrado por limpieza y abrirá por la noche."
+            },
+            {
+              "role": "user",
+              "content": "Ahora escribe únicamente el motivo, sin mencionar el comedor ni cuándo abre."
+            }
+          ],
+          "pastIdealRepliesFed": 3,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "El coma sólo la tarde es por la tarde, por la noche.",
+            "generatedTokenIds": [
+              569,
+              332,
+              70,
+              3613,
+              283,
+              2188,
+              315,
+              359,
+              283,
+              2188,
+              17,
+              359,
+              283,
+              3111,
+              19,
+              2
+            ],
+            "generatedTokens": 16,
+            "stopReason": "eos",
+            "promptTokens": 191,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "82929892137e30c0aee91dffa92b06953907a91df70e8d22803dce105412b80e"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h04",
+      "topic": "clarification_then_request_then_correction",
+      "probeKind": "history_comparison",
+      "historyCondition": "actual",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h04/t1",
+          "user": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              2623,
+              2623,
+              293,
+              717,
+              334,
+              300,
+              2623,
+              2623,
+              293,
+              717,
+              334,
+              300,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              315,
+              3887,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              421,
+              4220,
+              1702,
+              476,
+              328,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              4220,
+              1702,
+              476,
+              328,
+              32,
+              383,
+              412,
+              272,
+              293,
+              717,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              989,
+              5836,
+              19,
+              2
+            ],
+            "generatedTokens": 80,
+            "stopReason": "eos",
+            "promptTokens": 80,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "204aa951f0de01765be35a1f246d786ffd22544f5c1a61de84efde34757fc528"
+        },
+        {
+          "id": "pr1diag-v1-h04/t2",
+          "user": "A la farmacia. Redacta la petición en una frase, sin inventar una hora.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde."
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Primero; aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún no no adónde.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              32,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              409,
+              989,
+              5836,
+              19,
+              2
+            ],
+            "generatedTokens": 43,
+            "stopReason": "eos",
+            "promptTokens": 187,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "f24243a3e242643b838167e83dbc38dd307da3700ab3eaf9b05cfc422f2923d2"
+        },
+        {
+          "id": "pr1diag-v1-h04/t3",
+          "user": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde."
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            },
+            {
+              "role": "assistant",
+              "content": "Primero; aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún no no adónde."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Primero; ahora es la panadería.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              32,
+              3208,
+              315,
+              283,
+              268,
+              575,
+              6688,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 255,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "b66d4726f707cb5a76f406afbe903c33590c49c3e5571d72303eb8f1557a742a"
+        },
+        {
+          "id": "pr1diag-v1-h04/t4",
+          "user": "Da únicamente la petición actual, sin saludo ni explicación.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde."
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            },
+            {
+              "role": "assistant",
+              "content": "Primero; aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún aún no no adónde."
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición."
+            },
+            {
+              "role": "assistant",
+              "content": "Primero; ahora es la panadería."
+            },
+            {
+              "role": "user",
+              "content": "Da únicamente la petición actual, sin saludo ni explicación."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Primero; ahora es la petición.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              32,
+              3208,
+              315,
+              283,
+              7787,
+              312,
+              19,
+              2
+            ],
+            "generatedTokens": 10,
+            "stopReason": "eos",
+            "promptTokens": 283,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "16c09938de813c4c04b48923b388b7386d12451f6ad3c464a9dae64007f9ed9f"
+        }
+      ]
+    },
+    {
+      "id": "pr1diag-v1-h04",
+      "topic": "clarification_then_request_then_correction",
+      "probeKind": "history_comparison",
+      "historyCondition": "ideal",
+      "turns": [
+        {
+          "id": "pr1diag-v1-h04/t1",
+          "user": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            }
+          ],
+          "pastIdealRepliesFed": 0,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "No; no me has dicho aún aún el dato que aún aún el dato que aún aún aún aún aún aún es alguien aún aún aún aún aún aún aún aún aún aún aún no me has Pregunta; no me has dicho aún aún aún aún aún aún aún aún aún aún no has Pregunta; sigues el da aún aún aún aún aún aún no adónde.",
+            "generatedTokenIds": [
+              1581,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              2623,
+              2623,
+              293,
+              717,
+              334,
+              300,
+              2623,
+              2623,
+              293,
+              717,
+              334,
+              300,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              315,
+              3887,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              421,
+              4220,
+              1702,
+              476,
+              328,
+              32,
+              409,
+              421,
+              4220,
+              4535,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              4220,
+              1702,
+              476,
+              328,
+              32,
+              383,
+              412,
+              272,
+              293,
+              717,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              2623,
+              409,
+              989,
+              5836,
+              19,
+              2
+            ],
+            "generatedTokens": 80,
+            "stopReason": "eos",
+            "promptTokens": 80,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "204aa951f0de01765be35a1f246d786ffd22544f5c1a61de84efde34757fc528"
+        },
+        {
+          "id": "pr1diag-v1-h04/t2",
+          "user": "A la farmacia. Redacta la petición en una frase, sin inventar una hora.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "¿A qué lugar quieres que te acompañen?"
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            }
+          ],
+          "pastIdealRepliesFed": 1,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Te acompañe a alguien aún; no has dicho una frase, sin proción sólo el dacia, sin embargo el dacia.",
+            "generatedTokenIds": [
+              2629,
+              3748,
+              74,
+              275,
+              3887,
+              2623,
+              32,
+              409,
+              4220,
+              4535,
+              337,
+              5810,
+              17,
+              727,
+              370,
+              312,
+              3613,
+              293,
+              717,
+              389,
+              17,
+              727,
+              1017,
+              293,
+              717,
+              389,
+              19,
+              2
+            ],
+            "generatedTokens": 28,
+            "stopReason": "eos",
+            "promptTokens": 118,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "26edb3f300e4ff88fec2a4ad1175ae42e4606f7a2a2b0cd91d5380f199cf18ed"
+        },
+        {
+          "id": "pr1diag-v1-h04/t3",
+          "user": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "¿A qué lugar quieres que te acompañen?"
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            },
+            {
+              "role": "assistant",
+              "content": "¿Me acompañas a la farmacia?"
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición."
+            }
+          ],
+          "pastIdealRepliesFed": 2,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Primero vas el destino.",
+            "generatedTokenIds": [
+              4455,
+              466,
+              4247,
+              293,
+              5081,
+              19,
+              2
+            ],
+            "generatedTokens": 7,
+            "stopReason": "eos",
+            "promptTokens": 155,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "0d0bdd5d78eb5fe7ab9b64a12e4cdffc1eac6f8343a40cae64276eeb294f7d4f"
+        },
+        {
+          "id": "pr1diag-v1-h04/t4",
+          "user": "Da únicamente la petición actual, sin saludo ni explicación.",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Quiero pedir a alguien que me acompañe, pero aún no te digo adónde. Pregunta sólo el dato que falta."
+            },
+            {
+              "role": "assistant",
+              "content": "¿A qué lugar quieres que te acompañen?"
+            },
+            {
+              "role": "user",
+              "content": "A la farmacia. Redacta la petición en una frase, sin inventar una hora."
+            },
+            {
+              "role": "assistant",
+              "content": "¿Me acompañas a la farmacia?"
+            },
+            {
+              "role": "user",
+              "content": "Cambia sólo el destino: ahora es la panadería. Reescribe la petición."
+            },
+            {
+              "role": "assistant",
+              "content": "¿Me acompañas a la panadería?"
+            },
+            {
+              "role": "user",
+              "content": "Da únicamente la petición actual, sin saludo ni explicación."
+            }
+          ],
+          "pastIdealRepliesFed": 3,
+          "currentOrFutureIdealReplyFed": false,
+          "reply": {
+            "text": "Después vas el da ún es la petición.",
+            "generatedTokenIds": [
+              4779,
+              4247,
+              293,
+              717,
+              1504,
+              315,
+              283,
+              7787,
+              312,
+              19,
+              2
+            ],
+            "generatedTokens": 11,
+            "stopReason": "eos",
+            "promptTokens": 183,
+            "discardedPromptTokens": 0,
+            "seed": 42,
+            "temperature": 0.0,
+            "modelType": "unidad-conversation-transformer",
+            "experimental": true,
+            "instructionFollowingValidated": false,
+            "generalConversationValidated": false,
+            "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+            "workerCapabilityValidated": false
+          },
+          "error": null,
+          "actualTextSha256": "8ba0370a136788ccfb8990b08ff784cf2161c5976ba4ba5f7079f6699bcbf2a9"
+        }
+      ]
+    }
+  ],
+  "completedAtUtc": "2026-10-12T18:54:44.645740+00:00",
+  "elapsedSeconds": 48.96399208599905,
+  "frozenInputsUnchanged": true,
+  "summary": {
+    "responses": 80,
+    "technicalErrors": 0,
+    "emptyReplies": 0,
+    "eos": 80,
+    "tokenBudgetStops": 0,
+    "promptCuts": 0
+  }
+}

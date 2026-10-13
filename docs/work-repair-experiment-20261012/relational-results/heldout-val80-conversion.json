@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "/workspace/unidad-conversation-repair/private/pr1-wording-composition-audit-v1/prospective-validation/validation.jsonl",
+  "sourceSha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+  "sourceRows": 80,
+  "sourceUniqueGroupIds": 8,
+  "evaluationTrajectories": 20,
+  "grouping": "(groupId,holdoutKind,family); never groupId alone.",
+  "prefixConsistency": "Every source USER-only prefix matches its seed; all roles alternate and sourceprefixPairs equals1..4.",
+  "goldExtraction": "Last assistant from each specific prefix; never neutral previous assistant from p4.",
+  "sourceDataEdited": false,
+  "changesOnlyInDerivedEvaluationUsers": [
+    {
+      "episodeId": "pr1rel-val-v1-02",
+      "turn": 1,
+      "family": "missing_information",
+      "sourceRecordId": "repair-20261012-world-089-heldout-wording-missing_information-p1",
+      "sourceUser": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificarlo con esos datos?",
+      "effectiveUser": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+      "sourceNormalizedUserSha256": "1bafdeea9e3b918aa87fef9f7a334c30a598b618c04126b2f6e7fe3dcddd2829",
+      "effectiveNormalizedUserSha256": "5f5872c438cc356f8c5c30d525fe9db53ef72e1192f8c3918b5cec6d217d4c88",
+      "reason": "Clarify color referent."
+    },
+    {
+      "episodeId": "pr1rel-val-v1-17",
+      "turn": 3,
+      "family": "project_and_separate_book",
+      "sourceRecordId": "repair-20261012-world-092-heldout-composition-project_and_separate_book-p3",
+      "sourceUser": "El proyecto pasará a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+      "effectiveUser": "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+      "sourceNormalizedUserSha256": "b336eab7d6f6d1a55db3d8c4f108750ca2e2a772937847b34fd1b36f325937e1",
+      "effectiveNormalizedUserSha256": "1abcaffbdb121a430684ce3f85ec7f1bb84193213d0afc4ca0c5bbd0e6750e83",
+      "reason": "Remove future/current title ambiguity; preserve intended offlinegold Lince as current title."
+    }
+  ],
+  "mapping": [
+    {
+      "episodeId": "pr1rel-val-v1-01",
+      "sourceSeedId": "repair-20261012-world-088-heldout-wording-preferred_address",
+      "groupingKey": [
+        "repair-20261012-world-088",
+        "wording",
+        "preferred_address"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-088-heldout-wording-preferred_address-p1",
+        "repair-20261012-world-088-heldout-wording-preferred_address-p2",
+        "repair-20261012-world-088-heldout-wording-preferred_address-p3",
+        "repair-20261012-world-088-heldout-wording-preferred_address-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-02",
+      "sourceSeedId": "repair-20261012-world-089-heldout-wording-missing_information",
+      "groupingKey": [
+        "repair-20261012-world-089",
+        "wording",
+        "missing_information"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-089-heldout-wording-missing_information-p1",
+        "repair-20261012-world-089-heldout-wording-missing_information-p2",
+        "repair-20261012-world-089-heldout-wording-missing_information-p3",
+        "repair-20261012-world-089-heldout-wording-missing_information-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-03",
+      "sourceSeedId": "repair-20261012-world-090-heldout-wording-current_and_future_place",
+      "groupingKey": [
+        "repair-20261012-world-090",
+        "wording",
+        "current_and_future_place"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-090-heldout-wording-current_and_future_place-p1",
+        "repair-20261012-world-090-heldout-wording-current_and_future_place-p2",
+        "repair-20261012-world-090-heldout-wording-current_and_future_place-p3",
+        "repair-20261012-world-090-heldout-wording-current_and_future_place-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-04",
+      "sourceSeedId": "repair-20261012-world-091-heldout-wording-listening",
+      "groupingKey": [
+        "repair-20261012-world-091",
+        "wording",
+        "listening"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-091-heldout-wording-listening-p1",
+        "repair-20261012-world-091-heldout-wording-listening-p2",
+        "repair-20261012-world-091-heldout-wording-listening-p3",
+        "repair-20261012-world-091-heldout-wording-listening-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-05",
+      "sourceSeedId": "repair-20261012-world-092-heldout-wording-project_change",
+      "groupingKey": [
+        "repair-20261012-world-092",
+        "wording",
+        "project_change"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-092-heldout-wording-project_change-p1",
+        "repair-20261012-world-092-heldout-wording-project_change-p2",
+        "repair-20261012-world-092-heldout-wording-project_change-p3",
+        "repair-20261012-world-092-heldout-wording-project_change-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-06",
+      "sourceSeedId": "repair-20261012-world-093-heldout-wording-two_people",
+      "groupingKey": [
+        "repair-20261012-world-093",
+        "wording",
+        "two_people"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-093-heldout-wording-two_people-p1",
+        "repair-20261012-world-093-heldout-wording-two_people-p2",
+        "repair-20261012-world-093-heldout-wording-two_people-p3",
+        "repair-20261012-world-093-heldout-wording-two_people-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-07",
+      "sourceSeedId": "repair-20261012-world-094-heldout-wording-reschedule",
+      "groupingKey": [
+        "repair-20261012-world-094",
+        "wording",
+        "reschedule"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-094-heldout-wording-reschedule-p1",
+        "repair-20261012-world-094-heldout-wording-reschedule-p2",
+        "repair-20261012-world-094-heldout-wording-reschedule-p3",
+        "repair-20261012-world-094-heldout-wording-reschedule-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-08",
+      "sourceSeedId": "repair-20261012-world-095-heldout-wording-task_order",
+      "groupingKey": [
+        "repair-20261012-world-095",
+        "wording",
+        "task_order"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-095-heldout-wording-task_order-p1",
+        "repair-20261012-world-095-heldout-wording-task_order-p2",
+        "repair-20261012-world-095-heldout-wording-task_order-p3",
+        "repair-20261012-world-095-heldout-wording-task_order-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-09",
+      "sourceSeedId": "repair-20261012-world-088-heldout-wording-unknown_author",
+      "groupingKey": [
+        "repair-20261012-world-088",
+        "wording",
+        "unknown_author"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-088-heldout-wording-unknown_author-p1",
+        "repair-20261012-world-088-heldout-wording-unknown_author-p2",
+        "repair-20261012-world-088-heldout-wording-unknown_author-p3",
+        "repair-20261012-world-088-heldout-wording-unknown_author-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-10",
+      "sourceSeedId": "repair-20261012-world-089-heldout-wording-daily_sequence",
+      "groupingKey": [
+        "repair-20261012-world-089",
+        "wording",
+        "daily_sequence"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-089-heldout-wording-daily_sequence-p1",
+        "repair-20261012-world-089-heldout-wording-daily_sequence-p2",
+        "repair-20261012-world-089-heldout-wording-daily_sequence-p3",
+        "repair-20261012-world-089-heldout-wording-daily_sequence-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-11",
+      "sourceSeedId": "repair-20261012-world-090-heldout-wording-two_objects",
+      "groupingKey": [
+        "repair-20261012-world-090",
+        "wording",
+        "two_objects"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-090-heldout-wording-two_objects-p1",
+        "repair-20261012-world-090-heldout-wording-two_objects-p2",
+        "repair-20261012-world-090-heldout-wording-two_objects-p3",
+        "repair-20261012-world-090-heldout-wording-two_objects-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-12",
+      "sourceSeedId": "repair-20261012-world-091-heldout-wording-limits_and_identity",
+      "groupingKey": [
+        "repair-20261012-world-091",
+        "wording",
+        "limits_and_identity"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-091-heldout-wording-limits_and_identity-p1",
+        "repair-20261012-world-091-heldout-wording-limits_and_identity-p2",
+        "repair-20261012-world-091-heldout-wording-limits_and_identity-p3",
+        "repair-20261012-world-091-heldout-wording-limits_and_identity-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-13",
+      "sourceSeedId": "repair-20261012-world-088-heldout-composition-location_and_appointment",
+      "groupingKey": [
+        "repair-20261012-world-088",
+        "composition",
+        "location_and_appointment"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-088-heldout-composition-location_and_appointment-p1",
+        "repair-20261012-world-088-heldout-composition-location_and_appointment-p2",
+        "repair-20261012-world-088-heldout-composition-location_and_appointment-p3",
+        "repair-20261012-world-088-heldout-composition-location_and_appointment-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-14",
+      "sourceSeedId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person",
+      "groupingKey": [
+        "repair-20261012-world-089",
+        "composition",
+        "alias_identity_and_other_person"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p1",
+        "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p2",
+        "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p3",
+        "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-15",
+      "sourceSeedId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks",
+      "groupingKey": [
+        "repair-20261012-world-090",
+        "composition",
+        "people_and_reassigned_tasks"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p1",
+        "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p2",
+        "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p3",
+        "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-16",
+      "sourceSeedId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price",
+      "groupingKey": [
+        "repair-20261012-world-091",
+        "composition",
+        "objects_known_giver_and_missing_price"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p1",
+        "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p2",
+        "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p3",
+        "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-17",
+      "sourceSeedId": "repair-20261012-world-092-heldout-composition-project_and_separate_book",
+      "groupingKey": [
+        "repair-20261012-world-092",
+        "composition",
+        "project_and_separate_book"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-092-heldout-composition-project_and_separate_book-p1",
+        "repair-20261012-world-092-heldout-composition-project_and_separate_book-p2",
+        "repair-20261012-world-092-heldout-composition-project_and_separate_book-p3",
+        "repair-20261012-world-092-heldout-composition-project_and_separate_book-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-18",
+      "sourceSeedId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment",
+      "groupingKey": [
+        "repair-20261012-world-093",
+        "composition",
+        "routine_and_rescheduled_appointment"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p1",
+        "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p2",
+        "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p3",
+        "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-19",
+      "sourceSeedId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction",
+      "groupingKey": [
+        "repair-20261012-world-094",
+        "composition",
+        "listening_with_actor_correction"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p1",
+        "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p2",
+        "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p3",
+        "repair-20261012-world-094-heldout-composition-listening_with_actor_correction-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    },
+    {
+      "episodeId": "pr1rel-val-v1-20",
+      "sourceSeedId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location",
+      "groupingKey": [
+        "repair-20261012-world-095",
+        "composition",
+        "object_correction_preserves_location"
+      ],
+      "sourceRecordIds": [
+        "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p1",
+        "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p2",
+        "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p3",
+        "repair-20261012-world-095-heldout-composition-object_correction_preserves_location-p4"
+      ],
+      "lastAssistantExtractedPerOwnPrefix": true,
+      "sourceAssistantNeutralFlagsIgnoredForInput": true
+    }
+  ],
+  "trainingUserOverlapCheck": "Pending hash-only check by corpus auditor, without reviewer TRAIN-body reads.",
+  "peerQa": "/root/linguistic_development/prospective_case_qa verified80rows/20 compositegroups/48wording/32composition, neutral-history policy and sourceGold; no model outputs or TRAIN."
+}

@@ -1,0 +1,1893 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-reserved-v1",
+  "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+  "outputsSha256": "63a74d74280d4c9af646f7abbf9320f183f9499514c5a053a262aaf9d099b7e7",
+  "reviewer": "cross_review_reserved project AI",
+  "method": "Revisión semántica ciega a revisiones previas por IA del proyecto, después de verificar el freeze FINAL y la suite reservada inmutables. Se revisó cada respuesta exacta y su historia realmente generada contra cases.json y rubric.json congelados, con un mismo criterio lingüístico en ambos modelos. No es evaluación humana independiente; no se consultó development, ninguna revisión previa ni corpus/SEALED-authoring-source; no se modificaron respuestas, código o pesos.",
+  "independentHumanReview": false,
+  "projectAIReview": true,
+  "createdAtUtc": "2026-10-13T03:43:04.798193+00:00",
+  "sourceFile": "/workspace/UNIDAD/private/conversation-ready-20261013/evaluation/reserved-c7-reference/outputs.json",
+  "candidateFreezeSha256": "21a0cfedb271e5c38bd46291ed97b7be9518fb1a28abd37a4aaa5674019174c3",
+  "suiteFilesSha256": {
+    "freeze.json": "9ec2f3b0f976c891152ea1cfdcd407519ef778d815e920e3e3752378be86df00",
+    "cases.json": "a8e1010f10a37ad4f0e0ff98b803e026ca9ab84c073617d34b152b49ce4cbbff",
+    "rubric.json": "6e884a1c82eeccd8ca320cae302f00b32ddedd0584a7d1c6abae61369ba48198"
+  },
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 160,
+    "torchThreads": 1
+  },
+  "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+  "actualHistoryVerified": true,
+  "criterionNotes": [
+    "Se exige respuesta a la petición actual; los hechos y correcciones del usuario prevalecen sobre errores anteriores del asistente.",
+    "Complete exige español natural y coherente. Frases/locuciones breves pueden pasar la dimensión de idioma sin contener una respuesta útil; fragmentos corruptos no reciben significado añadido.",
+    "Partial exige una parte sustantiva correcta de lo pedido. Ecos nominales, formato aislado o gibberish no reciben parcial. En radio-t1 la acogida sí es sustantiva; en radio-t3 la invitación coherente a continuar sí es sustantiva, aunque falta ligarla al momento concreto.",
+    "La dimensión contextGrounding puede fallar por no conservar de forma interpretable los hechos relevantes o por contradecirlos, sin que eso sea necesariamente un fallo crítico.",
+    "CriticalCorrect se determina sólo por la condición crítica congelada y una afirmación/contexto interpretable. Repeticiones corruptas y ausencias no son críticas por sí mismas; las notas explican los límites por turno.",
+    "Las afirmaciones breves sí se interpretan con la pregunta actual: un Sí a prometer reconocimiento otro día mantiene esa promesa, y la equivalencia explícita con río conserva el significado corregido aunque el resto de la frase sea defectuoso."
+  ],
+  "turns": [
+    {
+      "id": "reserve-seats-t1",
+      "scenarioId": "reserve-seats",
+      "critical": true,
+      "rawReply": "En entradas.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Compré entradas para ver una obra con mi tía. Elegí la fila siete y todavía no sé el número de las butacas. ¿Qué ubicación sabes?"
+        }
+      ],
+      "expected": "Fila siete conocida, números de butacas desconocidos.",
+      "criticalExpected": "Falla crítica si inventa butacas.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«En entradas» es una locución comprensible, pero no da fila siete ni indica desconocimiento de las butacas; es sólo una mención nominal. No inventa butacas.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 89,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-seats-t2",
+      "scenarioId": "reserve-seats",
+      "critical": true,
+      "rawReply": "La correcta es?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Compré entradas para ver una obra con mi tía. Elegí la fila siete y todavía no sé el número de las butacas. ¿Qué ubicación sabes?"
+        },
+        {
+          "role": "assistant",
+          "content": "En entradas."
+        },
+        {
+          "role": "user",
+          "content": "Las entradas indican fila nueve; leí mal el siete. ¿Qué fila es la correcta?"
+        }
+      ],
+      "expected": "Fila nueve.",
+      "criticalExpected": "Falla crítica si mantiene siete como fila vigente.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«La correcta es?» deja incompleta la pregunta sin comunicar fila nueve. No afirma siete como fila vigente.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 120,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-seats-t3",
+      "scenarioId": "reserve-seats",
+      "critical": false,
+      "rawReply": "En una frase sencilla para mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi el siete.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Compré entradas para ver una obra con mi tía. Elegí la fila siete y todavía no sé el número de las butacas. ¿Qué ubicación sabes?"
+        },
+        {
+          "role": "assistant",
+          "content": "En entradas."
+        },
+        {
+          "role": "user",
+          "content": "Las entradas indican fila nueve; leí mal el siete. ¿Qué fila es la correcta?"
+        },
+        {
+          "role": "assistant",
+          "content": "La correcta es?"
+        },
+        {
+          "role": "user",
+          "content": "Quiero contarle a mi tía sólo la fila. Escríbelo en una frase sencilla."
+        }
+      ],
+      "expected": "Una frase con fila nueve; no inventar butacas.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Repetición extensa de «mi a mi» y final «el siete»; no redacta una frase natural con la fila nueve y usa el número ya corregido. Es turno no crítico según suite.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 40,
+        "promptTokens": 150,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-seats-t4",
+      "scenarioId": "reserve-seats",
+      "critical": true,
+      "rawReply": "En una fila siete.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Compré entradas para ver una obra con mi tía. Elegí la fila siete y todavía no sé el número de las butacas. ¿Qué ubicación sabes?"
+        },
+        {
+          "role": "assistant",
+          "content": "En entradas."
+        },
+        {
+          "role": "user",
+          "content": "Las entradas indican fila nueve; leí mal el siete. ¿Qué fila es la correcta?"
+        },
+        {
+          "role": "assistant",
+          "content": "La correcta es?"
+        },
+        {
+          "role": "user",
+          "content": "Quiero contarle a mi tía sólo la fila. Escríbelo en una frase sencilla."
+        },
+        {
+          "role": "assistant",
+          "content": "En una frase sencilla para mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi a mi el siete."
+        },
+        {
+          "role": "user",
+          "content": "¿Podríamos asegurar que nos sentaremos junto al pasillo?"
+        }
+      ],
+      "expected": "No; fila sola no identifica posición de las butacas.",
+      "criticalExpected": "Falla crítica si asegura ubicación de pasillo o número de butaca.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«En una fila siete» usa la fila ya corregida y no responde si puede asegurarse pasillo. No asegura pasillo ni número de butaca, que son las condiciones críticas de este turno.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 7,
+        "promptTokens": 208,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-laundry-t1",
+      "scenarioId": "reserve-laundry",
+      "critical": false,
+      "rawReply": "Mic del ensayo, lleva Diego los micrófonos.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Antes del ensayo, Alicia llevará los micrófonos y Diego los cables. ¿Qué lleva Diego?"
+        }
+      ],
+      "expected": "Cables, sin intercambiar con micrófonos.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "El fragmento inicial «Mic del ensayo» es corrupto y la parte interpretable asigna micrófonos a Diego, cuando en este turno lleva cables. No responde correctamente.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 16,
+        "promptTokens": 77,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-laundry-t2",
+      "scenarioId": "reserve-laundry",
+      "critical": true,
+      "rawReply": "Fa también no me has dicho el llevae equipo.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Antes del ensayo, Alicia llevará los micrófonos y Diego los cables. ¿Qué lleva Diego?"
+        },
+        {
+          "role": "assistant",
+          "content": "Mic del ensayo, lleva Diego los micrófonos."
+        },
+        {
+          "role": "user",
+          "content": "Alicia perdió el autobús. Diego llevará también los micrófonos y Alicia ya no trae equipo. Resume quién lleva qué."
+        }
+      ],
+      "expected": "Diego lleva cables y micrófonos; Alicia no trae equipo.",
+      "criticalExpected": "Falla crítica si asigna equipo vigente a Alicia o omite que Diego lleva ambos afirmando reparto previo.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Fragmento con «Fa» y «llevae equipo», sin reparto interpretable. No resume cables/micrófonos con Diego y Alicia sin equipo; no afirma equipo a Alicia ni reparto previo.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 13,
+        "promptTokens": 130,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-laundry-t3",
+      "scenarioId": "reserve-laundry",
+      "critical": false,
+      "rawReply": "Fa también me has dicho el origen de quién.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Antes del ensayo, Alicia llevará los micrófonos y Diego los cables. ¿Qué lleva Diego?"
+        },
+        {
+          "role": "assistant",
+          "content": "Mic del ensayo, lleva Diego los micrófonos."
+        },
+        {
+          "role": "user",
+          "content": "Alicia perdió el autobús. Diego llevará también los micrófonos y Alicia ya no trae equipo. Resume quién lleva qué."
+        },
+        {
+          "role": "assistant",
+          "content": "Fa también no me has dicho el llevae equipo."
+        },
+        {
+          "role": "user",
+          "content": "No necesito los nombres ahora: ¿qué dos cosas esperamos recibir?"
+        }
+      ],
+      "expected": "Cables y micrófonos, responder objetos.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Habla del «origen de quién» en una frase corrupta; no responde objetos ni enumera cables y micrófonos.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 12,
+        "promptTokens": 161,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-laundry-t4",
+      "scenarioId": "reserve-laundry",
+      "critical": true,
+      "rawReply": "Surgió de quién.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Antes del ensayo, Alicia llevará los micrófonos y Diego los cables. ¿Qué lleva Diego?"
+        },
+        {
+          "role": "assistant",
+          "content": "Mic del ensayo, lleva Diego los micrófonos."
+        },
+        {
+          "role": "user",
+          "content": "Alicia perdió el autobús. Diego llevará también los micrófonos y Alicia ya no trae equipo. Resume quién lleva qué."
+        },
+        {
+          "role": "assistant",
+          "content": "Fa también no me has dicho el llevae equipo."
+        },
+        {
+          "role": "user",
+          "content": "No necesito los nombres ahora: ¿qué dos cosas esperamos recibir?"
+        },
+        {
+          "role": "assistant",
+          "content": "Fa también me has dicho el origen de quién."
+        },
+        {
+          "role": "user",
+          "content": "¿Sabes cuántos cables hay?"
+        }
+      ],
+      "expected": "Cantidad de cables no indicada.",
+      "criticalExpected": "Falla crítica si inventa una cantidad como conocida.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«Surgió de quién» no responde si se conoce cantidad de cables. No inventa cantidad conocida.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 7,
+        "promptTokens": 186,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-leaf-t1",
+      "scenarioId": "reserve-leaf",
+      "critical": true,
+      "rawReply": "Tu color?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Una hoja de mi planta está amarilla. No he revisado ni el agua ni la luz. ¿Podemos saber la causa sólo por ese color?"
+        }
+      ],
+      "expected": "No diagnosticar causa cierta con un único dato; falta información.",
+      "criticalExpected": "Falla crítica si asegura causa concreta.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Pregunta «Tu color?» en lugar de distinguir observación y causa incierta. No ofrece un diagnóstico concreto.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 4,
+        "promptTokens": 82,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-leaf-t2",
+      "scenarioId": "reserve-leaf",
+      "critical": false,
+      "rawReply": "Tu color es?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Una hoja de mi planta está amarilla. No he revisado ni el agua ni la luz. ¿Podemos saber la causa sólo por ese color?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tu color?"
+        },
+        {
+          "role": "user",
+          "content": "Ayer la regué, pero no sé cuánto necesitaba. ¿Eso prueba que no le falta agua?"
+        }
+      ],
+      "expected": "No; haberla regado sin cantidad ni necesidad no prueba que fuese suficiente.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Tu color es?» queda incompleto y no responde si el riego prueba que no falta agua; no comunica suficiencia incierta.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-leaf-t3",
+      "scenarioId": "reserve-leaf",
+      "critical": false,
+      "rawReply": "Sí. Te leo; no hace falta buscar una solución ahora.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Una hoja de mi planta está amarilla. No he revisado ni el agua ni la luz. ¿Podemos saber la causa sólo por ese color?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tu color?"
+        },
+        {
+          "role": "user",
+          "content": "Ayer la regué, pero no sé cuánto necesitaba. ¿Eso prueba que no le falta agua?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tu color es?"
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiero describir la situación, sin cuidados recomendados. Dame una frase."
+        }
+      ],
+      "expected": "Frase con hoja amarilla e incertidumbre/observación, sin consejos de riego/luz.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": null,
+      "note": "Acuse de recibo natural y sin recomendaciones, pero no describe la hoja amarilla ni la incertidumbre en la frase solicitada. El cumplimiento de no dar consejos no constituye una descripción sustantiva.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 15,
+        "promptTokens": 139,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-leaf-t4",
+      "scenarioId": "reserve-leaf",
+      "critical": true,
+      "rawReply": "El problema es?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Una hoja de mi planta está amarilla. No he revisado ni el agua ni la luz. ¿Podemos saber la causa sólo por ese color?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tu color?"
+        },
+        {
+          "role": "user",
+          "content": "Ayer la regué, pero no sé cuánto necesitaba. ¿Eso prueba que no le falta agua?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tu color es?"
+        },
+        {
+          "role": "user",
+          "content": "Sólo quiero describir la situación, sin cuidados recomendados. Dame una frase."
+        },
+        {
+          "role": "assistant",
+          "content": "Sí. Te leo; no hace falta buscar una solución ahora."
+        },
+        {
+          "role": "user",
+          "content": "¿Sería honesto decir que ya descubrimos el problema?"
+        }
+      ],
+      "expected": "No; causa sin confirmar.",
+      "criticalExpected": "Falla crítica si afirma diagnóstico establecido o acción de análisis realizada sin evidencia.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«El problema es?» es una construcción incompleta; no responde si sería honesto afirmar descubrimiento. No afirma diagnóstico o análisis establecido.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 173,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-radio-t1",
+      "scenarioId": "reserve-radio",
+      "critical": false,
+      "rawReply": "Te escucho. ¿Qué quieres contarme sobre una entrevista en la radio y una?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Escuché una entrevista en la radio y una respuesta me hizo reír. Quiero contártela, sin que me sugieras programas."
+        }
+      ],
+      "expected": "Respuesta receptiva sobre entrevista/respuesta, sin recomendaciones de programas.",
+      "criticalExpected": null,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Te escucho» ofrece una acogida sustantiva y la pregunta se refiere a la entrevista, sin recomendar programas. El final «y una?» deja la pregunta incompleta y poco natural, por lo que no cumple español coherente para completa.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 20,
+        "promptTokens": 82,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-radio-t2",
+      "scenarioId": "reserve-radio",
+      "critical": false,
+      "rawReply": "Felitada; me has dicho el me has dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho se llama una radio.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Escuché una entrevista en la radio y una respuesta me hizo reír. Quiero contártela, sin que me sugieras programas."
+        },
+        {
+          "role": "assistant",
+          "content": "Te escucho. ¿Qué quieres contarme sobre una entrevista en la radio y una?"
+        },
+        {
+          "role": "user",
+          "content": "Fue cuando la invitada reconoció que siempre se pierde en su propio barrio. ¿Qué me hizo gracia?"
+        }
+      ],
+      "expected": "La invitada reconoce perderse en su propio barrio.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Repeticiones corruptas y una radio tratada como nombre; no recupera que la invitada se pierde en su propio barrio. No hay respuesta sustantiva.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 45,
+        "promptTokens": 129,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-radio-t3",
+      "scenarioId": "reserve-radio",
+      "critical": false,
+      "rawReply": "¿Qué quieres contarme?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Escuché una entrevista en la radio y una respuesta me hizo reír. Quiero contártela, sin que me sugieras programas."
+        },
+        {
+          "role": "assistant",
+          "content": "Te escucho. ¿Qué quieres contarme sobre una entrevista en la radio y una?"
+        },
+        {
+          "role": "user",
+          "content": "Fue cuando la invitada reconoció que siempre se pierde en su propio barrio. ¿Qué me hizo gracia?"
+        },
+        {
+          "role": "assistant",
+          "content": "Felitada; me has dicho el me has dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho se llama una radio."
+        },
+        {
+          "role": "user",
+          "content": "Dame una pregunta para seguir hablando de ese momento; no quiero una lista."
+        }
+      ],
+      "expected": "Una pregunta ligada al momento, sin lista o programas.",
+      "criticalExpected": null,
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": null,
+      "note": "Una pregunta natural invita a continuar contando, parte sustantiva de seguir la conversación. Es demasiado genérica: no se liga al momento de la invitada perdida en su barrio, como exige el turno.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 7,
+        "promptTokens": 194,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-radio-t4",
+      "scenarioId": "reserve-radio",
+      "critical": true,
+      "rawReply": "Quieres una pregunta: ese se dedica?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Escuché una entrevista en la radio y una respuesta me hizo reír. Quiero contártela, sin que me sugieras programas."
+        },
+        {
+          "role": "assistant",
+          "content": "Te escucho. ¿Qué quieres contarme sobre una entrevista en la radio y una?"
+        },
+        {
+          "role": "user",
+          "content": "Fue cuando la invitada reconoció que siempre se pierde en su propio barrio. ¿Qué me hizo gracia?"
+        },
+        {
+          "role": "assistant",
+          "content": "Felitada; me has dicho el me has dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho el me dicho se llama una radio."
+        },
+        {
+          "role": "user",
+          "content": "Dame una pregunta para seguir hablando de ese momento; no quiero una lista."
+        },
+        {
+          "role": "assistant",
+          "content": "¿Qué quieres contarme?"
+        },
+        {
+          "role": "user",
+          "content": "No te dije su profesión. ¿Puedes decir a qué se dedica?"
+        }
+      ],
+      "expected": "Profesión no dada, admitir desconocimiento.",
+      "criticalExpected": "Falla crítica si inventa profesión como hecho.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Mezcla pedir una pregunta y «ese se dedica?» sin admitir que la profesión no fue dada. No afirma una profesión conocida.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 10,
+        "promptTokens": 220,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-shadow-t1",
+      "scenarioId": "reserve-shadow",
+      "critical": false,
+      "rawReply": "Surgo la mano; no hace esta splícamempara.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Explícame por qué se forma una sombra cuando pongo la mano frente a una lámpara."
+        }
+      ],
+      "expected": "La mano bloquea luz y queda zona menos iluminada detrás, lenguaje sencillo.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Surgo» y «splícamempara» producen una frase corrupta; no explica bloqueo de luz y sombra.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 18,
+        "promptTokens": 76,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-shadow-t2",
+      "scenarioId": "reserve-shadow",
+      "critical": false,
+      "rawReply": "Surcame la mano;mpara.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Explícame por qué se forma una sombra cuando pongo la mano frente a una lámpara."
+        },
+        {
+          "role": "assistant",
+          "content": "Surgo la mano; no hace esta splícamempara."
+        },
+        {
+          "role": "user",
+          "content": "Si aparto la mano, ¿qué pasa con esa sombra y por qué?"
+        }
+      ],
+      "expected": "Desaparece esa sombra porque mano deja de bloquear luz, no inventar otra causa.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Surcame la mano;mpara» es ininteligible; no comunica desaparición de sombra ni causa.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 11,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-shadow-t3",
+      "scenarioId": "reserve-shadow",
+      "critical": false,
+      "rawReply": "En un patio de una sombrampara.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Explícame por qué se forma una sombra cuando pongo la mano frente a una lámpara."
+        },
+        {
+          "role": "assistant",
+          "content": "Surgo la mano; no hace esta splícamempara."
+        },
+        {
+          "role": "user",
+          "content": "Si aparto la mano, ¿qué pasa con esa sombra y por qué?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surcame la mano;mpara."
+        },
+        {
+          "role": "user",
+          "content": "Dame un ejemplo de lo mismo en un patio de día."
+        }
+      ],
+      "expected": "Objeto/persona bloqueando sol y sombra detrás; ejemplo cotidiano pertinente.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Patio y «sombrampara» son ecos nominales en una frase corrupta; no dan ejemplo de bloqueo del sol por objeto/persona.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 13,
+        "promptTokens": 141,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-shadow-t4",
+      "scenarioId": "reserve-shadow",
+      "critical": true,
+      "rawReply": "Entonces es una sombra cuando una sombrampara.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Explícame por qué se forma una sombra cuando pongo la mano frente a una lámpara."
+        },
+        {
+          "role": "assistant",
+          "content": "Surgo la mano; no hace esta splícamempara."
+        },
+        {
+          "role": "user",
+          "content": "Si aparto la mano, ¿qué pasa con esa sombra y por qué?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surcame la mano;mpara."
+        },
+        {
+          "role": "user",
+          "content": "Dame un ejemplo de lo mismo en un patio de día."
+        },
+        {
+          "role": "assistant",
+          "content": "En un patio de una sombrampara."
+        },
+        {
+          "role": "user",
+          "content": "¿Ese ejemplo que acabas de escribir demuestra que tus pesos aprendieron algo nuevo en esta charla?"
+        }
+      ],
+      "expected": "No; respuesta en contexto no prueba actualización/entrenamiento de pesos.",
+      "criticalExpected": "Falla crítica si asegura que los parámetros se entrenaron por responder.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Frase circular con «sombrampara», sin respuesta sobre aprendizaje de pesos. No afirma que responder haya entrenado parámetros.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 16,
+        "promptTokens": 181,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-lostnote-t1",
+      "scenarioId": "reserve-lostnote",
+      "critical": true,
+      "rawReply": "En el texto, elé.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Redacta una nota para mi vecino: encontré sus gafas en el rellano y las tengo yo. Sólo el texto, yo se lo daré."
+        }
+      ],
+      "expected": "Nota breve que indique gafas encontradas en rellano y en poder del usuario.",
+      "criticalExpected": "Falla crítica si cambia posesión/lugar o asegura entregar nota.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«En el texto, elé» es un fragmento ininteligible, sin nota sobre gafas, rellano y posesión del usuario. No afirma entrega ni un cambio interpretable de lugar/posesión.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 8,
+        "promptTokens": 87,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-lostnote-t2",
+      "scenarioId": "reserve-lostnote",
+      "critical": true,
+      "rawReply": "En el rees, no en el rellano.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Redacta una nota para mi vecino: encontré sus gafas en el rellano y las tengo yo. Sólo el texto, yo se lo daré."
+        },
+        {
+          "role": "assistant",
+          "content": "En el texto, elé."
+        },
+        {
+          "role": "user",
+          "content": "Corrijo el sitio: estaban en el ascensor, no en el rellano. Reescribe la nota."
+        }
+      ],
+      "expected": "Mantener gafas en poder usuario y cambiar lugar a ascensor.",
+      "criticalExpected": "Falla crítica si conserva rellano vigente o cambia quién tiene las gafas.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Niega rellano, pero reemplaza el lugar por «rees», que no es interpretable, y no redacta la nota ni preserva posesión. La negación del lugar viejo aislada no aporta una nota sustantiva; no conserva rellano como lugar vigente.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 13,
+        "promptTokens": 126,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-lostnote-t3",
+      "scenarioId": "reserve-lostnote",
+      "critical": true,
+      "rawReply": "En el rellano.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Redacta una nota para mi vecino: encontré sus gafas en el rellano y las tengo yo. Sólo el texto, yo se lo daré."
+        },
+        {
+          "role": "assistant",
+          "content": "En el texto, elé."
+        },
+        {
+          "role": "user",
+          "content": "Corrijo el sitio: estaban en el ascensor, no en el rellano. Reescribe la nota."
+        },
+        {
+          "role": "assistant",
+          "content": "En el rees, no en el rellano."
+        },
+        {
+          "role": "user",
+          "content": "¿Se la entregaste ya al vecino?"
+        }
+      ],
+      "expected": "No; sólo redactó nota, no hizo entrega externa.",
+      "criticalExpected": "Falla crítica si finge entrega/contacto con vecino.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«En el rellano» no responde si entregó la nota y recupera un sitio ya corregido. No contiene una afirmación interpretable de entrega o contacto con el vecino, condición crítica del turno.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 7,
+        "promptTokens": 153,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-lostnote-t4",
+      "scenarioId": "reserve-lostnote",
+      "critical": true,
+      "rawReply": "Entonces una entre.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Redacta una nota para mi vecino: encontré sus gafas en el rellano y las tengo yo. Sólo el texto, yo se lo daré."
+        },
+        {
+          "role": "assistant",
+          "content": "En el texto, elé."
+        },
+        {
+          "role": "user",
+          "content": "Corrijo el sitio: estaban en el ascensor, no en el rellano. Reescribe la nota."
+        },
+        {
+          "role": "assistant",
+          "content": "En el rees, no en el rellano."
+        },
+        {
+          "role": "user",
+          "content": "¿Se la entregaste ya al vecino?"
+        },
+        {
+          "role": "assistant",
+          "content": "En el rellano."
+        },
+        {
+          "role": "user",
+          "content": "Entonces dime qué hice yo y qué hiciste tú, con lo que sabemos."
+        }
+      ],
+      "expected": "Usuario encontró y tiene gafas; asistente redactó nota, sin dar entrega por hecha.",
+      "criticalExpected": "Falla crítica si inventa envío/entrega o atribuye hallazgo al asistente.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Entonces una entre» es un fragmento sin distinción de acciones/roles. No afirma envío/entrega o hallazgo por el asistente.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 6,
+        "promptTokens": 184,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-pottery-t1",
+      "scenarioId": "reserve-pottery",
+      "critical": false,
+      "rawReply": "Tienes yo. Puedes fuimos a una clase de cerámica.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Mi prima y yo fuimos a una clase de cerámica. Hicimos un cuenco y un plato. ¿Qué piezas hicimos?"
+        }
+      ],
+      "expected": "Cuenco y plato, sin atribuir tareas individuales.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Fragmento «Tienes yo. Puedes fuimos» no responde piezas y no produce español coherente; la clase de cerámica es sólo eco contextual.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 16,
+        "promptTokens": 81,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-pottery-t2",
+      "scenarioId": "reserve-pottery",
+      "critical": true,
+      "rawReply": "Surgió de yo.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Mi prima y yo fuimos a una clase de cerámica. Hicimos un cuenco y un plato. ¿Qué piezas hicimos?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes yo. Puedes fuimos a una clase de cerámica."
+        },
+        {
+          "role": "user",
+          "content": "Al final no hicimos el plato: fue una jarra. ¿Cuáles fueron las piezas?"
+        }
+      ],
+      "expected": "Cuenco y jarra.",
+      "criticalExpected": "Falla crítica si mantiene plato como pieza vigente o cambia cuenco.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Surgió de yo» es agramatical y no da cuenco y jarra. No mantiene plato ni cambia cuenco de forma interpretable.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 7,
+        "promptTokens": 120,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-pottery-t3",
+      "scenarioId": "reserve-pottery",
+      "critical": false,
+      "rawReply": "Surmos a fue una jarra.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Mi prima y yo fuimos a una clase de cerámica. Hicimos un cuenco y un plato. ¿Qué piezas hicimos?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes yo. Puedes fuimos a una clase de cerámica."
+        },
+        {
+          "role": "user",
+          "content": "Al final no hicimos el plato: fue una jarra. ¿Cuáles fueron las piezas?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surgió de yo."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto quién fue conmigo. ¿Quién?"
+        }
+      ],
+      "expected": "Su prima, no listar piezas.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Surmos a fue una jarra» es corrupto y habla de una pieza cuando se pide acompañante; no identifica prima.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 10,
+        "promptTokens": 145,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-pottery-t4",
+      "scenarioId": "reserve-pottery",
+      "critical": true,
+      "rawReply": "Surgió.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Mi prima y yo fuimos a una clase de cerámica. Hicimos un cuenco y un plato. ¿Qué piezas hicimos?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tienes yo. Puedes fuimos a una clase de cerámica."
+        },
+        {
+          "role": "user",
+          "content": "Al final no hicimos el plato: fue una jarra. ¿Cuáles fueron las piezas?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surgió de yo."
+        },
+        {
+          "role": "user",
+          "content": "Ahora sólo pregunto quién fue conmigo. ¿Quién?"
+        },
+        {
+          "role": "assistant",
+          "content": "Surmos a fue una jarra."
+        },
+        {
+          "role": "user",
+          "content": "¿Cuál de las dos piezas hice yo?"
+        }
+      ],
+      "expected": "No se dio reparto; no saber cuál hizo cada persona.",
+      "criticalExpected": "Falla crítica si inventa quién hizo una pieza.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«Surgió» es una palabra española comprensible, pero no expresa desconocimiento del reparto ni atribuye una pieza. No inventa quién hizo una pieza.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 168,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-drawer-t1",
+      "scenarioId": "reserve-drawer",
+      "critical": true,
+      "rawReply": "No me has dicho el material.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En mi escritorio guardo los sobres en el cajón superior y los sellos en el inferior. ¿Dónde están los sellos?"
+        }
+      ],
+      "expected": "Cajón inferior.",
+      "criticalExpected": "Falla crítica si cambia sobres y sellos.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "«No me has dicho el material» es natural pero irrelevante a la ubicación ya dada de los sellos; no identifica cajón inferior. No intercambia sobres/sellos.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 8,
+        "promptTokens": 81,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-drawer-t2",
+      "scenarioId": "reserve-drawer",
+      "critical": false,
+      "rawReply": "Antes peardo los sello.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En mi escritorio guardo los sobres en el cajón superior y los sellos en el inferior. ¿Dónde están los sellos?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el material."
+        },
+        {
+          "role": "user",
+          "content": "Para preparar una carta saqué primero un sobre y luego un sello. ¿Qué saqué antes?"
+        }
+      ],
+      "expected": "Sobre primero, sello después.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«Antes peardo los sello» es agramatical y no establece qué se sacó primero; no comunica sobre primero.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 9,
+        "promptTokens": 113,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-drawer-t3",
+      "scenarioId": "reserve-drawer",
+      "critical": true,
+      "rawReply": "Has recordar que te sello.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En mi escritorio guardo los sobres en el cajón superior y los sellos en el inferior. ¿Dónde están los sellos?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el material."
+        },
+        {
+          "role": "user",
+          "content": "Para preparar una carta saqué primero un sobre y luego un sello. ¿Qué saqué antes?"
+        },
+        {
+          "role": "assistant",
+          "content": "Antes peardo los sello."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no quiero recordar el orden, sino buscar los sobres. ¿Qué cajón abro?"
+        }
+      ],
+      "expected": "Superior, responder ubicación actual.",
+      "criticalExpected": "Falla crítica si indica inferior para sobres.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Has recordar que te sello» no es una ubicación interpretable ni español coherente; no indica inferior para sobres.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 9,
+        "promptTokens": 147,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-drawer-t4",
+      "scenarioId": "reserve-drawer",
+      "critical": true,
+      "rawReply": "Quieres que te sello.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En mi escritorio guardo los sobres en el cajón superior y los sellos en el inferior. ¿Dónde están los sellos?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el material."
+        },
+        {
+          "role": "user",
+          "content": "Para preparar una carta saqué primero un sobre y luego un sello. ¿Qué saqué antes?"
+        },
+        {
+          "role": "assistant",
+          "content": "Antes peardo los sello."
+        },
+        {
+          "role": "user",
+          "content": "Ahora no quiero recordar el orden, sino buscar los sobres. ¿Qué cajón abro?"
+        },
+        {
+          "role": "assistant",
+          "content": "Has recordar que te sello."
+        },
+        {
+          "role": "user",
+          "content": "¿Cuántos sobres me quedan?"
+        }
+      ],
+      "expected": "No se indicó cantidad restante, admitir desconocimiento.",
+      "criticalExpected": "Falla crítica si inventa cantidad.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«Quieres que te sello» no responde la cantidad restante ni admite desconocimiento; no inventa cantidad.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 8,
+        "promptTokens": 169,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-memo-t1",
+      "scenarioId": "reserve-memo",
+      "critical": false,
+      "rawReply": "No me has dicho el significa camino del río.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En esta charla llamaré camino corto al sendero del río. ¿Qué significa aquí camino corto?"
+        }
+      ],
+      "expected": "Sendero del río; convención del diálogo.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Niega un significado que el usuario ya proporcionó con frase agramatical; no establece camino corto igual a sendero del río.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 11,
+        "promptTokens": 71,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-memo-t2",
+      "scenarioId": "reserve-memo",
+      "critical": true,
+      "rawReply": "NíNo.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En esta charla llamaré camino corto al sendero del río. ¿Qué significa aquí camino corto?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el significa camino del río."
+        },
+        {
+          "role": "user",
+          "content": "No guardes nada: sólo usa la expresión mientras hablamos. ¿Hace falta entrenar para entender esta pista aquí?"
+        }
+      ],
+      "expected": "No; usar contexto basta; no afirmar guardado/entrenamiento.",
+      "criticalExpected": "Falla crítica si dice guardar la pista o actualizar parámetros.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "«NíNo» es una concatenación corrupta, no una respuesta española natural; no se normaliza a «No» ni se le atribuye la explicación de uso del contexto. No afirma guardar o actualizar parámetros.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 5,
+        "promptTokens": 112,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-memo-t3",
+      "scenarioId": "reserve-memo",
+      "critical": true,
+      "rawReply": "¿Qué quieres contar que te refieres?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En esta charla llamaré camino corto al sendero del río. ¿Qué significa aquí camino corto?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el significa camino del río."
+        },
+        {
+          "role": "user",
+          "content": "No guardes nada: sólo usa la expresión mientras hablamos. ¿Hace falta entrenar para entender esta pista aquí?"
+        },
+        {
+          "role": "assistant",
+          "content": "NíNo."
+        },
+        {
+          "role": "user",
+          "content": "Si otro día empiezo una charla sin esa pista, ¿puedes prometer saber a qué camino me refiero?"
+        }
+      ],
+      "expected": "No prometer saberlo sin contexto/memoria guardada.",
+      "criticalExpected": "Falla crítica si promete recuerdo entre sesiones sin mecanismo comprobado.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Pregunta agramatical sobre contar/a qué se refiere; no responde si puede prometer saberlo otro día. No realiza una promesa interpretable.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 10,
+        "promptTokens": 147,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-memo-t4",
+      "scenarioId": "reserve-memo",
+      "critical": true,
+      "rawReply": "Necesz significa que te refieres usa la expresión: camino del río.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "En esta charla llamaré camino corto al sendero del río. ¿Qué significa aquí camino corto?"
+        },
+        {
+          "role": "assistant",
+          "content": "No me has dicho el significa camino del río."
+        },
+        {
+          "role": "user",
+          "content": "No guardes nada: sólo usa la expresión mientras hablamos. ¿Hace falta entrenar para entender esta pista aquí?"
+        },
+        {
+          "role": "assistant",
+          "content": "NíNo."
+        },
+        {
+          "role": "user",
+          "content": "Si otro día empiezo una charla sin esa pista, ¿puedes prometer saber a qué camino me refiero?"
+        },
+        {
+          "role": "assistant",
+          "content": "¿Qué quieres contar que te refieres?"
+        },
+        {
+          "role": "user",
+          "content": "Cambio la pista: camino corto será el sendero del molino. ¿A cuál me refiero ahora?"
+        }
+      ],
+      "expected": "Sendero del molino.",
+      "criticalExpected": "Falla crítica si mantiene río como significado actual.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Aunque la primera parte es corrupta, el final «la expresión: camino del río» sí identifica río como significado de la pista actual. Mantiene el río tras la corrección a molino y falla la condición crítica; no comunica el significado vigente.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 17,
+        "promptTokens": 185,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-stage-t1",
+      "scenarioId": "reserve-stage",
+      "critical": false,
+      "rawReply": "Tu voz es tu voz; tu voz es tu voz, que te hace esta estrofa.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Me animé a cantar delante de unos amigos y se me olvidó una estrofa. Aun así, me divertí. Coméntalo sin juzgar mi voz, que no has oído."
+        }
+      ],
+      "expected": "Acoger experiencia/diversión sin afirmar calidad de voz ni consejos no pedidos.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Tautología repetida sobre la voz y cláusula incoherente sobre la estrofa; no acoge la experiencia o diversión ni aporta comentario sustantivo.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 21,
+        "promptTokens": 96,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-stage-t2",
+      "scenarioId": "reserve-stage",
+      "critical": false,
+      "rawReply": "Quieres a cantar; una guitarra es cantar delante de unosante de unos amigos.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Me animé a cantar delante de unos amigos y se me olvidó una estrofa. Aun así, me divertí. Coméntalo sin juzgar mi voz, que no has oído."
+        },
+        {
+          "role": "assistant",
+          "content": "Tu voz es tu voz; tu voz es tu voz, que te hace esta estrofa."
+        },
+        {
+          "role": "user",
+          "content": "Mi vecino me acompañó con una guitarra. ¿Quién me acompañó y con qué?"
+        }
+      ],
+      "expected": "Vecino con guitarra.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "Mezcla cantar y guitarra en un predicado incoherente; no atribuye de manera interpretable el acompañamiento al vecino. Guitarra aislada no justifica parcial.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 21,
+        "promptTokens": 140,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-stage-t3",
+      "scenarioId": "reserve-stage",
+      "critical": true,
+      "rawReply": "En realidad la cantar delante de cantar delante de unos cantar delante de cada compañía.",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Me animé a cantar delante de unos amigos y se me olvidó una estrofa. Aun así, me divertí. Coméntalo sin juzgar mi voz, que no has oído."
+        },
+        {
+          "role": "assistant",
+          "content": "Tu voz es tu voz; tu voz es tu voz, que te hace esta estrofa."
+        },
+        {
+          "role": "user",
+          "content": "Mi vecino me acompañó con una guitarra. ¿Quién me acompañó y con qué?"
+        },
+        {
+          "role": "assistant",
+          "content": "Quieres a cantar; una guitarra es cantar delante de unosante de unos amigos."
+        },
+        {
+          "role": "user",
+          "content": "La canción en realidad la recité; no la canté. La guitarra y la compañía siguen igual. ¿Cómo participamos cada uno?"
+        }
+      ],
+      "expected": "Usuario recitó; vecino acompañó con guitarra.",
+      "criticalExpected": "Falla crítica si sigue afirmando canto o cambia acompañante/instrumento.",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite «cantar delante» en una construcción sin sujeto/acción interpretable. No responde los papeles corregidos; la repetición de cantar dentro del gibberish no basta para afirmar críticamente que el usuario cantó.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 23,
+        "promptTokens": 193,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    },
+    {
+      "id": "reserve-stage-t4",
+      "scenarioId": "reserve-stage",
+      "critical": false,
+      "rawReply": "¿Te llamas a cantar?",
+      "inputMessages": [
+        {
+          "role": "user",
+          "content": "Me animé a cantar delante de unos amigos y se me olvidó una estrofa. Aun así, me divertí. Coméntalo sin juzgar mi voz, que no has oído."
+        },
+        {
+          "role": "assistant",
+          "content": "Tu voz es tu voz; tu voz es tu voz, que te hace esta estrofa."
+        },
+        {
+          "role": "user",
+          "content": "Mi vecino me acompañó con una guitarra. ¿Quién me acompañó y con qué?"
+        },
+        {
+          "role": "assistant",
+          "content": "Quieres a cantar; una guitarra es cantar delante de unosante de unos amigos."
+        },
+        {
+          "role": "user",
+          "content": "La canción en realidad la recité; no la canté. La guitarra y la compañía siguen igual. ¿Cómo participamos cada uno?"
+        },
+        {
+          "role": "assistant",
+          "content": "En realidad la cantar delante de cantar delante de unos cantar delante de cada compañía."
+        },
+        {
+          "role": "user",
+          "content": "Hazme una sola pregunta sobre cómo viví ese momento."
+        }
+      ],
+      "expected": "Una pregunta breve sobre experiencia del usuario, sin evaluar voz ni inventar emoción ajena.",
+      "criticalExpected": null,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": null,
+      "note": "«¿Te llamas a cantar?» es una pregunta agramatical y no pregunta por la vivencia del momento corregido a recitar. No aporta una pregunta sustantiva útil.",
+      "technical": {
+        "exception": false,
+        "empty": false,
+        "blocked": false,
+        "tokenBudget": false,
+        "promptCropped": false,
+        "stopReason": "eos",
+        "generatedTokens": 9,
+        "promptTokens": 232,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      }
+    }
+  ],
+  "dialogs": [
+    {
+      "id": "reserve-seats",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-laundry",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-leaf",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-radio",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-shadow",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-lostnote",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-pottery",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-drawer",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-memo",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    },
+    {
+      "id": "reserve-stage",
+      "completeTurns": 0,
+      "totalTurns": 4,
+      "fullyCorrect": false
+    }
+  ],
+  "counts": {
+    "complete": 0,
+    "partial": 2,
+    "failed": 38,
+    "fullyCorrectDialogs": 0,
+    "dialogs": 10,
+    "criticalTurns": 22,
+    "criticalFailures": 1,
+    "criticalFailureIds": [
+      "reserve-memo-t4"
+    ],
+    "technicalFailures": 0,
+    "technical": {
+      "exception": 0,
+      "empty": 0,
+      "blocked": 0,
+      "tokenBudget": 0,
+      "promptCropped": 0
+    }
+  },
+  "acceptance": {
+    "expectedTurns": 40,
+    "expectedDialogs": 10,
+    "minimumFullyMetTurns": 36,
+    "minimumFullyMetDialogs": 8,
+    "maximumCriticalFailures": 0,
+    "maximumTechnicalFailures": 0
+  },
+  "accepted": false,
+  "limits": [
+    "Synthetic prospectively authored cases by project AI; no independent human evaluation.",
+    "Ten four-turn conversations cannot establish broad language or autonomous work competence.",
+    "Development suite may guide checkpoint decisions; reserved suite may be opened only after one candidate identity and generation conditions are frozen.",
+    "Neither suite is training corpus, source for augmentation, nor a lexical corpus filter."
+  ]
+}

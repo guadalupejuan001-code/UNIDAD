@@ -9,10 +9,14 @@ personal que converse en español, realice trabajo útil y pueda adaptarse media
 aprendizaje verificable. La inferencia actual funciona localmente con Python,
 NumPy y PyTorch, sin llamar a una API de otra IA.
 
-**Estado del 13 de octubre de 2026:** GNOSIS y la integración NERVA están en
-`main`. El código funciona y tiene pruebas, pero la conversación fiable sigue
-pendiente. No hay evidencia de sustitución de asistentes comerciales,
-autoaprendizaje o programación autónoma.
+**Estado del 13 de octubre de 2026:** se integra el código compatible de las
+ramas y PR1–6: evaluador, generación, exportación ONNX, GNOSIS, NERVA y datos en
+disco. Se ejecutaron **seis ajustes propios y 2.560 actualizaciones reales**;
+se publican pesos y checkpoints. **La conversación fiable sigue pendiente**:
+ningún candidato pasó la aceptación. El núcleo tiene pruebas y admite nuevas
+integraciones, pero todavía no cumple el objetivo de asistente conversacional.
+Los [resultados completos](docs/conversation-integration-20261013/README.md)
+conservan modelos, diálogos, procedencia y límites.
 
 ## Qué existe y funciona hoy
 
@@ -55,30 +59,58 @@ entrenamiento que necesita. El entrenamiento actual es CPU. El cargador opcional
 GPU sigue pendiente. Los [controles y mediciones del cargador](docs/tokenized-data-20261013.md)
 no acreditan una mejora de las respuestas.
 
-## Qué dicen las evaluaciones
+## Qué se entrenó y qué respondieron los modelos
 
-La prueba reservada más reciente utilizó **40 turnos en diez diálogos**, historia
-realmente generada, 160 tokens por respuesta, temperatura cero y semilla 42.
+Se entrenaron desde los pesos propios de C7 y V7, con CPU, Adam y todos los
+parámetros, tres experimentos acotados: diálogo humano público en español,
+historia ideal frente a historia realmente generada, y 120 diálogos ficticios
+originales de cuatro turnos con anclas humanas. Los autores de estos 120 diálogos
+son agentes de IA del proyecto; no son conversaciones humanas ni respuestas de
+Unidad. TRAIN, VALIDATION y TEST conservan familias separadas. TEST no se
+introdujo en el entrenador.
 
-| Modelo | Respuestas completas | Diálogos completos | Fallos críticos |
-| --- | ---: | ---: | ---: |
-| C7 | 0/40 | 0/10 | 4 |
-| Ajuste parcial de copia, 128 pasos | 0/40 | 0/10 | 8 |
+| Ajuste | Pasos reales | Snapshot seleccionado por validación | Completas en desarrollo | Diálogos completos | Críticas / técnicas |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| C7, referencia sin modificar | — | — | 1/40 | 0/10 | 4 / 0 |
+| Humano, desde V7 | 256 | 256 | 0/40 | 0/10 | 0 / 1 |
+| Humano, desde C7 | 256 | 256 | 1/40 | 0/10 | 0 / 1 |
+| Historia ideal, desde C7 | 512 | 512 | 1/40 | 0/10 | 2 / 0 |
+| Historia generada, desde C7 | 512 | 384 | 1/40 | 0/10 | 0 / 0 |
+| Diálogo natural, desde V7 | 512 | 128 | 0/40 | 0/10 | 0 / 0 |
+| Diálogo natural, desde C7 | 512 | 128 | 0/40 | 0/10 | 0 / 1 |
 
-Las revisiones primaria y cruzada coinciden en estos recuentos. Son revisiones
-de IA del proyecto, **no evaluaciones humanas independientes**; se conservan sus
-desacuerdos sobre respuestas parciales. No hubo fallos técnicos en esos 80 turnos.
-El candidato parcial fue rechazado y C7 conservó sus pesos e identidad.
+La pérdida de validación bajó, pero no hubo ganancia neta de respuestas completas.
+Las críticas inferiores también reflejan omisiones y textos incoherentes; no
+acreditan mejores conocimientos. Por eso no se amplió una intervención fallida
+ni se reemplazó C7. Estos recuentos de desarrollo son de una batería nueva y
+no se suman a las evaluaciones históricas.
 
-La aceptación exige **36/40 respuestas completas, 8/10 diálogos completamente
-correctos y cero fallos críticos o técnicos** en una prueba nueva. No se alcanzó.
-El resultado histórico de C7 de 7/40 corresponde a otra batería: no debe mezclarse
-con esta prueba ni presentarse como mejora entre ambas.
+El candidato `history-generated`, paso 384, quedó fijado por identidad y hashes
+antes de abrir otra prueba reservada. La aceptación exige **36/40 respuestas
+completas, 8/10 diálogos correctos y cero fallos críticos o técnicos**. Se usan
+40 turnos en diez diálogos, historial realmente generado, 160 tokens por
+respuesta, temperatura cero y semilla 42. Las revisiones son de IA del proyecto,
+**no evaluaciones humanas independientes**.
 
-La [comparación completa](docs/brain-nerva-20261013/reserved-comparison.json)
-conserva respuestas, rúbrica, condiciones e identidades. El
-[estado actual](docs/ESTADO_ACTUAL.md) reúne las fuentes y los experimentos anteriores.
-Todavía no hay una comparación que demuestre calidad competitiva frente a una IA comercial.
+En esa prueba reservada nueva, la revisión primaria obtuvo:
+
+| Modelo | Completas | Parciales | Fallidas | Diálogos completos | Críticas / técnicas |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| C7 conservado | 0/40 | 4 | 36 | 0/10 | 2 / 0 |
+| Historia generada, paso 384 | 0/40 | 1 | 39 | 0/10 | 2 / 0 |
+
+Ambos fallaron el criterio. No hubo respuestas vacías, recortes de contexto ni
+agotamiento del presupuesto de tokens en esos 80 turnos. La prueba ya consumida
+se conserva como evidencia; no se usó para cambiar los pesos ni la selección.
+La revisión cruzada también obtuvo cero completas y cero diálogos correctos;
+se conservan sus diferencias sobre parciales y críticas.
+
+Los [pesos publicados](models/conversation-integration-20261013/README.md),
+[checkpoints reanudables](checkpoints/conversation-integration-20261013/README.md)
+y el [informe](docs/conversation-integration-20261013/README.md) permiten
+inspeccionar y reproducir el resultado. Guardar un checkpoint no mantiene un
+entrenamiento activo. Todavía no hay una comparación que demuestre calidad
+competitiva frente a una IA comercial.
 
 ## Qué se optimizó de verdad
 
@@ -102,14 +134,17 @@ pérdida con diferencias mínimas de gradientes. Esa cifra no representa la RAM 
 NERVA reprodujo **448 caracteres** de NumPy en siete generaciones; el arranque de
 Node añadió tiempo. No se demostró aceleración con ese backend.
 
-La verificación local del cargador en disco aprobó **462 pruebas y 12 pruebas de
-ejemplos**; el [recibo](docs/tokenized-data-20261013/software-verification.json)
-identifica código y comprobaciones. La integración anterior de GNOSIS aprobó
-441 pruebas y también [GitHub Actions](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38332550358).
-Estas comprobaciones acreditan funcionamiento técnico, no comprensión ni calidad conversacional.
-Las [mediciones y límites](docs/gnosis.md) y la
-[verificación de software](docs/gnosis-evidence/software-verification.json)
-conservan el detalle.
+La integración final aprobó **494 pruebas y 12 pruebas de ejemplos** con las
+dependencias de conversación y ONNX instaladas. El
+[recibo de software](docs/conversation-integration-20261013/software/verification.json)
+fija código y logs. La proyección final conserva cuatro generaciones C7 y
+observó 1,91–2,03 veces de aceleración en el cálculo del siguiente token, bajo
+condiciones concretas de CPU. La [paridad ONNX](docs/conversation-integration-20261013/runtime/README.md)
+conservó cuatro generaciones greedy; no se probó en un teléfono físico.
+GitHub Actions comprueba el código integrado. Estas pruebas acreditan
+funcionamiento técnico, no comprensión ni calidad conversacional.
+Las [mediciones anteriores](docs/gnosis.md) y el
+[cargador mmap](docs/tokenized-data-20261013.md) conservan sus propios límites.
 
 ## Probar el proyecto
 
@@ -132,6 +167,18 @@ unidad gnosis capabilities --project configs/gnosis.json --body pc
 unidad gnosis chat --project configs/gnosis.json \
   --max-new-tokens 160 --temperature 0 --seed 42
 ```
+
+Para cargar exactamente el candidato experimental evaluado (también rechazado):
+
+```sh
+python -m ia_propia.conversation converse \
+  --model models/conversation-integration-20261013/history-generated \
+  --max-new-tokens 160 --temperature 0 --seed 42
+```
+
+Su identidad termina en `c2a558a2`; el [recibo de carga](docs/conversation-integration-20261013/software/published-model-cli.json)
+verifica los cuatro hashes y la consola con ese artefacto. Esta comprobación de
+carga no demuestra calidad conversacional.
 
 El chat carga C7. `plan` calcula recursos sin crear pesos ni iniciar entrenamiento;
 la configuración entregada informa que los corpus están sin configurar. Clonar
@@ -181,23 +228,24 @@ La adaptación automática y la autoprogramación forman parte de la visión fut
 necesitan demostraciones específicas y todavía no están implementadas como
 capacidades autónomas del modelo.
 
-## Mapa del repositorio y sus propuestas
+## Integración de las ramas
 
-Este repositorio también conserva desarrollos fuera de `main`. Al comprobar
-GitHub el 13 de octubre de 2026 UTC había **ocho ramas y seis PR**: PR5 y PR6
-estaban fusionados; PR1–4 seguían abiertos y ya no figuraban como borradores.
+Los cambios compatibles y la evidencia de PR1–6 se reúnen en `main`, sin
+entregas en borrador. Se conservan las ramas originales como historia.
 
-| Ubicación | Qué aporta | Situación comprobada |
-| --- | --- | --- |
-| `main` | Cerebro, modelos propios, entrenamiento, evaluación, GNOSIS, NERVA y datos en disco. | GNOSIS/NERVA se integraron por [PR5](https://github.com/guadalupejuan001-code/UNIDAD/pull/5); el cargador mmap, por [PR6](https://github.com/guadalupejuan001-code/UNIDAD/pull/6). |
-| [PR1](https://github.com/guadalupejuan001-code/UNIDAD/pull/1) | Diagnóstico de conversaciones, correcciones del evaluador y evidencia experimental. | Abierto; parte de las correcciones ya llegó a main por otra vía. |
-| [PR2](https://github.com/guadalupejuan001-code/UNIDAD/pull/2) | Proyección de vocabulario sólo en la posición final durante generación. | Optimización propuesta; sus experimentos de conversación no justificaron promover pesos. |
-| [PR3](https://github.com/guadalupejuan001-code/UNIDAD/pull/3) | Reparación de redacción y contraste relacional desde C7. | Candidatos rechazados; conserva respuestas y evaluaciones. |
-| [PR4](https://github.com/guadalupejuan001-code/UNIDAD/pull/4) | Exportador de un paquete de modelo para Android y comprobaciones con ONNX Runtime. | Propuesta abierta; la paridad en CPU no acredita funcionamiento en un teléfono físico. |
-| [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Paquete dividido en seis partes: C7, candidatos relacionales y checkpoints completos. | Conserva experimentos y permite reconstruirlos; no convierte candidatos rechazados en modelos aceptados. |
+| Origen | Resultado integrado |
+| --- | --- |
+| [PR1](https://github.com/guadalupejuan001-code/UNIDAD/pull/1) y [PR3](https://github.com/guadalupejuan001-code/UNIDAD/pull/3) | Evaluador común y documentos originales de diagnóstico/redacción. Los candidatos rechazados conservan ese estado. |
+| [PR2](https://github.com/guadalupejuan001-code/UNIDAD/pull/2) | Proyección de vocabulario en la última posición al generar, conservando las funciones posteriores de GNOSIS. |
+| [PR4](https://github.com/guadalupejuan001-code/UNIDAD/pull/4) | Exportador ONNX y pruebas; publicación sin sobrescribir y control de cambios del modelo. |
+| [PR5](https://github.com/guadalupejuan001-code/UNIDAD/pull/5) y [PR6](https://github.com/guadalupejuan001-code/UNIDAD/pull/6) | GNOSIS, NERVA, entrenamiento reanudable y cargador mmap. |
+| [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Archivo de paquetes históricos descargables, conservado en su rama. |
 
-Los recibos y textos antiguos conservan el estado de su fecha. Para saber si una
-propuesta está integrada o sigue abierta, consulta también su PR.
+La [matriz de reconciliación](docs/conversation-integration-20261013/branch-reconciliation.json)
+identifica las cabezas y 324 documentos importados sin cambiar sus bytes.
+`source-pointer-v2.patch` permanece como evidencia experimental; no se aplica.
+Los textos antiguos describen el estado de su fecha. Integrar su historia no
+promueve modelos fallidos ni modifica sus respuestas.
 
 NERVA incluye además un lenguaje e intérprete con operaciones de tensores,
 diferenciación automática, actualización de parámetros y checkpoints. Es una
@@ -216,5 +264,5 @@ entrena C7 ni ejecuta su Transformer.
 - [Antecedentes y comandos del README anterior](docs/historial-readme-20261013.md)
 
 Los pesos y recibos de experimentos descartados se conservan como evidencia.
-Publicarlos no los convierte en modelos aceptados. Los presupuestos anteriores
-de entrenamiento están cerrados; esta documentación no inicia ni renueva corridas.
+Publicarlos no los convierte en modelos aceptados. El nuevo entrenamiento autorizado terminó y conserva su estado. Los presupuestos
+históricos siguen cerrados; esta documentación no inicia corridas.

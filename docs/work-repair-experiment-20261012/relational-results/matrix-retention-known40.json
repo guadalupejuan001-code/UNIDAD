@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "matrixId": "pr1-relational-contrast-v1-known40-retention-project-primary",
+  "createdAtUtc": "2026-10-12T18:59:31.607913+00:00",
+  "scope": "old_known40_development_not_final_acceptance",
+  "reviewer": {
+    "agent": "/root/retention_review",
+    "projectAI": true,
+    "independentHumanEvaluation": false,
+    "blind": false,
+    "crossReviewCompleted": false
+  },
+  "casesSha256": "bb35ba3323e8ee8cbddd6d1b698ed8114362d96b59f5e17837658b1cebf10966",
+  "rubricSha256": "d6b374ae46c89c14a0b8d849c12526447a73cb5220e10d356cb4b7cf7669ce59",
+  "baseline": {
+    "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+    "reviewPath": "/workspace/ia-propia/private/conversation/spanish-foundation-pair-v1/evaluation160/review-c7-known40-primary.json",
+    "reviewSha256": "d0785714103f8b58ecd07af00be789321a3443c489164140a9278faff71c6877",
+    "actualPath": "/workspace/ia-propia/private/conversation/spanish-foundation-pair-v1/evaluation160/c7-known40.json",
+    "actualSha256": "eb7837e26f3de6f0c04f9fe04730dd142d01a7b239b05183eac7e1aa55fdc0e1",
+    "summary": {
+      "C": 7,
+      "P": 5,
+      "F": 28,
+      "criticalFailureTurns": 6,
+      "criticalTurnIds": [
+        "ngdev-v1-01-t4",
+        "ngdev-v1-03-t3",
+        "ngdev-v1-03-t4",
+        "ngdev-v1-04-t3",
+        "ngdev-v1-06-t3",
+        "ngdev-v1-10-t3"
+      ],
+      "completeCorrectEpisodes": 0,
+      "episodeCounts": {
+        "F": 10
+      },
+      "requestedEpisodes": 10,
+      "requestedTurns": 40,
+      "reviewedActualTurns": 40,
+      "stopReasons": {
+        "eos": 40
+      },
+      "tokenBudgetStops": 0,
+      "promptCuts": 0,
+      "executionErrors": 0,
+      "blockedTurns": 0,
+      "generatedTokensMin": 4,
+      "generatedTokensMax": 22
+    },
+    "labelsCopiedUnmodified": true,
+    "completeIds": [
+      "ngdev-v1-01-t2",
+      "ngdev-v1-02-t2",
+      "ngdev-v1-03-t1",
+      "ngdev-v1-03-t2",
+      "ngdev-v1-04-t1",
+      "ngdev-v1-04-t2",
+      "ngdev-v1-07-t1"
+    ]
+  },
+  "generationComparison": {
+    "allThreeMaxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "legacyCasesGenerationMax32PreservedAsMetadata": true,
+    "c7All40ResponsesEqualAtMax160PreviouslyVerified": true,
+    "c7OriginalHistorical40At32NotSilentlyAssumedEquivalentForCandidates": true
+  },
+  "arms": {
+    "original128": {
+      "reviewPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/original128-known40.primary-review.json",
+      "reviewSha256": "47e7c42b7a7aa8211489335abd15667d12cf331441e746046cb6aadb6af9a0d4",
+      "actualPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/original128-known40.actual.json",
+      "actualSha256": "e4c80c1cbd81639848d43054a808930eed990e3fea69bfa6326e3745fcde287f",
+      "modelId": "unidad-conversation-0f42de7d8a5e542deb4a42ef4cfe0ddbaec91098189214478431b777b29c0979",
+      "summary": {
+        "F": 31,
+        "C": 8,
+        "P": 1,
+        "criticalFailureTurns": 7,
+        "criticalTurnIds": [
+          "ngdev-v1-06-t1",
+          "ngdev-v1-06-t2",
+          "ngdev-v1-06-t3",
+          "ngdev-v1-07-t4",
+          "ngdev-v1-08-t1",
+          "ngdev-v1-08-t2",
+          "ngdev-v1-09-t1"
+        ],
+        "completeCorrectEpisodes": 0,
+        "episodeCounts": {
+          "F": 10
+        },
+        "requestedEpisodes": 10,
+        "requestedTurns": 40,
+        "reviewedActualTurns": 40,
+        "stopReasons": {
+          "eos": 39,
+          "token_budget": 1
+        },
+        "tokenBudgetStops": 1,
+        "promptCuts": 0,
+        "executionErrors": 0,
+        "technicalFailures": 0,
+        "emptyResponses": 0,
+        "blockedTurns": 0
+      },
+      "retentionAgainstC7": {
+        "baselineSummary": {
+          "C": 7,
+          "P": 5,
+          "F": 28,
+          "criticalFailureTurns": 6,
+          "criticalTurnIds": [
+            "ngdev-v1-01-t4",
+            "ngdev-v1-03-t3",
+            "ngdev-v1-03-t4",
+            "ngdev-v1-04-t3",
+            "ngdev-v1-06-t3",
+            "ngdev-v1-10-t3"
+          ],
+          "completeCorrectEpisodes": 0,
+          "episodeCounts": {
+            "F": 10
+          },
+          "requestedEpisodes": 10,
+          "requestedTurns": 40,
+          "reviewedActualTurns": 40,
+          "stopReasons": {
+            "eos": 40
+          },
+          "tokenBudgetStops": 0,
+          "promptCuts": 0,
+          "executionErrors": 0,
+          "blockedTurns": 0,
+          "generatedTokensMin": 4,
+          "generatedTokensMax": 22
+        },
+        "previouslyCompleteIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-02-t2",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-04-t1",
+          "ngdev-v1-04-t2",
+          "ngdev-v1-07-t1"
+        ],
+        "retainedPreviouslyCompleteIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-07-t1"
+        ],
+        "lostPreviouslyCompleteIds": [
+          "ngdev-v1-02-t2",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-04-t1",
+          "ngdev-v1-04-t2"
+        ],
+        "newlyCompleteIds": [
+          "ngdev-v1-01-t3",
+          "ngdev-v1-02-t1",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-07-t2",
+          "ngdev-v1-07-t3"
+        ],
+        "retainedCompleteCount": 3,
+        "lostCompleteCount": 4,
+        "newCompleteCount": 5,
+        "netCompleteChange": 1,
+        "failedChange": 3,
+        "criticalChange": 1,
+        "limitedInference": "Conversational output retention under this exposed development suite; does not isolate catastrophic forgetting or its cause."
+      },
+      "gates": {
+        "retention": {
+          "requiredCompleteAtLeast": 7,
+          "requiredFailedAtMost": 28,
+          "requiredCriticalAtMost": 6,
+          "requiredTechnical": 0,
+          "passed": false
+        },
+        "partialGoal": {
+          "requiredFailedAtMost": 14,
+          "requiredCriticalAtMost": 6,
+          "passed": false
+        },
+        "generalAcceptance": {
+          "requiredCompleteAtLeast": 36,
+          "requiredCompletelyCorrectDialogsAtLeast": 8,
+          "requiredCritical": 0,
+          "requiredTechnical": 0,
+          "passed": false,
+          "notFinalTest": true
+        }
+      }
+    },
+    "relational128": {
+      "reviewPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/relational128-known40.primary-review.json",
+      "reviewSha256": "42ceb3dd7693845f0cecbbf42002fc2f74097c918e137970edc6fb3c61aaf634",
+      "actualPath": "/workspace/unidad-conversation-repair/private/pr1-relational-contrast-v1/evaluation/relational128-known40.actual.json",
+      "actualSha256": "1f68828b1948da09dd2b4ec5ee850ef17e520d2986df18739efb67d24eb4e032",
+      "modelId": "unidad-conversation-22c606b1d3bf73a6f7bdc2e44001d29eeb4977fe6909927582e9268b056ad21b",
+      "summary": {
+        "F": 32,
+        "C": 6,
+        "P": 2,
+        "criticalFailureTurns": 9,
+        "criticalTurnIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-01-t3",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-03-t3",
+          "ngdev-v1-06-t2",
+          "ngdev-v1-08-t1",
+          "ngdev-v1-08-t2",
+          "ngdev-v1-09-t1",
+          "ngdev-v1-10-t4"
+        ],
+        "completeCorrectEpisodes": 0,
+        "episodeCounts": {
+          "F": 9,
+          "P": 1
+        },
+        "requestedEpisodes": 10,
+        "requestedTurns": 40,
+        "reviewedActualTurns": 40,
+        "stopReasons": {
+          "eos": 40
+        },
+        "tokenBudgetStops": 0,
+        "promptCuts": 0,
+        "executionErrors": 0,
+        "technicalFailures": 0,
+        "emptyResponses": 0,
+        "blockedTurns": 0
+      },
+      "retentionAgainstC7": {
+        "baselineSummary": {
+          "C": 7,
+          "P": 5,
+          "F": 28,
+          "criticalFailureTurns": 6,
+          "criticalTurnIds": [
+            "ngdev-v1-01-t4",
+            "ngdev-v1-03-t3",
+            "ngdev-v1-03-t4",
+            "ngdev-v1-04-t3",
+            "ngdev-v1-06-t3",
+            "ngdev-v1-10-t3"
+          ],
+          "completeCorrectEpisodes": 0,
+          "episodeCounts": {
+            "F": 10
+          },
+          "requestedEpisodes": 10,
+          "requestedTurns": 40,
+          "reviewedActualTurns": 40,
+          "stopReasons": {
+            "eos": 40
+          },
+          "tokenBudgetStops": 0,
+          "promptCuts": 0,
+          "executionErrors": 0,
+          "blockedTurns": 0,
+          "generatedTokensMin": 4,
+          "generatedTokensMax": 22
+        },
+        "previouslyCompleteIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-02-t2",
+          "ngdev-v1-03-t1",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-04-t1",
+          "ngdev-v1-04-t2",
+          "ngdev-v1-07-t1"
+        ],
+        "retainedPreviouslyCompleteIds": [
+          "ngdev-v1-03-t1",
+          "ngdev-v1-07-t1"
+        ],
+        "lostPreviouslyCompleteIds": [
+          "ngdev-v1-01-t2",
+          "ngdev-v1-02-t2",
+          "ngdev-v1-03-t2",
+          "ngdev-v1-04-t1",
+          "ngdev-v1-04-t2"
+        ],
+        "newlyCompleteIds": [
+          "ngdev-v1-02-t1",
+          "ngdev-v1-07-t2",
+          "ngdev-v1-07-t3",
+          "ngdev-v1-09-t3"
+        ],
+        "retainedCompleteCount": 2,
+        "lostCompleteCount": 5,
+        "newCompleteCount": 4,
+        "netCompleteChange": -1,
+        "failedChange": 4,
+        "criticalChange": 3,
+        "limitedInference": "Conversational output retention under this exposed development suite; does not isolate catastrophic forgetting or its cause."
+      },
+      "gates": {
+        "retention": {
+          "requiredCompleteAtLeast": 7,
+          "requiredFailedAtMost": 28,
+          "requiredCriticalAtMost": 6,
+          "requiredTechnical": 0,
+          "passed": false
+        },
+        "partialGoal": {
+          "requiredFailedAtMost": 14,
+          "requiredCriticalAtMost": 6,
+          "passed": false
+        },
+        "generalAcceptance": {
+          "requiredCompleteAtLeast": 36,
+          "requiredCompletelyCorrectDialogsAtLeast": 8,
+          "requiredCritical": 0,
+          "requiredTechnical": 0,
+          "passed": false,
+          "notFinalTest": true
+        }
+      }
+    }
+  },
+  "c7PreviouslyCompleteTurnMatrix": [
+    {
+      "id": "ngdev-v1-01-t2",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "Quieres dibujar un faro."
+      },
+      "original128": {
+        "rating": "C",
+        "critical": false,
+        "text": "Quieres dibujar un faro."
+      },
+      "relational128": {
+        "rating": "F",
+        "critical": true,
+        "text": "Tehora te llamaré Zelomara."
+      }
+    },
+    {
+      "id": "ngdev-v1-02-t2",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "ElDe acuerdo es color coral."
+      },
+      "original128": {
+        "rating": "F",
+        "critical": false,
+        "text": "Es color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color color"
+      },
+      "relational128": {
+        "rating": "F",
+        "critical": false,
+        "text": "Es color color color color color color color color color color color color color color color color color color color color color color color color color color color color color."
+      }
+    },
+    {
+      "id": "ngdev-v1-03-t1",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "Estás en Valdehumo; irás Puerto Arce."
+      },
+      "original128": {
+        "rating": "C",
+        "critical": false,
+        "text": "Estás en Valdehumo y mañana voy a Puerto Arce."
+      },
+      "relational128": {
+        "rating": "C",
+        "critical": false,
+        "text": "Estás en Valdehumo."
+      }
+    },
+    {
+      "id": "ngdev-v1-03-t2",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "Irás a Villa Nébula, no a Puerto Arce."
+      },
+      "original128": {
+        "rating": "F",
+        "critical": false,
+        "text": "Estás en Valdehumo,?"
+      },
+      "relational128": {
+        "rating": "F",
+        "critical": true,
+        "text": "Estás a Villa Nébula, mañana, mañana, mañana, mañana voy a Puerto Arce."
+      }
+    },
+    {
+      "id": "ngdev-v1-04-t1",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "De acuerdo, te escucho."
+      },
+      "original128": {
+        "rating": "F",
+        "critical": false,
+        "text": "Te des consejos."
+      },
+      "relational128": {
+        "rating": "F",
+        "critical": false,
+        "text": "Te des consejos."
+      }
+    },
+    {
+      "id": "ngdev-v1-04-t2",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "¿Qué quieres contarme sobre eso?"
+      },
+      "original128": {
+        "rating": "F",
+        "critical": false,
+        "text": "¿Quién pesado?"
+      },
+      "relational128": {
+        "rating": "F",
+        "critical": false,
+        "text": "¿Quién pesado?"
+      }
+    },
+    {
+      "id": "ngdev-v1-07-t1",
+      "c7": {
+        "rating": "C",
+        "critical": false,
+        "text": "Enivia el jueves a las cinco."
+      },
+      "original128": {
+        "rating": "C",
+        "critical": false,
+        "text": "El jueves a las cinco."
+      },
+      "relational128": {
+        "rating": "C",
+        "critical": false,
+        "text": "El jueves a las cinco."
+      }
+    }
+  ],
+  "relationalMinusOriginal": {
+    "complete": -2,
+    "partial": 1,
+    "failed": 1,
+    "criticalFailureTurns": 2,
+    "completeDialogs": 0
+  },
+  "conclusion": "Neither endpoint passes retention, the partial target, or general conversational acceptance. Relational128 has fewer complete replies, more failed replies and more critical failures than the matched original128 control in this exposed 40-turn development suite. Preserve C7; these judgments do not establish the separate factorial/new-validation outcome or any globally competitive level."
+}

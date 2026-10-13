@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "pr1-wording-history-diagnosis-v1",
+  "status": "prospective-freeze-before-new-outputs",
+  "purpose": "Isolate question wording from fact order, then diagnose past assistant history before choosing one bounded intervention.",
+  "author": "Project AI reviewer; no human-independent claim.",
+  "scope": {
+    "singleTurnBaseCases": 12,
+    "singleTurnFactorialCells": 48,
+    "wordingPairs": 24,
+    "orderPairs": 24,
+    "multiTurnEpisodes": 4,
+    "multiTurnUserTurns": 16,
+    "historyBranches": [
+      "actual",
+      "ideal"
+    ],
+    "totalGeneratedRepliesPerModel": 80,
+    "actualRepliesPerModel": 64,
+    "idealDiagnosticRepliesPerModel": 16,
+    "developmentOnly": true,
+    "oldKnown40AndPr20AlreadyExposedDev": true,
+    "reservedFinal": false,
+    "newTrainingAuthorizedOrStartedHere": false,
+    "distinctSingleTurnFactWorlds": 6
+  },
+  "sourceVersion": {
+    "worktreeHead": "8b466cc43015289a4568639304ef9841397ad6fa",
+    "oldPrExperimentSourceCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+    "ownPriorEvaluationCommit": "a1a283caabf89b3191c8ce64c2a950e9edbb0edf",
+    "modelPySha256": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+    "runtimePySha256": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+    "trainingPySha256": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+    "meaning": "Current e05b330 model source and evaluator/ORDERS head8b466cc; old PR outputs from b5fc677 remain historical, not same-version new outputs.",
+    "filesSha256": {
+      "docs/work-conversation-diagnosis-20261012.md": "cfd4d2180146641f9c4b49d866a86c8a75228da2f3339f426b8ede096cb845dc",
+      "docs/work-experiment-20261012/results.json": "920f2863ecc6fc004c1b3da63c23018693ee750c76aefa00039b56880bc7f4db",
+      "docs/work-experiment-20261012/wording-probe.json": "53e042490c1f962727f46c12e4187908a2519fbfa3ff5a52a652a3f48d7196f7",
+      "docs/work-experiment-20261012/pointer-v1-best.review.json": "e16b1371afef51a9f18655a502f511d1a88b4c61b2aa82e39596b87d67287b7c",
+      "private/conversation/pr1-integration-v1/c7-baseline-equivalence.json": "85ce8f70761b860c97c5c9a62c6c94e1c75098c95c5b57e42b450494312e6416",
+      "src/ia_propia/conversation/model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+      "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+      "src/ia_propia/conversation/training.py": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad",
+      "models/conversation-reference-c7/manifest.json": "12e5199ef762ce2a24bb0fbd118c2671d77b1e2d305f1f864add3a2f79999242"
+    },
+    "conversationModuleFilesSha256": {
+      "src/ia_propia/conversation/__init__.py": "1ad8195f4e095bb46f0440812e70c79754e4fa04ca75c6aedd5fddec0ce9f1f1",
+      "src/ia_propia/conversation/__main__.py": "b991ce2a3dce6f62e1acca101acecbe853bc65b53b6460f3d73e39be9a368dc2",
+      "src/ia_propia/conversation/adaptive.py": "8241439f6686a82ffec6121f2b15429da25a3cc5fc147fff27bfabc383798a24",
+      "src/ia_propia/conversation/artifacts.py": "b5e4fb968039a84dda8d880914ea7b7ce12703815a9a0113aae4689fab23c338",
+      "src/ia_propia/conversation/assessment.py": "95c71b72b57dd7426a2f2f1c7f937284fd5d49dd2afd72b2147e23b77f2073d5",
+      "src/ia_propia/conversation/contract.py": "faa3025aff3f74f84a32043fd04cd02584babff5fdbcd2cab01e7611ee8adfc9",
+      "src/ia_propia/conversation/data.py": "e2156c269e2334e945309ecd0ab7c2b7999819d9d07edeb75604e599c76df16b",
+      "src/ia_propia/conversation/jobs.py": "ac7db2e987cc04437f0b5d978957263a48def4600f5d506d1886112602af6842",
+      "src/ia_propia/conversation/language_data.py": "76e49b9ea520c1b0c2dc204e053b752d48fcfcfab532825fe41dc2e06bb6b2c0",
+      "src/ia_propia/conversation/model.py": "e05b33039070e64b2deda9be18e5183fa73ce67543f6bc5a98f7ca1ed75880bf",
+      "src/ia_propia/conversation/runtime.py": "3e858b1f701d84d57e8973d445d42952ec350f84dcc845999ba7f6320d7492ed",
+      "src/ia_propia/conversation/scoring.py": "cb39fc870063308f149b9f9822da97d7e34ffb64cde8db27cf20f858e9b6e933",
+      "src/ia_propia/conversation/tokenizer.py": "66eec6d8ed749ee6def37522a62116b29ff42739f6738a500ebf130e00672c4b",
+      "src/ia_propia/conversation/training.py": "e49048a7da900e9c1e641e72b1dc64338cdabc979e075d63eb4ecd17dba1e4ad"
+    }
+  },
+  "generation": {
+    "runtime": "Own ConversationEngine; no alternate reference weights or response templates.",
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "system": "Same exact default system/context string in all new conditions; save its text/hash and Engine/source identities in each actual output.",
+    "reset": "Each single-turn factorial cell starts from an empty dialog history; each history episode/branch resets before USER1.",
+    "technical": "Record raw text and token IDs, EOS vs budget stop, promptTokens, discardedPromptTokens, errors and blocked turns. Keep truncated and wrong replies; no regeneration after seeing outcome.",
+    "exclusion": "Do not feed constraints, critical rules, requestedTarget, scoring, future USER or current/future ideal replies."
+  },
+  "models": {
+    "primaryBaseline": {
+      "path": "models/conversation-reference-c7",
+      "modelId": "unidad-conversation-bd1975c26297d4665dd95b2ad7d36349c62404a2489b72894d1a67f354a228d2",
+      "weightsSha256FromManifest": "666527de240a7fc9b082f233699a1c808c6bdd8f929651824ce4975377c7c836",
+      "pretrainedExternal": false
+    },
+    "optionalOwnRaw": "RAW1024 may be compared only after root separately registers exact native artifact and source/manifest/tokenizer/weights receipt before its new80 outputs; raw causal-language dose differs from C7. No automatic promotion.",
+    "prPointerV1Best": "Weights ZIP not available locally; do not claim restoration or actual generation of that condition. Historical archived32-token evidence stays separate.",
+    "oldControlReuse": "Do not repeat16TRAIN64 controls or previous8 wording probe. C7 old40 baseline may reuse the exact User/history/token/text equivalence receipt; no equality presumed for another artifact."
+  },
+  "factorialDesign": {
+    "construction": "USER = exact factParagraph + two newline characters + exact question. o0 preserves block order; o1 reverses only complete independent blocks. w0 canonical question; w1 semantic paraphrase. All four cells have the same facts and target.",
+    "wordingComparison": "Compare w0 vsw1 separately within o0 and within o1: factParagraph UTF8 is byte identical.",
+    "orderComparison": "Compare o0 vso1 separately within w0 and within w1: question UTF8 is byte identical. Each original block is unchanged.",
+    "targetBalance": "r01/r02, r03/r04, r05/r06 and r07/r08 query each of two different entities against the same fact paragraph. A universal last-mentioned-entity shortcut cannot answer both targets correctly.",
+    "skills": {
+      "explicit_fact_retrieval": [
+        "r01",
+        "r02",
+        "r03",
+        "r04"
+      ],
+      "relation_and_referent": [
+        "r05",
+        "r06",
+        "r07",
+        "r08"
+      ],
+      "language_and_instruction_production": [
+        "r09",
+        "r10",
+        "r11",
+        "r12"
+      ]
+    },
+    "limitations": "These are newly authored formulations, not documented copies of TRAIN templates. Canonical means the plain phrasing of this probe, not known-to-training wording. Exact prompt isolation does not prove universal linguistic invariance."
+  },
+  "historyDesign": {
+    "sameUsers": "Both branches use identical USER strings in identical order. Compare turns2–4 separately; turn1 has no previous assistant history and must be technically checked rather than assumed equal.",
+    "actual": "Feed every prior USER and every own prior generated assistant reply verbatim. Archive complete stored/effective-history information. Only this branch is conversational evidence eligible for any acceptance interpretation.",
+    "ideal": "For diagnostic turnk feed previous USER1..k and the fixed ideal-history.json replies1..k-1 as previous assistant messages. Archive newly generated replies but do not feed them into the following ideal-history prompt. Never feed current or future ideal reply.",
+    "expectationExposure": "actual: no expectations fed. ideal: only explicitly declared past ideal assistant replies are fed as the intervention; constraints/rubric/current answer remain offline. The branch is aided diagnostic history, not unassisted conversation.",
+    "interpretation": "Compare actual-vsideal CPF and criticals by exact episode/turn; stratify whether a preceding actual reply was C/P/F and contradicted facts. Differences may reflect factual cleanliness, style and history length together; they do not isolate a single cause or show memory loss on their own.",
+    "known40": "No new ideal-history run over old40 is required by this compact probe."
+  },
+  "rubric": {
+    "CPF": {
+      "C": "Complete, relevant, intelligible, and satisfies every turn constraint; semantic equivalence is accepted. Exact text match is optional descriptive metadata.",
+      "P": "Some correct useful response, but a requested part or instruction fails or remains omitted, while the reply is not globally irrelevant, inintelligible or factually incorrect.",
+      "F": "Irrelevant, largely unintelligible, or makes an incorrect assertion about the given facts or requested relation; no meaningful useful answer.",
+      "critical": "A concrete invented/contradictory identity, relationship, correction, known or explicitly unknown fact listed in criticalIf; also any severe explicit-instruction violation identified prospectively as critical. A critical reply cannot be C. Do not infer a critical proposition from omissions or broken fragments.",
+      "instructionSeverity": "One extra true detail, multiple sentences, greeting or missing desired format prevents C but is not automatically critical. Inventing a forbidden missing hour/destination/fabricator or reversing a stated relation is critical.",
+      "perTurn": "Write actual text, constraints, CPF, critical flag, exact evidence quote and brief reason. Preserve primary/cross disagreements."
+    },
+    "B_linguistic": "Use frozen intelligibility/grammar/cohesion0–3, predicative-unit and paragraph/repetition formulas from /workspace/ia-propia/private/conversation/simple-spanish-language-stage-v1/language-development-review-protocol.json SHA4406fe7014dd612b8cc0bcc7cfc450421af55e7bec6e2acac46b073e315207cf; B excludes factual correctness, relevance and requested format. Report by task and length band; no compound score, no pass from fluency.",
+    "semanticComponents": "For each turn mark separately factual-content/relation success, instruction/clarification success and linguistic intelligibility; these descriptive tags do not replace CPF. A false fluent response can have good B and F in C.",
+    "episodes": "Actual or ideal episode complete iff all four replies C and no critical; do not combine branches. Singles have no four-turn dialog completion metric."
+  },
+  "comparisonMatrix": {
+    "singleTurn": "Per skill show n=16 cells; CPF and criticals by o/w cell, plus24 wording-pair transitions and24 order-pair transitions. Show C→P/F, P/F→C, unchanged, critical differences. Balanced entity contrasts are listed by world.",
+    "multiTurn": "Per episode and branch show16 actual and16 ideal CPF/criticals and dialogs0–4; separately first-turn4 and later-turn12 comparisons with prior-error flag.",
+    "baselineRetention": "Old known40 C7 seven C and six criticals remain their separate DEV reference. New cases do not create a36/64 or72/80 acceptance threshold. Compare any later intervention with the same80 plus retained old40 evidence under its proper generation receipt.",
+    "uncertainty": "One model/seed and small synthetic DEV sample; publish exact denominators and IDs. No competitive global, human or unseen-family claim."
+  },
+  "decisionBeforeOneIntervention": {
+    "status": "No intervention chosen before diagnosis.",
+    "conditionalReadout": [
+      "If canonical and paraphrased questions differ with unchanged fact order and same target, the probe supports a local wording-sensitivity description; inspect B and relation errors before choosing wording augmentation.",
+      "If fact order changes answers to balanced targets while question is fixed, inspect positional or referent errors separately; a wording-only explanation is insufficient.",
+      "If ideal history succeeds while actual history fails after erroneous previous replies, the probe supports conditional history sensitivity, not unassisted comprehension or acceptance.",
+      "If both history branches and wordings are incoherent, do not declare a wording repair proven; linguistic form and relation grounding remain separate unresolved problems."
+    ],
+    "trainingRule": "Root chooses one bounded intervention only after actual results and data-quality audit. Preserve original C7, prior records and folds. Never use these cases, ideal replies, constraints, prompt/fact hashes or personal chat as TRAIN."
+  },
+  "acceptanceUnchanged": {
+    "completeAnswers": 36,
+    "answers": 40,
+    "completeDialogs": 8,
+    "dialogs": 10,
+    "criticalFailures": 0,
+    "newProbeDoesNotReplaceFinal": true
+  },
+  "freeze": "Freeze cases.json, ideal-history.json, protocol.json and hash-only-exclusion.json plus SHA receipt before first new case output; then do not edit them. Model registration, raw outputs and reviews go in separate files."
+}

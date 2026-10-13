@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "pr1-relational-contrast-secondary-heldout-val80-v1",
+  "purpose": "Same80actual USERs/20dialogs for C7,original128 andrelational128; secondaryDEV nottraining orFINAL.",
+  "timing": "SourceVAL was frozen earlier by corpus auditor. This derived evaluation rubric is frozen after original128 training completed and relational128 training started/completed, but BEFORE any of these80actual responses from any model. Do not call it pretraining preregistration.",
+  "conditions": [
+    "Own C7 baseline reference",
+    "Own original-data128 native continuation from C7",
+    "Own relational-data128 native continuation from C7"
+  ],
+  "modelRegistration": "Root records exact modelId,artifactmanifest/weights/tokenizer/source/runtime identity and same160/greedy/seed42/thread1 before each generation. Reviewer does not load weights or infer.",
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "history": "Reset each of20episodes. Feed only exact effective USERs and each model own previous actual assistant responses. No sourceGold or neutral/ideal source assistants, no offline constraints/rubric, no current/future USER.",
+  "sourceIsolation": "Only approved validation.jsonl and frozen DEV evidence read. Do not edit/read TRAIN bodies, DATA,design,models orsource. Corpus auditor checks effective-user overlap via supplied hash-only receipt.",
+  "comparisons": "Report80CPF/critical/20dialogs separately permodel and48wording vs32composition. Compare per-ID C/P/F andall factual contradictions. Keep disagreement andmissing/technical outcomes visible. Keep new broader-critical scope separate from oldfactorial criticalIf andknown40.",
+  "existingEvidence": "Oldknown40 andfactorial80 remain separate exposedDEV. Do not copy scores to newUSERs. Only actual textual/history equality can justify score reuse in unchangedexistingcases.",
+  "selection": "No selection fromloss. This thirdsecondaryDEV does not replace originalmatched-plan oracceptance; rootchooses boundedintervention basedactualgeneration andold40retention.",
+  "acceptanceUnchanged": {
+    "completeAnswers": 36,
+    "answers": 40,
+    "completeDialogs": 8,
+    "dialogs": 10,
+    "criticalFailures": 0,
+    "noRescalingTo80": true
+  },
+  "reviewers": "ProjectAI primary/cross, nonhuman, unblinded, nonindependent; nohuman orglobalcompetitive claim.",
+  "freeze": "Do not altercases/rubric/protocol/conversion/exclusion afterSHAfreeze. Saveactualoutputs/reviews/technicalreceipts separately."
+}

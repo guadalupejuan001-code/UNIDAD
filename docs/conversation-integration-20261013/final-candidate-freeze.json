@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T03:32:08.201240+00:00",
+  "selectionBeforeReservedOpened": true,
+  "modelId": "unidad-conversation-be6414b4187c33e27aef54e67352aaa78393afb303f7b8daaf8c0eb7c2a558a2",
+  "selectedStep": 384,
+  "nativeTrainingCompletedStep": 512,
+  "files": {
+    "manifest.json": "31d507b96ebcbabd055afd781cd5cec7fa5c410a1929eaf6a0463e0dfd933f96",
+    "weights.safetensors": "3ed2338eb15533d8f1eb401426fa8775955a2c03061bf167756bdac2686c7a78",
+    "tokenizer.json": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+    "config.json": "d30b5cd427fb9711d58e8eb55daf9a32529f872248b706805001e9eebd02f12b"
+  },
+  "localEvaluatedPath": "/workspace/UNIDAD/private/conversation-ready-20261013/runs/history-generated/snapshots/best-step000384",
+  "publishedPath": "models/conversation-integration-20261013/history-generated",
+  "selectionRule": "Greater complete development replies, no increase in critical/technical failures vs C7; lower critical/technical counts break ties. All candidates failed acceptance. Natural candidates produced zero complete replies; no extension.",
+  "selectionReason": "Generated-history384 had one complete reply, zero interpretable critical and zero technical failures, versus C7 one complete/four critical. It loses the baseline complete and gains another: no net conversation gain; reductions reflect omission/incoherence and do not establish factual improvement.",
+  "referencePath": "models/conversation-reference-c7",
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1,
+    "actualGeneratedHistory": true
+  },
+  "acceptance": {
+    "completeRepliesAtLeast": 36,
+    "completeDialogsAtLeast": 8,
+    "criticalFailures": 0,
+    "technicalFailures": 0
+  },
+  "trainingAfterReserved": "forbidden in this study",
+  "conversationAcceptedBeforeReserved": false
+}

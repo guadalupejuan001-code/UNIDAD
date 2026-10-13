@@ -1,0 +1,892 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-ready-data-for-parent-controlled-pair-no-training",
+  "frozenAtUtc": "2026-10-12T18:49:35.782490+00:00",
+  "primaryPair": {
+    "original": "original-paired-corpus.jsonl",
+    "relational": "relational-paired-corpus.jsonl",
+    "trainRecordsPerArm": 4224,
+    "sameValidationRecordsPerArm": 80,
+    "validationSha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+    "futureTrainingOnly": {
+      "start": "own C7",
+      "seed": 61,
+      "updatesMaximum": 128,
+      "secondsMaximumPerArm": 600,
+      "learningRate": 0.0001,
+      "validateCheckpointEvery": 64,
+      "auxiliaryLossWeights": [
+        0.2,
+        0.2
+      ],
+      "objectiveBpeArchitectureRuntime": "unchanged across both arms"
+    },
+    "trainingLaunched": false
+  },
+  "primaryArms": {
+    "original": {
+      "path": "private/pr1-relational-data-contrast-v1/original-paired-corpus.jsonl",
+      "sha256": "86127ba5fb89ccb145401dadc73dbd25d67ca8eb114ad9f0fa8a801128c430e6",
+      "trainRecords": 4224,
+      "validationRecords": 80
+    },
+    "relational": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-paired-corpus.jsonl",
+      "sha256": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30",
+      "trainRecords": 4224,
+      "validationRecords": 80
+    }
+  },
+  "files": {
+    "relational-train.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-train.jsonl",
+      "sha256": "df4be5e83a5eeb0a330f05d8eeb597dbb3f969bdcc105eb397036e9f119341b8"
+    },
+    "original-train.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/original-train.jsonl",
+      "sha256": "3324dcae7c1e4c7e0fb32043685e52792f8243681dde046669a00adbe8cb57ab"
+    },
+    "relational-full-original-validation.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-full-original-validation.jsonl",
+      "sha256": "24e2d52253a8a6e58e44ed9964fc11c37e1783b4e3ceeb1d9f6375180fe129bb"
+    },
+    "relational-paired-corpus.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/relational-paired-corpus.jsonl",
+      "sha256": "c7c260228d1cb6853bd68aac4b4dcd6bb3cb3be6c6caeec8c5b2a4c393c4cc30"
+    },
+    "original-paired-corpus.jsonl": {
+      "path": "private/pr1-relational-data-contrast-v1/original-paired-corpus.jsonl",
+      "sha256": "86127ba5fb89ccb145401dadc73dbd25d67ca8eb114ad9f0fa8a801128c430e6"
+    },
+    "changed-dialogues-state-traces.json": {
+      "path": "private/pr1-relational-data-contrast-v1/changed-dialogues-state-traces.json",
+      "sha256": "99a59681d10c552ef33a808b14ea6a3eae264a1583179b7289e60b22e04a0a5d"
+    },
+    "semantic-review-seeds.json": {
+      "path": "private/pr1-relational-data-contrast-v1/semantic-review-seeds.json",
+      "sha256": "2ac465af4f9d2981f0aeb05dd27bb89c6d14098ac96c4876f744148493b0d486"
+    },
+    "build_relational_contrast.py": {
+      "path": "private/pr1-relational-data-contrast-v1/build_relational_contrast.py",
+      "sha256": "14f784e6acc4d74e971d27f1f77e5ad038eb705a910384ce9e21d1c4400ffdb7"
+    },
+    "audit_exact_pair.py": {
+      "path": "private/pr1-relational-data-contrast-v1/audit_exact_pair.py",
+      "sha256": "2b8b9d212b8d8c55621aac90b7cefeeb020cea832868d3a51647cf58784d27d0"
+    },
+    "freeze_data_pair.py": {
+      "path": "private/pr1-relational-data-contrast-v1/freeze_data_pair.py",
+      "sha256": "a9f105f4a121f67696f404a81f97c688abc46c7e8bfda1fb09b91137361cb0ad"
+    },
+    "build-manifest.json": {
+      "path": "private/pr1-relational-data-contrast-v1/build-manifest.json",
+      "sha256": "bae25fe29e28f57a36656f465900957349a37d4cf6c94e07e1a75949dcad9875"
+    },
+    "exact-pair-audit.json": {
+      "path": "private/pr1-relational-data-contrast-v1/exact-pair-audit.json",
+      "sha256": "b443ce0e57d06d6cde1ecb17add8c0f55fdfbfe86aa5e4324d92ae5182577ce1"
+    },
+    "peer-review-relations.json": {
+      "path": "private/pr1-relational-data-contrast-v1/peer-review-relations.json",
+      "sha256": "f3206f3b2e574b2faa0408afd0cbbe9fb7b63f9ee340436ba15fe9980b643627"
+    },
+    "peer-review-objects.json": {
+      "path": "private/pr1-relational-data-contrast-v1/peer-review-objects.json",
+      "sha256": "63700949e366732876e579239c28b63f4a4a92797131934d43e3c0a231c93ce9"
+    },
+    "peer-review-objects-addendum.json": {
+      "path": "private/pr1-relational-data-contrast-v1/peer-review-objects-addendum.json",
+      "sha256": "86ca7cad157f51207b730a0427c5b1bb69e947b8a6c8971fa52fe1772e44335e"
+    }
+  },
+  "originalSource": {
+    "path": "private/pr1-wording-composition-audit-v1/reproduced-original/repair-corpus.jsonl",
+    "sha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "archivedAllOriginalRecords": 4608,
+    "unchanged": true,
+    "recordsMoved": 0,
+    "originalAuthoringScriptSha256": "2d66e0ff4e7cb9e49aed735dcb5f45d317e4c56ec9a326c08ae22fb1cd1892f9",
+    "worldMetadataSha256": "88a76a66ad298fdb84307a1b41b0c14a080c5c5f4b02b82c5e0c5eafb13afb32"
+  },
+  "validationSource": {
+    "path": "private/pr1-wording-composition-audit-v1/prospective-validation/validation.jsonl",
+    "sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+    "records": 80,
+    "developmentOnly": true,
+    "bothArmsExactSameBytes": true
+  },
+  "trainRecordsPerArm": 4224,
+  "trainWorldGroupsPerArm": 88,
+  "changedFamilies": [
+    "current_and_future_place",
+    "preferred_address",
+    "two_objects",
+    "two_people"
+  ],
+  "changedNativeTrainLines": {
+    "preferred_address": 352,
+    "current_and_future_place": 352,
+    "two_people": 352,
+    "two_objects": 352
+  },
+  "changedMessagesRecords": {
+    "preferred_address": 308,
+    "current_and_future_place": 297,
+    "two_people": 275,
+    "two_objects": 330
+  },
+  "changedLastTargetRecords": {
+    "preferred_address": 88,
+    "current_and_future_place": 132,
+    "two_people": 242,
+    "two_objects": 187
+  },
+  "byteExactUntouchedTrainLines": 2816,
+  "byteExactUntouchedTrainFamilies": 8,
+  "byteExactOldValidationLines": 384,
+  "allSlotsIdsOrderGroupIdsAndSplitsRetained": true,
+  "bounds": {
+    "maximumTrainInputTokens": 253,
+    "maximumLastTargetTokensIncludingEos": 27,
+    "maximumSharedValidationInputTokens": 260,
+    "completeNoTruncation": true,
+    "nativeLoaderPassesBothArms": true,
+    "existingC7BpeSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d"
+  },
+  "balancedCells": {
+    "two_objects": [
+      {
+        "bits": [
+          0,
+          0,
+          0,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          0,
+          0,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1,
+          false
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1,
+          true
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0,
+          true
+        ],
+        "worlds": 6
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1,
+          false
+        ],
+        "worlds": 5
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1,
+          true
+        ],
+        "worlds": 6
+      }
+    ],
+    "preferred_address": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ],
+    "two_people": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ],
+    "current_and_future_place": [
+      {
+        "bits": [
+          0,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          0,
+          1,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          0,
+          1
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          0
+        ],
+        "worlds": 11
+      },
+      {
+        "bits": [
+          1,
+          1,
+          1
+        ],
+        "worlds": 11
+      }
+    ]
+  },
+  "targetExposureFactors": {
+    "two_objects": [
+      {
+        "factor": "colorsEqualAfterCorrection",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "colorsEqualAfterCorrection",
+        "value": "True",
+        "dialogues": 44
+      },
+      {
+        "factor": "correctedColorEntity",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "correctedColorEntity",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "giverDisclosedFor",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "giverDisclosedFor",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastQueriesKnownGiver",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastQueriesKnownGiver",
+        "value": "True",
+        "dialogues": 44
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "amarillo",
+        "dialogues": 10
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "azul",
+        "dialogues": 11
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "blanco",
+        "dialogues": 7
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "gris",
+        "dialogues": 16
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "negro",
+        "dialogues": 8
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "rojo",
+        "dialogues": 11
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "verde",
+        "dialogues": 16
+      },
+      {
+        "factor": "newCorrectionColor",
+        "value": "violeta",
+        "dialogues": 9
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "bag-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "watch-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "requestedColorEntity",
+        "value": "bolso",
+        "dialogues": 44
+      },
+      {
+        "factor": "requestedColorEntity",
+        "value": "reloj",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdQueriesCorrectedEntity",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdQueriesCorrectedEntity",
+        "value": "True",
+        "dialogues": 44
+      }
+    ],
+    "preferred_address": [
+      {
+        "factor": "firstRequestedRole",
+        "value": "identification",
+        "dialogues": 44
+      },
+      {
+        "factor": "firstRequestedRole",
+        "value": "preferred-address",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "alias-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "name-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedRole",
+        "value": "identification",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedRole",
+        "value": "preferred-address",
+        "dialogues": 44
+      },
+      {
+        "factor": "unusedCellBit",
+        "value": "0",
+        "dialogues": 44
+      },
+      {
+        "factor": "unusedCellBit",
+        "value": "1",
+        "dialogues": 44
+      }
+    ],
+    "two_people": [
+      {
+        "factor": "lastCropPerson",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastCropPerson",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastRelationPerson",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "lastRelationPerson",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "A-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "B-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "rosesActorAfterCorrection",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "rosesActorAfterCorrection",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "singer",
+        "value": "A",
+        "dialogues": 44
+      },
+      {
+        "factor": "singer",
+        "value": "B",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedCrop",
+        "value": "rosas",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdRequestedCrop",
+        "value": "tulipanes",
+        "dialogues": 44
+      }
+    ],
+    "current_and_future_place": [
+      {
+        "factor": "firstRequestedRole",
+        "value": "current",
+        "dialogues": 44
+      },
+      {
+        "factor": "firstRequestedRole",
+        "value": "future",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "current-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "presentationOrder",
+        "value": "future-first",
+        "dialogues": 44
+      },
+      {
+        "factor": "secondRequestedRole",
+        "value": "current",
+        "dialogues": 44
+      },
+      {
+        "factor": "secondRequestedRole",
+        "value": "future",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdYesNo",
+        "value": "False",
+        "dialogues": 44
+      },
+      {
+        "factor": "thirdYesNo",
+        "value": "True",
+        "dialogues": 44
+      }
+    ]
+  },
+  "assistantCeExposure": {
+    "original": {
+      "assistantCeTokensIncludingAllAssistantEos": 104519,
+      "lastAssistantTokensIncludingEos": 48434,
+      "byFamilyAllAssistantCeTokens": {
+        "preferred_address": 7353,
+        "missing_information": 7241,
+        "current_and_future_place": 8770,
+        "listening": 8618,
+        "project_change": 12144,
+        "two_people": 12194,
+        "reschedule": 6984,
+        "task_order": 9110,
+        "unknown_author": 8364,
+        "daily_sequence": 7970,
+        "two_objects": 8056,
+        "limits_and_identity": 7715
+      },
+      "byFamilyLastAssistantTokens": {
+        "preferred_address": 3478,
+        "missing_information": 3156,
+        "current_and_future_place": 4135,
+        "listening": 3980,
+        "project_change": 5598,
+        "two_people": 5562,
+        "reschedule": 3128,
+        "task_order": 4444,
+        "unknown_author": 3918,
+        "daily_sequence": 3798,
+        "two_objects": 3589,
+        "limits_and_identity": 3648
+      },
+      "maxInputTokens": 255
+    },
+    "relational": {
+      "assistantCeTokensIncludingAllAssistantEos": 104872,
+      "lastAssistantTokensIncludingEos": 48487,
+      "byFamilyAllAssistantCeTokens": {
+        "preferred_address": 7829,
+        "missing_information": 7241,
+        "current_and_future_place": 8725,
+        "listening": 8618,
+        "project_change": 12144,
+        "two_people": 12320,
+        "reschedule": 6984,
+        "task_order": 9110,
+        "unknown_author": 8364,
+        "daily_sequence": 7970,
+        "two_objects": 7852,
+        "limits_and_identity": 7715
+      },
+      "byFamilyLastAssistantTokens": {
+        "preferred_address": 3626,
+        "missing_information": 3156,
+        "current_and_future_place": 4102,
+        "listening": 3980,
+        "project_change": 5598,
+        "two_people": 5604,
+        "reschedule": 3128,
+        "task_order": 4444,
+        "unknown_author": 3918,
+        "daily_sequence": 3798,
+        "two_objects": 3485,
+        "limits_and_identity": 3648
+      },
+      "maxInputTokens": 253
+    }
+  },
+  "exposureDelta": {
+    "allAssistantCeTokens": 353,
+    "lastAssistantTokensIncludingEos": 53
+  },
+  "guards": {
+    "known60FullUserNormalized": 0,
+    "diagnosis64FullUserNormalized": 0,
+    "diagnosis64UserOnlyPrefixes": 0,
+    "newVal80FullUserNormalized": 0,
+    "newValHeldoutSingleUserDelexForms": 0,
+    "newValHeldoutWholeUserPrefixDelexForms": 0
+  },
+  "guardSources": {
+    "known60Sha256": "42119ddbbf9c9847c5194e08323ff8d389cf5930305762145f2c31dadf7a9286",
+    "diagnosis64HashOnlySha256": "0279193256fd4aa0b8d49fb49965dbe404ed345407f5991c5304502563a3a407",
+    "newVal80Sha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c"
+  },
+  "semanticCompositionExclusion": "No new heldout cross-task recipe is authored: selected tasks retain alias/activity, present/future place, person relation/singing/crops, and object color/giver operations only. Formal delex/prefix guards complement peer semantic review.",
+  "review": {
+    "projectAiOnly": true,
+    "independentHumanReview": false,
+    "acceptedSemanticSeeds": 40,
+    "rejectedSemanticSeeds": 0,
+    "goldResponsesReadAndChecked": 160,
+    "compilerBranchesReviewed": true,
+    "changedRealizedDialogues": 352,
+    "scope": "40 representative factor seeds and compiler paths reviewed; not an exhaustive manual reread of all352 realized dialogues.",
+    "unknownStateCorrection": "Unobserved singing is None, never unsupported False. No USER, gold or native corpus bytes changed.",
+    "preservedPriorReviewSnapshots": {
+      "directory": "peer-reviewed-pre-unknown-fix",
+      "compilerSha256": "d81fb263807d760e634f23c8a499fbfbf7b3c6af9b612c1e70e530c0fa3c03b9",
+      "seedsSha256": "cd7727f4c78ccfdfa41edad115a65c7b801364e4d23829b72982b29aa2155ae0",
+      "stateTracesSha256": "2c28314113a83c12f4ca60e4066b64b3e5b322702f7d37d839b007b26f255ac6"
+    }
+  },
+  "provenance": {
+    "kind": "derivative of first-party authored-synthetic fictional TRAIN worlds",
+    "stateMapsForGold": true,
+    "newParaphraseStyleFamilies": false,
+    "externalTeacherApiCalls": false,
+    "ownerChatsUsed": false,
+    "diagnosticOrHeldoutGoldUsedForAuthoring": false,
+    "developmentUserHashesAndHeldoutUserSkeletonsUsedForExclusionOnly": true
+  },
+  "limits": [
+    "This tests a bounded binding/order/requested-target data contrast, not wording-only improvement or broad conversation.",
+    "Four full prefixes are dependent rows; 88worldgroups and352changed dialogues, not1408independent situations.",
+    "State-map compiler and technical checks do not replace peer semantic review or model evaluation.",
+    "preferred_address secondary cell bit is intentionally unused: four order/query cells have22worlds each; places/people have8cells×11worlds, objects16cells×5–6worlds.",
+    "Data volume and update configuration match; changed token lengths change supervised token exposure, explicitly reported.",
+    "two_objects thirdQueriesCorrectedEntity and lastQueriesKnownGiver both equal q==u; their individual effects are collinear.",
+    "Only one object has a disclosed giver in each dialogue; missing/known-giver results are balanced but not an exhaustive gift-state factorial.",
+    "All four families change as one DATA block; this trial cannot identify each sub-change as a separate causal effect.",
+    "The eight unmodified families inherit archived source ambiguities, including project ownership and daily sequencing; no silent correction is made.",
+    "All40 reviewed seeds cover semantic cells and all three original style branches, but not the exhaustive style-by-cell cross product.",
+    "No improvement of generation, linguistic foundation or final conversation acceptance has yet been measured."
+  ],
+  "coreOrHeadOrRuntimeChanges": false,
+  "modelsLoaded": false,
+  "trainingLaunched": false,
+  "mlRunnerCreated": false,
+  "ownerChatOrOldSealedFinalRead": false
+}

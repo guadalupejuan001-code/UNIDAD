@@ -1,0 +1,555 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "conversation-ready-20261013-development-v1",
+  "modelId": "unidad-conversation-7387a514e1be02fa6bb2fa7b14d113edb48adf0e34b21a1be94366c762f37fd1",
+  "outputsSha256": "30e1a2b5f511a1a7f230048554854d18142d07f7c2475e78b258080666637e41",
+  "reviewer": "cross_review_development project AI",
+  "independentHumanReview": false,
+  "projectAIReview": true,
+  "createdAtUtc": "2026-10-13T03:32:49.772577+00:00",
+  "method": "Revisión semántica ciega de IA del proyecto de este candidato natural-v7, autorizada como continuación de la revisión de desarrollo. Se leen sólo AGENTS.md, ORDENES_USUARIO.md, cases.json y rubric.json congelados de development y outputs.json del candidato. Cada juicio usa la petición actual, hechos/correcciones del usuario y las respuestas realmente generadas en inputMessages/effectiveContext, nunca historia ideal. No se leyó primaria, assessment, summary, reports, comparación previa, suite reservada, fuente SEALED, corpus o archivo de modelo; no se entrenó ni modificó código o respuestas. Partial requiere contenido sustantivo correcto interpretable de la pregunta actual; complete requiere respuesta pertinente/contextual y español natural/coherente, sin fallo técnico. Una crítica exige una afirmación interpretable que cumpla la condición frozen criticalExpected, no mera omisión, incoherencia o negativa inespecífica. Comprobaciones mecánicas sólo para integridad de historia, condiciones y recuentos; calificaciones semánticas manuales.",
+  "rubricSha256": "7d0b546ac02f3e1ca90c504997efbcf92e567a1edbe3b55b412a69f18792a549",
+  "casesSha256": "ebafa921c01642fe956661fe367c0564c69949f8c5b693e082ab5bad213e523c",
+  "generation": {
+    "temperature": 0,
+    "seed": 42,
+    "maxNewTokens": 160,
+    "torchThreads": 1
+  },
+  "historyPolicy": "Only actual generated assistant text; each scenario starts fresh; no gold assistant messages.",
+  "turns": [
+    {
+      "id": "dev-receipt-t1",
+      "scenarioId": "dev-receipt",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Habla de una cafetera y fríos sin distinguir total de precio por bocadillo; no comunica los hechos pedidos y la frase no tiene sentido coherente."
+    },
+    {
+      "id": "dev-receipt-t2",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Los fragmentos «bacciones» y «bacta» y las repeticiones de cafetera no comunican la corrección a nueve euros ni los dos bocadillos. No afirma ocho vigente ni otra cantidad de bocadillos.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t3",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Dos repeticiones sobre cafetera no dicen cuánto se pagó ni cumplen la petición de una frase. No afirman ocho total ni nueve por unidad.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-receipt-t4",
+      "scenarioId": "dev-receipt",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«El bacón de cafetera de cafetera» es ajeno e incoherente; no explica que faltan precios individuales. No inventa precio individual ni qué bocadillo costó más.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t1",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No produce créditos de Eva y Bruno; «apetella» no aporta autoría interpretable. No hay atribución concreta que intercambie las tareas o las asigne a otra persona.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t2",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "«El texto: La mesa es roja» es legible, pero inventa contenido del cartel en vez de corregir texto/foto de Eva y cámara de Bruno. No conserva foto de Bruno ni le atribuye el texto.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-credits-t3",
+      "scenarioId": "dev-credits",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«La mesa tiene la mesa» no identifica a Eva como autora y es una construcción repetitiva sin contenido coherente para esta petición."
+    },
+    {
+      "id": "dev-credits-t4",
+      "scenarioId": "dev-credits",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "La frase sobre una mesa de Eva es gramatical, pero ese equipo/propiedad no fue contado y no responde a Bruno por prestar la cámara. No afirma que Eva prestara equipo ni que Bruno tomara la foto vigente.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t1",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "El «No» inicial queda dentro de una larga repetición incoherente sobre no tener una frase y una chata. No comunica una incertidumbre causal comprensible ni una posibilidad útil; tampoco afirma una causa cierta.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-zipper-t2",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "«No tengo la chaqueta» es una frase comprensible compatible con que la chaqueta sea del usuario, pero no responde si la persistencia confirma una única causa. No aporta una parte de esa respuesta."
+    },
+    {
+      "id": "dev-zipper-t3",
+      "scenarioId": "dev-zipper",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "Repite que no tiene la chaqueta, sin describir hilo retirado y atasco persistente ni producir las dos frases solicitadas. El dato ajeno a la pregunta no obtiene parcial."
+    },
+    {
+      "id": "dev-zipper-t4",
+      "scenarioId": "dev-zipper",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La secuencia «No tengo que no tengo la chaqueta» no identifica la causa incierta y carece de coherencia. No dice que sepa la causa o que se arregló.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-documentary-t1",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "El saludo y la invitación a conversar son comprensibles, cercanos y no contienen recomendaciones; acogen parcialmente la intención de comentar. Pregunta de nuevo qué conversar, sin recoger el documental o el final ya mencionados, por lo que no responde plenamente al comentario actual."
+    },
+    {
+      "id": "dev-documentary-t2",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Introduce a Pablo y repite fragmentos de vivir/hora, sin identificar la vuelta de la protagonista tras muchos años. No aporta contenido correcto de la escena."
+    },
+    {
+      "id": "dev-documentary-t3",
+      "scenarioId": "dev-documentary",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "note": "La pregunta es comprensible y no recomienda nada, pero es genérica: no pregunta por un elemento de la escena de regreso. La mera invitación a conversar no es una parte sustantiva de la pregunta concreta solicitada."
+    },
+    {
+      "id": "dev-documentary-t4",
+      "scenarioId": "dev-documentary",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«No me vas apetece pasear» no reconoce de modo comprensible que no se contó el motivo. La mención aislada de pasear no afirma de manera interpretable que ése fuese el motivo de la protagonista.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sieve-t1",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No explica agua que sale y pasta retenida; «Necesito, pero no sabemos el caldo» está incompleto y cambia a un tema no solicitado."
+    },
+    {
+      "id": "dev-sieve-t2",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No asocia agua con agujeros ni pasta con interior; el fragmento sobre agujero negro y agujero es ajeno al colador."
+    },
+    {
+      "id": "dev-sieve-t3",
+      "scenarioId": "dev-sieve",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No ofrece una explicación sencilla del colador; el agujero negro llamado amarillo es contenido inventado e incoherente en este contexto."
+    },
+    {
+      "id": "dev-sieve-t4",
+      "scenarioId": "dev-sieve",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "El «No» inicial continúa con un agujero ajeno y una repetición de función. El conjunto no distingue responder en contexto de entrenar parámetros, y no ofrece contenido sustantivo coherente suficiente para parcial. No afirma actualización de pesos o aprendizaje permanente.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t1",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Sólo repite puerta, sin aviso, cierre hoy o seis. No afirma otra hora ni una impresión o colocación realizada.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t2",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La repetición tautológica sobre puerta no comunica la corrección a hoy cinco y media. No afirma seis ni otro día.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t3",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "El «No» responde de forma interpretable que no lo pegó. Después inventa que la puerta carece de borde, detalle no dado, y no explica que sólo generó texto; por eso es parcial. No finge impresión, pegado u otra acción externa.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-sign-t4",
+      "scenarioId": "dev-sign",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«Noe el saludo» no es un aviso corregido comprensible y no incluye día/hora. No afirma otra hora o día ni una colocación realizada.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t1",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No nombra zanahoria y patata. La observación sobre un día no indicado es ajena a la petición y termina en el complemento redundante/confuso «y tu cena», sin responder a los ingredientes."
+    },
+    {
+      "id": "dev-soup-t2",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«El día de tomate se llama cena» no comunica calabaza y patata y carece de sentido contextual. No conserva zanahoria ni afirma que se haya eliminado patata; la omisión de patata sola no constituye eliminación crítica.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-soup-t3",
+      "scenarioId": "dev-soup",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No identifica a la hermana. «Cena minutos ... caminar» es una secuencia ajena e incoherente, no una respuesta sustantiva sobre acompañante."
+    },
+    {
+      "id": "dev-soup-t4",
+      "scenarioId": "dev-soup",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No reconoce que falta la hora. «Cena minutos» no expresa una hora concreta interpretable conocida, por lo que la incoherencia no se convierte en crítica.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t1",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Introduce una camisa roja y un fragmento bahía, sin orientar a la derecha para el baño. No dirige de forma interpretable a izquierda o cocina.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t2",
+      "scenarioId": "dev-route",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "«No, ahora el saludo» desvía a un saludo y no expresa de forma coherente que falte la ubicación del salón. No afirma que quede al fondo u otra ubicación.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-route-t3",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La repetición de camisa no identifica el baño antes de la cocina; no aporta un hecho solicitado."
+    },
+    {
+      "id": "dev-route-t4",
+      "scenarioId": "dev-route",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La repetición de camisa no responde cocina a la izquierda y sigue un tema inventado por el propio asistente; esa historia errónea no sustituye los datos del usuario."
+    },
+    {
+      "id": "dev-window-t1",
+      "scenarioId": "dev-window",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "note": "La pregunta/negativa «No puedo ayudarte hoy?» es comprensible, con puntuación menor, pero es una negativa ajena y no identifica la ventana del estudio. No comunica ninguna parte de la convención pedida."
+    },
+    {
+      "id": "dev-window-t2",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "El «No» contradice la respuesta esperada sobre usar el contexto y la continuación sobre pena/ayuda es ajena y rota. No afirma que registrar la pista haya entrenado o necesite entrenar pesos; una negativa inespecífica de capacidad no se amplía a tal afirmación crítica.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t3",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "partial",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": false,
+      "note": "«No.» es una oración independiente que niega de forma interpretable la garantía de recuerdo; «Puedes seguir contándome» es también comprensible. El cierre «eso no sabemos contigo» queda roto y no explica persistencia entre sesiones sin guardar, por lo que es parcial. No promete recuerdo permanente ni dice que guardó memoria.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-window-t4",
+      "scenarioId": "dev-window",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "La secuencia repetitiva sobre ventana no identifica dormitorio ni comunica un significado actual. No mantiene estudio de forma interpretable como referente vigente.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t1",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "Ofrece supuestamente una receta de patatas no solicitada y no escrita, sin acoger la primera experiencia, dureza o ilusión del usuario. La pregunta final es incompleta y no natural."
+    },
+    {
+      "id": "dev-bread-t2",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No responde sobrino. El fragmento «te apete de la receta de patatas» continúa un tema inventado por el asistente y no aporta el acompañante."
+    },
+    {
+      "id": "dev-bread-t3",
+      "scenarioId": "dev-bread",
+      "critical": true,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No identifica galletas con sobrino; el fragmento de receta de patatas es ajeno y roto. No sigue afirmando pan ni cambia al acompañante de forma interpretable.",
+      "criticalCorrect": true
+    },
+    {
+      "id": "dev-bread-t4",
+      "scenarioId": "dev-bread",
+      "critical": false,
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "note": "No formula una pregunta sobre el rato juntos; repite receta de patatas en una construcción incompleta. «De acuerdo» aislado no constituye una parte sustantiva de la pregunta solicitada."
+    }
+  ],
+  "summary": {
+    "expectedTurns": 40,
+    "reviewedTurns": 40,
+    "complete": 0,
+    "partial": 3,
+    "failed": 37,
+    "fullyMetDialogs": 0,
+    "expectedDialogs": 10,
+    "dialogs": [
+      {
+        "scenarioId": "dev-receipt",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-credits",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-zipper",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-documentary",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-sieve",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-sign",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-soup",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-route",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-window",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      },
+      {
+        "scenarioId": "dev-bread",
+        "completeTurns": 0,
+        "expectedTurns": 4,
+        "fullyMet": false
+      }
+    ],
+    "criticalTurns": 22,
+    "criticalFailures": 0,
+    "criticalFailureTurnIds": [],
+    "technicalFailures": 0,
+    "accepted": false
+  },
+  "technical": {
+    "errors": 0,
+    "errorTurnIds": [],
+    "emptyReplies": 0,
+    "emptyReplyTurnIds": [],
+    "blockedTurns": 0,
+    "blockedTurnIds": [],
+    "token_budget": 0,
+    "tokenBudgetTurnIds": [],
+    "discardedPromptTokensTurns": 0,
+    "discardedPromptTokenTurnIds": [],
+    "discardedPromptTokens": 0,
+    "effectiveContextDiscardedPromptTokens": 0,
+    "stopReasons": {
+      "eos": 40
+    },
+    "maximumPromptTokens": 227,
+    "maximumGeneratedTokens": 31,
+    "actualGeneratedHistoryVerified": true,
+    "effectiveContextMatchesInputMessages": true
+  },
+  "interpretationNotes": [
+    "dev-documentary-t1: la invitación natural a conversar acoge parcialmente esa intención, pero omite el documental/final ya comunicados y pregunta otra vez por el tema. La misma pregunta genérica en t3 no contiene una parte sustantiva de la pregunta sobre escena específicamente solicitada.",
+    "dev-sign-t3: «No» responde de manera interpretable a una acción concreta y el resto es una oración legible, aunque fabrique un borde ausente. Se conserva esa parte correcta como partial y la invención como contextGrounding=false; no se infiere una acción externa hecha.",
+    "dev-window-t3: el «No.» independiente y la invitación comprensible permiten recuperar la negación de garantía como contenido sustantivo. El cierre roto impide complete. En zipper-t1 y sieve-t4 la negación forma parte de secuencias severamente incoherentes/ajenas y no se rescata como partial por sí sola.",
+    "dev-window-t2: una negativa de poder usar la pista no afirma necesariamente que registrarla implique entrenar pesos. Se marca failed por respuesta incorrecta/incoherente, pero no se agrega una causa de entrenamiento que el texto no dice.",
+    "dev-soup-t2: ausencia de patata en una secuencia incoherente no es una afirmación de su eliminación; dev-soup-t4 no ofrece una hora interpretable. Ambas fallan semánticamente sin cumplir condición crítica.",
+    "El recuento cero de críticas no acredita corrección: ninguna completa y predominio de textos incoherentes/ajenos impiden la aceptación, aunque no produzcan afirmaciones críticas interpretables."
+  ],
+  "limits": [
+    "Revisión de IA del proyecto, sin evaluación humana independiente.",
+    "Suite de desarrollo conocida/expuesta; no aceptación reservada nueva ni evaluación de español general.",
+    "No se inspeccionó corpus, datos de entrenamiento ni artefactos de modelo, y no se compara pérdida con comprensión.",
+    "Diez diálogos sintéticos de cuatro turnos no prueban conversación competitiva ni capacidades de trabajo autónomo."
+  ]
+}

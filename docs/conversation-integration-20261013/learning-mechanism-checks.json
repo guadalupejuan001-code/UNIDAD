@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "tokenizerSha256": "fca6e470b737f1dd9b5f785b750be42ab13dd1b121aef1dda8b6b5f57d1ea60d",
+  "vocabSize": 8192,
+  "newFitPerformed": false,
+  "trainOnlyTokenizerReused": true,
+  "segmentationExamples": [
+    {
+      "text": "¿Cómo estás? Ayer cambié de idea.",
+      "tokens": [
+        "Â¿",
+        "CÃ³mo",
+        "ĠestÃ¡s",
+        "?",
+        "ĠAy",
+        "er",
+        "Ġcambi",
+        "Ã©",
+        "Ġde",
+        "Ġidea",
+        "."
+      ],
+      "ids": [
+        1020,
+        3677,
+        3259,
+        36,
+        6189,
+        271,
+        1007,
+        319,
+        264,
+        2636,
+        19
+      ],
+      "tokenCount": 11,
+      "roundTripExact": true
+    },
+    {
+      "text": "Zórvila y Aïsha hablaron con Ñelmo.",
+      "tokens": [
+        "Z",
+        "Ã³r",
+        "vi",
+        "la",
+        "Ġy",
+        "ĠA",
+        "Ã",
+        "¯",
+        "s",
+        "ha",
+        "Ġhablar",
+        "on",
+        "Ġcon",
+        "ĠÃ",
+        "ĳ",
+        "el",
+        "mo",
+        "."
+      ],
+      "ids": [
+        63,
+        987,
+        375,
+        340,
+        292,
+        335,
+        133,
+        113,
+        88,
+        1088,
+        3421,
+        274,
+        304,
+        1082,
+        245,
+        395,
+        416,
+        19
+      ],
+      "tokenCount": 18,
+      "roundTripExact": true
+    },
+    {
+      "text": "No: quien prestó la taza fue otra persona.",
+      "tokens": [
+        "No",
+        ":",
+        "Ġquien",
+        "Ġpres",
+        "tÃ³",
+        "Ġla",
+        "Ġtaza",
+        "Ġfue",
+        "Ġotra",
+        "Ġpersona",
+        "."
+      ],
+      "ids": [
+        1581,
+        31,
+        1339,
+        620,
+        1094,
+        283,
+        5776,
+        491,
+        1488,
+        1516,
+        19
+      ],
+      "tokenCount": 11,
+      "roundTripExact": true
+    },
+    {
+      "text": "Me falta saber a qué hora llegará.",
+      "tokens": [
+        "Me",
+        "Ġfalta",
+        "Ġsaber",
+        "Ġa",
+        "ĠquÃ©",
+        "Ġhora",
+        "Ġllegar",
+        "Ã¡",
+        "."
+      ],
+      "ids": [
+        2396,
+        3428,
+        2575,
+        275,
+        1602,
+        3103,
+        2086,
+        306,
+        19
+      ],
+      "tokenCount": 9,
+      "roundTripExact": true
+    }
+  ],
+  "historicalControlsVerified": {
+    "docs/work-experiment-20261012/learning-control-results.json": {
+      "sha256": "d08752a6a8617cd0234b6d7fbc6375fd9003d1c29e9642b7bd8cf6e6dfa34337",
+      "sourceDate": "2026-10-12",
+      "rerunDuringThisStudy": false
+    },
+    "docs/work-experiment-20261012/control-endpoint64-results.json": {
+      "sha256": "57141c41a0ae0b05eeb898810750a42fb46f2f8765b483eb3f38ddf7fd973e07",
+      "sourceDate": "2026-10-12",
+      "rerunDuringThisStudy": false
+    },
+    "docs/work-experiment-20261012/random-control-results.json": {
+      "sha256": "5519de76fd3458c02a61ce66bac99bae09f50afb08f4222e1d53fa9e3fbe2d82",
+      "sourceDate": "2026-10-12",
+      "rerunDuringThisStudy": false
+    },
+    "docs/work-experiment-20261012/wording-probe.json": {
+      "sha256": "53e042490c1f962727f46c12e4187908a2519fbfa3ff5a52a652a3f48d7196f7",
+      "sourceDate": "2026-10-12",
+      "rerunDuringThisStudy": false
+    }
+  },
+  "historicalControlResult": "C7-derived and random-origin matched controls: 16/16 exact TRAIN replies at 64 steps; wording transfer 7/8 vs 0/8 exact, semantic7/8 vs1/8. Historical evidence, not new acceptance.",
+  "historicalControlsRepeated": false,
+  "reasonNotRepeated": "Existing matched overfit controls already demonstrate memorization; shared evidence preserved rather than repeating training after final freeze.",
+  "processStatusRegression": {
+    "test": "test_conversation_training.ConversationTrainingTests.test_detached_planned_stop_and_invalid_worker_status",
+    "result": "passed in final 494-test suite",
+    "checks": [
+      "planned and processAlive after launch",
+      "cooperative stop with native checkpoint",
+      "malformed corpus worker becomes failed"
+    ],
+    "historicalStaleFailureReproducedInCurrentEnvironment": false,
+    "deadWorkerStillReportsStale": true
+  },
+  "learningAuditTests": "software/tests.log causal invariance, shift/EOS/padding, last-reply masks, BF16/F32 gradients/Adam, exact resume and mmap parity all pass",
+  "generalConversationProvedByTheseChecks": false
+}

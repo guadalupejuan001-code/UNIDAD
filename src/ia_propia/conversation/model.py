@@ -408,7 +408,11 @@ def chat(model, tokenizer, messages, max_new_tokens=DEFAULT_MAX_NEW_TOKENS,
             with torch.inference_mode():
                 for _ in range(max_new_tokens):
                     inputs = torch.tensor([context[-model.config["context_length"]:]], dtype=torch.long, device=device)
-                    logits = model(inputs)[0, -1].float()
+                    # Every token still reaches the Transformer and copy head;
+                    # decoding only needs the final position's distribution.
+                    selected = torch.zeros_like(inputs, dtype=torch.bool)
+                    selected[:, -1] = True
+                    logits = model.selected_logits(inputs, selected)[0].float()
                     if not torch.all(torch.isfinite(logits)):
                         raise ConversationError("Generation produced nonfinite logits")
                     logits[forbidden] = -torch.inf

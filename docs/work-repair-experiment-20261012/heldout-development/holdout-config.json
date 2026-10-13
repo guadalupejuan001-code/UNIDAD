@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "status": "frozen-development-validation-only",
+  "use": "validation-development-only; not FINAL, never TRAIN",
+  "oldCorpusUnchangedSha256": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+  "wholeUnitReservation": [
+    "originalGroupId",
+    "formulationFamilyId",
+    "compositionFamilyId"
+  ],
+  "oldRecordsMoved": 0,
+  "trainRecords": 0,
+  "validationRecords": 80,
+  "fullDialogues": 20,
+  "originalValidationWorlds": 8,
+  "wordingFamilies": 12,
+  "newCompleteWordingUserForms": 48,
+  "newCompositionFamilies": 8,
+  "newCompositionUserForms": 32,
+  "cleanWordingPairs": 10,
+  "sourceAmbiguityClarifiedWordingPairs": 2,
+  "families": [
+    {
+      "id": "preferred_address",
+      "kind": "wording",
+      "worldIndex": 88,
+      "formulationFamilyId": "val-only-wording-preferred_address-wording-v1",
+      "userTemplates": [
+        "Aunque mi nombre es {name}, prefiero que te dirijas a mí como {alias}. Dime cómo me vas a llamar.",
+        "Para esta tarde tengo ganas de {first}. Recuérdame ese plan.",
+        "Voy a sustituir mi apodo por {new_alias}. Usa el que acabo de elegir: ¿cuál es?",
+        "Repasa los dos apodos por orden: el primero y el que sigue vigente."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-088"
+    },
+    {
+      "id": "missing_information",
+      "kind": "wording",
+      "worldIndex": 89,
+      "formulationFamilyId": "val-only-wording-missing_information-wording-v1",
+      "userTemplates": [
+        "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificarlo con esos datos?",
+        "Te doy el dato que faltaba: ese abrigo tiene color {color}. Dime su color.",
+        "La persona que me entregó ese abrigo fue {name}. Identifica a quien me lo dio.",
+        "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-089"
+    },
+    {
+      "id": "current_and_future_place",
+      "kind": "wording",
+      "worldIndex": 90,
+      "formulationFamilyId": "val-only-wording-current_and_future_place-wording-v1",
+      "userTemplates": [
+        "Todavía me encuentro en {city}; tengo previsto ir a {dest}. Indica el lugar en el que estoy en este momento.",
+        "He sustituido {dest} por {changed} en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+        "Sigo aquí, en {city}, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a {changed}?",
+        "Resume mi punto de partida y el destino que quedó elegido al final."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-090"
+    },
+    {
+      "id": "listening",
+      "kind": "wording",
+      "worldIndex": 91,
+      "formulationFamilyId": "val-only-wording-listening-wording-v1",
+      "userTemplates": [
+        "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+        "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+        "Quien lo cambió fue {name}, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+        "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-091"
+    },
+    {
+      "id": "project_change",
+      "kind": "wording",
+      "worldIndex": 92,
+      "formulationFamilyId": "val-only-wording-project_change-wording-v1",
+      "userTemplates": [
+        "Tengo un proyecto propio de dibujos que lleva el título {title}. Di qué proyecto es y su nombre.",
+        "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+        "Voy a ponerle el título {title2}, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+        "Explica el vínculo entre este proyecto mío y las tardes con mi abuela."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-092"
+    },
+    {
+      "id": "two_people",
+      "kind": "wording",
+      "worldIndex": 93,
+      "formulationFamilyId": "val-only-wording-two_people-wording-v1",
+      "userTemplates": [
+        "Mi hermana se llama {name}. El vecino es {other}. Asocia cada nombre con su relación conmigo.",
+        "De esas dos personas, {name} canta y {other} se ocupa de las rosas. Indica quién canta.",
+        "Rectifico el cultivo: las rosas las cuida {name} y los tulipanes, {other}. Señala a quien cuida las rosas.",
+        "Recupera dos datos: mi parentesco con {name} y las flores que cultiva {other} después de la corrección."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-093"
+    },
+    {
+      "id": "reschedule",
+      "kind": "wording",
+      "worldIndex": 94,
+      "formulationFamilyId": "val-only-wording-reschedule-wording-v1",
+      "userTemplates": [
+        "Mi encuentro con {name} está previsto para el {day}, a {hour}. Indica el día y la hora de ese encuentro.",
+        "Hemos cambiado al {day2}, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+        "El lugar elegido para vernos es {place}. Nombra el sitio del encuentro.",
+        "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-094"
+    },
+    {
+      "id": "task_order",
+      "kind": "wording",
+      "worldIndex": 95,
+      "formulationFamilyId": "val-only-wording-task_order-wording-v1",
+      "userTemplates": [
+        "Mi plan comienza por {first} y continúa con {second}. Identifica la actividad inicial.",
+        "Las dos actividades siguen en el plan, pero intercambio sus posiciones: {second} irá al principio. Dime qué va primero ahora.",
+        "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+        "Compara la primera actividad del plan inicial con la primera del plan revisado."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-095"
+    },
+    {
+      "id": "unknown_author",
+      "kind": "wording",
+      "worldIndex": 88,
+      "formulationFamilyId": "val-only-wording-unknown_author-wording-v1",
+      "userTemplates": [
+        "Estoy buscando el libro de ficción titulado {title}. Repite el título de la novela que busco.",
+        "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+        "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+        "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-088"
+    },
+    {
+      "id": "daily_sequence",
+      "kind": "wording",
+      "worldIndex": 89,
+      "formulationFamilyId": "val-only-wording-daily_sequence-wording-v1",
+      "userTemplates": [
+        "Mi costumbre de la mañana es {first}, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+        "Cuando termino esa primera actividad, paso a {second}. Dime qué hago antes de la segunda.",
+        "Traslado {first} a la noche; {second} seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+        "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-089"
+    },
+    {
+      "id": "two_objects",
+      "kind": "wording",
+      "worldIndex": 90,
+      "formulationFamilyId": "val-only-wording-two_objects-wording-v1",
+      "userTemplates": [
+        "Tengo dos objetos: un bolso de color {color} y un reloj de color {color2}. Señala el color de este último.",
+        "Quien me regaló el bolso fue {name}. Recuerda a esa persona.",
+        "Debo rectificar lo que dije sobre el reloj: su color es {color}. Quédate con el dato corregido y repítelo.",
+        "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-090"
+    },
+    {
+      "id": "limits_and_identity",
+      "kind": "wording",
+      "worldIndex": 91,
+      "formulationFamilyId": "val-only-wording-limits_and_identity-wording-v1",
+      "userTemplates": [
+        "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+        "Por mi parte, mi nombre es {name}. Recuérdame cómo me llamo.",
+        "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+        "Recapitula los datos sobre mí que realmente he compartido contigo aquí."
+      ],
+      "eventOperations": null,
+      "originalGroupId": "repair-20261012-world-091"
+    },
+    {
+      "id": "location_and_appointment",
+      "kind": "composition",
+      "worldIndex": 88,
+      "formulationFamilyId": "val-only-composition-location_and_appointment-wording-v1",
+      "userTemplates": [
+        "Me encuentro en {city} y viajaré a {dest}. Separa mi ubicación de mi destino.",
+        "Antes del viaje veré a {name} el {day}, a {hour}, en {place}. Di cuándo y dónde será esa cita.",
+        "La cita pasa al {day2}. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+        "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita."
+      ],
+      "eventOperations": [
+        "current_and_future_place",
+        "appointment_day_hour_place",
+        "replace_appointment_day_preserve_trip",
+        "joint_current_place_future_trip_and_appointment"
+      ],
+      "originalGroupId": "repair-20261012-world-088"
+    },
+    {
+      "id": "alias_identity_and_other_person",
+      "kind": "composition",
+      "worldIndex": 89,
+      "formulationFamilyId": "val-only-composition-alias_identity_and_other_person-wording-v1",
+      "userTemplates": [
+        "Mi nombre es {name} y el apodo que prefiero es {alias}. Distingue ambos datos.",
+        "Mi vecino se llama {other}. ¿Cómo se llama mi vecino?",
+        "Para dirigirte a mí, cambia el apodo a {new_alias}; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+        "Dime mi nombre, el apodo actual y quién es la otra persona mencionada."
+      ],
+      "eventOperations": [
+        "name_and_preferred_alias",
+        "other_person_relation",
+        "replace_alias_preserve_real_name",
+        "joint_real_name_current_alias_other_relation"
+      ],
+      "originalGroupId": "repair-20261012-world-089"
+    },
+    {
+      "id": "people_and_reassigned_tasks",
+      "kind": "composition",
+      "worldIndex": 90,
+      "formulationFamilyId": "val-only-composition-people_and_reassigned_tasks-wording-v1",
+      "userTemplates": [
+        "La hermana que menciono es {name}; mi vecino se llama {other}. Recuerda quién es cada persona.",
+        "{name} va a {first} y {other} va a {second}. ¿Qué hará {name}?",
+        "Intercambiaron las tareas: ahora {name} va a {second} y {other} va a {first}. ¿Quién va a {first}?",
+        "Di qué relación tiene {other} conmigo y qué tarea hará; luego indica quién hará la otra tarea."
+      ],
+      "eventOperations": [
+        "sibling_neighbor_mapping",
+        "assign_independent_tasks",
+        "swap_task_responsibility_preserve_relations",
+        "joint_relation_current_task_and_actor"
+      ],
+      "originalGroupId": "repair-20261012-world-090"
+    },
+    {
+      "id": "objects_known_giver_and_missing_price",
+      "kind": "composition",
+      "worldIndex": 91,
+      "formulationFamilyId": "val-only-composition-objects_known_giver_and_missing_price-wording-v1",
+      "userTemplates": [
+        "Los colores son estos: el bolso es {color} y el reloj, {color2}. Repite cuál corresponde a cada objeto.",
+        "{name} me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+        "Corrijo sólo el bolso: también es {color2}. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+        "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso."
+      ],
+      "eventOperations": [
+        "two_object_colors",
+        "watch_giver_bag_giver_unknown",
+        "correct_bag_color_preserve_watch_giver",
+        "joint_watch_giver_and_unknown_bag_price"
+      ],
+      "originalGroupId": "repair-20261012-world-091"
+    },
+    {
+      "id": "project_and_separate_book",
+      "kind": "composition",
+      "worldIndex": 92,
+      "formulationFamilyId": "val-only-composition-project_and_separate_book-wording-v1",
+      "userTemplates": [
+        "Mi proyecto de dibujos se titula {title}. Por otro lado, busco una novela titulada {title2}. Distingue los dos títulos.",
+        "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+        "El proyecto pasará a llamarse {new_alias}. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+        "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?"
+      ],
+      "eventOperations": [
+        "owned_project_and_separate_book",
+        "project_grandmother_origin",
+        "rename_project_preserve_book_title",
+        "joint_project_current_name_book_title_unknown_author"
+      ],
+      "originalGroupId": "repair-20261012-world-092"
+    },
+    {
+      "id": "routine_and_rescheduled_appointment",
+      "kind": "composition",
+      "worldIndex": 93,
+      "formulationFamilyId": "val-only-composition-routine_and_rescheduled_appointment-wording-v1",
+      "userTemplates": [
+        "Voy a {first}, que me relaja. Además, tengo una cita el {day} a {hour}. ¿Qué actividad me relaja?",
+        "Después de esa actividad voy a {second}. ¿En qué orden haré las dos cosas?",
+        "Muevo la cita al {day2}, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+        "Recupera el orden de las actividades y el día y la hora actuales de la cita."
+      ],
+      "eventOperations": [
+        "first_relaxing_activity_and_appointment",
+        "second_activity_after_first",
+        "replace_appointment_day_preserve_activity_order",
+        "joint_activity_sequence_and_appointment"
+      ],
+      "originalGroupId": "repair-20261012-world-093"
+    },
+    {
+      "id": "listening_with_actor_correction",
+      "kind": "composition",
+      "worldIndex": 94,
+      "formulationFamilyId": "val-only-composition-listening_with_actor_correction-wording-v1",
+      "userTemplates": [
+        "Me molestó que mi colega {name} cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+        "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+        "Me confundí al nombrar a la persona: fue mi colega {other}, no {name}. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+        "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones."
+      ],
+      "eventOperations": [
+        "grievance_actor_and_no_advice",
+        "one_clarifying_question_requested",
+        "replace_actor_preserve_grievance",
+        "joint_current_actor_grievance_without_advice"
+      ],
+      "originalGroupId": "repair-20261012-world-094"
+    },
+    {
+      "id": "object_correction_preserves_location",
+      "kind": "composition",
+      "worldIndex": 95,
+      "formulationFamilyId": "val-only-composition-object_correction_preserves_location-wording-v1",
+      "userTemplates": [
+        "Estoy en {city} y llevo un bolso {color}. Di dónde estoy y el color del bolso.",
+        "Más adelante viajaré a {dest}, pero todavía no he salido. ¿Dónde sigo?",
+        "El color que di era erróneo: el bolso es {color2}. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+        "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección."
+      ],
+      "eventOperations": [
+        "current_place_and_object_color",
+        "future_place_preserve_current",
+        "correct_object_color_preserve_places",
+        "joint_current_place_future_place_corrected_object"
+      ],
+      "originalGroupId": "repair-20261012-world-095"
+    }
+  ],
+  "rules": [
+    "All four USER formulations in each formulation family are reserved together.",
+    "All four operations in each new composition recipe are reserved together.",
+    "Every prefix and any later variant of an original world stays VALIDATION.",
+    "Future TRAIN authoring must reject reserved USER exact/norm and delex templates and entire declared recipes.",
+    "Existing 4224 TRAIN and 384 VAL records remain byte-for-byte unchanged.",
+    "No augmentation is selected before the independent wording/history baseline factorial results."
+  ],
+  "limits": [
+    "Fictional first-party authored examples, no human corpus quality claim.",
+    "Whole formulation and event recipes are held out; ordinary Spanish vocabulary and elementary operations are shared.",
+    "The eight factual worlds were already old VAL, not new independent world or vocabulary samples.",
+    "These exposed cases support development selection, not FINAL acceptance.",
+    "Exact delex equality does not prove semantic or lexical independence."
+  ],
+  "freezeCorpusSha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+  "independentPeerReviewSha256": "b551d6b509d6858ff6a28ee569ff388952f9eb98372b2a1fec75f75aca49781c",
+  "semanticReviewLimit": "Separate same-project AI agent, unblinded, not human or independent external validation."
+}

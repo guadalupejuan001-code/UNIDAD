@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Secondary exposed-development evaluation of three own models from authorized held-out VAL80; never TRAIN or FINAL.",
+  "authorship": {
+    "derivation": "Offline conversion from project-authored synthetic validation.jsonl; two explicit USER clarifications before any heldout-val80 model output.",
+    "reviewer": "/root/linguistic_development, project AI agent",
+    "humanIndependentEvaluation": false,
+    "sourceValidationReadAuthorized": true,
+    "trainingBodiesRead": false,
+    "reservedFinalRead": false,
+    "newVal80ModelOutputsSeen": false
+  },
+  "generation": {
+    "maxNewTokens": 160,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "sourceValidationSha256": "e305adb7fec7c045d2b3ca2d066297aac9dcc04bc5f580c54dae55ac664ab37c",
+  "episodes": [
+    {
+      "id": "pr1rel-val-v1-01",
+      "topic": "preferred_address",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-088-heldout-wording-preferred_address",
+      "sourceGroupId": "repair-20261012-world-088",
+      "turns": [
+        {
+          "user": "Aunque mi nombre es Clara Campos, prefiero que te dirijas a mí como Cometa. Dime cómo me vas a llamar.",
+          "constraints": [
+            "Indicar que se dirigirá a quien habla con el apodo Cometa; distinguirlo de Clara Campos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Para esta tarde tengo ganas de limpiar la cocina. Recuérdame ese plan.",
+          "constraints": [
+            "Recordar el plan de limpiar la cocina. Mencionar esta tarde es opcional; no cambiar ese momento si se menciona.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Voy a sustituir mi apodo por Lucero. Usa el que acabo de elegir: ¿cuál es?",
+          "constraints": [
+            "Identificar Lucero como apodo elegido ahora, conservando Cometa sólo como anterior si aparece.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Repasa los dos apodos por orden: el primero y el que sigue vigente.",
+          "constraints": [
+            "Distinguir por orden Cometa como primer apodo y Lucero como vigente.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-02",
+      "topic": "missing_information",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-089-heldout-wording-missing_information",
+      "sourceGroupId": "repair-20261012-world-089",
+      "turns": [
+        {
+          "user": "Hay un abrigo entre mis cosas. Su color aún no lo he mencionado; ¿puedes identificar su color con esos datos?",
+          "constraints": [
+            "Reconocer que aún no puede identificar el color del abrigo porque no se ha compartido; puede pedir el dato.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Te doy el dato que faltaba: ese abrigo tiene color verde. Dime su color.",
+          "constraints": [
+            "Identificar verde como color del abrigo.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "La persona que me entregó ese abrigo fue Sonia Hidalgo. Identifica a quien me lo dio.",
+          "constraints": [
+            "Identificar a Sonia Hidalgo como quien entregó el abrigo.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Separa lo conocido de lo desconocido: el color del abrigo y el dinero que pagaron por él.",
+          "constraints": [
+            "Expresar color verde conocido y precio no informado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-03",
+      "topic": "current_and_future_place",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-090-heldout-wording-current_and_future_place",
+      "sourceGroupId": "repair-20261012-world-090",
+      "turns": [
+        {
+          "user": "Todavía me encuentro en Ribera Dorada; tengo previsto ir a Ribera Verde. Indica el lugar en el que estoy en este momento.",
+          "constraints": [
+            "Identificar Ribera Dorada como ubicación actual.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "He sustituido Ribera Verde por Sierra Blanca en mi plan de viaje. Dime a qué lugar pienso ir finalmente.",
+          "constraints": [
+            "Identificar Sierra Blanca como destino elegido tras sustituir Ribera Verde.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Sigo aquí, en Ribera Dorada, sin haber iniciado el viaje. ¿Se puede decir que ya llegué a Sierra Blanca?",
+          "constraints": [
+            "Negar que ya haya llegado a Sierra Blanca y conservar Ribera Dorada como ubicación actual.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Resume mi punto de partida y el destino que quedó elegido al final.",
+          "constraints": [
+            "Distinguir Ribera Dorada como partida y Sierra Blanca como destino elegido.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-04",
+      "topic": "listening",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-091-heldout-wording-listening",
+      "sourceGroupId": "repair-20261012-world-091",
+      "turns": [
+        {
+          "user": "El día se me hizo duro. Me ayudaría contártelo y que me escucharas sin darme recomendaciones.",
+          "constraints": [
+            "Acoger la intención de contar y escuchar sin recomendaciones. Una confirmación de escucha o invitación pertinente es válida; no exigir la pregunta exacta del gold.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Cambiaron mi trabajo sin consultarme y eso me molestó. Hazme una pregunta sobre lo que pasó.",
+          "constraints": [
+            "Hacer una pregunta pertinente sobre el cambio del trabajo sin consultarle. No exigir que sea la pregunta por el responsable.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Quien lo cambió fue Lidia Campos, que trabaja conmigo; mi hermana no fue. Identifica a la persona responsable.",
+          "constraints": [
+            "Identificar a Lidia Campos, colega de quien habla, como responsable; no atribuirlo a la hermana.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Devuélveme en una frase el motivo de mi malestar. Mantén mi petición de no dar consejos.",
+          "constraints": [
+            "Resumir en una frase el malestar por el cambio del trabajo sin consultarle; conservar petición de no dar consejos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-05",
+      "topic": "project_change",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-092-heldout-wording-project_change",
+      "sourceGroupId": "repair-20261012-world-092",
+      "turns": [
+        {
+          "user": "Tengo un proyecto propio de dibujos que lleva el título Trazos del río. Di qué proyecto es y su nombre.",
+          "constraints": [
+            "Identificar Trazos del río como proyecto propio de dibujos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Empecé ese proyecto por las tardes que pasaba dibujando con mi abuela. Cuenta de dónde salió la idea.",
+          "constraints": [
+            "Relacionar el origen con las tardes dibujando con la abuela.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Voy a ponerle el título Retratos de otoño, aunque su contenido seguirá siendo dibujos. Describe el cambio y lo que se conserva.",
+          "constraints": [
+            "Describir el título nuevo elegido Retratos de otoño y que se conserva el contenido de dibujos. Admitir descripción del cambio como anunciado o planificado, coherente con «Voy a ponerle».",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Explica el vínculo entre este proyecto mío y las tardes con mi abuela.",
+          "constraints": [
+            "Relacionar el proyecto con las tardes dibujando con la abuela como origen/inspiración.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-06",
+      "topic": "two_people",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-093-heldout-wording-two_people",
+      "sourceGroupId": "repair-20261012-world-093",
+      "turns": [
+        {
+          "user": "Mi hermana se llama Iria Romero. El vecino es Julián Ortiz. Asocia cada nombre con su relación conmigo.",
+          "constraints": [
+            "Asociar Iria Romero con hermana y Julián Ortiz con vecino.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "De esas dos personas, Iria Romero canta y Julián Ortiz se ocupa de las rosas. Indica quién canta.",
+          "constraints": [
+            "Identificar a Iria Romero como quien canta.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Rectifico el cultivo: las rosas las cuida Iria Romero y los tulipanes, Julián Ortiz. Señala a quien cuida las rosas.",
+          "constraints": [
+            "Identificar a Iria Romero como quien cuida las rosas después de la corrección.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Recupera dos datos: mi parentesco con Iria Romero y las flores que cultiva Julián Ortiz después de la corrección.",
+          "constraints": [
+            "Expresar parentesco de hermana con Iria Romero y tulipanes como flores de Julián Ortiz después de la corrección.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-07",
+      "topic": "reschedule",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-094-heldout-wording-reschedule",
+      "sourceGroupId": "repair-20261012-world-094",
+      "turns": [
+        {
+          "user": "Mi encuentro con Noelia Hidalgo está previsto para el viernes, a las siete. Indica el día y la hora de ese encuentro.",
+          "constraints": [
+            "Identificar viernes y las siete como momento del encuentro.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Hemos cambiado al miércoles, pero mantenemos la hora que acordamos. Reúne el nuevo día y esa hora.",
+          "constraints": [
+            "Identificar miércoles como día nuevo y conservar las siete.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "El lugar elegido para vernos es la cafetería. Nombra el sitio del encuentro.",
+          "constraints": [
+            "Identificar cafetería como lugar del encuentro.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Con los cambios ya hechos, reúne cuándo y dónde tendrá lugar nuestra cita.",
+          "constraints": [
+            "Reunir miércoles, las siete y cafetería como datos actuales de la cita.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-08",
+      "topic": "task_order",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-095-heldout-wording-task_order",
+      "sourceGroupId": "repair-20261012-world-095",
+      "turns": [
+        {
+          "user": "Mi plan comienza por ordenar los libros y continúa con hacer un dibujo. Identifica la actividad inicial.",
+          "constraints": [
+            "Identificar ordenar los libros como actividad inicial.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Las dos actividades siguen en el plan, pero intercambio sus posiciones: hacer un dibujo irá al principio. Dime qué va primero ahora.",
+          "constraints": [
+            "Identificar hacer un dibujo como actividad ahora prioritaria; las dos tareas permanecen.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Nombra únicamente la actividad que quedará para después. Esta pregunta no te pide hacer las tareas.",
+          "constraints": [
+            "Nombrar ordenar los libros como actividad posterior, sin hacer tareas ni afirmar su ejecución. Se admite un marco mínimo como «Después vas a…»; no exigir infinitivo desnudo exacto.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Compara la primera actividad del plan inicial con la primera del plan revisado.",
+          "constraints": [
+            "Contrastar ordenar los libros primero en el plan inicial con hacer un dibujo primero en el plan revisado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-09",
+      "topic": "unknown_author",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-088-heldout-wording-unknown_author",
+      "sourceGroupId": "repair-20261012-world-088",
+      "turns": [
+        {
+          "user": "Estoy buscando el libro de ficción titulado Historias de la lluvia. Repite el título de la novela que busco.",
+          "constraints": [
+            "Identificar Historias de la lluvia como título de la novela buscada.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "La identidad de quien escribió la novela no aparece en lo que te he contado. ¿Conoces ese nombre?",
+          "constraints": [
+            "Reconocer que no sabe el autor por los datos compartidos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "La necesito para conversar sobre ella en clase. Recuerda el motivo por el que quiero encontrarla.",
+          "constraints": [
+            "Identificar conversar/comentar la novela en clase como finalidad.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Junta el título y el motivo de mi búsqueda, y aclara qué dato del autor sigue pendiente.",
+          "constraints": [
+            "Reunir título Historias de la lluvia, finalidad de comentarla en clase y autor no informado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-10",
+      "topic": "daily_sequence",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-089-heldout-wording-daily_sequence",
+      "sourceGroupId": "repair-20261012-world-089",
+      "turns": [
+        {
+          "user": "Mi costumbre de la mañana es limpiar la cocina, y esa actividad me ayuda a relajarme. Identifica qué me relaja.",
+          "constraints": [
+            "Identificar limpiar la cocina como actividad que le relaja.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Cuando termino esa primera actividad, paso a regar el huerto. Dime qué hago antes de la segunda.",
+          "constraints": [
+            "Identificar limpiar la cocina como actividad anterior a regar el huerto.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Traslado limpiar la cocina a la noche; regar el huerto seguirá después de esa actividad. Indica el nuevo momento de la primera.",
+          "constraints": [
+            "Identificar noche como nuevo momento de limpiar la cocina.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Recuerda la secuencia que mantengo tras cambiar la hora de la primera actividad.",
+          "constraints": [
+            "Conservar limpiar la cocina antes de regar el huerto tras cambiar el horario. Aceptar formulación habitual o de plan; no exigir el futuro del gold.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-11",
+      "topic": "two_objects",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-090-heldout-wording-two_objects",
+      "sourceGroupId": "repair-20261012-world-090",
+      "turns": [
+        {
+          "user": "Tengo dos objetos: un bolso de color gris y un reloj de color blanco. Señala el color de este último.",
+          "constraints": [
+            "Identificar blanco como color inicial del reloj, sin confundirlo con el bolso gris.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Quien me regaló el bolso fue Lidia Campos. Recuerda a esa persona.",
+          "constraints": [
+            "Identificar a Lidia Campos como donante del bolso.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Debo rectificar lo que dije sobre el reloj: su color es gris. Quédate con el dato corregido y repítelo.",
+          "constraints": [
+            "Identificar gris como color corregido del reloj.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Dime si he identificado a la persona que me dio el reloj, distinguiéndolo del bolso.",
+          "constraints": [
+            "Reconocer que no se ha identificado al donante del reloj, distinguiéndolo del donante conocido del bolso.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-12",
+      "topic": "limits_and_identity",
+      "holdoutKind": "wording",
+      "sourceSeedId": "repair-20261012-world-091-heldout-wording-limits_and_identity",
+      "sourceGroupId": "repair-20261012-world-091",
+      "turns": [
+        {
+          "user": "Me gustaría saber el nombre de este asistente. ¿Cómo te llamas tú?",
+          "constraints": [
+            "Identificar al asistente como Unidad, con identidad explícita del contexto por defecto del runtime registrada.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Por mi parte, mi nombre es Lidia Campos. Recuérdame cómo me llamo.",
+          "constraints": [
+            "Identificar a quien habla como Lidia Campos; no intercambiar identidad de asistente y usuario.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Mi domicilio no ha salido en esta conversación. ¿Tienes ese dato?",
+          "constraints": [
+            "Reconocer que el domicilio de quien habla no ha sido compartido.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Recapitula los datos sobre mí que realmente he compartido contigo aquí.",
+          "constraints": [
+            "Recapitular sólo el nombre Lidia Campos como dato personal compartido sobre quien habla; no atribuirle el nombre del asistente ni domicilio inventado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-13",
+      "topic": "location_and_appointment",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-088-heldout-composition-location_and_appointment",
+      "sourceGroupId": "repair-20261012-world-088",
+      "turns": [
+        {
+          "user": "Me encuentro en Isla Verde y viajaré a Ribera Alta. Separa mi ubicación de mi destino.",
+          "constraints": [
+            "Distinguir Isla Verde como ubicación y Ribera Alta como destino previsto.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Antes del viaje veré a Clara Campos el martes, a las cuatro, en el teatro. Di cuándo y dónde será esa cita.",
+          "constraints": [
+            "Identificar martes, las cuatro y teatro como momento/lugar de la cita con Clara Campos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "La cita pasa al viernes. La hora y el sitio no cambian, ni tampoco el destino del viaje. ¿A dónde viajaré?",
+          "constraints": [
+            "Conservar Ribera Alta como destino del viaje pese al cambio de día de la cita.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Reúne mi ubicación actual, el destino del viaje y el día, la hora y el lugar definitivos de la cita.",
+          "constraints": [
+            "Reunir ubicación Isla Verde, destino Ribera Alta y cita el viernes a las cuatro en el teatro.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-14",
+      "topic": "alias_identity_and_other_person",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-089-heldout-composition-alias_identity_and_other_person",
+      "sourceGroupId": "repair-20261012-world-089",
+      "turns": [
+        {
+          "user": "Mi nombre es Sonia Hidalgo y el apodo que prefiero es Sauce. Distingue ambos datos.",
+          "constraints": [
+            "Distinguir Sonia Hidalgo como nombre y Sauce como apodo preferido.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Mi vecino se llama Felipe Suárez. ¿Cómo se llama mi vecino?",
+          "constraints": [
+            "Identificar a Felipe Suárez como vecino.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Para dirigirte a mí, cambia el apodo a Brisa; mi nombre sigue igual. ¿Cuál es el apodo actual?",
+          "constraints": [
+            "Identificar Brisa como apodo actual; el nombre Sonia Hidalgo no cambia.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Dime mi nombre, el apodo actual y quién es la otra persona mencionada.",
+          "constraints": [
+            "Reunir nombre Sonia Hidalgo, apodo actual Brisa y Felipe Suárez como vecino mencionado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-15",
+      "topic": "people_and_reassigned_tasks",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-090-heldout-composition-people_and_reassigned_tasks",
+      "sourceGroupId": "repair-20261012-world-090",
+      "turns": [
+        {
+          "user": "La hermana que menciono es Lidia Campos; mi vecino se llama Tomás Hidalgo. Recuerda quién es cada persona.",
+          "constraints": [
+            "Identificar a Lidia Campos como hermana y a Tomás Hidalgo como vecino.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Lidia Campos va a leer una novela y Tomás Hidalgo va a recoger el correo. ¿Qué hará Lidia Campos?",
+          "constraints": [
+            "Identificar leer una novela como tarea inicial de Lidia Campos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Intercambiaron las tareas: ahora Lidia Campos va a recoger el correo y Tomás Hidalgo va a leer una novela. ¿Quién va a leer una novela?",
+          "constraints": [
+            "Identificar a Tomás Hidalgo como quien leerá una novela tras el intercambio.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Di qué relación tiene Tomás Hidalgo conmigo y qué tarea hará; luego indica quién hará la otra tarea.",
+          "constraints": [
+            "Expresar Tomás Hidalgo como vecino que leerá una novela y Lidia Campos como quien hará la otra tarea, recoger el correo. La referencia inequívoca a «la otra» es válida si la asignación queda clara.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-16",
+      "topic": "objects_known_giver_and_missing_price",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-091-heldout-composition-objects_known_giver_and_missing_price",
+      "sourceGroupId": "repair-20261012-world-091",
+      "turns": [
+        {
+          "user": "Los colores son estos: el bolso es gris y el reloj, verde. Repite cuál corresponde a cada objeto.",
+          "constraints": [
+            "Asociar bolso con gris y reloj con verde.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Lidia Campos me dio el reloj; no he mencionado quién me dio el bolso. ¿Conoces al donante del bolso?",
+          "constraints": [
+            "Reconocer que el donante del bolso no se indicó; Lidia Campos es donante del reloj.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Corrijo sólo el bolso: también es verde. Lo demás queda igual. ¿Qué objeto acabo de corregir?",
+          "constraints": [
+            "Identificar el bolso como objeto recién corregido. Mencionar su color verde es opcional; no usar gris como vigente.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Recuerda quién me dio el reloj y aclara si sabes cuánto costó el bolso.",
+          "constraints": [
+            "Identificar a Lidia Campos como donante del reloj y reconocer precio del bolso no informado.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-17",
+      "topic": "project_and_separate_book",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-092-heldout-composition-project_and_separate_book",
+      "sourceGroupId": "repair-20261012-world-092",
+      "turns": [
+        {
+          "user": "Mi proyecto de dibujos se titula Trazos del río. Por otro lado, busco una novela titulada Retratos de otoño. Distingue los dos títulos.",
+          "constraints": [
+            "Distinguir Trazos del río como proyecto propio de dibujos y Retratos de otoño como novela aparte.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "La idea del proyecto nació de las tardes dibujando con mi abuela. ¿De dónde nació la idea?",
+          "constraints": [
+            "Identificar las tardes dibujando con la abuela como origen del proyecto.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "El proyecto ha pasado a llamarse Lince. El título de la novela no cambia. ¿Cómo se llama ahora cada uno?",
+          "constraints": [
+            "Identificar Lince como título ya vigente del proyecto en el USER derivado aclarado; conservar Retratos de otoño como título de la novela.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Identifica el nombre actual del proyecto y el título de la novela. No he mencionado a su autor: ¿quién la escribió?",
+          "constraints": [
+            "Identificar proyecto actual Lince y novela Retratos de otoño, reconociendo que no se indicó quién escribió la novela.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-18",
+      "topic": "routine_and_rescheduled_appointment",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-093-heldout-composition-routine_and_rescheduled_appointment",
+      "sourceGroupId": "repair-20261012-world-093",
+      "turns": [
+        {
+          "user": "Voy a ordenar los libros, que me relaja. Además, tengo una cita el miércoles a las siete. ¿Qué actividad me relaja?",
+          "constraints": [
+            "Identificar ordenar los libros como actividad que le relaja.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Después de esa actividad voy a lavar la ropa. ¿En qué orden haré las dos cosas?",
+          "constraints": [
+            "Expresar ordenar los libros primero y lavar la ropa después.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Muevo la cita al viernes, conservando la hora. Las dos actividades siguen en el mismo orden. ¿Cuándo es la cita ahora?",
+          "constraints": [
+            "Identificar viernes y las siete como cita actual tras cambiar miércoles.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Recupera el orden de las actividades y el día y la hora actuales de la cita.",
+          "constraints": [
+            "Reunir el orden libros→ropa y la cita actual viernes a las siete.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-19",
+      "topic": "listening_with_actor_correction",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-094-heldout-composition-listening_with_actor_correction",
+      "sourceGroupId": "repair-20261012-world-094",
+      "turns": [
+        {
+          "user": "Me molestó que mi colega Noelia Hidalgo cambiara mi trabajo sin consultarme. Quiero que me escuches y no me aconsejes.",
+          "constraints": [
+            "Acoger el deseo de contar/ser escuchado, sin consejos. Puede reflejar el cambio del trabajo sin consulta como motivo de malestar, sin exigir literalmente el gold.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Hazme una sola pregunta sobre cómo me afectó ese cambio.",
+          "constraints": [
+            "Hacer una sola pregunta pertinente sobre cómo le afectó ese cambio; sin dar consejos ni inventar sentimientos concretos.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Me confundí al nombrar a la persona: fue mi colega Mateo Romero, no Noelia Hidalgo. El cambio de mi trabajo sí ocurrió. ¿Quién lo hizo?",
+          "constraints": [
+            "Identificar a Mateo Romero, colega, como responsable tras corregir Noelia Hidalgo; conservar que el cambio del trabajo ocurrió.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        },
+        {
+          "user": "Recoge el motivo de mi malestar con el nombre corregido. Sigue escuchando sin sugerir soluciones.",
+          "constraints": [
+            "Recoger el cambio del trabajo sin consulta como motivo del malestar, nombrando correctamente a Mateo Romero; no sugerir soluciones.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos.",
+            "Conservar la petición de escuchar sin dar consejos durante todo el episodio."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pr1rel-val-v1-20",
+      "topic": "object_correction_preserves_location",
+      "holdoutKind": "composition",
+      "sourceSeedId": "repair-20261012-world-095-heldout-composition-object_correction_preserves_location",
+      "sourceGroupId": "repair-20261012-world-095",
+      "turns": [
+        {
+          "user": "Estoy en Ladera Nueva y llevo un bolso rojo. Di dónde estoy y el color del bolso.",
+          "constraints": [
+            "Reunir ubicación Ladera Nueva y bolso rojo.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Más adelante viajaré a Ribera Alta, pero todavía no he salido. ¿Dónde sigo?",
+          "constraints": [
+            "Conservar Ladera Nueva como ubicación actual pese al destino Ribera Alta.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "El color que di era erróneo: el bolso es blanco. Mi ubicación y el plan de viaje siguen igual. ¿Cuál es su color?",
+          "constraints": [
+            "Identificar blanco como color corregido del bolso.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        },
+        {
+          "user": "Resume dónde me encuentro, a dónde viajaré y de qué color es el bolso según la corrección.",
+          "constraints": [
+            "Reunir ubicación Ladera Nueva, destino Ribera Alta y bolso blanco corregido.",
+            "Responder en español pertinente e inteligible; admitir paráfrasis semánticamente equivalentes, no exigir exact-match.",
+            "No contradecir ningún hecho compartido en USER1..USERactual, aunque pertenezca a otro objeto/persona o no sea lo preguntado. Aplicar la última corrección y permitir referencias correctas a hechos históricos.",
+            "No presentar como hechos datos personales/relaciones/identidades, lugares, horarios, autores, precios, donantes u otros detalles concretos no compartidos."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "rubric": {
+    "C": "Completa: satisface todas las restricciones de la intención y los hechos; español inteligible. Se aceptan paráfrasis, cortesía convencional y errores menores que no cambien los hechos.",
+    "P": "Parcial: contiene una parte pertinente y correcta, pero omite o expresa de forma incompleta alguna parte solicitada; no contradice hechos críticos, no inventa datos y no viola una negativa explícita.",
+    "F": "Fallida: contradice o inventa un hecho crítico, invierte referentes o correcciones, viola una instrucción negativa explícita, responde a otro asunto sin parte pertinente, o resulta ininteligible.",
+    "criticalMeaning": "Una contradicción, invención o desobediencia explícita en una restricción crítica implica F. La mera omisión de una parte, con una respuesta útil y correcta y sin contradicción, puede ser P.",
+    "oldValues": "Se permite mencionar un dato anterior al contrastarlo correctamente con el vigente; presentarlo como actual es un fallo.",
+    "unknowns": "Un hecho no indicado debe permanecer desconocido. Se admite pedirlo o explicar la limitación; adivinarlo no demuestra conocimiento.",
+    "style": "No se exige una frase literal ni un estilo afectivo específico. No penalizar una respuesta breve que satisfaga la intención.",
+    "episode": "C sólo si todos sus cuatro turnos generados son C; P si todos fueron generados, no hay F y al menos uno es P; F si hay algún F. Si hay turnos bloqueados o no generados, informar incompleto por separado.",
+    "review": "Revisión semántica manual posterior, sin autoatribuir calificaciones. Informar tipo de revisor, cegamiento y acceso a rúbricas. Dos asistentes del proyecto no son revisión humana o aceptación externa."
+  },
+  "criticalAccounting": {
+    "distinctTurns": true,
+    "oneDominantTypePerTurn": true,
+    "incoherentFragmentsNotCompletedIntoInventedFacts": true,
+    "omissionsAloneNotCritical": true
+  },
+  "archivedBaselineSummary": {
+    "C": 7,
+    "P": 5,
+    "F": 28,
+    "turnCounts": {
+      "C": 7,
+      "P": 5,
+      "F": 28
+    },
+    "requestedTurns": 40,
+    "reviewedActualTurns": 40,
+    "constraintJudgments": 120,
+    "constraintStatusCounts": {
+      "not_satisfied": 50,
+      "satisfied": 59,
+      "violated": 11
+    },
+    "episodeCounts": {
+      "C": 0,
+      "P": 0,
+      "F": 10
+    },
+    "completeCorrectEpisodes": 0,
+    "incompleteEpisodes": 0,
+    "criticalFailureTurns": 6,
+    "criticalTurnIds": [
+      "ngdev-v1-01-t4",
+      "ngdev-v1-03-t3",
+      "ngdev-v1-03-t4",
+      "ngdev-v1-04-t3",
+      "ngdev-v1-06-t3",
+      "ngdev-v1-10-t3"
+    ],
+    "criticalCounts": {
+      "contradiction": 5,
+      "invention": 1,
+      "disobedience": 0
+    },
+    "actualOutputs": 40,
+    "executionErrors": 0,
+    "blockedTurns": 0,
+    "truncatedPrompts": 0,
+    "stopReasons": {
+      "eos": 40
+    },
+    "generatedTokensMin": 4,
+    "generatedTokensMax": 22,
+    "promptTokensMax": 203,
+    "budget32ReachedTurns": 0
+  },
+  "sourceCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a"
+}

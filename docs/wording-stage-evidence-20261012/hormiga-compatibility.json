@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-12",
+  "hormigaCommit": "1751ce4fe5daed3bea998ecb26b438dce491b20b",
+  "unidadRuntimeCommit": "f61bf85e0be353e32224305afd2dbda6fbd73d5f",
+  "fileImport": {
+    "hormiga": "GGUF header required; LocalModelManager.inspect, llama.cpp JNI b5046 fixed at 74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+    "unidad": "Custom unidad-conversation-transformer, safetensors, own tokenizer/config/manifest; no GGUF exporter/backend for this architecture in inspected code",
+    "dropInCompatible": false
+  },
+  "http": {
+    "hormiga": "OpenAI-compatible /chat/completions and optional /embeddings; private contexts refused by RemoteModelProvider",
+    "unidad": "/v1/requests, operation conversation.reply, Bearer auth; different request and response envelopes",
+    "dropInCompatible": false
+  },
+  "limits": {
+    "unidadContextTokens": 512,
+    "hormigaReasoningOutputBudget": 1800,
+    "structuredOutputValidatedForUnidad": false,
+    "hormigaConsoleIsChat": false
+  },
+  "deviceInferenceExecuted": false,
+  "hormigaFilesModified": false,
+  "sources": [
+    "https://github.com/guadalupejuan001-code/Hormiga-X/blob/1751ce4fe5daed3bea998ecb26b438dce491b20b/core/src/main/kotlin/hormigax/core/Providers.kt",
+    "https://github.com/guadalupejuan001-code/Hormiga-X/blob/1751ce4fe5daed3bea998ecb26b438dce491b20b/core/src/main/kotlin/hormigax/core/Reasoning.kt",
+    "https://github.com/guadalupejuan001-code/Hormiga-X/blob/1751ce4fe5daed3bea998ecb26b438dce491b20b/native/README.md",
+    "https://github.com/guadalupejuan001-code/Hormiga-X/blob/1751ce4fe5daed3bea998ecb26b438dce491b20b/android/README.md"
+  ],
+  "nextNecessaryWork": "For an on-device import, implement an explicitly supported backend/export for the actual architecture and a compatible importer. A transport bridge alone cannot demonstrate structured reasoning quality, expand learned context, or bypass privacy routing. First test the selected artifact through native ConversationEngine/CLI."
+}

@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "arm": "v1",
+  "frozenAtUnix": 1791825696.4176548,
+  "request": {
+    "corpus_path": "/workspace/scratch/cee2efe6e4f7/unidad-fix/repair-corpus.jsonl",
+    "run_dir": "/workspace/scratch/cee2efe6e4f7/unidad-fix/pointer-v1-run",
+    "model_config": {
+      "context_length": 512,
+      "copy_head": {
+        "rank": 32,
+        "seed": 47,
+        "version": 1
+      },
+      "d_model": 256,
+      "dropout": 0.0,
+      "ffn_multiplier": 4,
+      "n_heads": 8,
+      "n_layers": 6,
+      "seed": 42,
+      "vocab_size": 8192
+    },
+    "training_config": {
+      "batch_size": 8,
+      "learning_rate": 0.0001,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "max_epochs": 1000,
+      "max_steps": 256,
+      "max_seconds": 600,
+      "validation_every": 128,
+      "checkpoint_every": 128,
+      "patience": 12,
+      "seed": 61,
+      "torch_threads": 4,
+      "warmup_steps": 32,
+      "window_policy": "sliding_context",
+      "objective": "assistant_last_reply",
+      "loss_reduction": "token_mean",
+      "projection_mode": "supervised",
+      "partition_policy": "train_validation_only",
+      "train_precision": "cpu_bfloat16",
+      "copy_supervision": {
+        "alignment_weight": 0.2,
+        "gate_weight": 0.2
+      }
+    },
+    "resume": false,
+    "budget_seconds": 600,
+    "initial_model": "/workspace/scratch/cee2efe6e4f7/UNIDAD/models/conversation-reference-c7"
+  },
+  "hypothesis": "A key including the actual source token makes copying and disambiguation easier than a key containing only its preceding context. This is experimental, not a proven explanation of all C7 failures.",
+  "changedBetweenArms": [
+    "copy_head.version; keys h[j-1] versus h[j]"
+  ],
+  "matched": [
+    "all starting tensor bytes",
+    "tokenizer",
+    "corpus",
+    "split",
+    "training seed",
+    "optimizer initialization",
+    "configuration",
+    "fixed endpoint 256 steps",
+    "generation"
+  ],
+  "selection": "Report both fixed endpoints for architecture comparison; export validation-best independently. No generation-based checkpoint selection.",
+  "knownTarget": "F <= 14/40, critical failures <= 6; report complete and partial responses too",
+  "sourceCommit": "b5fc677dfeb90b5e9cbd50f26cf878fad6a79d6a",
+  "hashes": {
+    "repair-corpus.jsonl": "862996c131ea17e3623f55530b2f6d61e1d4f64e37672bc99581c19df17a7186",
+    "known-dev.json": "59f9097815b988e5046a72e729e53359ba6aaf05848c592d9a67953e3f27608b",
+    "fresh-probe.json": "2d1b04daca63e36d1674848524c40dbdfe1cdeb2f7bcbd9f1aea22b252d5f807"
+  },
+  "testUsedForTrainingOrSelection": false,
+  "externalWeights": false,
+  "runtimeTemplates": false,
+  "userScreenshotConsidered": "2026-10-12 13:18 America/New_York: other Codex already ran revised-text experiments; this pair isolates source-key alignment."
+}
