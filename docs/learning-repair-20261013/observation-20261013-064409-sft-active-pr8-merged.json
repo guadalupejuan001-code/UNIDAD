@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-13T06:44:09.982428+00:00",
+  "kind": "append_only_sft_progress_and_pr8_merge_observation",
+  "historicalReceipts": [
+    {
+      "path": "docs/learning-repair-20261013/current-observation.json",
+      "sha256": "fa490d8ed3593a083f5263deafd96ccb55fce5ebf6e605839674ed2935e6f6f5",
+      "rewritten": false
+    },
+    {
+      "path": "docs/learning-repair-20261013/observation-20261013-052609-resume-sft-queued.json",
+      "sha256": "23d2e3db35b1dcf504bd6edcd6d5c00f30bf163dd45076b1c6c54c17f6f5a044",
+      "rewritten": false
+    },
+    {
+      "path": "docs/learning-repair-20261013/observation-20261013-062351-base-complete-sft-active.json",
+      "sha256": "17269ce3efd1da5b49f1c8a16b6e01c8e800d99caf2a325ae0ebb5c281b06619",
+      "rewritten": false
+    }
+  ],
+  "statusFileSha256AtRead": "7df1928d3b741ad79df99f049c810f8e9292993cbc88c66c3c3c21039f61aae8",
+  "supervisorStateFileSha256AtRead": "d68e816b90351a0b9975b16c1a8b334655a94f8a7eb373785eae0249938fb1d0",
+  "activeSft": {
+    "status": "running",
+    "step": 2200,
+    "epoch": 0,
+    "elapsedSeconds": 1626.7857295560007,
+    "bestValidationNll": 1.7358122940936034,
+    "bestCheckpoint": "step-000002048-5e4848b899fa468094d0e2fa72b48cac",
+    "lastCheckpoint": "step-000002048-5e4848b899fa468094d0e2fa72b48cac",
+    "trainingObjective": "assistant_last_reply",
+    "trainedFrom": "own_checkpoint",
+    "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+    "partitionPolicy": "train_validation_only",
+    "testPartitionPresent": false,
+    "lineage": {
+      "parentCorpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+      "parentModelId": "unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398",
+      "parentWeightsSha256": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+      "rootOrigin": "random_weights"
+    },
+    "reason": null
+  },
+  "sftTrainableParameterCount": 15179520,
+  "sftProcess": {
+    "pid": 13379,
+    "expectedBirth": "1558057",
+    "observedBirth": "1558057",
+    "alive": true
+  },
+  "supervisorProcess": {
+    "pid": 13378,
+    "expectedBirth": "1556040",
+    "observedBirth": "1556040",
+    "alive": true
+  },
+  "operationalState": "training",
+  "conversationCertification": "awaiting_review",
+  "supervisorConfigSha256": "b1b7dfb39d4744f8ffb2eafa981b2c60b3f0fd8b72bcd9977f4cceae58551bad",
+  "collectorEnabled": true,
+  "postStageDevelopmentGenerationEnabled": true,
+  "queuedExpansion": {
+    "cycleId": "wide-spanish-v1",
+    "queueManifestSha256": "7051a2fcc3bdac43012d9aa374e1cd7974a82135cbe8b52ce3798032e18b0099",
+    "parentStage": "conversation-v1:conversation-15m",
+    "stageIds": [
+      "base",
+      "conversation-retention"
+    ],
+    "corpusSha256": "d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6",
+    "manifestSha256": "4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488",
+    "splitCounts": {
+      "train": 4084,
+      "validation": 621,
+      "test": 0
+    },
+    "addedRecords": 2406,
+    "rehearsalRecords": 2299,
+    "newSourceWordTotalTrainAndValidation": 1470331,
+    "started": false
+  },
+  "verifiedLocalFileSha256": {
+    "docs/learning-repair-20261013/continual-stage-transition-repair.json": "48e50cdda5199f4892433c414c130de375d6e457fd7b4b250c5f03903fd630b7",
+    "docs/learning-repair-20261013/foundation-15m-final-delivery.json": "a310b6a02ac819ad9b5ba4d55797d128926edbe6e2d7863f4c717768501cca75",
+    "docs/learning-repair-20261013/foundation-15m-final-target-exposure.json": "824d701dae28bae8f7103a4179b3bfbf4a2ed39bcf936655e66e42e0ff5ab3c8",
+    "models/learning-repair-20261013/foundation-15m/final/config.json": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc",
+    "models/learning-repair-20261013/foundation-15m/final/tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "models/learning-repair-20261013/foundation-15m/final/manifest.json": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88",
+    "models/learning-repair-20261013/foundation-15m/final/weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+    "examples/learning-repair-20261013/wide-spanish-v1/wide-spanish.shard-001.train-validation.jsonl": "d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6",
+    "examples/learning-repair-20261013/wide-spanish-v1/wide-spanish.shard-001.manifest.json": "4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488"
+  },
+  "pullRequest8": {
+    "headRefOid": "8a7dc3f43a5797fe81e0873ecbdd881c8e8a619f",
+    "isDraft": false,
+    "mergeCommit": {
+      "oid": "34e5fd0c772305acdb18616c684c7c4cf7450cac"
+    },
+    "mergedAt": "2026-10-13T06:42:44Z",
+    "number": 8,
+    "state": "MERGED",
+    "url": "https://github.com/guadalupejuan001-code/UNIDAD/pull/8"
+  },
+  "githubActions": [
+    {
+      "conclusion": "",
+      "databaseId": 38358257321,
+      "headBranch": "main",
+      "headSha": "34e5fd0c772305acdb18616c684c7c4cf7450cac",
+      "status": "in_progress",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38358257321"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38356784618,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "8a7dc3f43a5797fe81e0873ecbdd881c8e8a619f",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356784618"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38356685472,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "8a7dc3f43a5797fe81e0873ecbdd881c8e8a619f",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356685472"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38355571276,
+      "headBranch": "main",
+      "headSha": "32d08dacb070e349e8bbf3213133cb695d3e5f19",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38355571276"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38354851309,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "033148c6d0d09feefd6127f718b1dd4149cbad4c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354851309"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38354665171,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "033148c6d0d09feefd6127f718b1dd4149cbad4c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354665171"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38343754693,
+      "headBranch": "work/conversation-ready-20261013",
+      "headSha": "242aa3e57368352f72bea6704833f70be376b84c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38343754693"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38343754622,
+      "headBranch": "main",
+      "headSha": "242aa3e57368352f72bea6704833f70be376b84c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38343754622"
+    }
+  ],
+  "githubFileBytesVerifiedByThisObservation": false,
+  "softwareTestsRunForThisObservation": false,
+  "conversationGenerationPerformedForThisObservation": false,
+  "reservedFinalEvaluationOpened": false,
+  "conversationAccepted": false,
+  "environmentLifetimeGuaranteed": false
+}

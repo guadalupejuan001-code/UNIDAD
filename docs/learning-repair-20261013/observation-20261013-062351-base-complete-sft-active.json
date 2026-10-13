@@ -1,0 +1,291 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-13T06:23:51.102809+00:00",
+  "kind": "append_only_completed_base_active_sft_observation",
+  "historicalReceipts": [
+    {
+      "path": "docs/learning-repair-20261013/current-observation.json",
+      "sha256": "fa490d8ed3593a083f5263deafd96ccb55fce5ebf6e605839674ed2935e6f6f5",
+      "rewritten": false
+    },
+    {
+      "path": "docs/learning-repair-20261013/observation-20261013-052609-resume-sft-queued.json",
+      "sha256": "23d2e3db35b1dcf504bd6edcd6d5c00f30bf163dd45076b1c6c54c17f6f5a044",
+      "rewritten": false
+    }
+  ],
+  "completedBase": {
+    "status": "completed",
+    "step": 8914,
+    "epoch": 3,
+    "elapsedSeconds": 7337.687718068,
+    "bestValidationNll": 2.981873986010036,
+    "bestCheckpoint": "step-000008914-ec5f112fedf545ff9fd3a0bafeeb2365",
+    "lastCheckpoint": "step-000008914-fbd42a9742a243efa27110956f99aaa7",
+    "reason": "total_time_budget",
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17"
+  },
+  "baseActualExposure": {
+    "updates": 8914,
+    "actualWindowDraws": 71297,
+    "actualTargetPositions": 22906669,
+    "receiptPath": "docs/learning-repair-20261013/foundation-15m-final-target-exposure.json",
+    "receiptSha256": "824d701dae28bae8f7103a4179b3bfbf4a2ed39bcf936655e66e42e0ff5ab3c8",
+    "positionsCountRepeatedExposureNotUniqueContent": true
+  },
+  "baseArtifact": {
+    "modelId": "unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398",
+    "publicPath": "models/learning-repair-20261013/foundation-15m/final",
+    "files": {
+      "config.json": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc",
+      "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+      "weights.safetensors": "d2f00827ca0a74e175ab1189e1ed9d0f495e3a5f6b52981602022b892b37694d",
+      "manifest.json": "082dd9675092a49560dad0386dc91a83bf4816032f5c7319cf4ec7a2b4d89e88"
+    },
+    "receiptPath": "docs/learning-repair-20261013/foundation-15m-final-delivery.json",
+    "receiptSha256": "a310b6a02ac819ad9b5ba4d55797d128926edbe6e2d7863f4c717768501cca75",
+    "publicationAsRecorded": {
+      "gitHubUploadVerified": false,
+      "localFilesPrepared": true
+    }
+  },
+  "transitionRepair": {
+    "receiptPath": "docs/learning-repair-20261013/continual-stage-transition-repair.json",
+    "receiptSha256": "48e50cdda5199f4892433c414c130de375d6e457fd7b4b250c5f03903fd630b7",
+    "failure": "TypeError: Supervisor.event() got multiple values for argument 'kind'",
+    "nativeBaseAlreadyCompleted": true,
+    "nativeSignalSent": false,
+    "baseOptimizerRestarted": false,
+    "fixes": [
+      "event_name allows payload.kind",
+      "obsolete operational reason cleared",
+      "resolved executable identity permits python/python3 aliases"
+    ]
+  },
+  "activeSft": {
+    "status": "running",
+    "step": 512,
+    "elapsedSeconds": 402.28915915900143,
+    "bestValidationNll": 2.738113564504704,
+    "trainingObjective": "assistant_last_reply",
+    "trainedFrom": "own_checkpoint",
+    "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+    "partitionPolicy": "train_validation_only",
+    "testPartitionPresent": false
+  },
+  "sftTrainableParameterCount": 15179520,
+  "sftProcess": {
+    "pid": 13379,
+    "expectedBirth": "1558057",
+    "observedBirth": "1558057",
+    "alive": true
+  },
+  "supervisorProcess": {
+    "pid": 13378,
+    "expectedBirth": "1556040",
+    "observedBirth": "1556040",
+    "alive": true
+  },
+  "supervisorConfigSha256": "b1b7dfb39d4744f8ffb2eafa981b2c60b3f0fd8b72bcd9977f4cceae58551bad",
+  "statusFileSha256AtRead": "cc328aabc0b2ccb9d5887e08e8ae58f51f2e48d8cfa5c64d2589c5947f1e92f8",
+  "conversationCertification": "awaiting_review",
+  "collectorEnabled": true,
+  "postStageDevelopmentGenerationEnabled": true,
+  "queuedExpansion": {
+    "cycleId": "wide-spanish-v1",
+    "queueManifestSha256": "7051a2fcc3bdac43012d9aa374e1cd7974a82135cbe8b52ce3798032e18b0099",
+    "parentStage": "conversation-v1:conversation-15m",
+    "stageIds": [
+      "base",
+      "conversation-retention"
+    ],
+    "corpusSha256": "d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6",
+    "contentSha256": "6eae70e1ad58ffa81c3d0dd79a44fac54095d16ed5ac24db7894e956fc81a300",
+    "manifestSha256": "4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488",
+    "splitCounts": {
+      "test": 0,
+      "train": 4084,
+      "validation": 621
+    },
+    "addedRecords": 2406,
+    "rehearsalRecords": 2299,
+    "newSourceWordTotalTrainAndValidation": 1470331,
+    "costSourceGenre": [
+      {
+        "genre": "public-reviewed-conversation-rehearsal",
+        "key": "oasst-rehearsal",
+        "payloadUtf8Bytes": 1801665,
+        "records": 2299,
+        "serializedBytes": 3145431,
+        "sourceMetadataUtf8Bytes": 983796,
+        "splits": {
+          "train": 2059,
+          "validation": 240
+        },
+        "words": 277063
+      },
+      {
+        "genre": "historical-essay-and-grammar",
+        "key": "wikisource",
+        "payloadUtf8Bytes": 1476914,
+        "records": 85,
+        "serializedBytes": 1578891,
+        "sourceMetadataUtf8Bytes": 82045,
+        "splits": {
+          "train": 30,
+          "validation": 55
+        },
+        "words": 241877
+      },
+      {
+        "genre": "historical-fiction-prose-poetry",
+        "key": "gutenberg",
+        "payloadUtf8Bytes": 2702568,
+        "records": 177,
+        "serializedBytes": 2904931,
+        "sourceMetadataUtf8Bytes": 133815,
+        "splits": {
+          "train": 161,
+          "validation": 16
+        },
+        "words": 482039
+      },
+      {
+        "genre": "community-sentences-and-translations",
+        "key": "tatoeba",
+        "payloadUtf8Bytes": 4130011,
+        "records": 1432,
+        "serializedBytes": 10919383,
+        "sourceMetadataUtf8Bytes": 6448006,
+        "splits": {
+          "train": 1223,
+          "validation": 209
+        },
+        "words": 710328
+      },
+      {
+        "genre": "lexicographic-glosses-forms-examples",
+        "key": "wiktionary",
+        "payloadUtf8Bytes": 259098,
+        "records": 712,
+        "serializedBytes": 1055555,
+        "sourceMetadataUtf8Bytes": 704400,
+        "splits": {
+          "train": 611,
+          "validation": 101
+        },
+        "words": 36087
+      }
+    ],
+    "testUsedForTraining": false,
+    "started": false
+  },
+  "remoteHeads": [
+    {
+      "sha": "32d08dacb070e349e8bbf3213133cb695d3e5f19",
+      "ref": "refs/heads/main"
+    },
+    {
+      "sha": "033148c6d0d09feefd6127f718b1dd4149cbad4c",
+      "ref": "refs/heads/work/learning-repair-20261013"
+    }
+  ],
+  "pullRequests": [
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "32d08dacb070e349e8bbf3213133cb695d3e5f19"
+      },
+      "number": 7,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "75e216f67afc94b96e5d604edea2ff7230337655"
+      },
+      "number": 6,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "ed8ea8f4b2cf05037219b03d9a4b5a80f90e47ee"
+      },
+      "number": 5,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "6a0218bbae32065ee3fef4752c36dd6518849772"
+      },
+      "number": 4,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "3d65f2a0ebed8e9e36a594cce00b35a4a022e77e"
+      },
+      "number": 3,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "186b5d33e6d275af3ebe423f38654a01be3ff4a4"
+      },
+      "number": 2,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "2e60c7627271f9aaf9e3170749dde9173d3ef07a"
+      },
+      "number": 1,
+      "state": "MERGED"
+    }
+  ],
+  "githubActions": [
+    {
+      "conclusion": "success",
+      "databaseId": 38355571276,
+      "headBranch": "main",
+      "headSha": "32d08dacb070e349e8bbf3213133cb695d3e5f19",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38355571276"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38354851309,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "033148c6d0d09feefd6127f718b1dd4149cbad4c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354851309"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38354665171,
+      "headBranch": "work/learning-repair-20261013",
+      "headSha": "033148c6d0d09feefd6127f718b1dd4149cbad4c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354665171"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 38343754693,
+      "headBranch": "work/conversation-ready-20261013",
+      "headSha": "242aa3e57368352f72bea6704833f70be376b84c",
+      "status": "completed",
+      "url": "https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38343754693"
+    }
+  ],
+  "localCorrectiveWorkNotYetIntegrated": true,
+  "softwareTestsRunForThisObservation": false,
+  "conversationGenerationPerformedForThisObservation": false,
+  "reservedFinalEvaluationOpened": false,
+  "conversationAccepted": false,
+  "environmentLifetimeGuaranteed": false
+}

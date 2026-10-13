@@ -274,3 +274,177 @@ final reservada. El colector local permanecía deshabilitado; su activación
 posterior necesitará otro registro real. El núcleo de entrenamiento sigue
 congelado durante la etapa activa. El trabajo nuevo aún no está integrado en
 `main`; un recibo posterior identificará sus commits, publicación y respuestas.
+
+## Cierre de base y SFT activo, añadido el 13 de octubre, 06:23 UTC
+
+Esta sección añade evidencia de ejecución posterior; no cambia las lecturas de
+las 05:01 ni de las 05:26 UTC. El
+[recibo nuevo](observation-20261013-062351-base-complete-sft-active.json) registra
+el cierre de base, SFT activo, la ampliación en cola y el estado de GitHub.
+
+### Resultado real de la etapa causal
+
+`foundation-15m` cerró por `total_time_budget` en **8.914 actualizaciones**.
+No alcanzó el máximo de 12.000. La
+[contabilidad desde estado e índices](foundation-15m-final-target-exposure.json)
+registra **71.297 ventanas** y **22.906.669 posiciones objetivo** procesadas:
+tres épocas completas más 17.312 ventanas de la siguiente. Son posiciones de
+exposición repetida, no vocablos o conocimientos distintos.
+
+El umbral persistente era de 7.200 segundos. El contador final registra
+**7.337,687718 segundos**, incluyendo validación y guardado de cierre. La
+parada coopera con límites coherentes del optimizador y del entrenador; el
+umbral no era un límite duro ni garantiza exactamente dos horas de pared.
+Se conserva ese exceso observado en lugar de presentar el máximo configurado
+como duración ejecutada. Código y entradas permanecieron sin cambios al cierre.
+
+La NLL validada final fue **2,981873986** en step 8.914, sobre las mismas
+687.867 posiciones usadas durante esta base. La bajada causal no se convierte
+en mejora de conversación ni identifica por separado el efecto de datos,
+capacidad, vocabulario o scheduler.
+
+El [recibo de entrega final](foundation-15m-final-delivery.json) conserva el
+artefacto de inferencia propio
+`unidad-conversation-ee24651fb8cc3a01e1acbb57db5f40222a6b9b5fe150dbff7186b961945fa398`
+en [models/learning-repair-20261013/foundation-15m/final](../../models/learning-repair-20261013/foundation-15m/final).
+Sus cuatro archivos suman 60.784.468 bytes y conservan hashes antes, en la copia
+y después. Los [dos checkpoints nativos finales](../../checkpoints/learning-repair-20261013/foundation-15m/final/README.md)
+BEST y LAST tienen el mismo step, pero estados y nombres distintos; cada uno
+se preservó completo en nueve partes de hasta 32 MiB. La copia se hizo con el
+entrenador ya cerrado. Los recibos no atribuyen restauración ejecutada ni
+publicación remota verificada a estos archivos finales locales.
+
+### Fallo de transición y reparación observados
+
+A las **06:13:53 UTC**, la transición del supervisor después de la base
+terminada falló con
+`TypeError: Supervisor.event() got multiple values for argument 'kind'`.
+El argumento posicional de `event(self, kind)` chocaba con el campo `kind` de
+la metadata del evento. El
+[recibo de reparación](continual-stage-transition-repair.json), SHA-256
+`48e50cdda5199f4892433c414c130de375d6e457fd7b4b250c5f03903fd630b7`,
+conserva el error y la corrección: nombre posicional `event_name`, limpieza de
+una razón operacional obsoleta y aceptación de alias `python`/`python3` sólo
+cuando resuelven a la identidad del mismo ejecutable.
+
+Se sustituyó **sólo el supervisor bloqueado** después de comprobar la base ya
+completada; no se señaló un proceso de entrenamiento ni se reinició la base.
+El núcleo ML congelado permaneció intacto. El nuevo supervisor **13378**,
+nacimiento **1556040**, empezó a las 06:16:35 UTC y lanzó SFT real desde el
+snapshot propio seleccionado. El fallo histórico se conserva; no se presenta
+la transición como si hubiera funcionado desde su primera versión.
+
+### Ajuste conversacional que ya actualiza pesos
+
+En la lectura de **06:23:51 UTC**, `conversation-v1:conversation-15m` estaba
+`running`, en **512 updates** y **402,289 segundos** nativos. Su PID **13379**,
+nacimiento **1558057**, y el supervisor se comprobaron vivos. La etapa declara
+`trainedFrom: own_checkpoint`, objetivo `assistant_last_reply`, todos los
+**15.179.520 parámetros** entrenables y particiones `train_validation_only`.
+El corpus conserva 18.588 TRAIN, 1.704 VALIDATION y cero TEST, con los hashes
+y exclusiones documentados en el avance anterior. No se cambió el tokenizador.
+
+La NLL inicial de esta etapa es una métrica SFT sobre otro objetivo y otros
+datos; no se compara directamente con la NLL causal final. Todavía no se
+generaron diálogos de desarrollo ni se abrió la reserva final. El hook de
+generación DEV después de cerrar SFT está habilitado y ligado a fuentes/suite
+por hashes, pero su ejecución aún no ocurrió. La certificación sigue en
+`awaiting_review`; C7 no se sustituyó.
+
+### Otra ampliación pública ya en cola
+
+`wide-spanish-v1` está en el inbox con SHA-256 de manifiesto de ciclo
+`7051a2fcc3bdac43012d9aa374e1cd7974a82135cbe8b52ce3798032e18b0099` y padre
+`conversation-v1:conversation-15m`. Incluye una adaptación causal con nuevos
+textos y una SFT posterior de retención desde el resultado causal. Cada etapa
+conserva sus límites finitos; ninguna ha comenzado en esta lectura.
+
+La [mezcla distribuible](../../examples/learning-repair-20261013/wide-spanish-v1/README.md)
+contiene **4.084 TRAIN**, **621 VALIDATION**, **cero TEST**, **2.406 registros
+nuevos** y **2.299 mensajes OpenAssistant de retención**. Ocupa 19.604.191 bytes,
+con corpus SHA-256
+`d3e3eb2ef6f8aa120a07c6ec334bd1e66c765cfd198696e700fef0778357ffd6` y
+[manifiesto de shard](../../examples/learning-repair-20261013/wide-spanish-v1/wide-spanish.shard-001.manifest.json)
+SHA-256 `4853a0867c5721eba2fc0dbe1be2313b98c4ceb27abc5689fa8ed2c07b26c488`.
+Las fuentes nuevas suman **1.470.331 palabras entre TRAIN y VALIDATION**:
+
+| Fuente nueva | Registros | Palabras | Género |
+| --- | ---: | ---: | --- |
+| Gutenberg | 177 | 482.039 | Literatura histórica, prosa y poesía |
+| Wikisource | 85 | 241.877 | Ensayo histórico y gramática |
+| Tatoeba | 1.432 | 710.328 | Frases comunitarias y traducciones |
+| Wikcionario | 712 | 36.087 | Glosas, formas y ejemplos léxicos |
+
+Las 277.063 palabras de las anclas OpenAssistant se declaran como retención,
+no como texto nuevo. Tampoco se certifica que cada palabra de un documento
+nuevo sea inédita: se conservan coincidencias del mismo fold registradas y
+los filtros exactos no detectan toda paráfrasis. Se mantuvieron familias,
+particiones, atribuciones, revisiones y condiciones por fuente; siete familias
+nuevas se excluyeron mediante las guardas documentadas.
+
+La fecha de obtención no sustituye a la fecha del texto: Tatoeba procede de un
+export de octubre de 2026, pero las frases de esta porción inicial datan
+principalmente de **2007–2012**. Literatura y ensayos conservan ortografía,
+ciencia y opiniones históricas. Las [licencias](../../examples/learning-repair-20261013/LICENSE-DATA.md)
+siguen por fuente, sin atribuir una única licencia a la mezcla. Estos subconjuntos
+no representan todo el español ni acreditan conocimiento factual actualizado.
+
+El colector local está ahora **habilitado**, con fuentes fijadas y límites, para
+trabajar cuando falten etapas nuevas. Aún no se ejecutó en esta observación.
+El bucle puede seguir mientras el entorno y supervisor estén vivos; cada
+etapa es finita y puede detenerse o esperar datos/recursos. No se garantiza
+mejora ilimitada ni continuidad cuando termine el entorno.
+
+### Integración comprobada y parche local
+
+[PR7](https://github.com/guadalupejuan001-code/UNIDAD/pull/7) está `MERGED` y sin
+borrador. Su commit de trabajo es
+`033148c6d0d09feefd6127f718b1dd4149cbad4c`; `main` remoto está en el merge
+`32d08dacb070e349e8bbf3213133cb695d3e5f19`. GitHub Actions completó con éxito
+los recibos de [trabajo](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354851309)
+y [main](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38355571276).
+Esos checks corresponden a aquella versión; no se atribuyen al parche local
+posterior de transición ni prueban conversación.
+
+La reparación, los estados finales y la ampliación nueva aún esperan la siguiente
+integración y publicación. No se hizo una batería de software, generación de
+diálogo o evaluación final para este recibo. Se conservan los resultados
+negativos anteriores y el criterio 36/40, 8/10, cero críticas/técnicas; finalizar
+esta etapa causal no declara terminada la misión conversacional.
+
+## SFT en ejecución y PR8 fusionado, añadido el 13 de octubre, 06:44 UTC
+
+El [recibo posterior](observation-20261013-064409-sft-active-pr8-merged.json),
+SHA-256 `fda0b816f766821f2ee1a1dab32e4bac67dd5ac941866cce9d24488b872f236d`,
+añade estado real sin sobrescribir los recibos de las 05:01, 05:26 ni 06:23.
+Se corrigió el hash transcrito en la referencia documental de reparación;
+el archivo del recibo de reparación no se modificó.
+
+`conversation-15m` tiene **2.200 actualizaciones** y **1.626,785730 segundos**
+nativos en esta lectura. El entrenador 13379/nacimiento 1558057 y el
+supervisor 13378/nacimiento 1556040 siguen vivos, con estado operacional
+`training` y razón nativa vacía. El checkpoint del paso 2.048 tiene NLL SFT
+validada **1,735812294**; la referencia inicial de la misma etapa fue
+**2,738113565**. Se registra aprendizaje sobre el objetivo supervisado, sin
+atribuir calidad de conversación ni comparar esa pérdida con la base causal.
+No se generaron respuestas de esta etapa ni se abrió la reserva final.
+
+[PR8](https://github.com/guadalupejuan001-code/UNIDAD/pull/8) está `MERGED`, sin
+borrador, desde las **06:42:44 UTC**. Commit de trabajo:
+`8a7dc3f43a5797fe81e0873ecbdd881c8e8a619f`; merge en `main`:
+`34e5fd0c772305acdb18616c684c7c4cf7450cac`. Los pesos y BEST/LAST finales de la
+base, la reparación del supervisor y los corpus nuevos ya se incorporaron a
+`main`. La CI del commit terminó con éxito en
+[PR](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356784618)
+y [push](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356685472);
+la [CI del merge](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38358257321)
+seguía en ejecución en esta lectura. El recibo verifica hashes de los archivos
+locales citados, pero no afirma una comparación independiente de sus bytes
+remotos ni una restauración ejecutada de cada paquete.
+
+La ampliación `wide-spanish-v1` continúa en cola desde los pesos propios del
+SFT actual, sin haber entrenado todavía. Los hashes del corpus, manifiesto,
+configuración activa y cola coinciden con las identidades fijadas. No se
+modificó código ML, datos ni configuración activa para esta actualización.
+Tampoco se ejecutaron pruebas de software o inferencia del modelo. El bucle
+sigue dependiendo del entorno vivo y la aceptación permanece en revisión.

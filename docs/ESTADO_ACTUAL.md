@@ -1,5 +1,85 @@
 # Estado actual de Unidad
 
+## SFT en ejecución y PR8 integrado, 13 de octubre, 06:44 UTC
+
+El [nuevo recibo](learning-repair-20261013/observation-20261013-064409-sft-active-pr8-merged.json)
+registra **2.200 actualizaciones reales** de `conversation-15m` y **1.626,786
+segundos** nativos acumulados. El entrenador **13379**, nacimiento **1558057**,
+y el supervisor **13378**, nacimiento **1556040**, siguen vivos. En el
+checkpoint del paso **2.048**, la NLL SFT validada es **1,735812**, frente a
+**2,738114** al inicio de este ajuste. Esta métrica supervisa la última
+respuesta y EOS; no equivale a conversación competente ni se compara
+directamente con la NLL causal de la etapa anterior. Todos los 15.179.520
+parámetros siguen entrenables, con corpus y tokenizador fijados.
+
+[PR8](https://github.com/guadalupejuan001-code/UNIDAD/pull/8) se fusionó sin
+borrador a las **06:42:44 UTC**. Su commit de trabajo es
+`8a7dc3f43a5797fe81e0873ecbdd881c8e8a619f`; el merge en `main` es
+`34e5fd0c772305acdb18616c684c7c4cf7450cac`. Incluye la reparación del supervisor,
+los pesos y BEST/LAST finales de la base y las nuevas fuentes públicas.
+La CI de ese commit terminó con éxito en
+[PR](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356784618)
+y [push](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38356685472).
+La [CI del merge](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38358257321)
+seguía en ejecución al leer este recibo. No se ejecutó otra batería local.
+
+La mezcla `wide-spanish-v1` continúa **en cola**, con padre en el SFT actual:
+4.084 TRAIN, 621 VALIDATION y cero TEST. Los 2.406 registros nuevos reúnen
+1.470.331 palabras entre TRAIN y VALIDATION; sus 2.299 anclas de retención
+se cuentan aparte. Que los archivos estén en `main` no significa que esta
+etapa haya entrenado. El colector y la generación DEV al cierre están
+habilitados, pero aún no se ejecutaron. No se generaron conversaciones de
+esta etapa ni se abrió la reserva final; C7 se conserva como referencia y
+la aceptación sigue pendiente. Las observaciones anteriores permanecen intactas.
+
+## Cierre de base y SFT activo, 13 de octubre, 06:23 UTC
+
+La base propia `foundation-15m` terminó en **8.914 updates**, con **22.906.669
+posiciones objetivo** procesadas en 71.297 ventanas. La NLL causal validada
+final fue **2,981874**. La parada `total_time_budget` tenía umbral de 7.200
+segundos; el contador final registra **7.337,688 segundos** incluyendo
+validación y guardado de cierre. Es un límite cooperativo, no un corte exacto
+de tiempo de pared. El [recibo final](learning-repair-20261013/foundation-15m-final-delivery.json),
+la [contabilidad](learning-repair-20261013/foundation-15m-final-target-exposure.json),
+los [pesos](../models/learning-repair-20261013/foundation-15m/README.md) y
+[BEST/LAST](../checkpoints/learning-repair-20261013/foundation-15m/final/README.md)
+se preservan con hashes; la entrega final está local para una subida posterior.
+
+SFT ya entrena desde el checkpoint propio: **512 updates y 402,289 segundos**
+en el [nuevo recibo temporal](learning-repair-20261013/observation-20261013-062351-base-complete-sft-active.json).
+El trabajador **13379**, nacimiento **1558057**, y supervisor **13378**,
+nacimiento **1556040**, estaban vivos. Objetivo `assistant_last_reply`, todos
+los **15.179.520 parámetros** entrenables y corpus 18.588 TRAIN/1.704 VALIDATION,
+sin TEST. No se generaron ni evaluaron conversaciones de esta etapa; C7 sigue
+como referencia y `conversationCertification` permanece `awaiting_review`.
+
+Un fallo real del supervisor tras cerrar la base bloqueó la transición:
+`Supervisor.event()` recibía dos valores para `kind`. Se corrigió el nombre
+posicional, una razón operacional obsoleta y la identidad equivalente de
+`python`/`python3`. Se reemplazó sólo el supervisor bloqueado, sin señalar un
+entrenador ni reiniciar la base. El
+[recibo de reparación](learning-repair-20261013/continual-stage-transition-repair.json)
+conserva fallo, cambios y arranque real de SFT. El núcleo ML quedó congelado.
+
+[PR7](https://github.com/guadalupejuan001-code/UNIDAD/pull/7) está fusionado y sin
+borrador: commit de trabajo `033148c6d0d09feefd6127f718b1dd4149cbad4c`,
+merge en `main` `32d08dacb070e349e8bbf3213133cb695d3e5f19`. GitHub Actions
+terminó con éxito en [trabajo](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38354851309)
+y [main](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38355571276).
+Esos resultados corresponden a PR7; el parche de transición y los archivos
+finales nuevos siguen locales en esta observación. No se ejecutó otra batería
+local para este recibo ni se atribuye calidad conversacional a CI.
+
+La [ampliación `wide-spanish-v1`](../examples/learning-repair-20261013/wide-spanish-v1/README.md)
+ya está en cola con padre `conversation-v1:conversation-15m`: 4.084 TRAIN,
+621 VALIDATION y cero TEST; 2.406 registros nuevos, 2.299 de retención y
+1.470.331 palabras de las fuentes nuevas entre TRAIN/VALIDATION. Sigue con
+adaptación causal y SFT de retención finitos. No está entrenada todavía.
+El colector y la generación DEV posterior a SFT están habilitados, pero no
+se ejecutaron en esta lectura; la reserva final permanece cerrada. El bucle
+depende del entorno vivo y puede esperar datos o recursos, sin garantizar
+mejora indefinida. Los recibos de las 05:01 y 05:26 se conservan intactos.
+
 ## Avance del 13 de octubre, 05:26 UTC
 
 La base propia continúa tras una **reanudación real**: la primera invocación
