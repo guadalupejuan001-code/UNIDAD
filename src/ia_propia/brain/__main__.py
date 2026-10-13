@@ -35,6 +35,8 @@ def parser(prog=None):
                              help="Máximo de pasos autónomos fijado por el host (1 a 64)")
         command.add_argument("--autonomy-max-seconds", type=int, default=120,
                              help="Presupuesto finito de autonomía fijado por el host (1 a 3600 segundos)")
+        command.add_argument("--autonomy-max-argument-repairs", type=int, default=0,
+                             help="Nuevas propuestas tras argumentos rechazados de lectura, sin efecto (0 a 64; opt-in del host)")
         command.add_argument("--autonomy-operator-token-env",
                              help="Variable con una credencial separada para aprobar efectos sensibles")
         if name == "call":
@@ -77,6 +79,8 @@ def main(argv=None, *, prog=None):
                 raise ValueError("Autonomy requires a host-configured local conversation model")
             if not 1 <= args.autonomy_max_steps <= 64 or not 1 <= args.autonomy_max_seconds <= 3600:
                 raise ValueError("Autonomy requires bounded host step and time limits")
+            if not 0 <= args.autonomy_max_argument_repairs <= 64:
+                raise ValueError("Argument repairs require a bounded host limit between zero and 64")
             operator_token = None
             if args.autonomy_operator_token_env is not None:
                 if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", args.autonomy_operator_token_env) is None:
@@ -88,7 +92,8 @@ def main(argv=None, *, prog=None):
             files = SafeFileTools(args.autonomy_input_root, args.autonomy_report_root)
             autonomy_options = {"autonomy_tools": files.tools,
                                 "autonomy_limits": AutonomyLimits(max_steps=args.autonomy_max_steps,
-                                                                   max_seconds=args.autonomy_max_seconds),
+                                                                   max_seconds=args.autonomy_max_seconds,
+                                                                   max_argument_repairs=args.autonomy_max_argument_repairs),
                                 "autonomy_completion_verifier": files.completion_verifier,
                                 "autonomy_input_validator": files.validate_task_inputs,
                                 "autonomy_operator_token": operator_token}

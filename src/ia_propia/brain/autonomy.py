@@ -57,6 +57,7 @@ class AutonomyLimits:
     max_proposal_bytes: int = 65536
     max_result_bytes: int = 131072
     max_state_bytes: int = 1048576
+    max_argument_repairs: int = 0
 
     def __post_init__(self):
         ceilings = {"max_steps": 1000, "max_failures": 1000, "max_goal_bytes": 262144,
@@ -70,6 +71,8 @@ class AutonomyLimits:
             raise BrainError("invalid_input", "max_seconds must be finite and between zero and 86400")
         if self.max_state_bytes < 16384:
             raise BrainError("invalid_input", "Task state requires at least 16384 bytes")
+        if type(self.max_argument_repairs) is not int or not 0 <= self.max_argument_repairs <= 64:
+            raise BrainError("invalid_input", "max_argument_repairs must be a bounded integer between zero and 64")
 
 
 @dataclass(frozen=True)
@@ -306,7 +309,8 @@ class AutonomyController:
         task_id = "task_" + uuid.uuid4().hex
         now = time.time()
         state = {"task_id": task_id, "goal": goal, "task_inputs": deepcopy(values), "status": "ready",
-                 "steps": 0, "failures": 0, "source": self.source, "proposer_id": self.proposer_id,
+                 "steps": 0, "failures": 0, "argument_repairs": 0,
+                 "source": self.source, "proposer_id": self.proposer_id,
                  "policy": self._policy,
                  "limits": asdict(self.limits), "created_at": now, "updated_at": now,
                  "cancel_requested": False, "pending_approval": None, "current": None, "journal": []}
@@ -520,7 +524,7 @@ class AutonomyController:
             if tool.validator(deepcopy(action["arguments"])) is False:
                 raise BrainError("tool_denied", "Host validator rejected arguments")
         except Exception as error:
-            return self._mutate(task_id, lambda s: self._failure(s, "arguments_denied", error, status="blocked_policy"))
+            return self._mutate(task_id, lambda s: self._arguments_denied(s, tool, action, error))
         def prepare(current):
             if not self._binding_valid(current) or not self._budget(current, reserve=current["limits"]["max_result_bytes"] * 3):
                 return
@@ -614,6 +618,28 @@ class AutonomyController:
         if state["status"] == "ready":
             state = self._check_completion(task_id)
         return state
+
+    def _arguments_denied(self, state, tool, action, error):
+        """Permit a new proposal, never invoke rejected arguments or relax policy."""
+        self._failure(state, "arguments_denied", error, status="blocked_policy")
+        current = state["current"]
+        maximum = state["limits"].get("max_argument_repairs", 0)
+        count = state.get("argument_repairs", 0)
+        if (state["cancel_requested"] or tool.effect != "read" or count >= maximum
+                or state["pending_approval"] is not None or current is None
+                or current.get("effect_started") is not False
+                or current.get("fingerprint") != _digest(action)
+                or current.get("proposal") != action):
+            return
+        if not self._binding_valid(state) or not self._budget(
+                state, next_step=True, reserve=state["limits"]["max_proposal_bytes"] * 3):
+            return
+        state["argument_repairs"] = count + 1
+        state["current"] = None
+        state["status"] = "ready"
+        self._event(state, "argument_repair_allowed", tool=tool.name,
+                    arguments=deepcopy(action["arguments"]), effect_started=False,
+                    repair_count=count + 1, max_argument_repairs=maximum)
 
     def _recover_effect(self, task_id, tool, action, result):
         state = self._mutate(task_id, lambda s: self._budget(s, reserve=s["limits"]["max_result_bytes"]))

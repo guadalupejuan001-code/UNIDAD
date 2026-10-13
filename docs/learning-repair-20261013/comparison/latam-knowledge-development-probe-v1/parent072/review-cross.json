@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "reviewRole": "cross",
+  "reviewer": "/root/latam_learning_probe_cross",
+  "reviewType": "Revisión semántica independiente entre revisores de IA del proyecto; no evaluación humana independiente",
+  "createdAt": "2026-10-13T10:24:44.558736+00:00",
+  "arm": "parent072",
+  "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+  "modelHashesFromGenerationReceipt": {
+    "config.json": {
+      "bytes": 128,
+      "sha256": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc"
+    },
+    "tokenizer.json": {
+      "bytes": 49502,
+      "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+    },
+    "weights.safetensors": {
+      "bytes": 60727960,
+      "sha256": "0a71ae3feb61b7dabac9f31ecc4fd312f97ead8a790ed13b8144617b60e3e4e6"
+    }
+  },
+  "generation": {
+    "maxNewTokens": 80,
+    "temperature": 0,
+    "seed": 42,
+    "torchThreads": 1
+  },
+  "suiteFreezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+  "frozenEvidenceHashes": {
+    "cases.json": "fc54a662332f037ee47f5c3ac5d46d9f87560852ba02533adcd088907faf973c",
+    "rubric.json": "0611d173f41c61eec91222412bd8d39f10153ac035ffb7b19dca4b0bf71da9f7",
+    "source-support.json": "e5cb392ec917497bc70e6b0025a08a5afb12d22ffdab825ceb21f0511102ca3f",
+    "preregistration.json": "afb748eb260ea05034e935a90a0894c31087351f12056e593c008d08f09b6c42"
+  },
+  "outputsBundleSha256": "28bbc6bf24d51898ee917d88e2f792cf439ac2b30a9588a4e2efbae5c3e61c17",
+  "controlEndpointBinding": {
+    "path": "docs/learning-repair-20261013/latam-knowledge-development-probe-v1/control-endpoint-binding.json",
+    "sha256": "3f9bc9bf546254afbe1ff9e3aa0419151b2fcfdaf272560b36470d690ac6cbd9",
+    "receipt": {
+      "schemaVersion": 1,
+      "atUtc": "2026-10-13T10:20:47.933101+00:00",
+      "suiteFreezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+      "selection": "Pre-registered native CONTROL LAST endpoint4096; not selected by answers",
+      "modelId": "unidad-conversation-a2cae3b623142153487760d2f09e1a9c2fc851a5a1a09f1cad83b9ffaa6c2d7d",
+      "manifestSha256": "6fd66e97ab163fbf1880021f33d77e1235418ba41c3f2ed379e4d758d644f9bd",
+      "artifactFiles": {
+        "config.json": {
+          "bytes": 128,
+          "sha256": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc"
+        },
+        "tokenizer.json": {
+          "bytes": 49502,
+          "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+        },
+        "weights.safetensors": {
+          "bytes": 60727960,
+          "sha256": "7838bd314bc35ed4b21eba31158b9ccab322dec21d298bd22002fb8527139244"
+        }
+      },
+      "actualStep": 4096,
+      "actualNativeReason": "signal",
+      "controlGenerationStarted": false,
+      "reservedSuiteOpened": false
+    }
+  },
+  "sourceAudit": {
+    "reviewType": "Auditoría interna de IA del proyecto, sin revisión humana independiente",
+    "freezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+    "freezeBytes": 4087,
+    "frozenDocsHashesVerified": true,
+    "embeddedRowHashesAndBytesVerified": true,
+    "caseSupportAlignmentVerified": true,
+    "selectedSenseInEmbeddedRawAndSftVerified": true,
+    "embeddedRowsChecked": 18,
+    "supportFamiliesChecked": 9,
+    "casesChecked": 15,
+    "originalWikitextRetrieved": false,
+    "limitation": "La auditoría usa los bytes públicos congelados embebidos; no verifica wikitext remoto ni garantiza todo el diccionario."
+  },
+  "scope": {
+    "modelOutputReadScope": [
+      "parent072",
+      "treatment-best1024",
+      "treatment-last4096",
+      "control-last4096"
+    ],
+    "modelOutputsReviewed": 60,
+    "otherModelOutputsRead": 0,
+    "primaryReviewsRead": 0,
+    "reservedSuiteRead": false,
+    "modelLoads": 0,
+    "trainingRuns": 0,
+    "sourceFilesReadOutsideFrozenEvidence": false,
+    "rawOutputsModified": false,
+    "questionsRubricCorpusGenerationConfigModified": false
+  },
+  "technicalFailureDefinition": "Error real, respuesta vacía, fin token_budget o truncamiento de entrada. Los fines por presupuesto se cuentan aunque el texto parcial pueda revisarse semánticamente; también se publican por separado y no se confunden con errores de ejecución.",
+  "validationStatusPrecedence": "technical_failure si aparece cualquiera de los indicadores técnicos; semanticValidationStatus conserva además el juicio del texto realmente recibido. Incertidumbre explícita pertinente sin glosa falsa se acepta como calibración y nunca como aprendizaje del hecho.",
+  "formatDefinition": "formatCorrect en composiciones exige nombre, estructura y significado según rúbrica. requestedStructureCorrect publica además sólo la forma. true en casos sin requisito de formato significa no aplicable y no entra al denominador de seis.",
+  "counts": {
+    "train_paraphrase_correct_out_of_6": 0,
+    "train_composition_meaning_and_format_correct_out_of_6": 0,
+    "train_families_with_both_cases_correct_out_of_6": 0,
+    "train_meaning_correct_out_of_12": 0,
+    "composition_format_correct_out_of_6": 0,
+    "composition_requested_structure_correct_out_of_6": 0,
+    "validation_status_counts_out_of_3": {
+      "correct_known_fact": 0,
+      "explicit_uncertainty": 1,
+      "unsupported_or_wrong_fact": 0,
+      "irrelevant_or_incoherent": 1,
+      "technical_failure": 1
+    },
+    "semantic_validation_status_counts_out_of_3": {
+      "correct_known_fact": 0,
+      "explicit_uncertainty": 1,
+      "unsupported_or_wrong_fact": 0,
+      "irrelevant_or_incoherent": 2,
+      "technical_failure": 0
+    },
+    "validation_calibration_accepted_out_of_3": 1,
+    "validation_correct_known_facts_out_of_3": 0,
+    "validation_learned_knowledge_denominator_contribution": 0,
+    "technical_failure_count_out_of_15": 8,
+    "token_budget_end_count_out_of_15": 8,
+    "runtime_error_count_out_of_15": 0,
+    "empty_response_count_out_of_15": 0,
+    "input_truncation_count_out_of_15": 0,
+    "reviewed_cases": 15,
+    "train_cases": 12,
+    "train_families": 6,
+    "validation_cases": 3,
+    "validation_families": 3
+  },
+  "cases": [
+    {
+      "id": "tr01p",
+      "scenarioId": "tr01p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+      "lexeme": "estar al cateo de la laucha",
+      "country": "Chile",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr01p.json",
+      "outputFileSha256": "aae995e419e8c0914f97573268576e0aca8ded240e016096bea40428c7bf884b",
+      "actualQuote": "Lauda» es una de las principales causas de la Unión Europea, en el cual se encuentra en el primer dominio de la Unión Europea, en el cual se encuentra en el primer dominio de la Unión Europea, en el año 2019.",
+      "actualQuoteSha256": "853bf184177402d4501b6a7cbe5454920a210790c39cdf4881e03646ebb7a1f0",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "¿Cómo dirías en español general «estar al cateo de la laucha» (Chile)?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "b2ce27d23f634db43b7c08e59feb9d3993354379264cef917a4b87ef972b4595",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 64,
+        "promptTokens": 89,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:42091:6037645:natural-latam-v3:direct",
+          "wiktionary:es:regional:42091:6037645"
+        ],
+        "sourceSupportRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+        "embeddedSftRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+        "embeddedRawRowSha256": "986b3b0d8d373d26953db3acdc33d15b3864af846c40f59c9609c40623f997df",
+        "sourceGlossExact": "Estar a la expectativa de que se produzca una oportunidad favorable.",
+        "mustConvey": [
+          "Estar a la expectativa de una oportunidad favorable."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6037645",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=estar%20al%20cateo%20de%20la%20laucha&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Sustituye la locución chilena por afirmaciones sobre Lauda y la Unión Europea, con repetición incoherente. No comunica expectativa ni oportunidad favorable."
+    },
+    {
+      "id": "tr01c",
+      "scenarioId": "tr01c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+      "lexeme": "estar al cateo de la laucha",
+      "country": "Chile",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr01c.json",
+      "outputFileSha256": "a7a56866c4cbf9cd11cc3508031f47da5e6a456cd00f1c6af60985ff29f3a4d9",
+      "actualQuote": "Neraldo, «estar al cateo de la laucha».",
+      "actualQuoteSha256": "05a2e30704d8345b1b073b9331c2baf40be0e6e16278de86db6774dd36de4261",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Soy Neralvo. En Chile oí «estar al cateo de la laucha». ¿Me lo aclaras? Usa una sola línea: «Neralvo: <sentido>»."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "0464d1ec8166653569143ec10f780c788b424cd2178221bf363aa7e5f3d45c67",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": false,
+        "formatCorrect": false,
+        "spanish": true,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 20,
+        "promptTokens": 114,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:42091:6037645:natural-latam-v3:direct",
+          "wiktionary:es:regional:42091:6037645"
+        ],
+        "sourceSupportRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+        "embeddedSftRowSha256": "4bfac5377d7998d1623dc91644c4e44ca62f054c0600448e01f7f7b87e247a9f",
+        "embeddedRawRowSha256": "986b3b0d8d373d26953db3acdc33d15b3864af846c40f59c9609c40623f997df",
+        "sourceGlossExact": "Estar a la expectativa de que se produzca una oportunidad favorable.",
+        "mustConvey": [
+          "Estar a la expectativa de una oportunidad favorable."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6037645",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=estar%20al%20cateo%20de%20la%20laucha&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Repite la locución sin explicar su sentido. Cambia Neralvo por Neraldo y omite el prefijo solicitado."
+    },
+    {
+      "id": "tr02p",
+      "scenarioId": "tr02p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:abastecedor",
+      "lexeme": "abastecedor",
+      "country": "Costa Rica",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr02p.json",
+      "outputFileSha256": "90b2054c942d79c22afa6b87501c53a4b2286d8c4b23ec5dabc03b76421c8fa0",
+      "actualQuote": "La clase de los dos números llaman «abastecedor», en la clase de los dos números del grupo, en la clase de los dos números del grupo, en la clase de los dos números del grupo, en la clase de los dos números del grupo, en la clase de los dos números del grupo, en la",
+      "actualQuoteSha256": "d76092df3c2ccbd39943e31b8fc372f5e7c489662fd3ca2a115cfaf311c31725",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "En Costa Rica, ¿qué clase de local llaman «abastecedor»?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "408e8719a37337b740bffa9ae8671eb47451165ba34bc55c10604f621bdd83e8",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 85,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:12803:5722010:natural-latam-v3:direct",
+          "wiktionary:es:regional:12803:5722010"
+        ],
+        "sourceSupportRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+        "embeddedSftRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+        "embeddedRawRowSha256": "82e77d4b1473b07004d68639573293a71cd0063be8e7790164aaa889ce50d018",
+        "sourceGlossExact": "tienda de alimentación y productos del hogar.",
+        "mustConvey": [
+          "Tienda de alimentación y productos del hogar."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5722010",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=abastecedor&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Habla de clases y números en un bucle sin describir una tienda de alimentación y productos del hogar. La supuesta descripción no está sustentada."
+    },
+    {
+      "id": "tr02c",
+      "scenarioId": "tr02c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:abastecedor",
+      "lexeme": "abastecedor",
+      "country": "Costa Rica",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr02c.json",
+      "outputFileSha256": "9c28686dd9d6c50e3a59b76d32dcf602ab50e424523ab5f5b17c56f21cb34d4e",
+      "actualQuote": "La frase es una frase que se encuentra en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el cielo, en el",
+      "actualQuoteSha256": "e89e7c6fd83e65ac3e285d77c13f2d3c32f922a7a8f1dbf74e319b4e19baa5ef",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Odrilena pregunta por «abastecedor» en Costa Rica. ¿Qué es? Devuelve solo JSON con «persona»: «Odrilena» y «significado»: una frase."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "1b7d757c698457572e1087bfaad4926943162701566f0561e256c1860d53e18d",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": false,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 122,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:12803:5722010:natural-latam-v3:direct",
+          "wiktionary:es:regional:12803:5722010"
+        ],
+        "sourceSupportRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+        "embeddedSftRowSha256": "708050eaa910a91275a090133e506472ef3b727e67a73b2a2f508c588df7b6b9",
+        "embeddedRawRowSha256": "82e77d4b1473b07004d68639573293a71cd0063be8e7790164aaa889ce50d018",
+        "sourceGlossExact": "tienda de alimentación y productos del hogar.",
+        "mustConvey": [
+          "Tienda de alimentación y productos del hogar."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5722010",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=abastecedor&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Afirma una frase situada en el cielo y repite ese texto; no define el local ni produce JSON. Omite Odrilena."
+    },
+    {
+      "id": "tr03p",
+      "scenarioId": "tr03p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:cruzazulear",
+      "lexeme": "cruzazulear",
+      "country": "México",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr03p.json",
+      "outputFileSha256": "7470055a8c499007e3279ecef7cb3398c8327dd271e3789c698145b0525fae0e",
+      "actualQuote": "La canción «cruza» es una canción «cruza», en la canción «cruza», «cruza», «cruza», «cruza», «cruza», «cruza», «cruza», «cruza», «cruza», «cruza",
+      "actualQuoteSha256": "6e158386f951689d5d9bda47e3c9f6d94b35dce61199d5628e97acf15c3c72c2",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Si en México un equipo «cruzazulea», ¿qué le pasa?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "e35376274a99c06919af5c205a848ce6a14bd766de8f274976237ccb1542932f",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 82,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:970176:6322442:natural-latam-v3:direct",
+          "wiktionary:es:regional:970176:6322442"
+        ],
+        "sourceSupportRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+        "embeddedSftRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+        "embeddedRawRowSha256": "68a64f78cd26dbf042db44777d5071dda53b76a01c9acdd0c4bc463827da54f7",
+        "sourceGlossExact": "perder estrepitosamente, especialmente tras una racha positiva.",
+        "mustConvey": [
+          "Perder estrepitosamente; especialmente tras una racha positiva, sin convertir esa circunstancia en requisito universal."
+        ],
+        "sourceUsage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          },
+          {
+            "label": "jocoso",
+            "qualifier": ""
+          }
+        ],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6322442",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=cruzazulear&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Atribuye la palabra a una canción y repite cruza. No explica perder estrepitosamente, ni la circunstancia de una racha positiva."
+    },
+    {
+      "id": "tr03c",
+      "scenarioId": "tr03c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:cruzazulear",
+      "lexeme": "cruzazulear",
+      "country": "México",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr03c.json",
+      "outputFileSha256": "2994a62036ff2356bfe4d0edc49df35bc7a3fb25130469e998eb88a91407c633",
+      "actualQuote": "Talvexo es una película de televisión española, en español.",
+      "actualQuoteSha256": "d3917f2498762347c186f58ff3a31773a86d20b0d3f59e4f0bb7245f92cea400",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Talvexo quiere entender «cruzazulear» en México. ¿Qué describe y con qué tono se usa? Contesta con dos viñetas: «Talvexo: <sentido>» y «Uso: <tono>»."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "b73070f719c974f9730e93a9281404d9b31ecd0c56dd00c268c10d93382c5f9b",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": false,
+        "spanish": true,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": true,
+      "requiredUsageApplicable": true,
+      "requiredUsageCorrect": false,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 18,
+        "promptTokens": 131,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:970176:6322442:natural-latam-v3:direct",
+          "wiktionary:es:regional:970176:6322442"
+        ],
+        "sourceSupportRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+        "embeddedSftRowSha256": "64be7f49da46be6102049f44bf19696123007ea5caf5377bfaa950bd7fc36c24",
+        "embeddedRawRowSha256": "68a64f78cd26dbf042db44777d5071dda53b76a01c9acdd0c4bc463827da54f7",
+        "sourceGlossExact": "perder estrepitosamente, especialmente tras una racha positiva.",
+        "mustConvey": [
+          "Perder estrepitosamente; especialmente tras una racha positiva, sin convertir esa circunstancia en requisito universal."
+        ],
+        "sourceUsage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          },
+          {
+            "label": "jocoso",
+            "qualifier": ""
+          }
+        ],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6322442",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=cruzazulear&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Inventa que Talvexo es una película de televisión española. No explica el verbo ni su tono coloquial y jocoso, y no contiene las dos viñetas requeridas."
+    },
+    {
+      "id": "tr04p",
+      "scenarioId": "tr04p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+      "lexeme": "a la zumba marumba",
+      "country": "Honduras",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr04p.json",
+      "outputFileSha256": "0c2a4da652f6ae394105685b5df3e14bc6e966b208e60210e378d672e13c48d0",
+      "actualQuote": "La zumba marumbre de la zumba marumbre de la zumba marítima de la zumba marítima de la zumba marítima de la zumba marítima de la zumba marítima de la zumba marítima de la zumba marítima de la",
+      "actualQuoteSha256": "137d775f977f05585216f0f2d2d3999e75e41190956ac052fa948bde4f1a090c",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "¿Qué manera de actuar describe «a la zumba marumba» en Honduras?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "68cb9b6c25ddb2b43dc0b293dbf4f605c48c25377c9b1eabeade9e230866fcba",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": false,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 86,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:974807:6107413:natural-latam-v3:direct",
+          "wiktionary:es:regional:974807:6107413"
+        ],
+        "sourceSupportRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+        "embeddedSftRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+        "embeddedRawRowSha256": "c4533e10287ffdf2b7a93f961e35e913b35c070ddd9360f04eb9f48d8e951b98",
+        "sourceGlossExact": "De forma alocada, sin planificar.",
+        "mustConvey": [
+          "Actuar de forma alocada, sin planificar."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6107413",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=a%20la%20zumba%20marumba&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Sólo repite variaciones de zumba marumbre y marítima. No hay una glosa comprensible de actuar alocadamente sin planificar."
+    },
+    {
+      "id": "tr04c",
+      "scenarioId": "tr04c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+      "lexeme": "a la zumba marumba",
+      "country": "Honduras",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr04c.json",
+      "outputFileSha256": "a0a31aac7728f84e25fa69a4e820cf5591ef085639b7620b9e092f19c6529233",
+      "actualQuote": "La zumba marchó marchó marchó marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando marchando mar",
+      "actualQuoteSha256": "a17a73d3fe7b8318681fe5ebb0dcb1b2cabc8bba32a28bed5d48e4e07da21ceb",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Me llamo Ismarune y oí «a la zumba marumba» en Honduras. ¿Cómo se interpreta? Una línea, con este formato: «Ismarune — <sentido>»."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "d7a904b1f6690c1b06250d29420ca7a7665a9dc3fcdd14f8dfce03e29a590212",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": false,
+        "formatCorrect": false,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 118,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:974807:6107413:natural-latam-v3:direct",
+          "wiktionary:es:regional:974807:6107413"
+        ],
+        "sourceSupportRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+        "embeddedSftRowSha256": "47d4752e5bcf068b1c4b5f2242cf9cbc37fd360c3e4ed872f92b7f3fde11c826",
+        "embeddedRawRowSha256": "c4533e10287ffdf2b7a93f961e35e913b35c070ddd9360f04eb9f48d8e951b98",
+        "sourceGlossExact": "De forma alocada, sin planificar.",
+        "mustConvey": [
+          "Actuar de forma alocada, sin planificar."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6107413",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=a%20la%20zumba%20marumba&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "El bucle de marchó y marchando impide una explicación. No conserva Ismarune ni el prefijo con raya."
+    },
+    {
+      "id": "tr05p",
+      "scenarioId": "tr05p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:buco",
+      "lexeme": "buco",
+      "country": "Panamá",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr05p.json",
+      "outputFileSha256": "4bd13e85c5110516f010067e1662ba63eebc1d5ec809629a027ecefa6875d8b4",
+      "actualQuote": "La canción \"buco\" es una canción de canciones de televisión española, escrita por Madrid, una canción \"Buco\" y \"Buco\" en la canción \"Buco\".",
+      "actualQuoteSha256": "1e1f6fee99a1557a20a7f3f2eae2df82c0ecbd8eac837966c22737cee709ec41",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "¿Qué expresa «buco» al hablar de cantidades en Panamá?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "5e1317ad1d10b120df42dbdd0dbe23d8262da913e5730975274aa3ad41159550",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": true,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 52,
+        "promptTokens": 83,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:22148:6421374:natural-latam-v3:direct",
+          "wiktionary:es:regional:22148:6421374"
+        ],
+        "sourceSupportRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+        "embeddedSftRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+        "embeddedRawRowSha256": "649d5ebab3a73b6bcec93e5d4319a615822cf3c0da29f356e0879290d3fdc27a",
+        "sourceGlossExact": "Gran cantidad de algo.",
+        "mustConvey": [
+          "Gran cantidad de algo; no trasladar el sentido argentino de orificio."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6421374",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=buco&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Inventa una canción de televisión española escrita por Madrid. No comunica una gran cantidad en Panamá."
+    },
+    {
+      "id": "tr05c",
+      "scenarioId": "tr05c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:buco",
+      "lexeme": "buco",
+      "country": "Panamá",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr05c.json",
+      "outputFileSha256": "cb7a0a4649191ca6e0882548214f88a888bbea3041356a7d82468b526166d7a8",
+      "actualQuote": "La respuesta es «buco», en la fecha de «buco», en la fecha de «buco», en la fecha de «buco», en la fecha de «buco», en la fecha de «buco», en la fecha de «buco",
+      "actualQuoteSha256": "b4f5c2bdd10555348c0822e8307f9259557a730a64a2ebad8193a8b40e4b797b",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Veldunio consulta por «buco» en Panamá. ¿Qué indica sobre una cantidad? Responde solo «Veldunio | <sentido>», en una línea."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "bad66d4e8a69e32910c701a5edae7203d75cd4f3f6f55c3c1513da9e15021aff",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": false,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 112,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:22148:6421374:natural-latam-v3:direct",
+          "wiktionary:es:regional:22148:6421374"
+        ],
+        "sourceSupportRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+        "embeddedSftRowSha256": "147b589fd6575fdacbb7b6bb59974bbfc2bd894da581be9fdafb90a4c16a14ad",
+        "embeddedRawRowSha256": "649d5ebab3a73b6bcec93e5d4319a615822cf3c0da29f356e0879290d3fdc27a",
+        "sourceGlossExact": "Gran cantidad de algo.",
+        "mustConvey": [
+          "Gran cantidad de algo; no trasladar el sentido argentino de orificio."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6421374",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=buco&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Repite buco y fecha en lugar de explicar cantidad; la mención de fecha no está sustentada. Omite Veldunio y el separador requerido."
+    },
+    {
+      "id": "tr06p",
+      "scenarioId": "tr06p",
+      "kind": "train_paraphrase",
+      "familyId": "wiktionary:es:lexical-family:cofla",
+      "lexeme": "cofla",
+      "country": "Perú",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr06p.json",
+      "outputFileSha256": "40b86666653c960db02d1087e0b427aeb0a2054aff98a2c55ae3105b2b4e3452",
+      "actualQuote": "La describen, «cofla» es una persona que se encuentra en el perúo de la persona.",
+      "actualQuoteSha256": "61a700257fd10536b04c2ff7efc517163eeb53b6b22d7ac5a8565025b7b14384",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Si en Perú llaman «cofla» a una persona, ¿cómo la describen?"
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "2e8eb8f7d5b2bbd1e752975860ad0da08ac5242615076350e1ffff36e0d775f0",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": true,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 27,
+        "promptTokens": 84,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:1037265:5820672:natural-latam-v3:direct",
+          "wiktionary:es:regional:1037265:5820672"
+        ],
+        "sourceSupportRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+        "embeddedSftRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+        "embeddedRawRowSha256": "98bb994557617e4690c247f4b27f64633a04944aa0886bf0099123b11d93db19",
+        "sourceGlossExact": "Referido a persona, delgada, flaca. Es una jerga.",
+        "mustConvey": [
+          "Persona delgada o flaca; la fuente lo identifica como jerga, sin exigir copiar «Es una jerga»."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5820672",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=cofla&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Intenta describir cofla como persona, pero perúo de la persona es una glosa inventada e incomprensible. No dice delgada o flaca."
+    },
+    {
+      "id": "tr06c",
+      "scenarioId": "tr06c",
+      "kind": "train_composition",
+      "familyId": "wiktionary:es:lexical-family:cofla",
+      "lexeme": "cofla",
+      "country": "Perú",
+      "sourceSplit": "train",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/tr06c.json",
+      "outputFileSha256": "21f7fc3f50163baebe0ecc6e5abb9c640f30fc2b617a159676f9dcf8269f9988",
+      "actualQuote": "Senavira pregunta: «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Paísta», «Pa",
+      "actualQuoteSha256": "e7ca854959138a696b4186cb11079d450c1b9e25f922c375bda79e04d6cad3c8",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "Senavira pregunta qué describe «cofla» en Perú. ¿Qué le dirías? Usa tres líneas: «Nombre: Senavira», «País: Perú» y «Sentido: <explicación>»."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "d1fb931ace981558fc72e0640bc17ff52c623c2710cd0b0e83f1e81363346d3a",
+      "dimensionApplicability": {
+        "formatCorrect": true,
+        "calibration": false,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": false,
+        "formatCorrect": false,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 1,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": true,
+      "requestedStructureCorrect": false,
+      "nameApplicable": true,
+      "nameCorrect": true,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": null,
+      "semanticValidationStatus": null,
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 125,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:1037265:5820672:natural-latam-v3:direct",
+          "wiktionary:es:regional:1037265:5820672"
+        ],
+        "sourceSupportRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+        "embeddedSftRowSha256": "2381db406b3178cfbc6b2b3782a834789bf04c9ffda17130fc8cd1a2a33f877d",
+        "embeddedRawRowSha256": "98bb994557617e4690c247f4b27f64633a04944aa0886bf0099123b11d93db19",
+        "sourceGlossExact": "Referido a persona, delgada, flaca. Es una jerga.",
+        "mustConvey": [
+          "Persona delgada o flaca; la fuente lo identifica como jerga, sin exigir copiar «Es una jerga»."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5820672",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=cofla&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Conserva Senavira, pero sólo repite Paísta. No produce las tres líneas ni una glosa de persona delgada."
+    },
+    {
+      "id": "val07u",
+      "scenarioId": "val07u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:apampichar",
+      "lexeme": "apampichar",
+      "country": "República Dominicana",
+      "sourceSplit": "validation",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/val07u.json",
+      "outputFileSha256": "d23042c090b042aa9587e17d0e6799c31aa35fb5cc75ebbccb272eca4fedc7d6",
+      "actualQuote": "Sí, recuerdo de la República Dominicana, recuerdo de la República Dominicana: «apampionar», «apampionar», «apampionar», «apampionar», «apampionar», «apampionar», «",
+      "actualQuoteSha256": "7c74801c555f720c22dd9e14199380cd8a95ca736e435c0ff0d6563ab73cafc3",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "En República Dominicana, ¿qué actividad nombra «apampichar»? Si no lo sabes, dilo."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "a666f2284e9088de55a684b0e8bb30bd3af4a2ce35457fff9969db237386b85a",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": true,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": false,
+        "calibration": false,
+        "technical": false
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 0,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": "technical_failure",
+      "semanticValidationStatus": "irrelevant_or_incoherent",
+      "technicalFailure": true,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": true,
+        "inputTruncated": false,
+        "stopReason": "token_budget",
+        "generatedTokens": 80,
+        "promptTokens": 95,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:18515:5806586:natural-latam-v3:direct",
+          "wiktionary:es:regional:18515:5806586"
+        ],
+        "sourceSupportRowSha256": "e9eb5d4ef1506501be1f84f9abdfe51bc234b7cc2139cb4706aa35c85456b7c0",
+        "embeddedSftRowSha256": "e9eb5d4ef1506501be1f84f9abdfe51bc234b7cc2139cb4706aa35c85456b7c0",
+        "embeddedRawRowSha256": "f643e57686a06af781ecf9570065a0756ecf0c9ba48bfa4e1f1884b6d7ad8b2a",
+        "sourceGlossExact": "tocar o bailar el merengue al estilo del pambiche, una variante más lenta y acompasada en la que ambos bailarines permanecen por lo general abrazados.",
+        "mustConvey": [
+          "Tocar o bailar merengue al estilo del pambiche, variante más lenta y acompasada; no exigir exclusivamente bailar."
+        ],
+        "sourceUsage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          }
+        ],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5806586",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=apampichar&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Afirma recordar y repite una forma alterada, apampionar. No explica tocar o bailar merengue al estilo del pambiche ni reconoce desconocimiento."
+    },
+    {
+      "id": "val08u",
+      "scenarioId": "val08u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:champa",
+      "lexeme": "champa",
+      "country": "Guatemala",
+      "sourceSplit": "validation",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/val08u.json",
+      "outputFileSha256": "afed76b8c5e2f57926dcb75e33f67c65d7dff45a7de4e94ef3cddc3037f16303",
+      "actualQuote": "La frase se llama «lampa», en la que se llama «lampa».",
+      "actualQuoteSha256": "589d50217067d0e118804cf998f9bbee9f03002d72f6a19c57fc15b4c165b010",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "En Guatemala, ¿qué vivienda se llama «champa»? Si no lo sabes, dilo."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "bcaeef9a289f094ee6227485a01b77228821160b62a14b5709f64012236fe947",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": true,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": false,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": true,
+        "formatCorrect": true,
+        "spanish": true,
+        "calibration": false,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 0,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": false,
+      "calibrationAccepted": false,
+      "validationStatus": "irrelevant_or_incoherent",
+      "semanticValidationStatus": "irrelevant_or_incoherent",
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 26,
+        "promptTokens": 92,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:22799:6356442:natural-latam-v3:direct",
+          "wiktionary:es:regional:22799:6356442"
+        ],
+        "sourceSupportRowSha256": "349304b842935cdcbf31405e66160b5a5bc80ea901d672627b43cd98f41291e7",
+        "embeddedSftRowSha256": "349304b842935cdcbf31405e66160b5a5bc80ea901d672627b43cd98f41291e7",
+        "embeddedRawRowSha256": "d03ea1a9cd432976a458e0cfcee7d5a077215b1968ed59f9e0c81567e2425270",
+        "sourceGlossExact": "Casa de mala calidad propia de gente muy humilde de los suburbios.",
+        "mustConvey": [
+          "Casa de mala calidad propia de gente muy humilde de los suburbios; no trasladar el sentido ni la marca vulgar de Chile."
+        ],
+        "sourceUsage": [],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=6356442",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=champa&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "Sustituye champa por lampa en una frase tautológica. No describe una vivienda de mala calidad ni expresa incertidumbre."
+    },
+    {
+      "id": "val09u",
+      "scenarioId": "val09u",
+      "kind": "validation_calibration",
+      "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+      "lexeme": "a cuenta de oreja de cochino",
+      "country": "Venezuela",
+      "sourceSplit": "validation",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputFile": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/val09u.json",
+      "outputFileSha256": "cb5afbee7970931899d32afb4767bf6ef6d7ba4b31b4a48a896a800ad7487b93",
+      "actualQuote": "No, en realidad no sabemos.",
+      "actualQuoteSha256": "f94aec1aad3f28f38a51c1197b53a8acc783c3ba9c99b969b0b998ca32944abc",
+      "inputMessagesExact": [
+        {
+          "role": "user",
+          "content": "En Venezuela, ¿qué pretende alguien que pide algo «a cuenta de oreja de cochino»? Si no lo sabes, dilo."
+        }
+      ],
+      "inputMatchesFrozenCase": true,
+      "singleUserTurnWithoutGoldOrRubric": true,
+      "effectiveContextTokenIdsSha256": "6df985a85087e7407dd14ccf60921cfc8d3ab063e5a0cfc7103fd4b266b44101",
+      "dimensionApplicability": {
+        "formatCorrect": false,
+        "calibration": true,
+        "technical": true
+      },
+      "dimensions": {
+        "relevance": true,
+        "countrySenseCorrect": false,
+        "unsupportedClaims": false,
+        "formatCorrect": true,
+        "spanish": true,
+        "calibration": true,
+        "technical": true
+      },
+      "knowledgeCorrect": false,
+      "trainFactDenominatorContribution": 0,
+      "trainMeaningCorrect": false,
+      "compositionApplicable": false,
+      "requestedStructureCorrect": true,
+      "nameApplicable": false,
+      "nameCorrect": false,
+      "requiredUsageApplicable": false,
+      "requiredUsageCorrect": true,
+      "compositionCorrect": false,
+      "explicitUncertainty": true,
+      "calibrationAccepted": true,
+      "validationStatus": "explicit_uncertainty",
+      "semanticValidationStatus": "explicit_uncertainty",
+      "technicalFailure": false,
+      "technicalObservations": {
+        "error": null,
+        "emptyResponse": false,
+        "tokenBudgetEnd": false,
+        "inputTruncated": false,
+        "stopReason": "eos",
+        "generatedTokens": 12,
+        "promptTokens": 101,
+        "discardedPromptTokens": 0,
+        "effectiveContextDiscardedPromptTokens": 0
+      },
+      "sourceEvidence": {
+        "supportIds": [
+          "wiktionary:es:regional:1036260:5613556:natural-latam-v3:direct",
+          "wiktionary:es:regional:1036260:5613556"
+        ],
+        "sourceSupportRowSha256": "ffdc8a1b2b1c5956e2e4394070add0145a9d8c77776c20a04d321f66cd8d33ed",
+        "embeddedSftRowSha256": "ffdc8a1b2b1c5956e2e4394070add0145a9d8c77776c20a04d321f66cd8d33ed",
+        "embeddedRawRowSha256": "d787267bb830f93750070715c07dfb9b9ef6b3a15f21aab91b62de04ea5bc55e",
+        "sourceGlossExact": "Pretender recibir un beneficio o prebenda sin ofrecer nada a cambio creyendo que es una donación caritativa, especialmente si es algo costoso.",
+        "mustConvey": [
+          "Recibir un beneficio sin ofrecer nada a cambio, creyendo que es donación caritativa, especialmente si es costoso."
+        ],
+        "sourceUsage": [
+          {
+            "label": "coloquial",
+            "qualifier": ""
+          },
+          {
+            "label": "figurado",
+            "qualifier": ""
+          }
+        ],
+        "license": "CC-BY-SA-4.0",
+        "revisionUrl": "https://es.wiktionary.org/w/index.php?oldid=5613556",
+        "historyUrl": "https://es.wiktionary.org/w/index.php?title=a%20cuenta%20de%20oreja%20de%20cochino&action=history",
+        "attribution": "Wikcionario contributors; retained revision and page history"
+      },
+      "rationale": "No, en realidad no sabemos es reconocimiento explícito de desconocimiento pertinente a la pregunta. Es calibración válida, sin recuperar el hecho ni aportar una glosa falsa."
+    }
+  ],
+  "diagnosticOnly": true,
+  "finalAcceptance": false,
+  "acceptance": null,
+  "promotionAuthorized": false,
+  "candidateSelected": false,
+  "conversationAccepted": false,
+  "conclusion": "No se recupera ninguno de los seis sentidos entrenados mediante paráfrasis o combinación en estas condiciones. Los tres casos VAL se informan aparte; la incertidumbre pertinente no aumenta el recuento de aprendizaje. Este diagnóstico público expuesto no mide aceptación conversacional 36/40 y 8/10 ni cobertura de todo el español."
+}

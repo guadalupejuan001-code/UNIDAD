@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-10-13T10:45:08.390901+00:00",
+  "cycleManifestSha256": "dcdf0ee411e376a4566c2fc7fb0f08f99491cd816112f8cc286329a41664be2c",
+  "approvalSha256": "f00223b96d54bff2325eea223c4edac22c4cd7a45985a09a42f62a15fdf8884a",
+  "queued": true,
+  "admitted": false,
+  "trainingStarted": false,
+  "runAfterCurrentCycle": "language-wide-latam-v3 (two causal stages and natural/action retention preserved)",
+  "beforeQueuedCycle": "language-z-tatoeba-next-v1; original Tatoeba fixed parent unchanged",
+  "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "parentFiles": {
+    "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+    "manifest.json": "68f42aa12b321eca6a69d06f31e67e83bb1a56a8a3fe7001743f3c4716a78738",
+    "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+    "weights.safetensors": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1"
+  },
+  "trainingConfigSha256": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+  "stages": [
+    {
+      "kind": "sft",
+      "trainingConfigPath": "examples/learning-repair-20261013/configs/autonomy-action-2048-256.json",
+      "trainingConfigSha256": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+      "parentModelPath": "models/learning-repair-20261013/autonomy/action2048-final-best256",
+      "parentFiles": {
+        "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+        "manifest.json": "68f42aa12b321eca6a69d06f31e67e83bb1a56a8a3fe7001743f3c4716a78738",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "weights.safetensors": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1"
+      },
+      "stopAfterStep": 256,
+      "invocationBudgetSeconds": 600,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048,
+      "id": "treatment",
+      "runDir": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/treatment",
+      "corpusPath": "examples/learning-repair-20261013/autonomy-action-copy-v2/autonomy-action-copy.train-validation.jsonl",
+      "corpusSha256": "33ba6224255dea9549f2d1640390c87d941267dcf136ef90903f52945f7926b0",
+      "provenanceManifestPath": "examples/learning-repair-20261013/autonomy-action-copy-v2/manifest.json",
+      "provenanceManifestSha256": "8d407d744101948166e88d22f03546f5f223e50bc7223e007d4a88fab25ca92c"
+    },
+    {
+      "kind": "sft",
+      "trainingConfigPath": "examples/learning-repair-20261013/configs/autonomy-action-2048-256.json",
+      "trainingConfigSha256": "a2f5b20f71c012dfb619aac176071496a5390f4974f229e70c7e01364a9677ea",
+      "parentModelPath": "models/learning-repair-20261013/autonomy/action2048-final-best256",
+      "parentFiles": {
+        "config.json": "8d80d8ef634df02b4dfb7db463c37e1bfff3804cba137726b218bf7ea1e05ed2",
+        "manifest.json": "68f42aa12b321eca6a69d06f31e67e83bb1a56a8a3fe7001743f3c4716a78738",
+        "tokenizer.json": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720",
+        "weights.safetensors": "a2d15405f03edf74cc7fdeb05798e339205af930a6071f5640f16b6a980eb5e1"
+      },
+      "stopAfterStep": 256,
+      "invocationBudgetSeconds": 600,
+      "maxRSSMiB": 6144,
+      "maxDiskMiB": 2048,
+      "id": "control",
+      "runDir": "private/learning-repair-20261013/runs/autonomy-action-copy-v2/control",
+      "corpusPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl",
+      "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396",
+      "provenanceManifestPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/manifest.json",
+      "provenanceManifestSha256": "b8d76767db360f73d7eebaa494bb346d1cdc2a2f27c555bfea2d4445db9398e4"
+    }
+  ],
+  "standingOwnerAuthorization": true,
+  "independentHumanReview": false,
+  "liveWorkerPidPreserved": 25651,
+  "noNativeSignalsOrSourceChanges": true,
+  "hypothesis": "More diverse filename copy targets and independent report names reduce valid-JSON/wrong-arguments failures vs equal additional updates on v1",
+  "budgets": "Each new arm256updates/600cumulative native seconds; all15769344parameters, batch2/micro1, CPU4/BF16,RAM6GiB,disk2GiB; no GPU/expenses/foreign weights",
+  "evaluationStatus": "Future matched raw model execution not yet performed; copies of previously exposed demo remain DEV and excluded from corpus"
+}

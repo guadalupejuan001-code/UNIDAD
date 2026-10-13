@@ -9,7 +9,7 @@ personal que converse en español, realice trabajo útil y pueda adaptarse media
 aprendizaje verificable. La inferencia actual funciona localmente con Python,
 NumPy y PyTorch, sin llamar a una API de otra IA.
 
-**Estado observado el 13 de octubre de 2026, 09:43:36 UTC:** la base propia de
+**Estado observado el 13 de octubre de 2026, 10:53:17 UTC:** la base propia de
 **15.179.520 parámetros** terminó con **8.914 actualizaciones** y **22.906.669
 posiciones objetivo procesadas**. Su ajuste conversacional terminó en
 **8.192 actualizaciones**, con **5.286.178 posiciones supervisadas incluido EOS**.
@@ -22,14 +22,31 @@ conservan sus discrepancias y las [respuestas reales](docs/learning-repair-20261
 La conversación fiable sigue pendiente; C7 conserva su condición de referencia
 propia, también sin aceptación.
 
-El tratamiento natural + LATAM terminó en **4.096 actualizaciones**. Su BEST
-sigue en 1.024, sin conversación aceptada; LAST 4.096 está exportado y todavía
-sin generación/revisión conversacional. El **control sigue entrenando**, con
-**1.517 actualizaciones reales** a las 09:43:36 UTC, desde el mismo padre propio.
+Tratamiento y control natural terminaron con **4.096 actualizaciones cada uno**.
+BEST del tratamiento sigue en 1.024; BEST del control es el padre heredado en
+**paso 0**, sin aprendizaje nuevo del control. El
+[probe regional de cuatro modelos](docs/learning-repair-20261013/comparison/latam-knowledge-development-probe-v1/README.md)
+obtuvo **0/12 significados y 0/6 familias correctas en todos**, según ambos
+revisores de IA del proyecto. La conversación fiable sigue sin aceptar.
+La siguiente etapa de acciones con contexto 2.048 **ya terminó 256 updates**,
+187,049678 segundos, con todos los 15.769.344 parámetros entrenables. Su NLL de
+validación fue 0,038118744; mide ajuste al corpus de acciones, todavía sin
+aceptación de planificación o trabajo fiable. Su primera propuesta con tres
+herramientas ya fue JSON válido, pero inventó `k.txt` y se bloqueó antes del
+handler; la tarea mínima siguió dando JSON inválido. La [evidencia real](docs/learning-repair-20261013/autonomy-demonstration/action256-own-v1/README.md)
+conserva esa mejora parcial de formato y el trabajo fallido, sin reescribirla.
+La siguiente **base causal de español + LATAM v3 ya está entrenando**: 1.512
+updates, PID 25651 comprobado vivo, desde los pesos propios de acciones.
+Su NLL causal es 3,285676974 en BEST 1.280, con otro corpus y objetivo; no se
+compara con la NLL de acciones ni acredita calidad conversacional.
+
 La [continuación](docs/learning-repair-20261013/current-progress.md) conserva
-artefactos, exposición exacta, fuentes y autonomía experimental. La rama está
-publicada en el [PR10 abierto y sin borrador](https://github.com/guadalupejuan001-code/UNIDAD/pull/10),
-con CI pendiente; `main` sigue en PR9, `3930c1ef5c25ff5953a5b57793231e7f78c6eac7`.
+artefactos, exposición exacta, fuentes y autonomía experimental. Código, datos,
+pesos y documentos de PR10 se integraron en
+`62cf4d43780204f8d09dce6715cefcb6110aa310`, con los cuatro checks CI aprobados.
+El [recibo](docs/learning-repair-20261013/pr10-publication-verification.json)
+verifica esos bytes remotos. Los nuevos cierres del control, probe regional y
+resultados de acciones se preparan como entrega posterior, sin promover modelos.
 
 El código compatible de PR1–8 y la entrega del
 [PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) están integrados sin
@@ -46,8 +63,8 @@ actualizaciones y ninguno pasó la aceptación; sus
 | Modelos propios | Pesos, configuración, tokenizador y procedencia de Transformers entrenados desde pesos aleatorios. | Son modelos experimentales; C7 se conserva como referencia. |
 | GNOSIS | Una configuración reúne cerebro, NERVA, perfiles, recursos y etapas `foundation → conversation → adaptation`. | Las etapas requieren datos y ejecución explícitos; no deciden solas qué aprender. |
 | NERVA 0.2 | Backend del modelo pequeño de caracteres, con generación greedy y temperatura cero. | Usa Node.js; C7 y los Transformers siguen ejecutándose mediante PyTorch. |
-| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base de 15,18 M y su primer SFT terminados; tratamiento regional terminado en 4.096; control activo con 1.517 actualizaciones comprobadas. GNOSIS conserva su configuración independiente sin corpus. |
-| Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | Supervisor y worker nativo del control observados vivos, con 1.517 updates. Cada etapa es finita y depende de que el entorno siga vivo. |
+| Entrenamiento | Preentrenamiento de texto, ajuste conversacional, continuación desde pesos propios y reanudación con optimizador. | Base de 15,18 M y su primer SFT terminados; tratamiento y control terminados en 4.096 cada uno; acciones256 terminó y falló el trabajo real; base causal amplia v3 activa con 1.512 updates. GNOSIS conserva su configuración independiente sin corpus. |
+| Supervisor local | Adopta una corrida existente, mantiene su presupuesto y recibe nuevas etapas con datos y procedencia fijados. | Supervisor y worker de la base causal amplia v3 observados vivos, con 1.512 updates; cada etapa mantiene límites finitos. Cada etapa es finita y depende de que el entorno siga vivo. |
 | Memoria local | Registro de encargos, intentos y correcciones, con búsqueda y referencias al texto original. | Guardar memoria no cambia pesos ni incorpora recuerdos automáticamente al diálogo. |
 | Herramientas y autonomía operativa | Controlador experimental recibe propuestas estructuradas del modelo propio, comprueba permisos, ejecuta herramientas registradas y observa/verifica resultados. | Incluye límites, progreso persistente, recuperación, cancelación y aprobaciones para efectos sensibles. Su implementación no demuestra planificación aprendida fiable. |
 | Especialistas pequeños | Generación por caracteres y predicción de una métrica de atención. | Son demostraciones con errores y límites documentados, no capacidades generales aceptadas. |
@@ -64,6 +81,7 @@ no conecta automáticamente una aplicación Android ni acredita una prueba físi
 | [C7](models/conversation-reference-c7/README.md) | 6.983.937 | Referencia propia entrenada, con pesos publicados, vocabulario BPE de 8.192 tokens y contexto de 512. Su conversación no pasa la aceptación. |
 | [`foundation-15m`](models/learning-repair-20261013/foundation-15m/README.md) | 15.179.520 | Base causal terminada: 8.914 actualizaciones, BPE de 2.048 tokens y contexto de 512. Pesos y BEST/LAST finales publicados mediante PR8; sin conversación aceptada. |
 | [`conversation-15m`](models/learning-repair-20261013/conversation-15m/README.md) | 15.179.520 | SFT terminado en 8.192 updates; BEST 4.096. Última respuesta/EOS supervisados, todos los parámetros entrenables. BEST obtuvo 0/40 completas y 0/10 diálogos en DEV; rechazado. |
+| `action2048` | 15.769.344 | SFT propio terminado en 256 updates desde extensión de contexto propia, todos los parámetros entrenables. NLL de acciones 0,038118744; planificación/trabajo y conversación de esta etapa aún sin aceptar. |
 | `50m` | 48.852.992 | Un modelo real inicializado aleatoriamente calculó gradientes de 64 tokens, se exportó y se cargó con resultados idénticos. Tuvo **cero actualizaciones de pesos**. |
 | `100m` | 99.446.400 | Perfil validado y conteo exacto. No se ejecutó ni entrenó aquí. |
 | `1b` | 991.586.304 | Perfil validado y estructura meta, sin asignar sus pesos en CPU. No se ejecutó ni entrenó aquí. |
@@ -129,8 +147,12 @@ El [tratamiento natural + LATAM, paso 1.024](docs/learning-repair-20261013/compa
 también generó 40 turnos reales: ambas revisiones dan 0 completas, 0 parciales,
 40 fallidas y 0/10 diálogos; primaria 1 crítica y cruzada 0, ambas con 11 técnicas.
 Su única discrepancia crítica interpreta «Tus entradas en dos entradas.».
-El tratamiento terminó y tampoco acredita mejora conversacional; su LAST final
-aún no tiene una generación/revisión conversacional publicada.
+El tratamiento terminó y tampoco acredita mejora conversacional. Su
+[LAST final ya generó los 40 turnos](docs/learning-repair-20261013/comparison/development-natural-latam-last4096-v1/README.md);
+la nueva comparación local conserva ambas revisiones, con 0 completas, una
+parcial, 14 críticas y una técnica. La intervención regional tampoco comprobó
+mejora de conversación, y los datos léxicos no se presentan como conocimiento
+aprendido por disponer de pesos o reducir una NLL.
 
 El [cierre del tratamiento](docs/learning-repair-20261013/natural-latam-v4-treatment-final-delivery.md)
 conserva 4.096 updates, 32.765 ventanas y 4.277.235 posiciones supervisadas,
@@ -138,8 +160,23 @@ incluidas 52.188 posiciones regionales en 1.295 exposiciones regionales. Termin�
 por el límite configurado, con razón nativa `signal` y 3.337,367299398 segundos.
 BEST 1.024 conserva pesos/configuración/tokenizador de la entrega intermedia;
 los metadatos de selección final se guardan aparte. LAST 4.096 conserva su
-propio paquete nativo y artefacto de inferencia, sin aceptación ni respuestas
-finales evaluadas todavía.
+propio paquete nativo y artefacto de inferencia, más una generación DEV real
+con dos revisiones semánticas terminadas; sigue sin aceptación.
+
+El [cierre del control](docs/learning-repair-20261013/natural-latam-v4-control-final-delivery.md)
+conserva 4.402.874 etiquetas supervisadas, incluido EOS, y 32.765 ventanas.
+BEST 0 reutiliza el padre SFT propio `072eedd2…`; no representa aprendizaje del
+control. LAST tiene sus pesos propios nuevos, conservados por separado. En el
+[probe regional](docs/learning-repair-20261013/comparison/latam-knowledge-development-probe-v1/README.md),
+los cuatro modelos fallan los doce significados TRAIN y seis familias. El autor
+del probe también hizo la revisión primaria; la cruzada es de otro agente de
+IA, y ninguna es evaluación humana independiente. Los 60 textos, fuentes,
+congelación y ambos juicios están íntegros, sin mejora léxica verificada.
+
+La [comparación conversacional del control LAST 4.096](docs/learning-repair-20261013/comparison/development-natural-control-last4096-v1/README.md)
+ya conserva ambos juicios: 0 completas, 1 parcial, 39 fallidas, 0/10 diálogos,
+2 críticas y 7 técnicas. Coinciden los IDs críticos y las cuatro claves
+booleanas por turno; sigue rechazado, sin mejora conversacional verificada.
 
 La siguiente hipótesis reduce el peso de ficción procedural repetitiva y añade
 significados regionales revisados. El [currículo natural + LATAM v4](examples/learning-repair-20261013/natural-latam-sft-v4/README.md)
@@ -156,8 +193,10 @@ comprobó sólo TRAIN: retención de cada objetivo/EOS una vez, historia anterio
 sin supervisión y ningún prefijo o mensaje actual perdido. Preparar el corpus y
 encolarlo no acredita aprendizaje. Se reparó la admisión por campos obligatorios
 de procedencia y TEST, reemplazando sólo el supervisor inactivo. En esta lectura
-el worker del control está vivo, `status=running`, **step=1517**, con
-1.198,485810 segundos nativos acumulados y el mismo padre BEST 4.096 comprobado. El estado
+el control terminó en **step=4096**, con 3.321,110810 segundos nativos
+acumulados. Acciones también llegó a 256. La base causal amplia v3 está
+`running`, **step=1512**, 1.346,434966 segundos, PID 25651/`birth=3078774`;
+el supervisor registra entrenamiento activo desde los pesos propios `e202eafc…`. El estado
 se puede consultar dentro del entorno:
 
 ```sh
@@ -192,9 +231,10 @@ y el [lote posterior de Tatoeba](examples/learning-repair-20261013/new-sources/t
 están preparados, **todavía sin entrenar**. V2 retiene 10.129 filas del catálogo
 tras excluir una familia conflictiva, además de prosa y definiciones regionales.
 La [mezcla causal v3 corregida](docs/learning-repair-20261013/wide-latam-v3-enqueue.json)
-ya está encolada tras el SFT de acciones, con dos shards y retención posterior.
+ya empezó su primer shard tras acciones256; el segundo y la retención siguen
+encolados. La fuente activa está fijada por SHA `81c41448…`.
 [Tatoeba posterior también está encolado](docs/learning-repair-20261013/tatoeba-next-v1-enqueue.json),
-sin entrenar estas etapas todavía. Descargar o mezclar datos no significa que los pesos los aprendieron;
+sin entrenar Tatoeba todavía. Descargar o mezclar datos no significa que los pesos los aprendieron;
 las anclas de retención repetidas no se cuentan como diversidad nueva.
 
 ## Qué respondieron los ajustes anteriores
@@ -369,9 +409,15 @@ La verificación de cierre pasó **145 pruebas en 6,893 segundos**, con una CPU
 y límite de 180 segundos. Incluye controlador, API, archivos, cerebro anterior,
 bucle, collector V2, extensión de contexto y datos de acciones. Comprueba el
 software y sus límites; los resultados reales del modelo siguen rechazados.
-El CI inicial `38375885022` falló; los [arreglos verificados localmente](docs/learning-repair-20261013/pr10-ci-corrections.json)
-conservan las comprobaciones de seguridad y payloads completos. La nueva
-ejecución remota sigue pendiente; no se declara CI aprobado.
+El CI inicial `38375885022` falló; los [arreglos](docs/learning-repair-20261013/pr10-ci-corrections.json)
+conservan las comprobaciones de seguridad y payloads completos. Las ejecuciones
+remotas `38379096070` y `38379113739` aprobaron los cuatro checks. El
+[recibo](docs/learning-repair-20261013/pr10-publication-verification.json) conserva
+la comprobación de CI y de publicación; no convierte los modelos en aceptados.
+El [log final de GitHub](https://github.com/guadalupejuan001-code/UNIDAD/actions/runs/38379113739)
+registra 603 pruebas de conversación aprobadas en 75,599 s y 12 ejemplos
+aprobados en 7,312 s. La job de Python mínimo informa 521 pruebas en 8,807 s,
+con 166 omisiones de dependencias opcionales y resultado OK.
 
 Ya se [exportó un artefacto propio con contexto 2.048](docs/learning-repair-20261013/context2048-extension-delivery.json),
 desde el tratamiento 1.024. Conserva byte por byte todos los parámetros heredados
@@ -383,7 +429,15 @@ El [corpus de acciones](examples/learning-repair-20261013/autonomy-action-sft-v1
 conserva 72 tareas ficticias y 216 acciones ejecutadas sobre archivos reales,
 192 TRAIN/24 VALIDATION, con etiquetas de fixture declarada. Su
 [SFT está encolado](docs/learning-repair-20261013/autonomy-action-v1-enqueue.json)
-tras ambos brazos actuales, hasta 256 updates/600 segundos; todavía no se entrenó.
+tras ambos brazos, hasta 256 updates/600 segundos. Ya terminó 256 en
+187,049678 segundos; generación y evaluación del candidato propio se registran
+aparte. La [demostración posterior](docs/learning-repair-20261013/autonomy-demonstration/action256-own-v1/README.md)
+produjo JSON válido en una propuesta, pero pidió `k.txt` sin autorización y
+falló; la tarea mínima siguió siendo JSON inválido. El
+[reintento opcional del host](docs/learning-repair-20261013/operational-autonomy.md)
+permite una nueva propuesta tras argumentos de lectura rechazados, por defecto
+cero; su software está probado y la [prueba real con un reintento](docs/learning-repair-20261013/autonomy-demonstration/action256-own-read-repair-v1/README.md)
+también falló después de una segunda propuesta mal formada, sin efectos ni informe.
 
 Para reproducir la demostración con el mismo BEST propio en un directorio nuevo:
 
@@ -400,6 +454,11 @@ conectar el controlador desde CLI/HTTP se configuran `--conversation-model`,
 Las dos raíces deben existir y estar separadas. `--autonomy-max-steps` y
 `--autonomy-max-seconds` fijan los límites. El [estado actual](docs/learning-repair-20261013/current-progress.md)
 separa funcionamiento técnico, conversación y planificación.
+
+La [comparación futura de datos de copia](docs/learning-repair-20261013/autonomy-action-copy-v2-enqueue.json)
+está aprobada y en cola después del ciclo causal v3, todavía sin entrenar:
+V2 y V1 parten del mismo `e202eafc…`, con iguales 256 updates/600 segundos.
+Preparar esos targets no mejora pesos ni modifica el padre fijado de Tatoeba.
 
 ## Potencial y prioridades
 
@@ -431,7 +490,7 @@ que haya aprendido a planificar.
 
 ## Integración de las ramas
 
-Los cambios compatibles y la evidencia de PR1–9 se reúnen en `main`, sin
+Los cambios compatibles y la evidencia de PR1–10 se reúnen en `main`, sin
 entregas en borrador. Se conservan las ramas originales como historia.
 
 | Origen | Resultado integrado |
@@ -442,8 +501,8 @@ entregas en borrador. Se conservan las ramas originales como historia.
 | [PR5](https://github.com/guadalupejuan001-code/UNIDAD/pull/5) y [PR6](https://github.com/guadalupejuan001-code/UNIDAD/pull/6) | GNOSIS, NERVA, entrenamiento reanudable y cargador mmap. |
 | [PR7](https://github.com/guadalupejuan001-code/UNIDAD/pull/7) | Continuación propia de español, supervisor, datos/configuraciones distribuibles y recibos intermedios. |
 | [PR8](https://github.com/guadalupejuan001-code/UNIDAD/pull/8) | Reparación del registro de transición del supervisor, pesos y BEST/LAST finales de la base, fuentes públicas nuevas y mezcla de español en cola. El SFT estaba ejecutándose en la observación de PR8; ahora su primera etapa está cerrada. Integrar archivos no acepta sus respuestas. |
-| [PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) | SFT intermedio y fuentes/colas posteriores, conservados sin aceptar la conversación. La entrega posterior de PR10 añade cierres, evaluaciones y autonomía experimental; sigue pendiente de CI e integración en main. |
-| [PR10](https://github.com/guadalupejuan001-code/UNIDAD/pull/10) | Abierto, publicado en su rama y sin borrador. CI inicial falló; correcciones y cierre del tratamiento conservan recibos. Integración en main pendiente. |
+| [PR9](https://github.com/guadalupejuan001-code/UNIDAD/pull/9) | SFT intermedio y fuentes/colas posteriores, conservados sin aceptar la conversación. La entrega posterior de PR10 añade cierres, evaluaciones y autonomía experimental; ya está integrada en main con CI aprobado. |
+| [PR10](https://github.com/guadalupejuan001-code/UNIDAD/pull/10) | Fusionado sin borrador en `62cf4d4`, con cuatro checks CI aprobados. Conserva las correcciones, cierres, datos, pesos propios y autonomía experimental; conversación y planificación aprendida siguen sin aceptar. |
 | [Rama de artefactos](https://github.com/guadalupejuan001-code/UNIDAD/tree/artifacts/unidad-contraste-relacional-20261012/weights-packages/unidad-contraste-relacional-20261012) | Archivo de paquetes históricos descargables, conservado en su rama. |
 
 La [matriz de reconciliación](docs/conversation-integration-20261013/branch-reconciliation.json)
@@ -473,6 +532,7 @@ entrena C7 ni ejecuta su Transformer.
 Los pesos y recibos de experimentos descartados se conservan como evidencia.
 Publicarlos no los convierte en modelos aceptados. Los seis ajustes anteriores
 terminaron y conservan su estado; la base de 15,18 M y su primer SFT también
-terminaron. El tratamiento regional también terminó en 4.096. El control de esa comparación
-sigue entrenando con 1.517 updates en la lectura indicada. Los presupuestos
+terminaron. Tratamiento y control regionales terminaron en 4.096 cada uno;
+acciones terminó en 256 y la nueva base causal amplia v3 está entrenando en
+la lectura indicada. Los presupuestos
 históricos 24+2 horas siguen cerrados. Clonar esta documentación no inicia una corrida ni un supervisor.

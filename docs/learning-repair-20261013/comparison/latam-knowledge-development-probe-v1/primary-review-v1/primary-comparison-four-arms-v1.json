@@ -1,0 +1,1161 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "createdAt": "2026-10-13T10:24:35.250499+00:00",
+  "suiteFreezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+  "review": "Primary project-AI semantic review of 60 exact replies; author of frozen probe also judges, no independent human validation and no cross review read.",
+  "countsByArm": {
+    "parent072": {
+      "trainParaphraseCorrect": 0,
+      "trainParaphraseDenominator": 6,
+      "trainCompositionMeaningAndFormatCorrect": 0,
+      "trainCompositionDenominator": 6,
+      "trainMeaningCorrect": 0,
+      "trainMeaningDenominator": 12,
+      "trainFamiliesBothCorrect": 0,
+      "trainFamilyDenominator": 6,
+      "compositionFormatStructureCorrect": 0,
+      "compositionNamePreserved": 2,
+      "validationStatuses": {
+        "irrelevant_or_incoherent": 2,
+        "explicit_uncertainty": 1
+      },
+      "validationDenominator": 3,
+      "validationKnownFactCorrect": 0,
+      "validationExplicitUncertainty": 1,
+      "generationErrors": 0,
+      "emptyReplies": 0,
+      "tokenBudgetStops": 8,
+      "promptTruncations": 0,
+      "technicalFlags": 8,
+      "technicalDenominator": 15
+    },
+    "treatment-best1024": {
+      "trainParaphraseCorrect": 0,
+      "trainParaphraseDenominator": 6,
+      "trainCompositionMeaningAndFormatCorrect": 0,
+      "trainCompositionDenominator": 6,
+      "trainMeaningCorrect": 0,
+      "trainMeaningDenominator": 12,
+      "trainFamiliesBothCorrect": 0,
+      "trainFamilyDenominator": 6,
+      "compositionFormatStructureCorrect": 0,
+      "compositionNamePreserved": 1,
+      "validationStatuses": {
+        "irrelevant_or_incoherent": 2,
+        "unsupported_or_wrong_fact": 1
+      },
+      "validationDenominator": 3,
+      "validationKnownFactCorrect": 0,
+      "validationExplicitUncertainty": 0,
+      "generationErrors": 0,
+      "emptyReplies": 0,
+      "tokenBudgetStops": 7,
+      "promptTruncations": 0,
+      "technicalFlags": 7,
+      "technicalDenominator": 15
+    },
+    "treatment-last4096": {
+      "trainParaphraseCorrect": 0,
+      "trainParaphraseDenominator": 6,
+      "trainCompositionMeaningAndFormatCorrect": 0,
+      "trainCompositionDenominator": 6,
+      "trainMeaningCorrect": 0,
+      "trainMeaningDenominator": 12,
+      "trainFamiliesBothCorrect": 0,
+      "trainFamilyDenominator": 6,
+      "compositionFormatStructureCorrect": 0,
+      "compositionNamePreserved": 2,
+      "validationStatuses": {
+        "unsupported_or_wrong_fact": 2,
+        "irrelevant_or_incoherent": 1
+      },
+      "validationDenominator": 3,
+      "validationKnownFactCorrect": 0,
+      "validationExplicitUncertainty": 0,
+      "generationErrors": 0,
+      "emptyReplies": 0,
+      "tokenBudgetStops": 3,
+      "promptTruncations": 0,
+      "technicalFlags": 3,
+      "technicalDenominator": 15
+    },
+    "control-last4096": {
+      "trainParaphraseCorrect": 0,
+      "trainParaphraseDenominator": 6,
+      "trainCompositionMeaningAndFormatCorrect": 0,
+      "trainCompositionDenominator": 6,
+      "trainMeaningCorrect": 0,
+      "trainMeaningDenominator": 12,
+      "trainFamiliesBothCorrect": 0,
+      "trainFamilyDenominator": 6,
+      "compositionFormatStructureCorrect": 0,
+      "compositionNamePreserved": 3,
+      "validationStatuses": {
+        "irrelevant_or_incoherent": 3
+      },
+      "validationDenominator": 3,
+      "validationKnownFactCorrect": 0,
+      "validationExplicitUncertainty": 0,
+      "generationErrors": 0,
+      "emptyReplies": 0,
+      "tokenBudgetStops": 8,
+      "promptTruncations": 0,
+      "technicalFlags": 8,
+      "technicalDenominator": 15
+    }
+  },
+  "modelIds": {
+    "parent072": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+    "treatment-best1024": "unidad-conversation-ec9ab262aaaa5761dfe77e51232ca9fcf78bea93b7af97ec17d971557f0166df",
+    "treatment-last4096": "unidad-conversation-d6d860222baf5e8952eade42fcda3a0bd52dc77000c0c254ca895a91fdab7160",
+    "control-last4096": "unidad-conversation-a2cae3b623142153487760d2f09e1a9c2fc851a5a1a09f1cad83b9ffaa6c2d7d"
+  },
+  "pairedComparisons": [
+    {
+      "before": "parent072",
+      "after": "treatment-best1024",
+      "trainMeaningDenominator": 12,
+      "trainMeaningImproved": 0,
+      "trainMeaningRegressed": 0,
+      "trainMeaningBothIncorrect": 12,
+      "validationCalibrationRegressions": [
+        "val09u"
+      ],
+      "tokenBudgetBefore": 8,
+      "tokenBudgetAfter": 7,
+      "cases": [
+        {
+          "id": "tr01p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr01c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "val07u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "irrelevant_or_incoherent"
+        },
+        {
+          "id": "val08u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val09u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "explicit_uncertainty",
+          "validationAfter": "irrelevant_or_incoherent"
+        }
+      ]
+    },
+    {
+      "before": "parent072",
+      "after": "treatment-last4096",
+      "trainMeaningDenominator": 12,
+      "trainMeaningImproved": 0,
+      "trainMeaningRegressed": 0,
+      "trainMeaningBothIncorrect": 12,
+      "validationCalibrationRegressions": [
+        "val09u"
+      ],
+      "tokenBudgetBefore": 8,
+      "tokenBudgetAfter": 3,
+      "cases": [
+        {
+          "id": "tr01p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr01c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "val07u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val08u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val09u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "explicit_uncertainty",
+          "validationAfter": "irrelevant_or_incoherent"
+        }
+      ]
+    },
+    {
+      "before": "treatment-best1024",
+      "after": "treatment-last4096",
+      "trainMeaningDenominator": 12,
+      "trainMeaningImproved": 0,
+      "trainMeaningRegressed": 0,
+      "trainMeaningBothIncorrect": 12,
+      "validationCalibrationRegressions": [],
+      "tokenBudgetBefore": 7,
+      "tokenBudgetAfter": 3,
+      "cases": [
+        {
+          "id": "tr01p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr01c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "val07u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val08u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "unsupported_or_wrong_fact",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val09u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "irrelevant_or_incoherent"
+        }
+      ]
+    },
+    {
+      "before": "parent072",
+      "after": "control-last4096",
+      "trainMeaningDenominator": 12,
+      "trainMeaningImproved": 0,
+      "trainMeaningRegressed": 0,
+      "trainMeaningBothIncorrect": 12,
+      "validationCalibrationRegressions": [
+        "val09u"
+      ],
+      "tokenBudgetBefore": 8,
+      "tokenBudgetAfter": 8,
+      "cases": [
+        {
+          "id": "tr01p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr01c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "val07u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "irrelevant_or_incoherent"
+        },
+        {
+          "id": "val08u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "irrelevant_or_incoherent"
+        },
+        {
+          "id": "val09u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "explicit_uncertainty",
+          "validationAfter": "irrelevant_or_incoherent"
+        }
+      ]
+    },
+    {
+      "before": "control-last4096",
+      "after": "treatment-last4096",
+      "trainMeaningDenominator": 12,
+      "trainMeaningImproved": 0,
+      "trainMeaningRegressed": 0,
+      "trainMeaningBothIncorrect": 12,
+      "validationCalibrationRegressions": [],
+      "tokenBudgetBefore": 8,
+      "tokenBudgetAfter": 3,
+      "cases": [
+        {
+          "id": "tr01p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr01c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:estar al cateo de la laucha",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr02c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:abastecedor",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr03c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cruzazulear",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr04c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:a la zumba marumba",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr05c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:buco",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06p",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "tr06c",
+          "sourceSplit": "train",
+          "familyId": "wiktionary:es:lexical-family:cofla",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": false,
+          "formatAfter": false,
+          "validationBefore": null,
+          "validationAfter": null
+        },
+        {
+          "id": "val07u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:apampichar",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val08u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:champa",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "unsupported_or_wrong_fact"
+        },
+        {
+          "id": "val09u",
+          "sourceSplit": "validation",
+          "familyId": "wiktionary:es:lexical-family:a cuenta de oreja de cochino",
+          "meaningBefore": false,
+          "meaningAfter": false,
+          "formatBefore": null,
+          "formatAfter": null,
+          "validationBefore": "irrelevant_or_incoherent",
+          "validationAfter": "irrelevant_or_incoherent"
+        }
+      ]
+    }
+  ],
+  "inputArtifacts": [
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/outputs.json",
+      "bytes": 70050,
+      "sha256": "28bbc6bf24d51898ee917d88e2f792cf439ac2b30a9588a4e2efbae5c3e61c17"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/review-primary.json",
+      "bytes": 16212,
+      "sha256": "0bda509c8e351fb8ff702c07bb497ea560db671e72dc5f4019a73abc7a735e23"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/parent072/assessment-primary.json",
+      "bytes": 16315,
+      "sha256": "72e9230bf4229985a644be6e1ff62f141127b3d0e648894ed631b19d8dfabb92"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-best1024/outputs.json",
+      "bytes": 69178,
+      "sha256": "2e60309947cc7e366757fb73b3b2bf6389c480fccc4be00e63f6bc18dfb71b6e"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-best1024/review-primary.json",
+      "bytes": 16121,
+      "sha256": "63edd5456c29e500a3c20ef725207dd018c4082cde4ae6bbbe1be226e763e440"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-best1024/assessment-primary.json",
+      "bytes": 16229,
+      "sha256": "2f4ce58c94c147cb7a486fe083035ec5e52b48f1d0d240fa1a67177af6fe9e80"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-last4096/outputs.json",
+      "bytes": 65941,
+      "sha256": "97a3012f62cb5ce01524a0acf26651696b701f34dfced53e89960e6307654ce8"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-last4096/review-primary.json",
+      "bytes": 15556,
+      "sha256": "7df102675b9e50e1f654bf7a7b859567e10efaf124562e69128141cec0cd8ada"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/treatment-last4096/assessment-primary.json",
+      "bytes": 15673,
+      "sha256": "35072fec996f33065c33121fd06ef5e2e5a0c1ad9f7986b21874afcd073c6897"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/control-last4096/outputs.json",
+      "bytes": 70761,
+      "sha256": "033d8c97ccc34b4b503dec9d34233ceab60b53246fe46200b1b3006083da3661"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/control-last4096/review-primary.json",
+      "bytes": 16818,
+      "sha256": "fde020fa8af2bb7c5b10ba152a53ada7bc54e21c9b74b23dd91bda5724ba851d"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/control-last4096/assessment-primary.json",
+      "bytes": 16540,
+      "sha256": "16a57f75180f5e57595f67a7b436908f66cff94e8951d1767d45453babf5eaf7"
+    },
+    {
+      "path": "private/learning-repair-20261013/evaluation/latam-knowledge-development-probe-v1/primary-review-v1/assess_primary.py",
+      "bytes": 9867,
+      "sha256": "e9d49565df021daffe4567266d9134fcd307d6b7914cf2ee9044d1b2b68de1a8"
+    },
+    {
+      "path": "docs/learning-repair-20261013/latam-knowledge-development-probe-v1/control-endpoint-binding.json",
+      "bytes": 1004,
+      "sha256": "3f9bc9bf546254afbe1ff9e3aa0419151b2fcfdaf272560b36470d690ac6cbd9"
+    }
+  ],
+  "quotes": [
+    {
+      "arm": "parent072",
+      "id": "val09u",
+      "quoteExact": "No, en realidad no sabemos.",
+      "interpretation": "Allowed explicit uncertainty, not correct knowledge of the sense."
+    },
+    {
+      "arm": "treatment-last4096",
+      "id": "tr03p",
+      "quoteExact": "En México, «cruza» puede significar: Gran cantidad de algo.",
+      "interpretation": "The trained gloss Gran cantidad de algo is used for requested cruzazulear instead of buco. This is observable fact mixing, not correct retrieval or proof of semantic learning."
+    },
+    {
+      "arm": "treatment-best1024",
+      "id": "tr05p",
+      "quoteExact": "En Panamá, «buco» puede referirse a: Muyú, «buco», «buco», «buco».",
+      "interpretation": "Repeats the term without a comprehensible quantity gloss."
+    },
+    {
+      "arm": "control-last4096",
+      "id": "tr05p",
+      "quoteExact": "Lo siento, no tengo información al respecto a la pregunta.",
+      "interpretation": "Explicit uncertainty in a TRAIN-derived question is documented but does not satisfy trained-fact retrieval."
+    },
+    {
+      "arm": "control-last4096",
+      "id": "tr05c",
+      "quoteExact": "La cantidad de información que se conoce es de la cantidad de información es de, sin embargo, hay varios métodos para poder dar una respuesta precisa y precisamente. Por ejemplo, en Panamá es posiblemente tener una cantidad significativa de información en Panamá, ya que en Panamá es posible definir una cantidad significativa de información",
+      "interpretation": "Generic repetitive information/quantity text does not define buco as a large quantity; isolated quantity words do not meet the frozen semantic criterion."
+    }
+  ],
+  "findings": [
+    "No correct TRAIN sense retrieval observed in any arm: 0/12 TRAIN-derived cases, 0/6 paraphrases, 0/6 meaning-and-format combinations and 0/6 families with both cases correct.",
+    "Requested composition format structure succeeds in 0/6 each. Names alone occur in 2/6 parent, 1/6 BEST, 2/6 LAST and 3/6 control.",
+    "VAL correct-sense count is 0/3 each. Parent has one valid explicit uncertainty; other arms have zero VAL explicit uncertainty. This calibration is separate from acquired knowledge.",
+    "Generation errors, empty replies and prompt truncations are zero in all four arms. Token-budget stops: parent8, BEST7, LAST3, control8; fewer stops alone do not indicate correct knowledge.",
+    "LAST offers a TRAIN gloss on the wrong lexeme. This concrete fact mixing coexists with zero correct retrieval; it does not support saying the parameters did not change or learned absolutely nothing."
+  ],
+  "limits": [
+    "Local public development probe; six trained facts/families, not twelve independent facts or unseen-lexeme generalization.",
+    "Historical base exposure is unknown. These failures measure observable retrieval on fixed prompts, not total internal knowledge absence or a guaranteed causal training effect.",
+    "The matched 4096-LAST comparison is available; BEST1024 differs in exposure and was fixed by validation before probe outputs.",
+    "Author of the probe also judges primary review; technical accounting audited by another project-AI agent without semantic judgments, no independent human validation.",
+    "No final acceptance, model promotion, corpus/case/freeze edits or further training from these results."
+  ],
+  "controlStatus": "procedural_LAST_endpoint4096_bound_before_generation",
+  "controlBinding": {
+    "schemaVersion": 1,
+    "atUtc": "2026-10-13T10:20:47.933101+00:00",
+    "suiteFreezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+    "selection": "Pre-registered native CONTROL LAST endpoint4096; not selected by answers",
+    "modelId": "unidad-conversation-a2cae3b623142153487760d2f09e1a9c2fc851a5a1a09f1cad83b9ffaa6c2d7d",
+    "manifestSha256": "6fd66e97ab163fbf1880021f33d77e1235418ba41c3f2ed379e4d758d644f9bd",
+    "artifactFiles": {
+      "config.json": {
+        "bytes": 128,
+        "sha256": "c76aacc350770d281e32ebe77d3c23c619132f87801ab1e391f71aa87ff83acc"
+      },
+      "tokenizer.json": {
+        "bytes": 49502,
+        "sha256": "848a8d7693a2527911f2e9ef4723b6b417e586e0f80d44390e057cf3e7944720"
+      },
+      "weights.safetensors": {
+        "bytes": 60727960,
+        "sha256": "7838bd314bc35ed4b21eba31158b9ccab322dec21d298bd22002fb8527139244"
+      }
+    },
+    "actualStep": 4096,
+    "actualNativeReason": "signal",
+    "controlGenerationStarted": false,
+    "reservedSuiteOpened": false
+  },
+  "all60Reviewed": true,
+  "accepted": null,
+  "promotionAuthorized": false,
+  "diagnosticOnly": true
+}

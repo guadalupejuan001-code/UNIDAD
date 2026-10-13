@@ -42,6 +42,57 @@ un plan prefabricado. `naturalLanguagePlanner` y `modelProposalValidated`
 permanecen falsos. La extensión de posiciones y la supervisión de acciones
 constituyen intervenciones posteriores; prepararlas no acredita aprendizaje.
 
+## Resultado real después de supervisar acciones
+
+El [cierre del SFT de acciones](autonomy-action2048-final-delivery.md) conserva
+256 updates, 187,0496777519984 segundos, 512 ventanas/EOS y 36.385 posiciones
+supervisadas. Todos los 15.769.344 parámetros eran entrenables. El artefacto
+propio [BEST 256](../../models/learning-repair-20261013/autonomy/action2048-final-best256/)
+es `e202eafc…`; la NLL de acciones 0,03811874364813169 no acredita trabajo fiable.
+
+La [demostración posterior con esos mismos pesos propios](autonomy-demonstration/action256-own-v1/README.md)
+conserva las tres herramientas genéricas y el prompt completo de 732 tokens.
+La primera respuesta real, sin corregir `k.txt`, fue:
+
+```json
+{"action":"tool","tool":"inspect_file","arguments":{"filename":"k.txt"},"reason":"Medir"}
+```
+
+Es JSON válido y termina por EOS tras 63 tokens. Los archivos autorizados eran
+`dos.txt` y `uno.txt`: `k.txt` queda rechazado **antes del handler**,
+`blocked_policy`, un intento/fallo, sin informe del modelo. Frente al
+[baseline 2.048 anterior](autonomy-demonstration/context2048-baseline-v1/evidence.json),
+que produjo JSON inválido para el mismo marco, esta muestra observa mejora
+parcial de formato. No demuestra selección correcta de archivos ni trabajo
+completado. La tarea mínima aún produce JSON mal formado y `blocked_model`.
+
+La [evidencia original exacta](autonomy-demonstration/action256-own-v1/evidence.json)
+tiene SHA `ef2fa9da8ece2b9550cf59521a8369ae46ea21cedae2fff82eac19b8d7270789`.
+Se conservan peticiones, respuestas y huellas reales, originales sin cambios y
+el informe únicamente de la fixture declarada. No se publicó SQLite ni memoria,
+no hubo fallback y `planningAccepted=false`. La propuesta propia no se sustituyó
+por una secuencia de herramientas del controlador.
+
+## Nueva propuesta tras un argumento de lectura rechazado
+
+El host puede habilitar `--autonomy-max-argument-repairs 1` en CLI, o
+`AutonomyLimits(max_argument_repairs=1)` en Python. El valor por defecto es **0**.
+Permite al modelo formular una propuesta nueva después de que se rechacen los
+argumentos de una herramienta **de lectura**, antes de iniciar cualquier efecto.
+No reescribe la respuesta previa ni cambia `k.txt` por otro nombre. El fallo
+permanece registrado y consume los límites de pasos/fallos; el permiso, raíces,
+archivos autorizados y presupuesto se comprueban otra vez. No se aplica a
+escrituras, acciones sensibles, efectos iniciados ni aprobaciones pendientes.
+
+La verificación específica aprobó 84 pruebas en 1,653 segundos, incluidas seis
+regresiones de esta opción. La [prueba posterior del modelo con un reintento](autonomy-demonstration/action256-own-read-repair-v1/README.md)
+ya se ejecutó: conservó la propuesta de `k.txt`, registró el rechazo y recibió
+otra propuesta mal formada. Terminó `blocked_model`, dos pasos/dos fallos/una
+reparación, sin efectos ni informe, con originales sin cambios. Su evidencia
+exacta tiene SHA `72886bdb689cde178b6134ed1a799f8dfd9d3620fdf7bb373cfa6b63d2c5fe91`.
+El reintento de software funciona; este modelo no completó la tarea. Los
+intentos anteriores conservan el límite original de cero reparaciones.
+
 ## Reproducir y usar
 
 La demostración crea una carpeta nueva y usa sólo archivos ficticios propios:
@@ -56,7 +107,7 @@ Genera `evidence.json`, los originales y el informe. Registra peticiones y
 respuestas reales, las dos procedencias y cancelación. Guarda experiencias;
 **no modifica ni reentrena pesos**.
 
-Para habilitarlo en el servidor existente, configura `UNIDAD_BRAIN_TOKEN` con
+Para habilitarlo en el servidor existente, configura `UNIDAD_API_TOKEN` con
 una credencial privada y utiliza directorios existentes y separados:
 
 ```bash

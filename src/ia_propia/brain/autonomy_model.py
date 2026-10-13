@@ -55,6 +55,10 @@ def _observations(journal):
             current["recovery"] = deepcopy(event["observation"])
         elif kind == "failure":
             observations.append({"failure": event.get("code"), "message": event.get("message")})
+        elif kind == "argument_repair_allowed":
+            observations.append({"failure": "arguments_denied", "effect_started": False,
+                                 "rejected_action": {"tool": event.get("tool"),
+                                                     "arguments": deepcopy(event.get("arguments"))}})
     return observations
 
 

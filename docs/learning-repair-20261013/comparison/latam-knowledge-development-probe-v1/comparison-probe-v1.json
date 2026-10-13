@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-10-13T10:29:31.742137+00:00",
+  "suiteId": "latam-knowledge-development-probe-v1",
+  "suiteFreezeSha256": "8897a6a048d6706eb30989cb4567d8e468f78d5a9191d8bb492dbfda47687f6b",
+  "casesSha256": "fc54a662332f037ee47f5c3ac5d46d9f87560852ba02533adcd088907faf973c",
+  "rubricSha256": "0611d173f41c61eec91222412bd8d39f10153ac035ffb7b19dca4b0bf71da9f7",
+  "controlEndpointBindingSha256": "3f9bc9bf546254afbe1ff9e3aa0419151b2fcfdaf272560b36470d690ac6cbd9",
+  "totalActualReplies": 60,
+  "models": [
+    {
+      "arm": "parent072",
+      "modelId": "unidad-conversation-072eedd276160f7581c5a70b57e66ae3000d2e664ed32f6b5a4669d4d12dcf57",
+      "outputsSha256": "28bbc6bf24d51898ee917d88e2f792cf439ac2b30a9588a4e2efbae5c3e61c17",
+      "turns": 15,
+      "generation": {
+        "maxNewTokens": 80,
+        "temperature": 0,
+        "seed": 42,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Fresh scenario; user requests and only actual prior assistant replies; no rubric or gold answers in model input",
+      "primaryCounts": {
+        "trainParaphraseCorrect": 0,
+        "trainParaphraseDenominator": 6,
+        "trainCompositionMeaningAndFormatCorrect": 0,
+        "trainCompositionDenominator": 6,
+        "trainMeaningCorrect": 0,
+        "trainMeaningDenominator": 12,
+        "trainFamiliesBothCorrect": 0,
+        "trainFamilyDenominator": 6,
+        "compositionFormatStructureCorrect": 0,
+        "compositionNamePreserved": 2,
+        "validationStatuses": {
+          "irrelevant_or_incoherent": 2,
+          "explicit_uncertainty": 1
+        },
+        "validationDenominator": 3,
+        "validationKnownFactCorrect": 0,
+        "validationExplicitUncertainty": 1,
+        "generationErrors": 0,
+        "emptyReplies": 0,
+        "tokenBudgetStops": 8,
+        "promptTruncations": 0,
+        "technicalFlags": 8,
+        "technicalDenominator": 15
+      },
+      "crossCounts": {
+        "train_paraphrase_correct_out_of_6": 0,
+        "train_composition_meaning_and_format_correct_out_of_6": 0,
+        "train_families_with_both_cases_correct_out_of_6": 0,
+        "train_meaning_correct_out_of_12": 0,
+        "composition_format_correct_out_of_6": 0,
+        "composition_requested_structure_correct_out_of_6": 0,
+        "validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 1,
+          "unsupported_or_wrong_fact": 0,
+          "irrelevant_or_incoherent": 1,
+          "technical_failure": 1
+        },
+        "semantic_validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 1,
+          "unsupported_or_wrong_fact": 0,
+          "irrelevant_or_incoherent": 2,
+          "technical_failure": 0
+        },
+        "validation_calibration_accepted_out_of_3": 1,
+        "validation_correct_known_facts_out_of_3": 0,
+        "validation_learned_knowledge_denominator_contribution": 0,
+        "technical_failure_count_out_of_15": 8,
+        "token_budget_end_count_out_of_15": 8,
+        "runtime_error_count_out_of_15": 0,
+        "empty_response_count_out_of_15": 0,
+        "input_truncation_count_out_of_15": 0,
+        "reviewed_cases": 15,
+        "train_cases": 12,
+        "train_families": 6,
+        "validation_cases": 3,
+        "validation_families": 3
+      },
+      "primaryIndependenceDisclosure": "El autor del probe también realiza esta revisión primaria de IA. No es un juez humano ni una evaluación humana independiente. No leyó revisión cruzada, no usó inferencia ni nuevas fuentes y no cambió el paquete congelado.",
+      "comparableSemanticDisagreements": [],
+      "reviewAndAssessmentPaths": {
+        "review-primary.json": "parent072/review-primary.json",
+        "review-cross.json": "parent072/review-cross.json",
+        "assessment-primary.json": "parent072/assessment-primary.json",
+        "assessment-cross.json": "parent072/assessment-cross.json"
+      }
+    },
+    {
+      "arm": "treatment-best1024",
+      "modelId": "unidad-conversation-ec9ab262aaaa5761dfe77e51232ca9fcf78bea93b7af97ec17d971557f0166df",
+      "outputsSha256": "2e60309947cc7e366757fb73b3b2bf6389c480fccc4be00e63f6bc18dfb71b6e",
+      "turns": 15,
+      "generation": {
+        "maxNewTokens": 80,
+        "temperature": 0,
+        "seed": 42,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Fresh scenario; user requests and only actual prior assistant replies; no rubric or gold answers in model input",
+      "primaryCounts": {
+        "trainParaphraseCorrect": 0,
+        "trainParaphraseDenominator": 6,
+        "trainCompositionMeaningAndFormatCorrect": 0,
+        "trainCompositionDenominator": 6,
+        "trainMeaningCorrect": 0,
+        "trainMeaningDenominator": 12,
+        "trainFamiliesBothCorrect": 0,
+        "trainFamilyDenominator": 6,
+        "compositionFormatStructureCorrect": 0,
+        "compositionNamePreserved": 1,
+        "validationStatuses": {
+          "irrelevant_or_incoherent": 2,
+          "unsupported_or_wrong_fact": 1
+        },
+        "validationDenominator": 3,
+        "validationKnownFactCorrect": 0,
+        "validationExplicitUncertainty": 0,
+        "generationErrors": 0,
+        "emptyReplies": 0,
+        "tokenBudgetStops": 7,
+        "promptTruncations": 0,
+        "technicalFlags": 7,
+        "technicalDenominator": 15
+      },
+      "crossCounts": {
+        "train_paraphrase_correct_out_of_6": 0,
+        "train_composition_meaning_and_format_correct_out_of_6": 0,
+        "train_families_with_both_cases_correct_out_of_6": 0,
+        "train_meaning_correct_out_of_12": 0,
+        "composition_format_correct_out_of_6": 0,
+        "composition_requested_structure_correct_out_of_6": 0,
+        "validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 1,
+          "irrelevant_or_incoherent": 0,
+          "technical_failure": 2
+        },
+        "semantic_validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 1,
+          "irrelevant_or_incoherent": 2,
+          "technical_failure": 0
+        },
+        "validation_calibration_accepted_out_of_3": 0,
+        "validation_correct_known_facts_out_of_3": 0,
+        "validation_learned_knowledge_denominator_contribution": 0,
+        "technical_failure_count_out_of_15": 7,
+        "token_budget_end_count_out_of_15": 7,
+        "runtime_error_count_out_of_15": 0,
+        "empty_response_count_out_of_15": 0,
+        "input_truncation_count_out_of_15": 0,
+        "reviewed_cases": 15,
+        "train_cases": 12,
+        "train_families": 6,
+        "validation_cases": 3,
+        "validation_families": 3
+      },
+      "primaryIndependenceDisclosure": "El autor del probe también realiza esta revisión primaria de IA. No es un juez humano ni una evaluación humana independiente. No leyó revisión cruzada, no usó inferencia ni nuevas fuentes y no cambió el paquete congelado.",
+      "comparableSemanticDisagreements": [],
+      "reviewAndAssessmentPaths": {
+        "review-primary.json": "treatment-best1024/review-primary.json",
+        "review-cross.json": "treatment-best1024/review-cross.json",
+        "assessment-primary.json": "treatment-best1024/assessment-primary.json",
+        "assessment-cross.json": "treatment-best1024/assessment-cross.json"
+      }
+    },
+    {
+      "arm": "treatment-last4096",
+      "modelId": "unidad-conversation-d6d860222baf5e8952eade42fcda3a0bd52dc77000c0c254ca895a91fdab7160",
+      "outputsSha256": "97a3012f62cb5ce01524a0acf26651696b701f34dfced53e89960e6307654ce8",
+      "turns": 15,
+      "generation": {
+        "maxNewTokens": 80,
+        "temperature": 0,
+        "seed": 42,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Fresh scenario; user requests and only actual prior assistant replies; no rubric or gold answers in model input",
+      "primaryCounts": {
+        "trainParaphraseCorrect": 0,
+        "trainParaphraseDenominator": 6,
+        "trainCompositionMeaningAndFormatCorrect": 0,
+        "trainCompositionDenominator": 6,
+        "trainMeaningCorrect": 0,
+        "trainMeaningDenominator": 12,
+        "trainFamiliesBothCorrect": 0,
+        "trainFamilyDenominator": 6,
+        "compositionFormatStructureCorrect": 0,
+        "compositionNamePreserved": 2,
+        "validationStatuses": {
+          "unsupported_or_wrong_fact": 2,
+          "irrelevant_or_incoherent": 1
+        },
+        "validationDenominator": 3,
+        "validationKnownFactCorrect": 0,
+        "validationExplicitUncertainty": 0,
+        "generationErrors": 0,
+        "emptyReplies": 0,
+        "tokenBudgetStops": 3,
+        "promptTruncations": 0,
+        "technicalFlags": 3,
+        "technicalDenominator": 15
+      },
+      "crossCounts": {
+        "train_paraphrase_correct_out_of_6": 0,
+        "train_composition_meaning_and_format_correct_out_of_6": 0,
+        "train_families_with_both_cases_correct_out_of_6": 0,
+        "train_meaning_correct_out_of_12": 0,
+        "composition_format_correct_out_of_6": 0,
+        "composition_requested_structure_correct_out_of_6": 0,
+        "validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 1,
+          "irrelevant_or_incoherent": 1,
+          "technical_failure": 1
+        },
+        "semantic_validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 2,
+          "irrelevant_or_incoherent": 1,
+          "technical_failure": 0
+        },
+        "validation_calibration_accepted_out_of_3": 0,
+        "validation_correct_known_facts_out_of_3": 0,
+        "validation_learned_knowledge_denominator_contribution": 0,
+        "technical_failure_count_out_of_15": 3,
+        "token_budget_end_count_out_of_15": 3,
+        "runtime_error_count_out_of_15": 0,
+        "empty_response_count_out_of_15": 0,
+        "input_truncation_count_out_of_15": 0,
+        "reviewed_cases": 15,
+        "train_cases": 12,
+        "train_families": 6,
+        "validation_cases": 3,
+        "validation_families": 3
+      },
+      "primaryIndependenceDisclosure": "El autor del probe también realiza esta revisión primaria de IA. No es un juez humano ni una evaluación humana independiente. No leyó revisión cruzada, no usó inferencia ni nuevas fuentes y no cambió el paquete congelado.",
+      "comparableSemanticDisagreements": [],
+      "reviewAndAssessmentPaths": {
+        "review-primary.json": "treatment-last4096/review-primary.json",
+        "review-cross.json": "treatment-last4096/review-cross.json",
+        "assessment-primary.json": "treatment-last4096/assessment-primary.json",
+        "assessment-cross.json": "treatment-last4096/assessment-cross.json"
+      }
+    },
+    {
+      "arm": "control-last4096",
+      "modelId": "unidad-conversation-a2cae3b623142153487760d2f09e1a9c2fc851a5a1a09f1cad83b9ffaa6c2d7d",
+      "outputsSha256": "033d8c97ccc34b4b503dec9d34233ceab60b53246fe46200b1b3006083da3661",
+      "turns": 15,
+      "generation": {
+        "maxNewTokens": 80,
+        "temperature": 0,
+        "seed": 42,
+        "torchThreads": 1
+      },
+      "historyPolicy": "Fresh scenario; user requests and only actual prior assistant replies; no rubric or gold answers in model input",
+      "primaryCounts": {
+        "trainParaphraseCorrect": 0,
+        "trainParaphraseDenominator": 6,
+        "trainCompositionMeaningAndFormatCorrect": 0,
+        "trainCompositionDenominator": 6,
+        "trainMeaningCorrect": 0,
+        "trainMeaningDenominator": 12,
+        "trainFamiliesBothCorrect": 0,
+        "trainFamilyDenominator": 6,
+        "compositionFormatStructureCorrect": 0,
+        "compositionNamePreserved": 3,
+        "validationStatuses": {
+          "irrelevant_or_incoherent": 3
+        },
+        "validationDenominator": 3,
+        "validationKnownFactCorrect": 0,
+        "validationExplicitUncertainty": 0,
+        "generationErrors": 0,
+        "emptyReplies": 0,
+        "tokenBudgetStops": 8,
+        "promptTruncations": 0,
+        "technicalFlags": 8,
+        "technicalDenominator": 15
+      },
+      "crossCounts": {
+        "train_paraphrase_correct_out_of_6": 0,
+        "train_composition_meaning_and_format_correct_out_of_6": 0,
+        "train_families_with_both_cases_correct_out_of_6": 0,
+        "train_meaning_correct_out_of_12": 0,
+        "composition_format_correct_out_of_6": 0,
+        "composition_requested_structure_correct_out_of_6": 0,
+        "validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 0,
+          "irrelevant_or_incoherent": 1,
+          "technical_failure": 2
+        },
+        "semantic_validation_status_counts_out_of_3": {
+          "correct_known_fact": 0,
+          "explicit_uncertainty": 0,
+          "unsupported_or_wrong_fact": 1,
+          "irrelevant_or_incoherent": 2,
+          "technical_failure": 0
+        },
+        "validation_calibration_accepted_out_of_3": 0,
+        "validation_correct_known_facts_out_of_3": 0,
+        "validation_learned_knowledge_denominator_contribution": 0,
+        "technical_failure_count_out_of_15": 8,
+        "token_budget_end_count_out_of_15": 8,
+        "runtime_error_count_out_of_15": 0,
+        "empty_response_count_out_of_15": 0,
+        "input_truncation_count_out_of_15": 0,
+        "reviewed_cases": 15,
+        "train_cases": 12,
+        "train_families": 6,
+        "validation_cases": 3,
+        "validation_families": 3
+      },
+      "primaryIndependenceDisclosure": "El autor del probe también realiza esta revisión primaria de IA. No es un juez humano ni una evaluación humana independiente. No leyó revisión cruzada, no usó inferencia ni nuevas fuentes y no cambió el paquete congelado.",
+      "comparableSemanticDisagreements": [
+        {
+          "id": "val07u",
+          "comparableSemanticFieldDifferences": {
+            "semanticValidationStatus": {
+              "primary": "irrelevant_or_incoherent",
+              "cross": "unsupported_or_wrong_fact"
+            }
+          },
+          "primaryNote": "Menciona Cervantes/actor y repite; no merengue/pambiche ni incertidumbre.",
+          "crossRationale": "Introduce a Miguel de Cervantes como supuesto reto dominicano y actor en un bucle. No responde sobre merengue al estilo del pambiche ni expresa desconocimiento."
+        }
+      ],
+      "reviewAndAssessmentPaths": {
+        "review-primary.json": "control-last4096/review-primary.json",
+        "review-cross.json": "control-last4096/review-cross.json",
+        "assessment-primary.json": "control-last4096/assessment-primary.json",
+        "assessment-cross.json": "control-last4096/assessment-cross.json"
+      }
+    }
+  ],
+  "reviewDisclosure": "Primary reviewer authored the frozen probe; cross review is separate project AI review. Neither is independent human. Original disclosure and all review rationales retained.",
+  "validationDisclosure": "Three VALIDATION uncertainty probes do not contribute to the TRAIN learned-meaning denominator; primary semantic statuses and cross technical-priority statuses remain separately visible.",
+  "interpretation": "All four arms: 0/12 TRAIN meaning probes and 0/6 paired families, no observed regional-meaning improvement. Parent alone has one explicit uncertainty out of three validation cases. Context was not discarded; token budget failures remain technical limitations. Exposed small probe, not all LATAM meanings, conversation acceptance or promotion.",
+  "publicationIntegritySha256": "8a82f3b185426b7cca3bf33325da499f6346200bf43e7d7c7cd022e0c4846a63"
+}

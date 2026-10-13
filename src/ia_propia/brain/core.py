@@ -189,6 +189,7 @@ class BodySession:
                                        "operatorApprovalConfigured": binding["operator_credential"] is not None,
                                        "limits": {"maxSteps": limits.max_steps,
                                                   "maxFailures": limits.max_failures,
+                                                  "maxArgumentRepairs": limits.max_argument_repairs,
                                                   "maxSeconds": limits.max_seconds},
                                        "tools": [tool.metadata() for tool in binding["tools"]]})
         return validate_json(result, max_bytes=MAX_RESPONSE_BYTES)
@@ -324,7 +325,7 @@ class BodySession:
             # Host persistence limits may exceed transport limits. Preserve a
             # truthful task receipt while retaining the full journal locally.
             receipt = {key: deepcopy(result[key]) for key in
-                       ("task_id", "status", "steps", "failures", "source", "proposer_id", "limits",
+                       ("task_id", "status", "steps", "failures", "argument_repairs", "source", "proposer_id", "limits",
                         "created_at", "updated_at", "cancel_requested") if key in result}
             receipt.update(snapshotOmitted=True, journalEntries=len(result.get("journal", [])))
             pending = result.get("pending_approval")

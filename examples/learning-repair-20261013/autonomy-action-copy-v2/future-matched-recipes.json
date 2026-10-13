@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "data-ready-future-comparison-proposed-not-queued-not-run",
+  "parentModelPath": "models/learning-repair-20261013/autonomy/action2048-final-best256",
+  "parentModelId": "unidad-conversation-e202eafc8f11bcda7587db496c6e7ac1670efbd612685c465658ae2f07bd54fa",
+  "optimizerResetBothArms": true,
+  "trainingConfigPath": "future-training-config.json",
+  "trainingConfigSha256": "fe46b3f58b0f609192d604cd2d234cee12ee048ad6c3491393d81da4fef11e94",
+  "limits": {
+    "logicalUpdates": 256,
+    "nativeSeconds": 600,
+    "logicalBatchSize": 2,
+    "microBatchSize": 1
+  },
+  "singleTrainerSequentialArms": true,
+  "arms": {
+    "new-copy-v2": {
+      "corpusPath": "autonomy-action-copy.train-validation.jsonl",
+      "corpusSha256": "33ba6224255dea9549f2d1640390c87d941267dcf136ef90903f52945f7926b0"
+    },
+    "v1-rehearsal": {
+      "corpusPath": "examples/learning-repair-20261013/autonomy-action-sft-v1/autonomy-action-sft.train-validation.jsonl",
+      "corpusSha256": "a7c5334e532dca161f26e6205260b4f3d5989bcbb007cfa5b2728c86bdf50396"
+    }
+  },
+  "admission": "Root review required before any supervisor admission; this file is a proposal, not a cycle manifest or approval"
+}
