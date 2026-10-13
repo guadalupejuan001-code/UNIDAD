@@ -99,6 +99,11 @@ class ModelActionProposer:
         journal = _observations(context.get("journal", task.get("journal", [])))
         observed_context = {"task": task_view, "tools": tools, "observations": journal}
         raw_context = json.dumps(observed_context, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+        # Observed source text is JSON data, including dialogue-token spellings.
+        # Quote delimiters on the wire without changing any decoded JSON value;
+        # frames without an opening delimiter keep their exact previous bytes.
+        if "<" in raw_context:
+            raw_context = raw_context.replace("<", "\\u003c").replace(">", "\\u003e")
         # Use the common conversation contract. Oversized observations block
         # generation rather than silently discarding evidence or inventing a plan.
         from ..conversation.contract import MAX_MESSAGE_BYTES

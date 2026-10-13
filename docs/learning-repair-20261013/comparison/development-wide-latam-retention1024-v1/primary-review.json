@@ -1,0 +1,756 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "learning-repair-20261013-development-v2",
+  "modelId": "unidad-conversation-3ccd6deb69d32443f41096f06a9c2bacb2fe67e54a257de35a44d8f78aa4ef5b",
+  "outputsSha256": "b488893ecdc3771d587a4a974d916aa0e3a10d29fa2a0b3b9cfd9315c91789bc",
+  "reviewer": "Codex project AI /root/autonomy_review; primary semantic review; not independent human",
+  "reviewerType": "project_ai",
+  "independentHumanReview": false,
+  "method": "Revisión primaria semántica de IA de los 40 turnos reales, incluyendo todos los inputMessages y respuestas anteriores reales de cada diálogo. Uso de cases.json y rubric.json congelados (DEV expuesto). Se consultó un informe anterior sólo para conocer el esquema de revisión; no se consultó ninguna revisión de este candidato. Grados complete/partial/failed y dimensiones booleanas separados. Sólo marco crítica ante una proposición relevante identificable y falsa o sin base, con cita exacta y contradicción; eco, omisión y fragmentos incoherentes sin atribución inteligible no bastan. La historia suministrada se contrasta con el protocolo mediante el assess existente. No se corrigen respuestas originales, no se generan respuestas nuevas y no se consulta ningún test reservado.",
+  "createdAtUtc": "2026-10-13T11:35:21.494309+00:00",
+  "purpose": "exposed development diagnostic; never corpus, training target/filter, or reserved final acceptance",
+  "suiteEvidence": {
+    "cases.json": "4a657c92a7ab39eb55bca0df95a70ed88c567ab5bcc7f83b074582f08ad8dfc2",
+    "rubric.json": "95ed7bb9ffe017858980865576a411e4c75ef6bea2acde400dcfe18e36337ed3",
+    "freeze.json": "93f19c921cb6022eb2dba5bb5e734849cafad331693478b5ca606b690f311026"
+  },
+  "summary": {
+    "complete": 1,
+    "partial": 4,
+    "failed": 35,
+    "criticalFailures": 6,
+    "technicalFailures": 2,
+    "fullyMetDialogs": 0,
+    "dimensionsMet": {
+      "relevance": 1,
+      "contextGrounding": 8,
+      "spanish": 11,
+      "criticalCorrect": 34
+    }
+  },
+  "criticalFailureIds": [
+    "outing_one_sentence_final",
+    "consultation_private_entry",
+    "consultation_role_check",
+    "droplets_empty_cold_glass",
+    "parcel_door_photo",
+    "parcel_courier_confirmation"
+  ],
+  "technicalFailureIds": [
+    "cinema_initial_total",
+    "note_context_not_training"
+  ],
+  "acceptanceComparison": {
+    "required": {
+      "expectedTurns": 40,
+      "minimumFullyMetTurns": 36,
+      "minimumFullyMetDialogs": 8,
+      "maximumCriticalFailures": 0,
+      "maximumTechnicalFailures": 0
+    },
+    "observed": {
+      "fullyMetTurns": 1,
+      "fullyMetDialogs": 0,
+      "criticalFailures": 6,
+      "technicalFailures": 2
+    },
+    "accepted": false,
+    "interpretation": "1/40 completas frente a 36/40 requeridas, 0/10 diálogos frente a 8/10, seis críticas frente a cero y dos técnicas frente a cero. Se rechaza esta prueba DEV; no demuestra conversación competente ni aceptación final. No se deduce mejora por pérdida, pasos de entrenamiento o tamaño de modelo."
+  },
+  "diagnostics": {
+    "jsonIntrusion": {
+      "observedTurns": 0,
+      "ids": [],
+      "conclusion": "No aparece JSON ni propuesta action en estas 40 respuestas naturales. No se puede atribuir el fallo de este run a intrusión JSON ni probar ausencia fuera de la suite."
+    },
+    "taskConditioning": {
+      "observedExamples": [
+        "outing_initial_invitation",
+        "outing_day_revision",
+        "outing_activity_revision",
+        "quiet_scene_preference",
+        "quiet_sound_preference_revision"
+      ],
+      "conclusion": "Respuestas genéricas de asistencia pese a peticiones y preferencias explícitas. Se observa seguimiento insuficiente de la tarea cotidiana; no establece una causa de entrenamiento ni interferencia causal del lote de acciones sin comparación controlada."
+    },
+    "context": {
+      "discardedContextIds": [],
+      "historyContainsActualPreviousReplies": true,
+      "observedExamples": [
+        "library_delegate_change",
+        "meeting_time_revision",
+        "outing_one_sentence_final",
+        "consultation_private_entry",
+        "parcel_courier_confirmation",
+        "note_day_correction"
+      ],
+      "conclusion": "Los hechos y correcciones están en historiales completos, sin tokens de prompt descartados. Persisten ecos de respuestas propias erradas y omisiones de cambios. Es un fallo semántico de uso del contexto bajo estas condiciones, no un descarte técnico de historial observado."
+    },
+    "repetitionAndTruncation": {
+      "technicalIds": [
+        "cinema_initial_total",
+        "note_context_not_training"
+      ],
+      "conclusion": "Cine inicial y distinción contexto/entrenamiento agotan 160 tokens repitiendo palabras o frases. Hay repetición adicional con EOS, que se puntúa semánticamente y no se transforma por sí sola en fallo técnico."
+    }
+  },
+  "borderlineDecisions": [
+    {
+      "id": "library_initial_deadline",
+      "decision": "complete",
+      "reason": "La redundancia final es menor; el plazo correcto responde a la única petición."
+    },
+    {
+      "id": "library_delegate_change",
+      "decision": "partial; criticalCorrect=true",
+      "reason": "Contiene el plazo correcto y una cola incoherente. Mi hermana es el jueves a las seis no constituye una atribución inteligible de que la hermana recogerá; se conserva la ambigüedad sin inventar una afirmación."
+    },
+    {
+      "id": "cinema_current_plan",
+      "decision": "partial",
+      "reason": "Día y hora se entienden aunque haya gramática defectuosa y repetición; falta el total actual."
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "decision": "failed; criticalCorrect=true",
+      "reason": "El condicional sobre agua blanca y altura blanca es incoherente y no confirma claramente agua atravesando cristal."
+    },
+    {
+      "id": "parcel_door_photo",
+      "decision": "failed; criticalCorrect=false",
+      "reason": "Se llama verde es una atribución comprensible de nombre no dado; verde correspondía a otra entidad, la puerta."
+    }
+  ],
+  "turns": [
+    {
+      "id": "library_initial_deadline",
+      "scenarioId": "library_collection_deadline",
+      "grade": "complete",
+      "relevance": true,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Indica correctamente viernes a las seis. La coletilla redundante no impide una respuesta breve, comprensible y sustantiva.",
+      "evidence": [
+        "El viernes a las seis, que es el viernes."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "library_day_correction",
+      "scenarioId": "library_collection_deadline",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Actualiza a jueves y conserva las seis, pero no distingue expresamente qué cambió ni menciona que sigue recogiendo la hermana.",
+      "evidence": [
+        "Deberías conservar el jueves a las seis."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "library_delegate_change",
+      "scenarioId": "library_collection_deadline",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Da el plazo correcto jueves a las seis, pero añade una frase incoherente sobre la hermana ya sustituida; no mantiene una respuesta breve y natural. No hay una atribución inteligible de recogida que baste para marcar crítica.",
+      "evidence": [
+        "Deberías conservar el jueves a las seis. Mi hermana es el jueves a las seis."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "library_late_collection",
+      "scenarioId": "library_collection_deadline",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Conserva el plazo jueves a las seis, pero no contesta si viernes por la mañana queda fuera ni desarrolla esa comparación.",
+      "evidence": [
+        "Deberías conservar el jueves a las seis."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "cinema_initial_total",
+      "scenarioId": "cinema_ticket_recalculation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite cine y jueves sin calcular las tres entradas. Agota 160 tokens y acaba en una coma; no afirma un total erróneo concreto.",
+      "evidence": [
+        "Tú, cine, cine, cine, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves, jueves,"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": {
+        "type": "token_budget",
+        "evidence": "stopReason=token_budget; generatedTokens=160; respuesta repetitiva truncada."
+      }
+    },
+    {
+      "id": "cinema_age_correction",
+      "scenarioId": "cinema_ticket_recalculation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Menciona la sesión de jueves a las ocho y media con gramática defectuosa, pero omite el total corregido de veintiún euros.",
+      "evidence": [
+        "El cine de jueves a las ocho y medias vamos en el cine."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "cinema_attendee_reduction",
+      "scenarioId": "cinema_ticket_recalculation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite la sesión y una construcción defectuosa sobre las ocho y media; no responde las dos entradas ni los catorce euros.",
+      "evidence": [
+        "El cine de jueves a las ocho y medias vamos en las ocho y medias vamos en las ocho y medias."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "cinema_current_plan",
+      "scenarioId": "cinema_ticket_recalculation",
+      "grade": "partial",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Se reconocen jueves y ocho y media, dos datos solicitados correctos, pero omite los catorce euros y repite una frase poco natural.",
+      "evidence": [
+        "El cine de jueves a las ocho y medias vamos en las ocho y medias vamos en las ocho y medias."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "tap_initial_location",
+      "scenarioId": "kitchen_tap_service",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Eco fragmentario de problema descrito, sin identificar la salida caliente de cocina. El no aislado no atribuye una ubicación alternativa concreta.",
+      "evidence": [
+        "No, el problema que he descrito."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "tap_flow_correction",
+      "scenarioId": "kitchen_tap_service",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Frase ininteligible que no incorpora la corrección de la fría de cocina ni conserva el baño como normal.",
+      "evidence": [
+        "No, el problema que he estado entendido."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "tap_visit_delegate",
+      "scenarioId": "kitchen_tap_service",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "No resume el caudal de cocina ni quién recibe; fragmento ajeno a lo solicitado, sin horario o receptor afirmado concreto.",
+      "evidence": [
+        "No, el problema que he sido de ayuda."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "tap_receiver_correction",
+      "scenarioId": "kitchen_tap_service",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "No indica madre, lunes de nueve a once ni ambas salidas de cocina; repite un fragmento incomprensible.",
+      "evidence": [
+        "No; el problema que he estado entendido."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "meeting_friendly_notice",
+      "scenarioId": "staff_meeting_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite que el aviso es breve, sin redactar el aviso con mañana, diez y sala grande. Díaz aislado no atribuye un hecho pertinente inteligible.",
+      "evidence": [
+        "Díaz y supongo que el aviso breve para el equipo es breve y que es breve para el equipo."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "meeting_time_revision",
+      "scenarioId": "staff_meeting_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite la respuesta previa defectuosa y no actualiza a las once ni da el aviso de una frase.",
+      "evidence": [
+        "Díaz y supone que el aviso breve para el equipo es breve y que es breve para el equipo."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "meeting_remote_revision",
+      "scenarioId": "staff_meeting_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Eco repetitivo sin aviso por videollamada, hora vigente ni intención de enviar enlace; no afirma un envío ejecutado.",
+      "evidence": [
+        "Díazco el aviso breve para el equipo es breve para el equipo es breve para el equipo."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "meeting_direct_final_notice",
+      "scenarioId": "staff_meeting_notice",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Persiste la repetición del aviso breve sin sus datos vigentes ni una redacción utilizable.",
+      "evidence": [
+        "Díazco el aviso breve para el equipo es breve para el equipo es breve para el equipo es breve para el equipo."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "outing_initial_invitation",
+      "scenarioId": "weekend_walk_invitation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Saludo genérico natural que pide ayuda cuando la petición ya está explicitada; no redacta la invitación.",
+      "evidence": [
+        "Hola, ¿en qué te puedo ayudar?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "outing_day_revision",
+      "scenarioId": "weekend_walk_invitation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Repite el saludo genérico y no aplica sábado ni las restricciones de confirmación y formato.",
+      "evidence": [
+        "Hola, ¿en qué te puedo ayudar?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "outing_activity_revision",
+      "scenarioId": "weekend_walk_invitation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Repite el saludo genérico y no sustituye baloncesto por paseo ni conserva la salida, día y hora.",
+      "evidence": [
+        "Hola, ¿en qué te puedo ayudar?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "outing_one_sentence_final",
+      "scenarioId": "weekend_walk_invitation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "No redacta la invitación ni usa quien se anime. Introduce baloncesto como plan vigente y afirma falta de acceso a la hora pese al contexto disponible.",
+      "evidence": [
+        "Hola, no tengo acceso a la hora de que el plan es baloncesto."
+      ],
+      "criticalFailure": {
+        "quote": "el plan es baloncesto",
+        "contradictionOrMissingBasis": "El usuario sustituyó el baloncesto por un paseo y conservó sábado a las cinco desde la pista."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "consultation_initial_roles",
+      "scenarioId": "medical_appointment_roles",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Disculpa y repetición de dolor sin distinguir al abuelo del usuario ni la lista de medicamentos.",
+      "evidence": [
+        "Disculpa, el dolor y el dolor."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "consultation_driver_added",
+      "scenarioId": "medical_appointment_roles",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite dolor sin identificar quién entra ni que la hermana conduce y espera fuera.",
+      "evidence": [
+        "Disculpa el dolor y el dolor."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "consultation_private_entry",
+      "scenarioId": "medical_appointment_roles",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "No resume los tres papeles e introduce que falta la lista, dato incompatible con que el usuario acaba de dejarla escrita.",
+      "evidence": [
+        "Falta la lista: mira el dolor y el dolor."
+      ],
+      "criticalFailure": {
+        "quote": "Falta la lista",
+        "contradictionOrMissingBasis": "El usuario afirmó yo le dejo la lista escrita; no consta ausencia de la lista."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "consultation_role_check",
+      "scenarioId": "medical_appointment_roles",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "No resuelve la hipótesis de la hermana y repite la falta de lista sin base, propagando su propia respuesta errada anterior.",
+      "evidence": [
+        "Falta la lista: mira el dolor y el dolor."
+      ],
+      "criticalFailure": {
+        "quote": "Falta la lista",
+        "contradictionOrMissingBasis": "Según el usuario, él dejó la lista escrita; la hermana sólo tenía asignado conducir y esperar fuera."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "droplets_simple_cause",
+      "scenarioId": "cold_glass_droplets",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Eco de gotas y agua fría con altura incoherente; no explica humedad del aire ni enfriamiento. No hay un mecanismo alternativo inteligible afirmado.",
+      "evidence": [
+        "Se llena de gotas de agua fría, es una altura de agua fría."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "droplets_glass_misconception",
+      "scenarioId": "cold_glass_droplets",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "No corrige la inferencia de atravesar cristal; introduce una relación absurda entre agua blanca y altura blanca, sin afirmar claramente que atraviese el cristal.",
+      "evidence": [
+        "Se llena de agua fría, es decir, si el agua es blanco, la altura es blanca."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "droplets_empty_cold_glass",
+      "scenarioId": "cold_glass_droplets",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Niega que un vaso vacío pero frío pueda formar gotas exteriores y añade un fragmento incoherente.",
+      "evidence": [
+        "No; solo dijiste queda."
+      ],
+      "criticalFailure": {
+        "quote": "No",
+        "contradictionOrMissingBasis": "La respuesta a puede seguir formando gotas niega una posibilidad real: puede hacerlo si la superficie está fría y hay humedad en el aire."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "droplets_child_summary",
+      "scenarioId": "cold_glass_droplets",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "No ofrece la explicación solicitada; sólo un fragmento sobre el exterior del vaso. Su no no responde aquí una pregunta factual de sí o no.",
+      "evidence": [
+        "No; solo dijiste que el exterior de un vaso con agua fría."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "parcel_theft_uncertainty",
+      "scenarioId": "missing_delivery_evidence",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Repite un dato conocido y verdadero, pero no responde que el robo no puede asegurarse ni distingue seguimiento de entrega comprobada; es eco sin análisis sustantivo.",
+      "evidence": [
+        "No hay nada en el portal."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "parcel_van_observation",
+      "scenarioId": "missing_delivery_evidence",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": true,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Repite la ausencia en el portal sin integrar el testimonio de furgoneta ni explicar qué sigue desconocido; eco de su respuesta anterior.",
+      "evidence": [
+        "No hay nada en el portal."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "parcel_door_photo",
+      "scenarioId": "missing_delivery_evidence",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": false,
+      "note": "Confunde un color de puerta con un supuesto nombre del paquete; no explica la discrepancia azul frente a verde ni sus límites.",
+      "evidence": [
+        "El paquete se llama verde y se llama verde."
+      ],
+      "criticalFailure": {
+        "quote": "El paquete se llama verde",
+        "contradictionOrMissingBasis": "Verde es el color de la puerta del usuario; no se proporcionó ningún nombre del paquete."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "parcel_courier_confirmation",
+      "scenarioId": "missing_delivery_evidence",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": false,
+      "note": "Atribuye un nombre verde al repartidor y luego se contradice, sin resumir entrega al número de al lado y recuperación pendiente.",
+      "evidence": [
+        "El repartidor se llama verde y se llama verde, pero no se llama verde."
+      ],
+      "criticalFailure": {
+        "quote": "El repartidor se llama verde",
+        "contradictionOrMissingBasis": "No se conoce el nombre del repartidor; verde era el color de la puerta del usuario."
+      },
+      "technicalFailure": null
+    },
+    {
+      "id": "quiet_scene_preference",
+      "scenarioId": "quiet_sound_conversation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Respuesta genérica de asistencia: no continúa la charla sobre la atmósfera tranquila y la lluvia, ya especificadas.",
+      "evidence": [
+        "Hoy me gustaría saber más sobre el tema que te gustaría hablar. ¿En qué puedo ayudarte?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "quiet_mood_no_advice",
+      "scenarioId": "quiet_sound_conversation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Cambia a una petición incomprensible del asistente sobre responder a personas, sin acompañar la sensación de calma.",
+      "evidence": [
+        "Hoy me gustaría que me ayude a responder a las personas. ¿Qué te gustaría que me ayude?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "quiet_sound_preference_revision",
+      "scenarioId": "quiet_sound_conversation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": true,
+      "criticalCorrect": true,
+      "note": "Pregunta genérica por más detalles sin comentar la diferencia de ambiente ni atender la cafetería como preferencia actual.",
+      "evidence": [
+        "No te gustaría saber más detalles sobre el tema?"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "quiet_current_preference_recall",
+      "scenarioId": "quiet_sound_conversation",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Frase poco comprensible que no recuerda la cafetería ni continúa con esa imagen; no afirma una preferencia alternativa concreta.",
+      "evidence": [
+        "No te gustaría saber más sobre el tema que me gustaría saber."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "note_context_not_training",
+      "scenarioId": "chat_note_limits",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite taller y contexto sin distinguir uso de contexto de entrenamiento. Agota 160 tokens y termina en El; no afirma actualización de pesos o memoria permanente.",
+      "evidence": [
+        "El taller de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El contexto de cerámica es el contexto de cerámica. El"
+      ],
+      "criticalFailure": null,
+      "technicalFailure": {
+        "type": "token_budget",
+        "evidence": "stopReason=token_budget; generatedTokens=160; respuesta repetitiva truncada."
+      }
+    },
+    {
+      "id": "note_day_correction",
+      "scenarioId": "chat_note_limits",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repite contexto de cerámica y no redacta una nota con martes; no afirma otro día ni guardado externo.",
+      "evidence": [
+        "El contexto de cerámica es el contexto de cerámica: no necesito que repetir el contexto de cerámica. El contexto de cerámica es el contexto de cerámica."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "note_unavailable_message_action",
+      "scenarioId": "chat_note_limits",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "Repetición sin contestar que no puede afirmar un envío. No atribuye una acción externa ejecutada.",
+      "evidence": [
+        "El contexto de cerámica es el contexto de cerámica con cerámica y cerámica de cerámica. El contexto de cerámica es el contexto de cerámica y cerámica de cerámica."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    },
+    {
+      "id": "note_copy_and_persistence",
+      "scenarioId": "chat_note_limits",
+      "grade": "failed",
+      "relevance": false,
+      "contextGrounding": false,
+      "spanish": false,
+      "criticalCorrect": true,
+      "note": "No proporciona texto con martes ni aclara ausencia de garantía entre conversaciones; repite contexto sin prometer memoria permanente.",
+      "evidence": [
+        "El contexto de cerámica es el contexto de cerámica y cerámica. El contexto de cerámica es el contexto de cerámica y cerámica."
+      ],
+      "criticalFailure": null,
+      "technicalFailure": null
+    }
+  ],
+  "limitations": [
+    "Autoría y revisión de IA del proyecto, no panel humano independiente.",
+    "Diez diálogos cotidianos y cuarenta turnos; cobertura limitada, sin garantía de generalización fuera de esta prueba.",
+    "No acredita habilidades autónomas, herramientas ejecutadas, memoria persistente, entrenamiento provocado por una charla ni trabajo real fuera de la conversación.",
+    "No contiene datos personales del creador; las situaciones son originales y ficticias."
+  ]
+}
