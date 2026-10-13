@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "workspaceRoot": "/ABSOLUTE/PATH/UNIDAD",
+  "stateDir": "private/learning-repair-reproduction/continual",
+  "inboxDir": "private/learning-repair-reproduction/inbox",
+  "pollSeconds": 10,
+  "maxCycles": null,
+  "maxCrashRestartsPerStage": 2,
+  "approvedAgents": [
+    "project-agent-with-owner-standing-authorization"
+  ],
+  "initialCycle": {
+    "cycleId": "reproduction",
+    "stages": [
+      {
+        "id": "foundation-15m",
+        "kind": "base",
+        "runDir": "private/learning-repair-reproduction/runs/foundation-15m",
+        "corpusPath": "examples/learning-repair-20261013/causal-base/causal-spanish.train-validation.jsonl",
+        "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+        "trainingConfigPath": "examples/learning-repair-20261013/configs/foundation-training.json",
+        "trainingConfigSha256": "f5bab793911b273d1729e118b133957e9eac3937b6abc8382adda1c1d9f84864",
+        "modelConfigPath": "examples/learning-repair-20261013/configs/foundation-model.json",
+        "modelConfigSha256": "b9e03368f5043fba22baa71ff2cbb815312758cd124b899f32c5cce29d5484fa",
+        "stopAfterStep": 12000,
+        "invocationBudgetSeconds": 3600,
+        "maxRSSMiB": 6144,
+        "maxDiskMiB": 2048
+      },
+      {
+        "id": "conversation-15m",
+        "kind": "sft",
+        "runDir": "private/learning-repair-reproduction/runs/conversation-15m",
+        "corpusPath": "examples/learning-repair-20261013/sft/sft.train-validation.jsonl",
+        "corpusSha256": "4f51ffdf549439707ddee9ea75127264fdd33bcaadc52d585d82a93e52825510",
+        "trainingConfigPath": "examples/learning-repair-20261013/configs/conversation-training.json",
+        "trainingConfigSha256": "9f72a4b28de75714b6fcd3d1e55c4f8c90984da5aca83a8f743faf82274d7be6",
+        "parentStage": "foundation-15m",
+        "provenanceManifestPath": "examples/learning-repair-20261013/sft/manifest.json",
+        "provenanceManifestSha256": "a506f350df44fe81e34062d51c13a26fe41f874f48ea38363edc7dee9374d147",
+        "stopAfterStep": 8192,
+        "invocationBudgetSeconds": 3600,
+        "maxRSSMiB": 6144,
+        "maxDiskMiB": 2048
+      }
+    ]
+  },
+  "collector": {
+    "enabled": false
+  },
+  "notes": "Fill workspaceRoot, install dependencies, then start. These finite own base/SFT stages wait for genuinely new data afterward. No acceptance or endless improvement claim."
+}

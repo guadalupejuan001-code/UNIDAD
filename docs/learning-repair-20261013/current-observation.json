@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-10-13T05:01:03.471180+00:00",
+  "kind": "point_in_time_read_only_observation",
+  "currentTraining": {
+    "status": "running",
+    "step": 3610,
+    "epoch": 1,
+    "elapsedSeconds": 2960.685070790001,
+    "bestValidationNll": 3.7733837676747695,
+    "bestCheckpoint": "step-000003072-fa5cfc2a1cd64cf8b7555da7f7c4af86",
+    "lastCheckpoint": "step-000003584-3a3886ff8104475a91881eda0788cf10",
+    "trainingObjective": "causal_lm",
+    "trainedFrom": "random_weights",
+    "corpusSha256": "5f1089ee7e272ce9f717c8e044ccc64b7c003c9d9dcba41a466607453931be17",
+    "partitionPolicy": "train_validation_only",
+    "testPartitionPresent": false,
+    "trainPrecision": "cpu_bfloat16"
+  },
+  "trainableParameters": 15179520,
+  "nativeProcess": {
+    "pid": 9540,
+    "expectedBirth": "805298",
+    "observedBirth": "805298",
+    "alive": true,
+    "state": "R",
+    "rssKiB": 3165884,
+    "peakRssKiB": 3165884
+  },
+  "supervisorProcess": {
+    "pid": 10516,
+    "expectedBirth": "1078606",
+    "observedBirth": "1078606",
+    "alive": true,
+    "state": "S",
+    "rssKiB": 14800,
+    "peakRssKiB": 14800
+  },
+  "supervisorStartedAtUtc": "2026-10-13T04:57:01.533329+00:00",
+  "supervisorConfigSha256": "05744ef2a5fc11548ac0534502ba5380e01932d96bc0a4cb837dd479498517c0",
+  "collectorEnabled": false,
+  "statusFileSha256AtRead": "4832cf7c410bb9cc17a07f6d12ff1a8dd913eefff7158220a0583f015d0ca0e1",
+  "instanceFileSha256AtRead": "e50e8e82eb17536888256677c012ad14f11f05360dde9cb01815f632ca9f9a4b",
+  "validationEvents": [
+    {
+      "at": 1791864839.6572533,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 7.7110481177968,
+        "perplexity": 2232.881354833258,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 0
+    },
+    {
+      "at": 1791865651.9693043,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 4.555926138153229,
+        "perplexity": 95.1948780308741,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 1024
+    },
+    {
+      "at": 1791866467.8938074,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 4.167366460007667,
+        "perplexity": 64.5452455973546,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 2048
+    },
+    {
+      "at": 1791867286.8911088,
+      "event": "validation",
+      "score": {
+        "examples": 2189,
+        "nll": 3.7733837676747695,
+        "perplexity": 43.52710152567553,
+        "targetTokens": 687867
+      },
+      "selected": true,
+      "step": 3072
+    }
+  ],
+  "remoteHeads": [
+    {
+      "sha": "65ca3d04047d443391ef28606057b69dc6db9dea",
+      "ref": "refs/heads/artifacts/unidad-contraste-relacional-20261012"
+    },
+    {
+      "sha": "6c6b5a7bf36cbd12c6e9515af0d252080b9fde55",
+      "ref": "refs/heads/codex/conversation-wording-repair-20261012"
+    },
+    {
+      "sha": "242aa3e57368352f72bea6704833f70be376b84c",
+      "ref": "refs/heads/main"
+    },
+    {
+      "sha": "242aa3e57368352f72bea6704833f70be376b84c",
+      "ref": "refs/heads/work/conversation-ready-20261013"
+    },
+    {
+      "sha": "3b6ba0248edcf218e8ba1fa38a16c7459f621e23",
+      "ref": "refs/heads/work/diagnostico-conversacion-20261012-cee2"
+    },
+    {
+      "sha": "8450470ce876c4c8605a7b668557fd2f98c6d8af",
+      "ref": "refs/heads/work/exportacion-android-20261012"
+    },
+    {
+      "sha": "cf2da8c07c7d98d5df33a43c72becfa2d0c8ed85",
+      "ref": "refs/heads/work/generacion-posicion-final-20261012"
+    },
+    {
+      "sha": "726d2e7048b2b569e2ba35907af7096cf4ee5f9c",
+      "ref": "refs/heads/work/nerva-brain-learning-20261013"
+    },
+    {
+      "sha": "607e24d516706bd3b234294dba6e75286f42e259",
+      "ref": "refs/heads/work/tokenized-disk-training-20261013"
+    }
+  ],
+  "pullRequests": [
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "75e216f67afc94b96e5d604edea2ff7230337655"
+      },
+      "number": 6,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "ed8ea8f4b2cf05037219b03d9a4b5a80f90e47ee"
+      },
+      "number": 5,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "6a0218bbae32065ee3fef4752c36dd6518849772"
+      },
+      "number": 4,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "3d65f2a0ebed8e9e36a594cce00b35a4a022e77e"
+      },
+      "number": 3,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "186b5d33e6d275af3ebe423f38654a01be3ff4a4"
+      },
+      "number": 2,
+      "state": "MERGED"
+    },
+    {
+      "isDraft": false,
+      "mergeCommit": {
+        "oid": "2e60c7627271f9aaf9e3170749dde9173d3ef07a"
+      },
+      "number": 1,
+      "state": "MERGED"
+    }
+  ],
+  "localBranch": "work/learning-repair-20261013",
+  "startingCommit": "242aa3e57368352f72bea6704833f70be376b84c",
+  "conversationAccepted": false,
+  "conversationEvaluatedForThisStage": false,
+  "humanReview": false,
+  "limitations": [
+    "This is an observation, not a promise that either PID remains alive.",
+    "Source status and instance files are dynamic; their full original bytes are not copied here.",
+    "Native validation is causal prediction; it does not certify conversational quality.",
+    "New work is local on the named branch until a later integration receipt records commits and remote hashes."
+  ]
+}

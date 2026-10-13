@@ -7,6 +7,29 @@ que el trabajador digital solicitado ya esté terminado.
 
 ## Encargo actual del 13 de octubre: integrar y entrenar
 
+Continuación posterior a la entrega `242aa3e`: el creador confirma que integrar
+código y publicar resultados negativos no cumple la misión de conversar. Pide
+resolver el aprendizaje, modificar lo necesario y priorizar entrenamiento real,
+con todos los hilos de trabajo disponibles. Solicita no consumir esta fase en
+pruebas adicionales de software, sin descuidar procedencia, reanudación,
+integración, evidencia y criterios anteriores. La validación del entrenador y
+la evaluación conversacional al cierre se conservan. Esta continuación autoriza
+nuevas corridas finitas con los recursos existentes; no reabre 24+2 horas.
+
+La continuación más reciente pide entrenar con información nueva y sostener un
+bucle progresivo: preparar datos con procedencia, entrenar, ajustar, conservar
+checkpoints y medir las respuestas obtenidas. Se autoriza un supervisor local
+reanudable, con etapas finitas y espera explícita cuando falten datos o recursos.
+El proceso puede continuar mientras el entorno permanezca activo; no se promete
+mejora garantizada ni ejecución fuera de ese entorno.
+
+Actualización posterior: el creador pide mantener todo el entrenamiento activo
+y ampliar mediante investigación en Internet las fuentes de español, incluyendo
+vocabulario y distintas formas de expresión. La ingesta nueva se hace por lotes
+con procedencia, condiciones de uso, particiones y límites; se conservan los
+corpus congelados y se encolan etapas posteriores sin detener la corrida actual.
+No se interpreta «todo el español» como una cobertura completa ya demostrada.
+
 El creador pidió integrar el código, reconciliar las ramas, entrenar y modificar
 Unidad conjuntamente para lograr conversación, actualizar el README al terminar
 y no dejar entregas en borrador. Esta petición autoriza un nuevo entrenamiento

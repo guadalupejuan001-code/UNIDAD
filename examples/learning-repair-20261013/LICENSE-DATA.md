@@ -1,0 +1,9 @@
+# Licencias de los datos
+
+Este paquete contiene fuentes con declaraciones de licencia distintas. Una licencia de una fuente no se extiende automáticamente al código, a los modelos o a los ejemplos de otra fuente.
+
+- Los registros `source.dataset=OpenAssistant/oasst1` y `OpenAssistant/oasst2` proceden de los conjuntos públicos OpenAssistant, cuyas tarjetas fijadas declaran **Apache-2.0**. Se conservan la atribución y el texto de la licencia en `licenses/oasst1-LICENSE`, además de las tarjetas originales de ambas fuentes. La revisión previa de los mensajes no certifica todos los hechos ni la identidad de cada contribuidor.
+- Los registros `source.dataset=wikimedia/wikipedia` conservan título, URL, identificador, URL del historial y hashes de extracción por artículo. La tarjeta fijada de Hugging Face declara **CC-BY-SA-3.0 y GFDL**; la documentación legal de Wikimedia obtenida durante la preparación declara **CC-BY-SA-4.0 y GFDL**. Se conservan ambas declaraciones y sus documentos en `licenses/`. No se afirma que todos los artículos admitan ambas licencias ni que sus derechos se hayan certificado individualmente. Las adaptaciones de extracción consisten en seleccionar párrafos, recortar espacios exteriores y unirlos con dos saltos de línea. Deben conservarse la atribución y las obligaciones aplicables de compartir igual al redistribuir el texto.
+- Los registros `source.kind=authored-synthetic` son ficción redactada por asistentes de IA del proyecto. No son diálogos humanos ni salidas del modelo UNIDAD. No se ha declarado una licencia independiente para ese banco; las declaraciones de OpenAssistant o Wikipedia no se aplican a esos ejemplos por proximidad.
+
+`DATASOURCES.md` identifica las versiones y los hashes. Este archivo documenta procedencia; no sustituye las licencias originales ni concede derechos adicionales.
